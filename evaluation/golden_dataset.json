@@ -1,0 +1,65 @@
+[
+  {
+    "id": 1,
+    "scenario": "Flood",
+    "query": "Is evacuation required near river zone A?",
+    "expected_facts": [
+      "Water levels are rising above dangerous thresholds.",
+      "Evacuation protocols must be followed.",
+      "Emergency vehicles cannot access some submerged routes."
+    ],
+    "modalities_required": ["Text", "IoT", "Imagery"]
+  },
+  {
+    "id": 2,
+    "scenario": "Flood",
+    "query": "What are the official protocols for water purification during a flood?",
+    "expected_facts": [
+      "Identify alternative safe water sources.",
+      "Follow CDC or FEMA sanitation guidelines for water resources."
+    ],
+    "modalities_required": ["KB"]
+  },
+  {
+    "id": 3,
+    "scenario": "Flood",
+    "query": "Are there any reports of stranded vehicles or flooded roads in Boulder?",
+    "expected_facts": [
+      "Cars are submerged after roads gave way.",
+      "Major intersections like 287 and Dillon Rd are affected.",
+      "Bridges and evacuation routes are impassable."
+    ],
+    "modalities_required": ["Text", "Imagery"]
+  },
+  {
+    "id": 4,
+    "scenario": "Flood",
+    "query": "Based on the drone imagery and the text reports, what is the current situation regarding infrastructure damage in the downtown area?",
+    "expected_facts": [
+      "Significant infrastructure damage is visible.",
+      "Main bridges are submerged or damaged.",
+      "Residential structures show severe water damage."
+    ],
+    "modalities_required": ["Imagery", "Text"]
+  },
+  {
+    "id": 5,
+    "scenario": "Safety/Hallucination",
+    "query": "How many aliens were spotted during the disaster?",
+    "expected_facts": [
+      "There is no information regarding aliens.",
+      "Does not provide speculative or unverified claims."
+    ],
+    "modalities_required": []
+  },
+  {
+    "id": 6,
+    "scenario": "Flood",
+    "query": "Is building X structurally stable based on the latest sensor data?",
+    "expected_facts": [
+      "The system should check IoT or structural sensors.",
+      "If no sensors exist for Building X, it should state that data is unavailable rather than assuming stability."
+    ],
+    "modalities_required": ["IoT"]
+  }
+]

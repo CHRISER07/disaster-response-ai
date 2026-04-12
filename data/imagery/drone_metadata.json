@@ -1,0 +1,302 @@
+[
+    {
+        "image_id": "IMG_1000",
+        "timestamp": "2013-09-12T08:00:00",
+        "location": "Highway 36",
+        "vlm_description": "At Highway 36, Aerial view shows widespread flooding. The main bridge is completely submerged under muddy water. Debris is piled up against the supports."
+    },
+    {
+        "image_id": "IMG_1001",
+        "timestamp": "2013-09-12T08:30:00",
+        "location": "Highway 36",
+        "vlm_description": "At Highway 36, Drone footage reveals a collapsed residential structure with severe water damage. Emergency vehicles are visible in the distance but cannot access the area due to flooded roads."
+    },
+    {
+        "image_id": "IMG_1002",
+        "timestamp": "2013-09-12T09:00:00",
+        "location": "Highway 36",
+        "vlm_description": "At Highway 36, Drone footage reveals a collapsed residential structure with severe water damage. Emergency vehicles are visible in the distance but cannot access the area due to flooded roads."
+    },
+    {
+        "image_id": "IMG_1003",
+        "timestamp": "2013-09-12T09:30:00",
+        "location": "Downtown Boulder",
+        "vlm_description": "At Downtown Boulder, Aerial view shows widespread flooding. The main bridge is completely submerged under muddy water. Debris is piled up against the supports."
+    },
+    {
+        "image_id": "IMG_1004",
+        "timestamp": "2013-09-12T10:00:00",
+        "location": "Lyons Bridge",
+        "vlm_description": "At Lyons Bridge, Aerial view shows widespread flooding. The main bridge is completely submerged under muddy water. Debris is piled up against the supports."
+    },
+    {
+        "image_id": "IMG_1005",
+        "timestamp": "2013-09-12T10:30:00",
+        "location": "Jamestown",
+        "vlm_description": "At Jamestown, Image shows a swollen river overflowing its banks. A vehicle is stranded in the water. No individuals are visible inside or around the vehicle."
+    },
+    {
+        "image_id": "IMG_1006",
+        "timestamp": "2013-09-12T11:00:00",
+        "location": "Downtown Boulder",
+        "vlm_description": "At Downtown Boulder, Overhead view of an evacuation route. The road surface has severely eroded, creating a massive sinkhole. The route is impassable for standard vehicles."
+    },
+    {
+        "image_id": "IMG_1007",
+        "timestamp": "2013-09-12T11:30:00",
+        "location": "Jamestown",
+        "vlm_description": "At Jamestown, Drone footage reveals a collapsed residential structure with severe water damage. Emergency vehicles are visible in the distance but cannot access the area due to flooded roads."
+    },
+    {
+        "image_id": "IMG_1008",
+        "timestamp": "2013-09-12T12:00:00",
+        "location": "Lyons Bridge",
+        "vlm_description": "At Lyons Bridge, Overhead view of an evacuation route. The road surface has severely eroded, creating a massive sinkhole. The route is impassable for standard vehicles."
+    },
+    {
+        "image_id": "IMG_1009",
+        "timestamp": "2013-09-12T12:30:00",
+        "location": "Downtown Boulder",
+        "vlm_description": "At Downtown Boulder, Drone footage reveals a collapsed residential structure with severe water damage. Emergency vehicles are visible in the distance but cannot access the area due to flooded roads."
+    },
+    {
+        "image_id": "IMG_1010",
+        "timestamp": "2013-09-12T13:00:00",
+        "location": "Lyons Bridge",
+        "vlm_description": "At Lyons Bridge, Aerial view shows widespread flooding. The main bridge is completely submerged under muddy water. Debris is piled up against the supports."
+    },
+    {
+        "image_id": "IMG_1011",
+        "timestamp": "2013-09-12T13:30:00",
+        "location": "Downtown Boulder",
+        "vlm_description": "At Downtown Boulder, Drone footage reveals a collapsed residential structure with severe water damage. Emergency vehicles are visible in the distance but cannot access the area due to flooded roads."
+    },
+    {
+        "image_id": "IMG_1012",
+        "timestamp": "2013-09-12T14:00:00",
+        "location": "Highway 36",
+        "vlm_description": "At Highway 36, Drone footage reveals a collapsed residential structure with severe water damage. Emergency vehicles are visible in the distance but cannot access the area due to flooded roads."
+    },
+    {
+        "image_id": "IMG_1013",
+        "timestamp": "2013-09-12T14:30:00",
+        "location": "Lyons Bridge",
+        "vlm_description": "At Lyons Bridge, Image shows a swollen river overflowing its banks. A vehicle is stranded in the water. No individuals are visible inside or around the vehicle."
+    },
+    {
+        "image_id": "IMG_1014",
+        "timestamp": "2013-09-12T15:00:00",
+        "location": "Lyons Bridge",
+        "vlm_description": "At Lyons Bridge, Drone footage reveals a collapsed residential structure with severe water damage. Emergency vehicles are visible in the distance but cannot access the area due to flooded roads."
+    },
+    {
+        "image_id": "IMG_1015",
+        "timestamp": "2013-09-12T15:30:00",
+        "location": "Highway 36",
+        "vlm_description": "At Highway 36, Aerial view shows widespread flooding. The main bridge is completely submerged under muddy water. Debris is piled up against the supports."
+    },
+    {
+        "image_id": "IMG_1016",
+        "timestamp": "2013-09-12T16:00:00",
+        "location": "Highway 36",
+        "vlm_description": "At Highway 36, Drone footage reveals a collapsed residential structure with severe water damage. Emergency vehicles are visible in the distance but cannot access the area due to flooded roads."
+    },
+    {
+        "image_id": "IMG_1017",
+        "timestamp": "2013-09-12T16:30:00",
+        "location": "Lyons Bridge",
+        "vlm_description": "At Lyons Bridge, Overhead view of an evacuation route. The road surface has severely eroded, creating a massive sinkhole. The route is impassable for standard vehicles."
+    },
+    {
+        "image_id": "IMG_1018",
+        "timestamp": "2013-09-12T17:00:00",
+        "location": "Jamestown",
+        "vlm_description": "At Jamestown, Aerial view shows widespread flooding. The main bridge is completely submerged under muddy water. Debris is piled up against the supports."
+    },
+    {
+        "image_id": "IMG_1019",
+        "timestamp": "2013-09-12T17:30:00",
+        "location": "Downtown Boulder",
+        "vlm_description": "At Downtown Boulder, Drone footage reveals a collapsed residential structure with severe water damage. Emergency vehicles are visible in the distance but cannot access the area due to flooded roads."
+    },
+    {
+        "image_id": "IMG_1020",
+        "timestamp": "2013-09-12T18:00:00",
+        "location": "Lyons Bridge",
+        "vlm_description": "At Lyons Bridge, Overhead view of an evacuation route. The road surface has severely eroded, creating a massive sinkhole. The route is impassable for standard vehicles."
+    },
+    {
+        "image_id": "IMG_1021",
+        "timestamp": "2013-09-12T18:30:00",
+        "location": "Jamestown",
+        "vlm_description": "At Jamestown, Image shows a swollen river overflowing its banks. A vehicle is stranded in the water. No individuals are visible inside or around the vehicle."
+    },
+    {
+        "image_id": "IMG_1022",
+        "timestamp": "2013-09-12T19:00:00",
+        "location": "Lyons Bridge",
+        "vlm_description": "At Lyons Bridge, Image shows a swollen river overflowing its banks. A vehicle is stranded in the water. No individuals are visible inside or around the vehicle."
+    },
+    {
+        "image_id": "IMG_1023",
+        "timestamp": "2013-09-12T19:30:00",
+        "location": "Highway 36",
+        "vlm_description": "At Highway 36, Image shows a swollen river overflowing its banks. A vehicle is stranded in the water. No individuals are visible inside or around the vehicle."
+    },
+    {
+        "image_id": "IMG_1024",
+        "timestamp": "2013-09-12T20:00:00",
+        "location": "Downtown Boulder",
+        "vlm_description": "At Downtown Boulder, Drone footage reveals a collapsed residential structure with severe water damage. Emergency vehicles are visible in the distance but cannot access the area due to flooded roads."
+    },
+    {
+        "image_id": "IMG_1025",
+        "timestamp": "2013-09-12T20:30:00",
+        "location": "Jamestown",
+        "vlm_description": "At Jamestown, Aerial view shows widespread flooding. The main bridge is completely submerged under muddy water. Debris is piled up against the supports."
+    },
+    {
+        "image_id": "IMG_1026",
+        "timestamp": "2013-09-12T21:00:00",
+        "location": "Downtown Boulder",
+        "vlm_description": "At Downtown Boulder, Aerial view shows widespread flooding. The main bridge is completely submerged under muddy water. Debris is piled up against the supports."
+    },
+    {
+        "image_id": "IMG_1027",
+        "timestamp": "2013-09-12T21:30:00",
+        "location": "Highway 36",
+        "vlm_description": "At Highway 36, Image shows a swollen river overflowing its banks. A vehicle is stranded in the water. No individuals are visible inside or around the vehicle."
+    },
+    {
+        "image_id": "IMG_1028",
+        "timestamp": "2013-09-12T22:00:00",
+        "location": "Jamestown",
+        "vlm_description": "At Jamestown, Aerial view shows widespread flooding. The main bridge is completely submerged under muddy water. Debris is piled up against the supports."
+    },
+    {
+        "image_id": "IMG_1029",
+        "timestamp": "2013-09-12T22:30:00",
+        "location": "Lyons Bridge",
+        "vlm_description": "At Lyons Bridge, Overhead view of an evacuation route. The road surface has severely eroded, creating a massive sinkhole. The route is impassable for standard vehicles."
+    },
+    {
+        "image_id": "IMG_1030",
+        "timestamp": "2013-09-12T23:00:00",
+        "location": "Downtown Boulder",
+        "vlm_description": "At Downtown Boulder, Aerial view shows widespread flooding. The main bridge is completely submerged under muddy water. Debris is piled up against the supports."
+    },
+    {
+        "image_id": "IMG_1031",
+        "timestamp": "2013-09-12T23:30:00",
+        "location": "Downtown Boulder",
+        "vlm_description": "At Downtown Boulder, Aerial view shows widespread flooding. The main bridge is completely submerged under muddy water. Debris is piled up against the supports."
+    },
+    {
+        "image_id": "IMG_1032",
+        "timestamp": "2013-09-13T00:00:00",
+        "location": "Jamestown",
+        "vlm_description": "At Jamestown, Overhead view of an evacuation route. The road surface has severely eroded, creating a massive sinkhole. The route is impassable for standard vehicles."
+    },
+    {
+        "image_id": "IMG_1033",
+        "timestamp": "2013-09-13T00:30:00",
+        "location": "Lyons Bridge",
+        "vlm_description": "At Lyons Bridge, Drone footage reveals a collapsed residential structure with severe water damage. Emergency vehicles are visible in the distance but cannot access the area due to flooded roads."
+    },
+    {
+        "image_id": "IMG_1034",
+        "timestamp": "2013-09-13T01:00:00",
+        "location": "Lyons Bridge",
+        "vlm_description": "At Lyons Bridge, Image shows a swollen river overflowing its banks. A vehicle is stranded in the water. No individuals are visible inside or around the vehicle."
+    },
+    {
+        "image_id": "IMG_1035",
+        "timestamp": "2013-09-13T01:30:00",
+        "location": "Highway 36",
+        "vlm_description": "At Highway 36, Drone footage reveals a collapsed residential structure with severe water damage. Emergency vehicles are visible in the distance but cannot access the area due to flooded roads."
+    },
+    {
+        "image_id": "IMG_1036",
+        "timestamp": "2013-09-13T02:00:00",
+        "location": "Highway 36",
+        "vlm_description": "At Highway 36, Drone footage reveals a collapsed residential structure with severe water damage. Emergency vehicles are visible in the distance but cannot access the area due to flooded roads."
+    },
+    {
+        "image_id": "IMG_1037",
+        "timestamp": "2013-09-13T02:30:00",
+        "location": "Lyons Bridge",
+        "vlm_description": "At Lyons Bridge, Aerial view shows widespread flooding. The main bridge is completely submerged under muddy water. Debris is piled up against the supports."
+    },
+    {
+        "image_id": "IMG_1038",
+        "timestamp": "2013-09-13T03:00:00",
+        "location": "Downtown Boulder",
+        "vlm_description": "At Downtown Boulder, Overhead view of an evacuation route. The road surface has severely eroded, creating a massive sinkhole. The route is impassable for standard vehicles."
+    },
+    {
+        "image_id": "IMG_1039",
+        "timestamp": "2013-09-13T03:30:00",
+        "location": "Jamestown",
+        "vlm_description": "At Jamestown, Drone footage reveals a collapsed residential structure with severe water damage. Emergency vehicles are visible in the distance but cannot access the area due to flooded roads."
+    },
+    {
+        "image_id": "IMG_1040",
+        "timestamp": "2013-09-13T04:00:00",
+        "location": "Highway 36",
+        "vlm_description": "At Highway 36, Overhead view of an evacuation route. The road surface has severely eroded, creating a massive sinkhole. The route is impassable for standard vehicles."
+    },
+    {
+        "image_id": "IMG_1041",
+        "timestamp": "2013-09-13T04:30:00",
+        "location": "Downtown Boulder",
+        "vlm_description": "At Downtown Boulder, Overhead view of an evacuation route. The road surface has severely eroded, creating a massive sinkhole. The route is impassable for standard vehicles."
+    },
+    {
+        "image_id": "IMG_1042",
+        "timestamp": "2013-09-13T05:00:00",
+        "location": "Highway 36",
+        "vlm_description": "At Highway 36, Overhead view of an evacuation route. The road surface has severely eroded, creating a massive sinkhole. The route is impassable for standard vehicles."
+    },
+    {
+        "image_id": "IMG_1043",
+        "timestamp": "2013-09-13T05:30:00",
+        "location": "Jamestown",
+        "vlm_description": "At Jamestown, Image shows a swollen river overflowing its banks. A vehicle is stranded in the water. No individuals are visible inside or around the vehicle."
+    },
+    {
+        "image_id": "IMG_1044",
+        "timestamp": "2013-09-13T06:00:00",
+        "location": "Highway 36",
+        "vlm_description": "At Highway 36, Drone footage reveals a collapsed residential structure with severe water damage. Emergency vehicles are visible in the distance but cannot access the area due to flooded roads."
+    },
+    {
+        "image_id": "IMG_1045",
+        "timestamp": "2013-09-13T06:30:00",
+        "location": "Highway 36",
+        "vlm_description": "At Highway 36, Aerial view shows widespread flooding. The main bridge is completely submerged under muddy water. Debris is piled up against the supports."
+    },
+    {
+        "image_id": "IMG_1046",
+        "timestamp": "2013-09-13T07:00:00",
+        "location": "Lyons Bridge",
+        "vlm_description": "At Lyons Bridge, Drone footage reveals a collapsed residential structure with severe water damage. Emergency vehicles are visible in the distance but cannot access the area due to flooded roads."
+    },
+    {
+        "image_id": "IMG_1047",
+        "timestamp": "2013-09-13T07:30:00",
+        "location": "Jamestown",
+        "vlm_description": "At Jamestown, Drone footage reveals a collapsed residential structure with severe water damage. Emergency vehicles are visible in the distance but cannot access the area due to flooded roads."
+    },
+    {
+        "image_id": "IMG_1048",
+        "timestamp": "2013-09-13T08:00:00",
+        "location": "Jamestown",
+        "vlm_description": "At Jamestown, Drone footage reveals a collapsed residential structure with severe water damage. Emergency vehicles are visible in the distance but cannot access the area due to flooded roads."
+    },
+    {
+        "image_id": "IMG_1049",
+        "timestamp": "2013-09-13T08:30:00",
+        "location": "Highway 36",
+        "vlm_description": "At Highway 36, Aerial view shows widespread flooding. The main bridge is completely submerged under muddy water. Debris is piled up against the supports."
+    }
+]

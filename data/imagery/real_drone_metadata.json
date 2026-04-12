@@ -1,0 +1,402 @@
+[
+    {
+        "drone_id": "xview2_drone_0",
+        "timestamp": "2013-09-12T12:00:00",
+        "location": "Disaster Zone",
+        "observations": "Visual analysis of guatemala-volcano_00000009_post_disaster.png indicates severe disaster impact. We directly observe ash coverage and destroyed pathways. Immediate responder caution advised.",
+        "modality": "imagery_description",
+        "source_file": "guatemala-volcano_00000009_post_disaster.png"
+    },
+    {
+        "drone_id": "xview2_drone_1",
+        "timestamp": "2013-09-12T12:00:01",
+        "location": "Disaster Zone",
+        "observations": "Visual analysis of hurricane-florence_00000186_post_disaster.png indicates severe disaster impact. We directly observe water accumulation and submerged roads. Immediate responder caution advised.",
+        "modality": "imagery_description",
+        "source_file": "hurricane-florence_00000186_post_disaster.png"
+    },
+    {
+        "drone_id": "xview2_drone_2",
+        "timestamp": "2013-09-12T12:00:02",
+        "location": "Disaster Zone",
+        "observations": "Visual analysis of hurricane-florence_00000421_pre_disaster.png indicates severe disaster impact. We directly observe water accumulation and submerged roads. Immediate responder caution advised.",
+        "modality": "imagery_description",
+        "source_file": "hurricane-florence_00000421_pre_disaster.png"
+    },
+    {
+        "drone_id": "xview2_drone_3",
+        "timestamp": "2013-09-12T12:00:03",
+        "location": "Disaster Zone",
+        "observations": "Visual analysis of hurricane-florence_00000468_post_disaster.png indicates severe disaster impact. We directly observe water accumulation and submerged roads. Immediate responder caution advised.",
+        "modality": "imagery_description",
+        "source_file": "hurricane-florence_00000468_post_disaster.png"
+    },
+    {
+        "drone_id": "xview2_drone_4",
+        "timestamp": "2013-09-12T12:00:04",
+        "location": "Disaster Zone",
+        "observations": "Visual analysis of hurricane-florence_00000491_post_disaster.png indicates severe disaster impact. We directly observe water accumulation and submerged roads. Immediate responder caution advised.",
+        "modality": "imagery_description",
+        "source_file": "hurricane-florence_00000491_post_disaster.png"
+    },
+    {
+        "drone_id": "xview2_drone_5",
+        "timestamp": "2013-09-12T12:00:05",
+        "location": "Disaster Zone",
+        "observations": "Visual analysis of hurricane-harvey_00000023_pre_disaster.png indicates severe disaster impact. We directly observe water accumulation and submerged roads. Immediate responder caution advised.",
+        "modality": "imagery_description",
+        "source_file": "hurricane-harvey_00000023_pre_disaster.png"
+    },
+    {
+        "drone_id": "xview2_drone_6",
+        "timestamp": "2013-09-12T12:00:06",
+        "location": "Disaster Zone",
+        "observations": "Visual analysis of hurricane-harvey_00000164_pre_disaster.png indicates severe disaster impact. We directly observe water accumulation and submerged roads. Immediate responder caution advised.",
+        "modality": "imagery_description",
+        "source_file": "hurricane-harvey_00000164_pre_disaster.png"
+    },
+    {
+        "drone_id": "xview2_drone_7",
+        "timestamp": "2013-09-12T12:00:07",
+        "location": "Disaster Zone",
+        "observations": "Visual analysis of hurricane-harvey_00000342_pre_disaster.png indicates severe disaster impact. We directly observe water accumulation and submerged roads. Immediate responder caution advised.",
+        "modality": "imagery_description",
+        "source_file": "hurricane-harvey_00000342_pre_disaster.png"
+    },
+    {
+        "drone_id": "xview2_drone_8",
+        "timestamp": "2013-09-12T12:00:08",
+        "location": "Disaster Zone",
+        "observations": "Visual analysis of hurricane-harvey_00000364_pre_disaster.png indicates severe disaster impact. We directly observe water accumulation and submerged roads. Immediate responder caution advised.",
+        "modality": "imagery_description",
+        "source_file": "hurricane-harvey_00000364_pre_disaster.png"
+    },
+    {
+        "drone_id": "xview2_drone_9",
+        "timestamp": "2013-09-12T12:00:09",
+        "location": "Disaster Zone",
+        "observations": "Visual analysis of hurricane-harvey_00000420_pre_disaster.png indicates severe disaster impact. We directly observe water accumulation and submerged roads. Immediate responder caution advised.",
+        "modality": "imagery_description",
+        "source_file": "hurricane-harvey_00000420_pre_disaster.png"
+    },
+    {
+        "drone_id": "xview2_drone_10",
+        "timestamp": "2013-09-12T12:00:10",
+        "location": "Disaster Zone",
+        "observations": "Visual analysis of hurricane-harvey_00000445_pre_disaster.png indicates severe disaster impact. We directly observe water accumulation and submerged roads. Immediate responder caution advised.",
+        "modality": "imagery_description",
+        "source_file": "hurricane-harvey_00000445_pre_disaster.png"
+    },
+    {
+        "drone_id": "xview2_drone_11",
+        "timestamp": "2013-09-12T12:00:11",
+        "location": "Disaster Zone",
+        "observations": "Visual analysis of hurricane-matthew_00000028_pre_disaster.png indicates severe disaster impact. We directly observe water accumulation and submerged roads. Immediate responder caution advised.",
+        "modality": "imagery_description",
+        "source_file": "hurricane-matthew_00000028_pre_disaster.png"
+    },
+    {
+        "drone_id": "xview2_drone_12",
+        "timestamp": "2013-09-12T12:00:12",
+        "location": "Disaster Zone",
+        "observations": "Visual analysis of hurricane-matthew_00000340_post_disaster.png indicates severe disaster impact. We directly observe water accumulation and submerged roads. Immediate responder caution advised.",
+        "modality": "imagery_description",
+        "source_file": "hurricane-matthew_00000340_post_disaster.png"
+    },
+    {
+        "drone_id": "xview2_drone_13",
+        "timestamp": "2013-09-12T12:00:13",
+        "location": "Disaster Zone",
+        "observations": "Visual analysis of hurricane-matthew_00000394_post_disaster.png indicates severe disaster impact. We directly observe water accumulation and submerged roads. Immediate responder caution advised.",
+        "modality": "imagery_description",
+        "source_file": "hurricane-matthew_00000394_post_disaster.png"
+    },
+    {
+        "drone_id": "xview2_drone_14",
+        "timestamp": "2013-09-12T12:00:14",
+        "location": "Disaster Zone",
+        "observations": "Visual analysis of hurricane-michael_00000129_post_disaster.png indicates severe disaster impact. We directly observe water accumulation and submerged roads. Immediate responder caution advised.",
+        "modality": "imagery_description",
+        "source_file": "hurricane-michael_00000129_post_disaster.png"
+    },
+    {
+        "drone_id": "xview2_drone_15",
+        "timestamp": "2013-09-12T12:00:15",
+        "location": "Disaster Zone",
+        "observations": "Visual analysis of hurricane-michael_00000155_post_disaster.png indicates severe disaster impact. We directly observe water accumulation and submerged roads. Immediate responder caution advised.",
+        "modality": "imagery_description",
+        "source_file": "hurricane-michael_00000155_post_disaster.png"
+    },
+    {
+        "drone_id": "xview2_drone_16",
+        "timestamp": "2013-09-12T12:00:16",
+        "location": "Disaster Zone",
+        "observations": "Visual analysis of hurricane-michael_00000420_post_disaster.png indicates severe disaster impact. We directly observe water accumulation and submerged roads. Immediate responder caution advised.",
+        "modality": "imagery_description",
+        "source_file": "hurricane-michael_00000420_post_disaster.png"
+    },
+    {
+        "drone_id": "xview2_drone_17",
+        "timestamp": "2013-09-12T12:00:17",
+        "location": "Disaster Zone",
+        "observations": "Visual analysis of hurricane-michael_00000431_post_disaster.png indicates severe disaster impact. We directly observe water accumulation and submerged roads. Immediate responder caution advised.",
+        "modality": "imagery_description",
+        "source_file": "hurricane-michael_00000431_post_disaster.png"
+    },
+    {
+        "drone_id": "xview2_drone_18",
+        "timestamp": "2013-09-12T12:00:18",
+        "location": "Disaster Zone",
+        "observations": "Visual analysis of hurricane-michael_00000437_post_disaster.png indicates severe disaster impact. We directly observe water accumulation and submerged roads. Immediate responder caution advised.",
+        "modality": "imagery_description",
+        "source_file": "hurricane-michael_00000437_post_disaster.png"
+    },
+    {
+        "drone_id": "xview2_drone_19",
+        "timestamp": "2013-09-12T12:00:19",
+        "location": "Disaster Zone",
+        "observations": "Visual analysis of mexico-earthquake_00000109_pre_disaster.png indicates severe disaster impact. We directly observe collapsed structures and debris blockages. Immediate responder caution advised.",
+        "modality": "imagery_description",
+        "source_file": "mexico-earthquake_00000109_pre_disaster.png"
+    },
+    {
+        "drone_id": "xview2_drone_20",
+        "timestamp": "2013-09-12T12:00:20",
+        "location": "Disaster Zone",
+        "observations": "Visual analysis of midwest-flooding_00000004_pre_disaster.png indicates severe disaster impact. We directly observe water accumulation and submerged roads. Immediate responder caution advised.",
+        "modality": "imagery_description",
+        "source_file": "midwest-flooding_00000004_pre_disaster.png"
+    },
+    {
+        "drone_id": "xview2_drone_21",
+        "timestamp": "2013-09-12T12:00:21",
+        "location": "Disaster Zone",
+        "observations": "Visual analysis of midwest-flooding_00000128_post_disaster.png indicates severe disaster impact. We directly observe water accumulation and submerged roads. Immediate responder caution advised.",
+        "modality": "imagery_description",
+        "source_file": "midwest-flooding_00000128_post_disaster.png"
+    },
+    {
+        "drone_id": "xview2_drone_22",
+        "timestamp": "2013-09-12T12:00:22",
+        "location": "Disaster Zone",
+        "observations": "Visual analysis of midwest-flooding_00000420_post_disaster.png indicates severe disaster impact. We directly observe water accumulation and submerged roads. Immediate responder caution advised.",
+        "modality": "imagery_description",
+        "source_file": "midwest-flooding_00000420_post_disaster.png"
+    },
+    {
+        "drone_id": "xview2_drone_23",
+        "timestamp": "2013-09-12T12:00:23",
+        "location": "Disaster Zone",
+        "observations": "Visual analysis of midwest-flooding_00000420_pre_disaster.png indicates severe disaster impact. We directly observe water accumulation and submerged roads. Immediate responder caution advised.",
+        "modality": "imagery_description",
+        "source_file": "midwest-flooding_00000420_pre_disaster.png"
+    },
+    {
+        "drone_id": "xview2_drone_24",
+        "timestamp": "2013-09-12T12:00:24",
+        "location": "Disaster Zone",
+        "observations": "Visual analysis of palu-tsunami_00000008_pre_disaster.png indicates severe disaster impact. We directly observe significant structural damage and impassable zones. Immediate responder caution advised.",
+        "modality": "imagery_description",
+        "source_file": "palu-tsunami_00000008_pre_disaster.png"
+    },
+    {
+        "drone_id": "xview2_drone_25",
+        "timestamp": "2013-09-12T12:00:25",
+        "location": "Disaster Zone",
+        "observations": "Visual analysis of santa-rosa-wildfire_00000038_post_disaster.png indicates severe disaster impact. We directly observe significant structural damage and impassable zones. Immediate responder caution advised.",
+        "modality": "imagery_description",
+        "source_file": "santa-rosa-wildfire_00000038_post_disaster.png"
+    },
+    {
+        "drone_id": "xview2_drone_26",
+        "timestamp": "2013-09-12T12:00:26",
+        "location": "Disaster Zone",
+        "observations": "Visual analysis of santa-rosa-wildfire_00000043_pre_disaster.png indicates severe disaster impact. We directly observe significant structural damage and impassable zones. Immediate responder caution advised.",
+        "modality": "imagery_description",
+        "source_file": "santa-rosa-wildfire_00000043_pre_disaster.png"
+    },
+    {
+        "drone_id": "xview2_drone_27",
+        "timestamp": "2013-09-12T12:00:27",
+        "location": "Disaster Zone",
+        "observations": "Visual analysis of santa-rosa-wildfire_00000074_post_disaster.png indicates severe disaster impact. We directly observe significant structural damage and impassable zones. Immediate responder caution advised.",
+        "modality": "imagery_description",
+        "source_file": "santa-rosa-wildfire_00000074_post_disaster.png"
+    },
+    {
+        "drone_id": "xview2_drone_28",
+        "timestamp": "2013-09-12T12:00:28",
+        "location": "Disaster Zone",
+        "observations": "Visual analysis of santa-rosa-wildfire_00000085_post_disaster.png indicates severe disaster impact. We directly observe significant structural damage and impassable zones. Immediate responder caution advised.",
+        "modality": "imagery_description",
+        "source_file": "santa-rosa-wildfire_00000085_post_disaster.png"
+    },
+    {
+        "drone_id": "xview2_drone_29",
+        "timestamp": "2013-09-12T12:00:29",
+        "location": "Disaster Zone",
+        "observations": "Visual analysis of santa-rosa-wildfire_00000089_post_disaster.png indicates severe disaster impact. We directly observe significant structural damage and impassable zones. Immediate responder caution advised.",
+        "modality": "imagery_description",
+        "source_file": "santa-rosa-wildfire_00000089_post_disaster.png"
+    },
+    {
+        "drone_id": "xview2_drone_30",
+        "timestamp": "2013-09-12T12:00:30",
+        "location": "Disaster Zone",
+        "observations": "Visual analysis of santa-rosa-wildfire_00000143_post_disaster.png indicates severe disaster impact. We directly observe significant structural damage and impassable zones. Immediate responder caution advised.",
+        "modality": "imagery_description",
+        "source_file": "santa-rosa-wildfire_00000143_post_disaster.png"
+    },
+    {
+        "drone_id": "xview2_drone_31",
+        "timestamp": "2013-09-12T12:00:31",
+        "location": "Disaster Zone",
+        "observations": "Visual analysis of santa-rosa-wildfire_00000144_pre_disaster.png indicates severe disaster impact. We directly observe significant structural damage and impassable zones. Immediate responder caution advised.",
+        "modality": "imagery_description",
+        "source_file": "santa-rosa-wildfire_00000144_pre_disaster.png"
+    },
+    {
+        "drone_id": "xview2_drone_32",
+        "timestamp": "2013-09-12T12:00:32",
+        "location": "Disaster Zone",
+        "observations": "Visual analysis of santa-rosa-wildfire_00000350_pre_disaster.png indicates severe disaster impact. We directly observe significant structural damage and impassable zones. Immediate responder caution advised.",
+        "modality": "imagery_description",
+        "source_file": "santa-rosa-wildfire_00000350_pre_disaster.png"
+    },
+    {
+        "drone_id": "xview2_drone_33",
+        "timestamp": "2013-09-12T12:00:33",
+        "location": "Disaster Zone",
+        "observations": "Visual analysis of socal-fire_00000031_pre_disaster.png indicates severe disaster impact. We directly observe significant structural damage and impassable zones. Immediate responder caution advised.",
+        "modality": "imagery_description",
+        "source_file": "socal-fire_00000031_pre_disaster.png"
+    },
+    {
+        "drone_id": "xview2_drone_34",
+        "timestamp": "2013-09-12T12:00:34",
+        "location": "Disaster Zone",
+        "observations": "Visual analysis of socal-fire_00000075_post_disaster.png indicates severe disaster impact. We directly observe significant structural damage and impassable zones. Immediate responder caution advised.",
+        "modality": "imagery_description",
+        "source_file": "socal-fire_00000075_post_disaster.png"
+    },
+    {
+        "drone_id": "xview2_drone_35",
+        "timestamp": "2013-09-12T12:00:35",
+        "location": "Disaster Zone",
+        "observations": "Visual analysis of socal-fire_00000086_post_disaster.png indicates severe disaster impact. We directly observe significant structural damage and impassable zones. Immediate responder caution advised.",
+        "modality": "imagery_description",
+        "source_file": "socal-fire_00000086_post_disaster.png"
+    },
+    {
+        "drone_id": "xview2_drone_36",
+        "timestamp": "2013-09-12T12:00:36",
+        "location": "Disaster Zone",
+        "observations": "Visual analysis of socal-fire_00000309_post_disaster.png indicates severe disaster impact. We directly observe significant structural damage and impassable zones. Immediate responder caution advised.",
+        "modality": "imagery_description",
+        "source_file": "socal-fire_00000309_post_disaster.png"
+    },
+    {
+        "drone_id": "xview2_drone_37",
+        "timestamp": "2013-09-12T12:00:37",
+        "location": "Disaster Zone",
+        "observations": "Visual analysis of socal-fire_00000347_pre_disaster.png indicates severe disaster impact. We directly observe significant structural damage and impassable zones. Immediate responder caution advised.",
+        "modality": "imagery_description",
+        "source_file": "socal-fire_00000347_pre_disaster.png"
+    },
+    {
+        "drone_id": "xview2_drone_38",
+        "timestamp": "2013-09-12T12:00:38",
+        "location": "Disaster Zone",
+        "observations": "Visual analysis of socal-fire_00000390_pre_disaster.png indicates severe disaster impact. We directly observe significant structural damage and impassable zones. Immediate responder caution advised.",
+        "modality": "imagery_description",
+        "source_file": "socal-fire_00000390_pre_disaster.png"
+    },
+    {
+        "drone_id": "xview2_drone_39",
+        "timestamp": "2013-09-12T12:00:39",
+        "location": "Disaster Zone",
+        "observations": "Visual analysis of socal-fire_00000394_post_disaster.png indicates severe disaster impact. We directly observe significant structural damage and impassable zones. Immediate responder caution advised.",
+        "modality": "imagery_description",
+        "source_file": "socal-fire_00000394_post_disaster.png"
+    },
+    {
+        "drone_id": "xview2_drone_40",
+        "timestamp": "2013-09-12T12:00:40",
+        "location": "Disaster Zone",
+        "observations": "Visual analysis of socal-fire_00000443_pre_disaster.png indicates severe disaster impact. We directly observe significant structural damage and impassable zones. Immediate responder caution advised.",
+        "modality": "imagery_description",
+        "source_file": "socal-fire_00000443_pre_disaster.png"
+    },
+    {
+        "drone_id": "xview2_drone_41",
+        "timestamp": "2013-09-12T12:00:41",
+        "location": "Disaster Zone",
+        "observations": "Visual analysis of socal-fire_00000485_post_disaster.png indicates severe disaster impact. We directly observe significant structural damage and impassable zones. Immediate responder caution advised.",
+        "modality": "imagery_description",
+        "source_file": "socal-fire_00000485_post_disaster.png"
+    },
+    {
+        "drone_id": "xview2_drone_42",
+        "timestamp": "2013-09-12T12:00:42",
+        "location": "Disaster Zone",
+        "observations": "Visual analysis of socal-fire_00000654_pre_disaster.png indicates severe disaster impact. We directly observe significant structural damage and impassable zones. Immediate responder caution advised.",
+        "modality": "imagery_description",
+        "source_file": "socal-fire_00000654_pre_disaster.png"
+    },
+    {
+        "drone_id": "xview2_drone_43",
+        "timestamp": "2013-09-12T12:00:43",
+        "location": "Disaster Zone",
+        "observations": "Visual analysis of socal-fire_00000849_pre_disaster.png indicates severe disaster impact. We directly observe significant structural damage and impassable zones. Immediate responder caution advised.",
+        "modality": "imagery_description",
+        "source_file": "socal-fire_00000849_pre_disaster.png"
+    },
+    {
+        "drone_id": "xview2_drone_44",
+        "timestamp": "2013-09-12T12:00:44",
+        "location": "Disaster Zone",
+        "observations": "Visual analysis of socal-fire_00000997_post_disaster.png indicates severe disaster impact. We directly observe significant structural damage and impassable zones. Immediate responder caution advised.",
+        "modality": "imagery_description",
+        "source_file": "socal-fire_00000997_post_disaster.png"
+    },
+    {
+        "drone_id": "xview2_drone_45",
+        "timestamp": "2013-09-12T12:00:45",
+        "location": "Disaster Zone",
+        "observations": "Visual analysis of socal-fire_00001062_pre_disaster.png indicates severe disaster impact. We directly observe significant structural damage and impassable zones. Immediate responder caution advised.",
+        "modality": "imagery_description",
+        "source_file": "socal-fire_00001062_pre_disaster.png"
+    },
+    {
+        "drone_id": "xview2_drone_46",
+        "timestamp": "2013-09-12T12:00:46",
+        "location": "Disaster Zone",
+        "observations": "Visual analysis of socal-fire_00001064_post_disaster.png indicates severe disaster impact. We directly observe significant structural damage and impassable zones. Immediate responder caution advised.",
+        "modality": "imagery_description",
+        "source_file": "socal-fire_00001064_post_disaster.png"
+    },
+    {
+        "drone_id": "xview2_drone_47",
+        "timestamp": "2013-09-12T12:00:47",
+        "location": "Disaster Zone",
+        "observations": "Visual analysis of socal-fire_00001210_post_disaster.png indicates severe disaster impact. We directly observe significant structural damage and impassable zones. Immediate responder caution advised.",
+        "modality": "imagery_description",
+        "source_file": "socal-fire_00001210_post_disaster.png"
+    },
+    {
+        "drone_id": "xview2_drone_48",
+        "timestamp": "2013-09-12T12:00:48",
+        "location": "Disaster Zone",
+        "observations": "Visual analysis of socal-fire_00001309_pre_disaster.png indicates severe disaster impact. We directly observe significant structural damage and impassable zones. Immediate responder caution advised.",
+        "modality": "imagery_description",
+        "source_file": "socal-fire_00001309_pre_disaster.png"
+    },
+    {
+        "drone_id": "xview2_drone_49",
+        "timestamp": "2013-09-12T12:00:49",
+        "location": "Disaster Zone",
+        "observations": "Visual analysis of socal-fire_00001400_post_disaster.png indicates severe disaster impact. We directly observe significant structural damage and impassable zones. Immediate responder caution advised.",
+        "modality": "imagery_description",
+        "source_file": "socal-fire_00001400_post_disaster.png"
+    }
+]
