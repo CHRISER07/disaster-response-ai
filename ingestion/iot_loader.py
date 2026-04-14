@@ -93,26 +93,59 @@ def load_iot_data(csv_path: str) -> list[Document]:
         return []
 
     documents = []
-    alert_df = df[df["status"] != "NORMAL"]
-    for _, row in alert_df.iterrows():
+
+    # --- Strategy ---
+    # Always embed:
+    #   (a) the most recent N readings (any status) so the agent knows CURRENT conditions
+    #   (b) any WARNING/CRITICAL peak readings from the full dataset as historical context
+    # This ensures 0-document situations never happen just because a river is calm today.
+
+    # (a) Last 24 hourly readings → current conditions context
+    recent_df = df.tail(24)
+    for _, row in recent_df.iterrows():
         site = row.get("site_name", row["sensor_id"])
+        gage = row["gage_height_ft"]
+        status = row["status"]
         text = (
-            f"SENSOR ALERT [{row['status']}]: {site} (USGS #{row['sensor_id']}) "
-            f"recorded gage height of {row['gage_height_ft']:.2f} ft. "
-            f"Flood danger threshold: {DANGER_THRESHOLD_FT} ft. "
-            f"Time: {row['timestamp']}"
+            f"SENSOR READING [{status}]: {site} (USGS #{row['sensor_id']}) "
+            f"recorded gage height of {gage:.2f} ft at {row['timestamp']}. "
+            f"Flood danger threshold is {DANGER_THRESHOLD_FT} ft. "
+            f"Current river status: {status}."
         )
-        doc = Document(
+        documents.append(Document(
             page_content=text,
             metadata={
                 "source": "USGS_Sensor",
                 "sensor_id": str(row["sensor_id"]),
-                "status": row["status"],
+                "status": status,
                 "modality": "telemetry",
                 "timestamp": str(row["timestamp"])
             }
-        )
-        documents.append(doc)
+        ))
 
-    print(f"[IoT] Embedded {len(documents)} real WARNING/CRITICAL sensor alerts.")
+    # (b) Historical WARNING/CRITICAL peaks for situational awareness
+    alert_df = df[df["status"] != "NORMAL"]
+    if not alert_df.empty:
+        # Embed the 10 highest readings as historical flood context
+        peak_df = alert_df.nlargest(10, "gage_height_ft")
+        for _, row in peak_df.iterrows():
+            site = row.get("site_name", row["sensor_id"])
+            text = (
+                f"HISTORICAL FLOOD ALERT [{row['status']}]: {site} "
+                f"(USGS #{row['sensor_id']}) reached a peak of {row['gage_height_ft']:.2f} ft "
+                f"at {row['timestamp']}. Flood danger threshold: {DANGER_THRESHOLD_FT} ft."
+            )
+            documents.append(Document(
+                page_content=text,
+                metadata={
+                    "source": "USGS_Sensor",
+                    "sensor_id": str(row["sensor_id"]),
+                    "status": row["status"],
+                    "modality": "telemetry",
+                    "timestamp": str(row["timestamp"])
+                }
+            ))
+
+    print(f"[IoT] Embedded {len(recent_df)} recent readings + {len(alert_df.nlargest(10, 'gage_height_ft') if not alert_df.empty else [])} historical peaks.")
+    print(f"[IoT] Total sensor documents: {len(documents)}")
     return documents

@@ -20,11 +20,14 @@ from ingestion.drone_loader import load_drone_data
 from core.knowledge_loader import load_and_chunk_knowledge_base
 from core.vector_store import add_documents_to_store, get_vector_store, clear_collection
 
-TEXT_CSV = os.path.join("data", "text", "CrisisLexT26", "CrisisLexT26",
-                        "2013_Colorado_floods", "2013_Colorado_floods-tweets_labeled.csv")
-IOT_CSV  = os.path.join("data", "iot", "water_levels.csv")
-DRONE_JSON = os.path.join("data", "imagery", "real_drone_metadata.json")
-KB_DIR   = os.path.join("data", "kb")
+# Always anchor paths to the project root, regardless of working directory
+PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+TEXT_CSV   = os.path.join(PROJECT_ROOT, "data", "text", "CrisisLexT26", "CrisisLexT26",
+                           "2013_Colorado_floods", "2013_Colorado_floods-tweets_labeled.csv")
+IOT_CSV    = os.path.join(PROJECT_ROOT, "data", "iot", "water_levels.csv")
+DRONE_JSON = os.path.join(PROJECT_ROOT, "data", "imagery", "real_drone_metadata.json")
+KB_DIR     = os.path.join(PROJECT_ROOT, "data", "kb")
 
 
 def populate(reset: bool = False):
@@ -73,9 +76,9 @@ def populate(reset: bool = False):
     print(f"INGESTION SUMMARY")
     print(f"{'='*50}")
     for modality, count in counters.items():
-        status = "✓" if count > 0 else "✗"
+        status = "[OK]" if count > 0 else "[--]"
         print(f"  {status} {modality:20s}: {count:,} documents")
-    print(f"  {'TOTAL':20s}: {len(all_docs):,} documents")
+    print(f"  {'':4s} {'TOTAL':20s}: {len(all_docs):,} documents")
     print(f"{'='*50}")
 
     if not all_docs:
@@ -88,7 +91,7 @@ def populate(reset: bool = False):
     # Verify
     store = get_vector_store()
     final_count = store._collection.count()
-    print(f"\n✓ Vector store now contains {final_count:,} documents.")
+    print(f"\n[DONE] Vector store now contains {final_count:,} documents.")
 
 
 if __name__ == "__main__":
