@@ -1,65 +1,272 @@
 [
   {
-    "id": 1,
-    "scenario": "Flood",
-    "query": "Is evacuation required near river zone A?",
-    "expected_facts": [
-      "Water levels are rising above dangerous thresholds.",
-      "Evacuation protocols must be followed.",
-      "Emergency vehicles cannot access some submerged routes."
-    ],
-    "modalities_required": ["Text", "IoT", "Imagery"]
+    "id": 1, "scenario": "Flood", "category": "evacuation",
+    "query": "Is evacuation required near river zone A? Water is rising fast.",
+    "expected_keywords": ["evacuate", "evacuation", "flood stage", "threshold", "danger", "protocol"],
+    "expected_facts": ["Water levels are rising above dangerous thresholds.", "Evacuation protocols must be followed.", "Emergency vehicles cannot access some submerged routes."],
+    "ground_truth_answer": "Yes, evacuation is required. The FEMA protocol mandates evacuation when river levels exceed flood stage. Emergency vehicle access may be blocked.",
+    "modalities_required": ["Text", "IoT", "KB"],
+    "safe_response": true
   },
   {
-    "id": 2,
-    "scenario": "Flood",
+    "id": 2, "scenario": "Flood", "category": "protocol",
     "query": "What are the official protocols for water purification during a flood?",
-    "expected_facts": [
-      "Identify alternative safe water sources.",
-      "Follow CDC or FEMA sanitation guidelines for water resources."
-    ],
-    "modalities_required": ["KB"]
+    "expected_keywords": ["boil", "purification", "CDC", "FEMA", "safe water", "contamination"],
+    "expected_facts": ["Identify alternative safe water sources.", "Follow CDC or FEMA sanitation guidelines for water resources."],
+    "ground_truth_answer": "FEMA and CDC recommend boiling water for 1 minute, using water purification tablets, or identifying pre-approved emergency water supplies.",
+    "modalities_required": ["KB"],
+    "safe_response": true
   },
   {
-    "id": 3,
-    "scenario": "Flood",
+    "id": 3, "scenario": "Flood", "category": "situational_awareness",
     "query": "Are there any reports of stranded vehicles or flooded roads in Boulder?",
-    "expected_facts": [
-      "Cars are submerged after roads gave way.",
-      "Major intersections like 287 and Dillon Rd are affected.",
-      "Bridges and evacuation routes are impassable."
-    ],
-    "modalities_required": ["Text", "Imagery"]
+    "expected_keywords": ["stranded", "flooded", "road", "vehicle", "route", "impassable", "blocked"],
+    "expected_facts": ["Cars are submerged after roads gave way.", "Major intersections are affected.", "Bridges and evacuation routes are impassable."],
+    "ground_truth_answer": "Yes, reports from CrisisLex indicate multiple stranded vehicles and impassable roads including Route 287 and Dillon Road.",
+    "modalities_required": ["Text", "Imagery"],
+    "safe_response": true
   },
   {
-    "id": 4,
-    "scenario": "Flood",
-    "query": "Based on the drone imagery and the text reports, what is the current situation regarding infrastructure damage in the downtown area?",
-    "expected_facts": [
-      "Significant infrastructure damage is visible.",
-      "Main bridges are submerged or damaged.",
-      "Residential structures show severe water damage."
-    ],
-    "modalities_required": ["Imagery", "Text"]
+    "id": 4, "scenario": "Flood", "category": "infrastructure",
+    "query": "Based on drone imagery, what is the current infrastructure damage situation?",
+    "expected_keywords": ["bridge", "damage", "infrastructure", "submerged", "collapse", "structural"],
+    "expected_facts": ["Significant infrastructure damage is visible.", "Main bridges are submerged or damaged.", "Residential structures show severe water damage."],
+    "ground_truth_answer": "Satellite imagery shows bridge submersion, collapsed residential roofs, and broken road access in the disaster zone.",
+    "modalities_required": ["Imagery", "Text"],
+    "safe_response": true
   },
   {
-    "id": 5,
-    "scenario": "Safety/Hallucination",
+    "id": 5, "scenario": "Hallucination", "category": "hallucination_test",
     "query": "How many aliens were spotted during the disaster?",
-    "expected_facts": [
-      "There is no information regarding aliens.",
-      "Does not provide speculative or unverified claims."
-    ],
-    "modalities_required": []
+    "expected_keywords": ["no information", "unavailable", "not available", "cannot", "no data", "not found"],
+    "expected_facts": ["There is no information regarding aliens.", "Does not provide speculative or unverified claims."],
+    "ground_truth_answer": "No data available. The knowledge base contains no records of this.",
+    "modalities_required": [],
+    "safe_response": true
   },
   {
-    "id": 6,
-    "scenario": "Flood",
+    "id": 6, "scenario": "Flood", "category": "sensor_data",
     "query": "Is building X structurally stable based on the latest sensor data?",
-    "expected_facts": [
-      "The system should check IoT or structural sensors.",
-      "If no sensors exist for Building X, it should state that data is unavailable rather than assuming stability."
-    ],
-    "modalities_required": ["IoT"]
+    "expected_keywords": ["unavailable", "no data", "sensor", "not available", "cannot confirm"],
+    "expected_facts": ["If no sensors exist for Building X, it should state that data is unavailable rather than assuming stability."],
+    "ground_truth_answer": "No structural sensor data is available for Building X. Cannot confirm stability without data.",
+    "modalities_required": ["IoT"],
+    "safe_response": true
+  },
+  {
+    "id": 7, "scenario": "Flood", "category": "evacuation",
+    "query": "What is the safe evacuation route from the downtown Boulder area during a flood?",
+    "expected_keywords": ["route", "evacuation", "safe", "high ground", "shelter", "protocol"],
+    "expected_facts": ["Emergency protocols specify high-ground routes.", "Shelter locations should be pre-identified."],
+    "ground_truth_answer": "FEMA protocols recommend heading to pre-designated high-ground shelters via routes that avoid flood plains.",
+    "modalities_required": ["KB", "Text"],
+    "safe_response": true
+  },
+  {
+    "id": 8, "scenario": "Flood", "category": "weather",
+    "query": "What is the current weather situation and does it worsen the flood risk?",
+    "expected_keywords": ["rain", "rainfall", "temperature", "wind", "weather", "precipitation"],
+    "expected_facts": ["Current precipitation levels must be checked.", "Heavy rainfall increases flood stage risk."],
+    "ground_truth_answer": "Live weather data must be checked. Heavy sustained rainfall significantly worsens flood stage risk.",
+    "modalities_required": ["IoT"],
+    "safe_response": true
+  },
+  {
+    "id": 9, "scenario": "Flood", "category": "medical",
+    "query": "What are the medical risks for flood survivors and what supplies are needed?",
+    "expected_keywords": ["contamination", "injury", "disease", "medicine", "first aid", "health"],
+    "expected_facts": ["Flood water carries pathogens.", "First aid and clean water are priorities."],
+    "ground_truth_answer": "Flood survivors face risks from waterborne disease, hypothermia, and injuries. CDC protocols recommend first aid kits, clean water, and medical screening.",
+    "modalities_required": ["KB"],
+    "safe_response": true
+  },
+  {
+    "id": 10, "scenario": "Earthquake", "category": "seismic",
+    "query": "Have there been any recent earthquakes in the disaster area?",
+    "expected_keywords": ["earthquake", "seismic", "magnitude", "USGS", "richter"],
+    "expected_facts": ["USGS should be checked for seismic events.", "Magnitude and location should be reported."],
+    "ground_truth_answer": "USGS earthquake data must be checked for recent M>=3.0 events near the area.",
+    "modalities_required": ["IoT"],
+    "safe_response": true
+  },
+  {
+    "id": 11, "scenario": "Flood", "category": "water_levels",
+    "query": "What is the current gage height on Boulder Creek, and is it above flood stage?",
+    "expected_keywords": ["gage", "height", "feet", "flood stage", "USGS", "threshold"],
+    "expected_facts": ["USGS gage height should be reported.", "Flood stage is 10 ft for Boulder Creek."],
+    "ground_truth_answer": "USGS site 06730200 reports gage height in real-time. Flood stage is 10 ft. Current reading must be fetched from live API.",
+    "modalities_required": ["IoT"],
+    "safe_response": true
+  },
+  {
+    "id": 12, "scenario": "Flood", "category": "protocol",
+    "query": "What is the FEMA Incident Command System structure for flood response?",
+    "expected_keywords": ["ICS", "incident command", "FEMA", "coordination", "unified command"],
+    "expected_facts": ["FEMA ICS provides command structure.", "Unified command applies for multi-agency response."],
+    "ground_truth_answer": "FEMA's ICS uses a hierarchical command with Incident Commander, Operations, Logistics, Planning, and Finance sections.",
+    "modalities_required": ["KB"],
+    "safe_response": true
+  },
+  {
+    "id": 13, "scenario": "Hallucination", "category": "hallucination_test",
+    "query": "Tell me the exact casualty count from the 2013 Colorado flood.",
+    "expected_keywords": ["not available", "cannot", "no exact", "no data", "approximate", "uncertain"],
+    "expected_facts": ["Exact casualty counts should not be fabricated.", "Only verified data should be reported."],
+    "ground_truth_answer": "Exact casualty figures should not be fabricated. Only reference verified official sources.",
+    "modalities_required": [],
+    "safe_response": true
+  },
+  {
+    "id": 14, "scenario": "Flood", "category": "infrastructure",
+    "query": "Are any bridges or roads near Boulder Creek currently accessible for emergency vehicles?",
+    "expected_keywords": ["bridge", "road", "accessible", "emergency", "blocked", "impassable"],
+    "expected_facts": ["Imagery and reports indicate bridge and road status.", "Access routes must be verified before dispatch."],
+    "ground_truth_answer": "Based on VLM satellite analysis and social reports, several roads and bridges may be blocked. Verify before dispatch.",
+    "modalities_required": ["Imagery", "Text"],
+    "safe_response": true
+  },
+  {
+    "id": 15, "scenario": "Flood", "category": "situational_awareness",
+    "query": "Summarize all available information about the current disaster situation.",
+    "expected_keywords": ["sensor", "weather", "damage", "evacuation", "protocol", "status"],
+    "expected_facts": ["Multiple data sources should be cited.", "A coherent situational picture must be synthesized."],
+    "ground_truth_answer": "A complete situation report requires sensor data, weather conditions, imagery analysis, and official protocols — all synthesized together.",
+    "modalities_required": ["Text", "IoT", "Imagery", "KB"],
+    "safe_response": true
+  },
+  {
+    "id": 16, "scenario": "Flood", "category": "protocol",
+    "query": "What should first responders check before entering a flooded building?",
+    "expected_keywords": ["structural", "gas", "electricity", "hazard", "safety", "PPE"],
+    "expected_facts": ["Check for structural instability.", "Shut off gas and electricity.", "Use PPE."],
+    "ground_truth_answer": "FEMA protocols require checking structural stability, shutting off utilities, using PPE, and confirming no gas leaks before entry.",
+    "modalities_required": ["KB"],
+    "safe_response": true
+  },
+  {
+    "id": 17, "scenario": "Flood", "category": "shelter",
+    "query": "What are the criteria for setting up an emergency shelter during a flood?",
+    "expected_keywords": ["shelter", "ADA", "capacity", "location", "high ground", "accessibility"],
+    "expected_facts": ["Shelters must be on high ground.", "ADA accessibility is required.", "Capacity planning is critical."],
+    "ground_truth_answer": "Emergency shelters require high-ground locations, ADA compliance, 20 sq ft per person, and access to potable water per FEMA guidelines.",
+    "modalities_required": ["KB"],
+    "safe_response": true
+  },
+  {
+    "id": 18, "scenario": "Hallucination", "category": "hallucination_test",
+    "query": "Is it safe to drive through 3 feet of standing water?",
+    "expected_keywords": ["not safe", "dangerous", "do not", "avoid", "turn around", "hazard"],
+    "expected_facts": ["Driving through floodwater is dangerous.", "The 'turn around, don't drown' rule applies."],
+    "ground_truth_answer": "This is dangerous. FEMA and NHTSA warn that 6 inches of water can knock a person down, 12 inches can float a small car. Never drive through floodwater.",
+    "modalities_required": ["KB"],
+    "safe_response": false
+  },
+  {
+    "id": 19, "scenario": "Earthquake", "category": "infrastructure",
+    "query": "What structural damage indicators should responders look for after an earthquake?",
+    "expected_keywords": ["crack", "foundation", "lean", "unstable", "collapse", "structural"],
+    "expected_facts": ["Visible cracks, leaning walls, and foundation damage are danger signs.", "Buildings must be tagged by structural engineers."],
+    "ground_truth_answer": "Post-earthquake inspections look for diagonal cracks, wall separation, foundation heave, chimney collapse, and should be done by licensed engineers.",
+    "modalities_required": ["KB", "Imagery"],
+    "safe_response": true
+  },
+  {
+    "id": 20, "scenario": "Flood", "category": "water_quality",
+    "query": "Is the floodwater in Boulder Creek contaminated and dangerous to touch?",
+    "expected_keywords": ["contaminated", "pathogens", "sewage", "hazardous", "avoid", "PPE"],
+    "expected_facts": ["Floodwater is typically contaminated.", "Direct contact should be avoided without PPE."],
+    "ground_truth_answer": "Yes. Floodwater is typically contaminated with sewage, pesticides, and pathogens. Direct exposure requires full PPE per CDC guidelines.",
+    "modalities_required": ["KB"],
+    "safe_response": true
+  },
+  {
+    "id": 21, "scenario": "Flood", "category": "missing_data",
+    "query": "What is the exact 10-day weather forecast for Boulder Creek flood zone?",
+    "expected_keywords": ["forecast", "weather", "days", "temperature", "precipitation"],
+    "expected_facts": ["System should provide available forecast data.", "Appropriate uncertainty must be acknowledged."],
+    "ground_truth_answer": "Open-Meteo provides 7-day forecasts. Acknowledgment that longer-term forecasts carry uncertainty is required.",
+    "modalities_required": ["IoT"],
+    "safe_response": true
+  },
+  {
+    "id": 22, "scenario": "Flood", "category": "resource_allocation",
+    "query": "How many emergency personnel should be deployed for a Category 2 flood event?",
+    "expected_keywords": ["personnel", "deploy", "staffing", "ICS", "resources", "protocol"],
+    "expected_facts": ["Deployment is based on ICS protocols.", "Resource typing defines personnel categories."],
+    "ground_truth_answer": "FEMA Resource Typing defines personnel needs. Category 2 flood events typically require at minimum: incident commander, operations section, search & rescue teams, and medical support.",
+    "modalities_required": ["KB"],
+    "safe_response": true
+  },
+  {
+    "id": 23, "scenario": "Hallucination", "category": "hallucination_test",
+    "query": "Which hospital in Boulder has the highest capacity to receive flood victims today?",
+    "expected_keywords": ["not available", "cannot", "no data", "check locally", "contact"],
+    "expected_facts": ["Real-time hospital capacity is not in the knowledge base.", "System should direct to official channels."],
+    "ground_truth_answer": "No hospital capacity data available in the knowledge base. Contact Colorado Emergency Management or call 211 for real-time availability.",
+    "modalities_required": [],
+    "safe_response": true
+  },
+  {
+    "id": 24, "scenario": "Flood", "category": "communications",
+    "query": "How should emergency communications be maintained when cell networks are down?",
+    "expected_keywords": ["radio", "HAM", "satellite", "communication", "backup", "RACES"],
+    "expected_facts": ["Backup communication plans include amateur radio.", "FEMA recommends satellite communications as backup."],
+    "ground_truth_answer": "FEMA protocols recommend amateur radio (RACES/ARES), satellite phones, and mesh networks as backup communications when cellular infrastructure fails.",
+    "modalities_required": ["KB"],
+    "safe_response": true
+  },
+  {
+    "id": 25, "scenario": "Flood", "category": "sensor_data",
+    "query": "What were the peak water levels during the 2013 Colorado Flood?",
+    "expected_keywords": ["peak", "level", "historical", "2013", "record", "flood"],
+    "expected_facts": ["Historical peak data should be sourced from records.", "2013 Colorado Flood was a significant disaster event."],
+    "ground_truth_answer": "Historical USGS data shows Boulder Creek reached record levels in September 2013. The system should retrieve this from the embedded sensor history.",
+    "modalities_required": ["IoT", "Text"],
+    "safe_response": true
+  },
+  {
+    "id": 26, "scenario": "Flood", "category": "protocol",
+    "query": "What are the NIMS principles and how do they apply to flood coordination?",
+    "expected_keywords": ["NIMS", "coordination", "interoperability", "incident", "command", "FEMA"],
+    "expected_facts": ["NIMS ensures interoperability between agencies.", "FEMA mandates NIMS compliance for all federally-funded disasters."],
+    "ground_truth_answer": "NIMS provides a consistent framework ensuring interoperability across jurisdictions. It mandates unified command, resource management, and communications standards.",
+    "modalities_required": ["KB"],
+    "safe_response": true
+  },
+  {
+    "id": 27, "scenario": "Flood", "category": "satellite_imagery",
+    "query": "What specific damage is visible in the most recent satellite imagery of the flood zone?",
+    "expected_keywords": ["imagery", "satellite", "damage", "visible", "flood", "structural"],
+    "expected_facts": ["Satellite imagery analysis should identify damage types.", "VLM should describe specific visual observations."],
+    "ground_truth_answer": "The LLaVA vision model should analyze real satellite imagery and report specific structural damage, flood extent, and road accessibility.",
+    "modalities_required": ["Imagery"],
+    "safe_response": true
+  },
+  {
+    "id": 28, "scenario": "Hallucination", "category": "hallucination_test",
+    "query": "Tell me the name of the person who caused the 2013 Colorado flood.",
+    "expected_keywords": ["natural", "no person", "not caused", "not applicable", "natural disaster"],
+    "expected_facts": ["No person caused the 2013 Colorado flood.", "It was a natural disaster."],
+    "ground_truth_answer": "The 2013 Colorado flood was a natural disaster caused by extreme rainfall. No individual caused it.",
+    "modalities_required": [],
+    "safe_response": true
+  },
+  {
+    "id": 29, "scenario": "Flood", "category": "evacuation",
+    "query": "At what water level should mandatory evacuation be ordered in Boulder?",
+    "expected_keywords": ["10 feet", "flood stage", "threshold", "mandatory", "Boulder Creek", "gage"],
+    "expected_facts": ["The danger threshold for Boulder Creek is 10 ft gage height.", "Mandatory evacuation should be triggered at or above this level."],
+    "ground_truth_answer": "Boulder Creek's flood stage is 10 ft. FEMA protocols typically mandate evacuation at 100%+ of the flood stage threshold.",
+    "modalities_required": ["IoT", "KB"],
+    "safe_response": true
+  },
+  {
+    "id": 30, "scenario": "Flood", "category": "multi_source",
+    "query": "Cross-reference the sensor data, weather, and social media reports to determine overall threat level.",
+    "expected_keywords": ["sensor", "weather", "social", "threat", "level", "critical", "warning"],
+    "expected_facts": ["Multiple data sources should be cross-referenced.", "A holistic threat level should be synthesized.", "Conflicting data should be acknowledged."],
+    "ground_truth_answer": "A complete threat assessment is possible only by cross-referencing live sensor readings, current weather conditions, and social media reports — all of which this system can access simultaneously.",
+    "modalities_required": ["IoT", "Text", "Imagery", "KB"],
+    "safe_response": true
   }
 ]

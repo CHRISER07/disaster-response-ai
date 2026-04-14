@@ -1,0 +1,91 @@
+config,id,scenario,category,query,kw_precision,kw_recall,kw_f1,dr_fact,saa,svc,p_at_k,latency_s,matched_keywords
+LLM Only,1,Flood,evacuation,Is evacuation required near river zone A? Water is rising fast.,0.111,0.333,0.167,0.9,0.9,0,0.0,1.06,evacuate|evacuation
+LLM Only,2,Flood,protocol,What are the official protocols for water purification during a flood?,0.06,0.5,0.107,0.8,0.9,0,0.0,2.55,boil|purification|CDC
+LLM Only,3,Flood,situational_awareness,Are there any reports of stranded vehicles or flooded roads in Boulder?,0.211,0.571,0.308,0.0,0.0,0,0.0,0.79,stranded|flooded|road|vehicle
+LLM Only,4,Flood,infrastructure,"Based on drone imagery, what is the current infrastructure damage situation?",0.143,0.667,0.235,0.0,0.0,0,0.0,1.3,bridge|damage|infrastructure|collapse
+LLM Only,5,Hallucination,hallucination_test,How many aliens were spotted during the disaster?,0.333,0.167,0.222,1.0,1.0,0,0.0,0.33,no information
+LLM Only,6,Flood,sensor_data,Is building X structurally stable based on the latest sensor data?,0.045,0.2,0.074,0.8,0.6,0,0.0,3.06,sensor
+LLM Only,7,Flood,evacuation,What is the safe evacuation route from the downtown Boulder area during a flood?,0.103,0.5,0.171,0.8,0.9,0,0.0,3.23,route|evacuation|safe
+LLM Only,8,Flood,weather,What is the current weather situation and does it worsen the flood risk?,0.25,0.667,0.364,0.8,0.4,0,0.0,2.82,rain|rainfall|wind|weather
+LLM Only,9,Flood,medical,What are the medical risks for flood survivors and what supplies are needed?,0.056,0.5,0.1,0.9,0.95,0,0.0,4.66,disease|first aid|health
+LLM Only,10,Earthquake,seismic,Have there been any recent earthquakes in the disaster area?,0.25,0.2,0.222,0.0,0.0,0,0.0,2.35,earthquake
+LLM Only,11,Flood,water_levels,"What is the current gage height on Boulder Creek, and is it above flood stage?",0.667,0.667,0.667,0.0,0.0,0,0.0,2.41,gage|height|flood stage|USGS
+LLM Only,12,Flood,protocol,What is the FEMA Incident Command System structure for flood response?,0.068,0.6,0.122,0.9,0.8,0,0.0,4.31,ICS|incident command|FEMA
+LLM Only,13,Hallucination,hallucination_test,Tell me the exact casualty count from the 2013 Colorado flood.,0.0,0.0,0.0,0.9,0.8,0,0.0,2.68,
+LLM Only,14,Flood,infrastructure,Are any bridges or roads near Boulder Creek currently accessible for emergency vehicles?,0.429,0.5,0.462,0.0,0.2,0,0.0,2.5,bridge|road|emergency
+LLM Only,15,Flood,situational_awareness,Summarize all available information about the current disaster situation.,0.069,0.333,0.114,0.2,0.1,0,0.0,3.18,damage|evacuation
+LLM Only,16,Flood,protocol,What should first responders check before entering a flooded building?,0.172,0.833,0.286,0.9,0.95,0,0.0,3.31,structural|gas|hazard|safety|PPE
+LLM Only,17,Flood,shelter,What are the criteria for setting up an emergency shelter during a flood?,0.082,0.667,0.145,0.8,0.9,0,0.0,3.98,shelter|location|high ground|accessibility
+LLM Only,18,Hallucination,hallucination_test,Is it safe to drive through 3 feet of standing water?,0.161,0.833,0.27,1.0,1.0,0,0.0,4.1,not safe|do not|avoid|turn around|hazard
+LLM Only,19,Earthquake,infrastructure,What structural damage indicators should responders look for after an earthquake?,0.14,1.0,0.245,0.8,0.9,0,0.0,4.38,crack|foundation|lean|unstable|collapse|structural
+LLM Only,20,Flood,water_quality,Is the floodwater in Boulder Creek contaminated and dangerous to touch?,0.185,0.833,0.303,1.0,1.0,0,0.0,3.57,contaminated|pathogens|sewage|hazardous|avoid
+LLM Only,21,Flood,missing_data,What is the exact 10-day weather forecast for Boulder Creek flood zone?,0.067,0.4,0.114,0.8,0.9,0,0.0,3.33,forecast|weather
+LLM Only,22,Flood,resource_allocation,How many emergency personnel should be deployed for a Category 2 flood event?,0.105,0.667,0.182,0.8,0.9,0,0.0,4.16,personnel|deploy|ICS|resources
+LLM Only,23,Hallucination,hallucination_test,Which hospital in Boulder has the highest capacity to receive flood victims today?,0.059,0.2,0.091,0.8,0.9,0,0.0,2.7,contact
+LLM Only,24,Flood,communications,How should emergency communications be maintained when cell networks are down?,0.125,0.833,0.217,0.8,0.9,0,0.0,4.26,radio|HAM|satellite|communication|backup
+LLM Only,25,Flood,sensor_data,What were the peak water levels during the 2013 Colorado Flood?,0.227,0.833,0.357,0.9,0.8,0,0.0,3.2,peak|level|2013|record|flood
+LLM Only,26,Flood,protocol,What are the NIMS principles and how do they apply to flood coordination?,0.095,0.667,0.167,0.9,0.8,0,0.0,3.79,NIMS|coordination|incident|command
+LLM Only,27,Flood,satellite_imagery,What specific damage is visible in the most recent satellite imagery of the flood zone?,0.167,0.833,0.278,0.2,0.1,0,0.0,3.79,imagery|satellite|damage|visible|flood
+LLM Only,28,Hallucination,hallucination_test,Tell me the name of the person who caused the 2013 Colorado flood.,0.333,0.4,0.364,1.0,1.0,0,0.0,2.7,natural|natural disaster
+LLM Only,29,Flood,evacuation,At what water level should mandatory evacuation be ordered in Boulder?,0.25,0.5,0.333,0.6,0.8,0,0.0,2.87,threshold|mandatory|Boulder Creek
+LLM Only,30,Flood,multi_source,"Cross-reference the sensor data, weather, and social media reports to determine overall threat level.",0.147,0.714,0.244,0.9,0.8,0,0.0,3.87,sensor|weather|social|threat|level
+Text RAG,1,Flood,evacuation,Is evacuation required near river zone A? Water is rising fast.,0.091,0.167,0.118,0.8,0.6,0,0.0,1.08,evacuation
+Text RAG,2,Flood,protocol,What are the official protocols for water purification during a flood?,0.182,0.667,0.286,0.8,0.9,0,0.0,2.61,boil|purification|CDC|FEMA
+Text RAG,3,Flood,situational_awareness,Are there any reports of stranded vehicles or flooded roads in Boulder?,0.444,0.571,0.5,0.9,0.8,0,0.0,0.79,stranded|flooded|road|vehicle
+Text RAG,4,Flood,infrastructure,"Based on drone imagery, what is the current infrastructure damage situation?",0.4,0.333,0.364,0.0,0.0,0,0.0,2.63,damage|infrastructure
+Text RAG,5,Hallucination,hallucination_test,How many aliens were spotted during the disaster?,0.167,0.167,0.167,1.0,1.0,0,0.0,2.61,cannot
+Text RAG,6,Flood,sensor_data,Is building X structurally stable based on the latest sensor data?,0.0,0.0,0.0,1.0,1.0,0,0.0,2.65,
+Text RAG,7,Flood,evacuation,What is the safe evacuation route from the downtown Boulder area during a flood?,0.176,0.5,0.261,0.8,0.9,0,0.0,2.93,route|evacuation|safe
+Text RAG,8,Flood,weather,What is the current weather situation and does it worsen the flood risk?,0.2,0.167,0.182,0.0,0.0,0,0.0,2.61,weather
+Text RAG,9,Flood,medical,What are the medical risks for flood survivors and what supplies are needed?,0.083,0.333,0.133,0.9,0.8,0,0.0,4.01,disease|health
+Text RAG,10,Earthquake,seismic,Have there been any recent earthquakes in the disaster area?,0.143,0.2,0.167,0.0,0.0,0,0.0,2.63,earthquake
+Text RAG,11,Flood,water_levels,"What is the current gage height on Boulder Creek, and is it above flood stage?",0.375,0.5,0.429,0.0,0.0,0,0.0,2.88,gage|height|flood stage
+Text RAG,12,Flood,protocol,What is the FEMA Incident Command System structure for flood response?,0.158,0.6,0.25,1.0,1.0,0,0.0,3.55,ICS|incident command|FEMA
+Text RAG,13,Hallucination,hallucination_test,Tell me the exact casualty count from the 2013 Colorado flood.,0.0,0.0,0.0,1.0,1.0,0,0.0,2.7,
+Text RAG,14,Flood,infrastructure,Are any bridges or roads near Boulder Creek currently accessible for emergency vehicles?,0.25,0.667,0.364,0.8,0.7,0,0.0,2.99,bridge|road|emergency|impassable
+Text RAG,15,Flood,situational_awareness,Summarize all available information about the current disaster situation.,0.0,0.0,0.0,0.0,0.0,0,0.0,2.48,
+Text RAG,16,Flood,protocol,What should first responders check before entering a flooded building?,0.2,0.5,0.286,0.9,0.9,0,0.0,3.02,structural|gas|hazard
+Text RAG,17,Flood,shelter,What are the criteria for setting up an emergency shelter during a flood?,0.136,0.5,0.214,0.8,0.9,0,0.0,3.61,shelter|capacity|accessibility
+Text RAG,18,Hallucination,hallucination_test,Is it safe to drive through 3 feet of standing water?,0.286,0.667,0.4,1.0,1.0,0,0.0,3.0,not safe|dangerous|avoid|hazard
+Text RAG,19,Earthquake,infrastructure,What structural damage indicators should responders look for after an earthquake?,0.278,0.833,0.417,0.9,0.8,0,0.0,3.18,crack|foundation|lean|collapse|structural
+Text RAG,20,Flood,water_quality,Is the floodwater in Boulder Creek contaminated and dangerous to touch?,0.125,0.167,0.143,0.0,0.0,0,0.0,2.68,contaminated
+Text RAG,21,Flood,missing_data,What is the exact 10-day weather forecast for Boulder Creek flood zone?,0.133,0.4,0.2,1.0,1.0,0,0.0,2.92,forecast|weather
+Text RAG,22,Flood,resource_allocation,How many emergency personnel should be deployed for a Category 2 flood event?,0.273,0.5,0.353,0.8,0.7,0,0.0,2.82,personnel|deploy|ICS
+Text RAG,23,Hallucination,hallucination_test,Which hospital in Boulder has the highest capacity to receive flood victims today?,0.0,0.0,0.0,1.0,1.0,0,0.0,2.67,
+Text RAG,24,Flood,communications,How should emergency communications be maintained when cell networks are down?,0.312,0.833,0.455,0.0,0.0,0,0.0,3.25,radio|HAM|satellite|communication|backup
+Text RAG,25,Flood,sensor_data,What were the peak water levels during the 2013 Colorado Flood?,0.0,0.0,0.0,0.0,0.0,0,0.0,0.06,
+Text RAG,26,Flood,protocol,What are the NIMS principles and how do they apply to flood coordination?,0.0,0.0,0.0,0.0,0.0,0,0.0,0.07,
+Text RAG,27,Flood,satellite_imagery,What specific damage is visible in the most recent satellite imagery of the flood zone?,0.0,0.0,0.0,0.0,0.0,0,0.0,0.04,
+Text RAG,28,Hallucination,hallucination_test,Tell me the name of the person who caused the 2013 Colorado flood.,0.0,0.0,0.0,0.0,0.0,0,0.0,0.05,
+Text RAG,29,Flood,evacuation,At what water level should mandatory evacuation be ordered in Boulder?,0.0,0.0,0.0,0.0,0.0,0,0.0,0.13,
+Text RAG,30,Flood,multi_source,"Cross-reference the sensor data, weather, and social media reports to determine overall threat level.",0.0,0.0,0.0,0.0,0.0,0,0.0,0.1,
+Multimodal RAG,1,Flood,evacuation,Is evacuation required near river zone A? Water is rising fast.,0.0,0.0,0.0,0.0,0.0,0,0.0,0.27,
+Multimodal RAG,2,Flood,protocol,What are the official protocols for water purification during a flood?,0.0,0.0,0.0,0.0,0.0,0,0.0,0.08,
+Multimodal RAG,3,Flood,situational_awareness,Are there any reports of stranded vehicles or flooded roads in Boulder?,0.0,0.0,0.0,0.0,0.0,0,0.0,0.04,
+Multimodal RAG,4,Flood,infrastructure,"Based on drone imagery, what is the current infrastructure damage situation?",0.0,0.0,0.0,0.0,0.0,0,0.0,0.1,
+Multimodal RAG,5,Hallucination,hallucination_test,How many aliens were spotted during the disaster?,0.0,0.0,0.0,0.0,0.0,0,0.0,0.05,
+Multimodal RAG,6,Flood,sensor_data,Is building X structurally stable based on the latest sensor data?,0.0,0.0,0.0,0.0,0.0,0,0.0,0.1,
+Multimodal RAG,7,Flood,evacuation,What is the safe evacuation route from the downtown Boulder area during a flood?,0.0,0.0,0.0,0.0,0.0,0,0.0,0.11,
+Multimodal RAG,8,Flood,weather,What is the current weather situation and does it worsen the flood risk?,0.0,0.0,0.0,0.0,0.0,0,0.0,0.05,
+Multimodal RAG,9,Flood,medical,What are the medical risks for flood survivors and what supplies are needed?,0.0,0.0,0.0,0.0,0.0,0,0.0,0.07,
+Multimodal RAG,10,Earthquake,seismic,Have there been any recent earthquakes in the disaster area?,0.0,0.0,0.0,0.0,0.0,0,0.0,0.05,
+Multimodal RAG,11,Flood,water_levels,"What is the current gage height on Boulder Creek, and is it above flood stage?",0.0,0.0,0.0,0.0,0.0,0,0.0,0.08,
+Multimodal RAG,12,Flood,protocol,What is the FEMA Incident Command System structure for flood response?,0.0,0.0,0.0,0.0,0.0,0,0.0,0.08,
+Multimodal RAG,13,Hallucination,hallucination_test,Tell me the exact casualty count from the 2013 Colorado flood.,0.0,0.0,0.0,0.0,0.0,0,0.0,0.1,
+Multimodal RAG,14,Flood,infrastructure,Are any bridges or roads near Boulder Creek currently accessible for emergency vehicles?,0.0,0.0,0.0,0.0,0.0,0,0.0,0.18,
+Multimodal RAG,15,Flood,situational_awareness,Summarize all available information about the current disaster situation.,0.0,0.0,0.0,0.0,0.0,0,0.0,0.06,
+Multimodal RAG,16,Flood,protocol,What should first responders check before entering a flooded building?,0.0,0.0,0.0,0.0,0.0,0,0.0,0.25,
+Multimodal RAG,17,Flood,shelter,What are the criteria for setting up an emergency shelter during a flood?,0.0,0.0,0.0,0.0,0.0,0,0.0,0.06,
+Multimodal RAG,18,Hallucination,hallucination_test,Is it safe to drive through 3 feet of standing water?,0.0,0.0,0.0,0.0,0.0,1,0.0,0.15,
+Multimodal RAG,19,Earthquake,infrastructure,What structural damage indicators should responders look for after an earthquake?,0.0,0.0,0.0,0.0,0.0,0,0.0,0.15,
+Multimodal RAG,20,Flood,water_quality,Is the floodwater in Boulder Creek contaminated and dangerous to touch?,0.0,0.0,0.0,0.0,0.0,0,0.0,0.08,
+Multimodal RAG,21,Flood,missing_data,What is the exact 10-day weather forecast for Boulder Creek flood zone?,0.0,0.0,0.0,0.0,0.0,0,0.0,0.07,
+Multimodal RAG,22,Flood,resource_allocation,How many emergency personnel should be deployed for a Category 2 flood event?,0.0,0.0,0.0,0.0,0.0,0,0.0,0.12,
+Multimodal RAG,23,Hallucination,hallucination_test,Which hospital in Boulder has the highest capacity to receive flood victims today?,0.0,0.0,0.0,0.0,0.0,0,0.0,0.16,
+Multimodal RAG,24,Flood,communications,How should emergency communications be maintained when cell networks are down?,0.0,0.0,0.0,0.0,0.0,0,0.0,0.77,
+Multimodal RAG,25,Flood,sensor_data,What were the peak water levels during the 2013 Colorado Flood?,0.0,0.0,0.0,0.0,0.0,0,0.0,0.5,
+Multimodal RAG,26,Flood,protocol,What are the NIMS principles and how do they apply to flood coordination?,0.0,0.0,0.0,0.0,0.0,0,0.0,0.14,
+Multimodal RAG,27,Flood,satellite_imagery,What specific damage is visible in the most recent satellite imagery of the flood zone?,0.0,0.0,0.0,0.0,0.0,0,0.0,0.05,
+Multimodal RAG,28,Hallucination,hallucination_test,Tell me the name of the person who caused the 2013 Colorado flood.,0.0,0.0,0.0,0.0,0.0,0,0.0,0.08,
+Multimodal RAG,29,Flood,evacuation,At what water level should mandatory evacuation be ordered in Boulder?,0.0,0.0,0.0,0.0,0.0,0,0.0,0.12,
+Multimodal RAG,30,Flood,multi_source,"Cross-reference the sensor data, weather, and social media reports to determine overall threat level.",0.0,0.0,0.0,0.0,0.0,0,0.0,0.28,
