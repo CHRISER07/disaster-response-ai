@@ -8,13 +8,19 @@ load_dotenv()
 CHROMA_PATH = os.path.join(os.path.dirname(os.path.dirname(__file__)), "chroma_db")
 EMBEDDING_MODEL = "BAAI/bge-small-en-v1.5"
 
-def get_embeddings():
-    """Returns the production BGE embedding model (runs locally, no cost)."""
+
+def get_embeddings() -> HuggingFaceEmbeddings:
+    """
+    Returns the BGE small embedding model.
+    Runs entirely on CPU — no GPU required.
+    Normalized embeddings enable cosine similarity without post-processing.
+    """
     return HuggingFaceEmbeddings(
         model_name=EMBEDDING_MODEL,
         model_kwargs={"device": "cpu"},
         encode_kwargs={"normalize_embeddings": True}
     )
+
 
 def get_vector_store() -> Chroma:
     """Returns the persistent ChromaDB vector store."""
@@ -24,7 +30,8 @@ def get_vector_store() -> Chroma:
         collection_name="disaster_response"
     )
 
-def add_documents_to_store(documents: list, batch_size: int = 500):
+
+def add_documents_to_store(documents: list, batch_size: int = 500) -> None:
     """Ingests a list of LangChain Documents into ChromaDB in batches."""
     store = get_vector_store()
     total = len(documents)
@@ -33,8 +40,9 @@ def add_documents_to_store(documents: list, batch_size: int = 500):
         store.add_documents(batch)
         print(f"  Added batch {i // batch_size + 1} ({min(i + batch_size, total)}/{total})")
 
-def clear_collection():
+
+def clear_collection() -> None:
     """Wipes the entire collection for a clean repopulation."""
     store = get_vector_store()
     store.delete_collection()
-    print("Collection cleared.")
+    print("  Collection cleared.")

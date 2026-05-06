@@ -55,10 +55,12 @@ RESULTS_MD   = os.path.join(PROJECT_ROOT, "evaluation", "results.md")
 RESULTS_CSV  = os.path.join(PROJECT_ROOT, "evaluation", "results_per_query.csv")
 
 # ── Ablation Configurations ───────────────────────────────────────────────────
+# FIX: modality strings must match stored ChromaDB metadata (always lowercase)
+# "text" = CrisisLex tweets, "knowledge_base" = FEMA/CDC PDFs
 CONFIGS = {
-    "LLM Only":        {"modalities": [],         "use_retriever": False},
-    "Text RAG":        {"modalities": ["Text", "KB"], "use_retriever": True},
-    "Multimodal RAG":  {"modalities": None,        "use_retriever": True},   # None = all
+    "LLM Only":        {"modalities": [],                              "use_retriever": False},
+    "Text RAG":        {"modalities": ["text", "knowledge_base"],      "use_retriever": True},
+    "Multimodal RAG":  {"modalities": None,                            "use_retriever": True},   # None = all modalities
 }
 
 
@@ -185,10 +187,14 @@ def run_evaluation(quick: bool = False):
             t0 = time.time()
             try:
                 if not cfg_params["use_retriever"]:
+                    # FIX: lambda capture bug — use default arg (c=chain) to capture
+                    # current value, not variable reference which changes each iteration
                     answer = groq_call_with_retry(lambda: llm.invoke(query).content)
                     docs   = []
                 else:
-                    res    = groq_call_with_retry(lambda: chain.invoke({"input": query}))
+                    # FIX: c=chain captures current chain value, not the loop variable
+                    cur_chain = chain
+                    res    = groq_call_with_retry(lambda c=cur_chain: c.invoke({"input": query}))
                     answer = res["answer"]
                     docs   = res.get("context", [])
             except Exception as e:

@@ -56,8 +56,7 @@ LOCATION_PRESETS = {
 
 # ── Sidebar: Location & Setup ─────────────────────────────────────────────────
 with st.sidebar:
-    st.image("https://raw.githubusercontent.com/twitter/twemoji/master/assets/svg/1f6a8.svg", width=40)
-    st.title("ARIA Controls")
+    st.title("🚨 ARIA Controls")
 
     st.subheader("📍 Disaster Location")
     preset = st.selectbox("Select location", list(LOCATION_PRESETS.keys()))
@@ -86,6 +85,7 @@ with st.sidebar:
     st.divider()
 
     # DB Status & Populate
+    doc_count = 0  # FIX: initialize before try block to prevent NameError in status bar
     st.subheader("🗄️ Vector Database")
     try:
         from core.vector_store import get_vector_store
@@ -143,21 +143,26 @@ def get_weather(lat: float, lon: float):
 
 @st.cache_data(ttl=60)
 def get_sensor(site_id: str, threshold: float):
+    # FIX: Restructured with explicit early returns — no implicit None return path
     try:
         r = requests.get(
             "https://waterservices.usgs.gov/nwis/iv/",
             params={"sites": site_id, "parameterCd": "00065", "format": "json"},
             timeout=8
         )
-        ts = r.json()["value"]["timeSeries"]
-        if ts and ts[0]["values"][0]["value"]:
-            val = ts[0]["values"][0]["value"][-1]
-            gage = float(val["value"])
-            return {"gage": gage, "time": val["dateTime"],
-                    "site": ts[0]["sourceInfo"]["siteName"], "ok": True}
+        ts = r.json().get("value", {}).get("timeSeries", [])
+        if not ts or not ts[0]["values"][0]["value"]:
+            return {"ok": False, "error": "No gauge data returned for this site"}
+        val  = ts[0]["values"][0]["value"][-1]
+        gage = float(val["value"])
+        return {
+            "gage": gage,
+            "time": val["dateTime"],
+            "site": ts[0]["sourceInfo"]["siteName"],
+            "ok":   True
+        }
     except Exception as e:
         return {"ok": False, "error": str(e)}
-    return {"ok": False, "error": "No data"}
 
 def make_gauge(value, max_val, danger, title, unit, key):
     color = "#ff4b4b" if value >= danger else "#ffa500" if value >= danger*0.8 else "#00cc88"
