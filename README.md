@@ -3,7 +3,7 @@
 [![Python](https://img.shields.io/badge/Python-3.12-blue)](https://python.org)
 [![LangGraph](https://img.shields.io/badge/LangGraph-ReAct-green)](https://langchain-ai.github.io/langgraph/)
 [![Streamlit](https://img.shields.io/badge/Dashboard-Streamlit-red)](https://streamlit.io)
-[![License](https://img.shields.io/badge/License-MIT-yellow)](LICENSE)
+
 
 > **IEEE Research Framework** — A production-grade, hallucination-free Agentic AI for real-time disaster response, fusing satellite imagery, live IoT sensors, social media, weather data, and official emergency protocols into a single grounded situational report.
 
