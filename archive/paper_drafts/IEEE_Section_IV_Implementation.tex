@@ -1,0 +1,109 @@
+% ── Section IV: IMPLEMENTATION ────────────────────────────────────────────────
+% INSERT THIS ENTIRE BLOCK between the end of Section III (\subsection{Safety Validator})
+% and before \section{Experimental Evaluation}
+% ─────────────────────────────────────────────────────────────────────────────
+
+\section{Implementation}
+
+\subsection{Data Ingestion Pipeline}
+
+The ingestion pipeline processes four modalities independently before
+consolidating all documents into a single ChromaDB vector store.
+
+\textit{Social media text.} Up to 500 tweets labelled ``Related and
+informative'' were retained from the CrisisLex-T26 2013 Colorado Floods
+subset~\cite{b21} after applying the dataset relevance filter. Tweet
+timestamps were reconstructed from Twitter Snowflake identifiers by
+right-shifting the 64-bit identifier by 22 bits and adding the Twitter
+epoch offset of 1{,}288{,}834{,}974{,}657\,ms, producing UTC timestamps not
+available in the raw dataset metadata.
+
+\textit{Satellite imagery descriptions.} Fifty post-disaster images from the
+xView2 dataset~\cite{b22} were streamed directly from the compressed archive
+and processed by LLaVA-7B under Ollama without full extraction to disk. A
+structured prompt enforced four output fields per image: SUMMARY, DAMAGE,
+ACCESS, and FULL\_DESC. If Ollama is unavailable, the pipeline terminates
+rather than generating synthetic fallback descriptions, ensuring all imagery
+embeddings remain grounded in authentic observations.
+
+\textit{IoT telemetry.} Seven days of 15-minute interval gage-height readings
+were downloaded from the USGS NWIS Instantaneous Values API for site~06730200
+(Boulder Creek at North 75th Street, Colorado), using parameter code
+\texttt{00065}. The 24 most recent measurements were embedded to represent
+live conditions; additionally, the top-10 WARNING and CRITICAL readings from
+the seven-day window were indexed to preserve recent flood history. Severity
+labels (NORMAL, WARNING, DANGER, CRITICAL) were assigned automatically against
+the 10.0\,ft flood-stage threshold.
+
+\textit{Official protocols.} Three documents were parsed with PyPDF: the CDC
+Preparedness and Response Capabilities manual, the FEMA Disaster Preparedness
+Training Manual, and the FEMA Field Operations Guide. Text was segmented using
+\texttt{RecursiveCharacterTextSplitter} with $C_{\text{size}}{=}1{,}000$
+characters, $C_{\text{overlap}}{=}200$ characters, and a hierarchical
+separator sequence (paragraph, newline, sentence, whitespace). The 20\% overlap
+prevents procedural steps from being split across chunk boundaries.
+
+\subsection{Live API Integration}
+
+Three unauthenticated public APIs provide live situational intelligence,
+improving reproducibility and avoiding dependency on commercial services.
+Table~\ref{tab:apis} summarises the endpoints and their operational roles.
+
+\begin{table}[ht]
+\centering
+\caption{Live API integration summary.}
+\label{tab:apis}
+\renewcommand{\arraystretch}{1.2}
+\begin{tabular}{@{}lll@{}}
+\toprule
+\textbf{API} & \textbf{Endpoint} & \textbf{Role} \\ \midrule
+Open-Meteo   & \texttt{api.open-meteo.com/v1/forecast} & Weather + severity \\
+USGS NWIS    & \texttt{waterservices.usgs.gov/nwis/iv/} & River gauge heights \\
+USGS Seismic & \texttt{earthquake.usgs.gov/fdsnws/}     & $M{\geq}3.0$ events \\ \bottomrule
+\end{tabular}
+\end{table}
+
+The weather tool dynamically geocodes location names via the Open-Meteo
+geocoding endpoint and derives severity categories (NORMAL to CRITICAL) from
+rainfall intensity and wind-speed thresholds. The water-sensor tool computes
+the percentage deviation from the site-specific flood-stage threshold and
+automatically generates an evacuation warning when readings exceed 130\% of
+flood stage. The seismic tool queries a rolling seven-day window filtered to
+magnitude $M{\geq}3.0$ within a 300\,km radius of the requested location;
+events are ranked by magnitude and annotated with severity labels. All three
+tools implement exponential back-off for HTTP~429 rate-limit responses.
+
+\subsection{Software Stack and System Specifications}
+
+Table~\ref{tab:stack} lists the principal software components used throughout
+the system. All experiments were conducted on a commodity CPU-based
+workstation; GPU acceleration was not required for embedding generation or
+text retrieval, though optional GPU acceleration improved LLaVA inference
+throughput for the imagery ingestion step.
+
+\begin{table}[ht]
+\centering
+\caption{Software stack.}
+\label{tab:stack}
+\renewcommand{\arraystretch}{1.2}
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{@{}lll@{}}
+\toprule
+\textbf{Component}     & \textbf{Library}                    & \textbf{Role} \\ \midrule
+Agentic framework      & LangGraph $\geq$0.2                 & ReAct orchestration \\
+LLM inference          & LangChain-Groq $\geq$0.2            & Groq API wrapper \\
+Embedding model        & \texttt{BAAI/bge-small-en-v1.5}     & 384-dim embeddings \\
+Vector store           & ChromaDB $\geq$0.5                  & Persistent index \\
+PDF parsing            & PyPDF $\geq$4.0                     & Manual ingestion \\
+Vision inference       & Ollama LLaVA-7B                     & Image analysis \\
+Operational dashboard  & Streamlit + Plotly                  & Operator UI \\
+LLM backbone           & Llama-3.3-70B-Versatile             & Reasoning engine \\ \bottomrule
+\end{tabular}
+\end{table}
+
+The operational Streamlit dashboard renders tool-call traces as colour-coded
+badges (sensor, vision, protocol), maps the agent's STATUS field to the
+FEMA/NIMS four-tier colour scheme, and writes every CRITICAL-level response
+to a persistent alert log (\texttt{data/alerts.jsonl}) for post-event audit.
+Each agent response passes through the safety validator before display,
+ensuring no unsafe phrase reaches an operator.

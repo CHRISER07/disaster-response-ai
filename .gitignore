@@ -29,3 +29,10 @@ Thumbs.db
 
 # Logs & outputs (keep results.md but ignore raw logs)
 *.log
+
+# Runtime history and transient progress
+data/chat_history.jsonl
+data/alerts.jsonl
+logs/
+evaluation/LIVE_PROGRESS.txt
+

@@ -1,45 +1,57 @@
 @echo off
-title ARIA — Disaster Command Center
+REM ================================================================
+REM run.bat - Windows one-click launcher for Disaster Response AI
+REM ================================================================
+REM Usage:
+REM   run.bat            - Start both API + Next.js frontend (no Docker)
+REM   run.bat docker     - Start with Docker Compose
+REM   run.bat api        - Start FastAPI only
+REM   run.bat frontend   - Start Next.js frontend only
+REM ================================================================
 
-:: Always run from the folder this script is in
-cd /d "%~dp0"
+SET ROOT=%~dp0
+SET VENV=%ROOT%venv
 
-echo.
-echo  =================================================
-echo    ARIA — Agentic Disaster Response AI
-echo  =================================================
-echo.
+IF "%1"=="docker" GOTO docker
+IF "%1"=="api" GOTO api
+IF "%1"=="frontend" GOTO frontend
 
-:: Check .env exists
-if not exist ".env" (
-    echo  ERROR: .env file not found!
-    echo  Copy .env.example to .env and add your GROQ_API_KEY
-    echo  Get a free key at: https://console.groq.com
-    pause
-    exit /b 1
+REM Default: start both
+:both
+echo [Disaster Response AI] Starting API + Frontend...
+CALL :check_venv
+START "FastAPI Backend" cmd /k "%VENV%\Scripts\uvicorn.exe api.main:app --host 0.0.0.0 --port 8000 --reload"
+TIMEOUT /T 3 /NOBREAK >NUL
+START "Next.js Frontend" cmd /k "cd /d %ROOT%disaster-frontend && npm run dev"
+echo [OK] FastAPI running on http://localhost:8000
+echo [OK] Next.js running on http://localhost:3000
+echo [OK] FastAPI docs: http://localhost:8000/docs
+GOTO end
+
+:api
+echo [Disaster Response AI] Starting FastAPI only...
+CALL :check_venv
+"%VENV%\Scripts\uvicorn.exe" api.main:app --host 0.0.0.0 --port 8000 --reload
+GOTO end
+
+:frontend
+echo [Disaster Response AI] Starting Next.js frontend only...
+cd /d "%ROOT%disaster-frontend"
+npm run dev
+GOTO end
+
+:docker
+echo [Disaster Response AI] Starting with Docker Compose...
+docker compose up --build
+GOTO end
+
+:check_venv
+IF NOT EXIST "%VENV%\Scripts\activate.bat" (
+    echo [ERROR] Virtual environment not found at %VENV%
+    echo [FIX] Run: python -m venv venv ^&^& venv\Scripts\activate ^&^& pip install -r requirements.txt
+    EXIT /B 1
 )
+CALL "%VENV%\Scripts\activate.bat"
+EXIT /B 0
 
-:: Activate virtual environment
-if exist "venv\Scripts\activate.bat" (
-    echo  Activating virtual environment...
-    call "venv\Scripts\activate.bat"
-) else (
-    echo  WARNING: venv not found. Creating it now...
-    python -m venv venv
-    call "venv\Scripts\activate.bat"
-    pip install -r requirements.txt
-)
-
-:: Quick dependency check
-python -c "import langgraph, langchain_groq, streamlit" 2>nul
-if errorlevel 1 (
-    echo  Installing missing packages...
-    pip install -r requirements.txt
-)
-
-echo  Starting ARIA dashboard...
-echo  Open browser at: http://localhost:8501
-echo.
-streamlit run app.py
-
-pause
+:end

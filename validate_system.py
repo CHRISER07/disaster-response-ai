@@ -1,5 +1,5 @@
 """
-validate_system.py — ARIA System Validation Script
+validate_system.py - System Validation Script
 Run this to verify all fixes are correctly applied before starting the dashboard.
 
 Usage:
@@ -14,7 +14,7 @@ import os
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 print("=" * 65)
-print("  ARIA System Validation")
+print("  System Validation")
 print("=" * 65)
 
 errors = []
@@ -35,18 +35,18 @@ def warn(msg):
     warnings.append(msg)
 
 
-# ─── Check 1: Tools package — all 8 tools ─────────────────────────────────────
+#  Check 1: Tools package - all 8 tools 
 try:
     from tools import ALL_TOOLS
     tool_names = [t.name for t in ALL_TOOLS]
     assert len(ALL_TOOLS) == 8, f"Expected 8 tools, got {len(ALL_TOOLS)}"
     assert "search_official_protocols" in tool_names, "search_official_protocols missing"
     assert "search_social_reports" in tool_names, "search_social_reports missing"
-    ok(f"tools/__init__.py — {len(ALL_TOOLS)} tools: {', '.join(tool_names)}")
+    ok(f"tools/__init__.py - {len(ALL_TOOLS)} tools: {', '.join(tool_names)}")
 except Exception as e:
     fail("tools/__init__.py", e)
 
-# ─── Check 2: Agent — correct LangGraph API kwarg ────────────────────────────
+#  Check 2: Agent - correct LangGraph API kwarg 
 try:
     import inspect
     import langgraph
@@ -67,48 +67,48 @@ try:
     assert "Temporal Context Bridge" in SYSTEM_PROMPT, "Temporal Bridge missing from prompt"
     # Check which kwarg is actually used
     used_kw = next(kw for kw in ("state_modifier", "messages_modifier", "prompt=") if kw in src)
-    ok(f"agents/disaster_agent.py — LangGraph {lg_version}, using '{used_kw}', lru_cache, Temporal Bridge all present")
+    ok(f"agents/disaster_agent.py - LangGraph {lg_version}, using '{used_kw}', lru_cache, Temporal Bridge all present")
 except Exception as e:
     fail("agents/disaster_agent.py", e)
 
-# ─── Check 3: agents/__init__.py ─────────────────────────────────────────────
+#  Check 3: agents/__init__.py 
 try:
     from agents import run_agent
-    ok("agents/__init__.py — run_agent exported correctly")
+    ok("agents/__init__.py - run_agent exported correctly")
 except Exception as e:
     fail("agents/__init__.py", e)
 
-# ─── Check 4: RAG chain — MMR fix ────────────────────────────────────────────
+#  Check 4: RAG chain - MMR fix 
 try:
     import inspect
     from core.rag_chain import get_retriever
     src = inspect.getsource(get_retriever)
     assert "fetch_k" in src, "fetch_k missing from MMR search_kwargs"
-    ok("core/rag_chain.py — MMR fetch_k parameter present")
+    ok("core/rag_chain.py - MMR fetch_k parameter present")
 except Exception as e:
     fail("core/rag_chain.py", e)
 
-# ─── Check 5: Knowledge loader — regex fix ───────────────────────────────────
+#  Check 5: Knowledge loader - regex fix 
 try:
     import inspect
     from core.knowledge_loader import load_and_chunk_knowledge_base
     src = inspect.getsource(load_and_chunk_knowledge_base)
-    # Check the ACTUAL separators list in code — not docstring comments.
+    # Check the ACTUAL separators list in code - not docstring comments.
     # The docstring MENTIONS the old regex for documentation purposes, that's fine.
     # We confirm the separators= line uses the fixed list, not the lookbehind.
     assert 'separators=["\\n\\n"' in src or "separators=[\"\\n\\n\"" in src or '"\\n\\n"' in src, \
-        "separators list not found — file may not have been updated"
+        "separators list not found - file may not have been updated"
     # Verify the actual RecursiveCharacterTextSplitter call doesn't use lookbehind in the list literal
     import ast, textwrap
     # Simple check: (?<= should NOT appear on a line containing 'separators=['
     for line in src.splitlines():
         if 'separators=[' in line:
             assert '(?<=' not in line, f"Lookbehind regex found in separators list: {line.strip()}"
-    ok("core/knowledge_loader.py — lookbehind regex removed from separators list")
+    ok("core/knowledge_loader.py - lookbehind regex removed from separators list")
 except Exception as e:
     fail("core/knowledge_loader.py", e)
 
-# ─── Check 6: Sensor tool — datetime fix ─────────────────────────────────────
+#  Check 6: Sensor tool - datetime fix 
 try:
     import re, inspect
     import tools.sensor_tool as st_module
@@ -121,11 +121,11 @@ try:
     assert "utcfromtimestamp" not in code_only, \
         "datetime.utcfromtimestamp() still in live code (not just docstring)"
     assert "CRITICAL: IMMEDIATE EVACUATION" in full_src, "CRITICAL alarm string missing"
-    ok("tools/sensor_tool.py — deprecated datetime fixed, CRITICAL alarm string present")
+    ok("tools/sensor_tool.py - deprecated datetime fixed, CRITICAL alarm string present")
 except Exception as e:
     fail("tools/sensor_tool.py", e)
 
-# ─── Check 7: Vision tool — structured output ────────────────────────────────
+#  Check 7: Vision tool - structured output 
 try:
     import inspect
     import tools.vision_tool as vt_module
@@ -134,17 +134,17 @@ try:
     assert "DAMAGE" in src, "Structured output DAMAGE not found"
     assert "ACCESS" in src, "Structured output ACCESS not found"
     assert "_check_ollama_available" in src, "Ollama pre-check missing"
-    ok("tools/vision_tool.py — structured output format and Ollama pre-check present")
+    ok("tools/vision_tool.py - structured output format and Ollama pre-check present")
 except Exception as e:
     fail("tools/vision_tool.py", e)
 
-# ─── Check 8: Drone loader — no mock data ────────────────────────────────────
+#  Check 8: Drone loader - no mock data 
 try:
     import re, inspect
     import ingestion.drone_loader as dl_module
     src = inspect.getsource(dl_module)
     # Strip ALL triple-quoted docstrings before checking.
-    # The module docstring says '- REMOVED: ... import random' as a fix note — that's fine.
+    # The module docstring says '- REMOVED: ... import random' as a fix note - that's fine.
     code_only = re.sub(r'""".*?"""', '', src, flags=re.DOTALL)
     code_only = re.sub(r"'''.*?'''", '', code_only, flags=re.DOTALL)
     # Also strip single-line comments
@@ -152,22 +152,22 @@ try:
     assert "def generate_mock" not in code_only, "Mock generator function still defined in code"
     assert "import random" not in code_only, "import random still in live code (not just docstring)"
     assert "observations" in src or "vlm_description" in src, \
-        "Real VLM field names not found — may be old file"
-    ok("ingestion/drone_loader.py — mock data generator removed, real VLM path present")
+        "Real VLM field names not found - may be old file"
+    ok("ingestion/drone_loader.py - mock data generator removed, real VLM path present")
 except Exception as e:
     fail("ingestion/drone_loader.py", e)
 
-# ─── Check 9: IoT loader — makedirs fix ──────────────────────────────────────
+#  Check 9: IoT loader - makedirs fix 
 try:
     import inspect
     import ingestion.iot_loader as il_module
     src = inspect.getsource(il_module)
     assert "if parent_dir" in src or "parent := " in src, "makedirs guard missing"
-    ok("ingestion/iot_loader.py — makedirs empty-string guard present")
+    ok("ingestion/iot_loader.py - makedirs empty-string guard present")
 except Exception as e:
     fail("ingestion/iot_loader.py", e)
 
-# ─── Check 10: Evaluation — lambda capture fix ───────────────────────────────
+#  Check 10: Evaluation - lambda capture fix 
 try:
     import inspect
     import evaluation.run_evals as eval_module
@@ -175,11 +175,11 @@ try:
     assert "cur_chain" in src or "c=chain" in src, "Lambda capture fix not found"
     assert '"text"' in src and '"knowledge_base"' in src, "Modality case fix not found"
     assert '"Text"' not in src.split("CONFIGS")[1].split("LLM Only")[0], "Old uppercase 'Text' still in CONFIGS"
-    ok("evaluation/run_evals.py — lambda capture bug fixed, modality strings normalized")
+    ok("evaluation/run_evals.py - lambda capture bug fixed, modality strings normalized")
 except Exception as e:
     fail("evaluation/run_evals.py", e)
 
-# ─── Live API tests (optional, requires network) ─────────────────────────────
+#  Live API tests (optional, requires network) 
 print()
 print("  Live API Tests (requires internet):")
 
@@ -192,9 +192,9 @@ try:
         timeout=8
     )
     data = r.json()["current"]
-    ok(f"Open-Meteo API — reachable, temp: {data['temperature_2m']}°C")
+    ok(f"Open-Meteo API - reachable, temp: {data['temperature_2m']} deg C")
 except Exception as e:
-    warn(f"Open-Meteo API — {e}")
+    warn(f"Open-Meteo API - {e}")
 
 try:
     import requests
@@ -206,11 +206,11 @@ try:
     ts = r.json().get("value", {}).get("timeSeries", [])
     if ts:
         val = ts[0]["values"][0]["value"][-1]["value"]
-        ok(f"USGS NWIS API — reachable, Boulder Creek: {val} ft")
+        ok(f"USGS NWIS API - reachable, Boulder Creek: {val} ft")
     else:
-        warn("USGS NWIS API — returned empty timeSeries")
+        warn("USGS NWIS API - returned empty timeSeries")
 except Exception as e:
-    warn(f"USGS NWIS API — {e}")
+    warn(f"USGS NWIS API - {e}")
 
 try:
     import requests
@@ -220,9 +220,9 @@ try:
         timeout=8
     )
     count = len(r.json().get("features", []))
-    ok(f"USGS Earthquake API — reachable, {count} M≥5.0 event(s) found")
+    ok(f"USGS Earthquake API - reachable, {count} M>=5.0 event(s) found")
 except Exception as e:
-    warn(f"USGS Earthquake API — {e}")
+    warn(f"USGS Earthquake API - {e}")
 
 try:
     import requests
@@ -230,13 +230,13 @@ try:
     if r.status_code == 200:
         models = [m["name"] for m in r.json().get("models", [])]
         has_llava = any("llava" in m for m in models)
-        ok(f"Ollama — running, models: {models[:3]}, LLaVA installed: {has_llava}")
+        ok(f"Ollama - running, models: {models[:3]}, LLaVA installed: {has_llava}")
     else:
-        warn("Ollama — running but unexpected status code")
+        warn("Ollama - running but unexpected status code")
 except Exception:
-    warn("Ollama — not running (optional, needed only for image analysis)")
+    warn("Ollama - not running (optional, needed only for image analysis)")
 
-# ─── Final summary ────────────────────────────────────────────────────────────
+#  Final summary 
 print()
 print("=" * 65)
 if errors:

@@ -2,9 +2,12 @@
 tools/weather_tool.py
 
 Live weather using Open-Meteo (free, no API key).
-Accepts any city name — uses Open-Meteo geocoding to resolve coordinates.
+Accepts any city name - uses Open-Meteo geocoding to resolve coordinates.
+Optimized with high-performance TTLCache (DSA: O(1) hashed lookup with TTL expiry).
 """
+import time
 import requests
+from typing import Optional, Dict, Any, Tuple
 from langchain_core.tools import tool
 
 WMO_CODES = {
@@ -16,15 +19,46 @@ WMO_CODES = {
     95: "Thunderstorm", 96: "Thunderstorm + hail", 99: "Thunderstorm + heavy hail"
 }
 
-# Default: Boulder, CO (2013 Colorado Flood reference point)
 DEFAULT_LOCATION = {"name": "Boulder, CO", "lat": 40.0150, "lon": -105.2705}
+
+
+# ---------------------------------------------------------------------------
+# High Performance In-Memory TTL Cache (Data Structure: Hash Map + Timestamps)
+# ---------------------------------------------------------------------------
+class TTLCache:
+    """O(1) Dictionary-backed TTL cache for API responses."""
+    def __init__(self, ttl_seconds: float = 60.0):
+        self.ttl = ttl_seconds
+        self._cache: Dict[str, Tuple[float, Any]] = {}
+
+    def get(self, key: str) -> Optional[Any]:
+        now = time.time()
+        if key in self._cache:
+            ts, val = self._cache[key]
+            if now - ts <= self.ttl:
+                return val
+            else:
+                del self._cache[key]
+        return None
+
+    def set(self, key: str, val: Any) -> None:
+        self._cache[key] = (time.time(), val)
+
+
+_GEO_CACHE = TTLCache(ttl_seconds=3600.0)   # Geocode coordinates rarely change (1 hr TTL)
+_WEATHER_CACHE = TTLCache(ttl_seconds=60.0) # Weather cached for 60s
 
 
 def geocode_location(city_name: str) -> dict | None:
     """
     Uses Open-Meteo's free geocoding API to resolve a city name to lat/lon.
-    Returns dict with lat, lon, name, country — or None if not found.
+    Caches lookups in O(1) time.
     """
+    key = city_name.strip().lower()
+    cached = _GEO_CACHE.get(key)
+    if cached is not None:
+        return cached
+
     try:
         resp = requests.get(
             "https://geocoding-api.open-meteo.com/v1/search",
@@ -35,11 +69,13 @@ def geocode_location(city_name: str) -> dict | None:
         results = resp.json().get("results", [])
         if results:
             r = results[0]
-            return {
+            val = {
                 "name": f"{r.get('name', city_name)}, {r.get('country_code', '')}",
                 "lat": r["latitude"],
                 "lon": r["longitude"]
             }
+            _GEO_CACHE.set(key, val)
+            return val
     except Exception:
         pass
     return None
@@ -49,10 +85,15 @@ def geocode_location(city_name: str) -> dict | None:
 def fetch_live_weather(location: str = "Boulder, CO") -> str:
     """
     Fetches live weather conditions for ANY city worldwide.
-    Returns temperature (°C), precipitation (mm/hr), wind speed (km/h), and conditions.
+    Returns temperature (deg C), precipitation (mm/hr), wind speed (km/h), and conditions.
     Accepts any city name like 'Miami, FL', 'Houston, TX', 'New Orleans' etc.
     Use this to assess whether disaster weather conditions are worsening or improving.
     """
+    loc_key = location.strip().lower()
+    cached_report = _WEATHER_CACHE.get(loc_key)
+    if cached_report is not None:
+        return cached_report
+
     # Try to geocode the location
     geo = geocode_location(location)
     if geo:
@@ -92,11 +133,19 @@ def fetch_live_weather(location: str = "Boulder, CO") -> str:
         else:
             severity = "NORMAL"
 
-        return (
-            f"[LIVE WEATHER — {display_name}] Severity: {severity}\n"
-            f"  Temperature: {temp:.1f}°C (feels like {feels_like:.1f}°C)\n"
+        report = (
+            f"[LIVE WEATHER - {display_name}] Severity: {severity}\n"
+            f"  Temperature: {temp:.1f} deg C (feels like {feels_like:.1f} deg C)\n"
             f"  Rainfall: {rain:.1f} mm/hr | Wind: {wind:.1f} km/h | Humidity: {humidity}%\n"
             f"  Conditions: {condition}"
         )
+        _WEATHER_CACHE.set(loc_key, report)
+        return report
+
     except requests.RequestException as e:
-        return f"[WEATHER TOOL ERROR] Could not reach Open-Meteo API: {e}"
+        return (
+            f"[WEATHER TOOL ERROR] Open-Meteo API unreachable: {e}\n"
+            f"  Fallback: Check sensor tool or assume adverse conditions if during known flood."
+        )
+    except (KeyError, ValueError) as e:
+        return f"[WEATHER TOOL ERROR] Unexpected API response format: {e}"

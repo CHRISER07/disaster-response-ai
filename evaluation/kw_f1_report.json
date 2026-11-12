@@ -1,0 +1,3928 @@
+{
+  "timestamp": "2026-11-03T21:57:02.737802+00:00",
+  "source_report": "evaluation/ragas_evaluation_report.json",
+  "scoring_method": "stemmed keyword matching against dataset expected_keywords field",
+  "aggregate_kw_f1": {
+    "mean": 0.0052,
+    "std": 0.0273,
+    "ci95": 0.0039,
+    "n": 190
+  },
+  "per_scenario_kw_f1": {
+    "Flood": {
+      "mean": 0.0164,
+      "std": 0.0495,
+      "ci95": 0.0137,
+      "n": 50
+    },
+    "Hallucination": {
+      "mean": 0.0,
+      "std": 0.0,
+      "ci95": 0.0,
+      "n": 5
+    },
+    "Wildfire": {
+      "mean": 0.0,
+      "std": 0.0,
+      "ci95": 0.0,
+      "n": 25
+    },
+    "Typhoon": {
+      "mean": 0.0,
+      "std": 0.0,
+      "ci95": 0.0,
+      "n": 25
+    },
+    "Building_Collapse": {
+      "mean": 0.0,
+      "std": 0.0,
+      "ci95": 0.0,
+      "n": 10
+    },
+    "Earthquake": {
+      "mean": 0.0,
+      "std": 0.0,
+      "ci95": 0.0,
+      "n": 20
+    },
+    "Chemical": {
+      "mean": 0.0,
+      "std": 0.0,
+      "ci95": 0.0,
+      "n": 25
+    },
+    "Air_Quality": {
+      "mean": 0.0,
+      "std": 0.0,
+      "ci95": 0.0,
+      "n": 15
+    },
+    "Multi_Source": {
+      "mean": 0.0107,
+      "std": 0.0281,
+      "ci95": 0.0142,
+      "n": 15
+    }
+  },
+  "per_query": [
+    {
+      "query_id": "1",
+      "scenario": "Flood",
+      "category": "evacuation",
+      "difficulty": "medium",
+      "kw_f1": 0.08,
+      "kw_precision": 0.0526,
+      "kw_recall": 0.1667,
+      "matched_keywords": [
+        "evacuation"
+      ],
+      "missed_keywords": [
+        "evacuate",
+        "flood stage",
+        "threshold",
+        "danger",
+        "protocol"
+      ],
+      "n_gold_keywords": 6
+    },
+    {
+      "query_id": "2",
+      "scenario": "Flood",
+      "category": "protocol",
+      "difficulty": "easy",
+      "kw_f1": 0.0,
+      "kw_precision": 0.0,
+      "kw_recall": 0.0,
+      "matched_keywords": [],
+      "missed_keywords": [
+        "boil",
+        "purification",
+        "CDC",
+        "FEMA",
+        "safe water",
+        "contamination"
+      ],
+      "n_gold_keywords": 6
+    },
+    {
+      "query_id": "3",
+      "scenario": "Flood",
+      "category": "situational_awareness",
+      "difficulty": "medium",
+      "kw_f1": 0.0,
+      "kw_precision": 0.0,
+      "kw_recall": 0.0,
+      "matched_keywords": [],
+      "missed_keywords": [
+        "stranded",
+        "flooded",
+        "road",
+        "vehicle",
+        "route",
+        "impassable",
+        "blocked"
+      ],
+      "n_gold_keywords": 7
+    },
+    {
+      "query_id": "4",
+      "scenario": "Flood",
+      "category": "infrastructure",
+      "difficulty": "medium",
+      "kw_f1": 0.0,
+      "kw_precision": 0.0,
+      "kw_recall": 0.0,
+      "matched_keywords": [],
+      "missed_keywords": [
+        "bridge",
+        "damage",
+        "infrastructure",
+        "submerged",
+        "collapse",
+        "structural"
+      ],
+      "n_gold_keywords": 6
+    },
+    {
+      "query_id": "5",
+      "scenario": "Flood",
+      "category": "sensor_data",
+      "difficulty": "easy",
+      "kw_f1": 0.0833,
+      "kw_precision": 0.0556,
+      "kw_recall": 0.1667,
+      "matched_keywords": [
+        "USGS"
+      ],
+      "missed_keywords": [
+        "gage",
+        "height",
+        "feet",
+        "flood stage",
+        "threshold"
+      ],
+      "n_gold_keywords": 6
+    },
+    {
+      "query_id": "6",
+      "scenario": "Flood",
+      "category": "protocol",
+      "difficulty": "easy",
+      "kw_f1": 0.0,
+      "kw_precision": 0.0,
+      "kw_recall": 0.0,
+      "matched_keywords": [],
+      "missed_keywords": [
+        "ICS",
+        "incident command",
+        "FEMA",
+        "coordination",
+        "unified command"
+      ],
+      "n_gold_keywords": 5
+    },
+    {
+      "query_id": "7",
+      "scenario": "Flood",
+      "category": "evacuation",
+      "difficulty": "medium",
+      "kw_f1": 0.0,
+      "kw_precision": 0.0,
+      "kw_recall": 0.0,
+      "matched_keywords": [],
+      "missed_keywords": [
+        "route",
+        "evacuation",
+        "safe",
+        "high ground",
+        "shelter",
+        "protocol"
+      ],
+      "n_gold_keywords": 6
+    },
+    {
+      "query_id": "8",
+      "scenario": "Flood",
+      "category": "weather",
+      "difficulty": "easy",
+      "kw_f1": 0.1818,
+      "kw_precision": 0.1111,
+      "kw_recall": 0.5,
+      "matched_keywords": [
+        "rain",
+        "rainfall",
+        "temperature"
+      ],
+      "missed_keywords": [
+        "wind",
+        "weather",
+        "precipitation"
+      ],
+      "n_gold_keywords": 6
+    },
+    {
+      "query_id": "9",
+      "scenario": "Flood",
+      "category": "medical",
+      "difficulty": "easy",
+      "kw_f1": 0.0,
+      "kw_precision": 0.0,
+      "kw_recall": 0.0,
+      "matched_keywords": [],
+      "missed_keywords": [
+        "contamination",
+        "injury",
+        "disease",
+        "medicine",
+        "first aid",
+        "health"
+      ],
+      "n_gold_keywords": 6
+    },
+    {
+      "query_id": "10",
+      "scenario": "Flood",
+      "category": "water_quality",
+      "difficulty": "easy",
+      "kw_f1": 0.0,
+      "kw_precision": 0.0,
+      "kw_recall": 0.0,
+      "matched_keywords": [],
+      "missed_keywords": [
+        "contaminated",
+        "pathogens",
+        "sewage",
+        "hazardous",
+        "avoid",
+        "PPE"
+      ],
+      "n_gold_keywords": 6
+    },
+    {
+      "query_id": "11",
+      "scenario": "Flood",
+      "category": "communications",
+      "difficulty": "easy",
+      "kw_f1": 0.0,
+      "kw_precision": 0.0,
+      "kw_recall": 0.0,
+      "matched_keywords": [],
+      "missed_keywords": [
+        "radio",
+        "HAM",
+        "satellite",
+        "communication",
+        "backup",
+        "RACES"
+      ],
+      "n_gold_keywords": 6
+    },
+    {
+      "query_id": "12",
+      "scenario": "Flood",
+      "category": "multi_source",
+      "difficulty": "hard",
+      "kw_f1": 0.0769,
+      "kw_precision": 0.0526,
+      "kw_recall": 0.1429,
+      "matched_keywords": [
+        "sensor"
+      ],
+      "missed_keywords": [
+        "weather",
+        "social",
+        "threat",
+        "level",
+        "critical",
+        "warning"
+      ],
+      "n_gold_keywords": 7
+    },
+    {
+      "query_id": "13",
+      "scenario": "Flood",
+      "category": "shelter",
+      "difficulty": "easy",
+      "kw_f1": 0.0,
+      "kw_precision": 0.0,
+      "kw_recall": 0.0,
+      "matched_keywords": [],
+      "missed_keywords": [
+        "shelter",
+        "ADA",
+        "capacity",
+        "location",
+        "high ground",
+        "accessibility"
+      ],
+      "n_gold_keywords": 6
+    },
+    {
+      "query_id": "14",
+      "scenario": "Flood",
+      "category": "protocol",
+      "difficulty": "easy",
+      "kw_f1": 0.0,
+      "kw_precision": 0.0,
+      "kw_recall": 0.0,
+      "matched_keywords": [],
+      "missed_keywords": [
+        "structural",
+        "gas",
+        "electricity",
+        "hazard",
+        "safety",
+        "PPE"
+      ],
+      "n_gold_keywords": 6
+    },
+    {
+      "query_id": "15",
+      "scenario": "Flood",
+      "category": "resource_allocation",
+      "difficulty": "medium",
+      "kw_f1": 0.0,
+      "kw_precision": 0.0,
+      "kw_recall": 0.0,
+      "matched_keywords": [],
+      "missed_keywords": [
+        "personnel",
+        "deploy",
+        "staffing",
+        "ICS",
+        "resources",
+        "protocol"
+      ],
+      "n_gold_keywords": 6
+    },
+    {
+      "query_id": "16",
+      "scenario": "Flood",
+      "category": "protocol",
+      "difficulty": "easy",
+      "kw_f1": 0.0,
+      "kw_precision": 0.0,
+      "kw_recall": 0.0,
+      "matched_keywords": [],
+      "missed_keywords": [
+        "NIMS",
+        "coordination",
+        "interoperability",
+        "incident",
+        "command",
+        "FEMA"
+      ],
+      "n_gold_keywords": 6
+    },
+    {
+      "query_id": "17",
+      "scenario": "Flood",
+      "category": "satellite_imagery",
+      "difficulty": "medium",
+      "kw_f1": 0.0,
+      "kw_precision": 0.0,
+      "kw_recall": 0.0,
+      "matched_keywords": [],
+      "missed_keywords": [
+        "imagery",
+        "satellite",
+        "damage",
+        "visible",
+        "flood",
+        "structural"
+      ],
+      "n_gold_keywords": 6
+    },
+    {
+      "query_id": "18",
+      "scenario": "Flood",
+      "category": "evacuation",
+      "difficulty": "medium",
+      "kw_f1": 0.0,
+      "kw_precision": 0.0,
+      "kw_recall": 0.0,
+      "matched_keywords": [],
+      "missed_keywords": [
+        "10 feet",
+        "flood stage",
+        "threshold",
+        "mandatory",
+        "Boulder Creek",
+        "gage"
+      ],
+      "n_gold_keywords": 6
+    },
+    {
+      "query_id": "19",
+      "scenario": "Flood",
+      "category": "infrastructure",
+      "difficulty": "medium",
+      "kw_f1": 0.0,
+      "kw_precision": 0.0,
+      "kw_recall": 0.0,
+      "matched_keywords": [],
+      "missed_keywords": [
+        "bridge",
+        "road",
+        "accessible",
+        "emergency",
+        "blocked",
+        "impassable"
+      ],
+      "n_gold_keywords": 6
+    },
+    {
+      "query_id": "20",
+      "scenario": "Flood",
+      "category": "situational_awareness",
+      "difficulty": "hard",
+      "kw_f1": 0.0,
+      "kw_precision": 0.0,
+      "kw_recall": 0.0,
+      "matched_keywords": [],
+      "missed_keywords": [
+        "sensor",
+        "weather",
+        "damage",
+        "evacuation",
+        "protocol",
+        "status"
+      ],
+      "n_gold_keywords": 6
+    },
+    {
+      "query_id": "21",
+      "scenario": "Flood",
+      "category": "situational_awareness",
+      "difficulty": "medium",
+      "kw_f1": 0.0,
+      "kw_precision": 0.0,
+      "kw_recall": 0.0,
+      "matched_keywords": [],
+      "missed_keywords": [
+        "road",
+        "closure",
+        "Alberta",
+        "evacuation",
+        "flood",
+        "Calgary",
+        "social media"
+      ],
+      "n_gold_keywords": 7
+    },
+    {
+      "query_id": "22",
+      "scenario": "Flood",
+      "category": "weather",
+      "difficulty": "easy",
+      "kw_f1": 0.0,
+      "kw_precision": 0.0,
+      "kw_recall": 0.0,
+      "matched_keywords": [],
+      "missed_keywords": [
+        "rainfall",
+        "precipitation",
+        "Calgary",
+        "record",
+        "upstream",
+        "intensity",
+        "runoff"
+      ],
+      "n_gold_keywords": 7
+    },
+    {
+      "query_id": "23",
+      "scenario": "Flood",
+      "category": "infrastructure",
+      "difficulty": "medium",
+      "kw_f1": 0.0,
+      "kw_precision": 0.0,
+      "kw_recall": 0.0,
+      "matched_keywords": [],
+      "missed_keywords": [
+        "bridge",
+        "road",
+        "infrastructure",
+        "Calgary",
+        "damage",
+        "utility"
+      ],
+      "n_gold_keywords": 6
+    },
+    {
+      "query_id": "24",
+      "scenario": "Flood",
+      "category": "evacuation",
+      "difficulty": "medium",
+      "kw_f1": 0.0,
+      "kw_precision": 0.0,
+      "kw_recall": 0.0,
+      "matched_keywords": [],
+      "missed_keywords": [
+        "evacuated",
+        "Calgary",
+        "zone",
+        "shelter",
+        "mandatory",
+        "Alberta",
+        "residents"
+      ],
+      "n_gold_keywords": 7
+    },
+    {
+      "query_id": "25",
+      "scenario": "Flood",
+      "category": "protocol",
+      "difficulty": "easy",
+      "kw_f1": 0.0,
+      "kw_precision": 0.0,
+      "kw_recall": 0.0,
+      "matched_keywords": [],
+      "missed_keywords": [
+        "100-year",
+        "protocol",
+        "FEMA",
+        "emergency",
+        "declaration",
+        "federal",
+        "response"
+      ],
+      "n_gold_keywords": 7
+    },
+    {
+      "query_id": "26",
+      "scenario": "Flood",
+      "category": "situational_awareness",
+      "difficulty": "medium",
+      "kw_f1": 0.0,
+      "kw_precision": 0.0,
+      "kw_recall": 0.0,
+      "matched_keywords": [],
+      "missed_keywords": [
+        "Queensland",
+        "flood",
+        "Brisbane",
+        "evacuation",
+        "road",
+        "social media",
+        "Australia"
+      ],
+      "n_gold_keywords": 7
+    },
+    {
+      "query_id": "27",
+      "scenario": "Flood",
+      "category": "medical",
+      "difficulty": "easy",
+      "kw_f1": 0.0,
+      "kw_precision": 0.0,
+      "kw_recall": 0.0,
+      "matched_keywords": [],
+      "missed_keywords": [
+        "disease",
+        "contamination",
+        "health",
+        "flood",
+        "Queensland",
+        "water",
+        "leptospirosis"
+      ],
+      "n_gold_keywords": 7
+    },
+    {
+      "query_id": "28",
+      "scenario": "Flood",
+      "category": "multi_source",
+      "difficulty": "hard",
+      "kw_f1": 0.0,
+      "kw_precision": 0.0,
+      "kw_recall": 0.0,
+      "matched_keywords": [],
+      "missed_keywords": [
+        "sensor",
+        "imagery",
+        "social",
+        "Queensland",
+        "flood",
+        "severity",
+        "fusion"
+      ],
+      "n_gold_keywords": 7
+    },
+    {
+      "query_id": "29",
+      "scenario": "Flood",
+      "category": "situational_awareness",
+      "difficulty": "medium",
+      "kw_f1": 0.0,
+      "kw_precision": 0.0,
+      "kw_recall": 0.0,
+      "matched_keywords": [],
+      "missed_keywords": [
+        "Sardinia",
+        "flash flood",
+        "Italy",
+        "damage",
+        "road",
+        "victims",
+        "Europe"
+      ],
+      "n_gold_keywords": 7
+    },
+    {
+      "query_id": "30",
+      "scenario": "Flood",
+      "category": "infrastructure",
+      "difficulty": "medium",
+      "kw_f1": 0.0,
+      "kw_precision": 0.0,
+      "kw_recall": 0.0,
+      "matched_keywords": [],
+      "missed_keywords": [
+        "road",
+        "bridge",
+        "Sardinia",
+        "infrastructure",
+        "flash flood",
+        "access",
+        "damage"
+      ],
+      "n_gold_keywords": 7
+    },
+    {
+      "query_id": "31",
+      "scenario": "Flood",
+      "category": "situational_awareness",
+      "difficulty": "medium",
+      "kw_f1": 0.0,
+      "kw_precision": 0.0,
+      "kw_recall": 0.0,
+      "matched_keywords": [],
+      "missed_keywords": [
+        "Manila",
+        "Philippines",
+        "flood",
+        "barangay",
+        "evacuate",
+        "typhoon",
+        "road"
+      ],
+      "n_gold_keywords": 7
+    },
+    {
+      "query_id": "32",
+      "scenario": "Flood",
+      "category": "evacuation",
+      "difficulty": "medium",
+      "kw_f1": 0.0,
+      "kw_precision": 0.0,
+      "kw_recall": 0.0,
+      "matched_keywords": [],
+      "missed_keywords": [
+        "Manila",
+        "evacuation",
+        "road",
+        "flooded",
+        "shelter",
+        "barangay",
+        "challenge"
+      ],
+      "n_gold_keywords": 7
+    },
+    {
+      "query_id": "33",
+      "scenario": "Flood",
+      "category": "sensor_data",
+      "difficulty": "easy",
+      "kw_f1": 0.2308,
+      "kw_precision": 0.1429,
+      "kw_recall": 0.6,
+      "matched_keywords": [
+        "earthquake",
+        "USGS",
+        "magnitude"
+      ],
+      "missed_keywords": [
+        "seismic",
+        "aftershock"
+      ],
+      "n_gold_keywords": 5
+    },
+    {
+      "query_id": "34",
+      "scenario": "Flood",
+      "category": "missing_data",
+      "difficulty": "easy",
+      "kw_f1": 0.1667,
+      "kw_precision": 0.1053,
+      "kw_recall": 0.4,
+      "matched_keywords": [
+        "weather",
+        "temperature"
+      ],
+      "missed_keywords": [
+        "forecast",
+        "days",
+        "precipitation"
+      ],
+      "n_gold_keywords": 5
+    },
+    {
+      "query_id": "35",
+      "scenario": "Flood",
+      "category": "protocol",
+      "difficulty": "medium",
+      "kw_f1": 0.0,
+      "kw_precision": 0.0,
+      "kw_recall": 0.0,
+      "matched_keywords": [],
+      "missed_keywords": [
+        "NFIP",
+        "insurance",
+        "FEMA",
+        "flood",
+        "claim",
+        "relief",
+        "mitigation"
+      ],
+      "n_gold_keywords": 7
+    },
+    {
+      "query_id": "36",
+      "scenario": "Hallucination",
+      "category": "hallucination_test",
+      "difficulty": "easy",
+      "kw_f1": 0.0,
+      "kw_precision": 0.0,
+      "kw_recall": 0.1667,
+      "matched_keywords": [
+        "no data"
+      ],
+      "missed_keywords": [
+        "no information",
+        "unavailable",
+        "not available",
+        "cannot",
+        "not found"
+      ],
+      "n_gold_keywords": 6
+    },
+    {
+      "query_id": "37",
+      "scenario": "Hallucination",
+      "category": "hallucination_test",
+      "difficulty": "easy",
+      "kw_f1": 0.0,
+      "kw_precision": 0.0,
+      "kw_recall": 0.0,
+      "matched_keywords": [],
+      "missed_keywords": [
+        "not safe",
+        "dangerous",
+        "do not",
+        "avoid",
+        "turn around",
+        "hazard"
+      ],
+      "n_gold_keywords": 6
+    },
+    {
+      "query_id": "38",
+      "scenario": "Hallucination",
+      "category": "hallucination_test",
+      "difficulty": "easy",
+      "kw_f1": 0.0,
+      "kw_precision": 0.0,
+      "kw_recall": 0.0,
+      "matched_keywords": [],
+      "missed_keywords": [
+        "not available",
+        "cannot",
+        "no exact",
+        "no data",
+        "approximate",
+        "uncertain"
+      ],
+      "n_gold_keywords": 6
+    },
+    {
+      "query_id": "39",
+      "scenario": "Flood",
+      "category": "sensor_data",
+      "difficulty": "easy",
+      "kw_f1": 0.0,
+      "kw_precision": 0.0,
+      "kw_recall": 0.0,
+      "matched_keywords": [],
+      "missed_keywords": [
+        "peak",
+        "level",
+        "historical",
+        "2013",
+        "record",
+        "flood"
+      ],
+      "n_gold_keywords": 6
+    },
+    {
+      "query_id": "40",
+      "scenario": "Flood",
+      "category": "protocol",
+      "difficulty": "medium",
+      "kw_f1": 0.0,
+      "kw_precision": 0.0,
+      "kw_recall": 0.0,
+      "matched_keywords": [],
+      "missed_keywords": [
+        "swift water",
+        "rescue",
+        "FEMA",
+        "gage",
+        "flood stage",
+        "DANGER",
+        "protocol",
+        "evacuation"
+      ],
+      "n_gold_keywords": 8
+    },
+    {
+      "query_id": "41",
+      "scenario": "Flood",
+      "category": "multi_source",
+      "difficulty": "hard",
+      "kw_f1": 0.0,
+      "kw_precision": 0.0,
+      "kw_recall": 0.0,
+      "matched_keywords": [],
+      "missed_keywords": [
+        "sensor",
+        "weather",
+        "social",
+        "Alberta",
+        "threat",
+        "level",
+        "synthesis"
+      ],
+      "n_gold_keywords": 7
+    },
+    {
+      "query_id": "42",
+      "scenario": "Flood",
+      "category": "protocol",
+      "difficulty": "medium",
+      "kw_f1": 0.0,
+      "kw_precision": 0.0,
+      "kw_recall": 0.0,
+      "matched_keywords": [],
+      "missed_keywords": [
+        "dam",
+        "safety",
+        "spillway",
+        "downstream",
+        "flood",
+        "protocol",
+        "inundation"
+      ],
+      "n_gold_keywords": 7
+    },
+    {
+      "query_id": "43",
+      "scenario": "Flood",
+      "category": "infrastructure",
+      "difficulty": "medium",
+      "kw_f1": 0.0,
+      "kw_precision": 0.0,
+      "kw_recall": 0.0,
+      "matched_keywords": [],
+      "missed_keywords": [
+        "flash flood",
+        "bridge",
+        "road",
+        "utility",
+        "Sardinia",
+        "vulnerable",
+        "infrastructure"
+      ],
+      "n_gold_keywords": 7
+    },
+    {
+      "query_id": "44",
+      "scenario": "Flood",
+      "category": "shelter",
+      "difficulty": "medium",
+      "kw_f1": 0.0,
+      "kw_precision": 0.0,
+      "kw_recall": 0.0,
+      "matched_keywords": [],
+      "missed_keywords": [
+        "shelter",
+        "capacity",
+        "Alberta",
+        "evacuees",
+        "Red Cross",
+        "management",
+        "facility"
+      ],
+      "n_gold_keywords": 7
+    },
+    {
+      "query_id": "45",
+      "scenario": "Flood",
+      "category": "evacuuation",
+      "difficulty": "medium",
+      "kw_f1": 0.0,
+      "kw_precision": 0.0,
+      "kw_recall": 0.0,
+      "matched_keywords": [],
+      "missed_keywords": [
+        "high-rise",
+        "building",
+        "evacuate",
+        "flood",
+        "protocol",
+        "helicopter",
+        "rooftop",
+        "rescue"
+      ],
+      "n_gold_keywords": 8
+    },
+    {
+      "query_id": "46",
+      "scenario": "Flood",
+      "category": "situational_awareness",
+      "difficulty": "medium",
+      "kw_f1": 0.0,
+      "kw_precision": 0.0,
+      "kw_recall": 0.0,
+      "matched_keywords": [],
+      "missed_keywords": [
+        "social media",
+        "situational awareness",
+        "Queensland",
+        "emergency",
+        "crowd",
+        "reports",
+        "Twitter"
+      ],
+      "n_gold_keywords": 7
+    },
+    {
+      "query_id": "47",
+      "scenario": "Flood",
+      "category": "protocol",
+      "difficulty": "easy",
+      "kw_f1": 0.0,
+      "kw_precision": 0.0,
+      "kw_recall": 0.0,
+      "matched_keywords": [],
+      "missed_keywords": [
+        "warning",
+        "alert",
+        "EAS",
+        "sirens",
+        "protocol",
+        "automatic",
+        "notification"
+      ],
+      "n_gold_keywords": 7
+    },
+    {
+      "query_id": "48",
+      "scenario": "Flood",
+      "category": "sensor_data",
+      "difficulty": "easy",
+      "kw_f1": 0.0,
+      "kw_precision": 0.0,
+      "kw_recall": 0.0,
+      "matched_keywords": [],
+      "missed_keywords": [
+        "unavailable",
+        "no data",
+        "sensor",
+        "not available",
+        "cannot confirm"
+      ],
+      "n_gold_keywords": 5
+    },
+    {
+      "query_id": "49",
+      "scenario": "Flood",
+      "category": "protocol",
+      "difficulty": "medium",
+      "kw_f1": 0.0,
+      "kw_precision": 0.0,
+      "kw_recall": 0.0,
+      "matched_keywords": [],
+      "missed_keywords": [
+        "National Guard",
+        "military",
+        "rescue",
+        "logistics",
+        "flood",
+        "support",
+        "protocol"
+      ],
+      "n_gold_keywords": 7
+    },
+    {
+      "query_id": "50",
+      "scenario": "Hallucination",
+      "category": "hallucination_test",
+      "difficulty": "easy",
+      "kw_f1": 0.0,
+      "kw_precision": 0.0,
+      "kw_recall": 0.0,
+      "matched_keywords": [],
+      "missed_keywords": [
+        "natural",
+        "no person",
+        "not caused",
+        "not applicable",
+        "natural disaster"
+      ],
+      "n_gold_keywords": 5
+    },
+    {
+      "query_id": "51",
+      "scenario": "Hallucination",
+      "category": "hallucination_test",
+      "difficulty": "easy",
+      "kw_f1": 0.0,
+      "kw_precision": 0.0,
+      "kw_recall": 0.0,
+      "matched_keywords": [],
+      "missed_keywords": [
+        "not available",
+        "cannot",
+        "no data",
+        "check locally",
+        "contact"
+      ],
+      "n_gold_keywords": 5
+    },
+    {
+      "query_id": "52",
+      "scenario": "Flood",
+      "category": "sensor_data",
+      "difficulty": "easy",
+      "kw_f1": 0.0,
+      "kw_precision": 0.0,
+      "kw_recall": 0.0,
+      "matched_keywords": [],
+      "missed_keywords": [
+        "gage",
+        "12.5",
+        "DANGER",
+        "flood stage",
+        "threshold",
+        "evacuation",
+        "USGS",
+        "CRITICAL"
+      ],
+      "n_gold_keywords": 8
+    },
+    {
+      "query_id": "53",
+      "scenario": "Flood",
+      "category": "weather",
+      "difficulty": "medium",
+      "kw_f1": 0.0,
+      "kw_precision": 0.0,
+      "kw_recall": 0.0,
+      "matched_keywords": [],
+      "missed_keywords": [
+        "atmospheric river",
+        "rainfall",
+        "flash flood",
+        "moisture",
+        "flooding",
+        "risk",
+        "precipitation"
+      ],
+      "n_gold_keywords": 7
+    },
+    {
+      "query_id": "54",
+      "scenario": "Flood",
+      "category": "multi_source",
+      "difficulty": "hard",
+      "kw_f1": 0.0,
+      "kw_precision": 0.0,
+      "kw_recall": 0.0,
+      "matched_keywords": [],
+      "missed_keywords": [
+        "contradiction",
+        "sensor",
+        "social media",
+        "live",
+        "historical",
+        "temporal",
+        "priority",
+        "conflict"
+      ],
+      "n_gold_keywords": 8
+    },
+    {
+      "query_id": "55",
+      "scenario": "Flood",
+      "category": "protocol",
+      "difficulty": "medium",
+      "kw_f1": 0.0,
+      "kw_precision": 0.0,
+      "kw_recall": 0.0,
+      "matched_keywords": [],
+      "missed_keywords": [
+        "international",
+        "EU",
+        "relief",
+        "coordination",
+        "Sardinia",
+        "Italy",
+        "protocol",
+        "ERCC"
+      ],
+      "n_gold_keywords": 8
+    },
+    {
+      "query_id": "56",
+      "scenario": "Wildfire",
+      "category": "evacuation",
+      "difficulty": "medium",
+      "kw_f1": 0.0,
+      "kw_precision": 0.0,
+      "kw_recall": 0.0,
+      "matched_keywords": [],
+      "missed_keywords": [
+        "evacuate",
+        "evacuation",
+        "fire",
+        "shelter",
+        "route",
+        "mandatory",
+        "protocol"
+      ],
+      "n_gold_keywords": 7
+    },
+    {
+      "query_id": "57",
+      "scenario": "Wildfire",
+      "category": "situational_awareness",
+      "difficulty": "medium",
+      "kw_f1": 0.0,
+      "kw_precision": 0.0,
+      "kw_recall": 0.0,
+      "matched_keywords": [],
+      "missed_keywords": [
+        "smoke",
+        "road",
+        "closure",
+        "fire",
+        "reports",
+        "social media",
+        "visibility"
+      ],
+      "n_gold_keywords": 7
+    },
+    {
+      "query_id": "58",
+      "scenario": "Wildfire",
+      "category": "infrastructure",
+      "difficulty": "medium",
+      "kw_f1": 0.0,
+      "kw_precision": 0.0,
+      "kw_recall": 0.0,
+      "matched_keywords": [],
+      "missed_keywords": [
+        "fire perimeter",
+        "satellite",
+        "structures",
+        "at risk",
+        "damage",
+        "imagery"
+      ],
+      "n_gold_keywords": 6
+    },
+    {
+      "query_id": "59",
+      "scenario": "Wildfire",
+      "category": "weather",
+      "difficulty": "easy",
+      "kw_f1": 0.0,
+      "kw_precision": 0.0,
+      "kw_recall": 0.0,
+      "matched_keywords": [],
+      "missed_keywords": [
+        "wind",
+        "speed",
+        "direction",
+        "fire spread",
+        "weather",
+        "humidity",
+        "temperature"
+      ],
+      "n_gold_keywords": 7
+    },
+    {
+      "query_id": "60",
+      "scenario": "Wildfire",
+      "category": "hallucination_test",
+      "difficulty": "easy",
+      "kw_f1": 0.0,
+      "kw_precision": 0.0,
+      "kw_recall": 0.0,
+      "matched_keywords": [],
+      "missed_keywords": [
+        "not safe",
+        "dangerous",
+        "last resort",
+        "avoid",
+        "risk",
+        "low to ground"
+      ],
+      "n_gold_keywords": 6
+    },
+    {
+      "query_id": "61",
+      "scenario": "Wildfire",
+      "category": "situational_awareness",
+      "difficulty": "medium",
+      "kw_f1": 0.0,
+      "kw_precision": 0.0,
+      "kw_recall": 0.0,
+      "matched_keywords": [],
+      "missed_keywords": [
+        "Australia",
+        "bushfire",
+        "smoke",
+        "evacuation",
+        "fire",
+        "NSW",
+        "social media"
+      ],
+      "n_gold_keywords": 7
+    },
+    {
+      "query_id": "62",
+      "scenario": "Wildfire",
+      "category": "weather",
+      "difficulty": "medium",
+      "kw_f1": 0.0,
+      "kw_precision": 0.0,
+      "kw_recall": 0.0,
+      "matched_keywords": [],
+      "missed_keywords": [
+        "temperature",
+        "humidity",
+        "wind",
+        "drought",
+        "fire danger",
+        "Australia",
+        "conditions"
+      ],
+      "n_gold_keywords": 7
+    },
+    {
+      "query_id": "63",
+      "scenario": "Wildfire",
+      "category": "protocol",
+      "difficulty": "easy",
+      "kw_f1": 0.0,
+      "kw_precision": 0.0,
+      "kw_recall": 0.0,
+      "matched_keywords": [],
+      "missed_keywords": [
+        "Catastrophic",
+        "fire danger",
+        "AFAC",
+        "rating",
+        "evacuate",
+        "shelter",
+        "Australia"
+      ],
+      "n_gold_keywords": 7
+    },
+    {
+      "query_id": "64",
+      "scenario": "Wildfire",
+      "category": "infrastructure",
+      "difficulty": "medium",
+      "kw_f1": 0.0,
+      "kw_precision": 0.0,
+      "kw_recall": 0.0,
+      "matched_keywords": [],
+      "missed_keywords": [
+        "power",
+        "grid",
+        "wildfire",
+        "transmission",
+        "outage",
+        "restoration",
+        "protocol"
+      ],
+      "n_gold_keywords": 7
+    },
+    {
+      "query_id": "65",
+      "scenario": "Wildfire",
+      "category": "medical",
+      "difficulty": "easy",
+      "kw_f1": 0.0,
+      "kw_precision": 0.0,
+      "kw_recall": 0.0,
+      "matched_keywords": [],
+      "missed_keywords": [
+        "smoke",
+        "inhalation",
+        "carbon monoxide",
+        "PM2.5",
+        "burns",
+        "health",
+        "protocol"
+      ],
+      "n_gold_keywords": 7
+    },
+    {
+      "query_id": "66",
+      "scenario": "Wildfire",
+      "category": "multi_source",
+      "difficulty": "hard",
+      "kw_f1": 0.0,
+      "kw_precision": 0.0,
+      "kw_recall": 0.0,
+      "matched_keywords": [],
+      "missed_keywords": [
+        "wind",
+        "satellite",
+        "perimeter",
+        "evacuation",
+        "social media",
+        "corridor",
+        "safe",
+        "wildfire"
+      ],
+      "n_gold_keywords": 8
+    },
+    {
+      "query_id": "67",
+      "scenario": "Wildfire",
+      "category": "protocol",
+      "difficulty": "easy",
+      "kw_f1": 0.0,
+      "kw_precision": 0.0,
+      "kw_recall": 0.0,
+      "matched_keywords": [],
+      "missed_keywords": [
+        "defensible space",
+        "zone",
+        "clearance",
+        "fire",
+        "ember",
+        "structure",
+        "protocol"
+      ],
+      "n_gold_keywords": 7
+    },
+    {
+      "query_id": "68",
+      "scenario": "Wildfire",
+      "category": "sensor_data",
+      "difficulty": "easy",
+      "kw_f1": 0.0,
+      "kw_precision": 0.0,
+      "kw_recall": 0.0,
+      "matched_keywords": [],
+      "missed_keywords": [
+        "wind",
+        "humidity",
+        "temperature",
+        "fire danger",
+        "FDI",
+        "weather",
+        "FFDI"
+      ],
+      "n_gold_keywords": 7
+    },
+    {
+      "query_id": "69",
+      "scenario": "Wildfire",
+      "category": "situational_awareness",
+      "difficulty": "medium",
+      "kw_f1": 0.0,
+      "kw_precision": 0.0,
+      "kw_recall": 0.0,
+      "matched_keywords": [],
+      "missed_keywords": [
+        "social media",
+        "ground-level",
+        "satellite",
+        "intelligence",
+        "Colorado",
+        "fire",
+        "roads",
+        "smoke"
+      ],
+      "n_gold_keywords": 8
+    },
+    {
+      "query_id": "70",
+      "scenario": "Wildfire",
+      "category": "protocol",
+      "difficulty": "medium",
+      "kw_f1": 0.0,
+      "kw_precision": 0.0,
+      "kw_recall": 0.0,
+      "matched_keywords": [],
+      "missed_keywords": [
+        "ICS",
+        "incident command",
+        "operations",
+        "logistics",
+        "wildfire",
+        "multi-day",
+        "planning"
+      ],
+      "n_gold_keywords": 7
+    },
+    {
+      "query_id": "71",
+      "scenario": "Wildfire",
+      "category": "infrastructure",
+      "difficulty": "medium",
+      "kw_f1": 0.0,
+      "kw_precision": 0.0,
+      "kw_recall": 0.0,
+      "matched_keywords": [],
+      "missed_keywords": [
+        "water supply",
+        "tender",
+        "tanker",
+        "remote",
+        "wildfire",
+        "hydrant",
+        "suppression"
+      ],
+      "n_gold_keywords": 7
+    },
+    {
+      "query_id": "72",
+      "scenario": "Wildfire",
+      "category": "medical",
+      "difficulty": "medium",
+      "kw_f1": 0.0,
+      "kw_precision": 0.0,
+      "kw_recall": 0.0,
+      "matched_keywords": [],
+      "missed_keywords": [
+        "mental health",
+        "PTSD",
+        "trauma",
+        "wildfire",
+        "counseling",
+        "protocol",
+        "CDC"
+      ],
+      "n_gold_keywords": 7
+    },
+    {
+      "query_id": "73",
+      "scenario": "Wildfire",
+      "category": "evacuation",
+      "difficulty": "medium",
+      "kw_f1": 0.0,
+      "kw_precision": 0.0,
+      "kw_recall": 0.0,
+      "matched_keywords": [],
+      "missed_keywords": [
+        "livestock",
+        "farm",
+        "animals",
+        "evacuation",
+        "wildfire",
+        "protocol",
+        "transport"
+      ],
+      "n_gold_keywords": 7
+    },
+    {
+      "query_id": "74",
+      "scenario": "Wildfire",
+      "category": "sensor_data",
+      "difficulty": "easy",
+      "kw_f1": 0.0,
+      "kw_precision": 0.0,
+      "kw_recall": 0.0,
+      "matched_keywords": [],
+      "missed_keywords": [
+        "earthquake",
+        "seismic",
+        "wildfire",
+        "terrain",
+        "landslide",
+        "sensor",
+        "USGS"
+      ],
+      "n_gold_keywords": 7
+    },
+    {
+      "query_id": "75",
+      "scenario": "Wildfire",
+      "category": "hallucination_test",
+      "difficulty": "easy",
+      "kw_f1": 0.0,
+      "kw_precision": 0.0,
+      "kw_recall": 0.0,
+      "matched_keywords": [],
+      "missed_keywords": [
+        "cannot confirm",
+        "not available",
+        "verify",
+        "official",
+        "data",
+        "approximate"
+      ],
+      "n_gold_keywords": 6
+    },
+    {
+      "query_id": "76",
+      "scenario": "Wildfire",
+      "category": "multi_source",
+      "difficulty": "hard",
+      "kw_f1": 0.0,
+      "kw_precision": 0.0,
+      "kw_recall": 0.0,
+      "matched_keywords": [],
+      "missed_keywords": [
+        "weather",
+        "satellite",
+        "social media",
+        "resource",
+        "pre-position",
+        "Australia",
+        "bushfire",
+        "synthesis"
+      ],
+      "n_gold_keywords": 8
+    },
+    {
+      "query_id": "77",
+      "scenario": "Wildfire",
+      "category": "infrastructure",
+      "difficulty": "medium",
+      "kw_f1": 0.0,
+      "kw_precision": 0.0,
+      "kw_recall": 0.0,
+      "matched_keywords": [],
+      "missed_keywords": [
+        "post-fire",
+        "mudslide",
+        "debris flow",
+        "watershed",
+        "burned",
+        "flood",
+        "rain"
+      ],
+      "n_gold_keywords": 7
+    },
+    {
+      "query_id": "78",
+      "scenario": "Wildfire",
+      "category": "protocol",
+      "difficulty": "easy",
+      "kw_f1": 0.0,
+      "kw_precision": 0.0,
+      "kw_recall": 0.0,
+      "matched_keywords": [],
+      "missed_keywords": [
+        "red flag",
+        "warning",
+        "NWS",
+        "wind",
+        "humidity",
+        "fire",
+        "protocol",
+        "response"
+      ],
+      "n_gold_keywords": 8
+    },
+    {
+      "query_id": "79",
+      "scenario": "Wildfire",
+      "category": "situational_awareness",
+      "difficulty": "medium",
+      "kw_f1": 0.0,
+      "kw_precision": 0.0,
+      "kw_recall": 0.0,
+      "matched_keywords": [],
+      "missed_keywords": [
+        "drone",
+        "imagery",
+        "UAV",
+        "fire",
+        "perimeter",
+        "situational",
+        "awareness",
+        "Australia"
+      ],
+      "n_gold_keywords": 8
+    },
+    {
+      "query_id": "80",
+      "scenario": "Wildfire",
+      "category": "protocol",
+      "difficulty": "medium",
+      "kw_f1": 0.0,
+      "kw_precision": 0.0,
+      "kw_recall": 0.0,
+      "matched_keywords": [],
+      "missed_keywords": [
+        "Type 1",
+        "IMT",
+        "ICS",
+        "wildfire",
+        "command",
+        "logistics",
+        "planning",
+        "operations"
+      ],
+      "n_gold_keywords": 8
+    },
+    {
+      "query_id": "81",
+      "scenario": "Typhoon",
+      "category": "evacuation",
+      "difficulty": "medium",
+      "kw_f1": 0.0,
+      "kw_precision": 0.0,
+      "kw_recall": 0.0,
+      "matched_keywords": [],
+      "missed_keywords": [
+        "coastal",
+        "evacuation",
+        "storm surge",
+        "typhoon",
+        "shelter",
+        "mandatory",
+        "protocol"
+      ],
+      "n_gold_keywords": 7
+    },
+    {
+      "query_id": "82",
+      "scenario": "Typhoon",
+      "category": "situational_awareness",
+      "difficulty": "medium",
+      "kw_f1": 0.0,
+      "kw_precision": 0.0,
+      "kw_recall": 0.0,
+      "matched_keywords": [],
+      "missed_keywords": [
+        "flooding",
+        "damage",
+        "typhoon",
+        "stranded",
+        "reports",
+        "social",
+        "landfall"
+      ],
+      "n_gold_keywords": 7
+    },
+    {
+      "query_id": "83",
+      "scenario": "Typhoon",
+      "category": "sensor_data",
+      "difficulty": "easy",
+      "kw_f1": 0.0,
+      "kw_precision": 0.0,
+      "kw_recall": 0.0,
+      "matched_keywords": [],
+      "missed_keywords": [
+        "gage",
+        "height",
+        "river",
+        "flood",
+        "coastal",
+        "sensor",
+        "USGS",
+        "threshold"
+      ],
+      "n_gold_keywords": 8
+    },
+    {
+      "query_id": "84",
+      "scenario": "Typhoon",
+      "category": "medical",
+      "difficulty": "easy",
+      "kw_f1": 0.0,
+      "kw_precision": 0.0,
+      "kw_recall": 0.0,
+      "matched_keywords": [],
+      "missed_keywords": [
+        "disease",
+        "leptospirosis",
+        "contamination",
+        "medical",
+        "water",
+        "supplies",
+        "CDC"
+      ],
+      "n_gold_keywords": 7
+    },
+    {
+      "query_id": "85",
+      "scenario": "Typhoon",
+      "category": "hallucination_test",
+      "difficulty": "easy",
+      "kw_f1": 0.0,
+      "kw_precision": 0.0,
+      "kw_recall": 0.0,
+      "matched_keywords": [],
+      "missed_keywords": [
+        "uncertainty",
+        "cannot predict exactly",
+        "forecast",
+        "track",
+        "cone of uncertainty",
+        "margin"
+      ],
+      "n_gold_keywords": 6
+    },
+    {
+      "query_id": "86",
+      "scenario": "Typhoon",
+      "category": "situational_awareness",
+      "difficulty": "medium",
+      "kw_f1": 0.0,
+      "kw_precision": 0.0,
+      "kw_recall": 0.0,
+      "matched_keywords": [],
+      "missed_keywords": [
+        "Typhoon Pablo",
+        "Mindanao",
+        "Philippines",
+        "damage",
+        "flood",
+        "evacuation",
+        "social media"
+      ],
+      "n_gold_keywords": 7
+    },
+    {
+      "query_id": "87",
+      "scenario": "Typhoon",
+      "category": "protocol",
+      "difficulty": "easy",
+      "kw_f1": 0.0,
+      "kw_precision": 0.0,
+      "kw_recall": 0.0,
+      "matched_keywords": [],
+      "missed_keywords": [
+        "PAGASA",
+        "signal",
+        "typhoon",
+        "warning",
+        "evacuation",
+        "protocol",
+        "Philippines"
+      ],
+      "n_gold_keywords": 7
+    },
+    {
+      "query_id": "88",
+      "scenario": "Typhoon",
+      "category": "infrastructure",
+      "difficulty": "medium",
+      "kw_f1": 0.0,
+      "kw_precision": 0.0,
+      "kw_recall": 0.0,
+      "matched_keywords": [],
+      "missed_keywords": [
+        "storm surge",
+        "Typhoon Yolanda",
+        "coastal",
+        "infrastructure",
+        "wave",
+        "inundation",
+        "destruction"
+      ],
+      "n_gold_keywords": 7
+    },
+    {
+      "query_id": "89",
+      "scenario": "Typhoon",
+      "category": "multi_source",
+      "difficulty": "hard",
+      "kw_f1": 0.0,
+      "kw_precision": 0.0,
+      "kw_recall": 0.0,
+      "matched_keywords": [],
+      "missed_keywords": [
+        "satellite",
+        "social media",
+        "sensor",
+        "typhoon",
+        "search",
+        "rescue",
+        "coordinates",
+        "fusion"
+      ],
+      "n_gold_keywords": 8
+    },
+    {
+      "query_id": "90",
+      "scenario": "Typhoon",
+      "category": "weather",
+      "difficulty": "easy",
+      "kw_f1": 0.0,
+      "kw_precision": 0.0,
+      "kw_recall": 0.0,
+      "matched_keywords": [],
+      "missed_keywords": [
+        "super-typhoon",
+        "wind",
+        "Category 5",
+        "knots",
+        "JTWC",
+        "classification",
+        "barometric"
+      ],
+      "n_gold_keywords": 7
+    },
+    {
+      "query_id": "91",
+      "scenario": "Typhoon",
+      "category": "evacuation",
+      "difficulty": "medium",
+      "kw_f1": 0.0,
+      "kw_precision": 0.0,
+      "kw_recall": 0.0,
+      "matched_keywords": [],
+      "missed_keywords": [
+        "coastal",
+        "fishing",
+        "community",
+        "typhoon",
+        "evacuation",
+        "Philippines",
+        "vulnerability",
+        "barrier"
+      ],
+      "n_gold_keywords": 8
+    },
+    {
+      "query_id": "92",
+      "scenario": "Typhoon",
+      "category": "protocol",
+      "difficulty": "medium",
+      "kw_f1": 0.0,
+      "kw_precision": 0.0,
+      "kw_recall": 0.0,
+      "matched_keywords": [],
+      "missed_keywords": [
+        "UN",
+        "OCHA",
+        "humanitarian",
+        "logistics",
+        "coordination",
+        "Yolanda",
+        "Philippines",
+        "international"
+      ],
+      "n_gold_keywords": 8
+    },
+    {
+      "query_id": "93",
+      "scenario": "Typhoon",
+      "category": "sensor_data",
+      "difficulty": "medium",
+      "kw_f1": 0.0,
+      "kw_precision": 0.0,
+      "kw_recall": 0.0,
+      "matched_keywords": [],
+      "missed_keywords": [
+        "USGS",
+        "gauge",
+        "compound",
+        "flooding",
+        "typhoon",
+        "storm surge",
+        "rainfall",
+        "threshold"
+      ],
+      "n_gold_keywords": 8
+    },
+    {
+      "query_id": "94",
+      "scenario": "Typhoon",
+      "category": "situational_awareness",
+      "difficulty": "medium",
+      "kw_f1": 0.0,
+      "kw_precision": 0.0,
+      "kw_recall": 0.0,
+      "matched_keywords": [],
+      "missed_keywords": [
+        "satellite",
+        "imagery",
+        "humanitarian",
+        "relief",
+        "distribution",
+        "Yolanda",
+        "priority"
+      ],
+      "n_gold_keywords": 7
+    },
+    {
+      "query_id": "95",
+      "scenario": "Typhoon",
+      "category": "medical",
+      "difficulty": "medium",
+      "kw_f1": 0.0,
+      "kw_precision": 0.0,
+      "kw_recall": 0.0,
+      "matched_keywords": [],
+      "missed_keywords": [
+        "trauma",
+        "surgery",
+        "72 hours",
+        "typhoon",
+        "medical",
+        "protocol",
+        "triage",
+        "field hospital"
+      ],
+      "n_gold_keywords": 8
+    },
+    {
+      "query_id": "96",
+      "scenario": "Typhoon",
+      "category": "protocol",
+      "difficulty": "easy",
+      "kw_f1": 0.0,
+      "kw_precision": 0.0,
+      "kw_recall": 0.0,
+      "matched_keywords": [],
+      "missed_keywords": [
+        "AFP",
+        "military",
+        "Philippines",
+        "typhoon",
+        "rescue",
+        "logistics",
+        "protocol"
+      ],
+      "n_gold_keywords": 7
+    },
+    {
+      "query_id": "97",
+      "scenario": "Typhoon",
+      "category": "multi_source",
+      "difficulty": "hard",
+      "kw_f1": 0.0,
+      "kw_precision": 0.0,
+      "kw_recall": 0.0,
+      "matched_keywords": [],
+      "missed_keywords": [
+        "wind",
+        "social media",
+        "satellite",
+        "municipality",
+        "Pablo",
+        "severity",
+        "affected",
+        "synthesis"
+      ],
+      "n_gold_keywords": 8
+    },
+    {
+      "query_id": "98",
+      "scenario": "Typhoon",
+      "category": "protocol",
+      "difficulty": "medium",
+      "kw_f1": 0.0,
+      "kw_precision": 0.0,
+      "kw_recall": 0.0,
+      "matched_keywords": [],
+      "missed_keywords": [
+        "cash",
+        "transfer",
+        "relief",
+        "Yolanda",
+        "market",
+        "Philippines",
+        "intervention",
+        "humanitarian"
+      ],
+      "n_gold_keywords": 8
+    },
+    {
+      "query_id": "99",
+      "scenario": "Typhoon",
+      "category": "infrastructure",
+      "difficulty": "medium",
+      "kw_f1": 0.0,
+      "kw_precision": 0.0,
+      "kw_recall": 0.0,
+      "matched_keywords": [],
+      "missed_keywords": [
+        "airport",
+        "restoration",
+        "typhoon",
+        "humanitarian",
+        "airlift",
+        "priority",
+        "runway",
+        "supply"
+      ],
+      "n_gold_keywords": 8
+    },
+    {
+      "query_id": "100",
+      "scenario": "Typhoon",
+      "category": "situational_awareness",
+      "difficulty": "medium",
+      "kw_f1": 0.0,
+      "kw_precision": 0.0,
+      "kw_recall": 0.0,
+      "matched_keywords": [],
+      "missed_keywords": [
+        "caution",
+        "affected",
+        "infrastructure",
+        "donations",
+        "information type",
+        "social media",
+        "typhoon"
+      ],
+      "n_gold_keywords": 7
+    },
+    {
+      "query_id": "101",
+      "scenario": "Typhoon",
+      "category": "weather",
+      "difficulty": "easy",
+      "kw_f1": 0.0,
+      "kw_precision": 0.0,
+      "kw_recall": 0.0,
+      "matched_keywords": [],
+      "missed_keywords": [
+        "forecast",
+        "72 hours",
+        "track",
+        "typhoon",
+        "landfall",
+        "uncertainty",
+        "evacuation",
+        "decision"
+      ],
+      "n_gold_keywords": 8
+    },
+    {
+      "query_id": "102",
+      "scenario": "Typhoon",
+      "category": "protocol",
+      "difficulty": "easy",
+      "kw_f1": 0.0,
+      "kw_precision": 0.0,
+      "kw_recall": 0.0,
+      "matched_keywords": [],
+      "missed_keywords": [
+        "early warning",
+        "dissemination",
+        "island",
+        "typhoon",
+        "radio",
+        "barangay",
+        "protocol",
+        "communications"
+      ],
+      "n_gold_keywords": 8
+    },
+    {
+      "query_id": "103",
+      "scenario": "Typhoon",
+      "category": "infrastructure",
+      "difficulty": "hard",
+      "kw_f1": 0.0,
+      "kw_precision": 0.0,
+      "kw_recall": 0.0,
+      "matched_keywords": [],
+      "missed_keywords": [
+        "bridge",
+        "restoration",
+        "priority",
+        "typhoon",
+        "coastal",
+        "access",
+        "imagery",
+        "infrastructure"
+      ],
+      "n_gold_keywords": 8
+    },
+    {
+      "query_id": "104",
+      "scenario": "Typhoon",
+      "category": "medical",
+      "difficulty": "easy",
+      "kw_f1": 0.0,
+      "kw_precision": 0.0,
+      "kw_recall": 0.0,
+      "matched_keywords": [],
+      "missed_keywords": [
+        "WHO",
+        "EMT",
+        "field hospital",
+        "deployment",
+        "typhoon",
+        "standard",
+        "48 hours",
+        "capacity"
+      ],
+      "n_gold_keywords": 8
+    },
+    {
+      "query_id": "105",
+      "scenario": "Typhoon",
+      "category": "evacuation",
+      "difficulty": "medium",
+      "kw_f1": 0.0,
+      "kw_precision": 0.0,
+      "kw_recall": 0.0,
+      "matched_keywords": [],
+      "missed_keywords": [
+        "Yolanda",
+        "lessons",
+        "protocol",
+        "storm surge",
+        "evacuation",
+        "NDRRMC",
+        "change",
+        "Philippines"
+      ],
+      "n_gold_keywords": 8
+    },
+    {
+      "query_id": "106",
+      "scenario": "Building_Collapse",
+      "category": "search_rescue",
+      "difficulty": "medium",
+      "kw_f1": 0.0,
+      "kw_precision": 0.0,
+      "kw_recall": 0.0,
+      "matched_keywords": [],
+      "missed_keywords": [
+        "USAR",
+        "search",
+        "rescue",
+        "structural",
+        "void space",
+        "victim",
+        "protocol",
+        "ICS"
+      ],
+      "n_gold_keywords": 8
+    },
+    {
+      "query_id": "107",
+      "scenario": "Building_Collapse",
+      "category": "infrastructure",
+      "difficulty": "medium",
+      "kw_f1": 0.0,
+      "kw_precision": 0.0,
+      "kw_recall": 0.0,
+      "matched_keywords": [],
+      "missed_keywords": [
+        "collapse",
+        "pancake",
+        "survivor",
+        "imagery",
+        "trapped",
+        "structural",
+        "void"
+      ],
+      "n_gold_keywords": 7
+    },
+    {
+      "query_id": "108",
+      "scenario": "Building_Collapse",
+      "category": "situational_awareness",
+      "difficulty": "medium",
+      "kw_f1": 0.0,
+      "kw_precision": 0.0,
+      "kw_recall": 0.0,
+      "matched_keywords": [],
+      "missed_keywords": [
+        "trapped",
+        "survivors",
+        "collapse",
+        "rescue",
+        "reports",
+        "social",
+        "Savar",
+        "Bangladesh"
+      ],
+      "n_gold_keywords": 8
+    },
+    {
+      "query_id": "109",
+      "scenario": "Building_Collapse",
+      "category": "hallucination_test",
+      "difficulty": "easy",
+      "kw_f1": 0.0,
+      "kw_precision": 0.0,
+      "kw_recall": 0.0,
+      "matched_keywords": [],
+      "missed_keywords": [
+        "not safe",
+        "dangerous",
+        "do not",
+        "trained",
+        "professional",
+        "secondary collapse",
+        "avoid"
+      ],
+      "n_gold_keywords": 7
+    },
+    {
+      "query_id": "110",
+      "scenario": "Building_Collapse",
+      "category": "sensor_data",
+      "difficulty": "medium",
+      "kw_f1": 0.0,
+      "kw_precision": 0.0,
+      "kw_recall": 0.0,
+      "matched_keywords": [],
+      "missed_keywords": [
+        "aftershock",
+        "seismic",
+        "USGS",
+        "magnitude",
+        "secondary collapse",
+        "structural risk"
+      ],
+      "n_gold_keywords": 6
+    },
+    {
+      "query_id": "111",
+      "scenario": "Earthquake",
+      "category": "protocol",
+      "difficulty": "easy",
+      "kw_f1": 0.0,
+      "kw_precision": 0.0,
+      "kw_recall": 0.0,
+      "matched_keywords": [],
+      "missed_keywords": [
+        "earthquake",
+        "protocol",
+        "USAR",
+        "structural",
+        "triage",
+        "aftershock",
+        "FEMA",
+        "response"
+      ],
+      "n_gold_keywords": 8
+    },
+    {
+      "query_id": "112",
+      "scenario": "Earthquake",
+      "category": "situational_awareness",
+      "difficulty": "medium",
+      "kw_f1": 0.0,
+      "kw_precision": 0.0,
+      "kw_recall": 0.0,
+      "matched_keywords": [],
+      "missed_keywords": [
+        "Guatemala",
+        "earthquake",
+        "social media",
+        "damage",
+        "reports",
+        "collapsed",
+        "rescue"
+      ],
+      "n_gold_keywords": 7
+    },
+    {
+      "query_id": "113",
+      "scenario": "Earthquake",
+      "category": "infrastructure",
+      "difficulty": "medium",
+      "kw_f1": 0.0,
+      "kw_precision": 0.0,
+      "kw_recall": 0.0,
+      "matched_keywords": [],
+      "missed_keywords": [
+        "Italy",
+        "earthquake",
+        "Emilia-Romagna",
+        "factory",
+        "infrastructure",
+        "damage",
+        "industrial"
+      ],
+      "n_gold_keywords": 7
+    },
+    {
+      "query_id": "114",
+      "scenario": "Earthquake",
+      "category": "sensor_data",
+      "difficulty": "easy",
+      "kw_f1": 0.0,
+      "kw_precision": 0.0,
+      "kw_recall": 0.0,
+      "matched_keywords": [],
+      "missed_keywords": [
+        "USGS",
+        "earthquake",
+        "API",
+        "magnitude",
+        "sequence",
+        "aftershock",
+        "monitoring",
+        "real-time"
+      ],
+      "n_gold_keywords": 8
+    },
+    {
+      "query_id": "115",
+      "scenario": "Earthquake",
+      "category": "medical",
+      "difficulty": "medium",
+      "kw_f1": 0.0,
+      "kw_precision": 0.0,
+      "kw_recall": 0.0,
+      "matched_keywords": [],
+      "missed_keywords": [
+        "crush syndrome",
+        "earthquake",
+        "medical",
+        "trauma",
+        "hospital",
+        "field",
+        "protocol"
+      ],
+      "n_gold_keywords": 7
+    },
+    {
+      "query_id": "116",
+      "scenario": "Earthquake",
+      "category": "situational_awareness",
+      "difficulty": "medium",
+      "kw_f1": 0.0,
+      "kw_precision": 0.0,
+      "kw_recall": 0.0,
+      "matched_keywords": [],
+      "missed_keywords": [
+        "Bohol",
+        "earthquake",
+        "Philippines",
+        "social media",
+        "damage",
+        "church",
+        "infrastructure",
+        "reports"
+      ],
+      "n_gold_keywords": 8
+    },
+    {
+      "query_id": "117",
+      "scenario": "Building_Collapse",
+      "category": "multi_source",
+      "difficulty": "hard",
+      "kw_f1": 0.0,
+      "kw_precision": 0.0,
+      "kw_recall": 0.0,
+      "matched_keywords": [],
+      "missed_keywords": [
+        "USAR",
+        "social media",
+        "satellite",
+        "seismic",
+        "survivor",
+        "deployment",
+        "collapse",
+        "fusion"
+      ],
+      "n_gold_keywords": 8
+    },
+    {
+      "query_id": "118",
+      "scenario": "Earthquake",
+      "category": "protocol",
+      "difficulty": "easy",
+      "kw_f1": 0.0,
+      "kw_precision": 0.0,
+      "kw_recall": 0.0,
+      "matched_keywords": [],
+      "missed_keywords": [
+        "structural",
+        "rapid assessment",
+        "SRA",
+        "earthquake",
+        "ATC-20",
+        "placard",
+        "inspection"
+      ],
+      "n_gold_keywords": 7
+    },
+    {
+      "query_id": "119",
+      "scenario": "Earthquake",
+      "category": "infrastructure",
+      "difficulty": "medium",
+      "kw_f1": 0.0,
+      "kw_precision": 0.0,
+      "kw_recall": 0.0,
+      "matched_keywords": [],
+      "missed_keywords": [
+        "Costa Rica",
+        "earthquake",
+        "highway",
+        "road",
+        "landslide",
+        "damage",
+        "infrastructure"
+      ],
+      "n_gold_keywords": 7
+    },
+    {
+      "query_id": "120",
+      "scenario": "Earthquake",
+      "category": "evacuation",
+      "difficulty": "medium",
+      "kw_f1": 0.0,
+      "kw_precision": 0.0,
+      "kw_recall": 0.0,
+      "matched_keywords": [],
+      "missed_keywords": [
+        "Bohol",
+        "Cebu",
+        "earthquake",
+        "evacuation",
+        "island",
+        "transport",
+        "airport",
+        "protocol"
+      ],
+      "n_gold_keywords": 8
+    },
+    {
+      "query_id": "121",
+      "scenario": "Building_Collapse",
+      "category": "protocol",
+      "difficulty": "medium",
+      "kw_f1": 0.0,
+      "kw_precision": 0.0,
+      "kw_recall": 0.0,
+      "matched_keywords": [],
+      "missed_keywords": [
+        "Rana Plaza",
+        "Savar",
+        "building code",
+        "violation",
+        "structural",
+        "floors",
+        "garment",
+        "Bangladesh"
+      ],
+      "n_gold_keywords": 8
+    },
+    {
+      "query_id": "122",
+      "scenario": "Earthquake",
+      "category": "sensor_data",
+      "difficulty": "easy",
+      "kw_f1": 0.0,
+      "kw_precision": 0.0,
+      "kw_recall": 0.0,
+      "matched_keywords": [],
+      "missed_keywords": [
+        "USGS",
+        "magnitude",
+        "epicenter",
+        "depth",
+        "radius",
+        "affected",
+        "seismic",
+        "alert"
+      ],
+      "n_gold_keywords": 8
+    },
+    {
+      "query_id": "123",
+      "scenario": "Earthquake",
+      "category": "multi_source",
+      "difficulty": "hard",
+      "kw_f1": 0.0,
+      "kw_precision": 0.0,
+      "kw_recall": 0.0,
+      "matched_keywords": [],
+      "missed_keywords": [
+        "seismic",
+        "social media",
+        "imagery",
+        "Italy",
+        "earthquake",
+        "second",
+        "escalating",
+        "risk"
+      ],
+      "n_gold_keywords": 8
+    },
+    {
+      "query_id": "124",
+      "scenario": "Building_Collapse",
+      "category": "protocol",
+      "difficulty": "medium",
+      "kw_f1": 0.0,
+      "kw_precision": 0.0,
+      "kw_recall": 0.0,
+      "matched_keywords": [],
+      "missed_keywords": [
+        "USAR",
+        "Type I",
+        "Type II",
+        "configuration",
+        "residential",
+        "collapse",
+        "team",
+        "heavy"
+      ],
+      "n_gold_keywords": 8
+    },
+    {
+      "query_id": "125",
+      "scenario": "Earthquake",
+      "category": "infrastructure",
+      "difficulty": "medium",
+      "kw_f1": 0.0,
+      "kw_precision": 0.0,
+      "kw_recall": 0.0,
+      "matched_keywords": [],
+      "missed_keywords": [
+        "Bohol",
+        "unreinforced",
+        "masonry",
+        "church",
+        "building",
+        "collapse",
+        "earthquake",
+        "seismic"
+      ],
+      "n_gold_keywords": 8
+    },
+    {
+      "query_id": "126",
+      "scenario": "Earthquake",
+      "category": "hallucination_test",
+      "difficulty": "easy",
+      "kw_f1": 0.0,
+      "kw_precision": 0.0,
+      "kw_recall": 0.0,
+      "matched_keywords": [],
+      "missed_keywords": [
+        "cannot confirm",
+        "not available",
+        "verify",
+        "official",
+        "approximate",
+        "INEC",
+        "data"
+      ],
+      "n_gold_keywords": 7
+    },
+    {
+      "query_id": "127",
+      "scenario": "Earthquake",
+      "category": "weather",
+      "difficulty": "easy",
+      "kw_f1": 0.0,
+      "kw_precision": 0.0,
+      "kw_recall": 0.0,
+      "matched_keywords": [],
+      "missed_keywords": [
+        "weather",
+        "temperature",
+        "rain",
+        "SAR",
+        "earthquake",
+        "rescue",
+        "hypothermia",
+        "heat"
+      ],
+      "n_gold_keywords": 8
+    },
+    {
+      "query_id": "128",
+      "scenario": "Building_Collapse",
+      "category": "medical",
+      "difficulty": "medium",
+      "kw_f1": 0.0,
+      "kw_precision": 0.0,
+      "kw_recall": 0.0,
+      "matched_keywords": [],
+      "missed_keywords": [
+        "golden",
+        "72 hours",
+        "survival",
+        "collapse",
+        "resource",
+        "allocation",
+        "triage",
+        "rescue"
+      ],
+      "n_gold_keywords": 8
+    },
+    {
+      "query_id": "129",
+      "scenario": "Earthquake",
+      "category": "situational_awareness",
+      "difficulty": "medium",
+      "kw_f1": 0.0,
+      "kw_precision": 0.0,
+      "kw_recall": 0.0,
+      "matched_keywords": [],
+      "missed_keywords": [
+        "language",
+        "Spanish",
+        "indigenous",
+        "Guatemala",
+        "social media",
+        "situational",
+        "awareness",
+        "barrier"
+      ],
+      "n_gold_keywords": 8
+    },
+    {
+      "query_id": "130",
+      "scenario": "Earthquake",
+      "category": "protocol",
+      "difficulty": "medium",
+      "kw_f1": 0.0,
+      "kw_precision": 0.0,
+      "kw_recall": 0.0,
+      "matched_keywords": [],
+      "missed_keywords": [
+        "INSARAG",
+        "OCHA",
+        "international",
+        "search",
+        "rescue",
+        "Bohol",
+        "Philippines",
+        "coordination"
+      ],
+      "n_gold_keywords": 8
+    },
+    {
+      "query_id": "131",
+      "scenario": "Earthquake",
+      "category": "infrastructure",
+      "difficulty": "medium",
+      "kw_f1": 0.0,
+      "kw_precision": 0.0,
+      "kw_recall": 0.0,
+      "matched_keywords": [],
+      "missed_keywords": [
+        "hospital",
+        "water",
+        "power",
+        "earthquake",
+        "restoration",
+        "priority",
+        "critical",
+        "infrastructure"
+      ],
+      "n_gold_keywords": 8
+    },
+    {
+      "query_id": "132",
+      "scenario": "Earthquake",
+      "category": "multi_source",
+      "difficulty": "hard",
+      "kw_f1": 0.0,
+      "kw_precision": 0.0,
+      "kw_recall": 0.0,
+      "matched_keywords": [],
+      "missed_keywords": [
+        "aftershock",
+        "social media",
+        "imagery",
+        "Guatemala",
+        "USAR",
+        "priority",
+        "deploy",
+        "multiple"
+      ],
+      "n_gold_keywords": 8
+    },
+    {
+      "query_id": "133",
+      "scenario": "Building_Collapse",
+      "category": "protocol",
+      "difficulty": "easy",
+      "kw_f1": 0.0,
+      "kw_precision": 0.0,
+      "kw_recall": 0.0,
+      "matched_keywords": [],
+      "missed_keywords": [
+        "USAR",
+        "phase",
+        "size-up",
+        "search",
+        "rescue",
+        "medical",
+        "demobilization"
+      ],
+      "n_gold_keywords": 7
+    },
+    {
+      "query_id": "134",
+      "scenario": "Earthquake",
+      "category": "sensor_data",
+      "difficulty": "easy",
+      "kw_f1": 0.0,
+      "kw_precision": 0.0,
+      "kw_recall": 0.0,
+      "matched_keywords": [],
+      "missed_keywords": [
+        "shallow",
+        "depth",
+        "10 km",
+        "earthquake",
+        "damage",
+        "intensity",
+        "seismic",
+        "USGS"
+      ],
+      "n_gold_keywords": 8
+    },
+    {
+      "query_id": "135",
+      "scenario": "Earthquake",
+      "category": "situational_awareness",
+      "difficulty": "medium",
+      "kw_f1": 0.0,
+      "kw_precision": 0.0,
+      "kw_recall": 0.0,
+      "matched_keywords": [],
+      "missed_keywords": [
+        "Italy",
+        "second",
+        "earthquake",
+        "mainshock",
+        "gap",
+        "fatalities",
+        "May",
+        "responders"
+      ],
+      "n_gold_keywords": 8
+    },
+    {
+      "query_id": "136",
+      "scenario": "Chemical",
+      "category": "evacuation",
+      "difficulty": "medium",
+      "kw_f1": 0.0,
+      "kw_precision": 0.0,
+      "kw_recall": 0.0,
+      "matched_keywords": [],
+      "missed_keywords": [
+        "HAZMAT",
+        "evacuation",
+        "exclusion zone",
+        "PPE",
+        "chemical",
+        "protocol",
+        "shelter in place"
+      ],
+      "n_gold_keywords": 7
+    },
+    {
+      "query_id": "137",
+      "scenario": "Chemical",
+      "category": "situational_awareness",
+      "difficulty": "medium",
+      "kw_f1": 0.0,
+      "kw_precision": 0.0,
+      "kw_recall": 0.0,
+      "matched_keywords": [],
+      "missed_keywords": [
+        "chemical",
+        "explosion",
+        "symptoms",
+        "toxic",
+        "reports",
+        "health",
+        "exposure"
+      ],
+      "n_gold_keywords": 7
+    },
+    {
+      "query_id": "138",
+      "scenario": "Chemical",
+      "category": "weather",
+      "difficulty": "easy",
+      "kw_f1": 0.0,
+      "kw_precision": 0.0,
+      "kw_recall": 0.0,
+      "matched_keywords": [],
+      "missed_keywords": [
+        "wind",
+        "direction",
+        "plume",
+        "toxic",
+        "dispersion",
+        "downwind",
+        "weather"
+      ],
+      "n_gold_keywords": 7
+    },
+    {
+      "query_id": "139",
+      "scenario": "Chemical",
+      "category": "hallucination_test",
+      "difficulty": "easy",
+      "kw_f1": 0.0,
+      "kw_precision": 0.0,
+      "kw_recall": 0.0,
+      "matched_keywords": [],
+      "missed_keywords": [
+        "not safe",
+        "do not",
+        "odorless",
+        "dangerous",
+        "toxic",
+        "clearance",
+        "official"
+      ],
+      "n_gold_keywords": 7
+    },
+    {
+      "query_id": "140",
+      "scenario": "Chemical",
+      "category": "multi_source",
+      "difficulty": "hard",
+      "kw_f1": 0.0,
+      "kw_precision": 0.0,
+      "kw_recall": 0.0,
+      "matched_keywords": [],
+      "missed_keywords": [
+        "perimeter",
+        "wind",
+        "HAZMAT",
+        "social media",
+        "sensor",
+        "exclusion",
+        "protocol",
+        "safe"
+      ],
+      "n_gold_keywords": 8
+    },
+    {
+      "query_id": "141",
+      "scenario": "Chemical",
+      "category": "situational_awareness",
+      "difficulty": "medium",
+      "kw_f1": 0.0,
+      "kw_precision": 0.0,
+      "kw_recall": 0.0,
+      "matched_keywords": [],
+      "missed_keywords": [
+        "Venezuela",
+        "refinery",
+        "Amuay",
+        "explosion",
+        "social media",
+        "damage",
+        "evacuation",
+        "reports"
+      ],
+      "n_gold_keywords": 8
+    },
+    {
+      "query_id": "142",
+      "scenario": "Chemical",
+      "category": "protocol",
+      "difficulty": "medium",
+      "kw_f1": 0.0,
+      "kw_precision": 0.0,
+      "kw_recall": 0.0,
+      "matched_keywords": [],
+      "missed_keywords": [
+        "refinery",
+        "fire",
+        "HAZMAT",
+        "foam",
+        "protocol",
+        "BLEVE",
+        "hydrocarbon",
+        "emergency"
+      ],
+      "n_gold_keywords": 8
+    },
+    {
+      "query_id": "143",
+      "scenario": "Chemical",
+      "category": "medical",
+      "difficulty": "medium",
+      "kw_f1": 0.0,
+      "kw_precision": 0.0,
+      "kw_recall": 0.0,
+      "matched_keywords": [],
+      "missed_keywords": [
+        "ammonium nitrate",
+        "blast",
+        "injury",
+        "trauma",
+        "burns",
+        "protocol",
+        "medical",
+        "Texas"
+      ],
+      "n_gold_keywords": 8
+    },
+    {
+      "query_id": "144",
+      "scenario": "Chemical",
+      "category": "sensor_data",
+      "difficulty": "easy",
+      "kw_f1": 0.0,
+      "kw_precision": 0.0,
+      "kw_recall": 0.0,
+      "matched_keywords": [],
+      "missed_keywords": [
+        "wind",
+        "dynamic",
+        "exclusion zone",
+        "chemical",
+        "plume",
+        "dispersion",
+        "sensor",
+        "direction"
+      ],
+      "n_gold_keywords": 8
+    },
+    {
+      "query_id": "145",
+      "scenario": "Chemical",
+      "category": "infrastructure",
+      "difficulty": "medium",
+      "kw_f1": 0.0,
+      "kw_precision": 0.0,
+      "kw_recall": 0.0,
+      "matched_keywords": [],
+      "missed_keywords": [
+        "blast",
+        "zone",
+        "damage",
+        "explosion",
+        "imagery",
+        "radius",
+        "overpressure",
+        "structural"
+      ],
+      "n_gold_keywords": 8
+    },
+    {
+      "query_id": "146",
+      "scenario": "Chemical",
+      "category": "evacuation",
+      "difficulty": "medium",
+      "kw_f1": 0.0,
+      "kw_precision": 0.0,
+      "kw_recall": 0.0,
+      "matched_keywords": [],
+      "missed_keywords": [
+        "shelter in place",
+        "evacuation",
+        "chemical",
+        "plume",
+        "criteria",
+        "wind",
+        "HAZMAT",
+        "decision"
+      ],
+      "n_gold_keywords": 8
+    },
+    {
+      "query_id": "147",
+      "scenario": "Chemical",
+      "category": "protocol",
+      "difficulty": "easy",
+      "kw_f1": 0.0,
+      "kw_precision": 0.0,
+      "kw_recall": 0.0,
+      "matched_keywords": [],
+      "missed_keywords": [
+        "ERG",
+        "Emergency Response Guidebook",
+        "HAZMAT",
+        "isolation",
+        "protective",
+        "first responder",
+        "protocol"
+      ],
+      "n_gold_keywords": 7
+    },
+    {
+      "query_id": "148",
+      "scenario": "Chemical",
+      "category": "situational_awareness",
+      "difficulty": "medium",
+      "kw_f1": 0.0,
+      "kw_precision": 0.0,
+      "kw_recall": 0.0,
+      "matched_keywords": [],
+      "missed_keywords": [
+        "Venezuela",
+        "refinery",
+        "social media",
+        "health",
+        "warning",
+        "smoke",
+        "toxic",
+        "community"
+      ],
+      "n_gold_keywords": 8
+    },
+    {
+      "query_id": "149",
+      "scenario": "Chemical",
+      "category": "multi_source",
+      "difficulty": "hard",
+      "kw_f1": 0.0,
+      "kw_precision": 0.0,
+      "kw_recall": 0.0,
+      "matched_keywords": [],
+      "missed_keywords": [
+        "social media",
+        "wind",
+        "imagery",
+        "Venezuela",
+        "exposure",
+        "zone",
+        "refinery",
+        "integration"
+      ],
+      "n_gold_keywords": 8
+    },
+    {
+      "query_id": "150",
+      "scenario": "Chemical",
+      "category": "infrastructure",
+      "difficulty": "medium",
+      "kw_f1": 0.0,
+      "kw_precision": 0.0,
+      "kw_recall": 0.0,
+      "matched_keywords": [],
+      "missed_keywords": [
+        "West Texas",
+        "fertilizer",
+        "infrastructure",
+        "apartment",
+        "school",
+        "fire station",
+        "destroyed"
+      ],
+      "n_gold_keywords": 7
+    },
+    {
+      "query_id": "151",
+      "scenario": "Chemical",
+      "category": "protocol",
+      "difficulty": "medium",
+      "kw_f1": 0.0,
+      "kw_precision": 0.0,
+      "kw_recall": 0.0,
+      "matched_keywords": [],
+      "missed_keywords": [
+        "ammonium nitrate",
+        "regulatory",
+        "OSHA",
+        "EPA",
+        "storage",
+        "reporting",
+        "threshold",
+        "compliance"
+      ],
+      "n_gold_keywords": 8
+    },
+    {
+      "query_id": "152",
+      "scenario": "Chemical",
+      "category": "medical",
+      "difficulty": "easy",
+      "kw_f1": 0.0,
+      "kw_precision": 0.0,
+      "kw_recall": 0.0,
+      "matched_keywords": [],
+      "missed_keywords": [
+        "PPE",
+        "HAZMAT",
+        "SCBA",
+        "Level A",
+        "refinery",
+        "fire",
+        "responder",
+        "protective"
+      ],
+      "n_gold_keywords": 8
+    },
+    {
+      "query_id": "153",
+      "scenario": "Chemical",
+      "category": "situational_awareness",
+      "difficulty": "medium",
+      "kw_f1": 0.0,
+      "kw_precision": 0.0,
+      "kw_recall": 0.0,
+      "matched_keywords": [],
+      "missed_keywords": [
+        "West Texas",
+        "BLEVE",
+        "ammonium nitrate",
+        "responder",
+        "explosion",
+        "secondary",
+        "risk",
+        "HAZMAT"
+      ],
+      "n_gold_keywords": 8
+    },
+    {
+      "query_id": "154",
+      "scenario": "Chemical",
+      "category": "evacuation",
+      "difficulty": "easy",
+      "kw_f1": 0.0,
+      "kw_precision": 0.0,
+      "kw_recall": 0.0,
+      "matched_keywords": [],
+      "missed_keywords": [
+        "radius",
+        "evacuation",
+        "West Texas",
+        "mile",
+        "zone",
+        "kilometer",
+        "order"
+      ],
+      "n_gold_keywords": 7
+    },
+    {
+      "query_id": "155",
+      "scenario": "Chemical",
+      "category": "sensor_data",
+      "difficulty": "medium",
+      "kw_f1": 0.0,
+      "kw_precision": 0.0,
+      "kw_recall": 0.0,
+      "matched_keywords": [],
+      "missed_keywords": [
+        "earthquake",
+        "sensor",
+        "seismic",
+        "explosion",
+        "secondary",
+        "USGS",
+        "vibration",
+        "risk"
+      ],
+      "n_gold_keywords": 8
+    },
+    {
+      "query_id": "156",
+      "scenario": "Chemical",
+      "category": "protocol",
+      "difficulty": "easy",
+      "kw_f1": 0.0,
+      "kw_precision": 0.0,
+      "kw_recall": 0.0,
+      "matched_keywords": [],
+      "missed_keywords": [
+        "hot zone",
+        "warm zone",
+        "cold zone",
+        "HAZMAT",
+        "exclusion",
+        "decontamination",
+        "command"
+      ],
+      "n_gold_keywords": 7
+    },
+    {
+      "query_id": "157",
+      "scenario": "Chemical",
+      "category": "infrastructure",
+      "difficulty": "medium",
+      "kw_f1": 0.0,
+      "kw_precision": 0.0,
+      "kw_recall": 0.0,
+      "matched_keywords": [],
+      "missed_keywords": [
+        "thermal",
+        "satellite",
+        "imagery",
+        "fire",
+        "industrial",
+        "infrared",
+        "active",
+        "mapping"
+      ],
+      "n_gold_keywords": 8
+    },
+    {
+      "query_id": "158",
+      "scenario": "Chemical",
+      "category": "hallucination_test",
+      "difficulty": "easy",
+      "kw_f1": 0.0,
+      "kw_precision": 0.0,
+      "kw_recall": 0.0,
+      "matched_keywords": [],
+      "missed_keywords": [
+        "ammonium nitrate",
+        "fertilizer",
+        "cannot confirm",
+        "source",
+        "verify"
+      ],
+      "n_gold_keywords": 5
+    },
+    {
+      "query_id": "159",
+      "scenario": "Chemical",
+      "category": "protocol",
+      "difficulty": "medium",
+      "kw_f1": 0.0,
+      "kw_precision": 0.0,
+      "kw_recall": 0.0,
+      "matched_keywords": [],
+      "missed_keywords": [
+        "Venezuela",
+        "refinery",
+        "lessons",
+        "protocol",
+        "safety",
+        "industry",
+        "PDVSA",
+        "improvement"
+      ],
+      "n_gold_keywords": 8
+    },
+    {
+      "query_id": "160",
+      "scenario": "Chemical",
+      "category": "multi_source",
+      "difficulty": "hard",
+      "kw_f1": 0.0,
+      "kw_precision": 0.0,
+      "kw_recall": 0.0,
+      "matched_keywords": [],
+      "missed_keywords": [
+        "social media",
+        "satellite",
+        "wind",
+        "Venezuela",
+        "shelter in place",
+        "evacuation",
+        "decision",
+        "management"
+      ],
+      "n_gold_keywords": 8
+    },
+    {
+      "query_id": "161",
+      "scenario": "Air_Quality",
+      "category": "situational_awareness",
+      "difficulty": "medium",
+      "kw_f1": 0.0,
+      "kw_precision": 0.0,
+      "kw_recall": 0.0,
+      "matched_keywords": [],
+      "missed_keywords": [
+        "Singapore",
+        "haze",
+        "PSI",
+        "air quality",
+        "social media",
+        "Indonesia",
+        "smoke",
+        "reports"
+      ],
+      "n_gold_keywords": 8
+    },
+    {
+      "query_id": "162",
+      "scenario": "Air_Quality",
+      "category": "protocol",
+      "difficulty": "easy",
+      "kw_f1": 0.0,
+      "kw_precision": 0.0,
+      "kw_recall": 0.0,
+      "matched_keywords": [],
+      "missed_keywords": [
+        "PSI",
+        "threshold",
+        "hazardous",
+        "unhealthy",
+        "mask",
+        "N95",
+        "action",
+        "protocol"
+      ],
+      "n_gold_keywords": 8
+    },
+    {
+      "query_id": "163",
+      "scenario": "Air_Quality",
+      "category": "weather",
+      "difficulty": "easy",
+      "kw_f1": 0.0,
+      "kw_precision": 0.0,
+      "kw_recall": 0.0,
+      "matched_keywords": [],
+      "missed_keywords": [
+        "wind",
+        "direction",
+        "haze",
+        "Singapore",
+        "Indonesia",
+        "transboundary",
+        "monsoon",
+        "transport"
+      ],
+      "n_gold_keywords": 8
+    },
+    {
+      "query_id": "164",
+      "scenario": "Air_Quality",
+      "category": "medical",
+      "difficulty": "easy",
+      "kw_f1": 0.0,
+      "kw_precision": 0.0,
+      "kw_recall": 0.0,
+      "matched_keywords": [],
+      "missed_keywords": [
+        "PM2.5",
+        "health",
+        "respiratory",
+        "cardiovascular",
+        "haze",
+        "exposure",
+        "effects"
+      ],
+      "n_gold_keywords": 7
+    },
+    {
+      "query_id": "165",
+      "scenario": "Air_Quality",
+      "category": "protocol",
+      "difficulty": "medium",
+      "kw_f1": 0.0,
+      "kw_precision": 0.0,
+      "kw_recall": 0.0,
+      "matched_keywords": [],
+      "missed_keywords": [
+        "Singapore",
+        "haze",
+        "protocol",
+        "mask",
+        "school",
+        "health",
+        "response",
+        "NEA"
+      ],
+      "n_gold_keywords": 8
+    },
+    {
+      "query_id": "166",
+      "scenario": "Air_Quality",
+      "category": "situational_awareness",
+      "difficulty": "medium",
+      "kw_f1": 0.0,
+      "kw_precision": 0.0,
+      "kw_recall": 0.0,
+      "matched_keywords": [],
+      "missed_keywords": [
+        "social media",
+        "PSI",
+        "Singapore",
+        "haze",
+        "real-time",
+        "community",
+        "spread",
+        "reports"
+      ],
+      "n_gold_keywords": 8
+    },
+    {
+      "query_id": "167",
+      "scenario": "Air_Quality",
+      "category": "infrastructure",
+      "difficulty": "medium",
+      "kw_f1": 0.0,
+      "kw_precision": 0.0,
+      "kw_recall": 0.0,
+      "matched_keywords": [],
+      "missed_keywords": [
+        "haze",
+        "aviation",
+        "visibility",
+        "airport",
+        "ILS",
+        "operations",
+        "Singapore",
+        "Changi"
+      ],
+      "n_gold_keywords": 8
+    },
+    {
+      "query_id": "168",
+      "scenario": "Air_Quality",
+      "category": "multi_source",
+      "difficulty": "hard",
+      "kw_f1": 0.0,
+      "kw_precision": 0.0,
+      "kw_recall": 0.0,
+      "matched_keywords": [],
+      "missed_keywords": [
+        "wind",
+        "satellite",
+        "fire",
+        "PSI",
+        "social media",
+        "forecast",
+        "Singapore",
+        "haze",
+        "trajectory"
+      ],
+      "n_gold_keywords": 9
+    },
+    {
+      "query_id": "169",
+      "scenario": "Air_Quality",
+      "category": "protocol",
+      "difficulty": "easy",
+      "kw_f1": 0.0,
+      "kw_precision": 0.0,
+      "kw_recall": 0.0,
+      "matched_keywords": [],
+      "missed_keywords": [
+        "N95",
+        "mask",
+        "PM2.5",
+        "haze",
+        "effective",
+        "surgical",
+        "cloth",
+        "protection"
+      ],
+      "n_gold_keywords": 8
+    },
+    {
+      "query_id": "170",
+      "scenario": "Air_Quality",
+      "category": "sensor_data",
+      "difficulty": "easy",
+      "kw_f1": 0.0,
+      "kw_precision": 0.0,
+      "kw_recall": 0.0,
+      "matched_keywords": [],
+      "missed_keywords": [
+        "AQI",
+        "EPA",
+        "PM2.5",
+        "monitoring",
+        "air quality",
+        "index",
+        "sensor",
+        "network"
+      ],
+      "n_gold_keywords": 8
+    },
+    {
+      "query_id": "171",
+      "scenario": "Air_Quality",
+      "category": "evacuation",
+      "difficulty": "medium",
+      "kw_f1": 0.0,
+      "kw_precision": 0.0,
+      "kw_recall": 0.0,
+      "matched_keywords": [],
+      "missed_keywords": [
+        "vulnerable",
+        "elderly",
+        "asthma",
+        "children",
+        "haze",
+        "evacuation",
+        "relocation",
+        "shelter"
+      ],
+      "n_gold_keywords": 8
+    },
+    {
+      "query_id": "172",
+      "scenario": "Air_Quality",
+      "category": "protocol",
+      "difficulty": "medium",
+      "kw_f1": 0.0,
+      "kw_precision": 0.0,
+      "kw_recall": 0.0,
+      "matched_keywords": [],
+      "missed_keywords": [
+        "ASEAN",
+        "transboundary",
+        "haze",
+        "agreement",
+        "Indonesia",
+        "Singapore",
+        "protocol",
+        "international"
+      ],
+      "n_gold_keywords": 8
+    },
+    {
+      "query_id": "173",
+      "scenario": "Air_Quality",
+      "category": "infrastructure",
+      "difficulty": "easy",
+      "kw_f1": 0.0,
+      "kw_precision": 0.0,
+      "kw_recall": 0.0,
+      "matched_keywords": [],
+      "missed_keywords": [
+        "construction",
+        "outdoor",
+        "haze",
+        "PSI",
+        "work",
+        "operations",
+        "stop",
+        "protocol"
+      ],
+      "n_gold_keywords": 8
+    },
+    {
+      "query_id": "174",
+      "scenario": "Air_Quality",
+      "category": "medical",
+      "difficulty": "medium",
+      "kw_f1": 0.0,
+      "kw_precision": 0.0,
+      "kw_recall": 0.0,
+      "matched_keywords": [],
+      "missed_keywords": [
+        "hospital",
+        "emergency",
+        "respiratory",
+        "surge",
+        "haze",
+        "Singapore",
+        "treatment",
+        "protocol"
+      ],
+      "n_gold_keywords": 8
+    },
+    {
+      "query_id": "175",
+      "scenario": "Air_Quality",
+      "category": "multi_source",
+      "difficulty": "hard",
+      "kw_f1": 0.0,
+      "kw_precision": 0.0,
+      "kw_recall": 0.0,
+      "matched_keywords": [],
+      "missed_keywords": [
+        "weather",
+        "satellite",
+        "PSI",
+        "social media",
+        "mask",
+        "distribution",
+        "Singapore",
+        "haze",
+        "priority"
+      ],
+      "n_gold_keywords": 9
+    },
+    {
+      "query_id": "176",
+      "scenario": "Multi_Source",
+      "category": "temporal_context",
+      "difficulty": "hard",
+      "kw_f1": 0.0,
+      "kw_precision": 0.0,
+      "kw_recall": 0.0,
+      "matched_keywords": [],
+      "missed_keywords": [
+        "temporal",
+        "historical",
+        "current",
+        "2013",
+        "2026",
+        "conflation",
+        "context",
+        "bridge"
+      ],
+      "n_gold_keywords": 8
+    },
+    {
+      "query_id": "177",
+      "scenario": "Multi_Source",
+      "category": "modality_attribution",
+      "difficulty": "hard",
+      "kw_f1": 0.0,
+      "kw_precision": 0.0,
+      "kw_recall": 0.0,
+      "matched_keywords": [],
+      "missed_keywords": [
+        "modality",
+        "invoke",
+        "order",
+        "flood",
+        "tool",
+        "sensor",
+        "weather",
+        "social",
+        "protocol"
+      ],
+      "n_gold_keywords": 9
+    },
+    {
+      "query_id": "178",
+      "scenario": "Multi_Source",
+      "category": "system_comparison",
+      "difficulty": "medium",
+      "kw_f1": 0.0,
+      "kw_precision": 0.0,
+      "kw_recall": 0.0,
+      "matched_keywords": [],
+      "missed_keywords": [
+        "Multimodal RAG",
+        "Text-RAG",
+        "sensor",
+        "live",
+        "outperform",
+        "USGS",
+        "vocabulary",
+        "tool"
+      ],
+      "n_gold_keywords": 8
+    },
+    {
+      "query_id": "179",
+      "scenario": "Multi_Source",
+      "category": "safety",
+      "difficulty": "medium",
+      "kw_f1": 0.0,
+      "kw_precision": 0.0,
+      "kw_recall": 0.0,
+      "matched_keywords": [],
+      "missed_keywords": [
+        "safety validator",
+        "unsafe",
+        "phrase",
+        "regex",
+        "dangerous",
+        "disaster",
+        "validator",
+        "scan"
+      ],
+      "n_gold_keywords": 8
+    },
+    {
+      "query_id": "180",
+      "scenario": "Multi_Source",
+      "category": "retrieval",
+      "difficulty": "medium",
+      "kw_f1": 0.0,
+      "kw_precision": 0.0,
+      "kw_recall": 0.0,
+      "matched_keywords": [],
+      "missed_keywords": [
+        "MMR",
+        "diversity",
+        "similarity",
+        "retrieval",
+        "redundancy",
+        "disaster",
+        "lambda",
+        "ChromaDB"
+      ],
+      "n_gold_keywords": 8
+    },
+    {
+      "query_id": "181",
+      "scenario": "Multi_Source",
+      "category": "ablation",
+      "difficulty": "hard",
+      "kw_f1": 0.08,
+      "kw_precision": 0.0588,
+      "kw_recall": 0.125,
+      "matched_keywords": [
+        "limitation"
+      ],
+      "missed_keywords": [
+        "Keyword F1",
+        "metric",
+        "precision",
+        "recall",
+        "evaluation",
+        "disaster",
+        "verbatim"
+      ],
+      "n_gold_keywords": 8
+    },
+    {
+      "query_id": "182",
+      "scenario": "Multi_Source",
+      "category": "system_design",
+      "difficulty": "medium",
+      "kw_f1": 0.0,
+      "kw_precision": 0.0,
+      "kw_recall": 0.0,
+      "matched_keywords": [],
+      "missed_keywords": [
+        "MemorySaver",
+        "LangGraph",
+        "memory",
+        "multi-turn",
+        "thread",
+        "session",
+        "conversation",
+        "context"
+      ],
+      "n_gold_keywords": 8
+    },
+    {
+      "query_id": "183",
+      "scenario": "Multi_Source",
+      "category": "benchmark",
+      "difficulty": "hard",
+      "kw_f1": 0.0,
+      "kw_precision": 0.0,
+      "kw_recall": 0.0,
+      "matched_keywords": [],
+      "missed_keywords": [
+        "benchmark",
+        "200 queries",
+        "50 queries",
+        "sample size",
+        "statistical",
+        "robust",
+        "coverage",
+        "variance"
+      ],
+      "n_gold_keywords": 8
+    },
+    {
+      "query_id": "184",
+      "scenario": "Multi_Source",
+      "category": "temporal_context",
+      "difficulty": "medium",
+      "kw_f1": 0.0,
+      "kw_precision": 0.0,
+      "kw_recall": 0.0,
+      "matched_keywords": [],
+      "missed_keywords": [
+        "Temporal Context Bridge",
+        "historical",
+        "live",
+        "2013",
+        "current",
+        "tag",
+        "context",
+        "conflation"
+      ],
+      "n_gold_keywords": 8
+    },
+    {
+      "query_id": "185",
+      "scenario": "Multi_Source",
+      "category": "evaluation",
+      "difficulty": "hard",
+      "kw_f1": 0.0,
+      "kw_precision": 0.0,
+      "kw_recall": 0.0,
+      "matched_keywords": [],
+      "missed_keywords": [
+        "LLM-as-Judge",
+        "evaluation",
+        "bias",
+        "self-referential",
+        "DR-Fact",
+        "SAA",
+        "advantage",
+        "risk"
+      ],
+      "n_gold_keywords": 8
+    },
+    {
+      "query_id": "186",
+      "scenario": "Multi_Source",
+      "category": "dataset",
+      "difficulty": "medium",
+      "kw_f1": 0.0,
+      "kw_precision": 0.0,
+      "kw_recall": 0.0,
+      "matched_keywords": [],
+      "missed_keywords": [
+        "diversity",
+        "26 events",
+        "CrisisLex",
+        "evaluation",
+        "validity",
+        "overfitting",
+        "generalization",
+        "coverage"
+      ],
+      "n_gold_keywords": 8
+    },
+    {
+      "query_id": "187",
+      "scenario": "Multi_Source",
+      "category": "retrieval",
+      "difficulty": "medium",
+      "kw_f1": 0.0,
+      "kw_precision": 0.0,
+      "kw_recall": 0.0,
+      "matched_keywords": [],
+      "missed_keywords": [
+        "P@K",
+        "precision",
+        "retrieval",
+        "K",
+        "relevant",
+        "documents",
+        "evaluation",
+        "ChromaDB"
+      ],
+      "n_gold_keywords": 8
+    },
+    {
+      "query_id": "188",
+      "scenario": "Multi_Source",
+      "category": "system_design",
+      "difficulty": "hard",
+      "kw_f1": 0.08,
+      "kw_precision": 0.0588,
+      "kw_recall": 0.125,
+      "matched_keywords": [
+        "limitation"
+      ],
+      "missed_keywords": [
+        "fallback",
+        "graceful",
+        "no results",
+        "uncertain",
+        "acknowledge",
+        "tools",
+        "response"
+      ],
+      "n_gold_keywords": 8
+    },
+    {
+      "query_id": "189",
+      "scenario": "Multi_Source",
+      "category": "dataset",
+      "difficulty": "medium",
+      "kw_f1": 0.0,
+      "kw_precision": 0.0,
+      "kw_recall": 0.0,
+      "matched_keywords": [],
+      "missed_keywords": [
+        "HumAID",
+        "CRISISFACTS",
+        "dataset",
+        "improve",
+        "benchmark",
+        "additional",
+        "evaluation"
+      ],
+      "n_gold_keywords": 7
+    },
+    {
+      "query_id": "190",
+      "scenario": "Multi_Source",
+      "category": "evaluation",
+      "difficulty": "hard",
+      "kw_f1": 0.0,
+      "kw_precision": 0.0,
+      "kw_recall": 0.0,
+      "matched_keywords": [],
+      "missed_keywords": [
+        "BM25",
+        "keyword search",
+        "baseline",
+        "evaluation",
+        "retrieval",
+        "comparison",
+        "TF-IDF"
+      ],
+      "n_gold_keywords": 7
+    }
+  ]
+}

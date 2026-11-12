@@ -1,0 +1,1768 @@
+{
+  "total_events": 26,
+  "total_tweets": 27933,
+  "total_informative": 16849,
+  "pct_informative": 60.3,
+  "events": [
+    {
+      "event_name": "2012_Colorado_wildfires",
+      "disaster_type": "Wildfire",
+      "region": "US",
+      "year": 2012,
+      "total_tweets": 1200,
+      "informative": 685,
+      "related_not_informative": 268,
+      "not_related": 247,
+      "pct_informative": 57.1,
+      "top_info_types": {
+        "Other Useful Information": 426,
+        "Sympathy and support": 172,
+        "Affected individuals": 151,
+        "Donations and volunteering": 78,
+        "Infrastructure and utilities": 71
+      },
+      "top_sources": {
+        "Media": 453,
+        "Outsiders": 296,
+        "Government": 74,
+        "Eyewitness": 66,
+        "NGOs": 48
+      },
+      "event_description": {
+        "name": "Colorado wildfires",
+        "size": {
+          "kw_collection": 4172,
+          "geo_collection": null
+        },
+        "time": {
+          "development": "Progressive",
+          "duration": 31,
+          "year": 2012,
+          "month": "Jun.",
+          "start_day": "2012-06-08"
+        },
+        "location": {
+          "country": "US",
+          "spread": "Diffused",
+          "location_description": "Colorado",
+          "country_internet_penetration": null
+        },
+        "categorization": {
+          "category": "Natural",
+          "sub_category": "Climatological",
+          "type": "Wildfire"
+        },
+        "external_url": "http://en.wikipedia.org/wiki/2012_Colorado_wildfires",
+        "keywords": [
+          "#COfire",
+          "#BoulderFire",
+          "#Colorado",
+          "#Wildfire",
+          "#WaldoCanyonFire",
+          "#WaldoFire",
+          "#waldocanyon",
+          "Colorado Springs",
+          "#HighParkFire",
+          "#FlagstaffFire",
+          "#LittleSandFire",
+          "#TreasureFire",
+          "#StateLineFire",
+          "#SpringerFire",
+          "#LastChanceFire",
+          "#FourmileFire",
+          "#4mileFire",
+          "#FourmileCanyonFire",
+          "#BoulderFire",
+          "#BisonFire",
+          "colorado wildfire",
+          "colorado wildfires",
+          "colorado fire",
+          "colorado fires",
+          "boulder fire",
+          "boulder fires",
+          "boulder wildfires",
+          "boulder wildfires"
+        ]
+      }
+    },
+    {
+      "event_name": "2012_Costa_Rica_earthquake",
+      "disaster_type": "Earthquake",
+      "region": "Latin America",
+      "year": 2012,
+      "total_tweets": 1412,
+      "informative": 742,
+      "related_not_informative": 167,
+      "not_related": 503,
+      "pct_informative": 52.5,
+      "top_info_types": {
+        "Other Useful Information": 398,
+        "Caution and advice": 291,
+        "Sympathy and support": 77,
+        "Infrastructure and utilities": 51,
+        "Not applicable": 46
+      },
+      "top_sources": {
+        "Media": 604,
+        "Outsiders": 216,
+        "Eyewitness": 54,
+        "Not applicable": 15,
+        "NGOs": 13
+      },
+      "event_description": {
+        "name": "Costa Rica earthquake",
+        "size": {
+          "kw_collection": 2193,
+          "geo_collection": null
+        },
+        "time": {
+          "development": "Instantaneous",
+          "duration": 13,
+          "year": 2012,
+          "month": "Sep.",
+          "start_day": "2012-09-04"
+        },
+        "location": {
+          "country": "Costa Rica",
+          "spread": "Diffused",
+          "location_description": "Costa Rica",
+          "country_internet_penetration": null
+        },
+        "categorization": {
+          "category": "Natural",
+          "sub_category": "Geophysical",
+          "type": "Earthquake"
+        },
+        "external_url": "http://en.wikipedia.org/wiki/2012_Costa_Rica_earthquake",
+        "keywords": [
+          "#temblorcr",
+          "#terremotocr",
+          "#costarica",
+          "#terremoto",
+          "costa rica quake",
+          "costa rica earthquake",
+          "costa rica temblor",
+          "costa rica terremoto",
+          "#CReq",
+          "Costa Rican quake",
+          "Costa Rican earthquake",
+          "#quake",
+          "#earthquake"
+        ]
+      }
+    },
+    {
+      "event_name": "2012_Guatemala_earthquake",
+      "disaster_type": "Earthquake",
+      "region": "Latin America",
+      "year": 2012,
+      "total_tweets": 1050,
+      "informative": 754,
+      "related_not_informative": 186,
+      "not_related": 110,
+      "pct_informative": 71.8,
+      "top_info_types": {
+        "Other Useful Information": 373,
+        "Affected individuals": 256,
+        "Sympathy and support": 125,
+        "Caution and advice": 71,
+        "Infrastructure and utilities": 44
+      },
+      "top_sources": {
+        "Media": 549,
+        "Outsiders": 285,
+        "NGOs": 32,
+        "Not applicable": 30,
+        "Eyewitness": 23
+      },
+      "event_description": {
+        "name": "Guatemala earthquake",
+        "size": {
+          "kw_collection": 3261,
+          "geo_collection": null
+        },
+        "time": {
+          "development": "Instantaneous",
+          "duration": 20,
+          "year": 2012,
+          "month": "Nov.",
+          "start_day": "2012-11-06"
+        },
+        "location": {
+          "country": "Guatemala",
+          "spread": "Diffused",
+          "location_description": "Guatemala",
+          "country_internet_penetration": null
+        },
+        "categorization": {
+          "category": "Natural",
+          "sub_category": "Geophysical",
+          "type": "Earthquake"
+        },
+        "external_url": "http://en.wikipedia.org/wiki/2012_Guatemala_earthquake",
+        "keywords": [
+          "#sismo",
+          "#Guatemala",
+          "TiemblaenGuate",
+          "TemblorGT",
+          "TerremotoGT",
+          "temblor guatemala",
+          "terremoto guatemala",
+          "sismo guatemala",
+          "earthquake guatemala",
+          "quake guatemala",
+          "#SanMarcos",
+          "#terremotoguatemala",
+          "#tremorguatemala"
+        ]
+      }
+    },
+    {
+      "event_name": "2012_Italy_earthquakes",
+      "disaster_type": "Earthquake",
+      "region": "Europe",
+      "year": 2012,
+      "total_tweets": 1000,
+      "informative": 627,
+      "related_not_informative": 313,
+      "not_related": 60,
+      "pct_informative": 62.7,
+      "top_info_types": {
+        "Other Useful Information": 320,
+        "Sympathy and support": 166,
+        "Caution and advice": 152,
+        "Affected individuals": 117,
+        "Donations and volunteering": 108
+      },
+      "top_sources": {
+        "Outsiders": 377,
+        "Media": 326,
+        "Eyewitness": 93,
+        "NGOs": 45,
+        "Government": 37
+      },
+      "event_description": {
+        "name": "Italy earthquakes",
+        "size": {
+          "kw_collection": 7351,
+          "geo_collection": null
+        },
+        "time": {
+          "development": "Instantaneous",
+          "duration": 32,
+          "year": 2012,
+          "month": "May",
+          "start_day": "2012-05-18"
+        },
+        "location": {
+          "country": "Italy",
+          "spread": "Diffused",
+          "location_description": "Modena",
+          "country_internet_penetration": null
+        },
+        "categorization": {
+          "category": "Natural",
+          "sub_category": "Geophysical",
+          "type": "Earthquake"
+        },
+        "external_url": "http://en.wikipedia.org/wiki/2012_Northern_Italy_earthquakes",
+        "keywords": [
+          "earthquake italy",
+          "quake italy",
+          "#modena",
+          "#sanfelice",
+          "San Felice",
+          "modena terremoto",
+          "modena earthquake",
+          "modena quake",
+          "#norditalia",
+          "terremoto italia",
+          "#terremoto"
+        ]
+      }
+    },
+    {
+      "event_name": "2012_Philipinnes_floods",
+      "disaster_type": "Flood",
+      "region": "Philippines",
+      "year": 2012,
+      "total_tweets": 1000,
+      "informative": 761,
+      "related_not_informative": 145,
+      "not_related": 94,
+      "pct_informative": 76.1,
+      "top_info_types": {
+        "Donations and volunteering": 332,
+        "Affected individuals": 193,
+        "Sympathy and support": 108,
+        "Caution and advice": 105,
+        "Infrastructure and utilities": 73
+      },
+      "top_sources": {
+        "Eyewitness": 350,
+        "Outsiders": 217,
+        "Media": 162,
+        "NGOs": 112,
+        "Business": 28
+      },
+      "event_description": {
+        "name": "Philipinnes Floods",
+        "size": {
+          "kw_collection": 2950,
+          "geo_collection": null
+        },
+        "time": {
+          "development": "Progressive",
+          "duration": 13,
+          "year": 2012,
+          "month": "Aug.",
+          "start_day": "2012-08-01"
+        },
+        "location": {
+          "country": "Philipinnes",
+          "spread": "Diffused",
+          "location_description": "Philipinnes",
+          "country_internet_penetration": null
+        },
+        "categorization": {
+          "category": "Natural",
+          "sub_category": "Hydrological",
+          "type": "Floods"
+        },
+        "external_url": "http://en.wikipedia.org/wiki/2012_Metro_Manila_flooding",
+        "keywords": [
+          "#rescueph",
+          "#reliefPH",
+          "#FloodsPH",
+          "#PrayForThePhilippine",
+          "manila flood",
+          "manila floods",
+          "philippine floods",
+          "philippine flood",
+          "#FloodPH",
+          "#PHalert",
+          "#Habagat"
+        ]
+      }
+    },
+    {
+      "event_name": "2012_Typhoon_Pablo",
+      "disaster_type": "Typhoon",
+      "region": "Philippines",
+      "year": 2012,
+      "total_tweets": 1000,
+      "informative": 678,
+      "related_not_informative": 229,
+      "not_related": 93,
+      "pct_informative": 67.8,
+      "top_info_types": {
+        "Caution and advice": 213,
+        "Sympathy and support": 209,
+        "Affected individuals": 148,
+        "Other Useful Information": 146,
+        "Donations and volunteering": 116
+      },
+      "top_sources": {
+        "Media": 357,
+        "Outsiders": 271,
+        "Eyewitness": 121,
+        "Government": 79,
+        "NGOs": 51
+      },
+      "event_description": {
+        "name": "Typhoon Pablo",
+        "size": {
+          "kw_collection": 1944,
+          "geo_collection": null
+        },
+        "time": {
+          "development": "Progressive",
+          "duration": 21,
+          "year": 2012,
+          "month": "Nov.",
+          "start_day": "2012-11-24"
+        },
+        "location": {
+          "country": "Phillipines",
+          "spread": "Diffused",
+          "location_description": "Phillipines",
+          "country_internet_penetration": null
+        },
+        "categorization": {
+          "category": "Natural",
+          "sub_category": "Meteorological",
+          "type": "Typhoon"
+        },
+        "external_url": "http://en.wikipedia.org/wiki/Typhoon_Bopha",
+        "keywords": [
+          "#PabloPh",
+          "#ReliefPH",
+          "#Bopha",
+          "#TYPHOONPABLO",
+          "#TYPHOONBOPHA",
+          "Typhoon Bopha",
+          "Typhoon Pablo",
+          "#bopha",
+          "#pablo",
+          "#typhoon",
+          "#walangpasok",
+          "#Mindanao",
+          "#Visayas",
+          "#Hinatuan",
+          "#rescuePH",
+          "#pablosafetytips",
+          "#CDO",
+          "#StrongerPH"
+        ]
+      }
+    },
+    {
+      "event_name": "2012_Venezuela_refinery",
+      "disaster_type": "Chemical",
+      "region": "Latin America",
+      "year": 2012,
+      "total_tweets": 1000,
+      "informative": 546,
+      "related_not_informative": 393,
+      "not_related": 61,
+      "pct_informative": 54.6,
+      "top_info_types": {
+        "Other Useful Information": 395,
+        "Sympathy and support": 140,
+        "Infrastructure and utilities": 137,
+        "Affected individuals": 104,
+        "Donations and volunteering": 91
+      },
+      "top_sources": {
+        "Outsiders": 496,
+        "Media": 291,
+        "Government": 60,
+        "Eyewitness": 42,
+        "NGOs": 31
+      },
+      "event_description": {
+        "name": "Venezuela refinery explosion",
+        "size": {
+          "kw_collection": 2736,
+          "geo_collection": null
+        },
+        "time": {
+          "development": "Instantaneous",
+          "duration": 12,
+          "year": 2012,
+          "month": "Aug.",
+          "start_day": "2012-08-24"
+        },
+        "location": {
+          "country": "Venezuela",
+          "spread": "Focalized",
+          "location_description": "Falcon",
+          "country_internet_penetration": null
+        },
+        "categorization": {
+          "category": "Human-induced",
+          "sub_category": "Unintentional",
+          "type": "Explosion"
+        },
+        "external_url": "http://en.wikipedia.org/wiki/Paraguan\u00e1_Refinery_Complex#2012_explosion",
+        "keywords": [
+          "Paraguana Refinery",
+          "venezuela refinery",
+          "Paraguan\u00e1 Refinery",
+          "#Paraguana",
+          "#Paraguan\u00e1",
+          "Amuay Refinery",
+          "Venezuelan refinery",
+          "#Amuay",
+          "Paraguan\u00e1 refiner\u00eda",
+          "Paraguana refineria",
+          "Amuay refineria",
+          "amuay refiner\u00eda",
+          "#Falcon",
+          "#Falc\u00f3n",
+          "Refiner\u00eda venezuela",
+          "Refineria venezuela",
+          "Refiner\u00eda paraguana"
+        ]
+      }
+    },
+    {
+      "event_name": "2013_Alberta_floods",
+      "disaster_type": "Flood",
+      "region": "Canada",
+      "year": 2013,
+      "total_tweets": 1000,
+      "informative": 685,
+      "related_not_informative": 298,
+      "not_related": 17,
+      "pct_informative": 68.5,
+      "top_info_types": {
+        "Donations and volunteering": 220,
+        "Infrastructure and utilities": 199,
+        "Other Useful Information": 173,
+        "Sympathy and support": 139,
+        "Caution and advice": 104
+      },
+      "top_sources": {
+        "Media": 268,
+        "Eyewitness": 235,
+        "Outsiders": 173,
+        "Government": 124,
+        "Business": 85
+      },
+      "event_description": {
+        "name": "Alberta Floods",
+        "size": {
+          "kw_collection": 5887,
+          "geo_collection": null
+        },
+        "time": {
+          "development": "Progressive",
+          "duration": 25,
+          "year": 2013,
+          "month": "Jun.",
+          "start_day": "17/06/2013"
+        },
+        "location": {
+          "country": "Canada",
+          "spread": "Diffused",
+          "location_description": "Alberta",
+          "country_internet_penetration": null
+        },
+        "categorization": {
+          "category": "Natural",
+          "sub_category": "Hydrological",
+          "type": "Floods"
+        },
+        "external_url": "http://en.wikipedia.org/wiki/2013_Alberta_floods",
+        "keywords": [
+          "alberta flood",
+          "#abflood",
+          "canada flood",
+          "alberta flooding",
+          "alberta floods",
+          "canada flooding",
+          "canada floods",
+          "#yycflood",
+          "#yycfloods",
+          "#yycflooding",
+          "calgary flood",
+          "calgary flooding",
+          "calgary floods"
+        ]
+      }
+    },
+    {
+      "event_name": "2013_Australia_bushfire",
+      "disaster_type": "Wildfire",
+      "region": "Australia",
+      "year": 2013,
+      "total_tweets": 1199,
+      "informative": 704,
+      "related_not_informative": 245,
+      "not_related": 250,
+      "pct_informative": 58.7,
+      "top_info_types": {
+        "Other Useful Information": 378,
+        "Caution and advice": 202,
+        "Sympathy and support": 161,
+        "Affected individuals": 75,
+        "Infrastructure and utilities": 73
+      },
+      "top_sources": {
+        "Media": 373,
+        "Outsiders": 304,
+        "Government": 112,
+        "Eyewitness": 95,
+        "NGOs": 46
+      },
+      "event_description": {
+        "name": "Australia wildfires",
+        "size": {
+          "kw_collection": 1982,
+          "geo_collection": null
+        },
+        "time": {
+          "development": "Progressive",
+          "duration": 21,
+          "year": 2013,
+          "month": "Oct.",
+          "start_day": "2013-10-12"
+        },
+        "location": {
+          "country": "Australia",
+          "spread": "Diffused",
+          "location_description": "New South Wales",
+          "country_internet_penetration": null
+        },
+        "categorization": {
+          "category": "Natural",
+          "sub_category": "Climatological",
+          "type": "Wildfire"
+        },
+        "external_url": "http://en.wikipedia.org/wiki/2013_New_South_Wales_bushfires",
+        "keywords": [
+          "#nswfires",
+          "#nswbushfire",
+          "#nswbushfires",
+          "#nswrfs",
+          "#sydneybushfire",
+          "#sydneyfire",
+          "#sydneyfires",
+          "#sydneybushfires",
+          "nsw #bushfire",
+          "#redoctober",
+          "australia #bushfire",
+          "#Faulconbridge",
+          "#nswrfs",
+          "#bushfire sydney",
+          "nsw fire",
+          "#PrayForAustralia",
+          "#prayfornsw",
+          "australia fire",
+          "sydney fire",
+          "nsw fires",
+          "australia fires",
+          "sydney fires",
+          "prayfornsw"
+        ]
+      }
+    },
+    {
+      "event_name": "2013_Bohol_earthquake",
+      "disaster_type": "Earthquake",
+      "region": "Philippines",
+      "year": 2013,
+      "total_tweets": 1000,
+      "informative": 425,
+      "related_not_informative": 544,
+      "not_related": 31,
+      "pct_informative": 42.5,
+      "top_info_types": {
+        "Sympathy and support": 490,
+        "Other Useful Information": 160,
+        "Affected individuals": 147,
+        "Infrastructure and utilities": 69,
+        "Donations and volunteering": 42
+      },
+      "top_sources": {
+        "Outsiders": 620,
+        "Media": 228,
+        "Eyewitness": 63,
+        "NGOs": 25,
+        "Government": 21
+      },
+      "event_description": {
+        "name": "Bohol earthquake",
+        "size": {
+          "kw_collection": 2214,
+          "geo_collection": null
+        },
+        "time": {
+          "development": "Instantaneous",
+          "duration": 12,
+          "year": 2013,
+          "month": "Oct.",
+          "start_day": "2013-10-14"
+        },
+        "location": {
+          "country": "Phillipines",
+          "spread": "Diffused",
+          "location_description": "Phillipines",
+          "country_internet_penetration": null
+        },
+        "categorization": {
+          "category": "Natural",
+          "sub_category": "Geophysical",
+          "type": "Earthquake"
+        },
+        "external_url": "http://en.wikipedia.org/wiki/2013_Bohol_earthquake",
+        "keywords": [
+          "#phquake",
+          "#pheq",
+          "#phtrenchquake",
+          "philippines earthquake",
+          "philippines quake",
+          "ph earthquake",
+          "ph quake",
+          "#phtrenchquake",
+          "#PrayForThePhilippines",
+          "#rescueph",
+          "#reliefPH",
+          "#TabangBohol",
+          "#TabangCebu",
+          "#bohol",
+          "#cebu",
+          "prayforvisayas",
+          "prayforbohol",
+          "#lindol"
+        ]
+      }
+    },
+    {
+      "event_name": "2013_Boston_bombings",
+      "disaster_type": "Man_Made",
+      "region": "US",
+      "year": 2013,
+      "total_tweets": 1000,
+      "informative": 417,
+      "related_not_informative": 512,
+      "not_related": 71,
+      "pct_informative": 41.7,
+      "top_info_types": {
+        "Other Useful Information": 381,
+        "Sympathy and support": 370,
+        "Affected individuals": 107,
+        "Donations and volunteering": 29,
+        "Caution and advice": 19
+      },
+      "top_sources": {
+        "Outsiders": 576,
+        "Media": 278,
+        "Government": 28,
+        "Not applicable": 17,
+        "Eyewitness": 13
+      },
+      "event_description": {
+        "name": "Boston Bombings",
+        "size": {
+          "kw_collection": 157454,
+          "geo_collection": null
+        },
+        "time": {
+          "development": "Instantaneous",
+          "duration": 60,
+          "year": 2013,
+          "month": "Apr.",
+          "start_day": "2013-04-15"
+        },
+        "location": {
+          "country": "US",
+          "spread": "Focalized",
+          "location_description": "Boston",
+          "country_internet_penetration": null
+        },
+        "categorization": {
+          "category": "Human-induced",
+          "sub_category": "Intentional",
+          "type": "Bombings"
+        },
+        "external_url": "http://en.wikipedia.org/wiki/Boston_Marathon_bombings",
+        "keywords": [
+          "boston explosion",
+          "boston explosions",
+          "boston blast",
+          "boston blasts",
+          "boston tragedies",
+          "boston tragedy",
+          "prayforboston",
+          "boston attack",
+          "boston attacks",
+          "boston terrorist",
+          "boston terrorists",
+          "boston tragic",
+          "bostonmarathon",
+          "boston marathon",
+          "boston explosive",
+          "boston bomb",
+          "boston bombing",
+          "Dzhokhar",
+          "Tsarnaev",
+          "marathon attack",
+          "marathon explosion",
+          "marathon explosions",
+          "marathon tragedies",
+          "marathon tragedy",
+          "marathon blasts",
+          "marathon blast",
+          "marathon attacks",
+          "marathon bomb",
+          "marathon bombing",
+          "marathon explosive"
+        ]
+      }
+    },
+    {
+      "event_name": "2013_Brazil_nightclub_fire",
+      "disaster_type": "Fire",
+      "region": "Latin America",
+      "year": 2013,
+      "total_tweets": 1000,
+      "informative": 442,
+      "related_not_informative": 510,
+      "not_related": 48,
+      "pct_informative": 44.2,
+      "top_info_types": {
+        "Sympathy and support": 374,
+        "Affected individuals": 261,
+        "Other Useful Information": 248,
+        "Donations and volunteering": 31,
+        "Not applicable": 30
+      },
+      "top_sources": {
+        "Outsiders": 535,
+        "Media": 367,
+        "Eyewitness": 22,
+        "Not applicable": 11,
+        "NGOs": 9
+      },
+      "event_description": {
+        "name": "Brazil nightclub fire",
+        "size": {
+          "kw_collection": 4786,
+          "geo_collection": null
+        },
+        "time": {
+          "development": "Instantaneous",
+          "duration": 16,
+          "year": 2013,
+          "month": "Jan.",
+          "start_day": "2013-10-14"
+        },
+        "location": {
+          "country": "Brazil",
+          "spread": "Focalized",
+          "location_description": "Santa Maria",
+          "country_internet_penetration": null
+        },
+        "categorization": {
+          "category": "Human-induced",
+          "sub_category": "Unintentional",
+          "type": "Fire"
+        },
+        "external_url": "http://en.wikipedia.org/wiki/Kiss_nightclub_fire",
+        "keywords": [
+          "#For\u00e7aSantaMaria",
+          "boate Kiss",
+          "#boatekiss",
+          "#SantaMaria",
+          "#trag\u00e9diaemSM",
+          "#tragediaemSM",
+          "#TODOSDesejamFor\u00e7asASantaMaria",
+          "#BrazilFire",
+          "#Brazil fire",
+          "Brazil nightclub",
+          "#BrasilDesejaFor\u00e7asAsVitimasDeSantaMaria",
+          "#PrayForSantaMaria",
+          "#PrayForBrazil"
+        ]
+      }
+    },
+    {
+      "event_name": "2013_Colorado_floods",
+      "disaster_type": "Flood",
+      "region": "US",
+      "year": 2013,
+      "total_tweets": 1000,
+      "informative": 768,
+      "related_not_informative": 157,
+      "not_related": 75,
+      "pct_informative": 76.8,
+      "top_info_types": {
+        "Other Useful Information": 222,
+        "Affected individuals": 205,
+        "Infrastructure and utilities": 175,
+        "Donations and volunteering": 149,
+        "Sympathy and support": 77
+      },
+      "top_sources": {
+        "Media": 492,
+        "Outsiders": 190,
+        "Government": 78,
+        "Eyewitness": 65,
+        "NGOs": 61
+      },
+      "event_description": {
+        "name": "Colorado Floods",
+        "size": {
+          "kw_collection": 1778,
+          "geo_collection": null
+        },
+        "time": {
+          "development": "Progressive",
+          "duration": 21,
+          "year": 2013,
+          "month": "Sep.",
+          "start_day": "2013-09-08"
+        },
+        "location": {
+          "country": "US",
+          "spread": "Diffused",
+          "location_description": "Colorado",
+          "country_internet_penetration": null
+        },
+        "categorization": {
+          "category": "Natural",
+          "sub_category": "Hydrological",
+          "type": "Floods"
+        },
+        "external_url": "http://en.wikipedia.org/wiki/2013_Colorado_floods",
+        "keywords": [
+          "#COfloodrelief",
+          "colorado floods",
+          "colorado flooding",
+          "#coloradoflood",
+          "#COflood",
+          "#opCOflood",
+          "#boulderflood",
+          "#Longmont"
+        ]
+      }
+    },
+    {
+      "event_name": "2013_Glasgow_helicopter_crash",
+      "disaster_type": "Aviation",
+      "region": "Europe",
+      "year": 2013,
+      "total_tweets": 1100,
+      "informative": 578,
+      "related_not_informative": 340,
+      "not_related": 182,
+      "pct_informative": 52.5,
+      "top_info_types": {
+        "Sympathy and support": 249,
+        "Affected individuals": 248,
+        "Other Useful Information": 239,
+        "Infrastructure and utilities": 75,
+        "Donations and volunteering": 69
+      },
+      "top_sources": {
+        "Outsiders": 463,
+        "Media": 356,
+        "Government": 42,
+        "Business": 40,
+        "NGOs": 9
+      },
+      "event_description": {
+        "name": "Glasgow helicopter crash",
+        "size": {
+          "kw_collection": 2558,
+          "geo_collection": null
+        },
+        "time": {
+          "development": "Instantaneous",
+          "duration": 30,
+          "year": "2013",
+          "month": "Nov.",
+          "start_day": "2013-11-29"
+        },
+        "location": {
+          "country": "UK",
+          "spread": "Focalized",
+          "location_description": "Glasgow",
+          "country_internet_penetration": null
+        },
+        "categorization": {
+          "category": "Human-induced",
+          "sub_category": "Unintentional",
+          "type": "Crash"
+        },
+        "external_url": "http://en.wikipedia.org/wiki/2013_Glasgow_helicopter_crash",
+        "keywords": [
+          "#prayerforglasgow",
+          "#helicopter",
+          "glasgow helicopter",
+          "#Clutha",
+          "helicopter crash"
+        ]
+      }
+    },
+    {
+      "event_name": "2013_LA_airport_shootings",
+      "disaster_type": "Man_Made",
+      "region": "US",
+      "year": 2013,
+      "total_tweets": 1032,
+      "informative": 682,
+      "related_not_informative": 230,
+      "not_related": 120,
+      "pct_informative": 66.1,
+      "top_info_types": {
+        "Affected individuals": 423,
+        "Other Useful Information": 262,
+        "Sympathy and support": 137,
+        "Infrastructure and utilities": 57,
+        "Caution and advice": 17
+      },
+      "top_sources": {
+        "Media": 537,
+        "Outsiders": 290,
+        "Eyewitness": 42,
+        "Government": 40,
+        "Business": 3
+      },
+      "event_description": {
+        "name": "LA Airport Shootings",
+        "size": {
+          "kw_collection": 2730,
+          "geo_collection": null
+        },
+        "time": {
+          "development": "Instantaneous",
+          "duration": 12,
+          "year": 2013,
+          "month": "Nov.",
+          "start_day": "2013-11-01"
+        },
+        "location": {
+          "country": "US",
+          "spread": "Focalized",
+          "location_description": "Los Angeles",
+          "country_internet_penetration": null
+        },
+        "categorization": {
+          "category": "Human-induced",
+          "sub_category": "Intentional",
+          "type": "Shootings"
+        },
+        "external_url": "http://en.wikipedia.org/wiki/2013_Los_Angeles_International_Airport_shooting",
+        "keywords": [
+          "LAX shooting",
+          "LAX shootings",
+          "Lax shooter",
+          "Lax suspect",
+          "#LAXShooting",
+          "Lax airport",
+          "#LAX",
+          "airport shooting",
+          "airport shootings",
+          "#losangeles airport",
+          "lax victims"
+        ]
+      }
+    },
+    {
+      "event_name": "2013_Lac_Megantic_train_crash",
+      "disaster_type": "Chemical_Fire",
+      "region": "Canada",
+      "year": 2013,
+      "total_tweets": 1000,
+      "informative": 559,
+      "related_not_informative": 407,
+      "not_related": 34,
+      "pct_informative": 55.9,
+      "top_info_types": {
+        "Other Useful Information": 460,
+        "Affected individuals": 161,
+        "Sympathy and support": 99,
+        "Donations and volunteering": 80,
+        "Infrastructure and utilities": 66
+      },
+      "top_sources": {
+        "Media": 502,
+        "Outsiders": 332,
+        "Government": 63,
+        "NGOs": 42,
+        "Business": 11
+      },
+      "event_description": {
+        "name": "Lac-Megantic train crash",
+        "size": {
+          "kw_collection": 2342,
+          "geo_collection": null
+        },
+        "time": {
+          "development": "Instantaneous",
+          "duration": 14,
+          "year": "2013",
+          "month": "Jul.",
+          "start_day": "2013-07-06"
+        },
+        "location": {
+          "country": "Canada",
+          "spread": "Focalized",
+          "location_description": "Lac-Megantic, Quebec",
+          "country_internet_penetration": null
+        },
+        "categorization": {
+          "category": "Human-induced",
+          "sub_category": "Unintentional",
+          "type": "Derailment"
+        },
+        "external_url": "http://en.wikipedia.org/wiki/Lac-M\u00e9gantic_derailment",
+        "keywords": [
+          "#LacMegantic",
+          "#LacM\u00e9gantic",
+          "#LacM\u00e9g",
+          "#LacMeg",
+          "#tragedielacmegantic",
+          "#Trag\u00e9dieLacM\u00e9gantic",
+          "#M\u00e9gantic",
+          "Lac M\u00e9gantic",
+          "Lac Megantic",
+          "Quebec train explosion",
+          "Quebec train derailment",
+          "Quebec train crash",
+          "Quebec oil train",
+          "Canada train oil",
+          "Canada train oil",
+          "Canadian train oil"
+        ]
+      }
+    },
+    {
+      "event_name": "2013_Manila_floods",
+      "disaster_type": "Flood",
+      "region": "Philippines",
+      "year": 2013,
+      "total_tweets": 1000,
+      "informative": 628,
+      "related_not_informative": 293,
+      "not_related": 79,
+      "pct_informative": 62.8,
+      "top_info_types": {
+        "Caution and advice": 247,
+        "Donations and volunteering": 240,
+        "Sympathy and support": 152,
+        "Not applicable": 113,
+        "Other Useful Information": 99
+      },
+      "top_sources": {
+        "Outsiders": 234,
+        "Media": 207,
+        "Eyewitness": 198,
+        "NGOs": 153,
+        "Government": 83
+      },
+      "event_description": {
+        "name": "Manila Floods",
+        "size": {
+          "kw_collection": 2032,
+          "geo_collection": null
+        },
+        "time": {
+          "development": "Progressive",
+          "duration": 11,
+          "year": 2013,
+          "month": "Aug.",
+          "start_day": "2013-08-17"
+        },
+        "location": {
+          "country": "Phillipines",
+          "spread": "Diffused",
+          "location_description": "Manila",
+          "country_internet_penetration": null
+        },
+        "categorization": {
+          "category": "Natural",
+          "sub_category": "Hydrological",
+          "type": "Floods"
+        },
+        "external_url": "http://en.wikipedia.org/wiki/Tropical_Storm_Trami_(2013)",
+        "keywords": [
+          "baha manila",
+          "#MaringPH",
+          "#rescueph",
+          "#reliefPH",
+          "#FloodsPH",
+          "#PrayForThePhilippine",
+          "manila flood",
+          "manila floods",
+          "philippine floods",
+          "philippine flood",
+          "#FloodPH",
+          "#PHalert",
+          "#safenow",
+          "#trafficPH",
+          "#habagat",
+          "#Maring",
+          "#MaringUpdates"
+        ]
+      }
+    },
+    {
+      "event_name": "2013_NY_train_crash",
+      "disaster_type": "Transit",
+      "region": "US",
+      "year": 2013,
+      "total_tweets": 1000,
+      "informative": 904,
+      "related_not_informative": 95,
+      "not_related": 1,
+      "pct_informative": 90.4,
+      "top_info_types": {
+        "Other Useful Information": 456,
+        "Affected individuals": 386,
+        "Sympathy and support": 72,
+        "Infrastructure and utilities": 51,
+        "Caution and advice": 30
+      },
+      "top_sources": {
+        "Media": 765,
+        "Outsiders": 189,
+        "Government": 39,
+        "Eyewitness": 3,
+        "Business": 2
+      },
+      "event_description": {
+        "name": "NYC train crash",
+        "size": {
+          "kw_collection": 1066,
+          "geo_collection": null
+        },
+        "time": {
+          "development": "Instantaneous",
+          "duration": 8,
+          "year": "2013",
+          "month": "Dec.",
+          "start_day": "2013-12-01"
+        },
+        "location": {
+          "country": "US",
+          "spread": "Focalized",
+          "location_description": "New York City",
+          "country_internet_penetration": null
+        },
+        "categorization": {
+          "category": "Human-induced",
+          "sub_category": "Unintentional",
+          "type": "Derailment"
+        },
+        "external_url": "http://en.wikipedia.org/wiki/December_2013_Spuyten_Duyvil_derailment",
+        "keywords": [
+          "#NewYork derailment",
+          "NY derailment",
+          "NYC derailment",
+          "#MetroNorth derailment",
+          "#Spuyten Duyvil",
+          "#nyctrain",
+          "New York derailment",
+          "metro north derailment",
+          "#MetroNorth Derailment",
+          "NY train crash",
+          "NYC train crash",
+          "NewYork train crash",
+          "York train crash",
+          "#metronorth train crash",
+          "metro north crash",
+          "ny train derailed",
+          "york train derailed",
+          "nyc train derailed"
+        ]
+      }
+    },
+    {
+      "event_name": "2013_Queensland_floods",
+      "disaster_type": "Flood",
+      "region": "Australia",
+      "year": 2013,
+      "total_tweets": 1200,
+      "informative": 728,
+      "related_not_informative": 191,
+      "not_related": 281,
+      "pct_informative": 60.7,
+      "top_info_types": {
+        "Other Useful Information": 279,
+        "Caution and advice": 219,
+        "Affected individuals": 128,
+        "Infrastructure and utilities": 121,
+        "Sympathy and support": 85
+      },
+      "top_sources": {
+        "Media": 404,
+        "Outsiders": 244,
+        "Eyewitness": 144,
+        "Government": 68,
+        "NGOs": 39
+      },
+      "event_description": {
+        "name": "Queensland Floods",
+        "size": {
+          "kw_collection": 1223,
+          "geo_collection": null
+        },
+        "time": {
+          "development": "Progressive",
+          "duration": 19,
+          "year": 2013,
+          "month": "Jan.",
+          "start_day": "2013-01-17"
+        },
+        "location": {
+          "country": "Australia",
+          "spread": "Diffused",
+          "location_description": "Queensland",
+          "country_internet_penetration": null
+        },
+        "categorization": {
+          "category": "Natural",
+          "sub_category": "Hydrological",
+          "type": "Floods"
+        },
+        "external_url": "https://en.wikipedia.org/wiki/January_2013_Eastern_Australia_floods",
+        "keywords": [
+          "#qldflood",
+          "#bigwet",
+          "queensland flood",
+          "australia flood",
+          "#qldfloods",
+          "queensland floods",
+          "australia floods",
+          "queensland flooding",
+          "qld flood",
+          "qld floods",
+          "qld flooding",
+          "australia flooding"
+        ]
+      }
+    },
+    {
+      "event_name": "2013_Russia_meteor",
+      "disaster_type": "Meteor_Impact",
+      "region": "Russia",
+      "year": 2013,
+      "total_tweets": 1442,
+      "informative": 642,
+      "related_not_informative": 491,
+      "not_related": 309,
+      "pct_informative": 44.5,
+      "top_info_types": {
+        "Other Useful Information": 557,
+        "Affected individuals": 207,
+        "Not applicable": 186,
+        "Sympathy and support": 136,
+        "Infrastructure and utilities": 35
+      },
+      "top_sources": {
+        "Outsiders": 591,
+        "Media": 472,
+        "Government": 30,
+        "Not applicable": 28,
+        "Eyewitness": 7
+      },
+      "event_description": {
+        "name": "Russian meteor",
+        "size": {
+          "kw_collection": 8365,
+          "geo_collection": null
+        },
+        "time": {
+          "development": "Instantaneous",
+          "duration": 19,
+          "year": 2013,
+          "month": "Feb.",
+          "start_day": "2013-02-14"
+        },
+        "location": {
+          "country": "Russia",
+          "spread": "Focalized",
+          "location_description": "Chelyabinsk",
+          "country_internet_penetration": null
+        },
+        "categorization": {
+          "category": "Natural",
+          "sub_category": "Others",
+          "type": "Meteorite"
+        },
+        "external_url": "http://en.wikipedia.org/wiki/Chelyabinsk_meteor",
+        "keywords": [
+          "#\u043c\u0435\u0442\u0435\u043e\u0440\u0438\u0442",
+          "#meteor",
+          "#meteorite",
+          "russia meteor",
+          "russian meteor",
+          "#RussianMeteor",
+          "#Chelyabinsk",
+          "#\u0447\u0435\u043b\u044f\u0431\u0438\u043d\u0441\u043a"
+        ]
+      }
+    },
+    {
+      "event_name": "2013_Sardinia_floods",
+      "disaster_type": "Flood",
+      "region": "Europe",
+      "year": 2013,
+      "total_tweets": 1000,
+      "informative": 631,
+      "related_not_informative": 295,
+      "not_related": 74,
+      "pct_informative": 63.1,
+      "top_info_types": {
+        "Sympathy and support": 265,
+        "Other Useful Information": 196,
+        "Donations and volunteering": 148,
+        "Affected individuals": 123,
+        "Caution and advice": 123
+      },
+      "top_sources": {
+        "Outsiders": 524,
+        "Media": 289,
+        "Government": 36,
+        "NGOs": 35,
+        "Eyewitness": 26
+      },
+      "event_description": {
+        "name": "Sardinia Floods",
+        "size": {
+          "kw_collection": 1143,
+          "geo_collection": null
+        },
+        "time": {
+          "development": "Progressive",
+          "duration": 13,
+          "year": 2013,
+          "month": "Nov.",
+          "start_day": "2013-11-16"
+        },
+        "location": {
+          "country": "Italy",
+          "spread": "Diffused",
+          "location_description": "Sardinia",
+          "country_internet_penetration": null
+        },
+        "categorization": {
+          "category": "Natural",
+          "sub_category": "Hydrological",
+          "type": "Floods"
+        },
+        "external_url": "http://en.wikipedia.org/wiki/2013_Sardinia_floods",
+        "keywords": [
+          "sardinia floods",
+          "sardinia flooding",
+          "Cyclone Cleopatra",
+          "#CycloneCleopatra",
+          "#Sardinia",
+          "Sardegna alluvione",
+          "#cleopatra alluvione",
+          "#Sardegna"
+        ]
+      }
+    },
+    {
+      "event_name": "2013_Savar_building_collapse",
+      "disaster_type": "Building_Collapse",
+      "region": "Bangladesh",
+      "year": 2013,
+      "total_tweets": 1250,
+      "informative": 836,
+      "related_not_informative": 75,
+      "not_related": 339,
+      "pct_informative": 66.9,
+      "top_info_types": {
+        "Affected individuals": 499,
+        "Other Useful Information": 300,
+        "Not applicable": 37,
+        "Sympathy and support": 29,
+        "Infrastructure and utilities": 19
+      },
+      "top_sources": {
+        "Media": 474,
+        "Outsiders": 349,
+        "Not applicable": 41,
+        "Government": 19,
+        "Business": 16
+      },
+      "event_description": {
+        "name": "Savar building collapse",
+        "size": {
+          "kw_collection": 4070,
+          "geo_collection": null
+        },
+        "time": {
+          "development": "Instantaneous",
+          "duration": 36,
+          "year": 2013,
+          "month": "Apr.",
+          "start_day": "2013-04-23"
+        },
+        "location": {
+          "country": "Bangladesh",
+          "spread": "Focalized",
+          "location_description": "Savar",
+          "country_internet_penetration": null
+        },
+        "categorization": {
+          "category": "Human-induced",
+          "sub_category": "Unintentional",
+          "type": "Collapse"
+        },
+        "external_url": "http://en.wikipedia.org/wiki/2013_Savar_building_collapse",
+        "keywords": [
+          "#Savar",
+          "#Bangladesh",
+          "Bangladesh collapse",
+          "#ranaplaza",
+          "Savar Bangladesh",
+          "Savar collapse",
+          "Rana Plaza"
+        ]
+      }
+    },
+    {
+      "event_name": "2013_Singapore_haze",
+      "disaster_type": "Air_Quality",
+      "region": "Asia",
+      "year": 2013,
+      "total_tweets": 1000,
+      "informative": 461,
+      "related_not_informative": 472,
+      "not_related": 67,
+      "pct_informative": 46.1,
+      "top_info_types": {
+        "Other Useful Information": 340,
+        "Caution and advice": 216,
+        "Not applicable": 202,
+        "Affected individuals": 89,
+        "Sympathy and support": 61
+      },
+      "top_sources": {
+        "Eyewitness": 458,
+        "Media": 345,
+        "Not applicable": 79,
+        "Outsiders": 25,
+        "Government": 17
+      },
+      "event_description": {
+        "name": "Singapore Haze",
+        "size": {
+          "kw_collection": 3639,
+          "geo_collection": null
+        },
+        "time": {
+          "development": "Progressive",
+          "duration": 19,
+          "year": 2013,
+          "month": "Jun.",
+          "start_day": "2013-06-17"
+        },
+        "location": {
+          "country": "Singapore",
+          "spread": "Diffused",
+          "location_description": "Singapore",
+          "country_internet_penetration": null
+        },
+        "categorization": {
+          "category": "Mixed",
+          "sub_category": "Others",
+          "type": "Haze"
+        },
+        "external_url": "http://en.wikipedia.org/wiki/2013_Southeast_Asian_haze",
+        "keywords": [
+          "#SGHaze",
+          "Singapore Haze",
+          "#hazyday",
+          "blamethehaze",
+          "mustbehaze",
+          "#sg #haze",
+          "Singapore #hazy"
+        ]
+      }
+    },
+    {
+      "event_name": "2013_Spain_train_crash",
+      "disaster_type": "Transit",
+      "region": "Europe",
+      "year": 2013,
+      "total_tweets": 1000,
+      "informative": 729,
+      "related_not_informative": 262,
+      "not_related": 9,
+      "pct_informative": 72.9,
+      "top_info_types": {
+        "Other Useful Information": 422,
+        "Affected individuals": 297,
+        "Sympathy and support": 209,
+        "Donations and volunteering": 51,
+        "Caution and advice": 5
+      },
+      "top_sources": {
+        "Media": 545,
+        "Outsiders": 370,
+        "Eyewitness": 25,
+        "Business": 21,
+        "Government": 15
+      },
+      "event_description": {
+        "name": "Spain train crash",
+        "size": {
+          "kw_collection": 3681,
+          "geo_collection": null
+        },
+        "time": {
+          "development": "Instantaneous",
+          "duration": 15,
+          "year": "2013",
+          "month": "Jul.",
+          "start_day": "2013-07-24"
+        },
+        "location": {
+          "country": "Spain",
+          "spread": "Focalized",
+          "location_description": "Santiago de compostela",
+          "country_internet_penetration": null
+        },
+        "categorization": {
+          "category": "Human-induced",
+          "sub_category": "Unintentional",
+          "type": "Derailment"
+        },
+        "external_url": "http://en.wikipedia.org/wiki/Santiago_de_Compostela_derailment",
+        "keywords": [
+          "Compostela train",
+          "spain train",
+          "tren Compostela",
+          "espa\u00f1a tren",
+          "#SantiagoCompostela",
+          "#AccidenteSantiago"
+        ]
+      }
+    },
+    {
+      "event_name": "2013_Typhoon_Yolanda",
+      "disaster_type": "Typhoon",
+      "region": "Philippines",
+      "year": 2013,
+      "total_tweets": 1048,
+      "informative": 765,
+      "related_not_informative": 175,
+      "not_related": 108,
+      "pct_informative": 73.0,
+      "top_info_types": {
+        "Donations and volunteering": 410,
+        "Sympathy and support": 180,
+        "Other Useful Information": 123,
+        "Affected individuals": 109,
+        "Caution and advice": 81
+      },
+      "top_sources": {
+        "Outsiders": 541,
+        "Media": 230,
+        "NGOs": 97,
+        "Business": 40,
+        "Government": 22
+      },
+      "event_description": {
+        "name": "Typhoon Yolanda",
+        "size": {
+          "kw_collection": 38951,
+          "geo_collection": null
+        },
+        "time": {
+          "development": "Progressive",
+          "duration": 58,
+          "year": 2013,
+          "month": "Nov.",
+          "start_day": "2013-11-02"
+        },
+        "location": {
+          "country": "Phillipines",
+          "spread": "Diffused",
+          "location_description": "Phillipines",
+          "country_internet_penetration": null
+        },
+        "categorization": {
+          "category": "Natural",
+          "sub_category": "Meteorological",
+          "type": "Typhoon"
+        },
+        "external_url": "http://en.wikipedia.org/wiki/Typhoon_Haiyan",
+        "keywords": [
+          "#typhoonyolanda",
+          "#YolandaPH",
+          "#yolanda",
+          "#haiyan",
+          "#TracingPH",
+          "#FloodPH",
+          "#SafeNow",
+          "#RescuePH",
+          "#ReliefPH",
+          "typhoon Yolanda",
+          "Typhoon Haiyan",
+          "typhoon philippines",
+          "#typhoonhaiyan",
+          "#typhoonaid",
+          "#Philippines",
+          "#typhoon",
+          "#supertyphoon",
+          "#redcrossphilippines",
+          "#YolandaActionWeekend",
+          "Rescue PH",
+          "typhoon ph",
+          "Super Typhoon"
+        ]
+      }
+    },
+    {
+      "event_name": "2013_West_Texas_explosion",
+      "disaster_type": "Chemical",
+      "region": "US",
+      "year": 2013,
+      "total_tweets": 1000,
+      "informative": 472,
+      "related_not_informative": 439,
+      "not_related": 89,
+      "pct_informative": 47.2,
+      "top_info_types": {
+        "Sympathy and support": 368,
+        "Other Useful Information": 211,
+        "Affected individuals": 196,
+        "Infrastructure and utilities": 51,
+        "Donations and volunteering": 42
+      },
+      "top_sources": {
+        "Outsiders": 544,
+        "Media": 283,
+        "Eyewitness": 26,
+        "Government": 24,
+        "NGOs": 13
+      },
+      "event_description": {
+        "name": "West Texas Explosion",
+        "size": {
+          "kw_collection": 14505,
+          "geo_collection": null
+        },
+        "time": {
+          "development": "Instantaneous",
+          "duration": 29,
+          "year": 2013,
+          "month": "Apr.",
+          "start_day": "2013-04-17"
+        },
+        "location": {
+          "country": "US",
+          "spread": "Focalized",
+          "location_description": "West/Waco Texas",
+          "country_internet_penetration": null
+        },
+        "categorization": {
+          "category": "Human-induced",
+          "sub_category": "Unintentional",
+          "type": "Explosion"
+        },
+        "external_url": "http://en.wikipedia.org/wiki/West_Fertilizer_Company_explosion",
+        "keywords": [
+          "#westexplosion",
+          "west explosion",
+          "waco explosion",
+          "texas explosion",
+          "texas fertilizer",
+          "prayfortexas",
+          "prayforwest",
+          "waco tx",
+          "west tx",
+          "west texas",
+          "waco texas",
+          "#west",
+          "#waco",
+          "westexplosion",
+          "west explosion",
+          "waco explosion",
+          "tx explosion",
+          "fertilizer explosion",
+          "prayfortexas",
+          "prayforwest",
+          "westtx",
+          "wacotx",
+          "west texas",
+          "waco texas",
+          "west tx",
+          "waco tx",
+          "texas fertilizer",
+          "west fertilizer",
+          "waco fertilizer"
+        ]
+      }
+    }
+  ]
+}

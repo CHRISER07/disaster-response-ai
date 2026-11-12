@@ -1,6 +1,5 @@
 import os
-from langchain_huggingface import HuggingFaceEmbeddings
-from langchain_chroma import Chroma
+import functools
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -9,12 +8,15 @@ CHROMA_PATH = os.path.join(os.path.dirname(os.path.dirname(__file__)), "chroma_d
 EMBEDDING_MODEL = "BAAI/bge-small-en-v1.5"
 
 
-def get_embeddings() -> HuggingFaceEmbeddings:
+@functools.lru_cache(maxsize=1)
+def get_embeddings():
     """
     Returns the BGE small embedding model.
-    Runs entirely on CPU — no GPU required.
+    Runs entirely on CPU - no GPU required.
     Normalized embeddings enable cosine similarity without post-processing.
+    Cached with lru_cache so the model is only loaded once per process.
     """
+    from langchain_huggingface import HuggingFaceEmbeddings
     return HuggingFaceEmbeddings(
         model_name=EMBEDDING_MODEL,
         model_kwargs={"device": "cpu"},
@@ -22,8 +24,10 @@ def get_embeddings() -> HuggingFaceEmbeddings:
     )
 
 
-def get_vector_store() -> Chroma:
-    """Returns the persistent ChromaDB vector store."""
+@functools.lru_cache(maxsize=1)
+def get_vector_store():
+    """Returns the persistent ChromaDB vector store. Cached per process."""
+    from langchain_chroma import Chroma
     return Chroma(
         persist_directory=CHROMA_PATH,
         embedding_function=get_embeddings(),

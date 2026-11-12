@@ -1,4 +1,4 @@
-# AGENTS.md — Persistent Context for the Disaster Response AI Agent
+# AGENTS.md - Persistent Context for the Disaster Response AI Agent
 
 ## Project Identity
 
@@ -19,40 +19,40 @@ During an active disaster (flood, earthquake, hurricane), emergency responders f
 
 ```
 disaster_response_rag/
-├── agents/
-│   └── disaster_agent.py     # LangGraph ReAct agent (the brain)
-├── tools/
-│   ├── weather_tool.py        # Open-Meteo API (free, no auth)
-│   ├── sensor_tool.py         # USGS water + earthquake API (free, no auth)  
-│   ├── kb_search_tool.py      # ChromaDB FEMA/text search tool
-│   ├── vision_tool.py         # Ollama LLaVA local vision
-│   └── alert_tool.py          # Structured alert logger
-├── core/
-│   ├── vector_store.py        # ChromaDB + BGE embeddings
-│   ├── populate_db.py         # Data ingestion pipeline (run once)
-│   └── knowledge_loader.py    # PDF semantic chunker
-├── ingestion/
-│   ├── text_loader.py         # CrisisLex tweet parser (real data)
-│   ├── iot_loader.py          # USGS live + historical sensor ingestion
-│   ├── drone_loader.py        # xView2 VLM description loader
-│   ├── vlm_processor.py       # Ollama LLaVA image processor
-│   └── extract_xview2_subset.py  # Streams images from tar without full extract
-├── evaluation/
-│   ├── golden_dataset.json    # 6 evaluation queries with ground truth
-│   ├── run_evals.py           # LLM-as-judge evaluation harness
-│   └── results.md             # Generated IEEE metrics table
-├── tests/
-│   ├── test_tools.py          # Unit tests (all 5 tools)
-│   └── test_agent.py          # Integration test (agent uses ≥2 tools)
-├── data/
-│   ├── kb/                    # 3 FEMA/CDC PDFs
-│   ├── iot/                   # USGS sensor CSV (generated from live API)
-│   ├── imagery/               # xView2 real_drone_metadata.json
-│   └── alerts.jsonl           # Structured alert log (written by alert_tool)
-├── app.py                     # Streamlit 3-panel dashboard
-├── AGENTS.md                  # This file
-├── memory.md                  # Self-improving session memory
-└── requirements.txt
+ agents/
+    disaster_agent.py     # LangGraph ReAct agent (the brain)
+ tools/
+    weather_tool.py        # Open-Meteo API (free, no auth)
+    sensor_tool.py         # USGS water + earthquake API (free, no auth)  
+    kb_search_tool.py      # ChromaDB FEMA/text search tool
+    vision_tool.py         # Ollama LLaVA local vision
+    alert_tool.py          # Structured alert logger
+ core/
+    vector_store.py        # ChromaDB + BGE embeddings
+    populate_db.py         # Data ingestion pipeline (run once)
+    knowledge_loader.py    # PDF semantic chunker
+ ingestion/
+    text_loader.py         # CrisisLex tweet parser (real data)
+    iot_loader.py          # USGS live + historical sensor ingestion
+    drone_loader.py        # xView2 VLM description loader
+    vlm_processor.py       # Ollama LLaVA image processor
+    extract_xview2_subset.py  # Streams images from tar without full extract
+ evaluation/
+    golden_dataset.json    # 6 evaluation queries with ground truth
+    run_evals.py           # LLM-as-judge evaluation harness
+    results.md             # Generated IEEE metrics table
+ tests/
+    test_tools.py          # Unit tests (all 5 tools)
+    test_agent.py          # Integration test (agent uses >=2 tools)
+ data/
+    kb/                    # 3 FEMA/CDC PDFs
+    iot/                   # USGS sensor CSV (generated from live API)
+    imagery/               # xView2 real_drone_metadata.json
+    alerts.jsonl           # Structured alert log (written by alert_tool)
+ app.py                     # Streamlit 3-panel dashboard
+ AGENTS.md                  # This file
+ memory.md                  # Self-improving session memory
+ requirements.txt
 ```
 
 ## API Conventions

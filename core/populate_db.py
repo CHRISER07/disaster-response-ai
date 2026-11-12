@@ -5,7 +5,7 @@ Master data ingestion pipeline. Loads all real modalities into ChromaDB.
 Run this once (or with --reset) before starting the dashboard.
 
 Usage:
-  python core/populate_db.py           # Incremental — adds only new documents
+  python core/populate_db.py           # Incremental - adds only new documents
   python core/populate_db.py --reset   # Wipes and repopulates from scratch
 """
 import os
@@ -14,7 +14,6 @@ import argparse
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(__file__)))
 
-from ingestion.text_loader import load_crisis_tweets
 from ingestion.iot_loader import load_iot_data
 from ingestion.drone_loader import load_drone_data
 from core.knowledge_loader import load_and_chunk_knowledge_base
@@ -23,11 +22,10 @@ from core.vector_store import add_documents_to_store, get_vector_store, clear_co
 # Always anchor paths to the project root, regardless of working directory
 PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-TEXT_CSV   = os.path.join(PROJECT_ROOT, "data", "text", "CrisisLexT26", "CrisisLexT26",
-                           "2013_Colorado_floods", "2013_Colorado_floods-tweets_labeled.csv")
 IOT_CSV    = os.path.join(PROJECT_ROOT, "data", "iot", "water_levels.csv")
 DRONE_JSON = os.path.join(PROJECT_ROOT, "data", "imagery", "real_drone_metadata.json")
 KB_DIR     = os.path.join(PROJECT_ROOT, "data", "kb")
+
 
 
 def populate(reset: bool = False):
@@ -40,13 +38,10 @@ def populate(reset: bool = False):
 
     # 1. CrisisLex Tweets (real social media data)
     print("\n[1/4] Loading CrisisLex tweets...")
-    if os.path.exists(TEXT_CSV):
-        tweets = load_crisis_tweets(TEXT_CSV, max_documents=500)
-        all_docs.extend(tweets)
-        counters["text"] = len(tweets)
-    else:
-        print(f"  WARNING: Tweet CSV not found at {TEXT_CSV}")
-        counters["text"] = 0
+    from ingestion.text_loader import load_all_crisis_tweets
+    tweets = load_all_crisis_tweets(max_per_event=300)
+    all_docs.extend(tweets)
+    counters["text"] = len(tweets)
 
     # 2. USGS IoT sensors (real live data from API)
     print("\n[2/4] Loading USGS sensor data (live API)...")

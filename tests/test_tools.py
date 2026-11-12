@@ -13,7 +13,7 @@ from tools.sensor_tool import query_water_sensor, query_recent_earthquakes
 from tools.alert_tool import generate_structured_alert, load_recent_alerts
 
 
-# ── Weather Tool ──────────────────────────────────────────────────────────────
+#  Weather Tool 
 class TestWeatherTool:
     def test_returns_string(self):
         result = fetch_live_weather.invoke("Boulder, CO")
@@ -24,12 +24,12 @@ class TestWeatherTool:
         assert "Temperature" in result or "WEATHER TOOL ERROR" in result
 
     def test_handles_api_failure_gracefully(self):
-        """Tool must return a string even if API fails — never raise."""
+        """Tool must return a string even if API fails - never raise."""
         result = fetch_live_weather.invoke("Nonexistent_Location_XYZ_123")
         assert isinstance(result, str)
 
 
-# ── Sensor Tool ───────────────────────────────────────────────────────────────
+#  Sensor Tool 
 class TestSensorTool:
     def test_returns_string(self):
         result = query_water_sensor.invoke("06730200")
@@ -55,7 +55,7 @@ class TestSensorTool:
         assert "EARTHQUAKE" in result or "No M" in result or "EARTHQUAKE TOOL ERROR" in result
 
 
-# ── Alert Tool ────────────────────────────────────────────────────────────────
+#  Alert Tool 
 class TestAlertTool:
     def test_creates_alert_file(self, tmp_path, monkeypatch):
         """Alert is written to the alerts file."""

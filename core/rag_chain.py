@@ -1,14 +1,8 @@
 """
 core/rag_chain.py
 
-Legacy SimpleRAGChain — kept for the IEEE evaluation harness (run_evals.py).
-NOT used by the live dashboard (which uses the LangGraph agent).
-
-Fix log:
-  - FIXED: MMR search_kwargs — added fetch_k=20 (MMR ignores k= at retriever level)
-  - FIXED: allowed_modalities filter normalized to lowercase to match stored metadata
-  - FIXED: CRLF → LF line endings
-"""
+Legacy SimpleRAGChain - kept for the IEEE evaluation harness (run_evals.py).
+NOT used by the live dashboard (which uses the LangGraph agent)."""
 import os
 from langchain_groq import ChatGroq
 from langchain_core.prompts import ChatPromptTemplate
@@ -26,16 +20,15 @@ def get_retriever(allowed_modalities: list | None = None):
     Args:
         allowed_modalities: Optional list of modality strings to filter by.
             Valid values: "text", "knowledge_base", "telemetry", "imagery_description"
-            (must be lowercase — stored metadata uses lowercase)
+            (must be lowercase - stored metadata uses lowercase)
     """
     store = get_vector_store()
 
-    # FIX: MMR uses fetch_k (candidates to fetch) then selects k from them.
     # lambda_mult=0.7 means 70% relevance, 30% diversity.
     search_kwargs = {"k": 7, "fetch_k": 20, "lambda_mult": 0.7}
 
     if allowed_modalities:
-        # FIX: Normalize to lowercase — all stored metadata values are lowercase
+        # Normalize to lowercase - all stored metadata values are lowercase
         normalized = [m.lower() for m in allowed_modalities]
         search_kwargs["filter"] = {"modality": {"$in": normalized}}
 
@@ -63,7 +56,7 @@ class SimpleRAGChain:
         return {"answer": answer, "context": docs}
 
 
-def get_rag_chain(allowed_modalities: list | None = None) -> SimpleRAGChain:
+def get_rag_chain(allowed_modalities: list | None = None, llm = None) -> SimpleRAGChain:
     """
     Constructs the legacy RAG pipeline used by the evaluation harness.
     Synthesizes answers from multi-modal sources (Text/Tweets, IoT, Drone, KB PDFs).
@@ -73,8 +66,10 @@ def get_rag_chain(allowed_modalities: list | None = None) -> SimpleRAGChain:
         allowed_modalities: Optional modality filter for ablation studies.
             Pass ["text", "knowledge_base"] for Text RAG ablation.
             Pass None for full Multimodal RAG (no filter).
+        llm: Custom language model (e.g. ChatOllama for offline/local run).
     """
-    llm = ChatGroq(model="llama-3.3-70b-versatile", temperature=0.2)
+    if llm is None:
+        llm = ChatGroq(model="llama-3.3-70b-versatile", temperature=0.2)
 
     system_prompt = (
         "You are an advanced Disaster Response AI Assistant.\n"
@@ -88,7 +83,7 @@ def get_rag_chain(allowed_modalities: list | None = None) -> SimpleRAGChain:
         "- If context contains conflicting reports, note the conflict and cite the most recent timestamp.\n"
         "- Explicitly cite source metadata (e.g., 'According to FEMA Field Operations Guide...', "
         "'Based on CrisisLex tweet at [timestamp]...', 'Drone observation reports...').\n"
-        "- If context is insufficient to answer, say so explicitly — do not speculate.\n"
+        "- If context is insufficient to answer, say so explicitly - do not speculate.\n"
         "- NEVER give advice that could endanger lives (e.g., 'safe to cross floodwater').\n\n"
         "Context:\n{context}"
     )

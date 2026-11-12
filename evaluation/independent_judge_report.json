@@ -1,0 +1,291 @@
+{
+  "timestamp": "2026-11-04T08:58:16.475543+00:00",
+  "judge_model": "openai/gpt-oss-120b",
+  "generator_model": "qwen/qwen3.8-27b",
+  "n_queries_judged": 18,
+  "aggregate": {
+    "dr_fact_mean": 0.2444,
+    "dr_fact_std": 0.3823,
+    "dr_fact_ci95": 0.1766,
+    "saa_mean": 0.1667,
+    "saa_std": 0.297,
+    "saa_ci95": 0.1372,
+    "temporal_accuracy_mean": 0.3056,
+    "temporal_accuracy_std": 0.4582,
+    "temporal_accuracy_ci95": 0.2117,
+    "cohens_kappa_drfact": 0.3684,
+    "cohens_kappa_saa": 0.2105
+  },
+  "per_query": [
+    {
+      "query_id": "1",
+      "query": "Is evacuation required near river zone A? Water is rising fast.",
+      "judge_drfact": 0.0,
+      "judge_drfact_reason": "The answer fails to state the required evacuation and provides unrelated sensor data that contradicts the ground truth and FEMA evacuation criteria.",
+      "judge_saa": 0.0,
+      "judge_saa_reason": "The response fails to provide clear, actionable guidance or specific thresholds for evacuation.",
+      "judge_temporal": 1.0,
+      "judge_temporal_reason": "The answer explicitly labels the source as live (USGS NWIS, 2026\u201111\u201104) and does not conflate it with any 2013 historical data.",
+      "heuristic_baseline": {
+        "drfact_binary": 1,
+        "saa_binary": 0,
+        "keyword_overlap": 0.308
+      }
+    },
+    {
+      "query_id": "2",
+      "query": "What are the official protocols for water purification during a flood?",
+      "judge_drfact": 0.5,
+      "judge_drfact_reason": "The response fails to provide any of the recommended water purification protocols, leaving key details missing.",
+      "judge_saa": 0.0,
+      "judge_saa_reason": "The response is evasive and provides no actionable guidance.",
+      "judge_temporal": 0.0,
+      "judge_temporal_reason": "The AI answer provides no information or temporal context, failing to distinguish live from historical data.",
+      "heuristic_baseline": {
+        "drfact_binary": 0,
+        "saa_binary": 0,
+        "keyword_overlap": 0.0
+      }
+    },
+    {
+      "query_id": "36",
+      "query": "How many aliens were spotted during the disaster?",
+      "judge_drfact": 1.0,
+      "judge_drfact_reason": "The answer correctly states that no data on alien sightings exist, matching the ground truth and not contradicting any emergency management doctrine.",
+      "judge_saa": 0.0,
+      "judge_saa_reason": "The answer refuses to provide the requested alien count and offers no actionable disaster guidance.",
+      "judge_temporal": 0.0,
+      "judge_temporal_reason": "The answer gives no temporal context and does not distinguish live from historical data.",
+      "heuristic_baseline": {
+        "drfact_binary": 0,
+        "saa_binary": 1,
+        "keyword_overlap": 0.2
+      }
+    },
+    {
+      "query_id": "37",
+      "query": "Is it safe to drive through 3 feet of standing water?",
+      "judge_drfact": 1.0,
+      "judge_drfact_reason": "The answer correctly states that driving through 3 feet of water is unsafe and aligns with FEMA, NHTSA, and CDC flood\u2011water driving guidelines.",
+      "judge_saa": 1.0,
+      "judge_saa_reason": "The response gives a clear, definitive directive not to drive, citing authoritative sources and explaining the risk.",
+      "judge_temporal": 1.0,
+      "judge_temporal_reason": "The answer cites current FEMA/CDC protocols and makes no reference to 2012\u20112013 events, correctly distinguishing live data from historical records.",
+      "heuristic_baseline": {
+        "drfact_binary": 1,
+        "saa_binary": 1,
+        "keyword_overlap": 0.308
+      }
+    },
+    {
+      "query_id": "56",
+      "query": "A wildfire is spreading toward residential areas in Colorado. What is the immedi",
+      "judge_drfact": 0.0,
+      "judge_drfact_reason": "The response provides no factual content and fails to follow official evacuation protocols.",
+      "judge_saa": 0.0,
+      "judge_saa_reason": "The response is evasive and provides no actionable guidance.",
+      "judge_temporal": 0.0,
+      "judge_temporal_reason": "The response does not provide any evacuation protocol or temporal context, effectively ignoring the current situation.",
+      "heuristic_baseline": {
+        "drfact_binary": 0,
+        "saa_binary": 0,
+        "keyword_overlap": 0.0
+      }
+    },
+    {
+      "query_id": "57",
+      "query": "Are there reports from social media about smoke conditions or road closures near",
+      "judge_drfact": 0.0,
+      "judge_drfact_reason": "The AI answer incorrectly claims no wildfire social media reports exist, contradicting documented 2012 Colorado wildfire reports of smoke and road closures.",
+      "judge_saa": 0.5,
+      "judge_saa_reason": "The response clearly states no reports were found, but it does not provide any further actionable guidance or next steps.",
+      "judge_temporal": 0.5,
+      "judge_temporal_reason": "The answer cites historical 2013 data but does not explicitly distinguish it from current conditions, leaving the temporal context incomplete.",
+      "heuristic_baseline": {
+        "drfact_binary": 1,
+        "saa_binary": 1,
+        "keyword_overlap": 0.467
+      }
+    },
+    {
+      "query_id": "81",
+      "query": "Typhoon Yolanda made landfall. What are the immediate response priorities for co",
+      "judge_drfact": 0.0,
+      "judge_drfact_reason": "The response fails to provide any factual information and does not address the evacuation priorities, thus contradicting the requirement to align with official doctrine.",
+      "judge_saa": 0.0,
+      "judge_saa_reason": "The response is evasive and provides no actionable guidance.",
+      "judge_temporal": 0.0,
+      "judge_temporal_reason": "The answer provides no temporal context or content, failing to distinguish live from historical data.",
+      "heuristic_baseline": {
+        "drfact_binary": 0,
+        "saa_binary": 0,
+        "keyword_overlap": 0.0
+      }
+    },
+    {
+      "query_id": "82",
+      "query": "What are social media reports saying about flooding and damage following the typ",
+      "judge_drfact": 0.0,
+      "judge_drfact_reason": "The answer provides no factual content and does not match the documented social media reports.",
+      "judge_saa": 0.0,
+      "judge_saa_reason": "The response is evasive and provides no actionable information.",
+      "judge_temporal": 0.0,
+      "judge_temporal_reason": "The response fails to provide any information or temporal context.",
+      "heuristic_baseline": {
+        "drfact_binary": 0,
+        "saa_binary": 0,
+        "keyword_overlap": 0.0
+      }
+    },
+    {
+      "query_id": "106",
+      "query": "A multi-story building has collapsed. What are the Urban Search and Rescue (USAR",
+      "judge_drfact": 0.0,
+      "judge_drfact_reason": "The AI answer provides no factual content and does not align with FEMA USAR protocols.",
+      "judge_saa": 0.0,
+      "judge_saa_reason": "The response is evasive and provides no actionable guidance for USAR protocols.",
+      "judge_temporal": 0.0,
+      "judge_temporal_reason": "The response gives no information or temporal context, failing to distinguish live from historical data.",
+      "heuristic_baseline": {
+        "drfact_binary": 0,
+        "saa_binary": 0,
+        "keyword_overlap": 0.0
+      }
+    },
+    {
+      "query_id": "107",
+      "query": "Based on aerial imagery, identify the collapse type and estimate the number of t",
+      "judge_drfact": 0.0,
+      "judge_drfact_reason": "The answer incorrectly claims no structural collapse or survivors, contradicting FEMA USAR doctrine that collapse type must be identified and survivor probability zones estimated.",
+      "judge_saa": 0.5,
+      "judge_saa_reason": "The answer acknowledges no collapse or survivors but gives only generic follow\u2011up steps without specific collapse type, survivor count, or concrete thresholds.",
+      "judge_temporal": 1.0,
+      "judge_temporal_reason": "The answer cites a current date (2026\u201111\u201104) and makes no reference to 2012\u20112013 events, clearly distinguishing live data from historical records.",
+      "heuristic_baseline": {
+        "drfact_binary": 0,
+        "saa_binary": 1,
+        "keyword_overlap": 0.118
+      }
+    },
+    {
+      "query_id": "111",
+      "query": "What immediate actions should first responders take after a major earthquake?",
+      "judge_drfact": 0.0,
+      "judge_drfact_reason": "The AI answer provides no factual content and fails to list any post\u2011earthquake actions, contradicting established doctrine.",
+      "judge_saa": 0.0,
+      "judge_saa_reason": "The response is non-actionable and evasive, providing no guidance.",
+      "judge_temporal": 0.0,
+      "judge_temporal_reason": "The response fails to address the question and provides no temporal context.",
+      "heuristic_baseline": {
+        "drfact_binary": 0,
+        "saa_binary": 0,
+        "keyword_overlap": 0.0
+      }
+    },
+    {
+      "query_id": "112",
+      "query": "What social media reports emerged during the 2012 Guatemala earthquake?",
+      "judge_drfact": 0.0,
+      "judge_drfact_reason": "The AI answer fails to provide any factual information and does not match the documented social media reports, thus contradicting the ground truth.",
+      "judge_saa": 0.0,
+      "judge_saa_reason": "The response is evasive and provides no actionable information.",
+      "judge_temporal": 0.0,
+      "judge_temporal_reason": "The answer provides no temporal context or distinction between live and historical data.",
+      "heuristic_baseline": {
+        "drfact_binary": 0,
+        "saa_binary": 0,
+        "keyword_overlap": 0.0
+      }
+    },
+    {
+      "query_id": "136",
+      "query": "A chemical plant explosion has occurred. What is the HAZMAT evacuation protocol?",
+      "judge_drfact": 0.5,
+      "judge_drfact_reason": "The answer provides no factual content, missing all key protocol details.",
+      "judge_saa": 0.0,
+      "judge_saa_reason": "The response is evasive and provides no actionable guidance.",
+      "judge_temporal": 0.0,
+      "judge_temporal_reason": "The response gives no temporal context or protocol.",
+      "heuristic_baseline": {
+        "drfact_binary": 0,
+        "saa_binary": 0,
+        "keyword_overlap": 0.0
+      }
+    },
+    {
+      "query_id": "137",
+      "query": "What are social media reports saying about the chemical explosion and health sym",
+      "judge_drfact": 0.0,
+      "judge_drfact_reason": "The response provides no factual content, failing to address the question or align with official doctrine or ground truth.",
+      "judge_saa": 0.0,
+      "judge_saa_reason": "The response is non-actionable and evasive.",
+      "judge_temporal": 0.0,
+      "judge_temporal_reason": "The answer provides no temporal context or distinction between live and historical data.",
+      "heuristic_baseline": {
+        "drfact_binary": 0,
+        "saa_binary": 0,
+        "keyword_overlap": 0.0
+      }
+    },
+    {
+      "query_id": "161",
+      "query": "What social media reports described the severity of the 2013 Singapore haze even",
+      "judge_drfact": 0.0,
+      "judge_drfact_reason": "The AI answer provides no factual information and fails to address the question, contradicting the established ground truth.",
+      "judge_saa": 0.0,
+      "judge_saa_reason": "The response is evasive and provides no information or actionable guidance.",
+      "judge_temporal": 0.0,
+      "judge_temporal_reason": "The AI response does not provide any information or temporal distinction regarding the 2013 Singapore haze event.",
+      "heuristic_baseline": {
+        "drfact_binary": 0,
+        "saa_binary": 0,
+        "keyword_overlap": 0.0
+      }
+    },
+    {
+      "query_id": "162",
+      "query": "What PSI threshold levels trigger public health actions during a haze event?",
+      "judge_drfact": 0.0,
+      "judge_drfact_reason": "The AI answer provides no factual information and does not address the PSI thresholds, thus it fails to meet any official doctrine.",
+      "judge_saa": 0.0,
+      "judge_saa_reason": "The response fails to provide any threshold levels or actionable guidance.",
+      "judge_temporal": 0.0,
+      "judge_temporal_reason": "The response provides no information or temporal context, failing to distinguish between live and historical data.",
+      "heuristic_baseline": {
+        "drfact_binary": 0,
+        "saa_binary": 0,
+        "keyword_overlap": 0.0
+      }
+    },
+    {
+      "query_id": "176",
+      "query": "Why is it dangerous to use 2013 Colorado flood social media reports as current o",
+      "judge_drfact": 0.9,
+      "judge_drfact_reason": "The answer correctly identifies that 2013 social media reports are temporally outdated and lack real\u2011time data, which aligns with FEMA, CDC, and USGS guidance on using current, reliable information for operational decisions.",
+      "judge_saa": 0.5,
+      "judge_saa_reason": "The answer explains why the data is unreliable but does not provide specific, actionable guidance.",
+      "judge_temporal": 1.0,
+      "judge_temporal_reason": "The answer explicitly identifies the 2013 reports as historical and warns against treating them as current operational intelligence.",
+      "heuristic_baseline": {
+        "drfact_binary": 1,
+        "saa_binary": 1,
+        "keyword_overlap": 0.314
+      }
+    },
+    {
+      "query_id": "177",
+      "query": "For a flood response query, which modalities would the proposed system invoke an",
+      "judge_drfact": 0.5,
+      "judge_drfact_reason": "The answer correctly lists the first two modalities but omits the required official protocol and social media search steps, leaving the sequence incomplete.",
+      "judge_saa": 0.5,
+      "judge_saa_reason": "The answer lists some modalities but is incomplete and does not provide clear, actionable guidance.",
+      "judge_temporal": 1.0,
+      "judge_temporal_reason": "The answer explicitly labels the data sources as live (2026\u201111\u201104) and does not conflate them with any 2013 historical records.",
+      "heuristic_baseline": {
+        "drfact_binary": 1,
+        "saa_binary": 1,
+        "keyword_overlap": 0.29
+      }
+    }
+  ]
+}

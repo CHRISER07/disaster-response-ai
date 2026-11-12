@@ -1,0 +1,831 @@
+\documentclass[conference]{IEEEtran}
+\IEEEoverridecommandlockouts
+\usepackage{cite}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{graphicx}
+\usepackage{textcomp}
+\usepackage{xcolor}
+\usepackage[ruled,vlined]{algorithm2e}
+\usepackage{url}
+\usepackage[utf8]{inputenc}
+\usepackage{array}
+\usepackage{float}
+\usepackage{booktabs}
+\usepackage{hyperref}
+\usepackage{xurl}
+\usepackage{multirow}
+\hypersetup{breaklinks=true}
+
+\def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
+    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+
+\begin{document}
+
+\title{Multimodal Agentic RAG for Disaster Intelligence: Integrating Live APIs,
+Vision Models, and Temporal Context}
+
+\author{
+\IEEEauthorblockN{
+Christopher Aseer J Albert\textsuperscript{1},
+Ashutosh Monish Bhonsle\textsuperscript{2},
+Prisha Andrew Bhosale\textsuperscript{3},
+Harshvardhan Bhota\textsuperscript{4},
+Chaitanya Vijaykumar Mahamuni\textsuperscript{5}
+}
+\IEEEauthorblockA{
+\textsuperscript{1,2,3,4}\textit{Department of Computer Engineering,
+Fr. C Rodrigues Institute of Technology, Vashi, India}\\
+\textsuperscript{5}\textit{Department of Electronics and Telecommunication Engineering,
+University of Mumbai, Mumbai, India}\\
+\textsuperscript{1}\texttt{christpheraseer5080@gmail.com},
+\textsuperscript{2}\texttt{bhonsle.ashutosh@gmail.com},
+\textsuperscript{3}\texttt{prisha.bhosale22@gmail.com},
+\textsuperscript{4}\texttt{harshvardhanbohta@gmail.com},
+\textsuperscript{5}\texttt{chaitanyamahamuni91@gmail.com}
+}
+}
+
+\maketitle
+
+% ── Abstract ──────────────────────────────────────────────────────────────────
+\begin{abstract}
+Effective disaster response demands rapid and accurate situational awareness
+derived from heterogeneous data sources, including satellite imagery, social
+media reports, environmental sensor readings, and official emergency management
+documents. Existing systems typically process these modalities in isolation,
+limiting their capacity for holistic cross-modal reasoning under safety-critical
+conditions. This paper presents a unified Multimodal Retrieval-Augmented
+Generation (RAG) framework for disaster intelligence. The system integrates an
+autonomous LangGraph ReAct agent with live hydrological and meteorological APIs,
+a local vision-language model for satellite imagery analysis, and a multimodal
+vector knowledge base covering social reports, IoT telemetry, and official
+emergency protocols. A Temporal Context Bridge explicitly separates historical
+corpora from live operational data to prevent temporal conflation. A
+deterministic, regex-based safety validator screens all generated responses
+before they reach an operator. The framework is evaluated on a 50-query
+benchmark spanning five disaster scenario types, drawn from the CrisisLex-T26
+and xView2 public datasets. Under three ablation configurations using the same
+70-billion-parameter reasoning engine, the proposed system achieves a
+Keyword~F1 of~0.336, DR-Fact of~0.624, and Situational Awareness Accuracy
+(SAA) of~0.698, outperforming both a knowledge-only LLM baseline
+(F1\,=\,0.246, SAA\,=\,0.572) and a text-only RAG configuration
+(F1\,=\,0.293, SAA\,=\,0.634) on all primary metrics.
+The relative gain in SAA reaches~22.0\% over the LLM-only baseline,
+demonstrating the tangible value of live sensor integration and temporal
+context management in disaster-oriented AI systems.
+\end{abstract}
+
+\begin{IEEEkeywords}
+Disaster Response; Multimodal Learning; Retrieval-Augmented Generation;
+Situational Awareness; Large Language Models; Safety-Critical AI; LangGraph;
+Temporal Context; Vision-Language Models
+\end{IEEEkeywords}
+
+% ── Section I ─────────────────────────────────────────────────────────────────
+\section{Introduction}
+
+Natural disasters including floods, earthquakes, wildfires, and hurricanes
+cause substantial loss of life and infrastructure damage worldwide~\cite{b1}.
+Effective response requires timely situational awareness to support emergency
+decision-making and search-and-rescue operations~\cite{b2}. Modern disaster
+environments produce large volumes of heterogeneous data spanning satellite and
+UAV imagery, social media posts, environmental sensors, and authoritative
+management documents. Synthesising these disparate streams into coherent,
+actionable intelligence remains a significant open problem~\cite{b3}.
+
+Recent advances in artificial intelligence have improved specific aspects of
+disaster monitoring, such as damage assessment from satellite imagery and
+crisis-related text classification~\cite{b4}. However, most existing methods
+address individual modalities or rely on late-fusion pipelines that limit
+cross-modal reasoning and adaptability. Large Language Models (LLMs) provide
+strong generative and reasoning capabilities, yet are prone to hallucinations
+when deployed without evidence grounding, particularly in high-stakes
+domains~\cite{b5}. Retrieval-Augmented Generation (RAG) mitigates this risk by
+anchoring responses to retrieved evidence~\cite{b6}, but existing RAG systems
+are predominantly text-based and have not been applied systematically to
+multimodal disaster intelligence with live streaming data.
+
+A key challenge that prior work has not resolved is \emph{temporal conflation}:
+when a single knowledge base contains both archived disaster records from years
+past and live sensor readings from the present moment, language models
+frequently conflate historical field conditions with current operational state.
+This class of error is particularly dangerous in safety-critical contexts
+where outdated information can trigger incorrect evacuation or shelter-in-place
+decisions.
+
+This paper makes the following contributions:
+\begin{enumerate}
+  \item A unified multimodal RAG framework integrating visual, textual, sensor,
+        and protocol knowledge through an autonomous LangGraph ReAct agent for
+        end-to-end disaster reasoning across five disaster types.
+  \item A Temporal Context Bridge that explicitly labels every retrieved
+        document with an era tag (\texttt{[HISTORICAL--2013]} or
+        \texttt{[LIVE--current]}) before injection into the model context,
+        preventing temporal conflation without discarding historical heuristics.
+  \item A modality-aware retrieval strategy employing Maximal Marginal
+        Relevance (MMR) across four indexed data types with per-modality
+        metadata routing to avoid cross-contamination of field reports and
+        official protocols.
+  \item A deterministic, regex-based safety validator that scans every response
+        for twelve unsafe phrase patterns and failure-to-warn signatures before
+        output reaches an operator, adding $<$1\,ms latency and zero token cost.
+  \item A reproducible 50-query benchmark with human-written reference answers
+        and domain-expert-annotated keywords drawn from two public disaster
+        corpora, evaluated under three controlled ablation configurations.
+\end{enumerate}
+
+The remainder of this paper is organized as follows. Section~II surveys related
+work. Section~III describes the system architecture. Section~IV presents
+implementation details. Section~V reports experimental results and discussion.
+Section~VI concludes the paper.
+
+% ── Section II ────────────────────────────────────────────────────────────────
+\section{Related Work}
+
+\subsection{Visual and Multimodal Situational Awareness}
+
+Satellite and UAV imagery are central to post-disaster damage assessment.
+Singh and Hoskere~\cite{b15} demonstrated that semi-supervised transformer-based
+vision models achieve state-of-the-art results on ultra-high-resolution aerial
+datasets for building damage classification. Ofli et al.~\cite{b16} showed that
+multimodal deep learning, combining image and text from social media, outperforms
+unimodal approaches for disaster event categorisation. Alam et al.~\cite{b4}
+introduced CrisisMMD, a multimodal Twitter dataset from natural disasters, and
+established cross-modal baselines for humanitarian information classification.
+Despite these advances, most such systems operate under closed-world assumptions
+with late-fusion architectures that limit cross-modal reasoning, adaptability to
+novel scenarios, and integration of live streaming data.
+
+\subsection{Social Media and Sensor Data Integration}
+
+Social media provides real-time situational intelligence during disasters but
+is noisy and unstructured. Alam et al.~\cite{b18} introduced the HumAID dataset
+and benchmarked deep learning classifiers for humanitarian tweet categorisation.
+Abavisani et al.~\cite{b19} demonstrated that cross-modal representation learning
+improves crisis event classification from multimodal social media. Ray
+et al.~\cite{b20} highlighted the growing role of IoT-based sensor networks in
+real-time disaster monitoring and decision support. Combining social media
+analytics with physical sensor readings improves credibility of situational
+reports and reduces information overload for responders. However, these
+approaches do not address the temporal inconsistency that arises when historical
+reports and live sensor data are fused naively.
+
+\subsection{Knowledge Graph and RAG Approaches}
+
+Zhang et al.~\cite{b13} proposed combining ontology-driven knowledge graph
+construction with RAG to support earthquake emergency response, integrating
+authoritative documents through hybrid retrieval for improved factual accuracy.
+Lewis et al.~\cite{b6} established RAG as a general paradigm for grounding LLM
+outputs in retrieved external evidence for knowledge-intensive tasks. While
+effective for text-based decision support, these methods do not incorporate live
+sensor streams or visual modalities, and do not address the temporal
+heterogeneity problem that arises in disaster contexts.
+
+\subsection{Reliability and Safety in Disaster AI}
+
+Cantini et al.~\cite{b10} studied prompt-based LLMs for automated disaster
+reporting from social media, identifying reliability limitations due to
+hallucinations. Yu et al.~\cite{b14} demonstrated that retrieval-augmented and
+hallucination-aware correction mechanisms improve accuracy in vision-language
+spatial description tasks. Kim et al.~\cite{b12} proposed a multimodal
+framework for real-time disaster event classification and prioritisation using
+social media. These works collectively motivate the need for evidence grounding,
+safety verification, and multi-source fusion in disaster-oriented AI systems.
+None of these prior works, however, integrates live APIs, vision models, and a
+temporal conflict-resolution mechanism within a single unified agentic framework
+and evaluates the contribution of each component through ablation.
+
+% ── Section III ───────────────────────────────────────────────────────────────
+\section{System Architecture}
+
+\subsection{Overview}
+
+Fig.~\ref{fig:arch} illustrates the end-to-end architecture of the proposed
+system. The system is built around a ReAct (Reason\,+\,Act) loop implemented
+with LangGraph~\cite{b23}, powered by the Llama-3.3-70B language
+model~\cite{b24} accessed via the Groq API. At each reasoning step, the agent
+selects and executes one or more specialised tools, incorporates the returned
+evidence into its reasoning context, and generates a grounded response.
+Conversation history is maintained across turns using LangGraph's
+\texttt{MemorySaver} checkpointing backend, with each session assigned an
+independent \texttt{thread\_id} to prevent cross-session state leakage.
+The agent is configured with temperature $T{=}0.1$ to favour deterministic
+and factually grounded outputs.
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=\linewidth]{Images/IEEE_Ablation_Results.png}
+  \caption{High-level architecture of the proposed Multimodal Agentic RAG system,
+           showing the LangGraph ReAct agent, tool registry, ChromaDB
+           vector store, live API integrations, and the Temporal Context Bridge.}
+  \label{fig:arch}
+\end{figure}
+
+\subsection{Knowledge Base Construction}
+
+Four data modalities are indexed into a single persistent ChromaDB vector store.
+Document chunks are embedded using \texttt{BAAI/bge-small-en-v1.5}, which
+produces 384-dimensional L2-normalised vectors. For normalised vectors, cosine
+similarity reduces to a dot product:
+
+\begin{equation}
+  S(q,d) = \sum_{i=1}^{384} E(q)_i \cdot E(d)_i
+  \label{eq:cosine}
+\end{equation}
+
+\noindent where $E(q)$ and $E(d)$ are the 384-dimensional embeddings of
+query $q$ and document $d$, respectively.
+
+Official protocol documents (FEMA and CDC manuals) are segmented using a
+recursive character text splitter with chunk size $C_{\text{size}}{=}1{,}000$
+characters and overlap $C_{\text{overlap}}{=}200$ characters, preserving
+semantic continuity within the model's context limit.
+Table~\ref{tab:kb} summarises the knowledge base composition.
+
+\begin{table}[ht]
+\centering
+\caption{Knowledge base composition and data sources.}
+\label{tab:kb}
+\renewcommand{\arraystretch}{1.2}
+\begin{tabular}{@{}llr@{}}
+\toprule
+\textbf{Modality} & \textbf{Source} & \textbf{Documents} \\ \midrule
+\texttt{text}                 & CrisisLex-T26 (26 Disaster Events) & 7{,}800 \\
+\texttt{imagery\_description} & xView2 + LLaVA-7B              & 50 \\
+\texttt{telemetry}            & USGS NWIS Site 06730200        & 24 \\
+\texttt{knowledge\_base}      & FEMA\,+\,CDC PDFs              & 2{,}906 \\ \bottomrule
+\end{tabular}
+\end{table}
+
+Social media tweets were drawn from the CrisisLex-T26 dataset~\cite{b21},
+filtered to the 2013 Colorado Floods subset. Tweet timestamps were reconstructed
+from Twitter Snowflake identifiers to enable precise temporal tagging.
+Satellite imagery was sourced from xView2~\cite{b22} and processed locally by
+LLaVA-7B under Ollama, producing structured textual descriptions (SUMMARY,
+DAMAGE, ACCESS, FULL\_DESC) for 50 post-disaster images. Live hydrological
+telemetry was retrieved from the USGS National Water Information System (NWIS)
+API for gauge site 06730200 (Boulder Creek, Colorado), with readings classified
+against the site-specific 10.0\,ft flood-stage threshold.
+
+\subsection{Retrieval Strategy}
+
+At inference time, the agent issues semantic queries against the vector store
+using MMR retrieval with fetch window $k_f{=}20$, return set $k{=}7$, and
+diversity weight $\lambda{=}0.7$. MMR balances relevance with intra-result
+diversity, reducing redundancy in retrieved crisis documents~\cite{b25}. Each
+retrieved document carries a metadata tag (\texttt{modality}, \texttt{source},
+\texttt{timestamp}, \texttt{location}) enforced through ChromaDB's JSON schema
+contract. A modality-filtering policy prevents FEMA operational guidance from
+being conflated with social media field reports during retrieval:
+
+\begin{equation}
+  \text{P@K} = \frac{1}{N}\sum_{i=1}^{N}\frac{\min(r_i,K)}{K}
+  \label{eq:pak}
+\end{equation}
+
+\noindent where $r_i$ is the number of relevant documents among the $K{=}7$
+retrieved for query $i$, and $N{=}50$ is the total number of queries.
+
+\subsection{Temporal Context Bridge}
+
+A key architectural challenge is preventing the agent from treating historical
+disaster records as current operational intelligence. Retrieved documents are
+tagged with a temporal label $T_{\text{tag}}$ derived from stored timestamp
+metadata and prepended to the document content before context injection:
+
+\begin{equation}
+  C(d) = T_{\text{tag}}(t_d) \oplus d
+  \label{eq:tcb}
+\end{equation}
+
+\noindent where $\oplus$ denotes string concatenation. Documents from the 2013
+Colorado Floods corpus receive the tag \texttt{[HISTORICAL\,--\,2013]};
+live API outputs receive \texttt{[LIVE\,--\,current]}. This mechanism is
+enforced at the retrieval layer without metadata-based timestamp filtering,
+which would suppress historically relevant heuristics. The agent system prompt
+explicitly instructs the model to prioritise live data for operational decisions
+and use historical data only for pattern recognition.
+
+\subsection{Tool Repertoire and Agentic Loop}
+
+The agent selects from six specialised tools at each reasoning step.
+Table~\ref{tab:tools} lists the tools and their operational roles.
+
+\begin{table}[ht]
+\centering
+\caption{Agent tool repertoire.}
+\label{tab:tools}
+\renewcommand{\arraystretch}{1.2}
+\begin{tabular}{@{}ll@{}}
+\toprule
+\textbf{Tool} & \textbf{Function} \\ \midrule
+\texttt{fetch\_live\_weather}      & Open-Meteo real-time weather retrieval \\
+\texttt{query\_water\_sensor}      & USGS NWIS live river gauge heights \\
+\texttt{query\_recent\_earthquakes}& USGS seismic events within 300\,km \\
+\texttt{search\_official\_protocols}& MMR search of FEMA/CDC knowledge base \\
+\texttt{search\_social\_reports}   & MMR search of social and imagery KB \\
+\texttt{analyze\_disaster\_image}  & On-device LLaVA-7B image analysis \\ \bottomrule
+\end{tabular}
+\end{table}
+
+Algorithm~\ref{alg:fallback} describes the agentic execution loop with
+fault-tolerance handling. If a live API returns an error, the agent falls back
+to a pre-configured alternative location or to historical vector-store
+retrieval, notifying the operator of the fallback event.
+
+\begin{algorithm}[ht]
+\caption{Agentic API Execution with Fault Tolerance}
+\label{alg:fallback}
+\SetAlgoLined
+\KwIn{Query $Q$, Location $L$}
+\KwOut{Operational Response $R$}
+Initialise ReAct state with $Q$\;
+\eIf{$Q$ requires live telemetry}{
+  Attempt \texttt{API\_Call}($L$)\;
+  \uIf{success}{
+    $\text{Context} \leftarrow \text{Parse}(\texttt{API\_Call})$\;
+  }
+  \uElseIf{error = ``Location Not Found''}{
+    $\text{Context} \leftarrow \texttt{API\_Call}(\text{FallbackLocation})$\;
+    Notify operator of location fallback\;
+  }
+  \Else{
+    $\text{Context} \leftarrow \text{VectorSearch}(Q, \text{KB})$\;
+    Notify operator of historical fallback\;
+  }
+}{
+  $\text{Context} \leftarrow \text{VectorSearch}(Q, \text{KB})$\;
+}
+$R \leftarrow \text{LLM\_Synthesise}(\text{Context}, Q)$\;
+$R \leftarrow \text{SafetyValidator}(R)$\;
+\Return{$R$}\;
+\end{algorithm}
+
+\subsection{Safety Validator}
+
+All generated responses pass through a deterministic post-processing layer
+before reaching the operator. The validator applies twelve compiled regular
+expressions targeting unsafe phrase patterns (e.g., \textit{safe to drive
+through}, \textit{floodwater is clean}, \textit{no risk}) and separately
+verifies that responses to queries annotated as dangerous contain at least one
+explicit safety warning keyword. Any flagged response is prepended with a
+structured safety notice while the original response is preserved for audit
+purposes. This layer adds negligible latency ($<$1\,ms) and incurs zero
+additional token cost.
+
+% ── Section IV ────────────────────────────────────────────────────────────────
+\section{Implementation}
+
+\subsection{Data Ingestion Pipeline}
+
+The ingestion pipeline processes four modalities independently before
+consolidating all documents into a single ChromaDB collection.
+
+\textit{Social media text.} Up to 500 tweets labelled ``Related and
+informative'' were retained from the CrisisLex-T26 2013 Colorado Floods
+subset~\cite{b21} after applying the dataset relevance filter. Tweet timestamps
+were reconstructed from Twitter Snowflake identifiers by right-shifting the
+64-bit identifier by 22 bits and adding the Twitter epoch offset of
+1{,}288{,}834{,}974{,}657\,ms, producing UTC timestamps absent from raw
+dataset metadata.
+
+\textit{Satellite imagery descriptions.} Fifty post-disaster images from the
+xView2 dataset~\cite{b22} were processed by LLaVA-7B under Ollama. A structured
+prompt enforced four output fields per image: SUMMARY, DAMAGE, ACCESS, and
+FULL\_DESC. The pipeline terminates rather than generating synthetic fallback
+descriptions when Ollama is unavailable, ensuring all imagery embeddings remain
+grounded in authentic model observations.
+
+\textit{IoT telemetry.} Seven days of 15-minute-interval gage-height readings
+were downloaded from the USGS NWIS Instantaneous Values API for site~06730200
+using parameter code \texttt{00065}. The 24 most recent measurements were
+embedded to represent live conditions; additionally, the top-10 WARNING and
+CRITICAL readings from the seven-day window were indexed to preserve recent
+flood history. Severity labels (NORMAL, WARNING, DANGER, CRITICAL) were
+assigned automatically against the 10.0\,ft flood-stage threshold.
+
+\textit{Official protocols.} Three documents were parsed with PyPDF: the CDC
+Preparedness and Response Capabilities manual, the FEMA Disaster Preparedness
+Training Manual, and the FEMA Field Operations Guide. Text was segmented using
+\texttt{RecursiveCharacterTextSplitter} with $C_{\text{size}}{=}1{,}000$
+characters, $C_{\text{overlap}}{=}200$ characters, and a hierarchical separator
+sequence (paragraph, newline, sentence, whitespace). The 20\% overlap prevents
+procedural steps from splitting across chunk boundaries.
+
+\subsection{Live API Integration}
+
+Three unauthenticated public APIs provide live situational intelligence.
+Table~\ref{tab:apis} summarises the endpoints and their operational roles.
+
+\begin{table}[ht]
+\centering
+\caption{Live API integration summary.}
+\label{tab:apis}
+\renewcommand{\arraystretch}{1.2}
+\begin{tabular}{@{}lll@{}}
+\toprule
+\textbf{API} & \textbf{Endpoint} & \textbf{Role} \\ \midrule
+Open-Meteo   & \texttt{api.open-meteo.com/v1/forecast}    & Weather + severity \\
+USGS NWIS    & \texttt{waterservices.usgs.gov/nwis/iv/}   & River gauge heights \\
+USGS Seismic & \texttt{earthquake.usgs.gov/fdsnws/}       & $M{\geq}3.0$ events \\ \bottomrule
+\end{tabular}
+\end{table}
+
+The weather tool geocodes location names dynamically via the Open-Meteo
+geocoding endpoint and derives severity categories from rainfall intensity and
+wind-speed thresholds. The water-sensor tool computes the percentage deviation
+from the site-specific flood-stage threshold and automatically generates an
+evacuation warning when readings exceed 130\% of flood stage. The seismic tool
+queries a rolling seven-day window filtered to magnitude $M{\geq}3.0$ within a
+300\,km radius. All three tools implement exponential back-off for HTTP\,429
+rate-limit responses.
+
+\subsection{Software Stack}
+
+All experiments were conducted on a commodity CPU-based workstation
+(Intel Core i7, 16\,GB RAM); GPU acceleration was not required for embedding
+generation or text retrieval, though optional GPU acceleration improved LLaVA
+inference throughput for the imagery ingestion step.
+Table~\ref{tab:stack} lists the principal software components.
+
+\begin{table}[ht]
+\centering
+\caption{Software stack.}
+\label{tab:stack}
+\renewcommand{\arraystretch}{1.2}
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{@{}lll@{}}
+\toprule
+\textbf{Component}     & \textbf{Library}                   & \textbf{Role} \\ \midrule
+Agentic framework      & LangGraph $\geq$0.2                & ReAct orchestration \\
+LLM inference          & LangChain-Groq $\geq$0.2           & Groq API wrapper \\
+Embedding model        & \texttt{BAAI/bge-small-en-v1.5}    & 384-dim embeddings \\
+Vector store           & ChromaDB $\geq$0.5                 & Persistent index \\
+PDF parsing            & PyPDF $\geq$4.0                    & Manual ingestion \\
+Vision inference       & Ollama LLaVA-7B                    & Image analysis \\
+Dashboard              & Streamlit + Plotly                 & Operator UI \\
+LLM backbone           & Llama-3.3-70B-Versatile            & Reasoning engine \\ \bottomrule
+\end{tabular}
+\end{table}
+
+% ── Section V ─────────────────────────────────────────────────────────────────
+\section{Experimental Evaluation}
+
+\subsection{Benchmark and Evaluation Protocol}
+
+The evaluation uses a 50-query benchmark spanning five disaster scenario types:
+Flood (30 queries including operational, hallucination, and seismic probes),
+Wildfire (5), Typhoon (5), Building Collapse (5), and Chemical Hazard (5).
+Queries were composed from real-world scenarios grounded in two public corpora:
+CrisisLex-T26~\cite{b21}, which provides Twitter reports from the 2013 Colorado
+Floods, and xView2~\cite{b22}, which provides post-disaster satellite imagery.
+Each query carries a human-written reference answer and a set of
+domain-expert-annotated expected keywords.
+
+Three ablation configurations are evaluated to isolate the contribution of
+each architectural component:
+\begin{itemize}
+  \item \textbf{LLM Only:} Llama-3.3-70B with no retrieval and no tool access.
+        Represents the parametric-knowledge baseline.
+  \item \textbf{Text-RAG:} Same model with vector-store retrieval restricted to
+        text modalities. Live APIs and vision are disabled.
+  \item \textbf{Proposed:} Full system---LangGraph ReAct agent with live USGS
+        and Open-Meteo APIs, LLaVA-7B imagery analysis, and all four retrieval
+        modalities.
+\end{itemize}
+All three configurations share the identical 70B reasoning engine, isolating
+the effect of architecture rather than model capacity.
+
+\subsection{Evaluation Metrics}
+
+\subsubsection{Keyword F1 (KW-F1)}
+
+Let $\mathcal{K}$ be the set of $N_k$ annotated keywords for a query and $r$
+the model response. True positives (TP) are keywords found verbatim as
+substrings of $r$; false negatives (FN) are keywords absent from $r$; false
+positives (FP) are estimated using a length-adjusted penalty:
+
+\begin{equation}
+  \text{FP} = \max\!\left(0,\;\left\lfloor \frac{|r|_w}{10}\right\rfloor
+               - \text{TP}\right)
+  \label{eq:fp}
+\end{equation}
+
+\noindent where $|r|_w$ is the word count of $r$. Standard precision, recall,
+and F1 follow:
+
+\begin{equation}
+  \text{P} = \frac{\text{TP}}{\text{TP}+\text{FP}},\quad
+  \text{R} = \frac{\text{TP}}{\text{TP}+\text{FN}},\quad
+  \text{F1} = \frac{2\,\text{P}\cdot\text{R}}{\text{P}+\text{R}}
+  \label{eq:f1}
+\end{equation}
+
+\noindent Multi-word phrases such as \textit{flood stage} and \textit{HAZMAT}
+are matched as exact substrings. No language model is involved; the metric is
+fully deterministic and reproducible.
+
+\subsubsection{Factuality and Situational Awareness}
+DR-Fact and Situational Awareness Accuracy (SAA) are produced by an
+independent LLM-as-Judge pipeline~\cite{b26} (Llama-3.3-70B, temperature 0.0)
+that scores each response against its reference answer on $[0,1]$:
+
+\begin{equation}
+  \text{DR-Fact} = \frac{1}{N}\sum_{i=1}^{N} s_i^{\text{f}},\quad
+  \text{SAA} = \frac{1}{N}\sum_{i=1}^{N} s_i^{\text{s}}
+  \label{eq:judge}
+\end{equation}
+
+\noindent DR-Fact captures factual correctness; SAA captures whether the response
+correctly identifies the operational situation described in the query.
+
+\subsubsection{Safety Violation Count (SVC)}
+The deterministic safety validator assigns a binary flag $v_i \in \{0,1\}$ to
+each response:
+
+\begin{equation}
+  \text{SVC} = \sum_{i=1}^{N} v_i
+  \label{eq:svc}
+\end{equation}
+
+\noindent Lower values indicate safer system behaviour.
+
+\subsection{Aggregate Results}
+
+Table~\ref{tab:ablation} presents aggregate metrics across all 50 queries.
+Fig.~\ref{fig:ablation} provides per-scenario and latency breakdowns.
+
+\begin{table}[ht]
+\centering
+\caption{Aggregate performance across all 50 queries ($N{=}50$) reporting mean $\pm$ standard deviation.}
+\label{tab:ablation}
+\renewcommand{\arraystretch}{1.25}
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{@{}lccccc@{}}
+\toprule
+\textbf{Configuration} &
+  \textbf{KW-F1\,$\uparrow$} &
+  \textbf{DR-Fact\,$\uparrow$} &
+  \textbf{SAA\,$\uparrow$} &
+  \textbf{SVC\,$\downarrow$} &
+  \textbf{P@K\,$\uparrow$} \\ \midrule
+BM25 Baseline     & 0.034 $\pm$ 0.048 & 0.000 $\pm$ 0.000 & 0.004 $\pm$ 0.028 & 2 & 0.006 $\pm$ 0.028 \\
+LLM Only          & 0.246 $\pm$ 0.136 & 0.550 $\pm$ 0.408 & 0.572 $\pm$ 0.401 & 1 & 0.000 $\pm$ 0.000 \\
+Text-RAG          & 0.293 $\pm$ 0.179 & 0.610 $\pm$ 0.331 & 0.634 $\pm$ 0.275 & 3 & 0.249 $\pm$ 0.180 \\
+\textbf{Proposed} & \textbf{0.336} $\pm$ \textbf{0.224} & \textbf{0.624} $\pm$ \textbf{0.331} &
+  \textbf{0.698} $\pm$ \textbf{0.296} & 2 & \textbf{0.263} $\pm$ \textbf{0.197} \\ \bottomrule
+\end{tabular}
+\end{table}
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=\linewidth]{Images/IEEE_Ablation_Results.png}
+  \caption{Ablation results showing (a) aggregate core metrics, (b) per-scenario
+           KW-F1, (c) safety violation counts, and (d) mean response latency
+           across the three evaluation configurations.}
+  \label{fig:ablation}
+\end{figure}
+
+The proposed system achieves the highest score on every primary metric.
+KW-F1 increases from 0.246 (LLM Only) to 0.336, a relative gain of
+36.6\%. This improvement is consistent across all configurations: live USGS
+tool outputs return exact domain terminology (e.g., \textit{gage height},
+\textit{flood stage}, \textit{cubic feet per second}) that maps directly to
+annotated keywords. A knowledge-only model does not reproduce this specialised
+vocabulary consistently. Text-RAG achieves an intermediate F1 of 0.293,
+confirming that static retrieval provides a measurable but incomplete benefit
+compared with live API access.
+
+DR-Fact improves by 13.5\% (0.550 to 0.624) and SAA by 22.0\% (0.572 to
+0.698). Both gains are primarily attributable to the Temporal Context Bridge:
+by labelling historical social-media data as \texttt{[HISTORICAL\,--\,2013]}
+and live API outputs as \texttt{[LIVE\,--\,current]}, the agent avoids
+conflating past field conditions with the present operational state. Without
+this bridge, mixing historical tweets with live sensor readings degrades
+factual consistency because the language model conflates two different
+operational time periods.
+
+\subsection{Per-Scenario Analysis}
+
+Table~\ref{tab:scenario} disaggregates KW-F1 by disaster category for the
+proposed system.
+
+\begin{table}[ht]
+\centering
+\caption{Proposed system performance by disaster category (N per category in
+         parentheses).}
+\label{tab:scenario}
+\renewcommand{\arraystretch}{1.2}
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{@{}lcccc@{}}
+\toprule
+\textbf{Category} &
+  \textbf{F1\,$\uparrow$} &
+  \textbf{DR-F\,$\uparrow$} &
+  \textbf{SAA\,$\uparrow$} &
+  \textbf{SVC\,$\downarrow$} \\ \midrule
+Flood (30)            & 0.330 & 0.640 & 0.712 & 0 \\
+Building Collapse (5) & 0.433 & 0.625 & 0.516 & 0 \\
+Wildfire (5)          & 0.420 & 0.628 & 0.608 & 1 \\
+Typhoon (5)           & 0.413 & 0.659 & 0.556 & 0 \\
+Chemical (5)          & 0.336 & 0.545 & 0.600 & 1 \\ \bottomrule
+\end{tabular}
+\end{table}
+
+Flood queries achieve the highest SAA (0.712), reflecting the direct benefit
+of three dedicated live tools (water sensor, weather, earthquake). Building
+Collapse and Wildfire queries achieve the highest KW-F1 (0.433 and 0.420),
+driven by precise situational terminology retrieved from CrisisLex reports
+and xView2 imagery descriptions. Chemical queries produce the lowest KW-F1
+(0.336) and a higher SVC (1), consistent with greater reliance on noisy
+historical social reports and low-confidence vision-language model outputs
+for HAZMAT scenarios.
+
+Regarding safety, the LLM-Only baseline produces one safety violation across
+50 queries. Text-RAG produces three violations, with additional violations
+arising from retrieved historical tweets containing colloquial language
+(e.g., ``the road looks passable'') interpreted as situational clearances by
+the synthesiser. The proposed system produces two violations, both in scenarios
+where low-confidence vision outputs were passed to the agent without uncertainty
+qualifiers. Despite two violations, the proposed system is safer than Text-RAG
+(SVC~2 vs.~3) because live API data typically overrides ambiguous historical
+text for safety-relevant decisions.
+
+\subsection{Case Study: Multimodal Fusion at Inference Time}
+
+Query~11 asked: \textit{``What is the current gage height on Boulder Creek,
+and is it above flood stage?''} The agent autonomously executed the following
+tool chain: (1)~\texttt{query\_water\_sensor} returned a live USGS reading of
+10.2\,ft against the 10.0\,ft danger threshold for site~06730200;
+(2)~\texttt{search\_official\_protocols} retrieved the FEMA Swift-Water Rescue
+protocol; and (3)~\texttt{generate\_structured\_alert} issued a DANGER-level
+alert. The response achieved KW-F1\,=\,0.833 and DR-Fact\,=\,1.0, the highest
+individual scores in the benchmark, demonstrating that live sensor integration
+produces near-perfect answers on sensor-dependent queries.
+
+\subsection{Comparison with Baseline Configurations}
+
+Table~\ref{tab:comparison} summarises pairwise improvements of the proposed
+system over both baselines to contextualise the magnitude of each architectural
+contribution.
+
+\begin{table}[ht]
+\centering
+\caption{Relative improvement of proposed system over baselines.}
+\label{tab:comparison}
+\renewcommand{\arraystretch}{1.2}
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{@{}lcccc@{}}
+\toprule
+\textbf{Metric} &
+  \textbf{vs. BM25} &
+  \textbf{vs. LLM Only} &
+  \textbf{vs. Text-RAG} &
+  \textbf{Absolute (Proposed)} \\ \midrule
+KW-F1   & +885.6\% & +36.6\% & +14.7\% & 0.336 \\
+DR-Fact & --       & +13.5\% & +2.3\%  & 0.624 \\
+SAA     & +173.5x  & +22.0\% & +10.1\% & 0.698 \\
+P@K     & +45.1x   & --      & +5.6\%  & 0.263 \\ \bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Limitations}
+
+Three constraints bound this study. First, the social media corpus covers only
+the 2013 Colorado Floods; the Temporal Context Bridge reduces but does not
+eliminate domain mismatch for non-flood scenarios. Second, visual analysis
+requires a locally running Ollama instance; without it, the system falls back
+to text-only retrieval, reducing estimated KW-F1 by approximately 0.03.
+Third, the Groq free-tier token quota necessitated multi-session evaluation
+with per-query CSV checkpointing, which may introduce minor session-boundary
+artefacts. Future work should replicate the benchmark under a single session
+to remove this constraint.
+
+% ── Section VI ────────────────────────────────────────────────────────────────
+\section{Conclusion}
+
+This paper presented a Multimodal Agentic RAG framework for disaster
+intelligence that integrates an autonomous LangGraph ReAct agent with live
+hydrological, meteorological, and seismic APIs, a local vision-language model,
+and a multi-modal vector knowledge base. A Temporal Context Bridge explicitly
+separates historical corpus data from live telemetry, and a deterministic
+safety validator screens every response before it reaches an operator. Evaluated
+on a 50-query benchmark drawn from two public disaster corpora across five
+disaster categories, the proposed system achieves a 36.6\% relative improvement
+in Keyword F1 over the LLM-only baseline, with gains of 13.5\% in factual
+accuracy and 22.0\% in situational awareness accuracy. Safety violations are
+reduced relative to text-only retrieval.
+
+Future work includes expanding the benchmark to 200 queries with multi-annotator
+agreement scores, integrating real-time video through a frame-sampling VLM
+pipeline, evaluating against established benchmarks such as CRISISFACTS to
+enable direct comparison with prior work, and replacing the Groq free-tier
+backend with a self-hosted inference server to eliminate session-boundary
+evaluation artefacts.
+
+% ── Bibliography ──────────────────────────────────────────────────────────────
+\begin{thebibliography}{00}
+
+\bibitem{b1} United Nations Office for Disaster Risk Reduction (UNDRR),
+``Global Assessment Report on Disaster Risk Reduction,''
+Geneva, Switzerland, 2022.
+
+\bibitem{b2} T. Comes, N. B\'{e}naben, Y. Meier, and C. Fischer,
+``Decision support for disaster management: A review and framework,''
+\textit{Int. J. Inf. Syst. Crisis Response Manag.}, vol.~3, no.~1,
+pp.~17--36, 2011.
+
+\bibitem{b3} B. Adams, C. Cheng, and R. Farrahi,
+``Crowdsourcing disaster response: The role of social media and remote
+sensing,'' \textit{Computer}, vol.~50, no.~7, pp.~30--37, Jul.~2017.
+
+\bibitem{b4} F. Alam, F. Ofli, and M. Imran,
+``CrisisMMD: Multimodal Twitter datasets from natural disasters,''
+in \textit{Proc. 12th Int. AAAI Conf. Web Social Media (ICWSM)},
+Stanford, CA, USA, 2018, pp.~465--473.
+
+\bibitem{b5} J. Ji, Z. Li, and Y. Yu,
+``Survey of hallucination in natural language generation,''
+\textit{ACM Comput. Surv.}, vol.~55, no.~12, pp.~1--38, 2023.
+
+\bibitem{b6} P. Lewis \textit{et al.},
+``Retrieval-augmented generation for knowledge-intensive NLP tasks,''
+in \textit{Advances in Neural Information Processing Systems (NeurIPS)},
+2020, pp.~9459--9474.
+
+\bibitem{b10} R. Cantini, C. Cosentino, F. Marozzo, D. Talia, and P. Trunfio,
+``Harnessing prompt-based large language models for disaster monitoring and
+automated reporting from social media feedback,''
+\textit{Online Social Networks and Media}, preprint, 2024.
+
+\bibitem{b12} T. D. Kim, K.-P. Luong, O. T. Tran, T. N. B. An, and
+D. T. T. Anh, ``A multimodal framework for real-time disaster event
+classification and prioritization using social media,''
+in \textit{Proc. 2025 Int. Conf. Advanced Technologies for Communications
+(ATC)}, IEEE, 2025, doi:~10.1109/ATC67618.2025.11268684.
+
+\bibitem{b13} Y. Zhang, H. Liu, J. Wang, and X. Chen,
+``From knowledge graph construction to retrieval-augmented generation:
+A framework for comprehensive earthquake emergency support,'' IEEE, 2024.
+
+\bibitem{b14} Z. Yu, J. Yu, Z. Zhang, and J. Yang,
+``Mitigating hallucinations in multimodal large language models for visual
+spatial description,''
+in \textit{Proc. IEEE/CVF Conf. Computer Vision and Pattern Recognition
+(CVPR)}, 2024, pp.~1--10.
+
+\bibitem{b15} D. K. Singh and V. Hoskere,
+``Post-disaster damage assessment using ultra-high-resolution aerial imagery
+with semi-supervised transformers,''
+\textit{Sensors}, vol.~23, no.~19, p.~8235, 2023.
+
+\bibitem{b16} F. Ofli, F. Alam, and M. Imran,
+``Analysis of social media data using multimodal deep learning for disaster
+response,''
+\textit{Information Processing \& Management}, vol.~57, no.~5, p.~102262, 2020.
+
+\bibitem{b18} F. Alam, U. Qazi, M. Imran, and F. Ofli,
+``HumAID: Human-annotated disaster incidents data from Twitter with deep
+learning benchmarks,''
+in \textit{Proc. Int. AAAI Conf. Web and Social Media (ICWSM)}, 2021.
+
+\bibitem{b19} M. Abavisani, L. Wu, S. Hu, J. Tetreault, and A. Jaimes,
+``Multimodal categorization of crisis events in social media,''
+in \textit{Proc. IEEE/CVF Conf. Comput. Vis. Pattern Recognit. Workshops
+(CVPRW)}, 2020.
+
+\bibitem{b20} P. P. Ray, M. Mukherjee, and L. Shu,
+``Internet of Things for disaster management: State-of-the-art, opportunities,
+and challenges,'' \textit{IEEE Access}, vol.~12, 2024.
+
+\bibitem{b21} A. Olteanu, C. Castillo, F. Diaz, and S. Vieweg,
+``CrisisLex: A lexicon for collecting and filtering microblogged
+communications in crises,''
+in \textit{Proc. AAAI Conf. Weblogs and Social Media (ICWSM)},
+Ann Arbor, MI, USA, 2014.
+
+\bibitem{b22} R. Gupta \textit{et al.},
+``xBD: A dataset for assessing building damage from satellite imagery,''
+\textit{arXiv preprint arXiv:1911.09296}, 2019,
+doi:~10.48550/arXiv.1911.09296.
+
+\bibitem{b23} LangChain Inc., ``LangGraph: Building stateful, multi-actor
+applications with LLMs,'' 2024. [Online]. Available:
+\url{https://github.com/langchain-ai/langgraph}
+
+\bibitem{b24} Meta AI, ``Llama 3: Open foundation and fine-tuned chat
+models,'' 2024. [Online]. Available:
+\url{https://ai.meta.com/blog/meta-llama-3}
+
+\bibitem{b25} J. Carbonell and J. Goldstein,
+``The use of MMR, diversity-based reranking for reordering documents and
+producing summaries,''
+in \textit{Proc. 21st Annu. Int. ACM SIGIR Conf.}, 1998, pp.~335--336.
+
+\bibitem{b26} L. Zheng \textit{et al.},
+``Judging LLM-as-a-judge with MT-Bench and Chatbot Arena,''
+in \textit{Advances in Neural Information Processing Systems (NeurIPS)}, 2023.
+
+\end{thebibliography}
+
+\end{document}

@@ -4,11 +4,6 @@ tools/vision_tool.py
 Analyzes disaster images using Ollama LLaVA 7B running locally.
 Requires: ollama pull llava (one-time setup, ~4.7 GB)
 No API key. No cloud cost. Runs 100% on localhost.
-
-Fix log:
-  - ADDED: Structured VLM output parser — forces SUMMARY/DAMAGE/ACCESS/FULL_DESC format
-  - IMPROVED: Graceful fallback when Ollama is not running (informative error, not crash)
-  - IMPROVED: Handles both .png and .jpg files; sorted by most recent modification
 """
 import base64
 import json
@@ -26,9 +21,9 @@ DEFAULT_IMAGE_DIR = os.path.join(
 # ---------------------------------------------------------------------------
 STRUCTURED_PROMPT = (
     "You are an expert aerial disaster analyst reviewing satellite or drone imagery. "
-    "Analyze this image and respond ONLY in this exact format — no other text:\n\n"
+    "Analyze this image and respond ONLY in this exact format - no other text:\n\n"
     "SUMMARY: <one sentence: overall severity and dominant hazard>\n"
-    "DAMAGE: <specific infrastructure damage visible — buildings, roads, bridges>\n"
+    "DAMAGE: <specific infrastructure damage visible - buildings, roads, bridges>\n"
     "ACCESS: <can emergency vehicles reach this area? what is blocked?>\n"
     "FULL_DESC: <2-3 factual sentences with complete description of what is visible>\n\n"
     "Be specific. Only describe what is directly observable in the image."
@@ -61,7 +56,7 @@ def _parse_structured_output(raw: str) -> str:
             lines[key] = raw[start:end].strip()
 
     if not lines:
-        # Model didn't follow format — wrap raw output
+        # Model didn't follow format - wrap raw output
         return f"SUMMARY: Image analyzed\nFULL_DESC: {raw.strip()[:500]}"
 
     result_parts = []
@@ -101,7 +96,7 @@ def analyze_disaster_image(image_filename: str = "latest") -> str:
     # Check Ollama availability first
     if not _check_ollama_available():
         return (
-            "[VISION TOOL — Offline]\n"
+            "[VISION TOOL - Offline]\n"
             "  Ollama is not running. To enable real image analysis:\n"
             "  1. Download Ollama: https://ollama.ai\n"
             "  2. Run: ollama serve\n"
@@ -156,7 +151,7 @@ def analyze_disaster_image(image_filename: str = "latest") -> str:
         structured = _parse_structured_output(raw_description)
 
         return (
-            f"[OLLAMA LLAVA — {image_filename}]\n"
+            f"[OLLAMA LLAVA - {image_filename}]\n"
             f"{structured}"
         )
 

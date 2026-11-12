@@ -2,12 +2,7 @@
 ingestion/extract_xview2_subset.py
 
 Efficiently extracts a subset of real disaster images from the xView2 tar archive
-without unpacking the entire 2.7GB file.
-
-Fix log:
-  - FIXED: tar.extract(member, path=...) without filter= is deprecated in Python 3.12
-    and will become an error in Python 3.14. Added filter='data' for safe extraction.
-"""
+without unpacking the entire 2.7GB file."""
 import tarfile
 import os
 
@@ -50,10 +45,10 @@ def extract_subset(tar_path: str, output_dir: str, num_images: int = 50) -> int:
                 if member.size < 10_000:
                     continue
 
-                # Flatten the path — extract to output_dir directly
+                # Flatten the path - extract to output_dir directly
                 member.name = os.path.basename(member.name)
 
-                # FIX: filter='data' is required in Python 3.12+ to avoid DeprecationWarning.
+                # filter='data' is required in Python 3.12+ to avoid DeprecationWarning.
                 # 'data' filter strips dangerous metadata (symlinks, absolute paths, etc.)
                 tar.extract(member, path=output_dir, filter="data")
                 extracted_count += 1

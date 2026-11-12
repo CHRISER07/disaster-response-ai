@@ -1,16 +1,16 @@
 # tools/__init__.py
 """
-ARIA Tool Registry — all 8 tools available to the LangGraph ReAct agent.
+Tool Registry - all 8 tools available to the LangGraph ReAct agent.
 
 Tools:
-  1. fetch_live_weather          — Open-Meteo live weather (global)
-  2. query_water_sensor          — USGS real-time river gage (US)
-  3. query_recent_earthquakes    — USGS earthquake feed (global)
-  4. search_official_protocols   — FEMA/CDC manuals only (ChromaDB filtered)
-  5. search_social_reports       — Field reports: tweets + sensors + imagery (ChromaDB filtered)
-  6. search_knowledge_base       — Full ChromaDB search (all modalities, for eval)
-  7. analyze_disaster_image      — Ollama LLaVA local vision AI
-  8. generate_structured_alert   — Structured alert logger to dashboard
+  1. fetch_live_weather          - Open-Meteo live weather (global)
+  2. query_water_sensor          - USGS real-time river gage (US)
+  3. query_recent_earthquakes    - USGS earthquake feed (global)
+  4. search_official_protocols   - FEMA/CDC manuals only (ChromaDB filtered)
+  5. search_social_reports       - Field reports: tweets + sensors + imagery (ChromaDB filtered)
+  6. search_knowledge_base       - Full ChromaDB search (all modalities, for eval)
+  7. analyze_disaster_image      - Ollama LLaVA local vision AI
+  8. generate_structured_alert   - Structured alert logger to dashboard
 """
 
 from tools.weather_tool import fetch_live_weather

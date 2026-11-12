@@ -1,14 +1,9 @@
 """
 ingestion/iot_loader.py
 
-Real USGS water sensor ingestion — no synthetic data.
+Real USGS water sensor ingestion - no synthetic data.
 Fetches recent instantaneous values for known flood gauge sites and stores
-WARNING/CRITICAL readings as embedded documents for the RAG knowledge base.
-
-Fix log:
-  - FIXED: os.makedirs(os.path.dirname(csv_path)) crashes when csv_path has no
-    directory component (dirname returns ""). Added guard for empty string.
-"""
+WARNING/CRITICAL readings as embedded documents for the RAG knowledge base."""
 import os
 import requests
 import pandas as pd
@@ -76,7 +71,7 @@ def fetch_usgs_historical(site_id: str = USGS_SITE_ID, days_back: int = 7) -> pd
         return df
 
     except requests.RequestException as e:
-        print(f"  [IoT] USGS API error — {e}. Will use cached CSV if available.")
+        print(f"  [IoT] USGS API error - {e}. Will use cached CSV if available.")
         return pd.DataFrame()
 
 
@@ -97,7 +92,7 @@ def load_iot_data(csv_path: str) -> list[Document]:
     df = fetch_usgs_historical()
 
     if not df.empty:
-        # FIX: Guard against dirname("") which raises FileNotFoundError
+        # Guard against dirname("") which raises FileNotFoundError
         parent_dir = os.path.dirname(csv_path)
         if parent_dir:
             os.makedirs(parent_dir, exist_ok=True)
@@ -105,19 +100,19 @@ def load_iot_data(csv_path: str) -> list[Document]:
         print(f"  [IoT] Saved real USGS data to {csv_path}")
 
     elif os.path.exists(csv_path):
-        print(f"  [IoT] API unavailable — using cached data from {csv_path}")
+        print(f"  [IoT] API unavailable - using cached data from {csv_path}")
         df = pd.read_csv(csv_path)
 
     else:
         print(
-            "  [IoT] No data available — USGS API unreachable and no cached CSV found.\n"
+            "  [IoT] No data available - USGS API unreachable and no cached CSV found.\n"
             "  Ensure network connectivity and try running populate_db.py again."
         )
         return []
 
     documents = []
 
-    # (a) Last 24 readings → current conditions context
+    # (a) Last 24 readings  current conditions context
     recent_df = df.tail(24)
     for _, row in recent_df.iterrows():
         site  = row.get("site_name", row["sensor_id"])
@@ -140,7 +135,7 @@ def load_iot_data(csv_path: str) -> list[Document]:
             }
         ))
 
-    # (b) Historical WARNING/CRITICAL peaks — flood pattern context
+    # (b) Historical WARNING/CRITICAL peaks - flood pattern context
     alert_df = df[df["status"] != "NORMAL"]
     peak_docs_count = 0
     if not alert_df.empty:

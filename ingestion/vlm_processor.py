@@ -2,12 +2,8 @@
 ingestion/vlm_processor.py
 
 Real disaster image processing using Ollama LLaVA (local, free).
-Processes real xView2 satellite images — NO keyword fallback, NO synthetic data.
-Requires: ollama pull llava (one-time, ~4.7 GB)
-
-Fix log:
-  - FIXED: Hardcoded "2013-09-12T..." timestamp replaced with real current datetime
-"""
+Processes real xView2 satellite images - NO keyword fallback, NO synthetic data.
+Requires: ollama pull llava (one-time, ~4.7 GB)"""
 import os
 import json
 import base64
@@ -18,9 +14,9 @@ OLLAMA_URL = "http://localhost:11434/api/generate"
 
 DISASTER_PROMPT = (
     "You are an expert aerial disaster analyst reviewing satellite/drone imagery. "
-    "Respond in exactly this format — no other text:\n\n"
+    "Respond in exactly this format - no other text:\n\n"
     "SUMMARY: <one sentence: overall severity and dominant hazard>\n"
-    "DAMAGE: <specific infrastructure damage — buildings, roads, bridges>\n"
+    "DAMAGE: <specific infrastructure damage - buildings, roads, bridges>\n"
     "ACCESS: <can emergency vehicles reach this area? what is blocked?>\n"
     "FULL_DESC: <2-3 factual sentences with complete description>\n\n"
     "Only describe what you can directly observe in the image."
@@ -63,7 +59,7 @@ def process_images_with_vlm(
     """
     Processes real xView2 disaster images through Ollama LLaVA.
     Writes structured descriptions to output_json for RAG ingestion.
-    Refuses to write if Ollama is unavailable — no synthetic fallback.
+    Refuses to write if Ollama is unavailable - no synthetic fallback.
 
     Args:
         input_dir: Directory containing extracted xView2 images.
@@ -121,13 +117,13 @@ def process_images_with_vlm(
                 disaster_type = keyword.capitalize()
                 break
 
-        # FIX: Use real current timestamp, not hardcoded "2013-09-12"
+        # Use real current timestamp, not hardcoded "2013-09-12"
         image_timestamp = datetime.now(timezone.utc).isoformat()
 
         results.append({
             "drone_id":     f"xview2_{idx:04d}",
             "timestamp":    image_timestamp,
-            "location":     f"xView2 Disaster Zone — {disaster_type}",
+            "location":     f"xView2 Disaster Zone - {disaster_type}",
             "observations": description,
             "modality":     "imagery_description",
             "source_file":  img_file,

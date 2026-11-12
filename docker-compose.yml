@@ -1,0 +1,92 @@
+## Disaster Response AI - Docker Compose v3
+# Start everything:         docker compose up --build
+# Start API only:           docker compose up --build api
+# Start frontend + API:     docker compose up --build api frontend
+# Stop:                     docker compose down
+# Wipe volumes:             docker compose down -v
+# Production rebuild:       docker compose up --build --force-recreate
+
+version: "3.9"
+
+services:
+
+  # ----------------------------------------------------------------
+  # FastAPI Backend - LangGraph ReAct agent core
+  # ----------------------------------------------------------------
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile.api
+    container_name: disaster_api
+    ports:
+      - "8000:8000"
+    env_file: .env                         # loads GROQ_API_KEY, LANGCHAIN_API_KEY, etc.
+    environment:
+      - LANGCHAIN_TRACING_V2=true
+      - LANGCHAIN_PROJECT=disaster-response-ai
+    volumes:
+      - ./chroma_db:/app/chroma_db        # persist vector store between restarts
+      - ./data:/app/data                   # persist alerts.jsonl and other data files
+      - ./logs:/app/logs                   # persist cost_log.jsonl, policy_violations.jsonl
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health/"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 15s
+    restart: unless-stopped
+
+  # ----------------------------------------------------------------
+  # Streamlit Legacy Dashboard (optional - keep for backward compat)
+  # ----------------------------------------------------------------
+  dashboard:
+    build:
+      context: .
+      dockerfile: Dockerfile.dashboard
+    container_name: disaster_dashboard
+    ports:
+      - "8501:8501"
+    depends_on:
+      api:
+        condition: service_healthy          # waits for API healthcheck to pass
+    environment:
+      - API_BASE_URL=http://api:8000       # internal Docker network URL to the API
+    volumes:
+      - ./data:/app/data                   # read alerts written by API
+    restart: unless-stopped
+
+  # ----------------------------------------------------------------
+  # Next.js Frontend - Premium React dashboard (NEW)
+  # ----------------------------------------------------------------
+  frontend:
+    build:
+      context: ./disaster-frontend
+      dockerfile: Dockerfile
+      args:
+        - NEXT_PUBLIC_API_URL=http://localhost:8000  # public URL for browser rewrites
+    container_name: disaster_frontend
+    ports:
+      - "3000:3000"
+    depends_on:
+      api:
+        condition: service_healthy
+    environment:
+      - NEXT_PUBLIC_API_URL=http://api:8000
+    restart: unless-stopped
+
+  # ----------------------------------------------------------------
+  # Nginx Reverse Proxy (optional - single entry point on port 80)
+  # Enable by uncommenting and running: docker compose --profile prod up
+  # ----------------------------------------------------------------
+  # nginx:
+  #   image: nginx:alpine
+  #   container_name: disaster_nginx
+  #   ports:
+  #     - "80:80"
+  #   volumes:
+  #     - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+  #   depends_on:
+  #     - api
+  #     - frontend
+  #   profiles: ["prod"]
+  #   restart: unless-stopped

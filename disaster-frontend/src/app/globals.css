@@ -1,0 +1,177 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Default: Dark Theme palette */
+  --bg-primary:    #080c14;
+  --bg-secondary:  #0d1117;
+  --bg-card:       #0f1923;
+  --bg-card-hover: #131f2e;
+  --border:        #1e2d3d;
+  --border-bright: #2a3f57;
+
+  /* Accent */
+  --accent-blue:   #3b82f6;
+  --accent-cyan:   #06b6d4;
+  --accent-green:  #10b981;
+  --accent-amber:  #f59e0b;
+  --accent-red:    #ef4444;
+  --accent-purple: #8b5cf6;
+
+  /* Text */
+  --text-primary:   #e2e8f0;
+  --text-secondary: #94a3b8;
+  --text-muted:     #475569;
+}
+
+/* Light Theme palette */
+html.light {
+  --bg-primary:    #f8fafc;
+  --bg-secondary:  #f1f5f9;
+  --bg-card:       #ffffff;
+  --bg-card-hover: #e2e8f0;
+  --border:        #cbd5e1;
+  --border-bright: #94a3b8;
+
+  --text-primary:   #0f172a;
+  --text-secondary: #334155;
+  --text-muted:     #64748b;
+}
+
+html.light body {
+  background: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+html.light .bg-\[\#080c14\]\/40 {
+  background-color: rgba(241, 245, 249, 0.7) !important;
+}
+
+html.light .bg-\[\#080c14\]\/95 {
+  background-color: rgba(255, 255, 255, 0.95) !important;
+}
+
+html.light .bg-\[\#0d1117\] {
+  background-color: #f1f5f9 !important;
+}
+
+html.light .bg-\[\#0f1923\]\/80,
+html.light .bg-\[\#0f1923\]\/90,
+html.light .bg-\[\#0f1923\] {
+  background-color: #ffffff !important;
+}
+
+html.light .border-\[\#1e2d3d\] {
+  border-color: #cbd5e1 !important;
+}
+
+html.light .text-slate-200,
+html.light .text-slate-300,
+html.light .text-white {
+  color: #0f172a !important;
+}
+
+html.light .text-slate-400,
+html.light .text-slate-500 {
+  color: #475569 !important;
+}
+
+html.light .text-slate-600 {
+  color: #64748b !important;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: 'Inter', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #1e2d3d;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #2a3f57;
+}
+
+/* Monospace font */
+.mono {
+  font-family: 'JetBrains Mono', monospace;
+}
+
+/* Pulse animation */
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.85); }
+}
+
+.pulse-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  animation: pulse-dot 2s ease-in-out infinite;
+}
+
+.pulse-dot.green  { background: #10b981; box-shadow: 0 0 6px #10b98188; }
+.pulse-dot.red    { background: #ef4444; box-shadow: 0 0 6px #ef444488; }
+.pulse-dot.amber  { background: #f59e0b; box-shadow: 0 0 6px #f59e0b88; }
+
+/* Typing animation */
+@keyframes blink {
+  0%, 100% { opacity: 0.2; }
+  50% { opacity: 1; }
+}
+
+.typing-dot:nth-child(1) { animation: blink 1.2s infinite 0.0s; }
+.typing-dot:nth-child(2) { animation: blink 1.2s infinite 0.2s; }
+.typing-dot:nth-child(3) { animation: blink 1.2s infinite 0.4s; }
+
+/* Smooth fade in */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(4px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.chat-enter {
+  animation: fadeIn 0.15s ease-out forwards;
+}
+
+/* Scanline / HUD aesthetic */
+.scanlines {
+  background: linear-gradient(
+    rgba(18, 16, 16, 0) 50%, 
+    rgba(0, 0, 0, 0.25) 50%
+  ), linear-gradient(
+    90deg,
+    rgba(255, 0, 0, 0.06),
+    rgba(0, 255, 0, 0.02),
+    rgba(0, 0, 255, 0.06)
+  );
+  background-size: 100% 2px, 3px 100%;
+}

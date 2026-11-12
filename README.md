@@ -5,7 +5,7 @@
 [![Streamlit](https://img.shields.io/badge/Dashboard-Streamlit-red)](https://streamlit.io)
 
 
-> **IEEE Research Framework** — A production-grade, hallucination-free Agentic AI for real-time disaster response, fusing satellite imagery, live IoT sensors, social media, weather data, and official emergency protocols into a single grounded situational report.
+> **IEEE Research Framework** - A production-grade, hallucination-free Agentic AI for real-time disaster response, fusing satellite imagery, live IoT sensors, social media, weather data, and official emergency protocols into a single grounded situational report.
 
 ---
 
@@ -16,8 +16,8 @@ During active disasters, emergency coordinators must manually correlate data fro
 ## System Architecture
 
 ```
-Real-World Data → ETL Pipeline → Vector DB → LangGraph Agent → Streamlit Dashboard
-     │                │              │               │                │
+Real-World Data  ETL Pipeline  Vector DB  LangGraph Agent  Streamlit Dashboard
+                                                                  
   6 Sources        5 Loaders     ChromaDB        ReAct Loop      3-Panel UI
   (all free)      (real data)   (3,195 docs)   (5 tools)       (live + chat)
 ```
@@ -27,10 +27,10 @@ Real-World Data → ETL Pipeline → Vector DB → LangGraph Agent → Streamlit
 | Modality | Source | Description |
 |---|---|---|
 | Social Text | CrisisLex T26 | 200 real tweets from 2013 Colorado Floods |
-| Satellite Imagery | xView2 Dataset | Real building damage assessment images → LLaVA descriptions |
+| Satellite Imagery | xView2 Dataset | Real building damage assessment images  LLaVA descriptions |
 | River Sensors | USGS NWIS Live API | Real-time gage height, Boulder Creek site 06730200 |
 | Weather | Open-Meteo API | Live temperature, precipitation, wind |
-| Earthquakes | USGS Earthquake API | Live M≥3.0 seismic events |
+| Earthquakes | USGS Earthquake API | Live M>=3.0 seismic events |
 | Protocols | FEMA/CDC Manuals | 3 official PDF handbooks, 2,881 semantic chunks |
 
 ## Agent Tools
@@ -47,7 +47,7 @@ tools = [
 
 ## Evaluation Results (IEEE Metrics)
 
-| System | DR-Fact | SAA | Safety Violations ↓ | Avg Latency |
+| System | DR-Fact | SAA | Safety Violations  | Avg Latency |
 |---|---|---|---|---|
 | LLM Only | 0.32 | 0.30 | 2 | 1.18s |
 | Text RAG | 0.43 | 0.47 | 0 | 1.07s |
