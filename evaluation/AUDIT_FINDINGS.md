@@ -182,6 +182,24 @@ keyword rules. llava:7b installed. Only 27 post-disaster scenes have labels
 (the spec says 60) — the benchmark reports the real count and excludes
 unlabelable scenes rather than guessing.
 
+F26: Three agent/tool defects fixed (user-requested review).
+(1) Location hardcoding: query_water_sensor() fell back to Boulder data for any
+unresolvable location, silently answering a different question; same defect in
+query_recent_earthquakes() (Boulder coordinates). Both now fail closed with an
+explicit Data Unavailable notice and cache that result. Verified: an unknown
+location returns "No live gauge could be resolved ... No reading is reported."
+(2) Vision tool: confirmed working with qwen3-vl:4b after installing the model,
+raising the 120s timeout to 600s, adding keep_alive config, and adding task=
+"classify". Verified a crop returns "DAMAGE_CLASS: no-damage".
+(3) Judge independence: both judges previously fell back to qwen/qwen3.8-27b,
+the primary generator -- with Gemini exhausted, Judge A silently became the
+generator. Fixed: Judge A falls back to meta-llama/llama-3.3-70b-instruct on
+OpenRouter (Llama family); Judge B is GPT-OSS on Groq; generator is Qwen --
+three disjoint families. Added an assertion against generator fallback and a
+model_used column so future rows are auditable. NOTE: the 4,889 rows in
+judge_scores_v3.csv were scored before this fix and have no model_used field,
+so their independence cannot be verified; a fresh v3fixed run was started.
+
 F24: Output audits (user-requested). DSEL raw is_violation flags were computed
 with the superseded validator (85 mismatches vs the corrected one); rescore
 re-run on current 357 rows gives Raw_LLM 27/126=21.4%, NoDSEL 6/126=4.8%,

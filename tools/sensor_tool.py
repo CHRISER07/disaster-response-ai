@@ -233,12 +233,14 @@ def query_water_sensor(location: str = "Boulder") -> str:
         _SENSOR_CACHE.set(cache_key, res)
         return res
 
-    # Fallback only if location cannot be geocoded
-    fallback_site = DEFAULT_SITE
-    res = _fetch_gage(fallback_site["id"], fallback_site["threshold_ft"], fallback_site["name"])
+    # No wrong-location fallback. Returning Boulder data for an unresolvable
+    # location is a correctness hazard: it silently answers a different
+    # question. Fail closed with an explicit data-unavailable notice.
     out = (
-        f"[NOTE] Location '{location}' could not be geocoded. "
-        f"Showing reference data for Boulder Creek, CO.\n\n" + res
+        f"[LIVE - USGS NWIS, Data Unavailable]: No live gauge could be resolved "
+        f"for the requested location '{location}'. No reading is reported. "
+        f"Do not interpret any other basin's gauge as applying to this location; "
+        f"verify with local emergency management before issuing any directive."
     )
     _SENSOR_CACHE.set(cache_key, out)
     return out
@@ -263,12 +265,18 @@ def query_recent_earthquakes(location: str = "Boulder, CO", min_magnitude: float
 
     from tools.weather_tool import geocode_location
 
-    # Geocode the location
+    # Geocode the location. Fail closed if it cannot be resolved: using Boulder
+    # coordinates would report unrelated seismic events for the wrong region.
     geo = geocode_location(location)
-    if geo:
-        lat, lon, display = geo["lat"], geo["lon"], geo["name"]
-    else:
-        lat, lon, display = 40.0150, -105.2705, "Boulder, CO (geocoding fallback)"
+    if not geo:
+        out = (
+            f"[USGS FDSNWS, Data Unavailable]: No coordinates could be resolved "
+            f"for the requested location '{location}'. No seismic events are reported. "
+            f"Verify the location before issuing any seismic directive."
+        )
+        _EARTHQUAKE_CACHE.set(cache_key, out)
+        return out
+    lat, lon, display = geo["lat"], geo["lon"], geo["name"]
 
     # Detect broad country / regional queries to set adequate radius
     loc_clean = location.strip().lower()

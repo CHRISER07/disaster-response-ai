@@ -20,6 +20,7 @@ Key Innovations:
 """
 
 import os, sys, json, csv, time, random, re, threading, queue
+import requests
 from itertools import zip_longest
 from pathlib import Path
 from concurrent.futures import ThreadPoolExecutor
@@ -57,7 +58,7 @@ JUDGE_DONE   = ROOT / "evaluation" / f"judge_scores_{_judge_tag}.complete"
 KAPPA_FILE   = ROOT / "evaluation" / "kappa_result.txt"
 
 JUDGE_FIELDNAMES = [
-    "config", "run_id", "id", "judge",
+    "config", "run_id", "id", "judge", "model_used",
     "dr_fact", "saa", "temporal",
     "dr_fact_rationale", "saa_rationale", "temporal_rationale"
 ]
@@ -251,7 +252,7 @@ def execute_gemini_call(prompt: str) -> str:
                 contents=prompt
             )
             gemini_pool.mark_success(key)
-            return resp.text or ""
+            return (resp.text or ""), "gemini-3.1-flash-lite"
         except Exception as e:
             err = str(e)
             if "429" in err:
@@ -260,7 +261,7 @@ def execute_gemini_call(prompt: str) -> str:
                 gemini_pool.mark_dead(key, "permission denied")
             else:
                 gemini_pool.report_rate_limit(key, 2.0)
-    return ""
+    return "", "none"
 
 
 def execute_groq_call(model: str, prompt: str, max_tokens: int = 800) -> str:
@@ -279,7 +280,7 @@ def execute_groq_call(model: str, prompt: str, max_tokens: int = 800) -> str:
             )
             content = resp.choices[0].message.content or ""
             groq_pool.mark_success(key)
-            return content.strip()
+            return content.strip(), model
         except Exception as e:
             err = str(e)
             retry_after = 2.0
@@ -294,26 +295,52 @@ def execute_groq_call(model: str, prompt: str, max_tokens: int = 800) -> str:
                 groq_pool.mark_dead(key, "invalid key")
             else:
                 groq_pool.report_rate_limit(key, 2.0)
-    return ""
+    return "", "none"
+
+
+def execute_openrouter_call(model: str, prompt: str, max_tokens: int = 800) -> tuple:
+    """Invoke a judge model on OpenRouter (cross-family, independent of Groq pools)."""
+    key = os.getenv("OPENROUTER_API_KEY", "").strip()
+    if not key:
+        return "", "none"
+    try:
+        resp = requests.post(
+            "https://openrouter.ai/api/v1/chat/completions",
+            headers={"Authorization": "Bearer " + key},
+            json={"model": model,
+                  "messages": [{"role": "user", "content": prompt}],
+                  "max_tokens": max_tokens},
+            timeout=120,
+        )
+        if resp.status_code != 200:
+            return "", "none"
+        content = resp.json().get("choices", [{}])[0].get("message", {}).get("content") or ""
+        return content.strip(), model
+    except Exception:
+        return "", "none"
 
 
 def call_judge_unified(judge_name: str, prompt: str) -> tuple:
-    """Evaluates prompt with strict cross-provider, cross-family separation:
-    - Judge A: Google Gemini 3.1 Flash Lite (Google Cloud), fallback Qwen 27B on Groq
-    - Judge B: OpenAI GPT-OSS-120B on Groq, fallback GPT-OSS-20B on Groq
-    """
-    if judge_name == "JudgeA":
-        raw = execute_gemini_call(prompt)
-        if not raw:
-            raw = execute_groq_call("qwen/qwen3.8-27b", prompt, max_tokens=800)
-    else:
-        raw = execute_groq_call("openai/gpt-oss-120b", prompt, max_tokens=800)
-        if not raw:
-            raw = execute_groq_call("openai/gpt-oss-20b", prompt, max_tokens=800)
-        if not raw:
-            raw = execute_groq_call("qwen/qwen3.8-27b", prompt, max_tokens=800)
+    """Evaluate with strict cross-provider, cross-family separation.
 
-    return parse_unified_response(raw)
+    Independence invariant: a judge must NEVER fall back to the primary
+    generator (qwen/qwen3.8-27b), and the two judges must come from different
+    families. With the free Gemini quota exhausted, Judge A falls back to a
+    Llama-3.3-70B judge on OpenRouter (family: Llama); Judge B is GPT-OSS on
+    Groq (family: GPT). The generator is Qwen -- all three families disjoint.
+    """
+    generator_model = "qwen/qwen3.8-27b"
+    if judge_name == "JudgeA":
+        raw, used = execute_gemini_call(prompt)
+        if not raw:
+            raw, used = execute_openrouter_call("meta-llama/llama-3.3-70b-instruct", prompt)
+    else:
+        raw, used = execute_groq_call("openai/gpt-oss-120b", prompt, max_tokens=800)
+        if not raw:
+            raw, used = execute_groq_call("openai/gpt-oss-20b", prompt, max_tokens=800)
+    # Defensive: no judge may be the generator family.
+    assert used != generator_model, "Judge fell back to the generator model!"
+    return parse_unified_response(raw), used
 
 # ---------------------------------------------------------------------------
 # Data Loaders & Checkpointing
@@ -502,7 +529,7 @@ def main():
                 time_aware_reference=time_aware_ref
             )
 
-            (df_s, df_r), (saa_s, saa_r), (tp_s, tp_r) = call_judge_unified(judge_name, prompt)
+            (df_s, df_r), (saa_s, saa_r), (tp_s, tp_r), model_used = call_judge_unified(judge_name, prompt)
 
             # Check validity
             if df_s is None or saa_s is None:
@@ -523,6 +550,7 @@ def main():
                     "run_id":             row["run_id"],
                     "id":                 raw_id,
                     "judge":              judge_name,
+                    "model_used":         model_used,
                     "dr_fact":            df_s if df_s is not None else "",
                     "saa":                saa_s if saa_s is not None else "",
                     "temporal":           tp_s if tp_s is not None else "",
