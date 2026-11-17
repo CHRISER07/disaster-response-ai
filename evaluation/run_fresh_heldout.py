@@ -69,7 +69,12 @@ def reassert() -> None:
 
 def main() -> None:
     ap = argparse.ArgumentParser()
-    ap.add_argument("--limit", type=int, default=None)
+    ap.add_argument("--limit", type=int, default=None,
+                    help="cap number of queries (for smoke tests)")
+    ap.add_argument("--config", default=None,
+                    help="run only this config name (e.g. Full_Agent)")
+    ap.add_argument("--max-new", type=int, default=None,
+                    help="stop after this many NEW rows are written; supports chunked foreground runs")
     args = ap.parse_args()
 
     dev = set(json.loads(DEV_IDS.read_text(encoding="utf-8")))
@@ -77,6 +82,9 @@ def main() -> None:
     queries = [q for q in dataset if 1 <= q["id"] <= 175 and q["id"] not in dev]
     if args.limit:
         queries = queries[: args.limit]
+    active_configs = [c for c in CONFIGS if args.config is None or c[0] == args.config]
+    if not active_configs:
+        raise SystemExit(f"Unknown --config '{args.config}'. Valid: {[c[0] for c in CONFIGS]}")
     print(f"Fresh heldout: {len(queries)} queries | provider={LOCKED_PROVIDER} | model={LOCKED_MODEL}")
 
     done = set()
@@ -90,15 +98,21 @@ def main() -> None:
         writer = csv.DictWriter(f, fieldnames=FIELDNAMES)
         if write_header:
             writer.writeheader()
-        total = len(CONFIGS) * len(SEEDS) * len(queries)
+        total = len(active_configs) * len(SEEDS) * len(queries)
         n = 0
-        for name, fn in CONFIGS:
+        new_written = 0
+        for name, fn in active_configs:
             for seed in SEEDS:
                 for q in queries:
                     key = (name, str(seed), str(q["id"]))
                     if key in done:
                         continue
+                    if args.max_new is not None and new_written >= args.max_new:
+                        print(f"Reached --max-new={args.max_new}; stopping cleanly.", flush=True)
+                        f.flush()
+                        return
                     n += 1
+                    new_written += 1
                     reassert()
                     try:
                         res = fn(q["query"], seed)
