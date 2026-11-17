@@ -45,10 +45,15 @@ from groq import Groq
 # ---------------------------------------------------------------------------
 DATASET_FILE = ROOT / "evaluation" / "golden_dataset_v2.json"
 DEV_CSV      = ROOT / "evaluation" / "results_per_query_v2.csv"
-HELDOUT_CSV  = ROOT / "evaluation" / "results_heldout_v2.csv"
+# Judge input can be switched to the fresh (restored-system) answers via
+# JUDGE_INPUT_CSV, and the output tag keeps the two score sets separate.
+_judge_input = os.getenv("JUDGE_INPUT_CSV", "results_heldout_v2.csv")
+_judge_tag = os.getenv("JUDGE_OUTPUT_TAG", "v3")
+HELDOUT_CSV  = ROOT / "evaluation" / _judge_input
+OUT_CSV      = ROOT / "evaluation" / f"judge_scores_{_judge_tag}.csv"
+JUDGE_DONE   = ROOT / "evaluation" / f"judge_scores_{_judge_tag}.complete"
 # v3 uses the corrected, bias-free rubric. A separate file prevents the
 # checkpoint logic from reusing scores produced by the old hedging-reward rubric.
-OUT_CSV      = ROOT / "evaluation" / "judge_scores_v3.csv"
 KAPPA_FILE   = ROOT / "evaluation" / "kappa_result.txt"
 
 JUDGE_FIELDNAMES = [
@@ -560,7 +565,7 @@ def main():
 
     compute_kappa()
     # Completion marker: downstream reports must not consume a partial file.
-    OUT_CSV.with_suffix(".complete").write_text(
+    JUDGE_DONE.write_text(
         f"rows={done_count}\nfinished={time.strftime('%Y-%m-%dT%H:%M:%SZ', time.gmtime())}\n",
         encoding="utf-8",
     )
