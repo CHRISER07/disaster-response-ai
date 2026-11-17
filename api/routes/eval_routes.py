@@ -23,7 +23,10 @@ router = APIRouter()
 
 PROJECT_ROOT  = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 RESULTS_CSV   = os.path.join(PROJECT_ROOT, "evaluation", "results_per_query.csv")
-ALERTS_FILE   = os.path.join(PROJECT_ROOT, "data", "alerts.jsonl")
+from core.audit_logger import ALERT_LOG_FILE as ALERTS_FILE, LEGACY_ALERTS_FILE as LEGACY_ALERTS_FILE
+
+if not os.path.exists(ALERTS_FILE) and os.path.exists(LEGACY_ALERTS_FILE):
+    ALERTS_FILE = LEGACY_ALERTS_FILE
 
 
 @router.get("/results")

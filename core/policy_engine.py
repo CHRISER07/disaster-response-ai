@@ -25,7 +25,7 @@ import time
 import os
 import re
 from dataclasses import dataclass, field
-from typing import Optional, List
+from typing import Optional, List, Tuple
 
 PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 VIOLATIONS_LOG = os.path.join(PROJECT_ROOT, "logs", "policy_violations.jsonl")
@@ -63,6 +63,8 @@ class PolicyDecision:
     reason: str = ""
     confidence_found: str = "UNKNOWN"
     faithfulness_score: float = 1.0
+    requires_operator_approval: bool = False
+    dispatch_status: str = "PERMITTED"  # "PERMITTED" | "BLOCKED" | "PENDING_OPERATOR_APPROVAL"
     metadata: dict = field(default_factory=dict)
 
 
@@ -89,8 +91,8 @@ def compute_ragas_faithfulness(claim_text: str, context_snippets: Optional[List[
 
     found_anchors = [a for a in anchors if a in text_lower]
     if not found_anchors:
-        # Generic claim without numerical anchors
-        return 0.90
+        # Zero grounding anchors found -> fails closed with zero score (requires evidence)
+        return 0.00
 
     # A claim anchor is grounded if present in context or explicitly tagged with live/protocol citations
     grounded = [
@@ -216,10 +218,91 @@ def check_policy(
     return PolicyDecision(
         allowed=True,
         tool_name=tool_name,
-        reason=f"Write tool permitted - confidence '{confidence}', Ragas Faithfulness {faithfulness:.2f} >= {MINIMUM_RAGAS_FAITHFULNESS:.2f}.",
+        reason=f"Write tool permitted - confidence '{confidence}', Ragas Faithfulness {faithfulness:.2f} >= {MINIMUM_RAGAS_FAITHFULNESS:.2f}. Queued for Incident Commander review.",
         confidence_found=confidence,
         faithfulness_score=faithfulness,
+        requires_operator_approval=True,
+        dispatch_status="PENDING_OPERATOR_APPROVAL",
     )
+
+
+# ── Hazard-Specific Policy Engine ─────────────────────────────────────────────
+
+def evaluate_hazard_policy(hazard_type: str, observed_metrics: dict) -> Tuple[bool, str]:
+    """
+    Evaluates agency-specific operational criteria for different disaster domains.
+    Returns: (meets_threshold: bool, rationale: str)
+    """
+    hz = hazard_type.lower()
+    
+    if "flood" in hz:
+        gage = observed_metrics.get("gage_height_ft")
+        flood_stage = observed_metrics.get("flood_stage_ft", 10.0)
+        surge_ratio = observed_metrics.get("surge_ratio", 1.0)
+        
+        if gage is not None and gage >= 1.30 * flood_stage:
+            return True, f"FEMA Flood Protocol Triggered: Gage ({gage:.2f}ft) exceeds 130% of flood stage ({flood_stage:.2f}ft)."
+        if surge_ratio >= 1.50:
+            return True, f"Hydrologic Surge Warning: Discharge surge ratio {surge_ratio:.2f} >= 1.50 threshold."
+        return False, f"Flood threshold not reached: Current gage ({gage}ft) is below 130% of flood stage ({flood_stage}ft)."
+
+    elif "fire" in hz or "wildfire" in hz:
+        rh = observed_metrics.get("relative_humidity_pct")
+        wind = observed_metrics.get("wind_speed_mph")
+        temp = observed_metrics.get("temperature_f")
+        
+        if rh is not None and wind is not None and temp is not None:
+            if rh <= 15.0 and wind >= 25.0 and temp >= 75.0:
+                return True, f"NWS Red Flag Warning Criteria Met: RH {rh}% <= 15%, Wind {wind}mph >= 25mph, Temp {temp}F >= 75F."
+            return False, f"Sub-critical fire weather conditions: RH {rh}%, Wind {wind}mph, Temp {temp}F."
+        return False, "Insufficient meteorological observations for Red Flag determination."
+
+    elif "earthquake" in hz or "collapse" in hz:
+        mag = observed_metrics.get("magnitude")
+        is_uninspected_structure = observed_metrics.get("is_uninspected_structure", False)
+        
+        if is_uninspected_structure and mag is not None and mag >= 2.5:
+            return True, f"FEMA USAR Structural Triage: Aftershock M{mag:.1f} >= 2.5 mandates immediate building evacuation."
+        if mag is not None and mag >= 5.0:
+            return True, f"USGS Major Seismic Event: M{mag:.1f} >= 5.0 indicates widespread structural damage risk."
+        return False, f"Seismic event M{mag} below critical structural triage threshold."
+
+    # General default: require explicit manual review
+    return False, f"Hazard category '{hazard_type}' requires dedicated manual operator triage."
+
+
+# ── Pre-Execution Argument Validation ─────────────────────────────────────────
+
+PROHIBITED_INJECTION_PATTERNS = [
+    r"ignore previous instructions",
+    r"bypass (?:policy|safety|guardrail)",
+    r"system override",
+    r"execute arbitrary",
+    r"drop table",
+]
+
+def validate_tool_arguments(tool_name: str, tool_args: dict) -> Tuple[bool, str]:
+    """
+    Validates tool inputs BEFORE execution to prevent injection or malformed parameters.
+    """
+    for k, v in tool_args.items():
+        val_str = str(v).lower()
+        for pat in PROHIBITED_INJECTION_PATTERNS:
+            if re.search(pat, val_str):
+                return False, f"Prohibited prompt injection or bypass pattern detected in argument '{k}'."
+
+    # Specific bounds for spatial queries
+    if "latitude" in tool_args or "lat" in tool_args:
+        lat = float(tool_args.get("latitude", tool_args.get("lat", 0)))
+        if not (-90.0 <= lat <= 90.0):
+            return False, f"Invalid latitude argument: {lat}"
+
+    if "longitude" in tool_args or "lon" in tool_args:
+        lon = float(tool_args.get("longitude", tool_args.get("lon", 0)))
+        if not (-180.0 <= lon <= 180.0):
+            return False, f"Invalid longitude argument: {lon}"
+
+    return True, "Tool arguments validated successfully."
 
 
 # ── Audit Logging ────────────────────────────────────────────────────────────

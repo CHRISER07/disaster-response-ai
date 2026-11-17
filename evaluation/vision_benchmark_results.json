@@ -1,0 +1,109 @@
+{
+  "generated": "2026-11-17T14:32:23.681743+00:00",
+  "tool": "analyze_disaster_image(task=classify)",
+  "model": "qwen3-vl:4b",
+  "label_source": "xView2 building polygons (per-building subtypes)",
+  "granularity": "building crop",
+  "sampling": "balanced cap 2 per class, seed 42",
+  "indexed_records": 50,
+  "labeled_buildings": 1017,
+  "sampled": 8,
+  "assessable": 0,
+  "unclassified": 8,
+  "accuracy": 0.0,
+  "macro_f1": 0.0,
+  "mean_latency_s": 2.138,
+  "p95_latency_s": 2.168,
+  "per_class": {
+    "no-damage": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "support": 0
+    },
+    "minor-damage": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "support": 0
+    },
+    "major-damage": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "support": 0
+    },
+    "destroyed": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "support": 0
+    }
+  },
+  "rows": [
+    {
+      "crop": "bench_xview2_drone_14_503e2631.png",
+      "scene": "hurricane-michael_00000129_post_disaster.png",
+      "ground_truth": "minor-damage",
+      "predicted": "UNCLASSIFIED",
+      "latency_s": 2.168,
+      "raw_output": "[VISION] Image not found: bench_xview2_drone_14_503e2631.png\n  Available images are in: C:\\Users\\Acer\\OneDrive\\Desktop\\multiagents\\disaster_response_rag\\data\\imagery\\samples"
+    },
+    {
+      "crop": "bench_xview2_drone_14_a6938d0f.png",
+      "scene": "hurricane-michael_00000129_post_disaster.png",
+      "ground_truth": "destroyed",
+      "predicted": "UNCLASSIFIED",
+      "latency_s": 2.136,
+      "raw_output": "[VISION] Image not found: bench_xview2_drone_14_a6938d0f.png\n  Available images are in: C:\\Users\\Acer\\OneDrive\\Desktop\\multiagents\\disaster_response_rag\\data\\imagery\\samples"
+    },
+    {
+      "crop": "bench_xview2_drone_16_69b0e7dd.png",
+      "scene": "hurricane-michael_00000420_post_disaster.png",
+      "ground_truth": "no-damage",
+      "predicted": "UNCLASSIFIED",
+      "latency_s": 2.132,
+      "raw_output": "[VISION] Image not found: bench_xview2_drone_16_69b0e7dd.png\n  Available images are in: C:\\Users\\Acer\\OneDrive\\Desktop\\multiagents\\disaster_response_rag\\data\\imagery\\samples"
+    },
+    {
+      "crop": "bench_xview2_drone_17_e413f8c9.png",
+      "scene": "hurricane-michael_00000431_post_disaster.png",
+      "ground_truth": "major-damage",
+      "predicted": "UNCLASSIFIED",
+      "latency_s": 2.144,
+      "raw_output": "[VISION] Image not found: bench_xview2_drone_17_e413f8c9.png\n  Available images are in: C:\\Users\\Acer\\OneDrive\\Desktop\\multiagents\\disaster_response_rag\\data\\imagery\\samples"
+    },
+    {
+      "crop": "bench_xview2_drone_14_ed617841.png",
+      "scene": "hurricane-michael_00000129_post_disaster.png",
+      "ground_truth": "minor-damage",
+      "predicted": "UNCLASSIFIED",
+      "latency_s": 2.123,
+      "raw_output": "[VISION] Image not found: bench_xview2_drone_14_ed617841.png\n  Available images are in: C:\\Users\\Acer\\OneDrive\\Desktop\\multiagents\\disaster_response_rag\\data\\imagery\\samples"
+    },
+    {
+      "crop": "bench_xview2_drone_29_db4d632d.png",
+      "scene": "santa-rosa-wildfire_00000089_post_disaster.png",
+      "ground_truth": "destroyed",
+      "predicted": "UNCLASSIFIED",
+      "latency_s": 2.111,
+      "raw_output": "[VISION] Image not found: bench_xview2_drone_29_db4d632d.png\n  Available images are in: C:\\Users\\Acer\\OneDrive\\Desktop\\multiagents\\disaster_response_rag\\data\\imagery\\samples"
+    },
+    {
+      "crop": "bench_xview2_drone_15_3e0cdeb5.png",
+      "scene": "hurricane-michael_00000155_post_disaster.png",
+      "ground_truth": "no-damage",
+      "predicted": "UNCLASSIFIED",
+      "latency_s": 2.153,
+      "raw_output": "[VISION] Image not found: bench_xview2_drone_15_3e0cdeb5.png\n  Available images are in: C:\\Users\\Acer\\OneDrive\\Desktop\\multiagents\\disaster_response_rag\\data\\imagery\\samples"
+    },
+    {
+      "crop": "bench_xview2_drone_14_02ce6b9f.png",
+      "scene": "hurricane-michael_00000129_post_disaster.png",
+      "ground_truth": "major-damage",
+      "predicted": "UNCLASSIFIED",
+      "latency_s": 2.134,
+      "raw_output": "[VISION] Image not found: bench_xview2_drone_14_02ce6b9f.png\n  Available images are in: C:\\Users\\Acer\\OneDrive\\Desktop\\multiagents\\disaster_response_rag\\data\\imagery\\samples"
+    }
+  ]
+}

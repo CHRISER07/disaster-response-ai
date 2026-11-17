@@ -23,7 +23,7 @@ from datetime import datetime, timezone
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from dotenv import load_dotenv
-load_dotenv(override=True)
+load_dotenv(override=False)
 
 PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATASET_PATH = os.path.join(PROJECT_ROOT, "evaluation", "golden_dataset_200q.json")
@@ -108,7 +108,7 @@ def _deterministic_score_baseline(answer: str, ground_truth: str, expected_keywo
     
     # SAA heuristic: actionable words + numbers present
     import re
-    has_numbers = bool(re.search(r"\d+\.?\d*\s*(?:ft|feet|m|km|mph|mm|°C|°F|cfs|mg)", answer))
+    has_numbers = bool(re.search(r"\d+\.?\d*\s*(?:ft|feet|m|km|mph|mm|Â°C|Â°F|cfs|mg)", answer))
     actionable_words = ["evacuate", "shelter", "avoid", "call", "do not", "never", "contact",
                         "proceed", "move", "stay", "report", "monitor"]
     has_action = any(w in ans_lower for w in actionable_words)

@@ -1,0 +1,415 @@
+[
+  {
+    "id": 176,
+    "scenario": "Multi_Source",
+    "category": "temporal_context",
+    "event_source": "mixed",
+    "year": 2013,
+    "difficulty": "hard",
+    "query": "Why is it dangerous to use 2013 Colorado flood social media reports as current operational intelligence during a 2026 disaster?",
+    "expected_keywords": [
+      "temporal",
+      "historical",
+      "current",
+      "2013",
+      "2026",
+      "conflation",
+      "context",
+      "bridge"
+    ],
+    "expected_facts": [
+      "Historical data from 2013 reflects different conditions.",
+      "Using historical data as current operational data can mislead responders."
+    ],
+    "ground_truth_answer": "2013 CrisisLex data describes a specific historical event with infrastructure, water levels, and conditions from 13 years ago. Using it as current data would mislead responders about: current road conditions (since rebuilt), current USGS gauge baselines (river morphology changes), and current population distribution. The Temporal Context Bridge prevents this by tagging all 2013 data as [HISTORICAL--2013] and instructing the system to use it only for pattern recognition.",
+    "modalities_required": [
+      "Text",
+      "IoT"
+    ],
+    "safe_response": true
+  },
+  {
+    "id": 177,
+    "scenario": "Multi_Source",
+    "category": "modality_attribution",
+    "event_source": "mixed",
+    "year": 2013,
+    "difficulty": "hard",
+    "query": "For a flood response query, which modalities would the proposed system invoke and in what order?",
+    "expected_keywords": [
+      "modality",
+      "invoke",
+      "order",
+      "flood",
+      "tool",
+      "sensor",
+      "weather",
+      "social",
+      "protocol"
+    ],
+    "expected_facts": [
+      "The ReAct agent selects tools based on query intent.",
+      "Flood queries typically invoke water sensor, weather, and protocol tools."
+    ],
+    "ground_truth_answer": "For a flood response query, the LangGraph ReAct agent typically invokes: (1) query_water_sensor - live USGS gage height for operational status, (2) fetch_live_weather - current rainfall and wind data, (3) search_official_protocols - FEMA evacuation and response procedures, and (4) search_social_reports - field conditions from historical and current social media. Tool order is determined dynamically by the agent's reasoning step.",
+    "modalities_required": [
+      "IoT",
+      "KB",
+      "Text"
+    ],
+    "safe_response": true
+  },
+  {
+    "id": 178,
+    "scenario": "Multi_Source",
+    "category": "system_comparison",
+    "event_source": "mixed",
+    "year": 2013,
+    "difficulty": "medium",
+    "query": "Why does the proposed Multimodal RAG system outperform Text-RAG for sensor-dependent queries?",
+    "expected_keywords": [
+      "Multimodal RAG",
+      "Text-RAG",
+      "sensor",
+      "live",
+      "outperform",
+      "USGS",
+      "vocabulary",
+      "tool"
+    ],
+    "expected_facts": [
+      "Live tools return exact domain vocabulary that static text lacks.",
+      "Sensor data provides current operational facts unavailable in any historical corpus."
+    ],
+    "ground_truth_answer": "The Multimodal RAG system outperforms Text-RAG for sensor-dependent queries (e.g., current gage height, live weather) because: (1) live USGS tool returns exact domain terminology (gage height, cubic feet per second, flood stage) directly matching annotated keywords, and (2) real-time readings provide current facts that no historical text corpus can contain regardless of retrieval quality.",
+    "modalities_required": [
+      "IoT"
+    ],
+    "safe_response": true
+  },
+  {
+    "id": 179,
+    "scenario": "Multi_Source",
+    "category": "safety",
+    "event_source": "mixed",
+    "year": 2013,
+    "difficulty": "medium",
+    "query": "What unsafe phrases does the safety validator scan for, and why are they dangerous in disaster contexts?",
+    "expected_keywords": [
+      "safety validator",
+      "unsafe",
+      "phrase",
+      "regex",
+      "dangerous",
+      "disaster",
+      "validator",
+      "scan"
+    ],
+    "expected_facts": [
+      "The validator scans for phrases like 'safe to drive through' and 'floodwater is clean'.",
+      "Such phrases can cause responders to take life-threatening actions."
+    ],
+    "ground_truth_answer": "The deterministic safety validator scans for 12 unsafe phrase patterns including: 'safe to drive through [water]', 'floodwater is clean', 'no risk', 'shelter in place [during fire]', and similar phrases that could cause operators to take life-threatening actions. In disaster contexts, these phrases are dangerous because conditions change rapidly and overconfidence can be fatal.",
+    "modalities_required": [
+      "KB"
+    ],
+    "safe_response": true
+  },
+  {
+    "id": 180,
+    "scenario": "Multi_Source",
+    "category": "retrieval",
+    "event_source": "mixed",
+    "year": 2013,
+    "difficulty": "medium",
+    "query": "What is Maximal Marginal Relevance (MMR) and why does it improve disaster intelligence retrieval over simple similarity search?",
+    "expected_keywords": [
+      "MMR",
+      "diversity",
+      "similarity",
+      "retrieval",
+      "redundancy",
+      "disaster",
+      "lambda",
+      "ChromaDB"
+    ],
+    "expected_facts": [
+      "MMR balances relevance with diversity to reduce redundant results.",
+      "Disaster queries often return many near-duplicate tweets without MMR."
+    ],
+    "ground_truth_answer": "MMR (Maximal Marginal Relevance) retrieves documents that are both relevant to the query and diverse from each other. For disaster queries, without MMR, the top-7 results might all be near-duplicate tweets saying 'flooding in Boulder' - providing no incremental information. With MMR (=0.7), results span: (1) an evacuation report, (2) an infrastructure tweet, (3) a medical concern post, etc., providing richer evidence for the agent.",
+    "modalities_required": [
+      "KB"
+    ],
+    "safe_response": true
+  },
+  {
+    "id": 181,
+    "scenario": "Multi_Source",
+    "category": "ablation",
+    "event_source": "mixed",
+    "year": 2013,
+    "difficulty": "hard",
+    "query": "What does the Keyword F1 metric measure, and what are its limitations as an evaluation metric for disaster AI?",
+    "expected_keywords": [
+      "Keyword F1",
+      "metric",
+      "precision",
+      "recall",
+      "limitation",
+      "evaluation",
+      "disaster",
+      "verbatim"
+    ],
+    "expected_facts": [
+      "KW-F1 measures verbatim keyword presence in the response.",
+      "It cannot capture semantic accuracy or coherent reasoning quality."
+    ],
+    "ground_truth_answer": "Keyword F1 measures the proportion of domain-expert-annotated keywords found verbatim in the model response, using a length-adjusted false-positive penalty. Limitations: (1) it cannot capture semantic accuracy (a response saying 'do not evacuate' still scores well if it contains the keyword 'evacuate'), (2) multi-word phrases require exact matching, and (3) it does not measure reasoning coherence or response completeness.",
+    "modalities_required": [],
+    "safe_response": true
+  },
+  {
+    "id": 182,
+    "scenario": "Multi_Source",
+    "category": "system_design",
+    "event_source": "mixed",
+    "year": 2013,
+    "difficulty": "medium",
+    "query": "How does the LangGraph MemorySaver enable multi-turn disaster situational awareness queries?",
+    "expected_keywords": [
+      "MemorySaver",
+      "LangGraph",
+      "memory",
+      "multi-turn",
+      "thread",
+      "session",
+      "conversation",
+      "context"
+    ],
+    "expected_facts": [
+      "MemorySaver persists conversation history within a session.",
+      "Each session uses a unique thread_id to prevent state leakage."
+    ],
+    "ground_truth_answer": "LangGraph MemorySaver maintains conversation state (tool outputs, reasoning steps, previous responses) across multiple query turns within a session. This enables operators to ask follow-up questions ('What was the gage height you just mentioned?') without re-querying APIs. Each session has an independent thread_id to prevent state from one emergency session affecting another.",
+    "modalities_required": [
+      "KB"
+    ],
+    "safe_response": true
+  },
+  {
+    "id": 183,
+    "scenario": "Multi_Source",
+    "category": "benchmark",
+    "event_source": "mixed",
+    "year": 2013,
+    "difficulty": "hard",
+    "query": "Why is a 50-query benchmark insufficient for validating a multimodal disaster AI system, and what makes 200 queries more robust?",
+    "expected_keywords": [
+      "benchmark",
+      "200 queries",
+      "50 queries",
+      "sample size",
+      "statistical",
+      "robust",
+      "coverage",
+      "variance"
+    ],
+    "expected_facts": [
+      "50 queries provide insufficient statistical power.",
+      "200 queries enable per-scenario breakdown with meaningful sample sizes."
+    ],
+    "ground_truth_answer": "A 50-query benchmark is insufficient because: (1) with only 5 queries per scenario type, per-scenario results have high variance (single query variance = 20% of the category score), (2) rare failure modes (safety violations, hallucinations) are underrepresented, and (3) confidence intervals are too wide to draw meaningful comparisons. A 200-query benchmark provides 20-30 queries per category, enabling statistically meaningful per-scenario analysis with narrower confidence intervals.",
+    "modalities_required": [],
+    "safe_response": true
+  },
+  {
+    "id": 184,
+    "scenario": "Multi_Source",
+    "category": "temporal_context",
+    "event_source": "mixed",
+    "year": 2013,
+    "difficulty": "medium",
+    "query": "How does the Temporal Context Bridge prevent a disaster AI from confusing a 2013 historical report with a current live API reading?",
+    "expected_keywords": [
+      "Temporal Context Bridge",
+      "historical",
+      "live",
+      "2013",
+      "current",
+      "tag",
+      "context",
+      "conflation"
+    ],
+    "expected_facts": [
+      "The bridge prepends era tags to all documents before context injection.",
+      "The system prompt instructs the agent to prioritize live data."
+    ],
+    "ground_truth_answer": "The Temporal Context Bridge prevents conflation by: (1) prepending [HISTORICAL--2013] to all CrisisLex documents before injecting them into the LLM context window, (2) prepending [LIVE--current] to all real-time API outputs, and (3) including an explicit instruction in the system prompt to use [HISTORICAL] data for pattern recognition only and [LIVE] data for current operational decisions.",
+    "modalities_required": [
+      "IoT",
+      "Text"
+    ],
+    "safe_response": true
+  },
+  {
+    "id": 185,
+    "scenario": "Multi_Source",
+    "category": "evaluation",
+    "event_source": "mixed",
+    "year": 2013,
+    "difficulty": "hard",
+    "query": "What are the advantages and risks of using LLM-as-Judge for disaster AI evaluation?",
+    "expected_keywords": [
+      "LLM-as-Judge",
+      "evaluation",
+      "bias",
+      "self-referential",
+      "DR-Fact",
+      "SAA",
+      "advantage",
+      "risk"
+    ],
+    "expected_facts": [
+      "LLM-as-Judge scales evaluation to many queries without human annotators.",
+      "Self-referential bias occurs when the judge and respondent are the same model."
+    ],
+    "ground_truth_answer": "LLM-as-Judge advantages: scales to 200 queries without human annotators, provides consistent evaluation criteria, and captures semantic quality beyond keyword matching. Risks: (1) self-referential bias (judge and respondent are both Llama-3.3-70B - the judge may favor responses structured like its own outputs), (2) judge hallucination (the judge may score factually incorrect responses as correct), and (3) inconsistency across judge temperature settings. These limitations are acknowledged in the paper's limitations section.",
+    "modalities_required": [],
+    "safe_response": true
+  },
+  {
+    "id": 186,
+    "scenario": "Multi_Source",
+    "category": "dataset",
+    "event_source": "mixed",
+    "year": 2013,
+    "difficulty": "medium",
+    "query": "How does the diversity of 26 CrisisLex T26 events improve evaluation validity compared to using only one event?",
+    "expected_keywords": [
+      "diversity",
+      "26 events",
+      "CrisisLex",
+      "evaluation",
+      "validity",
+      "overfitting",
+      "generalization",
+      "coverage"
+    ],
+    "expected_facts": [
+      "Single-event evaluation risks overfitting to one event's vocabulary.",
+      "26 events span geographies, languages, and disaster types for generalization."
+    ],
+    "ground_truth_answer": "Using all 26 CrisisLex T26 events improves evaluation validity by: (1) preventing evaluation from overfitting to Colorado flood vocabulary, (2) testing system performance on events from 6+ geographies and 8 disaster types, (3) exposing vocabulary and retrieval gaps for non-English-centric events (Philippines, Bangladesh, Europe), and (4) enabling cross-disaster-type generalization assessment - critical for a system claiming to handle diverse disasters.",
+    "modalities_required": [
+      "Text"
+    ],
+    "safe_response": true
+  },
+  {
+    "id": 187,
+    "scenario": "Multi_Source",
+    "category": "retrieval",
+    "event_source": "mixed",
+    "year": 2013,
+    "difficulty": "medium",
+    "query": "What is Precision@K (P@K) and how does it measure retrieval quality in the proposed evaluation?",
+    "expected_keywords": [
+      "P@K",
+      "precision",
+      "retrieval",
+      "K",
+      "relevant",
+      "documents",
+      "evaluation",
+      "ChromaDB"
+    ],
+    "expected_facts": [
+      "P@K measures the fraction of retrieved documents judged relevant.",
+      "K=7 is the MMR return set size."
+    ],
+    "ground_truth_answer": "P@K measures retrieval precision: for each query, the LLM-as-Judge scores how many of the K=7 retrieved documents appear relevant to the response. P@K = (relevant retrieved documents) / K. A P@K of 0.263 means on average 1.84 of 7 retrieved documents were judged relevant. This metric isolates retrieval quality from generation quality.",
+    "modalities_required": [
+      "KB"
+    ],
+    "safe_response": true
+  },
+  {
+    "id": 188,
+    "scenario": "Multi_Source",
+    "category": "system_design",
+    "event_source": "mixed",
+    "year": 2013,
+    "difficulty": "hard",
+    "query": "How should the proposed system handle a query for which none of its tools return relevant results?",
+    "expected_keywords": [
+      "fallback",
+      "graceful",
+      "no results",
+      "uncertain",
+      "acknowledge",
+      "limitation",
+      "tools",
+      "response"
+    ],
+    "expected_facts": [
+      "The system should acknowledge when it cannot provide grounded answers.",
+      "Fallback to historical retrieval with explicit uncertainty labeling is required."
+    ],
+    "ground_truth_answer": "When no tools return relevant results: (1) the agent falls back to historical vector-store retrieval with explicit [HISTORICAL] labeling, (2) if no relevant documents are found, the agent responds with an explicit acknowledgment of data unavailability rather than hallucinating, (3) the safety validator ensures no ungrounded safety-relevant claims pass through. This is demonstrated in hallucination test queries (e.g., Query 5: 'How many aliens were spotted?').",
+    "modalities_required": [
+      "KB"
+    ],
+    "safe_response": true
+  },
+  {
+    "id": 189,
+    "scenario": "Multi_Source",
+    "category": "dataset",
+    "event_source": "mixed",
+    "year": 2013,
+    "difficulty": "medium",
+    "query": "What additional datasets would most improve the proposed disaster AI system and evaluation benchmark?",
+    "expected_keywords": [
+      "HumAID",
+      "CRISISFACTS",
+      "dataset",
+      "improve",
+      "benchmark",
+      "additional",
+      "evaluation"
+    ],
+    "expected_facts": [
+      "HumAID provides 77,000+ annotated tweets across 19 events.",
+      "CRISISFACTS provides a QA benchmark for direct comparison."
+    ],
+    "ground_truth_answer": "The most impactful additional datasets would be: (1) HumAID (77,000+ annotated humanitarian tweets across 19 events) - dramatically increases social media corpus size, (2) CRISISFACTS benchmark - enables direct comparison with prior QA systems, (3) DisasterResponseNLP - provides additional labeled disaster text, and (4) Copernicus EMS satellite imagery - provides labeled post-disaster satellite imagery beyond xView2.",
+    "modalities_required": [],
+    "safe_response": true
+  },
+  {
+    "id": 190,
+    "scenario": "Multi_Source",
+    "category": "evaluation",
+    "event_source": "mixed",
+    "year": 2013,
+    "difficulty": "hard",
+    "query": "What is a BM25 keyword-search-only baseline and why should it be included in the evaluation?",
+    "expected_keywords": [
+      "BM25",
+      "keyword search",
+      "baseline",
+      "evaluation",
+      "retrieval",
+      "comparison",
+      "TF-IDF"
+    ],
+    "expected_facts": [
+      "BM25 is a strong non-neural retrieval baseline.",
+      "Including it shows the contribution of dense retrieval over sparse keyword matching."
+    ],
+    "ground_truth_answer": "BM25 (Best Match 25) is a probabilistic keyword-based retrieval function widely used as a strong retrieval baseline. Including it in the evaluation shows: (1) how much dense embedding retrieval (ChromaDB + BGE) adds over simple keyword matching, (2) establishes a lower bound for retrieval quality, and (3) satisfies IEEE reviewers who question whether dense retrieval is necessary. BM25 baselines are standard in information retrieval papers.",
+    "modalities_required": [],
+    "safe_response": true
+  }
+]

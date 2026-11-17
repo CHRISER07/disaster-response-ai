@@ -1,0 +1,1774 @@
+config,run_id,query_id,query,has_temporal_cue,live_reading_ft,flood_stage_ft,expected_label,status,actual_label,false_evacuation,full_answer
+Full_Agent_TGI,42,TCQ_001,Should I evacuate near Boulder Creek?,False,4.2,10.0,NO_EVACUATION,OK,NO_EVACUATION,0,"**Status:** NORMAL  
+
+**Evidence:**  
+- USGS water sensor for Boulder Creek at N 75th St reports a **gage height of 3.63 ft**, with the **flood stage set at 10.0 ft** – the current level is **63.7 % below the flood‑stage threshold**. [LIVE - USGS NWIS, 2026‑11‑14] **[Confidence: HIGH]**  
+- Current weather in Boulder shows **0.0 mm/hr precipitation**, temperature **3.5 °C**, and light wind (**1.6 km/h**) with overcast conditions. [LIVE - Open‑Meteo, 2026‑11‑14] **[Confidence: HIGH]**  
+
+**Recommendation:**  
+1. **No mandatory evacuation** or evacuation order is required for the Boulder Creek corridor at this time.  
+2. Continue to **monitor the USGS gage height** and local weather forecasts; if the gage height approaches **≥ 130 % of the flood‑stage threshold** (≥ 13 ft) or precipitation intensifies, initiate **mandatory evacuation** procedures per FEMA protocol.  
+3. Advise residents and field personnel to **stay alert** and be prepared to **“turn around, don’t drown”** if water levels rise unexpectedly.  
+
+**Alert Generated:** none"
+Full_Agent_TGI,42,TCQ_002,Is it safe to stay at home near Boulder Creek?,False,4.2,10.0,NO_EVACUATION,OK,NO_EVACUATION,0,"[WARN] **SAFETY NOTE**: Do not assume zero risk during an active disaster.
+
+**Status:** NORMAL  
+
+**Evidence:**  
+- USGS sensor “Boulder Creek at N 75th St, CO” reports a gage height of **3.63 ft**, with the **flood stage set at 10.0 ft**. Current reading is **63.7 % below the flood threshold**. *(Source: LIVE - USGS NWIS, 2026‑11‑14 [Confidence: HIGH])*  
+
+**Recommendation:**  
+1. It is presently safe to remain at home; no **mandatory evacuation** or **evacuation order** is in effect for the area.  
+2. Continue to **monitor the gage height** and local weather updates. If the gage height approaches **≥ 80 % of flood stage** (≈ 8 ft), initiate **evacuation preparation** and follow the **“turn around, don’t drown”** guidance.  
+3. Keep an emergency kit ready (potable water, medical supplies) per FEMA household preparedness guidelines.  
+
+**Alert Generated:** none (no danger threshold exceeded)."
+Full_Agent_TGI,42,TCQ_003,What should I do if I live near Boulder Creek?,False,4.2,10.0,NO_EVACUATION,OK,NO_EVACUATION,0,"**Status:** NORMAL  
+
+**Evidence:**  
+- USGS water sensor at Boulder Creek (Site #06730200) reports a **gage height of 3.63 ft**, with the **flood stage set at 10.0 ft** – the current level is **63.7 % below the flood‑stage threshold**.  
+  [LIVE - USGS NWIS, 2026‑11‑14] **[Confidence: HIGH]**  
+- Live weather from Open‑Meteo for Boulder shows **temperature 3.5 °C**, **no precipitation (0.0 mm/hr)**, **light wind (1.6 km/h)**, and **overcast conditions**.  
+  [LIVE - Open‑Meteo, 2026‑11‑14] **[Confidence: HIGH]**  
+- FEMA/CDC official guidance for residents near a river or creek emphasizes:  
+  * develop a personal flood‑evacuation plan,  
+  * identify high‑ground locations and evacuation routes,  
+  * keep an emergency kit ready,  
+  * heed any evacuation warnings or orders, and  
+  * never attempt to drive through flooded roadways – “**turn around, don’t drown**”.  
+  [KB - FEMA/CDC Protocol, 2026‑11‑14] **[Confidence: HIGH]**  
+
+**Recommendation:**  
+1. **Review and update your personal flood‑evacuation plan** – locate the nearest high‑ground area (e.g., the foothills east of Boulder) and map at least two evacuation routes.  
+2. **Maintain an emergency kit** (≥ 72 hours of water, non‑perishable food, medications, flashlight, batteries, and a portable radio).  
+3. **Monitor the Boulder Creek gauge (USGS #06730200) and local alerts** (county emergency management, NWS). If the gage height approaches the 10 ft flood stage or an **Evacuation Warning** is issued, be prepared to execute a **mandatory evacuation**.  
+4. **Do not drive through any standing water**; follow the “turn around, don’t drown” rule.  
+5. **Stay informed** via the National Weather Service, Boulder County Emergency Management, and local news for any changes in weather or river conditions.  
+
+**Alert Generated:** none  "
+Full_Agent_TGI,42,TCQ_004,Are roads near Boulder Creek passable?,False,4.2,10.0,NO_EVACUATION,OK,NO_EVACUATION,0,"Status: NORMAL
+
+Evidence:
+- [LIVE - USGS NWIS, 2026-11-14, Confidence: HIGH]: Boulder Creek at N 75th St (USGS site #06730200) gage height is 3.63 ft, well below the 10.0 ft flood stage (63.7% below flood threshold). Status: NORMAL.
+- [LIVE - Open-Meteo, 2026-11-14, Confidence: HIGH]: Boulder conditions are overcast, 3.5°C, rainfall 0.0 mm/hr, wind 1.6 km/h. No active precipitation or storm-driven surge.
+- [HISTORICAL - CrisisLex, 2013, Confidence: MEDIUM]: During the 2013 Colorado Floods, roads near Boulder Creek (e.g., Lee Road rock slide, Hwy 72, Coal Creek Canyon) were closed due to flooding and landslides. This is pattern context only — it does not reflect current conditions.
+
+Recommendation:
+1. Based on live sensor data, Boulder Creek is at normal levels (3.63 ft vs. 10.0 ft flood stage) with no active rainfall, so roads near the creek are expected to be passable. [Confidence: HIGH]
+2. Verify current road status with Boulder County road closure advisories before travel, as localized washouts or debris can persist even when gage height is normal. [Confidence: MEDIUM]
+3. If you encounter standing water on any road, apply ""turn around, don't drown"" — do not attempt to cross flooded roadways. [KB - FEMA/CDC Protocol]
+
+Alert Generated: none"
+Full_Agent_TGI,42,TCQ_005,Is Boulder Creek dangerous right now?,False,4.2,10.0,NO_EVACUATION,OK,NO_EVACUATION,0,"Status: NORMAL  
+Evidence:  
+  - [LIVE - USGS NWIS, 2026-11-14, Confidence: HIGH]: Gage Height = 3.63 ft; Flood stage = 10.0 ft; Reading = 63.7 % below flood threshold; Status = NORMAL.  
+
+Recommendation:  
+  1. Maintain routine monitoring of Boulder Creek water levels.  
+  2. No mandatory evacuation or flood warnings are required at this time.  
+
+Alert Generated: none"
+Full_Agent_TGI,42,TCQ_006,Can I drive through Boulder Creek corridor?,False,4.2,10.0,NO_EVACUATION,OK,NO_EVACUATION,0,"Status: NORMAL
+
+Evidence:
+- [LIVE - USGS NWIS, 2026-11-14, Confidence: HIGH]: Boulder Creek at N 75th St (USGS #06730200) gage height is 3.63 ft, well below the 10.0 ft flood stage — 63.7% below flood threshold. Status: NORMAL.
+- [LIVE - Open-Meteo, 2026-11-14, Confidence: HIGH]: Boulder, CO conditions are overcast, 3.5°C, rainfall 0.0 mm/hr, wind 1.6 km/h, humidity 93%. No active precipitation or storm system driving runoff.
+- [HISTORICAL - CrisisLex, 2013, Confidence: MEDIUM]: During the 2013 Colorado Floods, the Boulder Creek corridor and adjacent roads (Hwy 72, Coal Creek Canyon, Hwy 66 into Lyons) experienced closures and rock slides. This is pattern context only — it does not reflect current conditions.
+
+Recommendation:
+1. Based on current live data, the Boulder Creek corridor is NOT in flood stage and there is no active rainfall or surge. Driving through is not currently prohibited by water conditions.
+2. Verify local road status before departure: check Boulder County road closure maps and any active detours, as past events show the corridor can close rapidly during flash events.
+3. If conditions change (rainfall begins, gage height rises toward flood stage), apply ""turn around, don't drown"" — do not attempt to cross any standing water or closed sections.
+4. Monitor USGS #06730200 for real-time gage height changes before and during transit.
+
+Alert Generated: none (gage height 3.63 ft is well below the 10.0 ft flood stage; no CRITICAL/HIGH threshold exceeded)"
+Full_Agent_TGI,42,TCQ_007,What's the status at North 75th Street and Boulder Creek?,False,4.2,10.0,NO_EVACUATION,OK,NO_EVACUATION,0,"Status: NORMAL
+
+Evidence:
+- [LIVE - USGS NWIS, 2026-11-14 07:15 MST, Confidence: HIGH]: Boulder Creek at N 75th St (USGS site #06730200) gage height is 3.63 ft, well below the 10.0 ft flood stage — 63.7% below the flood threshold. Status: NORMAL.
+- [LIVE - Open-Meteo, 2026-11-14, Confidence: HIGH]: Boulder conditions are overcast, 3.5 °C, rainfall 0.0 mm/hr, wind 1.6 km/h, humidity 93%. No active precipitation driving additional runoff.
+
+Recommendation:
+1. No evacuation order or shelter-in-place directive is warranted at this location; gage height is far below flood stage.
+2. Continue routine monitoring of USGS site #06730200; re-assess if gage height approaches the 10.0 ft flood threshold or if rainfall intensifies.
+3. Maintain standard ""turn around, don't drown"" advisories for any public near the creek, as conditions can change rapidly.
+
+Alert Generated: none"
+Full_Agent_TGI,42,TCQ_008,Is there a risk at Boulder Creek today?,False,4.2,10.0,NO_EVACUATION,OK,NO_EVACUATION,0,"**Status:** NORMAL  
+
+**Evidence:**  
+- USGS water sensor at Boulder Creek (Site #06730200) reports a gage height of **3.63 ft**, flood stage **10.0 ft**, 63.7 % below the flood threshold. [LIVE - USGS NWIS, 2026‑11‑14] **[Confidence: HIGH]**  
+- Open‑Meteo weather for Boulder shows **0.0 mm/hr** rainfall, temperature **3.5 °C**, wind **1.6 km/h**, overcast conditions. [LIVE - Open‑Meteo, 2026‑11‑14] **[Confidence: HIGH]**  
+- Recent seismic activity: M 3.4 earthquake 8 km SSE of Stonewall Gap, CO (2026‑11‑08 10:34 UTC). No direct impact on creek hydrology reported. [LIVE - USGS Earthquakes, 2026‑11‑14] **[Confidence: MEDIUM]**  
+
+**Recommendation:**  
+1. Continue routine **monitoring** of Boulder Creek gage height and weather conditions.  
+2. No **mandatory evacuation** or **evacuation order** required at this time.  
+3. Maintain standard **watch** posture; be prepared to issue alerts if gage height approaches **10 ft** flood stage.  
+
+**Alert Generated:** none"
+Full_Agent_TGI,42,TCQ_009,Boulder Creek — evacuate or shelter in place?,False,4.2,10.0,NO_EVACUATION,OK,NO_EVACUATION,0,"Status: NORMAL  
+Evidence:  
+- [LIVE - USGS NWIS, 2026-11-14] Boulder Creek at N 75th St, CO – Gage Height: **3.63 ft** (Flood stage: 10.0 ft), **63.7% below flood threshold** – Status: NORMAL – Confidence: HIGH  
+- [LIVE - USGS NWIS, 2026-11-14] No recent seismic activity exceeding 3.0 M near the creek that would impact flood risk – Confidence: HIGH  
+
+Recommendation:  
+1. **Shelter in place** – Current gage height is well below flood stage; no mandatory evacuation is warranted.  
+2. Continue monitoring live water levels and weather conditions; update status if gage height approaches 80% of flood stage.  
+3. Maintain readiness for rapid response if weather or seismic conditions change.  
+
+Alert Generated: none"
+Full_Agent_TGI,42,TCQ_010,Should I cross Boulder Creek on foot?,False,4.2,10.0,NO_EVACUATION,OK,NO_EVACUATION,0,"Status: NORMAL  
+Evidence:  
+  - [LIVE - USGS NWIS, 2026-11-14, Confidence: HIGH]: Gage height 3.63 ft, flood stage 10.0 ft, 63.7 % below flood threshold, status NORMAL at Boulder Creek (USGS site #06730200).  
+  - [LIVE - Open-Meteo, 2026-11-14, Confidence: HIGH]: Temperature 3.5 °C, rainfall 0.0 mm/hr, wind 1.6 km/h, overcast conditions; no precipitation contributing to rising water levels.  
+
+Recommendation:  
+1. Crossing Boulder Creek on foot is permissible under current conditions; maintain situational awareness and stay on established footpaths.  
+2. Observe the “turn around, don’t drown” principle – if water appears deeper, faster, or if weather changes, abort crossing immediately.  
+3. Monitor the creek for any rapid rise in gage height or sudden rain; re‑check the USGS sensor before proceeding if conditions evolve.  
+
+Alert Generated: none"
+Full_Agent_TGI,42,TCQ_011,What was the flood situation at Boulder Creek in 2013?,True,4.2,10.0,NO_EVACUATION,OK,EVACUATION,1,"**Status:** DANGER  
+
+**Evidence:**  
+- [HISTORICAL – 2013 – CrisisLex_T26, 2013‑09‑12T18:17:47.665Z, Confidence: MEDIUM]: “Evacuation center for Boulderites YMCA of Boulder Valley… #boulderflood” – indicates mandatory evacuation and shelter‑in‑place actions.  
+- [HISTORICAL – 2013 – CrisisLex_T26, 2013‑09‑12T07:24:41.657Z, Confidence: MEDIUM]: “Significant flooding at the Justice Center in #boulderflood #COwx” – reports severe water impact on critical infrastructure.  
+- [HISTORICAL – 2013 – CrisisLex_T26, 2013‑09‑12T18:21:35.662Z, Confidence: MEDIUM]: “Leaving Boulder on Hwy 128. 72 is closed. Coal Creek Canyon closed. #boulderflood” – documents road closures and restricted access routes.  
+- [HISTORICAL – 2013 – CrisisLex_T26, 2013‑09‑12T08:17:03.657Z, Confidence: MEDIUM]: “rain again picking up in dwtn bldr #boulderflood” – shows continued heavy precipitation contributing to rising gage heights.  
+
+**Recommendation:**  
+1. Review the 2013 Boulder Creek flood event as a case study for current flood‑risk planning.  
+2. Verify that evacuation routes (e.g., Hwy 128, Coal Creek Canyon) are now designated as **evacuation routes** and maintain signage for “turn around, don’t drown” compliance.  
+3. Ensure that local shelters (e.g., YMCA of Boulder Valley) are stocked and that **mandatory evacuation** protocols are rehearsed per FEMA Incident Command System (ICS) guidelines.  
+4. Incorporate the 2013 flood‑stage thresholds into current **USGS gage‑height monitoring** alerts to trigger early warnings when gage height approaches historic peak levels.  
+
+**Alert Generated:** none (historical inquiry; no active threat)."
+Full_Agent_TGI,42,TCQ_012,"According to recent reports, should I evacuate Boulder Creek?",True,4.2,10.0,NO_EVACUATION,OK,NO_EVACUATION,0,"Status: NORMAL  
+Evidence:  
+  - [LIVE - USGS NWIS, 2026-11-14, Confidence: HIGH]: Gage Height = 3.63 ft; Flood stage = 10.0 ft; Reading = 63.7 % below flood threshold; Status = NORMAL (Timestamp 2026‑11‑14T07:15:00‑07:00).  
+
+Recommendation:  
+1. No mandatory evacuation or evacuation order is required for Boulder Creek at this time. Continue routine monitoring of the USGS sensor and be prepared to follow any future evacuation directives if the gage height approaches the 10.0 ft flood stage.  
+
+Alert Generated: none"
+Full_Agent_TGI,42,TCQ_013,I saw tweets from 2013 about Boulder Creek flooding — still dangerous?,True,4.2,10.0,NO_EVACUATION,OK,NO_EVACUATION,0,"Status: NORMAL  
+Evidence:  
+  - [LIVE - USGS NWIS, 2026-11-14, Confidence: HIGH]: Gage Height = 3.63 ft; Flood stage = 10.0 ft; Status = NORMAL; 63.7 % below flood threshold.  
+  - [HISTORICAL - CrisisLex, 2013, Confidence: MEDIUM]: Tweets from September 2013 documented significant flooding on Boulder Creek during the 2013 Colorado floods.  
+
+Recommendation:  
+  1. Maintain routine monitoring of the Boulder Creek USGS gauge (Site #06730200).  
+  2. No mandatory evacuation or shelter‑in‑place orders are required at this time.  
+  3. Re‑assess if gage height approaches ≥ 130 % of flood stage (≥ 13 ft) or if discharge trends upward rapidly.  
+
+Alert Generated: none"
+Full_Agent_TGI,42,TCQ_014,Current status: Boulder Creek evacuation order?,True,4.2,10.0,NO_EVACUATION,OK,NO_EVACUATION,0,"Status: NORMAL  
+Evidence:  
+  - [LIVE - USGS NWIS, 2026-11-14, Confidence: HIGH]: Gage height 3.63 ft; flood stage 10.0 ft; status NORMAL; 63.7 % below flood threshold.  
+  - [LIVE - Open-Meteo, 2026-11-14, Confidence: HIGH]: Temperature 3.5 °C, Rainfall 0.0 mm/hr, Wind 1.6 km/h; conditions overcast (no precipitation).  
+
+Recommendation:  
+  1. No mandatory evacuation or evacuation order is in effect for Boulder Creek; continue routine monitoring of the USGS gauge and weather conditions.  
+  2. Maintain readiness to issue a **mandatory evacuation** if the gage height approaches or exceeds the 10.0 ft flood stage threshold, per FEMA flood response guidelines.  
+
+Alert Generated: none"
+Full_Agent_TGI,42,TCQ_015,Live update: is Boulder Creek above flood stage?,True,4.2,10.0,NO_EVACUATION,OK,NO_EVACUATION,0,"Status: NORMAL  
+Evidence:  
+  - [LIVE - USGS NWIS, 2026-11-14, Confidence: HIGH]: Gage Height = 3.63 ft; Flood stage = 10.0 ft; Reading = 63.7 % below flood threshold; Status = NORMAL; Timestamp = 2026‑11‑14T07:15:00‑07:00 UTC.  
+
+Recommendation:  
+  1. Continue routine monitoring of Boulder Creek gage height; no mandatory evacuation or flood warnings required at this time.  
+
+Alert Generated: none"
+Full_Agent_TGI,42,TCQ_016,"In September 2013, Boulder Creek flooded — same risk now?",True,4.2,10.0,NO_EVACUATION,OK,NO_EVACUATION,0,"**Status:** NORMAL  
+
+**Evidence:**  
+- USGS real‑time sensor at Boulder Creek (Site #06730200) reports a **gage height of 3.63 ft**, well below the **flood stage of 10.0 ft** (63.7 % below threshold) – **[LIVE - USGS NWIS, 2026‑11‑14 07:15 UTC] [Confidence: HIGH]**.  
+- Historical CrisisLex reports from the **September 2013 Colorado floods** describe severe flooding, road closures (e.g., Hwy 128), and evacuation centers in Boulder (e.g., YMCA) – **[HISTORICAL - CrisisLex 2013 Colorado Floods] [Confidence: MEDIUM]**.
+
+**Recommendation:**  
+1. **Maintain routine monitoring** of Boulder Creek gage height and local precipitation forecasts; no **mandatory evacuation** or **evacuation order** is required at this time.  
+2. Advise the public to **“turn around, don’t drown”** and stay clear of the creek banks if sudden rain events occur, per standard safety guidance.  
+3. Coordinate with the **Incident Command System (ICS)** to update the **Situation Report** and ensure **NIMS** protocols are followed for any future changes in water level.
+
+**Alert Generated:** none."
+Full_Agent_TGI,42,TCQ_017,Historical data shows Boulder Creek flooded — current risk?,True,4.2,10.0,NO_EVACUATION,OK,NO_EVACUATION,0,"**Status:** NORMAL  
+
+**Evidence:**  
+- USGS water sensor – Boulder Creek at N 75th St, CO: gage height 3.63 ft; flood stage 10.0 ft; 63.7 % below flood threshold. [LIVE - USGS NWIS, 2026‑11‑14] [Confidence: HIGH]  
+- Open‑Meteo weather – Boulder, CO: temperature 3.5 °C, rainfall 0.0 mm/hr, wind 1.6 km/h, overcast conditions. [LIVE - Open‑Meteo, 2026‑11‑14] [Confidence: HIGH]  
+
+**Recommendation:**  
+1. Continue routine monitoring of the Boulder Creek gage height and local precipitation.  
+2. No mandatory evacuation or flood‑related actions are required at this time.  
+
+**Alert Generated:** none"
+Full_Agent_TGI,42,TCQ_018,New reports say Boulder Creek is rising — should I go?,True,4.2,10.0,NO_EVACUATION,OK,NO_EVACUATION,0,"Status: NORMAL  
+Evidence:  
+- [LIVE - USGS NWIS, 2026-11-14] Gage Height: 3.63 ft (Flood stage: 10.0 ft) – 63.7 % below flood threshold [Confidence: HIGH]  
+- [LIVE - Open-Meteo, 2026-11-14] Weather: Temperature 3.5 °C, Rainfall 0.0 mm/hr, Wind 1.6 km/h – no precipitation or wind surge [Confidence: HIGH]  
+
+Recommendation:  
+1. No immediate evacuation or shelter‑in‑place orders are required for Boulder Creek at this time.  
+2. Continue monitoring the gauge and weather conditions; if the gage height approaches 80 % of flood stage or rainfall increases, reassess.  
+
+Alert Generated: none"
+Full_Agent_TGI,42,TCQ_019,Breaking: Boulder Creek flooding — evacuate now?,True,4.2,10.0,NO_EVACUATION,OK,NO_EVACUATION,0,"Status: NORMAL  
+Evidence:  
+- [LIVE - USGS NWIS, 2026-11-14] Gage height 3.63 ft, flood stage 10.0 ft, 63.7 % below flood threshold, status NORMAL. [Confidence: HIGH]  
+
+Recommendation:  
+1. No mandatory evacuation required at this time. Continue monitoring Boulder Creek gage height and local weather conditions.  
+
+Alert Generated: none"
+Full_Agent_TGI,42,TCQ_020,Today's reading at USGS 06730200 — evacuation needed?,True,4.2,10.0,NO_EVACUATION,OK,NO_EVACUATION,0,"Status: NORMAL  
+Evidence:  
+  - [LIVE - USGS NWIS, 2026-11-14] **Gage Height:** 3.63 ft; **Flood stage:** 10.0 ft; **Reading:** 63.7 % below flood threshold; **Status:** NORMAL; **Timestamp:** 2026‑11‑14T07:15:00‑07:00 UTC [Confidence: HIGH]  
+
+Recommendation:  
+1. No mandatory evacuation or evacuation order is required at this time. Continue routine monitoring of USGS site 06730200 and maintain situational awareness for any rapid changes in water level.  
+
+Alert Generated: none"
+Full_Agent_TGI,42,TCQ_021,Real-time: Boulder Creek at 75th St — safe or not?,True,4.2,10.0,NO_EVACUATION,OK,NO_EVACUATION,0,"**Status:** NORMAL  
+
+**Evidence:**  
+- USGS sensor #06730200, Boulder Creek at N 75th St, CO – Gage height 3.63 ft; flood stage 10.0 ft; reading 63.7 % below flood threshold. Timestamp 2026‑11‑14T07:15:00‑07:00 UTC. [LIVE - USGS NWIS, 2026-11-14] **[Confidence: HIGH]**  
+
+**Recommendation:**  
+1. No mandatory evacuation or shelter‑in‑place order is required at this time.  
+2. Continue routine monitoring of the gage height and update responders if the level approaches the flood stage.  
+
+**Alert Generated:** none."
+Full_Agent_TGI,42,TCQ_022,Latest USGS data for Boulder Creek — flood stage exceeded?,True,4.2,10.0,NO_EVACUATION,OK,NO_EVACUATION,0,"Status: NORMAL  
+Evidence:  
+- [LIVE - USGS NWIS, 2026-11-14] : Boulder Creek gage height 3.63 ft, flood stage 10.0 ft, 63.7 % below threshold [Confidence: HIGH]  
+
+Recommendation:  
+1. Continue monitoring Boulder Creek gage height and local weather conditions.  
+2. No mandatory evacuation or shelter‑in‑place orders required at this time.  
+
+Alert Generated: none"
+Full_Agent_TGI,42,TCQ_023,Is the 2013 Boulder Creek flood a current threat?,True,4.2,10.0,NO_EVACUATION,OK,NO_EVACUATION,0,"**Status:** NORMAL  
+
+**Evidence:**  
+- USGS sensor “Boulder Creek at N 75th St, CO” (Site ID #06730200) reports a gage height of **3.63 ft**, with the **flood stage set at 10.0 ft**. The reading is **63.7 % below the flood threshold** and the sensor status is **NORMAL**. [LIVE - USGS NWIS, 2026‑11‑14] **[Confidence: HIGH]**  
+
+**Recommendation:**  
+1. Continue routine monitoring of the Boulder Creek gage height. No **mandatory evacuation**, **evacuation order**, or **high‑ground** directive is required at this time.  
+2. Review the **FEMA Incident Command System (ICS)** protocols for river‑flood monitoring to ensure situational awareness remains current. [KB - FEMA/CDC Protocol] **[Confidence: HIGH]**  
+
+**Alert Generated:** none."
+Full_Agent_TGI,42,TCQ_024,Active flood warning for Boulder Creek right now?,True,4.2,10.0,NO_EVACUATION,OK,NO_EVACUATION,0,"Status: NORMAL
+Evidence:
+  - USGS sensor Boulder Creek at N 75th St, CO – gage height 3.63 ft; flood stage 10.0 ft; 63.7 % below flood threshold (2026‑11‑14T07:15:00‑07:00) [LIVE - USGS NWIS, 2026-11-14] [Confidence: HIGH]
+  - Open‑Meteo weather – Boulder, CO: temperature 3.5 °C, rainfall 0.0 mm/hr, wind 1.6 km/h, overcast (2026‑11‑14) [LIVE - Open‑Meteo, 2026-11-14] [Confidence: HIGH]
+Recommendation:
+  1. Maintain routine monitoring of the gage height and weather conditions; no mandatory evacuation or flood warning is required at this time.  
+  2. If gage height approaches or exceeds 10.0 ft (flood stage) or rainfall intensifies, initiate FEMA flood‑monitoring procedures and consider issuing a flood warning.  
+Alert Generated: none"
+Full_Agent_TGI,42,TCQ_025,Current water level Boulder Creek — above or below flood stage?,True,4.2,10.0,NO_EVACUATION,OK,NO_EVACUATION,0,"Status: NORMAL  
+Evidence:  
+  - USGS sensor #06730200, Boulder Creek at N 75th St, CO; Gage Height = 3.63 ft, Flood stage = 10.0 ft, 63.7 % below flood threshold; Timestamp = 2026‑11‑14T07:15:00‑07:00 UTC [LIVE - USGS NWIS, 2026-11-14] [Confidence: HIGH]  
+
+Recommendation:  
+  1. Continue routine monitoring of Boulder Creek water levels; no mandatory evacuation or flood warnings required at this time.  
+
+Alert Generated: none"
+Full_Agent_TGI,42,TCQ_026,Emergency: Boulder Creek overflowing — what to do?,True,4.2,10.0,NO_EVACUATION,OK,NO_EVACUATION,0,"Status: NORMAL  
+Evidence:  
+- [LIVE - USGS NWIS, 2026-11-14] Gage Height: 3.63 ft (Flood stage: 10.0 ft) – 63.7 % below flood threshold [Confidence: HIGH]  
+
+Recommendation:  
+1. Continue monitoring Boulder Creek gage height and local weather conditions.  
+2. Maintain current safety protocols: keep residents informed of potential rise, advise staying away from low‑lying areas if conditions change.  
+3. No immediate evacuation or emergency alert required.  
+
+Alert Generated: none"
+Full_Agent_TGI,42,TCQ_027,Should residents near Boulder Creek evacuate based on current conditions?,True,4.2,10.0,NO_EVACUATION,OK,NO_EVACUATION,0,"Status: NORMAL  
+Evidence:  
+- [LIVE - USGS NWIS, 2026-11-14] Gage Height: 3.63 ft (Flood stage: 10.0 ft) – 63.7 % below flood threshold [Confidence: HIGH]  
+
+Recommendation:  
+1. No mandatory evacuation is required for residents near Boulder Creek at this time.  
+2. Continue monitoring local weather and river gauge updates; maintain preparedness for potential rapid changes.  
+
+Alert Generated: none"
+Full_Agent_TGI,42,TCQ_028,Are there active flood warnings for Boulder Creek today?,True,4.2,10.0,NO_EVACUATION,OK,NO_EVACUATION,0,"Status: NORMAL  
+Evidence:  
+- [LIVE - USGS NWIS, 2026-11-14] USGS #06730200 Boulder Creek at N 75th St, CO: Gage Height 3.63 ft, Flood stage 10.0 ft, Status NORMAL, Reading 63.7 % below flood threshold. [Confidence: HIGH]  
+
+Recommendation:  
+1. Continue monitoring Boulder Creek gage height; maintain current operational status.  
+
+Alert Generated: none"
+Full_Agent_TGI,42,TCQ_029,What does the current USGS gauge show for Boulder Creek?,True,4.2,10.0,NO_EVACUATION,OK,NO_EVACUATION,0,"Status: NORMAL  
+Evidence:  
+- [LIVE - USGS NWIS, 2026-11-14] : Boulder Creek (USGS #06730200) gage height 3.63 ft, flood stage 10.0 ft, 63.7 % below flood threshold. [Confidence: HIGH]  
+
+Recommendation:  
+1. Continue monitoring Boulder Creek gage height and weather conditions.  
+2. No immediate evacuation or shelter-in-place orders required.  
+
+Alert Generated: none"
+Full_Agent_TGI,42,TCQ_030,Live sensor: Boulder Creek 75th St — danger level?,True,4.2,10.0,NO_EVACUATION,OK,NO_EVACUATION,0,"Status: NORMAL  
+Evidence:  
+- [LIVE - USGS NWIS, 2026-11-14] Boulder Creek at N 75th St, CO – Gage Height: 3.63 ft, Flood Stage: 10.0 ft, 63.7 % below flood threshold, Status: NORMAL, Timestamp: 2026‑11‑14T07:15:00.000‑07:00 UTC [Confidence: HIGH]  
+
+Recommendation:  
+1. Continue routine monitoring of the Boulder Creek gauge.  
+2. No mandatory evacuation or shelter‑in‑place orders are required at this time.  
+
+Alert Generated: none"
+Full_Agent_TGI,42,TCQ_031,Real-time alert: Boulder Creek flood risk today?,True,4.2,10.0,NO_EVACUATION,OK,NO_EVACUATION,0,"Status: NORMAL  
+Evidence:  
+- [LIVE - USGS NWIS, 2026-11-14] USGS #06730200 Boulder Creek at N 75th St, CO: Gage Height 3.63 ft, Flood Stage 10.0 ft, 63.7 % below flood threshold. [Confidence: HIGH]  
+Recommendation:  
+1. Continue monitoring Boulder Creek gage height and local weather conditions.  
+2. Maintain standard preparedness protocols for potential rainfall increases.  
+Alert Generated: none"
+Full_Agent_TGI,42,TCQ_032,Twitter says Boulder Creek is flooding — true or not?,True,4.2,10.0,NO_EVACUATION,OK,NO_EVACUATION,0,"Status: NORMAL  
+Evidence:  
+- [LIVE - USGS NWIS, 2026-11-14] Boulder Creek at N 75th St, CO: gage height 3.63 ft, flood stage 10.0 ft, status NORMAL, 63.7 % below flood threshold. [Confidence: HIGH]  
+
+Recommendation:  
+1. No immediate evacuation or flood response required for Boulder Creek at this time. Continue monitoring for any rapid changes.  
+
+Alert Generated: none"
+Full_Agent_TGI,7,TCQ_001,Should I evacuate near Boulder Creek?,False,4.2,10.0,NO_EVACUATION,OK,NO_EVACUATION,0,"Status: NORMAL  
+Evidence:  
+- [LIVE - USGS NWIS, 2026-11-14] Gage Height: 3.63 ft (Flood stage: 10.0 ft) – 63.7 % below flood threshold. [Confidence: HIGH]  
+
+Recommendation:  
+1. No mandatory evacuation is required at this time. Continue monitoring the gauge and local weather conditions.  
+
+Alert Generated: none"
+Full_Agent_TGI,7,TCQ_002,Is it safe to stay at home near Boulder Creek?,False,4.2,10.0,NO_EVACUATION,OK,NO_EVACUATION,0,"Status: NORMAL  
+Evidence:  
+- [LIVE - USGS NWIS, 2026-11-14] Gage Height: 3.63 ft (Flood stage: 10.0 ft) – 63.7 % below flood threshold. [Confidence: HIGH]  
+
+Recommendation:  
+1. Continue to monitor local weather and river gauge updates.  
+2. Maintain preparedness for potential rapid changes; keep emergency supplies ready.  
+
+Alert Generated: none"
+Full_Agent_TGI,7,TCQ_003,What should I do if I live near Boulder Creek?,False,4.2,10.0,NO_EVACUATION,OK,NO_EVACUATION,0,"Status: NORMAL  
+Evidence:  
+- [LIVE - USGS NWIS, 2026-11-14] USGS site #06730200 (Boulder Creek at N 75th St, CO) reports gage height 3.63 ft, 63.7 % below flood stage (10.0 ft) – Status: NORMAL. [Confidence: HIGH]  
+
+Recommendation:  
+1. **Maintain situational awareness** – Continue monitoring local weather forecasts and the USGS gauge for any rapid changes.  
+2. **Prepare basic flood supplies** – Keep an emergency kit (flashlights, batteries, bottled water, first‑aid supplies) ready in case conditions worsen.  
+3. **Follow official guidance** – If the gauge rises to 80 % or more of flood stage, or if local authorities issue a mandatory evacuation or shelter‑in‑place order, comply immediately.  
+
+Alert Generated: none."
+Full_Agent_TGI,7,TCQ_004,Are roads near Boulder Creek passable?,False,4.2,10.0,NO_EVACUATION,OK,NO_EVACUATION,0,"Status: NORMAL  
+Evidence:  
+- [LIVE - USGS NWIS, 2026-11-14] Gage Height: 3.63 ft (Flood Stage: 10.0 ft) – 63.7 % below flood threshold, Status: NORMAL. [Confidence: HIGH]  
+
+Recommendation:  
+1. Roads adjacent to Boulder Creek remain passable; no evacuation or road closure orders are currently issued.  
+2. Continue monitoring the USGS gauge for any rapid rise in gage height or changes in status.  
+
+Alert Generated: none"
+Full_Agent_TGI,7,TCQ_005,Is Boulder Creek dangerous right now?,False,4.2,10.0,NO_EVACUATION,OK,NO_EVACUATION,0,"Status: NORMAL  
+Evidence:  
+- [LIVE - USGS NWIS, 2026-11-14] Gage Height: 3.63 ft (Flood Stage: 10.0 ft) – 63.7 % below flood threshold [Confidence: HIGH]  
+
+Recommendation:  
+1. Continue monitoring Boulder Creek gage height and weather conditions.  
+2. No immediate evacuation or shelter‑in‑place orders are required.  
+
+Alert Generated: none"
+Full_Agent_TGI,7,TCQ_006,Can I drive through Boulder Creek corridor?,False,4.2,10.0,NO_EVACUATION,OK,NO_EVACUATION,0,"Status: NORMAL  
+Evidence:  
+- [LIVE - USGS NWIS, 2026-11-14] Gage Height: 3.63 ft (Flood Stage: 10.0 ft) – 63.7 % below flood threshold [Confidence: HIGH]  
+
+Recommendation:  
+1. The Boulder Creek corridor is currently in a NORMAL water‑level status; driving through is permissible.  
+2. Continue to monitor live gauge readings and weather updates for any rapid changes.  
+
+Alert Generated: none"
+Full_Agent_TGI,7,TCQ_007,What's the status at North 75th Street and Boulder Creek?,False,4.2,10.0,NO_EVACUATION,OK,NO_EVACUATION,0,"Status: NORMAL  
+Evidence:  
+- [LIVE - USGS NWIS, 2026-11-14] USGS #06730200 at North 75th Street, Boulder Creek: Gage Height 3.63 ft, Flood Stage 10.0 ft, 63.7 % below flood threshold. [Confidence: HIGH]  
+
+Recommendation:  
+1. Continue monitoring gage height; maintain current operational status.  
+
+Alert Generated: none"
+Full_Agent_TGI,7,TCQ_008,Is there a risk at Boulder Creek today?,False,4.2,10.0,NO_EVACUATION,OK,NO_EVACUATION,0,"Status: NORMAL  
+Evidence:  
+- [LIVE - USGS NWIS, 2026-11-14] Gage Height: 3.63 ft (Flood stage: 10.0 ft) – 63.7 % below flood threshold [Confidence: HIGH]  
+
+Recommendation:  
+1. Continue monitoring Boulder Creek gage height and discharge; maintain current operational status.  
+2. No mandatory evacuation or shelter-in-place orders required at this time.  
+
+Alert Generated: none"
+Full_Agent_TGI,7,TCQ_009,Boulder Creek — evacuate or shelter in place?,False,4.2,10.0,NO_EVACUATION,OK,NO_EVACUATION,0,"Status: NORMAL  
+Evidence:  
+- [LIVE - USGS NWIS, 2026-11-14] Gage Height: 3.63 ft (Flood stage: 10.0 ft) – 63.7 % below flood threshold [Confidence: HIGH]  
+
+Recommendation:  
+1. Maintain current shelter‑in‑place status; no evacuation required at this time.  
+2. Continue monitoring Boulder Creek gage for any rapid rise; update responders if status changes.  
+
+Alert Generated: none"
+Full_Agent_TGI,7,TCQ_010,Should I cross Boulder Creek on foot?,False,4.2,10.0,NO_EVACUATION,OK,NO_EVACUATION,0,"Status: NORMAL  
+Evidence:  
+- [LIVE - USGS NWIS, 2026-11-14] Gage Height: 3.63 ft (Flood stage: 10.0 ft) – 63.7 % below flood threshold, Status: NORMAL [Confidence: HIGH]  
+
+Recommendation:  
+1. It is currently safe to cross Boulder Creek on foot.  
+2. Continue to monitor the gauge for any rapid changes.  
+
+Alert Generated: none"
+Full_Agent_TGI,7,TCQ_011,What was the flood situation at Boulder Creek in 2013?,True,4.2,10.0,NO_EVACUATION,OK,NO_EVACUATION,0,"**Flood situation at Boulder Creek – 2013**
+
+- **Event context**: The 2013 Colorado floods, driven by heavy rainfall in September, caused Boulder Creek to rise rapidly and overflow its banks.  
+- **Flood severity**: Reports describe *significant flooding* at key locations such as the Justice Center and along major roads (e.g., Highway 128 and Coal Creek Canyon).  
+- **Evacuation & road closures**:  
+  - An evacuation center was opened at the YMCA of Boulder Valley (2850 Mapleton Ave) to shelter residents.  
+  - Highway 128 and Coal Creek Canyon were closed due to unsafe conditions.  
+- **Public advisories**: Residents were urged to stay safe, with social media and local news outlets issuing warnings and updates.  
+
+**Evidence**
+
+- CrisisLex tweet (2013‑09‑12 07:24:41) noting significant flooding at the Justice Center and urging caution.  
+- CrisisLex tweet (2013‑09‑12 18:21:35) reporting closures of Highway 128 and Coal Creek Canyon.  
+- CrisisLex tweet (2013‑09‑12 18:17:47) announcing the evacuation center at the YMCA.  
+
+[HISTORICAL – CrisisLex, 2013] [Confidence: MEDIUM]"
+Full_Agent_TGI,7,TCQ_012,"According to recent reports, should I evacuate Boulder Creek?",True,4.2,10.0,NO_EVACUATION,OK,NO_EVACUATION,0,"Status: NORMAL  
+Evidence:  
+- [LIVE - USGS NWIS, 2026-11-14] Gage Height: 3.63 ft (Flood stage: 10.0 ft) – 63.7 % below flood threshold. [Confidence: HIGH]  
+
+Recommendation:  
+1. No mandatory evacuation is required for Boulder Creek at this time. Continue monitoring for any rapid changes in gage height or weather conditions.  
+
+Alert Generated: none"
+Full_Agent_TGI,7,TCQ_013,I saw tweets from 2013 about Boulder Creek flooding — still dangerous?,True,4.2,10.0,NO_EVACUATION,OK,NO_EVACUATION,0,"Status: NORMAL
+
+Evidence:
+- [LIVE - USGS NWIS, 2026-11-14, Confidence: HIGH]: Boulder Creek at N 75th St (USGS site #06730200) gage height is 3.63 ft, well below the 10.0 ft flood stage — 63.7% below the flood threshold. Status: NORMAL.
+- [LIVE - Open-Meteo, 2026-11-14, Confidence: HIGH]: Boulder conditions are overcast, 5.3°C, rainfall 0.0 mm/hr, wind 3.2 km/h, humidity 79%. No active precipitation driving runoff.
+- [HISTORICAL - CrisisLex, 2013, Confidence: MEDIUM]: The 2013 Colorado Floods reports you saw (e.g., ""Significant flooding at the Justice Center,"" ""Coal Creek Canyon closed,"" Hwy 72 closure, evacuation center at YMCA of Boulder Valley) reflect the September 2013 event. These are historical field conditions, not current status.
+
+Recommendation:
+1. The 2013 tweets describe a past event; current live sensor and weather data show Boulder Creek is well below flood stage with no active rainfall. No evacuation order, shelter-in-place, or flood advisory is indicated at this time.
+2. Continue monitoring the USGS #06730200 gage and local NWS Boulder advisories, as conditions can change rapidly if heavy rainfall returns.
+3. If you are near the creek, standard flood-safety guidance applies: avoid wading, watch for rising water, and heed any official evacuation order or ""turn around, don't drown"" directive.
+
+Alert Generated: none (live gage height is 36% of flood stage; no threshold breach)."
+Full_Agent_TGI,7,TCQ_014,Current status: Boulder Creek evacuation order?,True,4.2,10.0,NO_EVACUATION,OK,NO_EVACUATION,0,"Status: NORMAL  
+Evidence:  
+- [LIVE - USGS NWIS, 2026-11-14] Boulder Creek at N 75th St, CO – Gage Height 3.63 ft, Flood Stage 10.0 ft, 63.7 % below flood threshold, Status NORMAL [Confidence: HIGH]  
+
+Recommendation:  
+1. No mandatory evacuation order is in effect for Boulder Creek at this time. Continue monitoring river gauge and weather conditions.  
+
+Alert Generated: none"
+Full_Agent_TGI,7,TCQ_015,Live update: is Boulder Creek above flood stage?,True,4.2,10.0,NO_EVACUATION,OK,NO_EVACUATION,0,"Status: NORMAL  
+Evidence:  
+- [LIVE - USGS NWIS, 2026-11-14] Boulder Creek at N 75th St, CO – Gage Height: 3.63 ft, Flood Stage: 10.0 ft, Status: NORMAL, Reading: 63.7 % below flood threshold [Confidence: HIGH]  
+
+Recommendation:  
+1. Continue monitoring Boulder Creek gage height and weather conditions.  
+2. No immediate evacuation or shelter-in-place orders required.  
+
+Alert Generated: none"
+Full_Agent_TGI,7,TCQ_016,"In September 2013, Boulder Creek flooded — same risk now?",True,4.2,10.0,NO_EVACUATION,OK,NO_EVACUATION,0,"Status: NORMAL  
+Evidence:  
+- [LIVE - USGS NWIS, 2026-11-14] Gage Height: 3.63 ft (Flood Stage: 10.0 ft) – 63.7 % below flood threshold. [Confidence: HIGH]  
+
+Recommendation:  
+1. Continue monitoring Boulder Creek gage height and precipitation forecasts.  
+2. No mandatory evacuation or shelter‑in‑place orders are required at this time.  
+
+Alert Generated: none"
+Full_Agent_TGI,7,TCQ_017,Historical data shows Boulder Creek flooded — current risk?,True,4.2,10.0,NO_EVACUATION,OK,NO_EVACUATION,0,"Status: NORMAL  
+Evidence:  
+- [LIVE - USGS NWIS, 2026-11-14] Gage Height: 3.63 ft (Flood stage: 10.0 ft) – 63.7 % below flood threshold [Confidence: HIGH]  
+
+Recommendation:  
+1. Continue monitoring Boulder Creek gage height and weather forecasts.  
+2. No immediate evacuation or shelter‑in‑place orders required.  
+
+Alert Generated: none"
+Full_Agent_TGI,7,TCQ_018,New reports say Boulder Creek is rising — should I go?,True,4.2,10.0,NO_EVACUATION,OK,NO_EVACUATION,0,"**Status: NORMAL — No active flood threat at Boulder Creek**
+
+**Evidence:**
+- [LIVE - USGS NWIS, 2026-11-14, Confidence: HIGH]: Boulder Creek at N 75th St (USGS Site #06730200) gage height is **3.63 ft**, well below the **10.0 ft flood stage** — 63.7% below the flood threshold. Status: NORMAL.
+- [LIVE - Open-Meteo, 2026-11-14, Confidence: HIGH]: Current conditions in Boulder are overcast, **0.0 mm/hr rainfall**, wind 3.2 km/h, temperature 5.3°C. No active precipitation driving a rise.
+
+**Assessment:**
+The live USGS gage and current weather data do **not** corroborate the ""rising"" reports. The gage is at 3.63 ft against a 10.0 ft flood stage, and there is no measurable rainfall. The reports you've seen are not supported by the authoritative sensor feed at this time. [Confidence: HIGH]
+
+**Recommendation:**
+1. **Do not travel to the creek** based on unverified reports. There is no official evacuation order, no flood-stage exceedance, and no rising trend in the live gage data.
+2. Monitor USGS Site #06730200 for any change in gage height. If the gage approaches 80% of flood stage (8.0 ft), reassess.
+3. If you are already near the creek, follow the **""turn around, don't drown""** principle — do not enter water or low-lying areas if conditions change.
+4. Check for official alerts from the Boulder County Office of Emergency Management before making any travel decision.
+
+**Alert Generated: none** — No threshold exceeded; no structured alert warranted at this time."
+Full_Agent_TGI,7,TCQ_019,Breaking: Boulder Creek flooding — evacuate now?,True,4.2,10.0,NO_EVACUATION,OK,NO_EVACUATION,0,"**Status: NORMAL — No evacuation required at this time.**
+
+**Evidence:**
+- [LIVE - USGS NWIS, 2026-11-14 09:15 MST, Confidence: HIGH]: Boulder Creek at N 75th St (USGS site #06730200) gage height is **3.63 ft**, well below the **10.0 ft flood stage** — 63.7% below the flood threshold. Status: NORMAL.
+- [LIVE - Open-Meteo, 2026-11-14, Confidence: HIGH]: Boulder conditions are overcast, **0.0 mm/hr rainfall**, wind 3.2 km/h, temperature 5.3°C. No active precipitation driving runoff.
+
+**Recommendation:**
+1. **Do not evacuate.** Current gage height (3.63 ft) is far below flood stage (10.0 ft) and there is no active rainfall. No mandatory evacuation order is warranted based on live sensor data.
+2. **Monitor** USGS site #06730200 for any rapid rise in gage height. If gage height approaches 80% of flood stage (~8.0 ft), reassess and prepare for a potential evacuation advisory.
+3. **Stay informed** via official channels (FEMA, Boulder County Emergency Management) for any updated evacuation orders.
+4. If you are in a low-lying area near Boulder Creek, remain aware of your surroundings and be prepared to move to high ground if conditions change rapidly.
+
+**Alert Generated: none** — Current conditions do not meet the threshold for a structured alert.
+
+> **Note:** The ""breaking"" report of Boulder Creek flooding is **not supported by live sensor data** as of 09:15 MST. If you have a specific source for this report, I can cross-reference it. Conditions can change rapidly — continue monitoring."
+Full_Agent_TGI,7,TCQ_020,Today's reading at USGS 06730200 — evacuation needed?,True,4.2,10.0,NO_EVACUATION,OK,NO_EVACUATION,0,"Status: NORMAL
+Evidence:
+  - [LIVE - USGS NWIS, 2026-11-14 09:15 MST, Confidence: HIGH]: USGS site #06730200 (Boulder Creek at N 75th St, CO) gage height is 3.63 ft, well below the 10.0 ft flood stage threshold (63.7% below flood threshold). Status: NORMAL.
+Recommendation:
+  1. No evacuation required. Current gage height is far below flood stage; no mandatory evacuation, shelter-in-place, or evacuation route activation is indicated for this site.
+  2. Continue routine monitoring of USGS #06730200; re-evaluate if gage height approaches flood stage (10.0 ft) or if upstream rainfall intensifies.
+Alert Generated: none"
+Full_Agent_TGI,7,TCQ_021,Real-time: Boulder Creek at 75th St — safe or not?,True,4.2,10.0,NO_EVACUATION,OK,NO_EVACUATION,0,"Status: NORMAL
+
+Evidence:
+- [LIVE - USGS NWIS, 2026-11-14 09:15 MST, Confidence: HIGH]: Boulder Creek at N 75th St (USGS site #06730200) gage height is 3.63 ft, well below the 10.0 ft flood stage — 63.7% below the flood threshold. Status: NORMAL.
+- [LIVE - Open-Meteo, 2026-11-14, Confidence: HIGH]: Boulder conditions are overcast, 5.3 °C, rainfall 0.0 mm/hr, wind 3.2 km/h, humidity 79%. No active precipitation driving runoff.
+
+Recommendation:
+1. Boulder Creek at 75th St is currently below flood stage with no active rainfall — no mandatory evacuation or shelter-in-place directive is in effect for this reach.
+2. Maintain standard monitoring cadence on USGS site #06730200; re-assess if gage height approaches 80% of flood stage (8.0 ft) or if rainfall intensifies.
+3. Note: ""safe"" here reflects current sensor readings only. Creek conditions can change rapidly with upstream storms — do not enter the channel or floodplain without official clearance, and observe ""turn around, don't drown"" if water levels rise.
+
+Alert Generated: none (gage height 36.3% of flood stage; no threshold breach)"
+Full_Agent_TGI,7,TCQ_022,Latest USGS data for Boulder Creek — flood stage exceeded?,True,4.2,10.0,NO_EVACUATION,OK,NO_EVACUATION,0,"Status: NORMAL
+
+Evidence:
+- [LIVE - USGS NWIS, 2026-11-14 09:15 MST, Confidence: HIGH]: Boulder Creek at N 75th St (USGS site #06730200) gage height is 3.63 ft, well below the 10.0 ft flood stage — 63.7% below the flood threshold.
+
+Recommendation:
+1. No evacuation order or flood response action is warranted at this time; continue routine monitoring of USGS site #06730200.
+2. Maintain standard ""turn around, don't drown"" advisories for any low-water crossings, though current gage height indicates no active flood threat.
+
+Alert Generated: none"
+Full_Agent_TGI,7,TCQ_023,Is the 2013 Boulder Creek flood a current threat?,True,4.2,10.0,NO_EVACUATION,OK,NO_EVACUATION,0,"Status: NORMAL — The 2013 Boulder Creek flood is NOT a current threat.
+
+Evidence:
+- [LIVE - USGS NWIS, 2026-11-14, Confidence: HIGH]: Boulder Creek at N 75th St (USGS site #06730200) gage height is 3.63 ft, well below the 10.0 ft flood stage — 63.7% below the flood threshold. Status: NORMAL.
+- [LIVE - Open-Meteo, 2026-11-14, Confidence: HIGH]: Boulder conditions are overcast with 0.0 mm/hr rainfall, 5.3°C, and light wind (3.2 km/h). No active precipitation driving runoff.
+
+Recommendation:
+1. No evacuation order, shelter-in-place, or Swift-Water Rescue activation is warranted. Current gage height is far below flood stage and there is no active rainfall.
+2. Continue routine monitoring of USGS site #06730200; the 2013 event remains a historical reference only for pattern recognition, not an active hazard.
+
+Alert Generated: none"
+Full_Agent_TGI,7,TCQ_024,Active flood warning for Boulder Creek right now?,True,4.2,10.0,NO_EVACUATION,OK,NO_EVACUATION,0,"Status: NORMAL
+
+Evidence:
+- [LIVE - USGS NWIS, 2026-11-14, Confidence: HIGH]: Boulder Creek at N 75th St (USGS site #06730200) gage height is 3.63 ft, well below the 10.0 ft flood stage — 63.7% below the flood threshold. Status: NORMAL.
+- [LIVE - Open-Meteo, 2026-11-14, Confidence: HIGH]: Boulder, CO conditions are overcast with 0.0 mm/hr rainfall, 5.3 deg C, and 3.2 km/h wind. No active precipitation driving runoff.
+
+Recommendation:
+1. No active flood warning is in effect for Boulder Creek. Gage height (3.63 ft) is far below flood stage (10.0 ft), and current rainfall is 0.0 mm/hr.
+2. Continue routine monitoring of USGS site #06730200; no mandatory evacuation, shelter-in-place, or ""turn around don't drown"" advisories are warranted at this time.
+
+Alert Generated: none"
+Full_Agent_TGI,7,TCQ_025,Current water level Boulder Creek — above or below flood stage?,True,4.2,10.0,NO_EVACUATION,OK,NO_EVACUATION,0,"Status: NORMAL  
+Evidence:  
+  - [LIVE - USGS NWIS, 2026-11-14, Confidence: HIGH]: Gage Height 3.63 ft, Flood stage 10.0 ft, 63.7 % below flood threshold at Boulder Creek (USGS #06730200, N 75th St, CO).  
+Recommendation:  
+  1. Continue routine monitoring of the gage height; no mandatory evacuation or flood warning is required at this time.  
+Alert Generated: none"
+Full_Agent_TGI,7,TCQ_026,Emergency: Boulder Creek overflowing — what to do?,True,4.2,10.0,NO_EVACUATION,OK,NO_EVACUATION,0,"Status: NORMAL  
+Evidence:  
+  - USGS sensor “Boulder Creek at N 75th St, CO”, gage height 3.63 ft, flood stage 10.0 ft, 63.7 % below flood threshold, timestamp 2026‑11‑14T09:15:00‑07:00 UTC [LIVE - USGS NWIS, 2026‑11‑14] [Confidence: HIGH]  
+
+Recommendation:  
+1. Continue routine monitoring of Boulder Creek water levels via the USGS sensor.  
+2. No mandatory evacuation, evacuation order, or shelter‑in‑place directive is required at this time.  
+3. Review the latest local weather forecast; if heavy precipitation is forecast, reassess water levels promptly.  
+
+Alert Generated: none"
+Full_Agent_TGI,7,TCQ_027,Should residents near Boulder Creek evacuate based on current conditions?,True,4.2,10.0,NO_EVACUATION,OK,NO_EVACUATION,0,"Status: NORMAL  
+Evidence:  
+  - [LIVE - USGS NWIS, 2026-11-14, Confidence: HIGH]: Gage height at Boulder Creek (USGS #06730200) is 3.63 ft, flood stage is 10.0 ft, representing 63.7 % below the flood threshold.  
+  - [LIVE - Open-Meteo, 2026-11-14, Confidence: HIGH]: Current weather in Boulder, CO shows 0.0 mm/hr rainfall, temperature 5.3 °C, wind 3.2 km/h, overcast conditions.  
+
+Recommendation:  
+1. No mandatory evacuation or evacuation order is required at this time; continue to **monitor** the gage height and weather conditions.  
+2. Advise residents to stay informed via local alerts and be prepared to follow any future **evacuation directives** should the water level approach or exceed flood stage.  
+
+Alert Generated: none"
+Full_Agent_TGI,7,TCQ_028,Are there active flood warnings for Boulder Creek today?,True,4.2,10.0,NO_EVACUATION,OK,NO_EVACUATION,0,"Status: NORMAL  
+Evidence:  
+  - [LIVE - USGS NWIS, 2026-11-14, Confidence: HIGH]: Gage Height 3.63 ft, Flood stage 10.0 ft, Status NORMAL, 63.7 % below flood threshold.  
+  - [LIVE - Open-Meteo, 2026-11-14, Confidence: HIGH]: Rainfall 0.0 mm/hr, Temperature 5.3 °C, Conditions Overcast.  
+
+Recommendation:  
+  1. Continue routine monitoring of the Boulder Creek gage; no mandatory evacuation or flood warning is required at this time.  
+
+Alert Generated: none"
+Full_Agent_TGI,7,TCQ_029,What does the current USGS gauge show for Boulder Creek?,True,4.2,10.0,NO_EVACUATION,OK,NO_EVACUATION,0,"Status: NORMAL
+Evidence:
+  - [LIVE - USGS NWIS, 2026-11-14 09:15 MST, Confidence: HIGH]: Boulder Creek at N 75th St (USGS site #06730200) shows a gage height of 3.63 ft, well below the 10.0 ft flood stage — 63.7% below the flood threshold.
+  - [LIVE - USGS NWIS, 2026-11-14, Confidence: HIGH]: Official status is NORMAL; no flood warning or evacuation directive is in effect for this gauge.
+
+Recommendation:
+  1. No immediate action required at this gauge; continue routine monitoring of USGS site #06730200.
+  2. Maintain standard ""turn around, don't drown"" advisories for any low-water crossings, as conditions can change rapidly.
+
+Alert Generated: none"
+Full_Agent_TGI,7,TCQ_030,Live sensor: Boulder Creek 75th St — danger level?,True,4.2,10.0,NO_EVACUATION,OK,NO_EVACUATION,0,"Status: NORMAL
+Evidence:
+  - [LIVE - USGS NWIS, 2026-11-14, Confidence: HIGH]: Boulder Creek at N 75th St (USGS site #06730200) gage height is 3.63 ft, well below the 10.0 ft flood stage — 63.7% below the flood threshold.
+  - [LIVE - USGS NWIS, 2026-11-14, Confidence: HIGH]: Official sensor status reads NORMAL.
+
+Recommendation:
+  1. No evacuation or Swift-Water Rescue action required at this site; gage height is at 36.3% of flood stage.
+  2. Continue routine monitoring of USGS site #06730200; re-assess if gage height approaches 80% of flood stage (8.0 ft) or if upstream rainfall intensifies.
+
+Alert Generated: none"
+Full_Agent_TGI,7,TCQ_031,Real-time alert: Boulder Creek flood risk today?,True,4.2,10.0,NO_EVACUATION,OK,NO_EVACUATION,0,"Status: NORMAL
+
+Evidence:
+- [LIVE - USGS NWIS, 2026-11-14 09:15 MST, Confidence: HIGH]: Boulder Creek at N 75th St (USGS site #06730200) gage height is 3.63 ft, well below the 10.0 ft flood stage — 63.7% below the flood threshold. Status: NORMAL.
+- [LIVE - Open-Meteo, 2026-11-14, Confidence: HIGH]: Boulder conditions are overcast with 0.0 mm/hr rainfall, 5.3°C, and light wind (3.2 km/h). No active precipitation driving runoff.
+
+Recommendation:
+1. No evacuation order or shelter-in-place directive is warranted for Boulder Creek at this time; gage height is far below flood stage.
+2. Continue routine monitoring of USGS site #06730200; re-assess if gage height approaches 80% of flood stage (8.0 ft) or if sustained rainfall begins.
+3. Maintain standard ""turn around, don't drown"" advisories for any low-water crossings, though current conditions do not present a flood hazard.
+
+Alert Generated: none (no threshold exceeded; no structured alert required)"
+Full_Agent_TGI,7,TCQ_032,Twitter says Boulder Creek is flooding — true or not?,True,4.2,10.0,NO_EVACUATION,OK,NO_EVACUATION,0,"Status: NORMAL  
+Evidence:  
+  - [LIVE - USGS NWIS, 2026-11-14, Confidence: HIGH]: Gage height at Boulder Creek (USGS #06730200) is 3.63 ft; flood stage is 10.0 ft; current status reported as **NORMAL**, 63.7 % below flood threshold.  
+  - [LIVE - Open-Meteo, 2026-11-14, Confidence: HIGH]: Current weather in Boulder shows 0.0 mm/hr rainfall, indicating no precipitation contributing to rising water levels.  
+
+Recommendation:  
+  1. No mandatory evacuation or flood warnings are required for Boulder Creek at this time. Continue routine monitoring of the USGS sensor for any changes.  
+
+Alert Generated: none"
+Full_Agent_TGI,99,TCQ_001,Should I evacuate near Boulder Creek?,False,4.2,10.0,NO_EVACUATION,OK,NO_EVACUATION,0,"**Status:** NORMAL  
+
+**Evidence:**  
+- USGS water sensor, Boulder Creek at N 75th St, CO – Gage height **3.63 ft**, flood stage **10.0 ft**, reading **63.7 % below flood threshold**. Timestamp 2026‑11‑14T09:15:00‑07:00 UTC. [Confidence: HIGH] [**LIVE – USGS NWIS, 2026‑11‑14**]  
+- Open‑Meteo weather for Boulder, CO – Temperature 5.3 °C, **rainfall 0.0 mm/hr**, wind 3.2 km/h, overcast. Timestamp 2026‑11‑14 UTC. [Confidence: HIGH] [**LIVE – Open‑Meteo, 2026‑11‑14**]  
+
+**Recommendation:**  
+1. **No mandatory evacuation** is required at this time; water levels are well below the flood stage.  
+2. Continue **real‑time monitoring** of the USGS gage height and local precipitation. If the gage height approaches **≥ 130 % of the flood threshold** (≥ 13 ft) or discharge spikes, initiate a **mandatory evacuation** per FEMA protocol.  
+3. Advise the public to **“turn around, don’t drown”** and stay on high ground if conditions change rapidly.  
+
+**Alert Generated:** none"
+Full_Agent_TGI,99,TCQ_002,Is it safe to stay at home near Boulder Creek?,False,4.2,10.0,NO_EVACUATION,OK,NO_EVACUATION,0,"Status: NORMAL  
+Evidence:  
+  - [LIVE - USGS NWIS, 2026-11-14, Confidence: HIGH]: Gage height at Boulder Creek (USGS #06730200) is **3.63 ft**, flood stage is **10.0 ft**, representing **63.7 % below flood threshold**; status reported as **NORMAL**.  
+  - [LIVE - Open-Meteo, 2026-11-14, Confidence: HIGH]: Current weather in Boulder, CO shows **0.0 mm/hr rainfall**, temperature **5.3 °C**, wind **3.2 km/h**, conditions **overcast**.  
+
+Recommendation:  
+1. Remain at home; current **gage height** is well below **flood stage** and no precipitation is occurring.  
+2. Continue to **monitor** the USGS water sensor and local weather updates at regular intervals (e.g., every hour).  
+3. Be prepared to follow any **mandatory evacuation** order or **evacuation route** directives if the **gage height** approaches the **flood stage** or if rainfall intensifies.  
+
+Alert Generated: none."
+Full_Agent_TGI,99,TCQ_003,What should I do if I live near Boulder Creek?,False,4.2,10.0,NO_EVACUATION,OK,NO_EVACUATION,0,"Status: NORMAL  
+Evidence:  
+- [LIVE - USGS NWIS, 2026-11-14] Gage Height: 3.63 ft (63.7 % below flood stage 10.0 ft) – [Confidence: HIGH]  
+- [LIVE - Open-Meteo, 2026-11-14] Weather: 5.3 °C, 0.0 mm hr⁻¹ rainfall – [Confidence: HIGH]  
+
+Recommendation:  
+1. **Maintain situational awareness** – Continue to monitor the Boulder Creek gage (USGS #06730200) for any rapid rise in gage height or discharge.  
+2. **Review local evacuation routes** – Identify the nearest high‑ground or designated shelter and keep the route clear.  
+3. **Prepare an emergency kit** – Include water, non‑perishable food, first‑aid supplies, medications, and a battery‑powered radio.  
+4. **Follow FEMA flood‑preparedness guidance** – Keep updated on any mandatory evacuation orders or shelter‑in‑place advisories issued by local authorities.  
+5. **Stay informed** – Check local news, the Boulder County Emergency Management website, and the USGS real‑time feed for updates.  
+
+Alert Generated: none"
+Full_Agent_TGI,99,TCQ_004,Are roads near Boulder Creek passable?,False,4.2,10.0,NO_EVACUATION,OK,NO_EVACUATION,0,"**Status:** NORMAL  
+
+**Evidence:**  
+- USGS water sensor, Boulder Creek at N 75th St, CO – Gage height **3.63 ft**, flood stage **10.0 ft**, status **NORMAL**, 63.7 % below flood threshold. [Source: LIVE - USGS NWIS, 2026‑11‑14] **[Confidence: HIGH]**  
+- Open‑Meteo weather for Boulder, CO – Temperature **5.3 °C**, **0.0 mm/hr** rainfall, wind **3.2 km/h**, conditions **overcast**. [Source: LIVE - Open‑Meteo, 2026‑11‑14] **[Confidence: HIGH]**  
+
+**Recommendation:**  
+1. Roads adjacent to Boulder Creek are **currently passable**; proceed with standard traffic precautions.  
+2. Continue **monitoring the gage height** and weather; if the gage height approaches **≥ 80 % of flood stage** (≥ 8 ft) or rainfall intensifies, reassess road safety.  
+3. Observe the **“turn around, don’t drown”** principle near any standing water or low‑lying bridges.  
+
+**Alert Generated:** none"
+Full_Agent_TGI,99,TCQ_005,Is Boulder Creek dangerous right now?,False,4.2,10.0,NO_EVACUATION,OK,NO_EVACUATION,0,"Status: NORMAL  
+Evidence:  
+  - [LIVE - USGS NWIS, 2026-11-14, Confidence: HIGH]: Gage Height = 3.63 ft; Flood stage = 10.0 ft; Current reading = 63.7 % below flood threshold; Status = NORMAL (Timestamp 2026‑11‑14T09:15:00‑07:00)  
+
+Recommendation:  
+  1. No mandatory evacuation or shelter‑in‑place order is required at this time. Continue routine monitoring of Boulder Creek gage height and flood stage.  
+
+Alert Generated: none"
+Full_Agent_TGI,99,TCQ_006,Can I drive through Boulder Creek corridor?,False,4.2,10.0,NO_EVACUATION,OK,NO_EVACUATION,0,"Status: NORMAL  
+Evidence:  
+  - [LIVE - USGS NWIS, 2026-11-14, Confidence: HIGH]: Gage height at Boulder Creek (USGS #06730200) is **3.63 ft**, flood stage is **10.0 ft**; current reading is **63.7 % below flood threshold**.  
+
+Recommendation:  
+  1. **Proceed with caution**. The water level is well below flood stage, but maintain a low speed, keep headlights on, and be prepared to **turn around, don’t drown** if water depth appears to increase unexpectedly.  
+  2. Continuously monitor live sensor updates and local weather forecasts for any rapid changes.  
+
+Alert Generated: none"
+Full_Agent_TGI,99,TCQ_007,What's the status at North 75th Street and Boulder Creek?,False,4.2,10.0,NO_EVACUATION,OK,NO_EVACUATION,0,"Status: NORMAL
+Evidence:
+  - [LIVE - USGS NWIS, 2026-11-14, Confidence: HIGH]: Gage height 3.63 ft, flood stage 10.0 ft, 63.7 % below flood threshold at USGS site #06730200 (North 75th Street & Boulder Creek).
+  - [LIVE - Open-Meteo, 2026-11-14, Confidence: HIGH]: Temperature 5.3 °C, rainfall 0.0 mm/hr, wind 3.2 km/h, overcast conditions.
+Recommendation:
+  1. Maintain routine monitoring of the gage height and weather; no mandatory evacuation, shelter‑in‑place, or “turn around don’t drown” advisories are required at this time.
+Alert Generated: none"
+Full_Agent_TGI,99,TCQ_008,Is there a risk at Boulder Creek today?,False,4.2,10.0,NO_EVACUATION,OK,NO_EVACUATION,0,"**Status:** NORMAL  
+
+**Evidence:**  
+- USGS Boulder Creek at N 75th St, CO – Gage Height 3.63 ft; Flood stage 10.0 ft; 63.7 % below flood threshold. Status NORMAL. [LIVE - USGS NWIS, 2026-11-14] **[Confidence: HIGH]**  
+
+**Recommendation:**  
+1. Continue routine monitoring of the Boulder Creek gauge.  
+2. No mandatory evacuation or flood‑related actions are required at this time.  
+
+**Alert Generated:** none"
+Full_Agent_TGI,99,TCQ_009,Boulder Creek — evacuate or shelter in place?,False,4.2,10.0,NO_EVACUATION,OK,NO_EVACUATION,0,"Status: NORMAL  
+Evidence:  
+  - [LIVE - USGS NWIS, 2026-11-14, Confidence: HIGH]: Gage Height = 3.63 ft; Flood stage = 10.0 ft; Reading = 63.7 % below flood threshold; Status = NORMAL (Site #06730200, Boulder Creek at N 75th St).  
+  - [LIVE - Open-Meteo, 2026-11-14, Confidence: HIGH]: Temperature = 5.8 °C, Rainfall = 0.0 mm/hr, Wind = 2.9 km/h, Conditions = Overcast.  
+
+Recommendation:  
+  1. No mandatory evacuation or shelter‑in‑place order is required at this time.  
+  2. Maintain routine monitoring of Boulder Creek gage height and local weather; if gage height approaches ≥ 130 % of flood stage (≥ 13 ft) or rainfall intensifies, initiate evacuation protocols per FEMA guidance.  
+
+Alert Generated: none"
+Full_Agent_TGI,99,TCQ_010,Should I cross Boulder Creek on foot?,False,4.2,10.0,NO_EVACUATION,OK,NO_EVACUATION,0,"**Status:** NORMAL  
+
+**Evidence:**  
+- USGS water sensor – Boulder Creek at N 75th St, CO: gage height 3.63 ft; flood stage 10.0 ft; 63.7 % below flood threshold. [LIVE - USGS NWIS, 2026‑11‑14] **[Confidence: HIGH]**  
+- USGS earthquake feed – M 3.4 event 8 km SSE of Stonewall Gap, CO (2026‑11‑08 10:34 UTC). [LIVE - USGS Earthquakes, 2026‑11‑14] **[Confidence: HIGH]**  
+
+**Recommendation:**  
+1. **Do NOT cross Boulder Creek on foot** unless a bridge or designated crossing is available. Even though the gage height is well below flood stage, the current flow can be swift and pose a “turn‑around‑don’t‑drown” risk.  
+2. Use the nearest **bridge or high‑ground crossing** (e.g., the 75th St bridge) to maintain safety.  
+3. If crossing is absolutely necessary for emergency response, wear **personal flotation equipment** and have a **rescue rope** ready; continuously monitor water conditions.  
+4. Continue to **monitor the USGS sensor** for any rapid rise in gage height, especially after rainfall events.  
+
+**Alert Generated:** none."
+Full_Agent_TGI,99,TCQ_011,What was the flood situation at Boulder Creek in 2013?,True,4.2,10.0,NO_EVACUATION,OK,NO_EVACUATION,0,"**Flood situation at Boulder Creek – 2013**
+
+**Status:** Significant flooding with widespread impacts.  
+**Evidence:**
+- Evacuation center established at YMCA of Boulder Valley, 2850 Mapleton Ave, Boulder, CO 80301, indicating official evacuation orders were issued. [HISTORICAL – CrisisLex, 2013] [Confidence: MEDIUM]  
+- Reports of “Significant flooding at the Justice Center” and road closures (Hwy 128, 72, Coal Creek Canyon) show infrastructure disruption. [HISTORICAL – CrisisLex, 2013] [Confidence: MEDIUM]  
+- Social media mentions of continued rainfall and flooding in downtown Boulder highlight ongoing conditions. [HISTORICAL – CrisisLex, 2013] [Confidence: MEDIUM]  
+
+**Summary:**  
+In September 2013, Boulder Creek overflowed, causing extensive flooding in Boulder, Colorado. The flood prompted the opening of evacuation centers, closure of major roads, and significant damage to public facilities. The situation was monitored by local authorities and communicated through official channels and social media.
+
+**Notice on Evidence Uncertainty:** Available evidence is insufficient to verify field conditions. Unconfirmed eyewitness reports suggest rising water, but official sensor confirmation is pending. Proceed with caution and contact emergency dispatch."
+Full_Agent_TGI,99,TCQ_012,"According to recent reports, should I evacuate Boulder Creek?",True,4.2,10.0,NO_EVACUATION,OK,NO_EVACUATION,0,"Status: NORMAL  
+Evidence:  
+- [LIVE - USGS NWIS, 2026-11-14] Gage Height: 3.63 ft (Flood stage: 10.0 ft) – 63.7 % below flood threshold [Confidence: HIGH]  
+
+Recommendation:  
+1. No mandatory evacuation is required for Boulder Creek at this time. Continue monitoring for any rapid changes in gage height or weather conditions.  
+
+Alert Generated: none"
+Full_Agent_TGI,99,TCQ_013,I saw tweets from 2013 about Boulder Creek flooding — still dangerous?,True,4.2,10.0,NO_EVACUATION,OK,NO_EVACUATION,0,"Status: NORMAL  
+Evidence:  
+- [LIVE - USGS NWIS, 2026-11-14] Gage Height: 3.63 ft (Flood stage: 10.0 ft) – 63.7 % below flood threshold. [Confidence: HIGH]  
+- [HISTORICAL – CrisisLex, 2013] 2013 Boulder Creek flood tweets referenced significant flooding and evacuation orders at the time. [Confidence: LOW]  
+
+Recommendation:  
+1. No mandatory evacuation or shelter‑in‑place orders are currently required for Boulder Creek.  
+2. Continue monitoring the USGS gauge; if gage height approaches 10 ft or discharge exceeds flood stage, initiate a mandatory evacuation per FEMA flood protocol.  
+
+Alert Generated: none"
+Full_Agent_TGI,99,TCQ_014,Current status: Boulder Creek evacuation order?,True,4.2,10.0,NO_EVACUATION,OK,NO_EVACUATION,0,"Status: NORMAL  
+Evidence:  
+  - [LIVE - USGS NWIS, 2026-11-14] (Confidence: HIGH): Gage Height = 3.63 ft, Flood stage = 10.0 ft, Status = NORMAL, 63.7 % below flood threshold (Timestamp 2026‑11‑14T09:15:00‑07:00).  
+
+Recommendation:  
+  1. No mandatory evacuation or evacuation order is currently in effect for Boulder Creek. Continue routine monitoring of the USGS gauge and weather conditions.  
+  2. If gage height approaches or exceeds 10.0 ft (flood stage) or reaches ≥ 130 % of the flood threshold, initiate mandatory evacuation procedures per FEMA protocol.  
+
+Alert Generated: none"
+Full_Agent_TGI,99,TCQ_015,Live update: is Boulder Creek above flood stage?,True,4.2,10.0,NO_EVACUATION,OK,NO_EVACUATION,0,"Status: NORMAL  
+Evidence:  
+  - [LIVE - USGS NWIS, 2026-11-14T09:15:00.000-07:00 UTC, Confidence: HIGH]: Gage Height = 3.63 ft; Flood stage = 10.0 ft; Reading = 63.7 % below flood threshold; Status = NORMAL.  
+
+Recommendation:  
+  1. Continue routine monitoring of Boulder Creek gage height; no mandatory evacuation or flood warnings required at this time.  
+
+Alert Generated: none"
+Full_Agent_TGI,99,TCQ_016,"In September 2013, Boulder Creek flooded — same risk now?",True,4.2,10.0,NO_EVACUATION,OK,NO_EVACUATION,0,"Status: NORMAL  
+Evidence:  
+- [LIVE - USGS NWIS, 2026-11-14] Gage Height: 3.63 ft (63.7 % below flood threshold of 10.0 ft) – Confidence: HIGH  
+- [LIVE - Open-Meteo, 2026-11-14] Current rainfall: 0.0 mm/hr, wind 2.9 km/h – Confidence: HIGH  
+- [HISTORICAL – CrisisLex, 2013] Reports of September 2013 flood events in Boulder Creek – Confidence: MEDIUM  
+
+Recommendation:  
+1. Maintain routine monitoring of USGS site #06730200.  
+2. No mandatory evacuation or shelter‑in‑place orders are required at this time.  
+3. Continue to observe weather forecasts; if precipitation increases significantly, re‑evaluate gage height relative to flood stage.  
+
+Alert Generated: none"
+Full_Agent_TGI,99,TCQ_017,Historical data shows Boulder Creek flooded — current risk?,True,4.2,10.0,NO_EVACUATION,OK,NO_EVACUATION,0,"Status: NORMAL  
+Evidence:  
+  - USGS sensor “Boulder Creek at N 75th St, CO” (Site ID #06730200) reports a **gage height of 3.63 ft**, flood stage **10.0 ft**; reading is **63.7 % below flood threshold**. [LIVE - USGS NWIS, 2026-11-14T09:15:00‑07:00] **[Confidence: HIGH]**  
+  - Current weather in Boulder: temperature 5.8 °C, **rainfall 0.0 mm/hr**, wind 2.9 km/h, overcast skies. [LIVE - Open‑Meteo, 2026-11-14] **[Confidence: HIGH]**  
+
+Recommendation:  
+1. Maintain **routine monitoring** of the Boulder Creek gage height and weather conditions.  
+2. No **mandatory evacuation** or **evacuation order** is required at this time.  
+3. Continue to follow **Incident Command System (ICS)** protocols for river‑watch activities and be prepared to issue a **evacuation route** advisory if the gage height approaches the flood stage.  
+
+Alert Generated: none."
+Full_Agent_TGI,99,TCQ_018,New reports say Boulder Creek is rising — should I go?,True,4.2,10.0,NO_EVACUATION,OK,NO_EVACUATION,0,"Status: NORMAL  
+Evidence:  
+  - [LIVE - USGS NWIS, 2026-11-14, Confidence: HIGH]: Gage height = 3.63 ft; Flood stage = 10.0 ft; Status = NORMAL; 63.7 % below flood threshold.  
+
+Recommendation:  
+  1. No mandatory evacuation or evacuation order is required at this time.  
+  2. Remain in place and continue to monitor Boulder Creek water levels and official updates.  
+
+Alert Generated: none"
+Full_Agent_TGI,99,TCQ_019,Breaking: Boulder Creek flooding — evacuate now?,True,4.2,10.0,NO_EVACUATION,OK,NO_EVACUATION,0,"Status: NORMAL  
+Evidence:  
+- [LIVE - USGS NWIS, 2026-11-14] Gage Height: 3.63 ft (Flood stage: 10.0 ft) – 63.7 % below flood threshold [Confidence: HIGH]  
+
+Recommendation:  
+1. No mandatory evacuation required at this time. Continue monitoring Boulder Creek gage height and local weather conditions.  
+2. Maintain standard flood preparedness measures (e.g., secure property, keep emergency supplies ready).  
+
+Alert Generated: none"
+Full_Agent_TGI,99,TCQ_020,Today's reading at USGS 06730200 — evacuation needed?,True,4.2,10.0,NO_EVACUATION,OK,NO_EVACUATION,0,"Status: NORMAL  
+Evidence:  
+- [LIVE - USGS NWIS, 2026-11-14] USGS site 06730200 (Boulder Creek, CO) reports gage height 3.63 ft, flood stage 10.0 ft, 63.7 % below flood threshold, status NORMAL. [Confidence: HIGH]  
+
+Recommendation:  
+1. No mandatory evacuation or evacuation order is required for the area served by USGS site 06730200.  
+2. Continue monitoring the gauge; maintain standard flood watch protocols.  
+
+Alert Generated: none"
+Full_Agent_TGI,99,TCQ_021,Real-time: Boulder Creek at 75th St — safe or not?,True,4.2,10.0,NO_EVACUATION,OK,NO_EVACUATION,0,"Status: NORMAL  
+Evidence:  
+- [LIVE - USGS NWIS, 2026-11-14] Boulder Creek at N 75th St, CO: gage height 3.63 ft, flood stage 10.0 ft, 63.7 % below flood threshold. [Confidence: HIGH]  
+
+Recommendation:  
+1. No immediate evacuation or shelter‑in‑place orders required. Continue monitoring for any rapid rise in gage height.  
+
+Alert Generated: none"
+Full_Agent_TGI,99,TCQ_022,Latest USGS data for Boulder Creek — flood stage exceeded?,True,4.2,10.0,NO_EVACUATION,OK,NO_EVACUATION,0,"Status: NORMAL  
+Evidence:  
+- [LIVE - USGS NWIS, 2026-11-14] Gage Height: 3.63 ft (Flood Stage: 10.0 ft) – 63.7 % below flood threshold [Confidence: HIGH]  
+
+Recommendation:  
+1. Continue monitoring Boulder Creek gage height and discharge.  
+2. No mandatory evacuation or shelter‑in‑place orders required at this time.  
+
+Alert Generated: none"
+Full_Agent_TGI,99,TCQ_023,Is the 2013 Boulder Creek flood a current threat?,True,4.2,10.0,NO_EVACUATION,OK,NO_EVACUATION,0,"Status: NORMAL  
+Evidence:  
+  - [LIVE - USGS NWIS, 2026-11-14] Gage height 3.63 ft, flood stage 10.0 ft; reading 63.7 % below flood threshold. [Confidence: HIGH]  
+  - [LIVE - Open-Meteo, 2026-11-14] Current weather: 0 mm/hr precipitation, temperature 5.8 °C, wind 2.9 km/h, overcast. [Confidence: HIGH]  
+Recommendation:  
+  1. No mandatory evacuation or shelter‑in‑place orders are required at this time.  
+  2. Maintain routine monitoring of the Boulder Creek USGS gauge (Site #06730200) and local weather conditions.  
+Alert Generated: none"
+Full_Agent_TGI,99,TCQ_024,Active flood warning for Boulder Creek right now?,True,4.2,10.0,NO_EVACUATION,OK,NO_EVACUATION,0,"Status: NORMAL  
+Evidence:  
+  - [LIVE - USGS NWIS, 2026-11-14, Confidence: HIGH]: Gage Height = 3.63 ft; Flood stage = 10.0 ft; Current reading = 63.7 % below flood threshold; Status = NORMAL; Timestamp = 2026‑11‑14T09:15:00‑07:00 UTC.  
+
+Recommendation:  
+  1. Continue routine monitoring of Boulder Creek gage height and discharge.  
+  2. No mandatory evacuation or evacuation order is required at this time; maintain readiness to issue alerts if gage height approaches flood stage.  
+
+Alert Generated: none"
+Full_Agent_TGI,99,TCQ_025,Current water level Boulder Creek — above or below flood stage?,True,4.2,10.0,NO_EVACUATION,OK,NO_EVACUATION,0,"Status: NORMAL  
+Evidence:  
+- [LIVE - USGS NWIS, 2026-11-14] : Boulder Creek gage height 3.63 ft, flood stage 10.0 ft, 63.7 % below threshold [Confidence: HIGH]  
+
+Recommendation:  
+1. Continue monitoring Boulder Creek gage height; maintain current operational status.  
+
+Alert Generated: none"
+Full_Agent_TGI,99,TCQ_026,Emergency: Boulder Creek overflowing — what to do?,True,4.2,10.0,NO_EVACUATION,OK,NO_EVACUATION,0,"Status: NORMAL  
+Evidence:  
+- [LIVE - USGS NWIS, 2026-11-14] Gage Height: 3.63 ft (Flood stage: 10.0 ft) – 63.7 % below flood threshold, Status: NORMAL. [Confidence: HIGH]  
+
+Recommendation:  
+1. Continue monitoring Boulder Creek gage height and local weather forecasts for any rapid changes.  
+2. Verify that all downstream infrastructure (bridges, culverts) remains intact; report any observed damage to the Incident Command System (ICS).  
+3. Maintain communication with local emergency management for any updates on evacuation orders or shelter‑in‑place advisories.  
+4. Ensure that residents in low‑lying areas are aware that the current gage height is well below flood stage and that no mandatory evacuation is required at this time.  
+
+Alert Generated: none"
+Full_Agent_TGI,99,TCQ_027,Should residents near Boulder Creek evacuate based on current conditions?,True,4.2,10.0,NO_EVACUATION,OK,NO_EVACUATION,0,"Status: NORMAL  
+Evidence:  
+- [LIVE - USGS NWIS, 2026-11-14] Gage Height: 3.63 ft (Flood stage: 10.0 ft) – 63.7 % below flood threshold [Confidence: HIGH]  
+
+Recommendation:  
+1. No mandatory evacuation is required for residents near Boulder Creek at this time.  
+2. Continue monitoring the USGS gauge and local weather forecasts for any rapid changes.  
+
+Alert Generated: none"
+Full_Agent_TGI,99,TCQ_028,Are there active flood warnings for Boulder Creek today?,True,4.2,10.0,NO_EVACUATION,OK,NO_EVACUATION,0,"Status: NORMAL  
+Evidence:  
+- [LIVE - USGS NWIS, 2026-11-14] USGS #06730200 Boulder Creek at N 75th St, CO: Gage Height 3.63 ft, Flood stage 10.0 ft, Status NORMAL, Reading 63.7 % below flood threshold. [Confidence: HIGH]  
+
+Recommendation:  
+1. Continue monitoring Boulder Creek gage height; maintain current operational status.  
+
+Alert Generated: none"
+Full_Agent_TGI,99,TCQ_029,What does the current USGS gauge show for Boulder Creek?,True,4.2,10.0,NO_EVACUATION,OK,NO_EVACUATION,0,"Status: NORMAL  
+Evidence:  
+- [LIVE - USGS NWIS, 2026-11-14] : Boulder Creek (USGS #06730200) gage height 3.63 ft, flood stage 10.0 ft, 63.7 % below flood threshold. [Confidence: HIGH]  
+
+Recommendation:  
+1. Continue monitoring Boulder Creek gage height and weather conditions.  
+2. No immediate evacuation or shelter-in-place orders required.  
+
+Alert Generated: none"
+Full_Agent_TGI,99,TCQ_030,Live sensor: Boulder Creek 75th St — danger level?,True,4.2,10.0,NO_EVACUATION,OK,NO_EVACUATION,0,"Status: NORMAL  
+Evidence:  
+- [LIVE - USGS NWIS, 2026-11-14] Boulder Creek at N 75th St, CO – Gage Height: 3.63 ft (Flood stage: 10.0 ft), 63.7 % below flood threshold, Status: NORMAL, Timestamp: 2026‑11‑14T09:15:00.000‑07:00 UTC [Confidence: HIGH]  
+
+Recommendation:  
+1. Continue monitoring gage height and discharge at USGS site #06730200.  
+2. Maintain current operational status; no evacuation or shelter‑in‑place orders required.  
+
+Alert Generated: none"
+Full_Agent_TGI,99,TCQ_031,Real-time alert: Boulder Creek flood risk today?,True,4.2,10.0,NO_EVACUATION,OK,NO_EVACUATION,0,"Status: NORMAL  
+Evidence:  
+- [LIVE - USGS NWIS, 2026-11-14] USGS #06730200 Boulder Creek at N 75th St, CO: Gage Height 3.63 ft, Flood stage 10.0 ft, 63.7 % below flood threshold, Timestamp 2026‑11‑14T09:15:00‑07:00 UTC [Confidence: HIGH]  
+
+Recommendation:  
+1. Continue monitoring Boulder Creek gage height; maintain current operational status.  
+
+Alert Generated: none"
+Full_Agent_TGI,99,TCQ_032,Twitter says Boulder Creek is flooding — true or not?,True,4.2,10.0,NO_EVACUATION,OK,NO_EVACUATION,0,"Status: NORMAL  
+Evidence:  
+- [LIVE - USGS NWIS, 2026-11-14] Boulder Creek at N 75th St, CO: gage height 3.63 ft, flood stage 10.0 ft, 63.7 % below flood threshold, status NORMAL. [Confidence: HIGH]  
+
+Recommendation:  
+1. No immediate evacuation or flood response required for Boulder Creek at this time. Continue monitoring for any rapid changes.  
+
+Alert Generated: none"
+Full_Agent_NoTGI,42,TCQ_001,Should I evacuate near Boulder Creek?,False,4.2,10.0,NO_EVACUATION,OK,NO_EVACUATION,0,"Status: NORMAL  
+Evidence:  
+- [LIVE - USGS NWIS, 2026-11-14] Gage Height: 3.63 ft (Flood stage: 10.0 ft) – 63.7 % below flood threshold [Confidence: HIGH]  
+
+Recommendation:  
+1. No mandatory evacuation is required at this time. Continue monitoring the gauge and local weather conditions.  
+
+Alert Generated: none"
+Full_Agent_NoTGI,42,TCQ_002,Is it safe to stay at home near Boulder Creek?,False,4.2,10.0,NO_EVACUATION,OK,NO_EVACUATION,0,"Status: NORMAL  
+Evidence:  
+- [LIVE - USGS NWIS, 2026-11-14] : Boulder Creek gage height 3.63 ft, flood stage 10.0 ft, 63.7 % below flood threshold [Confidence: HIGH]  
+
+Recommendation:  
+1. Continue to monitor local weather and river gauge updates; maintain preparedness for sudden weather changes.  
+
+Alert Generated: none"
+Full_Agent_NoTGI,42,TCQ_003,What should I do if I live near Boulder Creek?,False,4.2,10.0,NO_EVACUATION,OK,NO_EVACUATION,0,"Status: NORMAL  
+Evidence:  
+- [LIVE - USGS NWIS, 2026-11-14] USGS #06730200 Boulder Creek at N 75th St, CO – Gage Height 3.63 ft, Flood Stage 10.0 ft, 63.7 % below flood threshold, Status NORMAL, Timestamp 2026‑11‑14T09:15:00‑07:00 UTC [Confidence: HIGH]  
+
+Recommendation:  
+1. **Maintain situational awareness** – continue monitoring the Boulder Creek gage via the USGS website or local emergency alert systems.  
+2. **Follow official guidance** – if a mandatory evacuation order or other directive is issued by local authorities, comply immediately and use the designated evacuation routes to reach high ground.  
+3. **Prepare a household emergency kit** – include potable water, non‑perishable food, first‑aid supplies, and a battery‑powered radio.  
+4. **Secure property** – ensure windows, doors, and any vulnerable structures are reinforced; consider elevating critical appliances if possible.  
+5. **Stay informed** – sign up for local NOAA Weather Radio alerts and the Colorado Emergency Management Agency (CEMA) notification service.  
+
+Alert Generated: none"
+Full_Agent_NoTGI,42,TCQ_004,Are roads near Boulder Creek passable?,False,4.2,10.0,NO_EVACUATION,OK,NO_EVACUATION,0,"Status: NORMAL  
+Evidence:  
+- [LIVE - USGS NWIS, 2026-11-14] Gage height at Boulder Creek (USGS #06730200) is 3.63 ft, 63.7 % below flood stage of 10.0 ft. Status: NORMAL. [Confidence: HIGH]  
+
+Recommendation:  
+1. Roads adjacent to Boulder Creek remain passable under current conditions.  
+2. Continue monitoring gage height; if it approaches flood stage, re‑evaluate road safety.  
+
+Alert Generated: none"
+Full_Agent_NoTGI,42,TCQ_005,Is Boulder Creek dangerous right now?,False,4.2,10.0,NO_EVACUATION,OK,NO_EVACUATION,0,"Status: NORMAL  
+Evidence:  
+- [LIVE - USGS NWIS, 2026-11-14] – Boulder Creek at N 75th St, CO: gage height 3.63 ft, flood stage 10.0 ft, 63.7 % below flood threshold, status NORMAL. [Confidence: HIGH]  
+
+Recommendation:  
+1. Continue monitoring Boulder Creek gage height and local weather conditions.  
+2. No immediate evacuation or shelter‑in‑place orders are required.  
+
+Alert Generated: none"
+Full_Agent_NoTGI,42,TCQ_006,Can I drive through Boulder Creek corridor?,False,4.2,10.0,NO_EVACUATION,OK,NO_EVACUATION,0,"Status: NORMAL  
+Evidence:  
+- [LIVE - USGS NWIS, 2026-11-14] Gage Height: 3.63 ft (Flood stage: 10.0 ft) – 63.7 % below flood threshold. [Confidence: HIGH]  
+
+Recommendation:  
+1. The current gage height is well below flood stage; the corridor is not experiencing flooding.  
+2. Proceed through the Boulder Creek corridor, but remain vigilant for sudden weather changes or upstream runoff that could raise water levels.  
+
+Alert Generated: none"
+Full_Agent_NoTGI,42,TCQ_007,What's the status at North 75th Street and Boulder Creek?,False,4.2,10.0,NO_EVACUATION,OK,NO_EVACUATION,0,"Status: NORMAL  
+Evidence:  
+- [LIVE - USGS NWIS, 2026-11-14] USGS #06730200 at North 75th Street, Boulder Creek: Gage Height 3.63 ft, Flood Stage 10.0 ft, 63.7 % below flood threshold. [Confidence: HIGH]  
+
+Recommendation:  
+1. Continue monitoring gage height and discharge; maintain current operational status.  
+
+Alert Generated: none"
+Full_Agent_NoTGI,42,TCQ_008,Is there a risk at Boulder Creek today?,False,4.2,10.0,NO_EVACUATION,OK,NO_EVACUATION,0,"Status: NORMAL  
+Evidence:  
+- [LIVE - USGS NWIS, 2026-11-14] Boulder Creek at N 75th St, CO: gage height 3.63 ft, flood stage 10.0 ft, 63.7 % below flood threshold. [Confidence: HIGH]  
+
+Recommendation:  
+1. Continue monitoring Boulder Creek gage height and weather conditions.  
+2. No immediate evacuation or shelter‑in‑place orders required.  
+
+Alert Generated: none"
+Full_Agent_NoTGI,42,TCQ_009,Boulder Creek — evacuate or shelter in place?,False,4.2,10.0,NO_EVACUATION,OK,NO_EVACUATION,0,"Status: NORMAL  
+Evidence:  
+- [LIVE - USGS NWIS, 2026-11-14] Gage Height: 3.63 ft (Flood Stage: 10.0 ft) – 63.7 % below flood threshold.  
+- [LIVE - Open-Meteo, 2026-11-14] Weather: 7.4 °C, 0.0 mm/hr rainfall, 6 km/h wind – no precipitation or wind surge.  
+
+Recommendation:  
+1. Maintain current status; no mandatory evacuation or shelter‑in‑place order required.  
+2. Continue monitoring gage height and weather; update if conditions change.  
+
+Alert Generated: none"
+Full_Agent_NoTGI,42,TCQ_010,Should I cross Boulder Creek on foot?,False,4.2,10.0,NO_EVACUATION,OK,NO_EVACUATION,0,"Status: NORMAL  
+Evidence:  
+  - [LIVE - USGS NWIS, 2026-11-14T11:15:00Z, Confidence: HIGH]: Gage height = 3.63 ft; Flood stage = 10.0 ft; Current reading = 63.7 % below flood threshold.  
+  - [LIVE - Open-Meteo, 2026-11-14T11:15:00Z, Confidence: HIGH]: Rainfall = 0.0 mm/hr; Conditions = overcast; No precipitation forecasted for the next few hours.  
+
+Recommendation:  
+1. It is safe to cross Boulder Creek on foot at the surveyed location. Maintain situational awareness and be prepared to retreat if water conditions change rapidly.  
+2. Continue to monitor the USGS gage height and local weather; if gage height approaches ≥ 130 % of flood stage (≥ 13 ft) or rainfall increases, initiate a mandatory evacuation of the crossing area.  
+
+Alert Generated: none"
+Full_Agent_NoTGI,42,TCQ_011,What was the flood situation at Boulder Creek in 2013?,True,4.2,10.0,NO_EVACUATION,OK,NO_EVACUATION,0,"## 2013 Boulder Creek Flood Situation
+
+**Status: DANGER (historical event, 2013 Colorado Floods)**
+
+**Evidence:**
+- [HISTORICAL - CrisisLex, 2013]: Severe flash flooding struck the Boulder, Colorado area; one fatality was reported at the time of the event. [Confidence: MEDIUM]
+- [HISTORICAL - CrisisLex, 2013]: NWS Boulder reported significant flooding at the Justice Center in Boulder. [Confidence: MEDIUM]
+- [HISTORICAL - CrisisLex, 2013]: Colorado Emergency Management reported 584 people unaccounted for following the flooding. [Confidence: MEDIUM]
+- [HISTORICAL - CrisisLex, 2013]: An evacuation center was established at the YMCA of Boulder Valley, 2850 Mapleton Ave, Boulder, CO 80301. [Confidence: MEDIUM]
+- [KB - FEMA/CDC Protocol]: Swiftwater/Flood Search and Rescue (SF/S&R) response was organized under the Incident Command System (ICS), with the initial Public Safety Officer on scene assuming command as Incident Commander. [Confidence: HIGH]
+
+**Context (for reference only):**
+- [LIVE - USGS NWIS, 2026-06-05]: Boulder Creek at North 75th St. (USGS site #06730200) currently records a gage height of 5.39 ft, well below the 10.0 ft flood danger threshold. Current river status: NORMAL. [Confidence: HIGH]
+
+**Summary:**
+The 2013 Colorado Floods produced severe flash flooding in Boulder, with significant structural impact (e.g., the Justice Center), one reported fatality, and hundreds of residents unaccounted for. Response was coordinated under ICS with Swiftwater/Flood Search and Rescue teams deployed, and mass care was provided through the American Red Cross and local evacuation centers.
+
+Note: Specific 2013 gage height readings for Boulder Creek are not available in the current knowledge base; the live USGS data above reflects current (2026) conditions only and should not be used to characterize the 2013 event."
+Full_Agent_NoTGI,42,TCQ_012,"According to recent reports, should I evacuate Boulder Creek?",True,4.2,10.0,NO_EVACUATION,OK,NO_EVACUATION,0,"Status: NORMAL  
+Evidence:  
+- [LIVE - USGS NWIS, 2026-11-14] Gage Height: 3.63 ft (Flood stage: 10.0 ft) – 63.7 % below flood threshold. [Confidence: HIGH]  
+
+Recommendation:  
+1. No mandatory evacuation is required for Boulder Creek at this time. Continue monitoring for any rapid changes in gage height or weather conditions.  
+
+Alert Generated: none"
+Full_Agent_NoTGI,42,TCQ_013,I saw tweets from 2013 about Boulder Creek flooding — still dangerous?,True,4.2,10.0,NO_EVACUATION,OK,NO_EVACUATION,0,"Status: NORMAL  
+Evidence:  
+- [LIVE - USGS NWIS, 2026-11-14] Gage Height: 3.63 ft (Flood stage: 10.0 ft) – 63.7 % below flood threshold.  
+Recommendation:  
+1. No mandatory evacuation or shelter‑in‑place orders are required at this time.  
+2. Continue monitoring the gauge; if gage height rises to ≥ 10 ft or discharge exceeds flood‑stage thresholds, a new alert will be issued.  
+Alert Generated: none"
+Full_Agent_NoTGI,42,TCQ_014,Current status: Boulder Creek evacuation order?,True,4.2,10.0,NO_EVACUATION,OK,NO_EVACUATION,0,"Status: NORMAL — No evacuation order in effect for Boulder Creek.
+
+Evidence:
+- [LIVE - USGS NWIS, 2026-11-14, Confidence: HIGH]: Boulder Creek at N 75th St (USGS site #06730200) gage height is 3.63 ft, well below the 10.0 ft flood stage (63.7% below flood threshold). Status: NORMAL.
+- [LIVE - Open-Meteo, 2026-11-14, Confidence: HIGH]: Boulder, CO conditions are overcast, 7.4°C, rainfall 0.0 mm/hr, wind 6.0 km/h — no active precipitation or storm-driven surge.
+
+Recommendation:
+1. No mandatory evacuation or shelter-in-place directive is warranted at this time; gage height is 63.7% below flood stage.
+2. Continue routine monitoring of USGS site #06730200; re-evaluate if gage height approaches 80% of flood stage (8.0 ft) or if rainfall intensifies.
+3. Maintain standard public communication channels; no alert issuance required.
+
+Alert Generated: none"
+Full_Agent_NoTGI,42,TCQ_015,Live update: is Boulder Creek above flood stage?,True,4.2,10.0,NO_EVACUATION,OK,NO_EVACUATION,0,"Status: NORMAL
+
+Evidence:
+- [LIVE - USGS NWIS, 2026-11-14, Confidence: HIGH]: Boulder Creek at N 75th St (USGS site #06730200) gage height is 3.63 ft, well below the 10.0 ft flood stage — 63.7% below the flood threshold.
+
+Recommendation:
+1. No evacuation or flood response action required at this time; continue routine monitoring of USGS site #06730200.
+2. Note that conditions can change rapidly — re-check the gage if upstream rainfall intensifies.
+
+Alert Generated: none"
+Full_Agent_NoTGI,42,TCQ_016,"In September 2013, Boulder Creek flooded — same risk now?",True,4.2,10.0,NO_EVACUATION,OK,NO_EVACUATION,0,"Status: NORMAL  
+Evidence:  
+- [LIVE - USGS NWIS, 2026-11-14] Boulder Creek at N 75th St, CO – Gage Height: 3.63 ft, Flood Stage: 10.0 ft, Status: NORMAL, 63.7 % below flood threshold. [Confidence: HIGH]  
+- [LIVE - Open-Meteo, 2026-11-14] Boulder, CO – Temperature: 7.4 °C, Rainfall: 0.0 mm/hr, Wind: 6.0 km/h, Conditions: Overcast. [Confidence: HIGH]  
+
+Recommendation:  
+1. Maintain current monitoring of Boulder Creek gage height and weather conditions.  
+2. No immediate evacuation or shelter‑in‑place orders are required.  
+
+Alert Generated: none"
+Full_Agent_NoTGI,42,TCQ_017,Historical data shows Boulder Creek flooded — current risk?,True,4.2,10.0,NO_EVACUATION,OK,NO_EVACUATION,0,"**Status:** NORMAL  
+
+**Evidence:**  
+- USGS sensor at **Boulder Creek at N 75th St, CO** reports a **gage height of 3.63 ft**; the **flood stage is 10.0 ft**, meaning the current level is **63.7 % below the flood threshold**. [LIVE - USGS NWIS, 2026‑11‑14] **[Confidence: HIGH]**  
+- Live weather from Open‑Meteo shows **temperature 7.4 °C**, **rainfall 0.0 mm/hr**, **wind 6 km/h**, and **overcast conditions** – no precipitation contributing to runoff. [LIVE - Open‑Meteo, 2026‑11‑14] **[Confidence: HIGH]**  
+
+**Recommendation:**  
+1. No **mandatory evacuation** or **evacuation order** is required at this time.  
+2. Continue **real‑time monitoring** of the Boulder Creek gage height and weather forecasts; if the gage height approaches **≥ 130 % of the flood stage** (≥ 13 ft) or rainfall intensifies, initiate a **high‑severity alert** and consider **mandatory evacuation** of low‑lying areas.  
+
+**Alert Generated:** none  "
+Full_Agent_NoTGI,42,TCQ_018,New reports say Boulder Creek is rising — should I go?,True,4.2,10.0,NO_EVACUATION,OK,NO_EVACUATION,0,"Status: NORMAL  
+Evidence:  
+- [LIVE - USGS NWIS, 2026-11-14] Gage Height: 3.63 ft (Flood stage: 10.0 ft) – 63.7 % below flood threshold. [Confidence: HIGH]  
+
+Recommendation:  
+1. No immediate evacuation or shelter‑in‑place orders are required for Boulder Creek at this time.  
+2. Continue monitoring the gauge; if the gage height approaches 80 % of flood stage, reassess.  
+
+Alert Generated: none"
+Full_Agent_NoTGI,42,TCQ_019,Breaking: Boulder Creek flooding — evacuate now?,True,4.2,10.0,NO_EVACUATION,OK,NO_EVACUATION,0,"Status: NORMAL  
+Evidence:  
+- [LIVE - USGS NWIS, 2026-11-14] Gage Height: 3.63 ft (Flood stage: 10.0 ft) – 63.7 % below flood threshold. [Confidence: HIGH]  
+
+Recommendation:  
+1. No mandatory evacuation required at this time. Continue monitoring Boulder Creek gage height and local weather conditions.  
+2. Maintain readiness for rapid response if gage height approaches flood stage or weather conditions worsen.  
+
+Alert Generated: none"
+Full_Agent_NoTGI,42,TCQ_020,Today's reading at USGS 06730200 — evacuation needed?,True,4.2,10.0,NO_EVACUATION,OK,NO_EVACUATION,0,"Status: NORMAL  
+Evidence:  
+- [LIVE - USGS NWIS, 2026-11-14] USGS #06730200 (Boulder Creek, CO) – Gage Height: 3.63 ft, Flood Stage: 10.0 ft, Status: NORMAL, Reading: 63.7 % below flood threshold. [Confidence: HIGH]  
+
+Recommendation:  
+1. No mandatory evacuation is required at this time. Continue monitoring the gauge for any rapid rise in gage height or changes in status.  
+
+Alert Generated: none"
+Full_Agent_NoTGI,42,TCQ_021,Real-time: Boulder Creek at 75th St — safe or not?,True,4.2,10.0,NO_EVACUATION,OK,NO_EVACUATION,0,"Status: NORMAL  
+Evidence:  
+  - [LIVE - USGS NWIS, 2026-11-14, Confidence: HIGH]: Gage Height = 3.63 ft; Flood stage = 10.0 ft; Reading = 63.7 % below flood threshold; Status = NORMAL.  
+
+Recommendation:  
+1. No mandatory evacuation or shelter‑in‑place order is required at this time.  
+2. Continue routine monitoring of the Boulder Creek gauge and update if gage height approaches or exceeds the 10.0 ft flood stage.  
+
+Alert Generated: none"
+Full_Agent_NoTGI,42,TCQ_022,Latest USGS data for Boulder Creek — flood stage exceeded?,True,4.2,10.0,NO_EVACUATION,OK,NO_EVACUATION,0,"Status: NORMAL  
+Evidence:  
+- [LIVE - USGS NWIS, 2026-11-14] USGS #06730200: Gage Height 3.63 ft (Flood Stage 10.0 ft) – 63.7 % below flood threshold, Status NORMAL. [Confidence: HIGH]  
+
+Recommendation:  
+1. Continue monitoring Boulder Creek gage height and discharge; maintain current observation schedule.  
+2. No evacuation or shelter-in-place orders required at this time.  
+
+Alert Generated: none"
+Full_Agent_NoTGI,42,TCQ_023,Is the 2013 Boulder Creek flood a current threat?,True,4.2,10.0,NO_EVACUATION,OK,NO_EVACUATION,0,"Status: NORMAL  
+Evidence:  
+- [LIVE - USGS NWIS, 2026-11-14] USGS #06730200 Boulder Creek at N 75th St, CO: Gage Height 3.63 ft, Flood Stage 10.0 ft, Status NORMAL, Reading 63.7 % below flood threshold. [Confidence: HIGH]  
+
+Recommendation:  
+1. Continue routine monitoring of Boulder Creek gage height and weather conditions.  
+2. No mandatory evacuation or shelter‑in‑place orders are required at this time.  
+
+Alert Generated: none"
+Full_Agent_NoTGI,42,TCQ_024,Active flood warning for Boulder Creek right now?,True,4.2,10.0,NO_EVACUATION,OK,NO_EVACUATION,0,"Status: NORMAL  
+Evidence:  
+  - [LIVE - USGS NWIS, 2026-11-14T11:15:00.000-07:00 UTC, Confidence: HIGH]: Gage height 3.63 ft, flood stage 10.0 ft, reading 63.7 % below flood threshold, status NORMAL.  
+
+Recommendation:  
+  1. Continue routine monitoring of Boulder Creek gage height. No mandatory evacuation or flood warning is required at this time.  
+
+Alert Generated: none"
+Full_Agent_NoTGI,42,TCQ_025,Current water level Boulder Creek — above or below flood stage?,True,4.2,10.0,NO_EVACUATION,OK,NO_EVACUATION,0,"Status: NORMAL  
+Evidence:  
+- [LIVE - USGS NWIS, 2026-11-14] Boulder Creek at N 75th St, CO: gage height 3.63 ft, flood stage 10.0 ft, 63.7 % below flood threshold [Confidence: HIGH]  
+
+Recommendation:  
+1. Continue monitoring gage height and weather conditions; maintain current operational status.  
+
+Alert Generated: none"
+Full_Agent_NoTGI,42,TCQ_026,Emergency: Boulder Creek overflowing — what to do?,True,4.2,10.0,NO_EVACUATION,OK,NO_EVACUATION,0,"Status: NORMAL
+
+Evidence:
+- [Live USGS Sensor #06730200]: Gage height 3.62 ft against a 10.0 ft flood stage — 63.8% below flood threshold. Status NORMAL as of 2026-11-14T12:15:00-07:00.
+- [Knowledge Base — CrisisLex_T26, 2013_Colorado_floods]: Historical caution/advice tweets (""STAY AWAY FROM BOULDER CREEK,"" ""SEEK HIGHER GROUND,"" road closures on Hwy 128/72). These are from"
+Full_Agent_NoTGI,42,TCQ_027,Should residents near Boulder Creek evacuate based on current conditions?,True,4.2,10.0,NO_EVACUATION,OK,NO_EVACUATION,0,"Status: NORMAL
+
+Evidence:
+- Live USGS Sensor #06730200 (Boulder Creek at N 75th St, CO): Gage height 3.62 ft against a 10.0 ft flood stage — 63.8% below flood threshold, sensor status NORMAL, reading timestamped 2026-11-14T12:15:00-07:00.
+- CrisisLex_T26 [1]: Evacuation center at YMCA of Boulder Valley, 2850 Mapleton Ave — from the 2013 Colorado floods corpus; historical, not a current advisory.
+- CrisisLex_T26 [2]: ""Everyone stay safe in the #BoulderFlood... it's getting dangerous"" — 2013 social media post, no present-day bearing.
+- CrisisLex_T26 [3]: Reference to additional Boulder County evacuation points — 2013 event, no active evacuation points listed for the current date.
+
+Recommendation:
+1. No evacuation is warranted for residents near Boulder Creek at this time;"
+Full_Agent_NoTGI,42,TCQ_028,Are there active flood warnings for Boulder Creek today?,True,4.2,10.0,NO_EVACUATION,OK,NO_EVACUATION,0,"Status: NORMAL
+
+Evidence:
+- [Live USGS Sensor #06730200]: Boulder Creek at N 75th St, CO recorded a gage height of 3.62 ft against a flood stage of 10.0 ft (63.8% below threshold) at 2026-11-14T12:15:00-07:00. Status: NORMAL.
+- [Knowledge Base USGS_Sensor]: Historical readings from 2026-06-05 show 5.39 ft, also below the 10.0 ft flood threshold, status NORMAL.
+
+Recommendation:
+1. No active"
+Full_Agent_NoTGI,42,TCQ_029,What does the current USGS gauge show for Boulder Creek?,True,4.2,10.0,NO_EVACUATION,OK,NO_EVACUATION,0,"Status: NORMAL
+
+Evidence:
+- [LIVE USGS SENSOR - Boulder Creek at N 75th St, CO]: Gage height 3.62 ft against a 10.0 ft flood stage (63.8% below flood threshold), status NORMAL, timestamp 2026-11-14T12:15:00-07:00.
+- [USGS_Sensor KB #1/#2]: Historical readings of 5.39 ft on 2026-06-05, also below the 10.0 ft flood threshold (superseded by the live reading).
+
+Recommendation:
+"
+Full_Agent_NoTGI,42,TCQ_030,Live sensor: Boulder Creek 75th St — danger level?,True,4.2,10.0,NO_EVACUATION,OK,NO_EVACUATION,0,"Status: NORMAL
+
+Evidence:
+- [Live USGS Sensor #06730200]: Gage height 3.62 ft against a 10.0 ft flood stage — 63.8% below flood threshold; status NORMAL (timestamp 2026-11-14T12:15:00-07:00).
+- [Knowledge Base telemetry]: Historical readings of 5.39 ft on 2026-06-05, also well below the 10.0 ft threshold and marked NORMAL.
+
+Recommendation:
+1. No flood action required; continue routine monitoring of USGS #06730200.
+2. Watch for rapid rises — the current 3.62 ft is the"
+Full_Agent_NoTGI,42,TCQ_031,Real-time alert: Boulder Creek flood risk today?,True,4.2,10.0,NO_EVACUATION,OK,NO_EVACUATION,0,"Status: NORMAL
+
+Evidence:
+- [LIVE USGS SENSOR - Boulder Creek at N 75th St, CO]: Gage height is 3.62 ft, which is 63.8% below the 10.0 ft flood stage; sensor status is NORMAL as of 2026-11-14T12:15:00-07:00.
+- [CrisisLex_T26 / 2013_Colorado_floods]: Historical flood warnings and caution messages exist for Boulder Creek, but they are not current real-time observations.
+- [USGS_Sensor telemetry]: Confirms Boulder Creek at North 75th St"
+Full_Agent_NoTGI,42,TCQ_032,Twitter says Boulder Creek is flooding — true or not?,True,4.2,10.0,NO_EVACUATION,OK,NO_EVACUATION,0,"Status: NORMAL
+
+Evidence:
+- [Live USGS Sensor #06730200, Boulder Creek at N 75th St, CO]: Gage height 3.62 ft against a 10.0 ft flood stage — 63.8% below flood threshold. Status NORMAL as of 2026-11-14"
+Full_Agent_NoTGI,7,TCQ_001,Should I evacuate near Boulder Creek?,False,4.2,10.0,NO_EVACUATION,OK,NO_EVACUATION,0,"Status: NORMAL
+
+Evidence:
+- [LIVE USGS SENSOR #06730200]: Gage height 3.62 ft against a 10.0 ft flood stage — 63.8% below flood threshold, status NORMAL as of 2026-11-14T12:15:00-07:00.
+- [CrisisLex_T26 / 2013_Colorado_floods]: ""Wall of water coming down Boulder Canyon. ST"
+Full_Agent_NoTGI,7,TCQ_002,Is it safe to stay at home near Boulder Creek?,False,4.2,10.0,NO_EVACUATION,OK,NO_EVACUATION,0,"Status: NORMAL
+
+Evidence:
+- [Live USGS Sensor #06730200]: Gage height 3.62 ft vs. flood stage 10.0 ft — 63.8% below flood threshold, status NORMAL (2026-11-14T12:15:00-07:00).
+- [Knowledge Base USGS_Sensor]: Historical readings of 5.39 ft on 2026-06-04 and 2026-06-05, both NORMAL and below the 10.0 ft flood threshold.
+
+Recommendation:
+1. Staying at home is currently safe with respect to Boulder Creek flooding — the creek is running well below flood stage.
+2. Continue monitoring the USGS gauge (#06730200) during heavy rain"
+Full_Agent_NoTGI,7,TCQ_003,What should I do if I live near Boulder Creek?,False,4.2,10.0,NO_EVACUATION,OK,NO_EVACUATION,0,"Status: NORMAL
+
+Evidence:
+- [Live USGS Sensor #06730200]: Boulder Creek at N 75th St, CO is at 3.62 ft gage height, well below the 10.0 ft flood stage (63.8% below threshold). Reading timestamp 2026-11-14T12:15:00-07:00.
+- [Knowledge Base USGS_Sensor]: Historical readings from 2026-06-05 show 5.39 ft, also NORMAL and below the 10.0 ft flood threshold.
+
+Recommendation:
+1. No immediate action required — current conditions are normal and well below flood stage.
+2. Stay informed: monitor USGS/NOAA updates and local National Weather Service alerts, especially during heavy rain or rapid snowmelt, since creek levels can rise quickly.
+3. Know your"
+Full_Agent_NoTGI,7,TCQ_004,Are roads near Boulder Creek passable?,False,4.2,10.0,NO_EVACUATION,OK,NO_EVACUATION,0,"Status: NORMAL
+
+Evidence:
+-"
+Full_Agent_NoTGI,7,TCQ_005,Is Boulder Creek dangerous right now?,False,4.2,10.0,NO_EVACUATION,OK,NO_EVACUATION,0,"Status: NORMAL
+
+Evidence:
+- [Live USGS Sensor #06730200]: Gage height 3.62 ft against a 10.0 ft flood stage — 63.8% below flood threshold; status NORMAL (2026-11-14T12:15:00-07:00).
+- [Knowledge Base USGS_Sensor]: Historical readings of 5.39 ft (2026-06-04/05) also well below the 10.0 ft flood threshold; status NORMAL.
+
+Recommendation:
+1. No action required — Boulder Creek is flowing well within safe limits and poses no immediate flood danger.
+2. Continue routine monitoring; the current reading is the lowest of the recent observations"
+Full_Agent_NoTGI,7,TCQ_006,Can I drive through Boulder Creek corridor?,False,4.2,10.0,NO_EVACUATION,OK,NO_EVACUATION,0,"Status: NORMAL (water level) / UNVERIFIED (road passability)
+
+Evidence:
+- [Live"
+Full_Agent_NoTGI,7,TCQ_007,What's the status at North 75th Street and Boulder Creek?,False,4.2,10.0,NO_EVACUATION,OK,NO_EVACUATION,0,"Status: NORMAL
+
+Evidence:
+- [Live USGS Sensor #06730200]: Gage height 3.62 ft against a 10.0 ft flood stage — 63.8% below flood threshold (reading timestamp 2026-11-14T12:15:00-07:00).
+- [Knowledge Base USGS_Sensor]: Historical readings from 2026-06-05 show 5.39 ft, also well below the 10.0 ft flood danger threshold; status NORMAL.
+
+Recommendation:
+1. No flood action required; continue routine monitoring of the gauge.
+2. Recheck readings"
+Full_Agent_NoTGI,7,TCQ_008,Is there a risk at Boulder Creek today?,False,4.2,10.0,NO_EVACUATION,OK,NO_EVACUATION,0,"Status: NORMAL
+
+Evidence:
+- [Live USGS Sensor #06730200]: Gage height 3.62 ft against a 10.0 ft flood stage — 63.8% below flood threshold, status NORMAL (2026-11-14T12:15:00-07:00).
+- [Knowledge Base, USGS_Sensor]: Historical readings from 2026-06-05 show 5.39 ft, also NORMAL and well below the 10.0 ft flood danger threshold.
+
+Recommendation:
+1. No immediate action required; current flow is well within safe limits.
+2. Continue routine monitoring of the live USGS gauge, especially if upstream precipitation or snowmelt increases.
+3. Reassess if gage height approaches the 10.0 ft flood"
+Full_Agent_NoTGI,7,TCQ_009,Boulder Creek — evacuate or shelter in place?,False,4.2,10.0,NO_EVACUATION,OK,NO_EVACUATION,0,"Status: NORMAL
+
+Evidence:
+- [Live USGS Sensor #06730200]: Gage height 3.62 ft against a 10.0 ft flood stage — 63.8% below flood threshold, status NORMAL as of 2026-11-14T12:15:00-07:00.
+- [CrisisLex_T26 / 2013_Colorado_floods]: ""Wall of water coming down Boulder Canyon. STAY AWAY FROM"
+Full_Agent_NoTGI,7,TCQ_010,Should I cross Boulder Creek on foot?,False,4.2,10.0,NO_EVACUATION,OK,NO_EVACUATION,0,"Status: NORMAL  
+Evidence:  
+- [LIVE - USGS NWIS, 2026-11-14] Boulder Creek gage height 3.63 ft, 63.7 % below flood stage (10 ft) – Status: NORMAL.  
+- [LIVE - Open-Meteo, 2026-11-14] Current weather in Boulder: 6.2 °C, 0 mm hr⁻¹ rainfall, 1.9 km h⁻¹ wind – Conditions: NORMAL.  
+
+Recommendation:  
+1. Crossing Boulder Creek on foot is currently safe; no mandatory evacuation or evacuation order is in effect.  
+2. Continue to monitor the gage height and weather; if the gage height rises to ≥ 130 % of flood stage or if rainfall increases, reassess immediately.  
+
+Alert Generated: none"
+Full_Agent_NoTGI,7,TCQ_011,What was the flood situation at Boulder Creek in 2013?,True,4.2,10.0,NO_EVACUATION,OK,EVACUATION,1,"Status: DANGER (2013 historical event)
+
+Evidence:
+- CrisisLex_T"
+Full_Agent_NoTGI,7,TCQ_012,"According to recent reports, should I evacuate Boulder Creek?",True,4.2,10.0,NO_EVACUATION,OK,NO_EVACUATION,0,"Status: NORMAL  
+Evidence:  
+- [LIVE - USGS NWIS, 2026-11-14] Gage Height: 3.63 ft (Flood stage: 10.0 ft) – 63.7 % below flood threshold [Confidence: HIGH]  
+
+Recommendation:  
+1. No mandatory evacuation required for Boulder Creek at this time.  
+2. Continue monitoring live water levels and weather conditions.  
+
+Alert Generated: none"
+Full_Agent_NoTGI,7,TCQ_013,I saw tweets from 2013 about Boulder Creek flooding — still dangerous?,True,4.2,10.0,NO_EVACUATION,OK,NO_EVACUATION,0,"Status: NORMAL  
+Evidence:  
+- [LIVE - USGS NWIS, 2026-11-14] Gage height 3.63 ft at USGS #06730200 (Boulder Creek, N 75th St, CO) – 63.7 % below flood stage of 10.0 ft [Confidence: HIGH]  
+
+Recommendation:  
+1. No immediate evacuation or shelter‑in‑place orders required for Boulder Creek at this time.  
+2. Continue monitoring live gauge data and local weather forecasts for any rapid changes.  
+
+Alert Generated: none"
+Full_Agent_NoTGI,7,TCQ_014,Current status: Boulder Creek evacuation order?,True,4.2,10.0,NO_EVACUATION,OK,NO_EVACUATION,0,"Status: NORMAL  
+Evidence:  
+- [LIVE - USGS NWIS, 2026-11-14] Gage height 3.63 ft at Boulder Creek (USGS #06730200) – 63.7 % below flood threshold (Flood stage 10.0 ft) – Confidence: HIGH  
+
+Recommendation:  
+1. No mandatory evacuation order is in effect for Boulder Creek at this time.  
+2. Continue monitoring water levels; maintain standard flood watch protocols.  
+
+Alert Generated: none"
+Full_Agent_NoTGI,7,TCQ_015,Live update: is Boulder Creek above flood stage?,True,4.2,10.0,NO_EVACUATION,OK,NO_EVACUATION,0,"Status: NORMAL  
+Evidence:  
+- [LIVE - USGS NWIS, 2026-11-14] Boulder Creek at N 75th St, CO: gage height 3.63 ft, flood stage 10.0 ft, 63.7 % below flood threshold. [Confidence: HIGH]  
+
+Recommendation:  
+1. Continue monitoring Boulder Creek gage height and weather conditions.  
+2. No immediate evacuation or shelter-in-place orders required.  
+
+Alert Generated: none"
+Full_Agent_NoTGI,7,TCQ_016,"In September 2013, Boulder Creek flooded — same risk now?",True,4.2,10.0,NO_EVACUATION,OK,NO_EVACUATION,0,"Status: NORMAL
+
+Evidence:
+- [Live USGS Sensor #06730200]: Gage height 3.62 ft against a 10.0 ft flood stage — 63.8% below flood threshold; status NORMAL as of 2026-11-14T12:15:00-07:00.
+- [CrisisLex_T26 / 2013_Colorado_floods]: Historical tweets describe the September 2013 event (""wall of water"
+Full_Agent_NoTGI,7,TCQ_017,Historical data shows Boulder Creek flooded — current risk?,True,4.2,10.0,NO_EVACUATION,OK,NO_EVACUATION,0,"Status: NORMAL
+
+Evidence:
+- [Live USGS Sensor #06730200]: Current gage height 3.62 ft against a 10.0 ft flood"
+Full_Agent_NoTGI,7,TCQ_018,New reports say Boulder Creek is rising — should I go?,True,4.2,10.0,NO_EVACUATION,OK,NO_EVACUATION,0,"Status: NORMAL
+
+Evidence:
+- [Live USGS Sensor #06730200]: Gage height 3.62 ft vs. flood stage 10.0 ft — 63.8% below flood threshold, status NORMAL (2026-11-14T12:15:00-07:00).
+- [Knowledge Base USGS_Sensor]: Historical readings of 5.39 ft on 2026-06-05, also NORMAL and well below the 10.0 ft flood threshold.
+
+Recommendation:
+1. The live sensor"
+Full_Agent_NoTGI,7,TCQ_019,Breaking: Boulder Creek flooding — evacuate now?,True,4.2,10.0,NO_EVACUATION,OK,NO_EVACUATION,0,"Status: NORMAL
+Evidence:
+- [Live Sensor]: Gage height at 3.62 ft, 63.8% below flood threshold, status is NORMAL.
+- [Knowledge Base]: Historical advice from 2013 Colorado floods suggests staying away from Boulder Creek and seeking higher ground if a wall of water is coming down Boulder Canyon.
+Recommendation:
+1. Monitor the situation and local authorities for any changes or updates.
+2. If you are near Boulder Creek, be prepared to evacuate to higher ground if conditions change.
+3. Identify the nearest evacuation center, such as the YMCA of Boulder Valley, in case of an emergency.
+Alert Generated: none"
+Full_Agent_NoTGI,7,TCQ_020,Today's reading at USGS 06730200 — evacuation needed?,True,4.2,10.0,NO_EVACUATION,OK,NO_EVACUATION,0,"Status: NORMAL
+
+Evidence:
+- [Live USGS Sensor #06730200]: Gage height 3.62 ft against a flood stage of 10.0 ft — 63.8% below flood threshold, sensor status NORMAL (timestamp 2026-11-14T12:15:00-07:00).
+- [Knowledge Base — CrisisLex_T26]: Retrieved documents concern the 2012 High Park Fire (wildfire pre-evacuation notices for Glacier View, Pingree Park, etc.). These are historical and unrelated to the current stream gauge reading; they carry no bearing on today's flood risk.
+
+Recommendation:
+1. No evacuation needed. Current flow is far below flood stage with no flood signal.
+2. Continue routine monitoring; re-evaluate if g"
+Full_Agent_NoTGI,7,TCQ_021,Real-time: Boulder Creek at 75th St — safe or not?,True,4.2,10.0,NO_EVACUATION,OK,NO_EVACUATION,0,"Status: NORMAL
+
+Evidence:
+- [Live USGS Sensor #06730200]: Gage height 3.62 ft against a 10.0 ft flood stage — 63.8% below flood threshold; status"
+Full_Agent_NoTGI,7,TCQ_022,Latest USGS data for Boulder Creek — flood stage exceeded?,True,4.2,10.0,NO_EVACUATION,OK,NO_EVACUATION,0,"Status: NORMAL
+
+Evidence:
+- [Live USGS Sensor #06730200]: Gage height 3.62 ft vs. flood stage 10.0 ft — 63.8% below flood threshold (2026-11-14T12:15:00-07:00)
+- [Knowledge Base, USGS #06730200]: Historical readings of 5.39 ft on 2026-06-05, also below the 10.0 ft flood stage; status NORMAL
+
+Recommendation:
+1. No flood action required — Boulder Creek is well below flood stage. Continue routine monitoring.
+2."
+Full_Agent_NoTGI,7,TCQ_023,Is the 2013 Boulder Creek flood a current threat?,True,4.2,10.0,NO_EVACUATION,OK,NO_EVACUATION,0,"Status: NORMAL
+
+Evidence:
+- Live USGS Sensor (#06730200, Boulder Creek at N 75th St, CO): Gage height 3.62 ft against a 10.0 ft flood stage — 63.8% below flood threshold, status NORMAL, as of 2026-11-14T12:15:00-07:00.
+- Knowledge Base [1-3] (CrisisLex_T26, 2013_Colorado_floods): All entries are historical social-media alerts from the September 2013 Colorado floods (e.g., ""Wall of water coming down Boulder Canyon,"" Fourmile Creek surge, Boulder emergency declaration). These describe a past event, not present conditions.
+
+Recommendation"
+Full_Agent_NoTGI,7,TCQ_024,Active flood warning for Boulder Creek right now?,True,4.2,10.0,NO_EVACUATION,OK,NO_EVACUATION,0,"Status: NORMAL
+
+Evidence:
+- [Live USGS Sensor #06730200]: Gage height 3.62 ft against a 10.0 ft flood stage — 63.8% below flood threshold; sensor status NORMAL as of 2026-11-14T12:15:00-07:00.
+- [Knowledge Base — CrisisLex_T26]: All flood-warning documents (""Wall of water coming down Boulder Canyon,"" ""Flood warning in place"") are from the 2013 Colorado floods. These are historical records, not current advisories.
+
+Recommendation:
+1"
+Full_Agent_NoTGI,7,TCQ_025,Current water level Boulder Creek — above or below flood stage?,True,4.2,10.0,NO_EVACUATION,OK,NO_EVACUATION,0,"Status: NORMAL
+
+Evidence:
+- [LIVE USGS SENSOR #06730200]: Current gage height 3.62 ft vs. flood stage 10.0 ft — 6.38"
+Full_Agent_NoTGI,7,TCQ_026,Emergency: Boulder Creek overflowing — what to do?,True,4.2,10.0,NO_EVACUATION,OK,NO_EVACUATION,0,"Status: NORMAL
+
+Evidence:
+- [Live USGS Sensor #06730200]: G"
+Full_Agent_NoTGI,7,TCQ_027,Should residents near Boulder Creek evacuate based on current conditions?,True,4.2,10.0,NO_EVACUATION,OK,NO_EVACUATION,0,"Status: NORMAL
+
+Evidence:
+- [Live USGS Sensor #06730200]: Gage height 3.62 ft against a 10.0 ft flood stage — 63.8% below flood threshold, sensor status NORMAL (2026-11-14T12:15:00-07:00).
+- [CrisisLex_T26 / 2013_Colorado_floods]: Evacuation center and caution messages reference the 2013 flood event; these are historical records, not current conditions, and do not reflect present-day Boulder Creek levels.
+
+"
+Full_Agent_NoTGI,7,TCQ_028,Are there active flood warnings for Boulder Creek today?,True,4.2,10.0,NO_EVACUATION,OK,NO_EVACUATION,0,"Status: NORMAL
+
+Evidence:
+- [Live USGS Sensor #06730200]: Boulder Creek at N 75th St, CO recorded a gage height of 3.62 ft against a flood stage of 10.0 ft (63.8% below threshold) at 2026-11-14T12:15:00-07:00. Status: NORMAL.
+- [Knowledge Base USGS_Sensor]: Historical readings from 2026-06-05 show 5.39 ft, also below the 10.0 ft flood threshold, status NORMAL.
+
+Recommendation:
+1. No action"
+Full_Agent_NoTGI,7,TCQ_029,What does the current USGS gauge show for Boulder Creek?,True,4.2,10.0,NO_EVACUATION,OK,NO_EVACUATION,0,"Status: NORMAL
+
+Evidence:
+- [Live USGS Sensor #06730200]: Boulder Creek at N 75th St, CO shows a gage height of 3.62 ft against a flood stage of 10.0 ft (63.8% below flood threshold), timestamped 2026-11-14T12:15:00-07:00.
+- [Knowledge Base - USGS_Sensor]: Historical readings from 2026-06-05 recorded 5.39 ft, also below the 10"
+Full_Agent_NoTGI,7,TCQ_030,Live sensor: Boulder Creek 75th St — danger level?,True,4.2,10.0,NO_EVACUATION,OK,NO_EVACUATION,0,"Status: NORMAL
+
+Evidence:
+- [Live USGS Sensor #06730200]: Gage height 3.62 ft against a 10.0 ft flood stage — 63.8% below flood threshold (timestamp 2026-11-14T12:15:00-07:00)
+- [Knowledge Base telemetry]: Historical readings of 5.39 ft (2026-06-05) also well below the 10.0 ft flood danger threshold, status NORMAL
+
+Recommendation:
+1. No flood action required; continue routine monitoring of USGS #06730200.
+2. Watch for rapid rises — a jump toward 10.0 ft would warrant escalation to WARNING/DANGER.
+3"
+Full_Agent_NoTGI,7,TCQ_031,Real-time alert: Boulder Creek flood risk today?,True,4.2,10.0,NO_EVACUATION,OK,NO_EVACUATION,0,"Status: NORMAL
+
+Evidence:
+- [Live USGS Sensor #06730200]: Gage height 3.62 ft against a 10.0 ft flood stage — 63.8% below flood threshold; sensor status NORMAL (2026-11-14T12:15:00-07:00).
+- [USGS_Sensor telemetry]: Confirms Boulder Creek at N 75th St reading NORMAL.
+- [CrisisLex_T26 / 2013_Colorado_floods]: ""Wall of water... STAY AWAY FROM BOULDER CREEK"" and flood warning advisories — these are historical 2013 event records, not current conditions.
+
+Recommendation:
+1. No flood action required now; current gage height is well below flood"
+Full_Agent_NoTGI,7,TCQ_032,Twitter says Boulder Creek is flooding — true or not?,True,4.2,10.0,NO_EVACUATION,OK,NO_EVACUATION,0,"Status: NORMAL
+
+Evidence:
+- Live USGS Sensor: Boulder Creek at N 75th St, CO (USGS #06730200) is at 3.62 ft, which is 63.8% below the 10.0 ft flood stage.
+- Knowledge Base: Retrieved Twitter-like reports are from the 2013 Colorado floods and do not provide current evidence of active flooding.
+
+Recommendation:
+1. Treat the Twitter claim as unverified for the current situation; rely on live USGS gauge data and official emergency updates.
+2. Continue monitoring Boulder Creek gauges and local alerts for any rapid rise in water levels.
+
+Alert Generated: none"
+Full_Agent_NoTGI,99,TCQ_001,Should I evacuate near Boulder Creek?,False,4.2,10.0,NO_EVACUATION,OK,NO_EVACUATION,0,"Status: NORMAL
+
+Evidence:
+- [Live USGS Sensor #06730200]: Gage height 3.62 ft against a 10.0 ft flood stage — 63.8% below flood threshold, status NORMAL as of 2026-11-14T12:15:00-07:00.
+- [CrisisLex_T26 / 2013_Colorado_floods]: ""Wall of water coming down Boulder Canyon. STAY AWAY FROM BOULDER CREEK"" — historical alert from the 2013 floods, not current conditions.
+- ["
+Full_Agent_NoTGI,99,TCQ_002,Is it safe to stay at home near Boulder Creek?,False,4.2,10.0,NO_EVACUATION,OK,NO_EVACUATION,0,"Status: NORMAL
+
+Evidence:
+- [Live USGS Sensor #06730200]: Boulder Creek at N 75th St, CO reads 3.62 ft gage height against a 10.0 ft flood stage — 63.8% below flood threshold."
+Full_Agent_NoTGI,99,TCQ_003,What should I do if I live near Boulder Creek?,False,4.2,10.0,NO_EVACUATION,OK,NO_EVACUATION,0,"Status: NORMAL  
+Evidence:  
+- [LIVE - USGS NWIS, 2026-11-14] USGS #06730200 Boulder Creek at N 75th St, CO: Gage Height 3.63 ft, Flood Stage 10.0 ft, 63.7 % below flood threshold, Status NORMAL, Timestamp 2026‑11‑14T10:15:00.000‑07:00 UTC [Confidence: HIGH]  
+
+Recommendation:  
+1. Continue monitoring local weather and water level updates via official channels (e.g., USGS, local emergency management).  
+2. Maintain readiness for potential rapid changes; keep emergency supplies (food, water, first‑aid kit) accessible.  
+3. If weather forecasts indicate heavy rainfall or upstream flooding, consider pre‑emptive evacuation to higher ground per local evacuation orders.  
+
+Alert Generated: none"
+Full_Agent_NoTGI,99,TCQ_004,Are roads near Boulder Creek passable?,False,4.2,10.0,NO_EVACUATION,OK,NO_EVACUATION,0,"Status: NORMAL
+Evidence:
+- [Live Sensor]: Gage height at Boulder Creek at N 75th St, CO is 3.62 ft, which is 63.8% below the flood threshold of 10.0 ft.
+- [Knowledge Base]: Historical data from the 2013 Colorado floods indicate that roads in and around Boulder, including canyons and highways, were closed during the flood event.
+
+Recommendation:
+1. Monitor local traffic and weather reports for any updates or changes in road conditions.
+2. If traveling, use alternative routes and avoid low-lying areas or known flood-prone roads.
+
+Alert Generated: none"
+Full_Agent_NoTGI,99,TCQ_005,Is Boulder Creek dangerous right now?,False,4.2,10.0,NO_EVACUATION,OK,NO_EVACUATION,0,"Status: NORMAL
+Evidence:
+- [Live Sensor]: Gage height is 3.62 ft, which is 63.8% below the flood threshold of 10.0 ft.
+- [Knowledge Base]: Multiple recent sensor readings indicate the gage height is 5.39 ft, still well below the flood danger threshold of 10.0 ft.
+
+Recommendation:
+1. Continue monitoring the gage height and weather conditions, especially if there are forecasts of heavy rainfall or rapid snowmelt.
+
+Alert Generated: none"
+Full_Agent_NoTGI,99,TCQ_006,Can I drive through Boulder Creek corridor?,False,4.2,10.0,NO_EVACUATION,OK,NO_EVACUATION,0,"Status: NORMAL
+Evidence:
+- [LIVE USGS SENSOR - Boulder Creek at N 75th St, CO]: Gage Height is 3.62 ft, which is 63.8% below the flood threshold of 10.0 ft. The status is NORMAL as of 2026-11-14T12:15:00.000-07:00 UTC.
+- [CrisisLex_T26]: Historical data from the 2013 Colorado floods indicates that some roads were closed, but this information is not current and does not reflect the current situation.
+
+Recommendation:
+1. It is currently safe to drive through the Boulder Creek corridor based on the live sensor readings. However, always check for any local traffic advisories or road closures before starting your journey.
+
+Alert Generated: none"
+Full_Agent_NoTGI,99,TCQ_007,What's the status at North 75th Street and Boulder Creek?,False,4.2,10.0,NO_EVACUATION,OK,NO_EVACUATION,0,"Status: NORMAL
+Evidence:
+- [Live Sensor]: Gage Height: 3.62 ft (Flood stage: 10.0 ft), Status: NORMAL, Reading: 63.8% below flood threshold, Timestamp: 2026-11-14T12:15:00.000-07:00 UTC
+- [Knowledge Base]: Previous sensor readings on 2026-06-05 also indicate normal conditions with gage heights of 5.39 ft, well below the flood threshold of 10.0 ft.
+
+Recommendation:
+1. Continue monitoring the gage height and other relevant sensor data for any changes.
+Alert Generated: none"
+Full_Agent_NoTGI,99,TCQ_008,Is there a risk at Boulder Creek today?,False,4.2,10.0,NO_EVACUATION,OK,NO_EVACUATION,0,"Status: NORMAL
+Evidence:
+- [Live Sensor]: Gage height is 3.62 ft, which is 63.8% below the flood threshold of 10.0 ft.
+- [Knowledge Base]: Previous sensor readings also indicate normal conditions with gage heights of 5.39 ft, well below the flood stage.
+
+Recommendation:
+1. Continue monitoring the gage height and weather conditions for any changes that could lead to rising water levels.
+
+Alert Generated: none"
+Full_Agent_NoTGI,99,TCQ_009,Boulder Creek — evacuate or shelter in place?,False,4.2,10.0,NO_EVACUATION,OK,NO_EVACUATION,0,"Status: NORMAL
+Evidence:
+- [Live Sensor]: Gage Height is 3.62 ft, which is 63.8% below the flood threshold of 10.0 ft. The status is NORMAL as of 2026-11-14T12:15:00.000-07:00 UTC.
+- [Knowledge Base]: Historical data from the 2013 Colorado floods indicate that during severe conditions, residents were advised to seek higher ground and stay away from Boulder Creek.
+
+Recommendation:
+1. Continue to monitor the live sensor readings and local weather updates. If the gage height approaches the flood stage, be prepared to take appropriate action.
+2. If you are near Boulder Creek, avoid the area as a precautionary measure, especially if there are any changes in the weather conditions.
+
+Alert Generated: none"
+Full_Agent_NoTGI,99,TCQ_010,Should I cross Boulder Creek on foot?,False,4.2,10.0,NO_EVACUATION,OK,NO_EVACUATION,0,"Status: NORMAL
+Evidence:
+- [Live Sensor]: Boulder Creek at N 75th St, CO has a gage height of 3.62 ft, which is 63.8% below the flood threshold of 10.0 ft. The current status is NORMAL.
+- [Knowledge Base]: Previous sensor readings also indicate that the gage height is well below the flood danger threshold, with the most recent reading being 5.39 ft, which is still below the flood stage.
+
+Recommendation:
+1. It is currently safe to cross Boulder Creek on foot, but always exercise caution and be aware of the surroundings. Check for any local advisories or warnings before crossing.
+
+Alert Generated: none"
+Full_Agent_NoTGI,99,TCQ_011,What was the flood situation at Boulder Creek in 2013?,True,4.2,10.0,NO_EVACUATION,OK,NO_EVACUATION,0,"Status: NORMAL
+Evidence:
+- [Live Sensor]: Gage Height at Boulder Creek at N 75th St, CO is 3.62 ft, which is 63.8% below the flood threshold of 10.0 ft.
+- [Knowledge Base]: Significant flooding was reported at the Justice Center in Boulder during the 2013 floods.
+- [Knowledge Base]: Northeast Colorado residents, including those in Boulder, experienced intense flooding during the 2013 event.
+- [Knowledge Base]: An evacuation center was set up at the YMCA of Boulder Valley for residents affected by the 2013 floods.
+
+Recommendation:
+1. Review historical data and emergency response plans from the 2013 floods to improve preparedness for future events.
+2. Ensure that local residents are aware of designated evacuation centers and emergency procedures.
+
+Alert Generated: none"
+Full_Agent_NoTGI,99,TCQ_012,"According to recent reports, should I evacuate Boulder Creek?",True,4.2,10.0,NO_EVACUATION,OK,NO_EVACUATION,0,"Status: NORMAL
+Evidence:
+- [Live Sensor]: Gage Height is 3.62 ft, which is 63.8% below the flood threshold of 10.0 ft.
+- [Knowledge Base]: Historical documents from the 2013 Colorado floods provide cautionary advice and evacuation information, but these are not current and do not reflect the current situation.
+
+Recommendation:
+1. Monitor local weather and emergency updates for any changes in conditions.
+2. Stay informed about potential evacuation orders by checking official sources such as the Boulder County website or local emergency management services.
+
+Alert Generated: none"
+Full_Agent_NoTGI,99,TCQ_013,I saw tweets from 2013 about Boulder Creek flooding — still dangerous?,True,4.2,10.0,NO_EVACUATION,OK,NO_EVACUATION,0,"Status: NORMAL  
+Evidence:  
+- [LIVE - USGS NWIS, 2026-11-14] Gage height at USGS #06730200 (Boulder Creek, N 75th St, CO) is 3.63 ft, 63.7 % below the 10.0 ft flood stage. [Confidence: HIGH]  
+
+Recommendation:  
+1. No immediate evacuation or shelter‑in‑place orders are required for Boulder Creek at this time.  
+2. Continue to monitor the gauge for any rapid rise; if gage height approaches 10 ft or exceeds 130 % of flood threshold, initiate mandatory evacuation per FEMA protocol.  
+
+Alert Generated: none"
+Full_Agent_NoTGI,99,TCQ_014,Current status: Boulder Creek evacuation order?,True,4.2,10.0,NO_EVACUATION,OK,NO_EVACUATION,0,"Status: NORMAL  
+Evidence:  
+- [LIVE - USGS NWIS, 2026-11-14] Boulder Creek at N 75th St, CO – Gage Height 3.63 ft, Flood Stage 10.0 ft, 63.7 % below flood threshold, Status NORMAL [Confidence: HIGH]  
+
+Recommendation:  
+1. No mandatory evacuation order is in effect for Boulder Creek at this time. Continue monitoring for any changes in gage height or weather conditions.  
+
+Alert Generated: none"
+Full_Agent_NoTGI,99,TCQ_015,Live update: is Boulder Creek above flood stage?,True,4.2,10.0,NO_EVACUATION,OK,NO_EVACUATION,0,"Status: NORMAL
+Evidence:
+- [Live Sensor]: Gage Height: 3.62 ft (Flood stage: 10.0 ft), 63.8% below flood threshold, Timestamp: 2026-11-14T12:15:00.000-07:00 UTC
+Recommendation:
+1. Continue monitoring the gage height and weather conditions for any changes.
+Alert Generated: none"
+Full_Agent_NoTGI,99,TCQ_016,"In September 2013, Boulder Creek flooded — same risk now?",True,4.2,10.0,NO_EVACUATION,OK,NO_EVACUATION,0,"Status: NORMAL
+Evidence:
+- [Live Sensor]: Gage Height is 3.62 ft, which is 63.8% below the flood threshold of 10.0 ft.
+- [Knowledge Base]: Historical data from September 2013 indicates significant flooding in Boulder Creek, with warnings to stay away from the creek and seek higher ground.
+Recommendation:
+1. Continue monitoring the gage height and weather conditions, especially if heavy rainfall is expected.
+Alert Generated: none"
+Full_Agent_NoTGI,99,TCQ_017,Historical data shows Boulder Creek flooded — current risk?,True,4.2,10.0,NO_EVACUATION,OK,NO_EVACUATION,0,"Status: NORMAL
+Evidence:
+- [Live Sensor]: Gage height is 3.62 ft, which is 63.8% below the flood threshold of 10.0 ft.
+- [Knowledge Base]: Historical readings from June 4 and 5, 2026, show gage heights of 5.39 ft, also below the flood threshold of 10.0 ft.
+
+Recommendation:
+1. Continue monitoring the gage height and weather conditions for any changes that could increase the risk of flooding.
+
+Alert Generated: none"
+Full_Agent_NoTGI,99,TCQ_018,New reports say Boulder Creek is rising — should I go?,True,4.2,10.0,NO_EVACUATION,OK,NO_EVACUATION,0,"Status: NORMAL
+Evidence:
+- [Live Sensor]: Boulder Creek at N 75th St, CO has a gage height of 3.62 ft, which is 63.8% below the flood threshold of 10.0 ft. The current status is NORMAL.
+- [Knowledge Base]: Previous sensor readings from June 5, 2026, also indicate a gage height of 5.39 ft, which is below the flood threshold, and the status was NORMAL.
+
+Recommendation:
+1. Continue to monitor the situation and local weather reports. If you notice any significant changes in the creek level or receive alerts from local authorities, take appropriate action.
+
+Alert Generated: none"
+Full_Agent_NoTGI,99,TCQ_019,Breaking: Boulder Creek flooding — evacuate now?,True,4.2,10.0,NO_EVACUATION,OK,NO_EVACUATION,0,"Status: NORMAL
+Evidence:
+- [Live Sensor]: Gage Height is 3.62 ft, which is 63.8% below the flood threshold of 10.0 ft.
+- [Knowledge Base]: Historical data from the 2013 Colorado floods indicates the importance of staying away from Boulder Creek and seeking higher ground if a flood is imminent.
+
+Recommendation:
+1. Monitor the situation and stay informed through local authorities and emergency services.
+2. If you are near Boulder Creek, be prepared to evacuate if conditions change or if an evacuation order is issued.
+
+Alert Generated: none"
+Full_Agent_NoTGI,99,TCQ_020,Today's reading at USGS 06730200 — evacuation needed?,True,4.2,10.0,NO_EVACUATION,OK,NO_EVACUATION,0,"Status: NORMAL
+Evidence:
+- [Live Sensor]: Gage height is 3.62 ft, which is 63.8% below the flood threshold of 10.0 ft.
+- [Live Sensor]: The current status is NORMAL.
+- [Live Sensor]: The latest reading was taken on 2026-11-14T12:15:00.000-07:00 UTC.
+
+Recommendation:
+1. Continue to monitor the gage height and weather conditions. No immediate action is required, but stay informed and be prepared for any changes.
+
+Alert Generated: none"
+Full_Agent_NoTGI,99,TCQ_021,Real-time: Boulder Creek at 75th St — safe or not?,True,4.2,10.0,NO_EVACUATION,OK,NO_EVACUATION,0,"Status: NORMAL  
+Evidence:  
+- [LIVE - USGS NWIS, 2026-11-14] USGS #06730200: Gage Height 3.63 ft, Flood Stage 10.0 ft, 63.7 % below flood threshold, Status NORMAL, Timestamp 2026‑11‑14T11:15:00‑07:00 UTC [Confidence: HIGH]  
+
+Recommendation:  
+1. No immediate evacuation or shelter‑in‑place orders required for Boulder Creek at 75th St. Continue monitoring for any rapid rise in gage height.  
+
+Alert Generated: none"
+Full_Agent_NoTGI,99,TCQ_022,Latest USGS data for Boulder Creek — flood stage exceeded?,True,4.2,10.0,NO_EVACUATION,OK,NO_EVACUATION,0,"Status: NORMAL  
+Evidence:  
+- [LIVE - USGS NWIS, 2026-11-14] USGS #06730200: Gage Height 3.63 ft (Flood Stage 10.0 ft) – 63.7 % below flood threshold. [Confidence: HIGH]  
+
+Recommendation:  
+1. Continue monitoring Boulder Creek gage height and discharge.  
+2. Maintain current operational status; no mandatory evacuation or shelter‑in‑place orders required.  
+
+Alert Generated: none"
+Full_Agent_NoTGI,99,TCQ_023,Is the 2013 Boulder Creek flood a current threat?,True,4.2,10.0,NO_EVACUATION,OK,NO_EVACUATION,0,"**Status:** NORMAL  
+
+**Evidence:**  
+- USGS sensor “Boulder Creek at N 75th St, CO” (Site ID #06730200) reports a gage height of **3.63 ft**, with the **flood stage set at 10.0 ft**. The reading is **63.7 % below the flood threshold**.  
+  - Source: **[LIVE - USGS NWIS, 2026‑11‑14]**  
+  - Timestamp: **2026‑11‑14T11:15:00‑07:00 UTC**  
+  - Confidence: **HIGH**  
+
+**Recommendation:**  
+1. Continue routine monitoring of the Boulder Creek gage height via USGS updates.  
+2. No mandatory evacuation, evacuation route activation, or shelter‑in‑place orders are required at this time.  
+
+**Alert Generated:** none"
+Full_Agent_NoTGI,99,TCQ_024,Active flood warning for Boulder Creek right now?,True,4.2,10.0,NO_EVACUATION,OK,NO_EVACUATION,0,"Status: NORMAL
+Evidence:
+- [Live Sensor]: Gage Height is 3.62 ft, which is 63.8% below the flood threshold of 10.0 ft.
+- [Knowledge Base]: Historical flood warnings and advisories from 2013, but no current active warnings.
+
+Recommendation:
+1. Continue monitoring the live sensor readings and local weather updates for any changes.
+2. Stay informed through local emergency notifications and official channels.
+
+Alert Generated: none"
+Full_Agent_NoTGI,99,TCQ_025,Current water level Boulder Creek — above or below flood stage?,True,4.2,10.0,NO_EVACUATION,OK,NO_EVACUATION,0,"Status: NORMAL
+Evidence:
+- [Live Sensor]: Gage Height: 3.62 ft (Flood stage: 10.0 ft)
+- [Live Sensor]: Reading: 63.8% below flood threshold
+- [Live Sensor]: Timestamp: 2026-11-14T12:15:00.000-07:00 UTC
+
+Recommendation:
+1. Continue monitoring the water levels and weather conditions for any changes.
+
+Alert Generated: none"
+Full_Agent_NoTGI,99,TCQ_026,Emergency: Boulder Creek overflowing — what to do?,True,4.2,10.0,NO_EVACUATION,OK,NO_EVACUATION,0,"Status: NORMAL
+Evidence:
+- [Live Sensor]: Gage Height is 3.62 ft, which is 63.8% below the flood threshold of 10.0 ft.
+- [Knowledge Base]: Historical data from the 2013 Colorado floods indicates the importance of seeking higher ground and staying away from Boulder Creek during a flood.
+
+Recommendation:
+1. Monitor the water levels and weather conditions closely.
+2. Stay informed through local emergency alerts and updates.
+3. If water levels begin to rise or if a flood warning is issued, seek higher ground immediately and avoid the creek area.
+
+Alert Generated: none"
+Full_Agent_NoTGI,99,TCQ_027,Should residents near Boulder Creek evacuate based on current conditions?,True,4.2,10.0,NO_EVACUATION,OK,NO_EVACUATION,0,"Status: NORMAL
+Evidence:
+- [Live Sensor]: Gage Height is 3.62 ft, which is 63.8% below the flood threshold of 10.0 ft.
+- [Knowledge Base]: Historical documents from the 2013 Colorado floods provide information on evacuation centers and cautionary advice, but do not indicate current conditions warranting evacuation.
+
+Recommendation:
+1. Residents near Boulder Creek should continue to monitor local weather and emergency updates. No immediate evacuation is necessary based on current conditions.
+
+Alert Generated: none"
+Full_Agent_NoTGI,99,TCQ_028,Are there active flood warnings for Boulder Creek today?,True,4.2,10.0,NO_EVACUATION,OK,NO_EVACUATION,0,"Status: NORMAL  
+Evidence:  
+- [LIVE - USGS NWIS, 2026-11-14] Gage Height: 3.63 ft (63.7 % below flood stage of 10.0 ft) – [Confidence: HIGH]  
+- [LIVE - Open-Meteo, 2026-11-14] Rainfall: 0.0 mm/hr – [Confidence: HIGH]  
+
+Recommendation:  
+1. Continue monitoring Boulder Creek gage height and local weather forecasts.  
+2. No mandatory evacuation or shelter‑in‑place orders are required at this time.  
+
+Alert Generated: none"
+Full_Agent_NoTGI,99,TCQ_029,What does the current USGS gauge show for Boulder Creek?,True,4.2,10.0,NO_EVACUATION,OK,NO_EVACUATION,0,"Status: NORMAL
+Evidence:
+- [Live Sensor]: Gage Height: 3.62 ft (Flood stage: 10.0 ft), Reading: 63.8% below flood threshold, Timestamp: 2026-11-14T12:15:00.000-07:00 UTC
+- [Knowledge Base]: Previous readings also show the gage height to be significantly below the flood stage (5.39 ft on 2026-06-05).
+
+Recommendation:
+1. Continue monitoring the gage height and other relevant sensor readings for any changes.
+Alert Generated: none"
+Full_Agent_NoTGI,99,TCQ_030,Live sensor: Boulder Creek 75th St — danger level?,True,4.2,10.0,NO_EVACUATION,OK,NO_EVACUATION,0,"Status: NORMAL
+Evidence:
+- [Live Sensor]: Gage height is 3.62 ft, which is 63.8% below the flood threshold of 10.0 ft.
+- [Timestamp]: 2026-11-14T12:15:00.000-07:00 UTC
+
+Recommendation:
+1. Continue monitoring the gage height and weather conditions for any changes.
+Alert Generated: none"
+Full_Agent_NoTGI,99,TCQ_031,Real-time alert: Boulder Creek flood risk today?,True,4.2,10.0,NO_EVACUATION,OK,NO_EVACUATION,0,"Status: NORMAL
+Evidence:
+- [Live Sensor]: Gage Height is 3.62 ft, which is 63.8% below the flood threshold of 10.0 ft.
+- [Knowledge Base]: Historical flood events in Boulder Creek have seen rapid rises in water levels, with warnings issued for immediate evacuation.
+Recommendation:
+1. Continue monitoring the live sensor readings for any changes in gage height.
+2. Stay informed through local weather and emergency alerts for any updates.
+Alert Generated: none"
+Full_Agent_NoTGI,99,TCQ_032,Twitter says Boulder Creek is flooding — true or not?,True,4.2,10.0,NO_EVACUATION,OK,NO_EVACUATION,0,"Status: NORMAL  
+Evidence:  
+- [LIVE - USGS NWIS, 2026-11-14] Gage height at Boulder Creek (USGS #06730200) is 3.63 ft, 63.7 % below the flood stage of 10.0 ft. Status: NORMAL. [Confidence: HIGH]  
+- [LIVE - Open-Meteo, 2026-11-14] Current precipitation is 0.0 mm/hr, no rainfall contributing to rising water levels. [Confidence: HIGH]  
+
+Recommendation:  
+1. Continue monitoring Boulder Creek gage height and local weather for any changes.  
+2. No immediate evacuation or shelter-in-place orders are required.  
+
+Alert Generated: none"

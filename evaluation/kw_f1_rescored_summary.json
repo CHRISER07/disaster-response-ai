@@ -1,0 +1,46 @@
+{
+  "generated": "2026-11-17T11:33:07.459179+00:00",
+  "source_answers": "evaluation\\results_heldout_v2.csv",
+  "dataset": "evaluation\\golden_dataset_v2.json",
+  "method": "dataset-derived domain vocabulary; stemmed bag-of-keywords F1",
+  "vocab_size": 643,
+  "scored_rows": 2100,
+  "by_config": {
+    "BM25_Baseline": {
+      "n": 450,
+      "mean": 0.1808,
+      "std": 0.0841,
+      "ci95": 0.0078
+    },
+    "Full_Agent": {
+      "n": 450,
+      "mean": 0.2057,
+      "std": 0.1047,
+      "ci95": 0.0097
+    },
+    "Full_Agent_NoDSEL": {
+      "n": 150,
+      "mean": 0.2066,
+      "std": 0.1082,
+      "ci95": 0.0173
+    },
+    "Full_Agent_NoTGI": {
+      "n": 150,
+      "mean": 0.1946,
+      "std": 0.1074,
+      "ci95": 0.0172
+    },
+    "LLM_Only": {
+      "n": 450,
+      "mean": 0.248,
+      "std": 0.1272,
+      "ci95": 0.0118
+    },
+    "Standard_StaticRAG": {
+      "n": 450,
+      "mean": 0.2279,
+      "std": 0.1273,
+      "ci95": 0.0118
+    }
+  }
+}

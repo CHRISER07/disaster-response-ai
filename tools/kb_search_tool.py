@@ -18,6 +18,17 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(__file__)))
 
 from langchain_core.tools import tool
 
+# Weighted RRF parameters locked from Dev-set calibration (Sec. V-B / Table III).
+RRF_ALPHA = 0.70
+RRF_K = 60
+
+
+class _Chunk:
+    """Adapter so RRF RetrievedChunk objects expose the LangChain Document interface."""
+    def __init__(self, content, metadata):
+        self.page_content = content
+        self.metadata = metadata
+
 # ---------------------------------------------------------------------------
 # Cached vector store - loads embedding model ONCE per process lifetime
 # ---------------------------------------------------------------------------
@@ -94,24 +105,44 @@ def _search(query: str, modality_filter: dict | None, k: int = 5) -> str:
     Returns a formatted multi-document string for the agent.
     """
     docs = []
+    retrieval_method = "unavailable"
+
+    # 1. Primary path: Weighted RRF hybrid (dense BGE-small + sparse FTS5 BM25).
     try:
-        store = _cached_store()
-        if store:
-            search_kwargs = {"k": k}
-            if modality_filter:
-                search_kwargs["filter"] = modality_filter
-            docs = store.similarity_search(query, **search_kwargs)
+        from core.hybrid_store import hybrid_store
+        chunks = hybrid_store.hybrid_search(
+            query, k=k, modality_filter=modality_filter, alpha_dense=RRF_ALPHA
+        )
+        if chunks:
+            docs = [_Chunk(c.content, c.metadata) for c in chunks]
+            retrieval_method = f"hybrid_rrf_alpha={RRF_ALPHA:.2f},k={RRF_K}"
     except Exception:
         pass
 
+    # 2. Dense-only fallback (honestly labelled).
     if not docs:
-        docs = _search_sqlite_fts(query, modality_filter, k=k)
+        retrieval_method = "dense_only"
+        try:
+            store = _cached_store()
+            if store:
+                search_kwargs = {"k": k}
+                if modality_filter:
+                    search_kwargs["filter"] = modality_filter
+                docs = store.similarity_search(query, **search_kwargs)
+        except Exception:
+            pass
 
+    # 3. Lexical FTS fallback (honestly labelled).
+    if not docs:
+        retrieval_method = "sqlite_fts_fallback"
+        docs = _search_sqlite_fts(query, modality_filter, k=k)
     if not docs:
         docs = _search_sqlite_fts(query, None, k=k)
 
     if not docs:
         return "[KB SEARCH] No relevant documents found for this query."
+
+    retrieval_header = f"[KB SEARCH | retrieval={retrieval_method}]\n"
 
     results = []
     for i, doc in enumerate(docs, 1):
@@ -121,22 +152,18 @@ def _search(query: str, modality_filter: dict | None, k: int = 5) -> str:
         ts = meta.get("timestamp", "")
         ts_str = f" | {ts}" if ts else ""
 
-        temporal_tag = meta.get("temporal_tag", "")
-        if temporal_tag:
-            era = temporal_tag
-        elif meta.get("modality") == "knowledge_base" or "fema" in str(source).lower():
-            era = "[KB - FEMA/CDC Protocol]"
-        elif ts and any(y in ts for y in ["2012", "2013", "2014", "2015"]):
-            era = f"[HISTORICAL - {ts[:4]}]"
-        else:
-            era = "[LIVE/RECENT]"
+        # Real rolling-window TGI computed from the document timestamp. The
+        # stored categorical temporal_tag is intentionally ignored so that
+        # stale telemetry and old archives can never be presented as LIVE.
+        from core.temporal_grounding import temporal_tag
+        era = temporal_tag(meta)
 
         results.append(
             f"[{i}] [{modality}] {era} Source: {source}{ts_str}\n"
             f"    {doc.page_content[:350]}"
         )
 
-    return "\n\n".join(results)
+    return retrieval_header + "\n\n".join(results)
 
 
 # ---------------------------------------------------------------------------

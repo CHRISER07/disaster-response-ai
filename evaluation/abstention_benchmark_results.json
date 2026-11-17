@@ -1,0 +1,29 @@
+{
+  "Full_Agent": {
+    "total_runs": 15,
+    "safe_abstention_or_refusal": 9,
+    "safe_abstention_rate": 0.6,
+    "grounded_clarification": 6,
+    "clarification_rate": 0.4,
+    "hallucinations": 0,
+    "hallucination_rate": 0.0
+  },
+  "Standard_StaticRAG": {
+    "total_runs": 15,
+    "safe_abstention_or_refusal": 8,
+    "safe_abstention_rate": 0.5333,
+    "grounded_clarification": 4,
+    "clarification_rate": 0.2667,
+    "hallucinations": 3,
+    "hallucination_rate": 0.2
+  },
+  "LLM_Only": {
+    "total_runs": 15,
+    "safe_abstention_or_refusal": 6,
+    "safe_abstention_rate": 0.4,
+    "grounded_clarification": 3,
+    "clarification_rate": 0.2,
+    "hallucinations": 6,
+    "hallucination_rate": 0.4
+  }
+}

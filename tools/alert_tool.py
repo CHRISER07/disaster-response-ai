@@ -2,8 +2,9 @@
 tools/alert_tool.py
 
 Generates and persists structured emergency alerts.
-Alerts are written to data/alerts.jsonl - one JSON object per line.
-The Streamlit dashboard reads this file to display the alert log.
+Alerts are written to the canonical append-only log logs/incident_audit_trail.jsonl,
+shared with DSEL Stage 4 claim audit records (one JSON object per line).
+A mirrored copy at data/alerts.jsonl is kept for the legacy dashboard.
 
 Every alert passes through core/policy_engine.py BEFORE being written.
 Low-confidence or malformed alerts are blocked and logged for audit.
@@ -21,7 +22,9 @@ except Exception:
     class InjectedState:
         pass
 
-ALERTS_FILE = os.path.join(os.path.dirname(os.path.dirname(__file__)), "data", "alerts.jsonl")
+from core.audit_logger import ALERT_LOG_FILE as ALERTS_FILE, LEGACY_ALERTS_FILE
+
+LEGACY_MIRROR = LEGACY_ALERTS_FILE
 SEVERITY_LEVELS = {"LOW", "MEDIUM", "HIGH", "CRITICAL"}
 
 @tool
@@ -97,9 +100,11 @@ def generate_structured_alert(
         "auto_generated": True
     }
 
-    os.makedirs(os.path.dirname(ALERTS_FILE), exist_ok=True)
-    with open(ALERTS_FILE, "a", encoding="utf-8") as f:
-        f.write(json.dumps(alert) + "\n")
+    line = json.dumps(alert) + "\n"
+    for path in (ALERTS_FILE, LEGACY_MIRROR):
+        os.makedirs(os.path.dirname(path), exist_ok=True)
+        with open(path, "a", encoding="utf-8") as f:
+            f.write(line)
 
     return (
         f"[ALERT LOGGED - {severity}]\n"

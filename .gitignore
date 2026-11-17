@@ -29,6 +29,12 @@ Thumbs.db
 
 # Logs & outputs (keep results.md but ignore raw logs)
 *.log
+*.err
+chroma.sqlite3
+
+# Exploratory scratch scripts (not part of the deliverable)
+scratch/
+evaluation/scratch/
 
 # Runtime history and transient progress
 data/chat_history.jsonl

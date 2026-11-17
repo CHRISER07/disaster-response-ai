@@ -8,6 +8,7 @@ No API key. No cloud cost. Runs 100% on localhost.
 import base64
 import json
 import os
+import re
 import requests
 from langchain_core.tools import tool
 
@@ -28,6 +29,31 @@ STRUCTURED_PROMPT = (
     "FULL_DESC: <2-3 factual sentences with complete description of what is visible>\n\n"
     "Be specific. Only describe what is directly observable in the image."
 )
+
+# Classification mode: the benchmark needs a 4-class damage label, which a
+# free-form scene description cannot provide. This prompt is used only when
+# task="classify"; the production describe path is unchanged.
+DAMAGE_CLASSES = ("no-damage", "minor-damage", "major-damage", "destroyed")
+CLASSIFY_PROMPT = (
+    "You are an expert satellite disaster damage assessor. Classify the building "
+    "in this image crop into exactly one damage class.\n\n"
+    "Classes:\n"
+    "  no-damage      - building intact, no visible structural damage\n"
+    "  minor-damage   - slight or partial damage, structure largely intact\n"
+    "  major-damage   - severe structural damage, roof/walls substantially compromised\n"
+    "  destroyed      - building collapsed, reduced to rubble, or not recognizable\n\n"
+    "Reply with EXACTLY one line and nothing else:\n"
+    "DAMAGE_CLASS: <no-damage|minor-damage|major-damage|destroyed>"
+)
+
+
+def _parse_classification(raw: str) -> str:
+    """Extract the damage class; return UNCLASSIFIED when the model ignores the format."""
+    m = re.search(r"DAMAGE_CLASS\s*:\s*(no-damage|minor-damage|major-damage|destroyed)",
+                  raw or "", re.IGNORECASE)
+    if m:
+        return m.group(1).lower()
+    return "UNCLASSIFIED"
 
 
 # ---------------------------------------------------------------------------
@@ -81,26 +107,44 @@ def _check_ollama_available() -> bool:
         return False
 
 
+def _get_available_vision_model() -> str:
+    """Finds the best available local vision model with graceful fallback."""
+    preferred = os.getenv("OLLAMA_VISION_MODEL", "qwen3-vl:4b").strip()
+    fallbacks = ["qwen3-vl:4b", "qwen2.5vl:3b", "llava:latest", "llava"]
+    try:
+        resp = requests.get("http://localhost:11434/api/tags", timeout=3)
+        if resp.status_code == 200:
+            installed = [m.get("name", "") for m in resp.json().get("models", [])]
+            if preferred in installed:
+                return preferred
+            for fb in fallbacks:
+                for inst in installed:
+                    if fb in inst:
+                        return inst
+    except Exception:
+        pass
+    return preferred
+
+
 # ---------------------------------------------------------------------------
 # Tool 6: Vision Analysis
 # ---------------------------------------------------------------------------
 @tool
-def analyze_disaster_image(image_filename: str = "latest") -> str:
+def analyze_disaster_image(image_filename: str = "latest", task: str = "describe") -> str:
     """
-    Analyzes a real disaster satellite/drone image using Ollama LLaVA (local, free).
-    Pass a specific filename from the samples directory (e.g. "flood_001.png"),
-    or pass "latest" to automatically select the most recently added image.
-    Returns a structured damage assessment with SUMMARY, DAMAGE, ACCESS status.
-    Requires Ollama to be running locally: start with 'ollama serve'.
+    Analyzes a real disaster satellite/drone image using local Ollama Vision AI.
+    task="describe" (default): structured SUMMARY/DAMAGE/ACCESS scene assessment.
+    task="classify": single 4-class building damage label (for evaluation only).
+    Pass a specific filename from the samples directory, or "latest" for newest.
+    Requires Ollama running locally.
     """
     # Check Ollama availability first
     if not _check_ollama_available():
         return (
             "[VISION TOOL - Offline]\n"
             "  Ollama is not running. To enable real image analysis:\n"
-            "  1. Download Ollama: https://ollama.ai\n"
-            "  2. Run: ollama serve\n"
-            "  3. Run: ollama pull llava\n"
+            "  1. Ensure Ollama is running at http://localhost:11434\n"
+            "  2. Pull a vision model: ollama pull qwen3-vl:4b\n"
             "  Use search_social_reports() for text-based imagery descriptions instead."
         )
 
@@ -135,23 +179,38 @@ def analyze_disaster_image(image_filename: str = "latest") -> str:
             )
 
         encoded = _encode_image(image_path)
+        vision_model = _get_available_vision_model()
+        is_classify = task.lower() == "classify"
+        prompt = CLASSIFY_PROMPT if is_classify else STRUCTURED_PROMPT
 
+        # keep_alive=0 in production releases the 3.3-4.7 GB model from RAM after
+        # each answer. Benchmarks run many sequential calls; OLLAMA_VISION_KEEP_ALIVE
+        # lets them hold the model warm without changing the production default.
+        keep_alive = os.getenv("OLLAMA_VISION_KEEP_ALIVE", "0")
+
+        # Call Ollama; default keep_alive=0 immediately releases RAM after inference
         resp = requests.post(
             OLLAMA_URL,
             json={
-                "model": "llava",
-                "prompt": STRUCTURED_PROMPT,
+                "model": vision_model,
+                "prompt": prompt,
                 "images": [encoded],
-                "stream": False
+                "stream": False,
+                "keep_alive": keep_alive,
             },
-            timeout=120
+            # Local vision on a 4 GB GPU can exceed 2 minutes per image under
+            # load; a 120 s timeout silently converted answers into errors.
+            timeout=600
         )
         resp.raise_for_status()
         raw_description = resp.json().get("response", "No response from model.")
+        if is_classify:
+            label = _parse_classification(raw_description)
+            return f"[OLLAMA VISION CLASS ({vision_model}) - {image_filename}]\nDAMAGE_CLASS: {label}"
         structured = _parse_structured_output(raw_description)
 
         return (
-            f"[OLLAMA LLAVA - {image_filename}]\n"
+            f"[OLLAMA VISION ({vision_model}) - {image_filename}]\n"
             f"{structured}"
         )
 

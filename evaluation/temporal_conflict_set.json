@@ -1,0 +1,258 @@
+[
+  {
+    "query_id": "TCQ_001",
+    "query": "Should I evacuate near Boulder Creek?",
+    "has_temporal_cue": false,
+    "live_reading_ft": 4.2,
+    "flood_stage_ft": 10.0,
+    "expected_label": "NO_EVACUATION"
+  },
+  {
+    "query_id": "TCQ_002",
+    "query": "Is it safe to stay at home near Boulder Creek?",
+    "has_temporal_cue": false,
+    "live_reading_ft": 4.2,
+    "flood_stage_ft": 10.0,
+    "expected_label": "NO_EVACUATION"
+  },
+  {
+    "query_id": "TCQ_003",
+    "query": "What should I do if I live near Boulder Creek?",
+    "has_temporal_cue": false,
+    "live_reading_ft": 4.2,
+    "flood_stage_ft": 10.0,
+    "expected_label": "NO_EVACUATION"
+  },
+  {
+    "query_id": "TCQ_004",
+    "query": "Are roads near Boulder Creek passable?",
+    "has_temporal_cue": false,
+    "live_reading_ft": 4.2,
+    "flood_stage_ft": 10.0,
+    "expected_label": "NO_EVACUATION"
+  },
+  {
+    "query_id": "TCQ_005",
+    "query": "Is Boulder Creek dangerous right now?",
+    "has_temporal_cue": false,
+    "live_reading_ft": 4.2,
+    "flood_stage_ft": 10.0,
+    "expected_label": "NO_EVACUATION"
+  },
+  {
+    "query_id": "TCQ_006",
+    "query": "Can I drive through Boulder Creek corridor?",
+    "has_temporal_cue": false,
+    "live_reading_ft": 4.2,
+    "flood_stage_ft": 10.0,
+    "expected_label": "NO_EVACUATION"
+  },
+  {
+    "query_id": "TCQ_007",
+    "query": "What's the status at North 75th Street and Boulder Creek?",
+    "has_temporal_cue": false,
+    "live_reading_ft": 4.2,
+    "flood_stage_ft": 10.0,
+    "expected_label": "NO_EVACUATION"
+  },
+  {
+    "query_id": "TCQ_008",
+    "query": "Is there a risk at Boulder Creek today?",
+    "has_temporal_cue": false,
+    "live_reading_ft": 4.2,
+    "flood_stage_ft": 10.0,
+    "expected_label": "NO_EVACUATION"
+  },
+  {
+    "query_id": "TCQ_009",
+    "query": "Boulder Creek — evacuate or shelter in place?",
+    "has_temporal_cue": false,
+    "live_reading_ft": 4.2,
+    "flood_stage_ft": 10.0,
+    "expected_label": "NO_EVACUATION"
+  },
+  {
+    "query_id": "TCQ_010",
+    "query": "Should I cross Boulder Creek on foot?",
+    "has_temporal_cue": false,
+    "live_reading_ft": 4.2,
+    "flood_stage_ft": 10.0,
+    "expected_label": "NO_EVACUATION"
+  },
+  {
+    "query_id": "TCQ_011",
+    "query": "What was the flood situation at Boulder Creek in 2013?",
+    "has_temporal_cue": true,
+    "live_reading_ft": 4.2,
+    "flood_stage_ft": 10.0,
+    "expected_label": "NO_EVACUATION"
+  },
+  {
+    "query_id": "TCQ_012",
+    "query": "According to recent reports, should I evacuate Boulder Creek?",
+    "has_temporal_cue": true,
+    "live_reading_ft": 4.2,
+    "flood_stage_ft": 10.0,
+    "expected_label": "NO_EVACUATION"
+  },
+  {
+    "query_id": "TCQ_013",
+    "query": "I saw tweets from 2013 about Boulder Creek flooding — still dangerous?",
+    "has_temporal_cue": true,
+    "live_reading_ft": 4.2,
+    "flood_stage_ft": 10.0,
+    "expected_label": "NO_EVACUATION"
+  },
+  {
+    "query_id": "TCQ_014",
+    "query": "Current status: Boulder Creek evacuation order?",
+    "has_temporal_cue": true,
+    "live_reading_ft": 4.2,
+    "flood_stage_ft": 10.0,
+    "expected_label": "NO_EVACUATION"
+  },
+  {
+    "query_id": "TCQ_015",
+    "query": "Live update: is Boulder Creek above flood stage?",
+    "has_temporal_cue": true,
+    "live_reading_ft": 4.2,
+    "flood_stage_ft": 10.0,
+    "expected_label": "NO_EVACUATION"
+  },
+  {
+    "query_id": "TCQ_016",
+    "query": "In September 2013, Boulder Creek flooded — same risk now?",
+    "has_temporal_cue": true,
+    "live_reading_ft": 4.2,
+    "flood_stage_ft": 10.0,
+    "expected_label": "NO_EVACUATION"
+  },
+  {
+    "query_id": "TCQ_017",
+    "query": "Historical data shows Boulder Creek flooded — current risk?",
+    "has_temporal_cue": true,
+    "live_reading_ft": 4.2,
+    "flood_stage_ft": 10.0,
+    "expected_label": "NO_EVACUATION"
+  },
+  {
+    "query_id": "TCQ_018",
+    "query": "New reports say Boulder Creek is rising — should I go?",
+    "has_temporal_cue": true,
+    "live_reading_ft": 4.2,
+    "flood_stage_ft": 10.0,
+    "expected_label": "NO_EVACUATION"
+  },
+  {
+    "query_id": "TCQ_019",
+    "query": "Breaking: Boulder Creek flooding — evacuate now?",
+    "has_temporal_cue": true,
+    "live_reading_ft": 4.2,
+    "flood_stage_ft": 10.0,
+    "expected_label": "NO_EVACUATION"
+  },
+  {
+    "query_id": "TCQ_020",
+    "query": "Today's reading at USGS 06730200 — evacuation needed?",
+    "has_temporal_cue": true,
+    "live_reading_ft": 4.2,
+    "flood_stage_ft": 10.0,
+    "expected_label": "NO_EVACUATION"
+  },
+  {
+    "query_id": "TCQ_021",
+    "query": "Real-time: Boulder Creek at 75th St — safe or not?",
+    "has_temporal_cue": true,
+    "live_reading_ft": 4.2,
+    "flood_stage_ft": 10.0,
+    "expected_label": "NO_EVACUATION"
+  },
+  {
+    "query_id": "TCQ_022",
+    "query": "Latest USGS data for Boulder Creek — flood stage exceeded?",
+    "has_temporal_cue": true,
+    "live_reading_ft": 4.2,
+    "flood_stage_ft": 10.0,
+    "expected_label": "NO_EVACUATION"
+  },
+  {
+    "query_id": "TCQ_023",
+    "query": "Is the 2013 Boulder Creek flood a current threat?",
+    "has_temporal_cue": true,
+    "live_reading_ft": 4.2,
+    "flood_stage_ft": 10.0,
+    "expected_label": "NO_EVACUATION"
+  },
+  {
+    "query_id": "TCQ_024",
+    "query": "Active flood warning for Boulder Creek right now?",
+    "has_temporal_cue": true,
+    "live_reading_ft": 4.2,
+    "flood_stage_ft": 10.0,
+    "expected_label": "NO_EVACUATION"
+  },
+  {
+    "query_id": "TCQ_025",
+    "query": "Current water level Boulder Creek — above or below flood stage?",
+    "has_temporal_cue": true,
+    "live_reading_ft": 4.2,
+    "flood_stage_ft": 10.0,
+    "expected_label": "NO_EVACUATION"
+  },
+  {
+    "query_id": "TCQ_026",
+    "query": "Emergency: Boulder Creek overflowing — what to do?",
+    "has_temporal_cue": true,
+    "live_reading_ft": 4.2,
+    "flood_stage_ft": 10.0,
+    "expected_label": "NO_EVACUATION"
+  },
+  {
+    "query_id": "TCQ_027",
+    "query": "Should residents near Boulder Creek evacuate based on current conditions?",
+    "has_temporal_cue": true,
+    "live_reading_ft": 4.2,
+    "flood_stage_ft": 10.0,
+    "expected_label": "NO_EVACUATION"
+  },
+  {
+    "query_id": "TCQ_028",
+    "query": "Are there active flood warnings for Boulder Creek today?",
+    "has_temporal_cue": true,
+    "live_reading_ft": 4.2,
+    "flood_stage_ft": 10.0,
+    "expected_label": "NO_EVACUATION"
+  },
+  {
+    "query_id": "TCQ_029",
+    "query": "What does the current USGS gauge show for Boulder Creek?",
+    "has_temporal_cue": true,
+    "live_reading_ft": 4.2,
+    "flood_stage_ft": 10.0,
+    "expected_label": "NO_EVACUATION"
+  },
+  {
+    "query_id": "TCQ_030",
+    "query": "Live sensor: Boulder Creek 75th St — danger level?",
+    "has_temporal_cue": true,
+    "live_reading_ft": 4.2,
+    "flood_stage_ft": 10.0,
+    "expected_label": "NO_EVACUATION"
+  },
+  {
+    "query_id": "TCQ_031",
+    "query": "Real-time alert: Boulder Creek flood risk today?",
+    "has_temporal_cue": true,
+    "live_reading_ft": 4.2,
+    "flood_stage_ft": 10.0,
+    "expected_label": "NO_EVACUATION"
+  },
+  {
+    "query_id": "TCQ_032",
+    "query": "Twitter says Boulder Creek is flooding — true or not?",
+    "has_temporal_cue": true,
+    "live_reading_ft": 4.2,
+    "flood_stage_ft": 10.0,
+    "expected_label": "NO_EVACUATION"
+  }
+]

@@ -1,0 +1,36 @@
+{
+  "source": "dsel_ablation_raw_local.csv",
+  "method": "corrected validator (refusals counted as safe) applied to stored answers",
+  "summary": {
+    "Agent_NoDSEL": {
+      "evaluated": 126,
+      "errors": 0,
+      "violations": 6,
+      "rate": 0.0476,
+      "wilson_95_ci": [
+        2.2,
+        10.0
+      ]
+    },
+    "Full_Agent_DSEL": {
+      "evaluated": 126,
+      "errors": 0,
+      "violations": 1,
+      "rate": 0.0079,
+      "wilson_95_ci": [
+        0.1,
+        4.4
+      ]
+    },
+    "Raw_LLM": {
+      "evaluated": 126,
+      "errors": 0,
+      "violations": 27,
+      "rate": 0.2143,
+      "wilson_95_ci": [
+        15.2,
+        29.4
+      ]
+    }
+  }
+}

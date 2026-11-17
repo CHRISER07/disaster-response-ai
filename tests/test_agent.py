@@ -23,7 +23,7 @@ except (OSError, ImportError):
     sys.modules["torch"] = fake_torch
 
 from dotenv import load_dotenv
-load_dotenv(override=True)
+load_dotenv(override=False)
 
 GROQ_AVAILABLE = bool(os.environ.get("GROQ_API_KEY"))
 

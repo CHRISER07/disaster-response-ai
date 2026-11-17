@@ -1,0 +1,228 @@
+{
+  "total_test_cases": 20,
+  "total_passed": 20,
+  "overall_accuracy": 1.0,
+  "overall_wilson_95_ci": [
+    83.9,
+    100.0
+  ],
+  "tier_stats": {
+    "Direct Local (d <= 5 km)": {
+      "total": 4,
+      "passed": 4
+    },
+    "Catchment Corridor (d <= 25 km)": {
+      "total": 6,
+      "passed": 6
+    },
+    "Cross-Watershed Rejection": {
+      "total": 4,
+      "passed": 4
+    },
+    "Regional Weather (25-60 km)": {
+      "total": 1,
+      "passed": 1
+    },
+    "Distant Out-of-Bounds (>60 km)": {
+      "total": 5,
+      "passed": 5
+    }
+  },
+  "cross_watershed_comparison": {
+    "naive_proximity_rejections": 1,
+    "naive_rejection_rate": 0.25,
+    "naive_wilson_95_ci": [
+      4.6,
+      69.9
+    ],
+    "proposed_watershed_rejections": 4,
+    "proposed_rejection_rate": 1.0,
+    "total_cross_watershed_cases": 4,
+    "proposed_wilson_95_ci": [
+      51.0,
+      100.0
+    ]
+  },
+  "details": [
+    {
+      "test_id": "GEO_001",
+      "tier": "Direct Local (d <= 5 km)",
+      "name": "Boulder Central Park (Broadway)",
+      "distance_km": 0.72,
+      "expected_relevance": "DIRECT_LOCAL",
+      "actual_relevance": "DIRECT_LOCAL",
+      "pass": true
+    },
+    {
+      "test_id": "GEO_002",
+      "tier": "Direct Local (d <= 5 km)",
+      "name": "Boulder Creek Path at 9th St",
+      "distance_km": 1.25,
+      "expected_relevance": "DIRECT_LOCAL",
+      "actual_relevance": "DIRECT_LOCAL",
+      "pass": true
+    },
+    {
+      "test_id": "GEO_003",
+      "tier": "Direct Local (d <= 5 km)",
+      "name": "Boulder High School / Creek",
+      "distance_km": 0.51,
+      "expected_relevance": "DIRECT_LOCAL",
+      "actual_relevance": "DIRECT_LOCAL",
+      "pass": true
+    },
+    {
+      "test_id": "GEO_004",
+      "tier": "Direct Local (d <= 5 km)",
+      "name": "East Boulder Rec Center",
+      "distance_km": 4.03,
+      "expected_relevance": "DIRECT_LOCAL",
+      "actual_relevance": "DIRECT_LOCAL",
+      "pass": true
+    },
+    {
+      "test_id": "GEO_005",
+      "tier": "Catchment Corridor (d <= 25 km)",
+      "name": "Boulder Canyon (Orodell Upstream)",
+      "distance_km": 5.13,
+      "expected_relevance": "CATCHMENT_RELEVANT",
+      "actual_relevance": "CATCHMENT_RELEVANT",
+      "pass": true
+    },
+    {
+      "test_id": "GEO_006",
+      "tier": "Catchment Corridor (d <= 25 km)",
+      "name": "North 75th St Downstream Bridge",
+      "distance_km": 8.82,
+      "expected_relevance": "CATCHMENT_RELEVANT",
+      "actual_relevance": "CATCHMENT_RELEVANT",
+      "pass": true
+    },
+    {
+      "test_id": "GEO_007",
+      "tier": "Catchment Corridor (d <= 25 km)",
+      "name": "Valmont Reservoir Creek Outflow",
+      "distance_km": 5.35,
+      "expected_relevance": "CATCHMENT_RELEVANT",
+      "actual_relevance": "CATCHMENT_RELEVANT",
+      "pass": true
+    },
+    {
+      "test_id": "GEO_008",
+      "tier": "Catchment Corridor (d <= 25 km)",
+      "name": "Erie Confluence Reach",
+      "distance_km": 13.24,
+      "expected_relevance": "CATCHMENT_RELEVANT",
+      "actual_relevance": "CATCHMENT_RELEVANT",
+      "pass": true
+    },
+    {
+      "test_id": "GEO_009",
+      "tier": "Cross-Watershed Rejection",
+      "name": "St. Vrain at Lyons (Adjacent Basin)",
+      "distance_km": 23.1,
+      "expected_relevance": "OUT_OF_BOUNDS",
+      "actual_relevance": "OUT_OF_BOUNDS",
+      "pass": true
+    },
+    {
+      "test_id": "GEO_010",
+      "tier": "Cross-Watershed Rejection",
+      "name": "Left Hand Creek at Altona (Adjacent Basin)",
+      "distance_km": 12.63,
+      "expected_relevance": "OUT_OF_BOUNDS",
+      "actual_relevance": "OUT_OF_BOUNDS",
+      "pass": true
+    },
+    {
+      "test_id": "GEO_011",
+      "tier": "Cross-Watershed Rejection",
+      "name": "South Platte at Fort Lupton (Different Basin)",
+      "distance_km": 38.84,
+      "expected_relevance": "OUT_OF_BOUNDS",
+      "actual_relevance": "OUT_OF_BOUNDS",
+      "pass": true
+    },
+    {
+      "test_id": "GEO_012",
+      "tier": "Cross-Watershed Rejection",
+      "name": "Highland Ditch St. Vrain Divert",
+      "distance_km": 22.1,
+      "expected_relevance": "OUT_OF_BOUNDS",
+      "actual_relevance": "OUT_OF_BOUNDS",
+      "pass": true
+    },
+    {
+      "test_id": "GEO_013",
+      "tier": "Regional Weather (25-60 km)",
+      "name": "Denver International Airport (KDEN)",
+      "distance_km": 53.86,
+      "expected_relevance": "REGIONAL_WEATHER",
+      "actual_relevance": "REGIONAL_WEATHER",
+      "pass": true
+    },
+    {
+      "test_id": "GEO_014",
+      "tier": "Catchment Corridor (d <= 25 km)",
+      "name": "Rocky Mountain Metro Airport (BJC)",
+      "distance_km": 17.61,
+      "expected_relevance": "CATCHMENT_RELEVANT",
+      "actual_relevance": "CATCHMENT_RELEVANT",
+      "pass": true
+    },
+    {
+      "test_id": "GEO_015",
+      "tier": "Catchment Corridor (d <= 25 km)",
+      "name": "Longmont Vance Brand Airport",
+      "distance_km": 18.91,
+      "expected_relevance": "CATCHMENT_RELEVANT",
+      "actual_relevance": "CATCHMENT_RELEVANT",
+      "pass": true
+    },
+    {
+      "test_id": "GEO_016",
+      "tier": "Distant Out-of-Bounds (>60 km)",
+      "name": "Fort Collins Weather Station",
+      "distance_km": 65.35,
+      "expected_relevance": "OUT_OF_BOUNDS",
+      "actual_relevance": "OUT_OF_BOUNDS",
+      "pass": true
+    },
+    {
+      "test_id": "GEO_017",
+      "tier": "Distant Out-of-Bounds (>60 km)",
+      "name": "Colorado Springs Downtown",
+      "distance_km": 136.88,
+      "expected_relevance": "OUT_OF_BOUNDS",
+      "actual_relevance": "OUT_OF_BOUNDS",
+      "pass": true
+    },
+    {
+      "test_id": "GEO_018",
+      "tier": "Distant Out-of-Bounds (>60 km)",
+      "name": "Pueblo Reservoir Gauge",
+      "distance_km": 199.96,
+      "expected_relevance": "OUT_OF_BOUNDS",
+      "actual_relevance": "OUT_OF_BOUNDS",
+      "pass": true
+    },
+    {
+      "test_id": "GEO_019",
+      "tier": "Distant Out-of-Bounds (>60 km)",
+      "name": "Grand Junction Regional",
+      "distance_km": 300.48,
+      "expected_relevance": "OUT_OF_BOUNDS",
+      "actual_relevance": "OUT_OF_BOUNDS",
+      "pass": true
+    },
+    {
+      "test_id": "GEO_020",
+      "tier": "Distant Out-of-Bounds (>60 km)",
+      "name": "Cheyenne Wyoming Station",
+      "distance_km": 130.75,
+      "expected_relevance": "OUT_OF_BOUNDS",
+      "actual_relevance": "OUT_OF_BOUNDS",
+      "pass": true
+    }
+  ]
+}

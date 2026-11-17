@@ -1,0 +1,142 @@
+config,run_id,id,scenario,category,status,kw_precision,kw_recall,kw_f1,svc_regex,p_at_k,ndcg_at_7,rr,active_latency_s,total_latency_s,prompt_tokens,completion_tokens,tools_called,model_used,retries,full_answer
+LLM_Only,42,3,Flood,situational_awareness,OK,0.2,0.4286,0.2727,0,,,,46.165,46.165,0,0,,llama3.1:8b,0,"According to the City of Boulder's Emergency Management website and social media, there are reports of flooded roads and stranded vehicles in Boulder due to the recent heavy rainfall. However, I do not have real-time information on the current status of roads and traffic.
+
+For the most up-to-date information, I recommend checking the following sources:
+
+- City of Boulder's Emergency Management website: [www.bouldercolorado.gov/emergency](http://www.bouldercolorado.gov/emergency)
+- Boulder Emergency Management's Twitter account: @BoulderEM
+- Boulder's 511 traffic information website: [www.511colorado.com](http://www.511colorado.com)
+
+Please note that these sources may not reflect the current situation, and it's always best to check with local authorities or a trusted news source for the most accurate and up-to-date information.
+"
+LLM_Only,42,21,Flood,situational_awareness,OK,0.3333,0.7143,0.4545,0,,,,29.836,29.836,0,0,,llama3.1:8b,0,"I'm not aware of any specific information about current road closures and evacuations in Alberta due to floods. However, I can suggest some official sources where you can find verified information:
+
+- The Government of Alberta's website ([www.alberta.ca](http://www.alberta.ca)) may have information on road closures and evacuation orders.
+- The Alberta Emergency Management Agency ([www.alberta.ca/emergency-management](http://www.alberta.ca/emergency-management)) may also have updates on the situation.
+- The City of Calgary's website ([www.calgary.ca](http://www.calgary.ca)) and the City of Edmonton's website ([www.edmonton.ca](http://www.edmonton.ca)) may have information on road closures and evacuation orders specific to their cities.
+
+Please note that social media reports may not always be accurate or up-to-date, so it's always best to verify information through official sources.
+"
+BM25_Baseline,42,3,Flood,situational_awareness,OK,0.1765,0.4286,0.25,0,,,,39.5,39.5,0,0,bm25_retrieve,llama3.1:8b,0,"I couldn't find any information about current reports of stranded vehicles or flooded roads in Boulder. However, I can suggest some possible sources where you may be able to find the latest information:
+
+1. Local news websites and social media: Check websites and social media accounts of local news outlets, such as the Boulder Daily Camera or the Boulder Police Department's Facebook page, for updates on road conditions and weather-related incidents.
+2. City of Boulder website: Visit the City of Boulder's website for information on road closures, weather alerts, and emergency updates.
+3. Boulder Emergency Management: Contact the Boulder Emergency Management agency for information on emergency situations, including stranded vehicles and flooded roads.
+4. Weather websites: Check websites like the National Weather Service (NWS) or AccuWeather for updates on weather conditions and forecasts.
+
+Please note that my knowledge cutoff is [date], and I may not have access to real-time information. It's always best to check with local authorities or news sources for the most up-to-date information.
+"
+BM25_Baseline,42,21,Flood,situational_awareness,OK,0.2667,0.5714,0.3636,0,,,,28.849,28.849,0,0,bm25_retrieve,llama3.1:8b,0,"I'm not able to provide real-time information or specific details about current events. However, I can suggest some general information about how social media reports on road closures and evacuations during floods.
+
+Social media platforms are often used to disseminate information about road closures and evacuation orders during floods. Reports may include:
+
+- Updates on which roads are closed and why
+- Information about evacuation orders, including which areas are affected and where people can go for shelter
+- Photos and videos of flooded areas and road conditions
+- Tips and advice from authorities and experts on how to stay safe during the floods
+- Real-time updates on the situation, including the extent of the flooding and any changes to the situation.
+
+If you're looking for specific information about the Alberta floods, I recommend checking official social media accounts of local authorities, emergency services, and news outlets for the most up-to-date information.
+"
+Standard_StaticRAG,42,3,Flood,situational_awareness,OK,0.5714,0.5714,0.5714,0,,,,30.473,30.473,0,0,"kb_search,text_search",llama3.1:8b,0,"Yes, there are reports of stranded vehicles and flooded roads in Boulder. The first tweet mentions a rock slide on Lee Road that has closed the road. The fourth tweet shows a photo of large blocks of cement ripped off roads in Boulder, indicating significant damage to the infrastructure.
+"
+Standard_StaticRAG,42,21,Flood,situational_awareness,OK,0.3125,0.7143,0.4348,0,,,,25.656,25.657,0,0,"kb_search,text_search",llama3.1:8b,0,"According to the social media reports, the following information is being described about road closures and evacuation during the Alberta floods:
+
+- Power has been shut off in evacuated communities for safety reasons.
+- A list of current road closures is available at a specified link.
+- The downtown core of Calgary is experiencing road closures, including Memorial Drive.
+- The CBC Calgary building is in an evacuation zone, and staff are leaving the area.
+- Roads in the downtown core are being closed, including in Calgary.
+
+Overall, the reports indicate that the floods are causing significant disruptions to infrastructure and utilities, including power outages and road closures, and that evacuation efforts are underway in affected areas.
+"
+Full_Agent,42,3,Flood,situational_awareness,OK,0.12,0.4286,0.1875,0,,,,52.142,52.413,0,0,search_social_reports,llama3.1:8b,0,"Status: WARNING
+Evidence:
+  - [HISTORICAL - CrisisLex, 2013, Confidence: MEDIUM]: Reports of stranded vehicles and flooded roads in Boulder, CO during the 2013 Colorado floods.
+Recommendation:
+  1. Be cautious of potential road hazards and stranded vehicles in the area. Monitor local news and official reports for updates on road conditions.
+
+Note: The reports are from the 2013 Colorado floods, but they may still be relevant for understanding the potential risks and hazards in the area. However, it is essential to verify the current situation using live data and official reports.
+
+Notice on Evidence Uncertainty: Available evidence is insufficient to verify field conditions. Unconfirmed eyewitness reports suggest rising water, but official sensor confirmation is pending. Proceed with caution and contact emergency dispatch.
+"
+Full_Agent,42,21,Flood,situational_awareness,OK,0.1667,0.5714,0.2581,0,,,,50.069,50.069,0,0,search_social_reports,llama3.1:8b,0,"Status: WARNING
+Evidence:
+  - [HISTORICAL - CrisisLex, 2013, Confidence: MEDIUM]: 75,000 individuals evacuated due to flooding in Alberta.
+  - [HISTORICAL - CrisisLex, 2013, Confidence: MEDIUM]: Road closures and infrastructure damage reported, including Memorial Dr between 5A St and Centre St NW.
+Recommendation:
+  1. Monitor official updates for current road closures and evacuation orders.
+
+Notice on Evidence Uncertainty: Available evidence is insufficient to verify field conditions. Unconfirmed eyewitness reports suggest rising water, but official sensor confirmation is pending. Proceed with caution and contact emergency dispatch.
+"
+Full_Agent_NoTGI,42,3,Flood,situational_awareness,OK,0.1364,0.4286,0.2069,0,,,,48.772,48.772,0,0,search_social_reports,llama3.1:8b,0,"Status: WARNING
+Evidence:
+  - [Source: CrisisLex_T26, timestamp: 2013-09-16 14:30:00, Confidence: MEDIUM]: Reports of stranded vehicles and flooded roads in Boulder, CO.
+Recommendation:
+  1. Avoid travel on Lee Road due to rock slide and road closure.
+  2. Be cautious of washed-out roads and infrastructure damage.
+Alert Generated: MEDIUM
+
+Notice on Evidence Uncertainty: Available evidence is insufficient to verify field conditions. Unconfirmed eyewitness reports suggest rising water, but official sensor confirmation is pending. Proceed with caution and contact emergency dispatch.
+"
+Full_Agent_NoTGI,42,21,Flood,situational_awareness,OK,0.2174,0.7143,0.3333,0,,,,56.512,56.512,0,0,search_social_reports,llama3.1:8b,0,"Status: WARNING
+Evidence:
+  - [Source: CrisisLex_T26, timestamp: 2013, Confidence: MEDIUM]: 75,000 individuals evacuated due to flooding in Alberta.
+  - [Source: CrisisLex_T26, timestamp: 2013, Confidence: MEDIUM]: Two eastbound lanes on Memorial Dr between 5A St and Centre St NW closed due to flooding.
+  - [Source: CrisisLex_T26, timestamp: 2013, Confidence: MEDIUM]: Calgary in a local state of emergency with evacuations and road closures.
+  - [Source: CrisisLex_T26, timestamp: 2013, Confidence: MEDIUM]: Approximately 100,000 people evacuated in southern Alberta.
+Recommendation:
+  1. Monitor official updates for further information on road closures and evacuation orders.
+Alert Generated: MEDIUM
+
+Notice on Evidence Uncertainty: Available evidence is insufficient to verify field conditions. Unconfirmed eyewitness reports suggest rising water, but official sensor confirmation is pending. Proceed with caution and contact emergency dispatch.
+"
+Full_Agent_NoDSEL,42,3,Flood,situational_awareness,OK,0.12,0.4286,0.1875,0,,,,48.535,48.535,0,0,search_social_reports,llama3.1:8b,0,"Status: WARNING
+Evidence:
+  - [HISTORICAL - CrisisLex, 2013, Confidence: MEDIUM]: Reports of stranded vehicles and flooded roads in Boulder, CO during the 2013 Colorado floods.
+Recommendation:
+  1. Be cautious of potential road hazards and stranded vehicles in the area. Monitor local news and official reports for updates on road conditions.
+
+Note: The reports are from the 2013 Colorado floods, but they may still be relevant for understanding the potential risks and hazards in the area. However, it is essential to verify the current situation using live data and official reports.
+
+Notice on Evidence Uncertainty: Available evidence is insufficient to verify field conditions. Unconfirmed eyewitness reports suggest rising water, but official sensor confirmation is pending. Proceed with caution and contact emergency dispatch.
+"
+Full_Agent_NoDSEL,42,21,Flood,situational_awareness,OK,0.1667,0.5714,0.2581,0,,,,44.234,44.234,0,0,search_social_reports,llama3.1:8b,0,"Status: WARNING
+Evidence:
+  - [HISTORICAL - CrisisLex, 2013, Confidence: MEDIUM]: 75,000 individuals evacuated due to flooding in Alberta.
+  - [HISTORICAL - CrisisLex, 2013, Confidence: MEDIUM]: Road closures and infrastructure damage reported, including Memorial Dr between 5A St and Centre St NW.
+Recommendation:
+  1. Monitor official updates for current road closures and evacuation orders.
+
+Notice on Evidence Uncertainty: Available evidence is insufficient to verify field conditions. Unconfirmed eyewitness reports suggest rising water, but official sensor confirmation is pending. Proceed with caution and contact emergency dispatch.
+"
+Full_Agent_NoTelem,42,3,Flood,situational_awareness,OK,0.12,0.4286,0.1875,0,,,,67.855,67.855,0,0,search_social_reports,llama3.1:8b,0,"Status: WARNING
+Evidence:
+  - [HISTORICAL - CrisisLex, 2013, Confidence: MEDIUM]: Reports of stranded vehicles and flooded roads in Boulder, CO during the 2013 Colorado floods.
+Recommendation:
+  1. Be cautious of potential road hazards and stranded vehicles in the area. Monitor local news and official reports for updates on road conditions.
+
+Note: The reports are from the 2013 Colorado floods, but they may still be relevant for understanding the potential risks and hazards in the area. However, it is essential to verify the current situation using live data and official reports.
+
+Notice on Evidence Uncertainty: Available evidence is insufficient to verify field conditions. Unconfirmed eyewitness reports suggest rising water, but official sensor confirmation is pending. Proceed with caution and contact emergency dispatch.
+"
+LLM_Only,42,22,Flood,weather,OK,0.2353,0.5714,0.3333,0,,,,90.578,90.578,0,0,,llama3.1:8b,0,"According to official reports and studies, the 2013 Alberta flood disaster was exacerbated by a combination of heavy rainfall and other factors. The intense rainfall that occurred on June 20-21, 2013, was a significant contributor to the disaster.
+
+The Canadian Meteorological Centre reported that a low-pressure system brought heavy precipitation to the region, with some areas receiving over 100 mm of rain in a 24-hour period. This intense rainfall caused rapid runoff and flooding in the Bow and Elbow rivers, which were already swollen from earlier rainfall events.
+
+The Alberta Emergency Management Agency reported that the rainfall intensity was a key factor in the severity of the flooding, as it caused the rivers to rise rapidly and overwhelmed the capacity of the existing flood control infrastructure.
+
+It's worth noting that the 2013 Alberta flood disaster was a complex event with multiple contributing factors, including heavy rainfall, rapid snowmelt, and infrastructure limitations. However, the intense rainfall was a significant contributor to the disaster.
+"
+LLM_Only,42,23,Flood,infrastructure,OK,0.25,0.6667,0.3636,0,,,,71.755,71.755,0,0,,llama3.1:8b,0,"According to official reports and verified sources, the 2013 Alberta flood caused significant infrastructure damage, including:
+
+- Over 1,000 homes were destroyed or severely damaged.
+- More than 12,000 homes were affected by flooding.
+- The Trans-Canada Highway was closed in several sections due to flooding.
+- The Stoney Trail ring road in Calgary was also closed due to flooding.
+- The Calgary International Airport was closed for several days due to flooding.
+- The city's water treatment plant was affected, but not severely damaged.
+- The Calgary Zoo was also affected, with some exhibits and buildings damaged.
+
+It's worth noting that the City of Calgary reported that the flood caused an estimated $2 billion in damages to infrastructure and property.
+"

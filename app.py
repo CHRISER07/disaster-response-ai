@@ -23,7 +23,7 @@ import os
 from datetime import datetime, timezone
 from dotenv import load_dotenv
 
-load_dotenv(override=True)
+load_dotenv(override=False)
 
 st.set_page_config(
     page_title="Disaster Command Center",
@@ -54,7 +54,11 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # -- Constants -----------------------------------------------------------------
-ALERTS_FILE = os.path.join(os.path.dirname(__file__), "data", "alerts.jsonl")
+from core.audit_logger import ALERT_LOG_FILE as ALERTS_FILE, LEGACY_ALERTS_FILE as LEGACY_ALERTS_FILE
+
+# Prefer the canonical log; fall back to the legacy file for old alerts.
+if not os.path.exists(ALERTS_FILE) and os.path.exists(LEGACY_ALERTS_FILE):
+    ALERTS_FILE = LEGACY_ALERTS_FILE
 DANGER_FT   = 10.0
 
 LOCATION_PRESETS = {

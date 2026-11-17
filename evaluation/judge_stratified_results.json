@@ -1,0 +1,292 @@
+{
+  "generated": "2026-11-17T12:53:44.940586+00:00",
+  "source": "judge_scores_v2.csv",
+  "is_final_v3": false,
+  "judge_independence": {
+    "generator_pool": [
+      "openai/gpt-oss-120b",
+      "openai/gpt-oss-20b",
+      "qwen/qwen3.8-27b"
+    ],
+    "judge_b_model": "openai/gpt-oss-120b (Groq)",
+    "independent_of_generator": true,
+    "note": "Judge B is cross-family; Judge A is same-family. Both are outside the agent execution loop."
+  },
+  "kappa_w": {
+    "ALL|dr_fact": {
+      "kappa_w": 0.5693,
+      "n": 1300,
+      "exact_agreement": 0.6623
+    },
+    "ALL|saa": {
+      "kappa_w": 0.512,
+      "n": 1300,
+      "exact_agreement": 0.73
+    },
+    "ALL|temporal": {
+      "kappa_w": 0.3042,
+      "n": 1300,
+      "exact_agreement": 0.7038
+    },
+    "LIVE_TELEMETRY_CONFLICT|dr_fact": {
+      "kappa_w": 0.4529,
+      "n": 264,
+      "exact_agreement": 0.6591
+    },
+    "LIVE_TELEMETRY_CONFLICT|saa": {
+      "kappa_w": 0.3434,
+      "n": 264,
+      "exact_agreement": 0.678
+    },
+    "LIVE_TELEMETRY_CONFLICT|temporal": {
+      "kappa_w": 0.3777,
+      "n": 264,
+      "exact_agreement": 0.75
+    },
+    "STATIC_DOCTRINE|dr_fact": {
+      "kappa_w": 0.5802,
+      "n": 1036,
+      "exact_agreement": 0.6631
+    },
+    "STATIC_DOCTRINE|saa": {
+      "kappa_w": 0.5426,
+      "n": 1036,
+      "exact_agreement": 0.7432
+    },
+    "STATIC_DOCTRINE|temporal": {
+      "kappa_w": 0.2874,
+      "n": 1036,
+      "exact_agreement": 0.6921
+    }
+  },
+  "stratified_scores": {
+    "LIVE_TELEMETRY_CONFLICT": {
+      "BM25_Baseline": {
+        "dr_fact": {
+          "n": 40,
+          "mean": 0.7812
+        },
+        "saa": {
+          "n": 40,
+          "mean": 0.5375
+        },
+        "temporal": {
+          "n": 40,
+          "mean": 0.875
+        }
+      },
+      "Full_Agent": {
+        "dr_fact": {
+          "n": 40,
+          "mean": 0.7625
+        },
+        "saa": {
+          "n": 40,
+          "mean": 0.6438
+        },
+        "temporal": {
+          "n": 40,
+          "mean": 0.8562
+        }
+      },
+      "Full_Agent_NoDSEL": {
+        "dr_fact": {
+          "n": 40,
+          "mean": 0.725
+        },
+        "saa": {
+          "n": 40,
+          "mean": 0.5813
+        },
+        "temporal": {
+          "n": 40,
+          "mean": 0.7937
+        }
+      },
+      "Full_Agent_NoTGI": {
+        "dr_fact": {
+          "n": 40,
+          "mean": 0.725
+        },
+        "saa": {
+          "n": 40,
+          "mean": 0.6062
+        },
+        "temporal": {
+          "n": 40,
+          "mean": 0.85
+        }
+      },
+      "Full_Agent_NoTelem": {
+        "dr_fact": {
+          "n": 12,
+          "mean": 0.8125
+        },
+        "saa": {
+          "n": 12,
+          "mean": 0.6667
+        },
+        "temporal": {
+          "n": 12,
+          "mean": 0.9583
+        }
+      },
+      "LLM_Only": {
+        "dr_fact": {
+          "n": 40,
+          "mean": 0.8375
+        },
+        "saa": {
+          "n": 40,
+          "mean": 0.625
+        },
+        "temporal": {
+          "n": 40,
+          "mean": 0.9
+        }
+      },
+      "Standard_StaticRAG": {
+        "dr_fact": {
+          "n": 40,
+          "mean": 0.75
+        },
+        "saa": {
+          "n": 40,
+          "mean": 0.475
+        },
+        "temporal": {
+          "n": 40,
+          "mean": 0.85
+        }
+      },
+      "Text_Only_StaticRAG": {
+        "dr_fact": {
+          "n": 12,
+          "mean": 0.6458
+        },
+        "saa": {
+          "n": 12,
+          "mean": 0.5
+        },
+        "temporal": {
+          "n": 12,
+          "mean": 0.9375
+        }
+      }
+    },
+    "STATIC_DOCTRINE": {
+      "BM25_Baseline": {
+        "dr_fact": {
+          "n": 160,
+          "mean": 0.5953
+        },
+        "saa": {
+          "n": 160,
+          "mean": 0.5078
+        },
+        "temporal": {
+          "n": 160,
+          "mean": 0.8125
+        }
+      },
+      "Full_Agent": {
+        "dr_fact": {
+          "n": 160,
+          "mean": 0.6531
+        },
+        "saa": {
+          "n": 160,
+          "mean": 0.5953
+        },
+        "temporal": {
+          "n": 160,
+          "mean": 0.8828
+        }
+      },
+      "Full_Agent_NoDSEL": {
+        "dr_fact": {
+          "n": 160,
+          "mean": 0.6125
+        },
+        "saa": {
+          "n": 160,
+          "mean": 0.5719
+        },
+        "temporal": {
+          "n": 160,
+          "mean": 0.85
+        }
+      },
+      "Full_Agent_NoTGI": {
+        "dr_fact": {
+          "n": 160,
+          "mean": 0.5859
+        },
+        "saa": {
+          "n": 160,
+          "mean": 0.5312
+        },
+        "temporal": {
+          "n": 160,
+          "mean": 0.8562
+        }
+      },
+      "Full_Agent_NoTelem": {
+        "dr_fact": {
+          "n": 38,
+          "mean": 0.625
+        },
+        "saa": {
+          "n": 38,
+          "mean": 0.5461
+        },
+        "temporal": {
+          "n": 38,
+          "mean": 0.875
+        }
+      },
+      "LLM_Only": {
+        "dr_fact": {
+          "n": 160,
+          "mean": 0.7625
+        },
+        "saa": {
+          "n": 160,
+          "mean": 0.5891
+        },
+        "temporal": {
+          "n": 160,
+          "mean": 0.8984
+        }
+      },
+      "Standard_StaticRAG": {
+        "dr_fact": {
+          "n": 160,
+          "mean": 0.4875
+        },
+        "saa": {
+          "n": 160,
+          "mean": 0.4172
+        },
+        "temporal": {
+          "n": 160,
+          "mean": 0.7766
+        }
+      },
+      "Text_Only_StaticRAG": {
+        "dr_fact": {
+          "n": 38,
+          "mean": 0.4211
+        },
+        "saa": {
+          "n": 38,
+          "mean": 0.4934
+        },
+        "temporal": {
+          "n": 38,
+          "mean": 0.7039
+        }
+      }
+    }
+  }
+}

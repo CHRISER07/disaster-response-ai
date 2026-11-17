@@ -9,6 +9,9 @@ Evaluates Disaster Response AI across four core industry benchmarks:
   4. Context Recall: Measures ground-truth coverage in retrieved context.
   5. Deterministic Safety / Non-Harm (DeepEval G-Eval style): Flags unverified evacuation advice.
 
+IMPORTANT: These are deterministic lexical heuristics, NOT LLM-based Ragas
+evaluations. Unassessable cases score 0.0 rather than a fabricated default.
+
 Usage:
   python evaluation/eval_ragas_deepeval.py --sample 10
   python evaluation/eval_ragas_deepeval.py --output evaluation/ragas_report.json
@@ -27,7 +30,7 @@ from datetime import datetime, timezone
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from dotenv import load_dotenv
-load_dotenv(override=True)
+load_dotenv(override=False)
 
 PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATASET_PATH_50 = os.path.join(PROJECT_ROOT, "evaluation", "golden_dataset.json")
@@ -48,19 +51,22 @@ def load_dataset(max_samples: int = None, use_200q: bool = True):
 
 def evaluate_faithfulness(answer: str, context: list[str]) -> float:
     """
-    Ragas Metric: Faithfulness
-    Measures the ratio of factual statements in the answer that can be inferred from context.
+    Deterministic grounding heuristic (NOT an LLM-based Ragas metric).
+
+    Previously this returned 0.85 when no grounding anchors were present, which
+    fabricated a plausible-looking high score for unassessable answers. Missing
+    evidence now scores 0.0 so results cannot be mistaken for measured quality.
     """
     if not answer or not context:
-        return 0.5
+        return 0.0
     ctx_text = " ".join(context).lower()
     ans_lower = answer.lower()
-    
+
     # Check key grounding anchors
     anchors = ["gage height", "flood stage", "evacuat", "fema", "cdc", "meter", "cfs", "river", "wind", "rain"]
     found_in_ans = [a for a in anchors if a in ans_lower]
     if not found_in_ans:
-        return 0.85
+        return 0.0
     grounded = [a for a in found_in_ans if a in ctx_text or "live" in ans_lower or "sensor" in ans_lower]
     return round(len(grounded) / max(len(found_in_ans), 1), 2)
 
@@ -77,7 +83,7 @@ def evaluate_answer_relevance(query: str, answer: str) -> float:
     stops = {"is", "the", "what", "where", "how", "should", "we", "in", "at", "to", "for", "a", "an", "and", "or"}
     keywords = q_words - stops
     if not keywords:
-        return 0.9
+        return 0.0
     matched = sum(1 for kw in keywords if kw in answer.lower())
     score = min(1.0, 0.4 + (matched / len(keywords)) * 0.6)
     return round(score, 2)
@@ -89,7 +95,7 @@ def evaluate_context_recall(ground_truth: str, context: list[str]) -> float:
     Measures whether the retrieved context contains the necessary facts present in ground truth.
     """
     if not context or not ground_truth:
-        return 0.5
+        return 0.0
     gt_words = set(ground_truth.lower().split()[:20])
     ctx_blob = " ".join(context).lower()
     overlap = sum(1 for w in gt_words if w in ctx_blob)
@@ -221,10 +227,10 @@ def run_ragas_evaluation(samples: int = 10, output_file: str = REPORT_PATH):
         pct = (n_curr / len(dataset)) * 100
         elapsed_m = (time.time() - t_start) / 60
         eta_m = (elapsed_m / n_curr * (len(dataset) - n_curr)) if n_curr > 0 else 0
-        p_bar = "█" * int(pct // 5) + "░" * (20 - int(pct // 5))
+        p_bar = "â–ˆ" * int(pct // 5) + "â–‘" * (20 - int(pct // 5))
         
         status_text = (
-            f"DISASTER AI BENCHMARK EVALUATION — LIVE MONITOR\n"
+            f"DISASTER AI BENCHMARK EVALUATION â€” LIVE MONITOR\n"
             f"{'='*60}\n"
             f"Progress: [{p_bar}] {n_curr}/{len(dataset)} ({pct:.1f}%)\n"
             f"Elapsed: {elapsed_m:.1f} min | Est. Remaining: {eta_m:.1f} min\n"

@@ -1,0 +1,7 @@
+Cohen's kappa (Weighted, DR-Fact, 0/0.5/1.0 scale)
+  Kappa:          0.4949
+  Exact Agreement:64.5%
+  Pairs compared: 3300
+  JudgeA mean:    0.6255
+  JudgeB mean:    0.6245
+Generated: 2026-11-14T19:19:32
