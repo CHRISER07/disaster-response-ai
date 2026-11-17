@@ -107,6 +107,10 @@ def get_ollama_llm(
         model=target_model,
         temperature=temperature,
         seed=seed,               # first-class ChatOpenAI param → sent as seed
+        # Without an explicit timeout, a local model that is unloaded mid-call
+        # makes the request wait forever (detached eval workers hung at CPU=0).
+        timeout=180,
+        max_retries=0,
     )
 
 

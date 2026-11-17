@@ -2020,3 +2020,711 @@ Additionally, the EPA also provides data through the:
 
 Please note that these systems are subject to change, and it's always best to verify the information through the official EPA website.
 "
+BM25_Baseline,42,22,Flood,weather,OK,0.125,0.2857,0.1739,0,,,,52.367,52.367,0,0,bm25_retrieve,llama3.1:8b,0,"The 2013 Alberta flood disaster was a significant event that occurred in June 2013, causing widespread damage and displacement in the Canadian province of Alberta. One of the key factors that contributed to the severity of the flood was the intense rainfall that occurred in the region.
+
+According to reports and studies, the rainfall intensity was a major contributor to the flood disaster. On June 20, 2013, a low-pressure system brought heavy rainfall to the Bow River basin, causing the water levels to rise rapidly. The rainfall intensity was extremely high, with some areas receiving over 100 mm of rain in a matter of hours. This intense rainfall overwhelmed the river's capacity, leading to a rapid rise in water levels and subsequent flooding.
+
+In particular, the rainfall intensity was characterized by:
+
+- Extremely high rainfall rates: Some areas received rainfall rates of up to 20 mm/h, which is significantly higher than the average rainfall rate in the region.
+- Short duration: The intense rainfall lasted for only a few hours, but it was enough to cause the river to overflow its banks.
+- Unprecedented magnitude: The rainfall intensity was unprecedented in the region, with some areas receiving more rainfall in a few hours than they typically receive in an entire month.
+
+The combination of intense rainfall and poor drainage infrastructure in the region exacerbated the flood disaster, leading to widespread damage and displacement. The 2013 Alberta flood disaster was one of the costliest natural disasters in Canadian history, with estimated damages of over $6 billion.
+"
+BM25_Baseline,42,23,Flood,infrastructure,OK,0.3125,0.8333,0.4545,0,,,,23.276,23.276,0,0,bm25_retrieve,llama3.1:8b,0,"The 2013 Alberta flood caused significant infrastructure damage, including:
+
+- Over 1,000 homes were destroyed or severely damaged, with many more affected by flooding.
+- The Trans-Canada Highway was closed for several days due to flooding, causing disruptions to transportation and commerce.
+- The Stoney Trail ring road in Calgary was also closed due to flooding.
+- The city's stormwater system was overwhelmed, causing sewage to back up into homes and businesses.
+- The flood damaged or destroyed numerous bridges, including the iconic High Level Bridge in Calgary.
+- The flood also affected several major highways, including Highway 2 and Highway 22.
+- The city's water treatment plant was affected, causing concerns about water quality.
+- The flood damaged or destroyed numerous buildings, including homes, businesses, and government facilities.
+
+Overall, the 2013 Alberta flood caused an estimated $6 billion in damages, making it one of the costliest natural disasters in Canadian history.
+"
+BM25_Baseline,42,24,Flood,evacuation,OK,0.3636,0.5714,0.4444,0,,,,21.653,21.653,0,0,bm25_retrieve,llama3.1:8b,0,"According to reports, during the 2013 Alberta floods, approximately 100,000 people were evacuated. The primary evacuation zones were:
+
+1. Calgary: The city's downtown area, as well as several neighborhoods, were evacuated due to the rising Bow River.
+2. High River: The entire town of High River was evacuated due to the flooding of the Highwood River.
+3. Canmore: The town of Canmore was also evacuated due to the flooding of the Bow River.
+4. Other areas: Several other communities and neighborhoods in the surrounding areas, including Bragg Creek, Turner Valley, and Longview, were also evacuated.
+
+It's worth noting that these numbers and areas may not be exhaustive, as the flooding affected a wide area and multiple communities. However, these are some of the primary areas that were evacuated during the 2013 Alberta floods.
+"
+BM25_Baseline,42,25,Flood,protocol,OK,0.0833,0.4286,0.1395,0,,,,43.067,43.067,0,0,bm25_retrieve,llama3.1:8b,0,"The 2013 Alberta flood was a significant event that triggered a comprehensive emergency response. Some of the emergency response protocols that were activated include:
+
+1. Evacuation orders: Authorities issued evacuation orders for thousands of residents in affected areas, with many being relocated to emergency shelters.
+2. Emergency declarations: The Alberta government declared a state of emergency, which allowed for the mobilization of resources and personnel to respond to the disaster.
+3. Flood warnings and alerts: The Alberta Emergency Management Agency (AEMA) issued flood warnings and alerts to inform the public of the situation and provide guidance on evacuation procedures.
+4. Search and rescue operations: Emergency responders, including police, fire, and ambulance services, conducted search and rescue operations to locate and assist those stranded or trapped.
+5. Water supply management: Authorities took steps to manage the water supply, including shutting off water treatment plants and distributing bottled water to affected areas.
+6. Power outages: Utility companies worked to restore power to affected areas, with some residents experiencing extended power outages.
+7. Flood protection measures: Emergency responders implemented flood protection measures, such as sandbagging and dike construction, to protect infrastructure and property.
+8. Communication networks: Emergency management officials established communication networks to coordinate response efforts and keep the public informed.
+9. Disaster assistance: The Canadian government activated its disaster assistance program, providing financial support to affected individuals and communities.
+10. Long-term recovery planning: Authorities began planning for the long-term recovery of affected areas, including infrastructure repairs and rebuilding efforts.
+
+These emergency response protocols were activated to mitigate the impact of the flood and ensure public safety.
+"
+BM25_Baseline,42,26,Flood,situational_awareness,OK,0.2857,0.5714,0.381,0,,,,11.375,11.375,0,0,bm25_retrieve,llama3.1:8b,0,"In 2013, severe flooding occurred in Queensland, Australia. Reports on social media mentioned widespread flooding in the state, particularly in the city of Brisbane and surrounding areas. The flooding was caused by heavy rainfall and was described as one of the worst floods in the region's history. Many residents were forced to evacuate their homes, and there were reports of damage to properties and infrastructure. The flooding had a significant impact on the community, with many people affected by the disaster.
+"
+BM25_Baseline,42,27,Flood,medical,OK,0.3125,0.7143,0.4348,0,,,,46.457,46.457,0,0,bm25_retrieve,llama3.1:8b,0,"During the 2013 Queensland flooding, several health risks were highlighted, including:
+
+1. Waterborne diseases: The flooding led to concerns about the safety of drinking water, with the risk of waterborne diseases such as gastroenteritis and typhoid fever.
+2. Vector-borne diseases: The flooding created ideal breeding conditions for mosquitoes and other vectors, increasing the risk of diseases such as dengue fever and Ross River virus.
+3. Mental health impacts: The trauma and stress caused by the flooding had a significant impact on mental health, with reports of anxiety, depression, and post-traumatic stress disorder (PTSD).
+4. Injuries and accidents: The flooding led to a range of injuries and accidents, including slips, trips, and falls, as well as electrocution and drowning risks.
+5. Food safety: The flooding posed a risk to food safety, with concerns about the safety of food stored in flooded areas and the potential for contamination.
+6. Chemical and environmental hazards: The flooding released chemicals and pollutants from flooded areas, posing a risk to human health and the environment.
+
+These health risks were highlighted by various government agencies, health organizations, and emergency services during the 2013 Queensland flooding.
+"
+BM25_Baseline,42,28,Flood,multi_source,OK,0.2143,0.8571,0.3429,0,,,,47.823,47.823,0,0,bm25_retrieve,llama3.1:8b,0,"To effectively assess flood severity in Queensland, responders should cross-reference satellite imagery, river sensor data, and social media in the following manner:
+
+1. Satellite Imagery: Utilize high-resolution satellite images to identify the extent of flooding, assess damage, and monitor water levels. Platforms like Planet Labs, DigitalGlobe, or the European Space Agency's (ESA) Sentinel-2 can provide valuable insights.
+
+2. River Sensor Data: Leverage real-time data from river sensors to monitor water levels, flow rates, and other critical parameters. This data is crucial for predicting flood peaks, identifying areas of high risk, and informing evacuation decisions.
+
+3. Social Media: Engage with social media platforms to gather information on the ground. This can include reports of flooding, damage, and displacement. Social media can also be used to disseminate critical information to the public, such as evacuation orders, shelter locations, and safety tips.
+
+Cross-Referencing:
+
+- Combine Satellite Imagery and River Sensor Data: Use satellite imagery to validate or correct river sensor data. For instance, if satellite imagery shows a wider extent of flooding than indicated by river sensor data, responders can adjust their response accordingly.
+
+- Integrate Social Media Reports: Use social media reports to identify areas of high concern or to gather information on specific incidents. This can help responders prioritize their efforts and allocate resources more effectively.
+
+- Use Geospatial Analysis Tools: Employ geospatial analysis tools to integrate and analyze data from these sources. This can include Geographic Information Systems (GIS) software, which can help responders visualize the extent of flooding, identify affected areas, and plan response efforts.
+
+- Validate and Refine: Continuously validate and refine the assessment based on new data and reports. This ensures that the response efforts remain adaptive and effective.
+
+By following this approach, responders can create a comprehensive picture of flood severity in Queensland, enabling them to make informed decisions and allocate resources effectively to mitigate the impact of floods.
+"
+BM25_Baseline,42,29,Flood,situational_awareness,OK,0.25,0.1429,0.1818,0,,,,6.026,6.026,0,0,bm25_retrieve,llama3.1:8b,0,"I don't have information on the specific disaster impacts reported from the 2013 Sardinia flash flood event. If you're looking for detailed information on this event, I recommend consulting official reports or news sources from that time.
+"
+BM25_Baseline,42,30,Flood,infrastructure,OK,0.2857,0.5714,0.381,0,,,,23.986,23.986,0,0,bm25_retrieve,llama3.1:8b,0,"The 2013 Sardinia flash flood occurred on October 8, 2013, in Sardinia, Italy. The flood caused significant damage to the island's transportation infrastructure, including roads and bridges.
+
+According to reports, the floodwaters damaged or destroyed several major roads, including the SS 131 highway, which connects the capital city of Cagliari to the rest of the island. The flood also affected several bridges, including the Ponte di Gallura, which spans the Strait of Bonifacio and connects Sardinia to Corsica.
+
+The damage to the transportation infrastructure caused disruptions to transportation services, including bus and train services, and made it difficult for emergency responders to reach affected areas. The flood also caused significant economic losses, particularly in the tourism sector, which is a major contributor to Sardinia's economy.
+
+Overall, the 2013 Sardinia flash flood had a significant impact on the island's transportation infrastructure, causing damage to roads and bridges and disrupting transportation services.
+"
+BM25_Baseline,42,31,Flood,situational_awareness,OK,0.5,0.2857,0.3636,0,,,,3.208,3.208,0,0,bm25_retrieve,llama3.1:8b,0,"I don't have any information about social media reports describing the 2013 Manila flooding situation.
+"
+BM25_Baseline,42,32,Flood,evacuation,OK,0.2222,0.5714,0.32,0,,,,27.823,27.823,0,0,bm25_retrieve,llama3.1:8b,0,"Unfortunately, I don't have any information on the specific evacuation challenges documented during the Manila 2013 floods. However, I can provide some general information on the floods and their impact.
+
+The 2013 Manila floods, also known as the Habagat floods, occurred in July 2012 (not 2013, I assume it's a typo) when heavy monsoon rains caused widespread flooding in Metro Manila, the capital region of the Philippines. The floods resulted in significant damage to properties, displacement of thousands of people, and loss of life.
+
+The evacuation challenges during the floods were likely significant, given the scale of the disaster. Some of the challenges that might have been documented include:
+
+- Inadequate evacuation routes and shelters
+- Limited access to emergency services and aid
+- Difficulty in reaching remote or hard-to-reach areas
+- Confusion and misinformation among affected communities
+- Insufficient resources and personnel to manage the evacuation efforts
+
+However, without specific information on the evacuation challenges documented during the Manila 2013 floods, I cannot provide a more detailed answer. If you have any further questions or context, I'll do my best to help.
+"
+BM25_Baseline,42,35,Flood,protocol,OK,0.2941,0.7143,0.4167,0,,,,34.982,34.982,0,0,bm25_retrieve,llama3.1:8b,0,"The National Flood Insurance Program (NFIP) guides relief efforts after major floods by providing financial assistance to policyholders who have suffered flood damage. Here are some ways the NFIP guides relief efforts:
+
+1. Claims Processing: The NFIP processes claims from policyholders who have suffered flood damage, providing them with financial assistance to repair or rebuild their homes and businesses.
+2. Disaster Assistance: The NFIP works with state and local governments to provide disaster assistance, including temporary housing, food, and other essential services to affected individuals and families.
+3. Floodplain Management: The NFIP promotes floodplain management by encouraging communities to adopt floodplain management regulations, which help to reduce the risk of flood damage and promote safer development practices.
+4. Community Rating System (CRS): The NFIP's CRS rewards communities that adopt floodplain management regulations and take steps to reduce flood risk, providing them with discounts on flood insurance premiums.
+5. Public Education: The NFIP educates the public about flood risk and the importance of flood insurance, helping to raise awareness and promote preparedness.
+6. Collaboration with Other Agencies: The NFIP collaborates with other federal, state, and local agencies to coordinate relief efforts and provide a comprehensive response to major floods.
+
+Overall, the NFIP plays a critical role in guiding relief efforts after major floods by providing financial assistance, promoting floodplain management, and educating the public about flood risk.
+"
+BM25_Baseline,42,39,Flood,sensor_data,OK,0.1875,0.5,0.2727,0,,,,31.511,31.511,0,0,bm25_retrieve,llama3.1:8b,0,"The 2013 Colorado Flood, also known as the 2013 Boulder Flood, was a significant flood event that occurred in September 2013 in the Front Range of Colorado, particularly in the Boulder and Larimer counties. According to reports and data from the National Weather Service (NWS) and other sources, the peak water levels during the 2013 Colorado Flood varied by location but were extremely high in many areas.
+
+In Boulder, the peak water level was reported to be around 10-12 feet (3-3.6 meters) above the normal flood stage, with some areas experiencing water levels as high as 15 feet (4.5 meters) above the normal flood stage. In the nearby town of Lyons, the water level reached as high as 14 feet (4.3 meters) above the normal flood stage.
+
+In the Big Thompson Canyon, which was one of the hardest-hit areas, the water level rose to over 12 feet (3.6 meters) above the normal flood stage, causing widespread damage and flooding.
+
+It's worth noting that the exact peak water levels may have varied depending on the specific location and the source of the data. However, it's clear that the 2013 Colorado Flood was a catastrophic event that caused significant damage and disruption in the affected areas.
+"
+BM25_Baseline,42,40,Flood,protocol,OK,0.2857,0.5,0.3636,0,,,,11.424,11.424,0,0,bm25_retrieve,llama3.1:8b,0,"I don't have access to specific information about the FEMA swift-water rescue protocol, including the criteria for when to initiate rescue operations based on gage height. The protocol and guidelines for swift-water rescue operations can vary depending on the location, the severity of the flooding, and the resources available. If you're looking for detailed information on the FEMA swift-water rescue protocol, I recommend consulting official FEMA resources or guidelines for the most accurate and up-to-date information.
+"
+BM25_Baseline,42,41,Flood,multi_source,OK,0.125,0.7143,0.2128,0,,,,127.501,127.501,0,0,bm25_retrieve,llama3.1:8b,0,"To produce a threat level assessment for the Alberta floods, you can follow these steps:
+
+1. River Gauge Heights:
+	- Collect data from river gauge stations along the affected rivers, such as the Bow and Elbow rivers.
+	- Use APIs or websites that provide real-time or near-real-time data, such as the Water Survey of Canada or the Alberta Environment and Parks website.
+	- Analyze the data to identify peak water levels, rates of rise, and any notable trends or patterns.
+2. Weather API Data:
+	- Utilize weather APIs, such as OpenWeatherMap or Dark Sky, to collect current and forecasted weather conditions, including precipitation, wind speed, and temperature.
+	- Focus on areas near the affected rivers and consider the impact of weather conditions on the flood severity.
+3. Social Media Damage Reports:
+	- Monitor social media platforms, such as Twitter, Facebook, and Instagram, for reports of flooding and damage.
+	- Use hashtags related to the flood event and geotagging to filter relevant posts.
+	- Analyze the reports to identify areas of significant damage, affected communities, and any emerging trends or patterns.
+4. Combining Data:
+	- Use a data integration platform or a programming language like Python or R to combine the river gauge heights, weather API data, and social media damage reports.
+	- Develop a scoring system or a weighted formula to assign a threat level to each location based on the combined data.
+	- Consider factors such as:
+		+ River gauge heights: Peak water levels, rates of rise, and duration of flooding.
+		+ Weather API data: Precipitation intensity, wind speed, and temperature.
+		+ Social media damage reports: Severity of damage, affected communities, and emerging trends.
+5. Threat Level Assessment:
+	- Assign a threat level to each location based on the combined data and scoring system.
+	- Use a color-coded system, such as green (low threat), yellow (moderate threat), orange (high threat), and red (extreme threat), to communicate the threat level to stakeholders.
+	- Consider providing additional information, such as evacuation instructions, shelter locations, and emergency contact numbers, to support decision-making.
+
+Example Python code to get you started:
+```python
+import pandas as pd
+import requests
+import tweepy
+
+River gauge heights
+def get_river_gauge_data():
+    url = ""https://api.water.ca.gov/v1/rivergauges""
+    response = requests.get(url)
+    data = response.json()
+    return pd.DataFrame(data)
+
+Weather API data
+def get_weather_data():
+    url = ""https://api.openweathermap.org/data/2.5/forecast""
+    params = {""lat"": 51.0453, ""lon"": -114.0703, ""appid"": ""YOUR_API_KEY""}
+    response = requests.get(url, params=params)
+    data = response.json()
+    return pd.DataFrame(data)
+
+Social media damage reports
+def get_social_media_data():
+    # Set up Tweepy API
+    auth = tweepy.OAuthHandler(""YOUR_CONSUMER_KEY"", ""YOUR_CONSUMER_SECRET"")
+    auth.set_access_token(""YOUR_ACCESS_TOKEN"", ""YOUR_ACCESS_TOKEN_SECRET"")
+    api = tweepy.API(auth)
+
+    # Search for tweets with relevant hashtags
+    search_query = ""#AlbertaFloods""
+    tweets = api.search(q=search_query, count=100)
+
+    # Extract relevant data from tweets
+    data = []
+    for tweet in tweets:
+        data.append({
+            ""location"": tweet.user.location,
+            ""damage"": tweet.text
+        })
+
+    return pd.DataFrame(data)
+
+Combine data and assign threat level
+def assign_threat_level(data):
+    # Develop a scoring system or weighted formula
+    scores = {
+        ""river_gauge_heights"": 0.4,
+        ""weather_api_data"": 0.3,
+        ""social_media_damage_reports"": 0.3
+    }
+
+    # Assign threat level based on combined scores
+    threat_levels = {
+        ""low"": 0-33,
+        ""moderate"": 34-66,
+        ""high"": 67-100
+    }
+
+    return pd.DataFrame({
+        ""location"": data[""location""],
+        ""threat_level"": threat_levels.get(min(data[""score""]), ""unknown"")
+    })
+
+Main function
+def main():
+    river_gauge_data = get_river_gauge_data()
+    weather_data = get_weather_data()
+    social_media_data = get_social_media_data()
+
+    combined_data = pd.merge(river_gauge_data, weather_data, on=""location"")
+    combined_data = pd.merge(combined_data, social_media_data, on=""location"")
+
+    threat_levels = assign_threat_level(combined_data)
+
+    return threat_levels
+
+threat_levels = main()
+print(threat_levels)
+```
+Note that this is a simplified example and you may need to modify the code to suit your specific requirements. Additionally, ensure that you have the necessary permissions and APIs to collect and analyze the data.
+"
+BM25_Baseline,42,42,Flood,protocol,OK,0.2222,0.8571,0.3529,0,,,,50.804,50.804,0,0,bm25_retrieve,llama3.1:8b,0,"Dam safety protocols during extreme rainfall that could cause downstream flooding typically involve a combination of monitoring, communication, and emergency response measures. Here are some key protocols that may be implemented:
+
+1. Monitoring: Continuous monitoring of the dam's water level, inflow, and outflow rates, as well as the surrounding environment, to detect any changes or anomalies that may indicate a potential flood risk.
+2. Early Warning Systems: Implementing early warning systems that can detect heavy rainfall and alert dam operators and downstream communities of potential flooding risks.
+3. Spillway Management: Ensuring that spillways are functioning properly and can handle increased water flows during extreme rainfall events. This may involve adjusting spillway gates or using alternative spillway routes.
+4. Water Level Management: Managing water levels in the reservoir to prevent over-topping or over-pressurization of the dam. This may involve releasing water from the reservoir or storing water in other areas.
+5. Communication: Maintaining open communication with downstream communities, emergency services, and other stakeholders to ensure that everyone is aware of the situation and can take necessary precautions.
+6. Emergency Response Planning: Having a well-rehearsed emergency response plan in place in case of a flood event, including evacuation procedures, emergency services deployment, and post-flood recovery strategies.
+7. Regular Maintenance: Ensuring that the dam and its infrastructure are regularly inspected and maintained to prevent any potential failures or malfunctions during extreme rainfall events.
+8. Collaboration with Other Agencies: Collaborating with other agencies, such as meteorological services, emergency management agencies, and water management authorities, to share data and coordinate responses to extreme rainfall events.
+9. Public Education: Educating the public on flood risks and providing them with information on how to prepare for and respond to flood events.
+10. Review and Revision: Regularly reviewing and revising dam safety protocols to ensure they are effective and up-to-date, and to incorporate lessons learned from past events.
+
+By implementing these protocols, dam operators can help mitigate the risks associated with extreme rainfall events and prevent downstream flooding.
+"
+BM25_Baseline,42,44,Flood,shelter,OK,0.2083,0.7143,0.3226,0,,,,47.598,47.598,0,0,bm25_retrieve,llama3.1:8b,0,"According to various reports and studies, during the 2013 Alberta floods, emergency shelters were managed by a collaborative effort between the government, non-profit organizations, and community groups. Here's a summary of how they were managed and their capacity:
+
+Management:
+
+1. Coordinated Response: The Alberta Emergency Management Agency (AEMA) led the response efforts, working closely with municipalities, emergency management officials, and other stakeholders.
+2. Shelter Operations: Shelters were set up in schools, community centers, and other public buildings, with some being managed by the Canadian Red Cross, the Salvation Army, and other non-profit organizations.
+3. Volunteer Support: Thousands of volunteers helped with shelter operations, including registration, food service, and emotional support.
+
+Capacity:
+
+1. Number of Shelters: At the peak, there were over 30 emergency shelters operating across the province, with some shelters accommodating up to 1,000 people.
+2. Capacity: The total capacity of these shelters was approximately 10,000 people, although not all shelters were fully utilized at the same time.
+3. Evacuee Numbers: During the peak of the disaster, around 100,000 people were displaced, with many seeking shelter in emergency facilities.
+
+Challenges and Lessons Learned:
+
+1. Capacity Overruns: Some shelters experienced capacity overruns, leading to challenges in providing adequate services and accommodations.
+2. Communication: There were instances of communication breakdowns between emergency management officials, shelters, and evacuees, which hindered the response efforts.
+3. Long-term Support: The emergency shelters provided critical support during the immediate response phase, but there were concerns about the long-term support and services for those affected by the floods.
+
+Overall, while the emergency shelter management during the 2013 Alberta floods was a complex and challenging effort, it demonstrated the importance of collaboration, coordination, and community engagement in responding to large-scale disasters.
+"
+BM25_Baseline,42,45,Flood,evacuation,OK,0.1515,0.625,0.2439,0,,,,62.373,62.373,0,0,bm25_retrieve,llama3.1:8b,0,"When evacuating people from high-rise buildings surrounded by floodwater, several protocols apply to ensure the safety of occupants. Here are some key considerations:
+
+1. Emergency Response Plan: Develop and regularly update an emergency response plan that includes procedures for evacuating high-rise buildings in flood situations. This plan should be communicated to all occupants and staff.
+2. Flooding Levels: Understand the flood levels in the area and the building's flood risk. This information can help in determining the urgency and method of evacuation.
+3. Evacuation Routes: Identify safe evacuation routes from the high-rise building to higher ground or a safe location. These routes should be clearly marked and communicated to occupants.
+4. Use of Elevators: Elevators should not be used during flooding unless they are specifically designed for use in flood conditions. If elevators are used, ensure they are fully operational and follow the manufacturer's guidelines.
+5. Stairwell Use: Stairwells should be used for evacuation, but ensure they are safe and accessible. Avoid using stairwells that are flooded or have standing water.
+6. Communication: Establish a communication plan to keep occupants informed about the evacuation process, including the use of public address systems, mobile phones, or other communication devices.
+7. Personal Protective Equipment (PPE): Provide PPE, such as life jackets, to occupants who need to evacuate by boat or wade through floodwater.
+8. Rescue Operations: If occupants are stranded in the building, rescue operations may be necessary. Ensure that rescue teams are equipped with necessary gear, such as boats or waders, and follow established protocols.
+9. Post-Evacuation Procedures: After evacuation, ensure that occupants are provided with a safe place to wait, such as a shelter or a higher location. Provide food, water, and medical assistance as needed.
+10. Review and Update: Regularly review and update emergency response plans to ensure they are effective and relevant to the building's flood risk.
+
+Additionally, consider the following:
+
+- Building Design and Construction: Ensure that the high-rise building is designed and constructed to withstand flood conditions, including the use of flood-resistant materials and design features.
+- Flood-Resistant Barriers: Install flood-resistant barriers, such as flood gates or barriers, to prevent floodwater from entering the building.
+- Regular Maintenance: Regularly inspect and maintain the building's flood protection systems and emergency equipment to ensure they are operational.
+
+These protocols should be tailored to the specific needs and risks of the high-rise building and its occupants.
+"
+BM25_Baseline,42,46,Flood,situational_awareness,OK,0.2105,0.5714,0.3077,0,,,,31.128,31.128,0,0,bm25_retrieve,llama3.1:8b,0,"During the 2010-2011 Queensland floods, emergency managers used social media to improve situational awareness in several ways:
+
+1. Monitoring and tracking: They monitored social media platforms, such as Twitter and Facebook, to track the spread of the floodwaters, identify areas of concern, and gather information from the public.
+2. Crowdsourcing: They crowdsourced information from the public, using hashtags and tagging to collect reports of flooding, evacuations, and other relevant information.
+3. Real-time updates: They provided real-time updates on the flood situation, including evacuation orders, road closures, and other critical information.
+4. Collaboration: They collaborated with other emergency services, such as the Australian Defence Force, to share information and coordinate responses.
+5. Public engagement: They engaged with the public through social media, providing information, answering questions, and reassuring communities affected by the floods.
+
+By leveraging social media, emergency managers were able to:
+
+- Improve their understanding of the flood situation
+- Respond more effectively to the crisis
+- Engage with the public and provide critical information
+- Enhance situational awareness and decision-making
+
+This use of social media during the Queensland floods was a significant innovation in emergency management, and has since been adopted by emergency managers around the world.
+"
+BM25_Baseline,42,49,Flood,protocol,OK,0.1154,0.4286,0.1818,0,,,,31.196,31.196,0,0,bm25_retrieve,llama3.1:8b,0,"The National Guard plays a crucial role in flood disaster response, with various responsibilities including:
+
+1. Search and Rescue: National Guard units are often deployed to assist in search and rescue operations, helping to locate and evacuate people trapped in flooded areas.
+2. Infrastructure Support: They provide support to restore critical infrastructure, such as roads, bridges, and utilities, which may have been damaged or destroyed by the floodwaters.
+3. Security and Law Enforcement: National Guard units help maintain order and provide security in affected areas, ensuring that looting and other criminal activity is prevented.
+4. Logistical Support: They assist in the distribution of food, water, and other essential supplies to affected communities.
+5. Environmental Cleanup: National Guard units may be involved in the cleanup of hazardous materials and debris left behind by the floodwaters.
+6. Support to Emergency Services: They provide support to local emergency services, such as police and fire departments, to help them respond to the disaster.
+7. Community Assistance: National Guard units often provide assistance to affected communities, including helping with debris removal, providing shelter, and supporting local businesses.
+
+Overall, the National Guard plays a vital role in supporting the response to flood disasters, helping to save lives, protect property, and restore communities to a safe and functioning state.
+"
+LLM_Only,42,171,Air_Quality,evacuation,OK,0.2692,0.875,0.4118,0,,,,52.922,52.922,0,0,,llama3.1:8b,0,"During a prolonged hazardous haze event, evacuation or relocation of vulnerable populations is crucial to minimize health risks. The following populations should be prioritized for evacuation or relocation:
+
+1. Children, elderly, and people with pre-existing medical conditions: These individuals are more susceptible to respiratory problems and other health issues exacerbated by poor air quality.
+2. People with respiratory conditions: Those with conditions like asthma, chronic obstructive pulmonary disease (COPD), or other respiratory issues should be relocated to areas with cleaner air.
+3. Pregnant women and new mothers: Exposure to poor air quality can increase the risk of complications during pregnancy and childbirth.
+4. Individuals with compromised immune systems: People with weakened immune systems, such as those with HIV/AIDS, cancer, or undergoing chemotherapy, are more vulnerable to air pollution-related health issues.
+5. Residents in areas with severe haze: Those living in areas with extremely high levels of particulate matter (PM) or other pollutants should be relocated to safer areas.
+6. People in areas with limited access to healthcare: If medical facilities are overwhelmed or inaccessible, it may be necessary to relocate populations to areas with better healthcare infrastructure.
+
+When deciding on evacuation or relocation, consider the following factors:
+
+- Air quality indices (AQI) and pollutant levels
+- Proximity to sources of pollution
+- Availability of healthcare services and emergency medical facilities
+- Accessibility of safe areas with cleaner air
+- Potential for increased risk of respiratory problems or other health issues
+
+It's essential to follow the guidance of local authorities and public health officials, who will assess the situation and provide specific recommendations for evacuation or relocation.
+"
+LLM_Only,42,172,Air_Quality,protocol,OK,0.35,0.875,0.5,0,,,,50.455,50.455,0,0,,llama3.1:8b,0,"The transboundary haze issue between Singapore and Indonesia is a complex problem that requires international cooperation and coordination. Here are some international mechanisms that exist to address transboundary haze:
+
+1. ASEAN Agreement on Transboundary Haze Pollution (2002): This agreement, signed by the Association of Southeast Asian Nations (ASEAN) member states, aims to prevent and mitigate transboundary haze pollution. The agreement sets out principles, mechanisms, and procedures for cooperation among member states to address haze pollution.
+2. ASEAN Haze Management Plan (2013): This plan is a regional framework for managing haze pollution, which includes measures to prevent, mitigate, and respond to haze events. The plan emphasizes the importance of cooperation among ASEAN member states, as well as with other countries and international organizations.
+3. United Nations Economic and Social Commission for Asia and the Pacific (UNESCAP) Regional Haze Action Plan (2015): This plan is a regional framework for addressing transboundary haze pollution in the Asia-Pacific region. The plan emphasizes the importance of cooperation among countries, as well as with international organizations, to prevent and mitigate haze pollution.
+4. ASEAN-Singapore-Indonesia Memorandum of Understanding (MOU) on Haze Management (2013): This MOU is a bilateral agreement between Singapore and Indonesia to cooperate on haze management. The MOU sets out principles and procedures for cooperation on haze management, including information sharing, joint monitoring, and emergency response.
+5. International Civil Aviation Organization (ICAO) Guidelines for the Prevention of Haze Pollution (2013): These guidelines provide recommendations for countries to prevent and mitigate haze pollution, particularly in the context of aviation.
+
+These international mechanisms provide a framework for cooperation and coordination among countries to address transboundary haze pollution. However, their effectiveness depends on the level of commitment and cooperation among countries, as well as the availability of resources and capacity to implement these mechanisms.
+
+It's worth noting that while these mechanisms exist, their implementation and effectiveness can be influenced by various factors, including politics, economics, and social dynamics.
+"
+LLM_Only,42,173,Air_Quality,infrastructure,OK,0.2222,0.75,0.3429,0,,,,45.48,45.48,0,0,,llama3.1:8b,0,"Haze can significantly impact outdoor construction and infrastructure maintenance operations in several ways:
+
+1. Reduced visibility: Haze can reduce visibility, making it difficult for workers to see what they're doing, which can lead to accidents and errors.
+2. Increased respiratory problems: Haze can exacerbate respiratory issues, such as asthma, and increase the risk of heat-related illnesses, especially in hot and humid conditions.
+3. Equipment maintenance: Haze can reduce the effectiveness of equipment, such as generators, pumps, and compressors, which can lead to equipment failure or reduced performance.
+4. Material handling: Haze can make it difficult to handle materials, such as concrete, asphalt, and other building materials, which can lead to accidents and delays.
+5. Increased risk of fires: Haze can increase the risk of fires, especially in areas with high temperatures and dry conditions.
+6. Impact on construction materials: Haze can affect the quality and durability of construction materials, such as concrete and asphalt, which can lead to premature degradation and reduced lifespan.
+7. Increased risk of accidents: Haze can increase the risk of accidents, such as falls, electrocutions, and equipment-related incidents, due to reduced visibility and increased risk of equipment failure.
+
+To mitigate these risks, construction and infrastructure maintenance operations should:
+
+- Monitor air quality and haze levels
+- Implement safety protocols, such as providing personal protective equipment (PPE) and ensuring adequate ventilation
+- Adjust work schedules and tasks to minimize exposure to haze
+- Use equipment with haze-resistant features or take extra precautions to maintain equipment
+- Provide regular breaks and hydration to workers
+- Consider postponing or rescheduling work during severe haze events
+
+Please note that these guidelines are general and may vary depending on the specific location, severity of haze, and local regulations. It's essential to consult with local authorities and experts for specific guidance.
+"
+LLM_Only,42,174,Air_Quality,medical,OK,0.3889,0.875,0.5385,0,,,,57.395,57.395,0,0,,llama3.1:8b,0,"According to the Singapore Ministry of Health (MOH) and the Singapore National Environment Agency (NEA), during the 2013 haze, hospital emergency departments in Singapore experienced a surge in respiratory cases.
+
+To respond to the surge, the MOH and hospitals took several measures:
+
+1. Increased staffing: Hospitals increased the number of doctors, nurses, and other healthcare staff to manage the influx of patients.
+2. Prioritization of patients: Hospitals prioritized patients with severe respiratory conditions, such as those requiring oxygen therapy or intensive care.
+3. Use of makeshift facilities: Some hospitals set up makeshift facilities, such as tents or temporary wards, to accommodate the increased number of patients.
+4. Enhanced infection control measures: Hospitals implemented enhanced infection control measures to prevent the spread of respiratory infections.
+5. Collaboration with other healthcare providers: Hospitals worked closely with other healthcare providers, such as polyclinics and community health centers, to manage the surge in patients.
+
+The MOH also activated its Emergency Operations Centre (EOC) to coordinate the response to the haze and its impact on healthcare services.
+
+It's worth noting that the MOH and hospitals in Singapore have experience responding to haze-related health issues, and they have developed protocols and procedures to manage such situations.
+
+Sources:
+
+- Singapore Ministry of Health (MOH). (2013). Press Release: MOH Activates Emergency Operations Centre to Manage Haze-Related Health Issues.
+- Singapore National Environment Agency (NEA). (2013). Press Release: NEA Activates Haze Response System to Manage Haze-Related Health Issues.
+- The Straits Times. (2013). Hospitals gear up for haze-related surge in respiratory cases.
+
+Please note that the information provided is based on the 2013 haze event, and the response may have evolved since then.
+"
+LLM_Only,42,175,Air_Quality,multi_source,OK,0.1765,0.6667,0.2791,0,,,,76.645,76.645,0,0,,llama3.1:8b,0,"What a complex and interesting question! While I'll provide a general framework, please note that the specifics may vary depending on the actual data sources and their formats. Here's a suggested approach to optimally combine the data:
+
+Data Sources:
+
+1. Weather API data: APIs like OpenWeatherMap or Dark Sky provide real-time weather data, including temperature, humidity, and wind speed.
+2. Satellite fire imagery: Sources like NASA's FIRMS (Fire Information for Resource Management System) or the European Space Agency's (ESA) FMI (Fire Monitoring Instrument) provide satellite imagery of fires.
+3. Community PSI social media reports: Social media platforms like Twitter or Facebook can be used to collect reports from the community on the PSI (Pollutant Standards Index) levels in their areas.
+
+Data Preprocessing and Integration:
+
+1. Weather API data: Extract relevant features like temperature, humidity, and wind speed. These will be used as input features for the model.
+2. Satellite fire imagery: Use image processing techniques to extract features like fire intensity, location, and size. These features can be used to estimate the impact of fires on air quality.
+3. Community PSI social media reports: Collect and preprocess the reports to extract relevant information like location, PSI level, and timestamp.
+
+Modeling and Prediction:
+
+1. Feature Engineering: Combine the preprocessed data from the three sources to create a comprehensive feature set. This may include:
+	- Weather features (temperature, humidity, wind speed)
+	- Fire features (fire intensity, location, size)
+	- Community features (PSI level, location, timestamp)
+2. Model Selection: Choose a suitable machine learning algorithm, such as Random Forest, Gradient Boosting, or Neural Networks, to predict the PSI levels in different areas.
+3. Model Training: Train the model using a dataset of historical PSI levels and corresponding weather and fire data.
+4. Model Evaluation: Evaluate the model's performance using metrics like Mean Absolute Error (MAE) or Mean Squared Error (MSE).
+
+Mask Distribution Priority Areas:
+
+1. Predictive Modeling: Use the trained model to predict PSI levels in different areas based on the current weather and fire conditions.
+2. Risk Assessment: Assign a risk score to each area based on the predicted PSI level, weather conditions, and fire intensity.
+3. Prioritization: Prioritize areas with high risk scores for mask distribution.
+
+Important Considerations:
+
+1. Data Quality: Ensure that the data from all sources is accurate, complete, and up-to-date.
+2. Data Integration: Handle any discrepancies or inconsistencies between the data sources.
+3. Model Interpretability: Regularly evaluate and refine the model to ensure it is providing accurate and reliable predictions.
+4. Real-time Updates: Continuously update the model with new data to reflect changing weather and fire conditions.
+
+Please note that this is a general framework, and the specifics may vary depending on the actual data sources and their formats. Additionally, the model's performance will depend on the quality and quantity of the data used for training.
+"
+BM25_Baseline,42,52,Flood,sensor_data,OK,0.0833,0.25,0.125,0,,,,47.258,47.258,0,0,bm25_retrieve,llama3.1:8b,0,"Without specific context, it's difficult to provide a precise answer. However, I can offer a general interpretation of what a USGS (United States Geological Survey) gage height reading of 12.5 ft at Boulder Creek might imply for emergency operations.
+
+In general, the USGS gage height is a measure of the water level in a stream or river, expressed in feet above a designated datum (reference point). A gage height reading of 12.5 ft at Boulder Creek could indicate that the water level is above the normal or average level for that location.
+
+For emergency operations, a higher-than-normal gage height reading can imply several things:
+
+1. Flooding risk: If the gage height is significantly above the normal level, it may indicate that the creek is at or near flood stage, posing a risk to nearby communities, infrastructure, and the environment.
+2. Increased water flow: A higher gage height reading can also indicate increased water flow, which may lead to erosion, sedimentation, and other hazards.
+3. Potential for waterborne hazards: Excess water can lead to waterborne hazards such as contamination, landslides, and debris flows.
+
+In emergency operations, this information can be used to:
+
+1. Monitor and predict flood events: Emergency responders can use gage height data to anticipate and prepare for potential flooding.
+2. Issue warnings and alerts: Authorities can issue warnings and alerts to nearby communities, advising them of the potential risks and taking necessary precautions.
+3. Coordinate response efforts: Emergency responders can use gage height data to coordinate response efforts, such as evacuations, sandbag distributions, and other mitigation measures.
+
+Please note that the specific implications of a 12.5 ft gage height reading at Boulder Creek would depend on various factors, including the creek's normal water level, the surrounding terrain, and the specific emergency operations in place.
+"
+BM25_Baseline,42,53,Flood,weather,OK,0.2667,0.5714,0.3636,0,,,,39.742,39.742,0,0,bm25_retrieve,llama3.1:8b,0,"Atmospheric river events play a significant role in contributing to flash flooding risks. Here's how:
+
+1. Heavy Precipitation: Atmospheric rivers are long, narrow channels of moisture-rich air that flow from the tropics to mid-latitudes. When these rivers reach land, they can bring intense, prolonged precipitation, often exceeding 1-2 inches per hour. This heavy rain can quickly overwhelm drainage systems, leading to flash flooding.
+2. Concentration of Moisture: Atmospheric rivers concentrate a large amount of moisture into a relatively small area, which can lead to extreme precipitation rates. This concentrated moisture can cause rapid saturation of the soil, leading to flash flooding.
+3. Duration and Intensity: Atmospheric river events can last for several days, allowing the cumulative effect of heavy precipitation to build up and lead to flash flooding. The intensity of the precipitation can also be extreme, with rates exceeding 1-2 inches per hour, which can quickly overwhelm drainage systems.
+4. Terrain and Topography: The terrain and topography of the affected area can also contribute to flash flooding risks. Steep slopes, urban areas, and areas with impermeable surfaces can exacerbate the effects of heavy precipitation, leading to rapid runoff and flash flooding.
+5. Antecedent Conditions: The antecedent conditions, such as soil moisture, can also play a role in flash flooding risks. If the soil is already saturated, even moderate precipitation can lead to flash flooding.
+
+In summary, atmospheric river events contribute to flash flooding risks by bringing heavy, prolonged precipitation, concentrating moisture, and exacerbating the effects of terrain and topography.
+"
+BM25_Baseline,42,54,Flood,multi_source,OK,0.2143,0.375,0.2727,0,,,,40.219,40.219,0,0,bm25_retrieve,llama3.1:8b,0,"AI disaster systems should handle contradictory information between live sensors and historical social media during active flooding by implementing a robust decision-making framework that incorporates multiple data sources and validation techniques. Here are some steps to consider:
+
+1. Data fusion: Combine data from live sensors and historical social media to create a comprehensive picture of the flood situation. This can be done using techniques such as data integration, data transformation, and data aggregation.
+2. Data validation: Validate the data from both sources to ensure accuracy and reliability. This can be done by applying data quality checks, data normalization, and data cleansing techniques.
+3. Weighted decision-making: Assign weights to each data source based on their reliability, accuracy, and relevance to the flood situation. This can be done using techniques such as Bayesian inference, fuzzy logic, or machine learning algorithms.
+4. Anomaly detection: Identify and flag any contradictory information between the two data sources. This can be done using techniques such as statistical analysis, machine learning algorithms, or data mining.
+5. Human-in-the-loop: Involve human experts in the decision-making process to validate the AI's recommendations and provide context-specific knowledge.
+6. Continuous monitoring: Continuously monitor the flood situation and update the AI system with new data to ensure that the decision-making process remains accurate and effective.
+7. Transparency and explainability: Provide transparent and explainable decision-making processes to stakeholders, including the reasoning behind the AI's recommendations.
+
+By implementing these steps, AI disaster systems can effectively handle contradictory information between live sensors and historical social media during active flooding, ensuring that decision-makers have accurate and reliable information to respond to the disaster.
+"
+BM25_Baseline,42,55,Flood,protocol,OK,0.6667,0.5,0.5714,0,,,,7.383,7.383,0,0,bm25_retrieve,llama3.1:8b,0,"I don't have information on the specific international disaster relief coordination mechanisms that were activated during the 2013 Sardinia floods. If you're looking for information on disaster relief efforts or specific mechanisms, I can provide general information on how such efforts are typically coordinated internationally.
+"
+BM25_Baseline,42,61,Wildfire,situational_awareness,OK,0.2222,0.2857,0.25,0,,,,14.213,14.213,0,0,bm25_retrieve,llama3.1:8b,0,"Unfortunately, I don't have any information about specific social media reports regarding the 2013 Australia bushfire situation. However, I can suggest some possible sources where you may be able to find information about the event:
+
+- News articles from reputable sources such as The Guardian, The Sydney Morning Herald, or The Australian
+- Social media platforms like Twitter, where you can search for hashtags related to the event
+- Official reports from emergency services or government agencies
+
+If you have any more specific information or context about the event, I may be able to help you better.
+"
+BM25_Baseline,42,62,Wildfire,weather,OK,0.3333,0.7143,0.4545,0,,,,31.834,31.834,0,0,bm25_retrieve,llama3.1:8b,0,"The 2013 Australian bushfires, also known as the Black Saturday bushfires, were a series of devastating wildfires that occurred in Victoria, Australia, on February 7, 2013. The extreme fire danger during this event was contributed to by a combination of weather conditions, including:
+
+1. High temperatures: Temperatures soared to a record 46.4°C (115.5°F) in some areas, creating ideal conditions for fires to spread rapidly.
+2. Strong winds: Gusty winds, reaching speeds of up to 100 km/h (62 mph), helped to spread embers and sparks, igniting new fires and fueling existing ones.
+3. Low humidity: The relative humidity was extremely low, ranging from 5% to 15%, which allowed fires to spread quickly and easily.
+4. Dry conditions: The region had experienced a prolonged drought, leaving vegetation extremely dry and prone to ignition.
+5. Weather fronts: A high-pressure system and a cold front interacted to create a perfect storm of hot, dry air and strong winds, exacerbating the fire danger.
+
+These weather conditions combined to create an extreme fire danger, leading to the devastating bushfires that claimed 173 lives and destroyed over 2,000 homes.
+"
+BM25_Baseline,42,63,Wildfire,protocol,OK,0.1923,0.7143,0.303,0,,,,33.545,33.545,0,0,bm25_retrieve,llama3.1:8b,0,"The Australian Catastrophic fire danger rating is the highest level of fire danger rating in Australia, indicating extremely severe conditions that pose a high risk of uncontrolled fires. When a Catastrophic fire danger rating is issued, it requires immediate action from the public.
+
+Actions required during a Catastrophic fire danger rating include:
+
+1. Evacuation: If instructed to do so by authorities, evacuate the area immediately.
+2. Stay indoors: Stay indoors and keep windows and doors closed to prevent embers from entering the home.
+3. Avoid travel: Avoid traveling unless absolutely necessary, as roads may be closed and conditions are hazardous.
+4. Prepare for power outages: Be prepared for power outages, as they may occur due to high winds or other factors.
+5. Monitor updates: Continuously monitor local news and emergency alerts for updates on the fire situation.
+6. Follow instructions: Follow instructions from local authorities, such as evacuation orders or shelter-in-place instructions.
+7. Be prepared to leave quickly: Be prepared to leave your home quickly if instructed to do so, as conditions can change rapidly.
+
+It's essential to note that the specific actions required during a Catastrophic fire danger rating may vary depending on the location and local authorities' instructions. Always follow the advice of local authorities and stay informed through reliable sources.
+"
+BM25_Baseline,42,64,Wildfire,infrastructure,OK,0.24,0.8571,0.375,0,,,,51.784,51.784,0,0,bm25_retrieve,llama3.1:8b,0,"Wildfires can have a significant impact on power grid infrastructure, causing widespread power outages and disruptions to electrical services. Here's how wildfires affect power grid infrastructure and the restoration protocols:
+
+Effects on Power Grid Infrastructure:
+
+1. Downed Power Lines: Wildfires can cause power lines to be knocked down or damaged, leading to power outages and electrical hazards.
+2. Substation Damage: Wildfires can damage or destroy substation equipment, including transformers, switchgear, and circuit breakers.
+3. Transmission Line Damage: Wildfires can damage or destroy transmission lines, which can lead to power outages and disruptions to electrical services.
+4. Distribution System Damage: Wildfires can damage or destroy distribution system equipment, including poles, transformers, and switchgear.
+
+Restoration Protocols:
+
+1. Assessment and Prioritization: Utility companies assess the damage and prioritize restoration efforts based on customer impact, critical infrastructure, and public safety.
+2. Debris Removal: Utility companies remove debris and hazardous materials from the affected area to ensure public safety and facilitate restoration efforts.
+3. Equipment Replacement: Utility companies replace damaged equipment, including power lines, transformers, and switchgear.
+4. System Reconfiguration: Utility companies reconfigure the power grid to restore electrical services to affected areas.
+5. Ongoing Maintenance: Utility companies perform ongoing maintenance and inspections to ensure the power grid is resilient to future wildfires.
+
+Best Practices:
+
+1. Wildfire Mitigation: Utility companies can implement wildfire mitigation measures, such as clearing vegetation around power lines and installing fire-resistant materials.
+2. Advanced Weather Forecasting: Utility companies can use advanced weather forecasting to predict and prepare for wildfires.
+3. Collaboration with Emergency Services: Utility companies can collaborate with emergency services to ensure a coordinated response to wildfires.
+4. Regular Maintenance: Utility companies can perform regular maintenance to ensure the power grid is in good working condition and can withstand wildfires.
+
+By understanding the effects of wildfires on power grid infrastructure and implementing restoration protocols and best practices, utility companies can minimize the impact of wildfires on electrical services and ensure public safety.
+"
+BM25_Baseline,42,65,Wildfire,medical,OK,0.1304,0.4286,0.2,0,,,,51.436,51.436,0,0,bm25_retrieve,llama3.1:8b,0,"Wildfire survivors and first responders are at risk for various health problems due to exposure to smoke and other environmental factors. Some of the primary health risks include:
+
+For Wildfire Survivors:
+
+1. Respiratory problems: Exposure to smoke and particulate matter can cause respiratory issues, such as asthma, bronchitis, and chronic obstructive pulmonary disease (COPD).
+2. Mental health concerns: Survivors may experience anxiety, depression, post-traumatic stress disorder (PTSD), and other mental health issues due to the trauma of the event.
+3. Injuries: Survivors may suffer physical injuries, such as burns, cuts, and broken bones, from the fire or its aftermath.
+4. Waterborne illnesses: If water sources are contaminated, survivors may be at risk for waterborne illnesses, such as giardiasis and cryptosporidiosis.
+5. Long-term health effects: Exposure to smoke and other pollutants can increase the risk of long-term health problems, such as cancer and cardiovascular disease.
+
+For First Responders:
+
+1. Respiratory problems: First responders are at risk for respiratory issues, such as asthma and COPD, due to prolonged exposure to smoke and particulate matter.
+2. Cardiovascular disease: Exposure to smoke and other pollutants can increase the risk of cardiovascular disease, including heart attacks and strokes.
+3. Mental health concerns: First responders may experience anxiety, depression, PTSD, and other mental health issues due to the trauma of the event.
+4. Injuries: First responders may suffer physical injuries, such as burns, cuts, and broken bones, from the fire or its aftermath.
+5. Long-term health effects: Exposure to smoke and other pollutants can increase the risk of long-term health problems, such as cancer and other chronic diseases.
+
+It's essential for both survivors and first responders to take precautions to minimize their exposure to smoke and other environmental hazards. This includes wearing protective gear, staying indoors with clean air, and seeking medical attention if symptoms persist or worsen over time.
+"
+BM25_Baseline,42,66,Wildfire,multi_source,OK,0.2059,0.875,0.3333,0,,,,58.692,58.692,0,0,bm25_retrieve,llama3.1:8b,0,"To determine safe evacuation corridors during a wildfire, an AI system should integrate live wind data, satellite fire perimeter imagery, and social media reports in the following manner:
+
+1. Live Wind Data Integration:
+	- Utilize APIs or data feeds from weather services (e.g., National Weather Service) to obtain real-time wind speed and direction data.
+	- Analyze this data to predict wind patterns and potential fire spread.
+	- This information will help identify areas where the fire is likely to spread and where evacuation routes may be compromised.
+2. Satellite Fire Perimeter Imagery Integration:
+	- Leverage satellite imagery from sources like NASA, the US Forest Service, or commercial providers to obtain up-to-date fire perimeter maps.
+	- Use computer vision and image processing techniques to analyze the imagery and update the fire perimeter in real-time.
+	- This will provide a visual representation of the fire's current and predicted spread, aiding in the identification of safe evacuation routes.
+3. Social Media Reports Integration:
+	- Utilize natural language processing (NLP) and machine learning algorithms to analyze social media posts, tweets, and other online reports from residents, emergency responders, and other sources.
+	- This will help identify areas of high fire activity, potential hotspots, and areas where people may be trapped or in need of assistance.
+	- Social media reports can also provide valuable information on road conditions, evacuation efforts, and other critical factors that may impact evacuation routes.
+4. Integration and Analysis:
+	- Combine the data from the three sources to create a comprehensive picture of the wildfire's spread and potential impact on evacuation routes.
+	- Use machine learning algorithms to analyze the integrated data and identify patterns, trends, and areas of high risk.
+	- This will enable the AI system to predict safe evacuation corridors and provide real-time updates to emergency responders and the public.
+5. Visualization and Communication:
+	- Use mapping and visualization tools to display the integrated data and predicted safe evacuation corridors.
+	- Communicate the information to emergency responders, the public, and other stakeholders through various channels, such as mobile apps, websites, and social media platforms.
+
+By integrating live wind data, satellite fire perimeter imagery, and social media reports, an AI system can provide critical insights to help emergency responders and the public navigate the complex and dynamic environment of a wildfire, ensuring safe evacuation corridors and minimizing the risk of injury or loss of life.
+"
+BM25_Baseline,42,67,Wildfire,protocol,OK,0.2308,0.4286,0.3,0,,,,43.584,43.584,0,0,bm25_retrieve,llama3.1:8b,0,"The standard defensible space requirements for protecting structures from wildfire vary depending on the location and local regulations, but here are some general guidelines:
+
+Defensible Space Zones:
+
+1. Zone 1: Immediate Area Around the Structure (0-5 feet):
+	- Clear all flammable vegetation, debris, and combustible materials.
+	- Keep all windows, doors, and vents clear of leaves and debris.
+2. Zone 2: Intermediate Area (5-30 feet):
+	- Thin out trees and shrubs to reduce fuel loads.
+	- Keep grass and weeds mowed to a height of 3 inches or less.
+	- Remove dead and dying plants, trees, and branches.
+3. Zone 3: Extended Area (30-100 feet):
+	- Thin out trees and shrubs to reduce fuel loads.
+	- Keep grass and weeds mowed to a height of 3 inches or less.
+	- Remove dead and dying plants, trees, and branches.
+4. Zone 4: Extended Area (100-200 feet):
+	- Thin out trees and shrubs to reduce fuel loads.
+	- Keep grass and weeds mowed to a height of 3 inches or less.
+	- Remove dead and dying plants, trees, and branches.
+
+Additional Requirements:
+
+- Keep a safe distance between structures and any combustible materials.
+- Use fire-resistant materials for roofing, siding, and trim.
+- Install a fire-resistant door and window system.
+- Keep gutters and downspouts clear of debris.
+- Install a fire suppression system, if required by local regulations.
+
+Local Regulations:
+
+It's essential to check with local authorities for specific defensible space requirements, as regulations may vary depending on the location, climate, and vegetation.
+"
+BM25_Baseline,42,68,Wildfire,sensor_data,OK,0.2105,0.5714,0.3077,0,,,,27.247,27.247,0,0,bm25_retrieve,llama3.1:8b,0,"For wildfire risk assessment, the following live weather parameters are most critical:
+
+1. Temperature: High temperatures, especially during periods of prolonged heatwaves, can dry out vegetation and increase the risk of wildfires.
+2. Humidity: Low humidity, particularly relative humidity (RH), can indicate dry conditions that are conducive to wildfires.
+3. Wind speed and direction: Strong winds can spread embers and sparks, while changing wind directions can cause fires to spread rapidly.
+4. Precipitation: Lack of precipitation or sudden changes in precipitation patterns can lead to dry conditions, increasing the risk of wildfires.
+5. Evapotranspiration: This measures the amount of water lost by plants through evaporation and transpiration, which can indicate the moisture levels in vegetation.
+6. Dew point: A low dew point indicates dry air, which can contribute to the spread of wildfires.
+7. Fire weather index (FWI): This is a composite index that combines temperature, humidity, wind, and other factors to estimate the risk of wildfires.
+
+These live weather parameters are essential for predicting and assessing wildfire risk, as they can indicate the likelihood of fires starting and spreading.
+"
+BM25_Baseline,42,69,Wildfire,situational_awareness,OK,0.1852,0.625,0.2857,0,,,,19.87,19.87,0,0,bm25_retrieve,llama3.1:8b,0,"During the Colorado wildfires, social media provided ground-level situational intelligence that satellite imagery could not, such as:
+
+- Real-time updates from people on the ground, including photos and videos of the fires and their impact on communities.
+- Information about road closures, evacuation orders, and other critical infrastructure disruptions.
+- Eyewitness accounts of the fires' spread and behavior, which helped emergency responders understand the situation on the ground.
+- Details about the fires' effects on local businesses, homes, and infrastructure, which informed response efforts and resource allocation.
+- Social media also facilitated communication and coordination among emergency responders, residents, and volunteers, helping to mobilize resources and support.
+
+Satellite imagery, on the other hand, provided a broader view of the fires' extent and spread, but may not have captured the same level of detail or nuance as social media reports from the ground.
+"
+BM25_Baseline,42,70,Wildfire,protocol,OK,0.1923,0.7143,0.303,0,,,,47.294,47.294,0,0,bm25_retrieve,llama3.1:8b,0,"Incident management teams typically structure their command for a multi-day wildfire event using a standardized framework, such as the Incident Command System (ICS). Here's a general overview of how they might organize their command:
+
+1. Incident Commander (IC): The IC is responsible for making strategic decisions and overseeing the overall response to the incident. They are the final authority on incident management decisions.
+2. Command Staff: The Command Staff consists of key personnel who support the IC in making decisions and managing the incident. They typically include:
+	- Public Information Officer (PIO): responsible for communicating with the public, media, and other stakeholders.
+	- Safety Officer: responsible for ensuring the safety of personnel and the public.
+	- Operations Section Chief: responsible for overseeing the tactical operations, such as firefighting and resource allocation.
+	- Planning Section Chief: responsible for developing and implementing incident plans, including resource allocation and logistics.
+	- Logistics Section Chief: responsible for managing resources, including personnel, equipment, and supplies.
+3. Branches: The Command Staff may also establish branches to support specific aspects of the incident, such as:
+	- Fire Operations Branch: responsible for managing firefighting efforts.
+	- Resource Management Branch: responsible for allocating and managing resources, such as personnel, equipment, and supplies.
+	- Planning and Intelligence Branch: responsible for gathering and analyzing data to inform incident management decisions.
+4. Section Chiefs: Each branch may have a Section Chief responsible for overseeing the specific activities within that branch.
+5. Task Forces: Task forces are teams of personnel and resources assigned to specific tasks, such as firefighting or resource management.
+6. Strike Teams: Strike teams are groups of personnel and resources that can be deployed quickly to respond to emerging situations or to support ongoing operations.
+
+This structure allows incident management teams to effectively manage complex, multi-day wildfire events by providing a clear chain of command, defined roles and responsibilities, and a standardized framework for decision-making and resource allocation.
+"
+BM25_Baseline,42,71,Wildfire,infrastructure,OK,0.1364,0.4286,0.2069,0,,,,36.133,36.133,0,0,bm25_retrieve,llama3.1:8b,0,"Firefighters face several water supply challenges during wildfire suppression in remote areas, including:
+
+1. Limited access to water sources: Remote areas often have limited access to water sources, making it difficult to transport water to the fire site.
+2. Long distances to water sources: Firefighters may need to travel long distances to reach water sources, which can increase response times and reduce the effectiveness of firefighting efforts.
+3. Water scarcity: Remote areas often experience water scarcity, making it difficult to obtain enough water to suppress the fire.
+4. Inadequate water infrastructure: In some remote areas, water infrastructure such as pipes and pumps may be inadequate or non-existent, making it difficult to transport water to the fire site.
+5. Increased risk of water contamination: Firefighters may need to use water sources that are contaminated with pollutants or other substances, which can compromise the effectiveness of firefighting efforts and pose health risks to firefighters.
+6. Difficulty in transporting water: Firefighters may need to transport water using helicopters or other aircraft, which can be expensive and logistically challenging.
+7. Limited storage capacity: Firefighters may not have sufficient storage capacity to hold large quantities of water, making it difficult to suppress large fires.
+8. Water treatment challenges: In some cases, water may need to be treated before it can be used for firefighting, which can add to the complexity and cost of wildfire suppression efforts.
+
+These challenges can make it difficult for firefighters to effectively suppress wildfires in remote areas, and can increase the risk of fire spread and property damage.
+"
+BM25_Baseline,42,72,Wildfire,medical,OK,0.2174,0.7143,0.3333,0,,,,51.067,51.067,0,0,bm25_retrieve,llama3.1:8b,0,"Wildfire disasters can have significant mental health impacts on affected populations. Some of the common mental health effects include:
+
+1. Post-Traumatic Stress Disorder (PTSD): Wildfires can be traumatic events, leading to symptoms of PTSD, such as flashbacks, nightmares, and avoidance of triggers that remind them of the event.
+2. Anxiety and Depression: The stress and trauma of wildfires can lead to anxiety and depression, which can persist long after the fire has been extinguished.
+3. Acute Stress Disorder (ASD): Similar to PTSD, ASD is a condition that can develop after a traumatic event, such as a wildfire.
+4. Complex Trauma: Repeated exposure to wildfires or other traumatic events can lead to complex trauma, which can have long-term effects on mental health.
+5. Grief and Loss: Wildfires can result in loss of property, livelihood, and even loved ones, leading to grief and loss.
+
+Protocols for affected populations include:
+
+1. Mental Health Screening: Early screening and assessment of mental health needs can help identify individuals who require support.
+2. Crisis Counseling: Trained counselors can provide immediate support and counseling to individuals affected by wildfires.
+3. Community-Based Interventions: Community-based interventions, such as group therapy and support groups, can help individuals cope with the aftermath of a wildfire.
+4. Telehealth Services: Telehealth services can provide access to mental health services for individuals who may not have access to in-person services.
+5. Collaboration with Emergency Management: Collaboration with emergency management officials can help ensure that mental health services are integrated into disaster response and recovery efforts.
+6. Cultural Competence: Mental health services should be culturally competent and sensitive to the needs of diverse populations.
+7. Long-Term Support: Long-term support and follow-up services can help individuals recover from the mental health impacts of wildfires.
+
+Organizations, such as the American Red Cross, the National Alliance on Mental Illness (NAMI), and the Substance Abuse and Mental Health Services Administration (SAMHSA), provide resources and guidelines for mental health support after wildfires.
+"
+BM25_Baseline,42,73,Wildfire,evacuation,OK,0.2609,0.8571,0.4,0,,,,40.952,40.952,0,0,bm25_retrieve,llama3.1:8b,0,"During wildfire events, special evacuation considerations are necessary for livestock and farm animals due to their unique needs and requirements. Here are some key considerations:
+
+1. Early planning and preparation: Farmers and ranchers should have a plan in place for evacuating their animals, including identifying safe zones and routes, and having a system for tracking and accounting for all animals.
+2. Animal-friendly evacuation routes: Evacuation routes should be designed to accommodate animals, including providing adequate space for them to move and access to food, water, and shelter.
+3. Transportation and handling: Animals may need to be transported to safety, which requires careful handling and loading to prevent injury or escape.
+4. Specialized equipment and supplies: Farmers and ranchers may need to transport specialized equipment, such as water tanks, feed, and veterinary supplies, to care for their animals during evacuation.
+5. Animal welfare: The welfare of the animals should be the top priority during evacuation, including providing adequate food, water, shelter, and veterinary care.
+6. Communication: Effective communication is crucial between farmers, ranchers, and emergency responders to ensure that animals are safely evacuated and accounted for.
+7. Considerations for specific animal types: Different types of animals may require special considerations during evacuation, such as horses, which may need to be transported in trailers, or livestock, which may need to be herded to safety.
+8. Post-evacuation care: After the wildfire has passed, farmers and ranchers should be prepared to provide care and rehabilitation for their animals, including veterinary care and re-establishing food and water sources.
+
+By considering these special evacuation considerations, farmers and ranchers can help ensure the safe evacuation of their livestock and farm animals during wildfire events.
+"
+BM25_Baseline,42,74,Wildfire,sensor_data,OK,0.1786,0.7143,0.2857,0,,,,29.617,29.617,0,0,bm25_retrieve,llama3.1:8b,0,"Live earthquake sensor data can help wildfire responders in mountainous terrain in several ways:
+
+1. Soil stability monitoring: Earthquake sensors can monitor soil stability and detect potential landslides or rockfalls, which can be triggered by wildfires or heavy rainfall. This information can help responders identify areas of high risk and take necessary precautions to prevent further damage.
+2. Ground deformation tracking: By monitoring ground deformation, responders can track the movement of wildfires and predict potential fire behavior, such as the spread of embers or the formation of fire whirls.
+3. Seismic activity monitoring: Earthquake sensors can detect seismic activity caused by wildfires, such as the collapse of trees or the movement of rocks. This information can help responders anticipate and prepare for potential hazards.
+4. Real-time terrain mapping: Live earthquake sensor data can be used to create real-time terrain maps, which can help responders navigate complex mountainous terrain and identify areas of high risk.
+5. Early warning systems: By integrating earthquake sensor data with other data sources, such as weather forecasts and satellite imagery, responders can develop early warning systems to predict and prepare for wildfires.
+
+By leveraging live earthquake sensor data, wildfire responders can make more informed decisions, reduce risks, and improve their response to wildfires in mountainous terrain.
+"

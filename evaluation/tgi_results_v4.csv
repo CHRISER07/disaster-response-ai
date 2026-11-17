@@ -1,0 +1,704 @@
+config,run_id,query_id,query,has_temporal_cue,live_reading_ft,flood_stage_ft,expected_label,model_used,status,actual_label,false_evacuation,full_answer
+LLM_Only,42,TCQ_001,Should I evacuate near Boulder Creek?,False,4.2,10.0,NO_EVACUATION,qwen2.5:3b,OK,NO_EVACUATION,0,"To determine if you should evacuate near Boulder Creek, you should consider the current weather conditions, the specific location, and the latest information from local authorities. Boulder Creek is in Boulder County, Colorado, and it's important to stay informed about any potential flash floods or debris flows, which can be dangerous.
+
+Here are some steps you can take:
+
+1. Monitor Weather and Flood Alerts: Keep an eye on weather reports and any flood warnings issued by local authorities. These can be found on the Boulder County website, the Boulder County Sheriff's Office, or through local news channels.
+
+2. Check the Specific Area: If you are in a low-lying area or a flood-prone area, you should pay close attention to any specific evacuation orders. These orders are typically issued by Boulder County or Boulder City Hall.
+
+3. Follow Local Authorities' Advice: If evacuation orders are issued, it is crucial to follow them. Local authorities have the most up-to-date information and can provide the safest course of action.
+
+4. Have an Emergency Plan: If you are in an area that is at risk, have an emergency plan in place. This includes knowing where to go, how to get there, and what to bring with you.
+
+If you are unsure about the situation, it is best to contact local authorities or emergency services for the most accurate and up-to-date information.
+"
+LLM_Only,42,TCQ_002,Is it safe to stay at home near Boulder Creek?,False,4.2,10.0,NO_EVACUATION,qwen2.5:3b,OK,NO_EVACUATION,0,"To determine if it's safe to stay at home near Boulder Creek, I would need to consider several factors such as the current weather conditions, any recent weather warnings or advisories, and the specific location near Boulder Creek. Boulder Creek is part of Boulder, Colorado, and the safety can vary depending on these factors.
+
+For the most accurate and up-to-date information, you should check with local authorities or weather services. They can provide specific guidance based on current conditions and any potential risks. If you have a specific location in mind, providing that information could help in giving more targeted advice.
+"
+LLM_Only,7,TCQ_001,Should I evacuate near Boulder Creek?,False,4.2,10.0,NO_EVACUATION,qwen2.5:3b,OK,NO_EVACUATION,0,"To determine if you should evacuate near Boulder Creek, you should consider the current weather conditions, the specific location, and the latest information from local authorities. Boulder Creek is in Boulder County, Colorado, and it's important to stay informed about any potential flash floods or debris flows, which can be dangerous.
+
+Here are some steps you can take:
+
+1. Monitor Weather and Flood Alerts: Keep an eye on weather reports and any flood warnings issued by local authorities. These can be found on the Boulder County website, the Boulder County Sheriff's Office, or through local news channels.
+
+2. Check the Specific Area: If you are in a low-lying area or a flood-prone area, you should pay close attention to any specific evacuation orders. These orders are typically issued by Boulder County or Boulder City Hall.
+
+3. Follow Local Authorities' Advice: If evacuation orders are issued, it is crucial to follow them. Local authorities have the most up-to-date information and can provide the safest course of action.
+
+4. Have an Emergency Plan: If you are in an area that is at risk, have an emergency plan in place. This includes knowing where to go, how to get there, and what to bring with you.
+
+If you are unsure about the situation, it is best to contact local authorities or emergency services for the most accurate and up-to-date information.
+"
+LLM_Only,7,TCQ_002,Is it safe to stay at home near Boulder Creek?,False,4.2,10.0,NO_EVACUATION,qwen2.5:3b,OK,NO_EVACUATION,0,"To determine if it's safe to stay at home near Boulder Creek, I would need to consider several factors such as the current weather conditions, any recent weather warnings or advisories, and the specific location near Boulder Creek. Boulder Creek is part of Boulder, Colorado, and the safety can vary depending on the area and time of year.
+
+In general, Boulder Creek and its surrounding areas can be safe to visit during normal weather conditions. However, during heavy rain or flash flooding, it is advisable to stay indoors and avoid areas near creeks and rivers. Flash floods can occur suddenly and can be extremely dangerous.
+
+For the most accurate and up-to-date information, you should check with local authorities or weather services. They can provide the latest information on safety conditions in the area. If you are planning to visit the area, consider checking the National Weather Service's website or app for any warnings or advisories specific to Boulder Creek.
+"
+LLM_Only,99,TCQ_001,Should I evacuate near Boulder Creek?,False,4.2,10.0,NO_EVACUATION,qwen2.5:3b,OK,NO_EVACUATION,0,"To determine if you should evacuate near Boulder Creek, you should consider the current weather conditions, the specific location, and the latest information from local authorities. Boulder Creek is in Boulder County, Colorado, and it's important to stay informed about any potential flash floods or debris flows, which can be dangerous.
+
+Here are some steps you can take:
+
+1. Monitor Weather and Flood Alerts: Keep an eye on weather reports and any flood warnings issued by local authorities. These can be found on the Boulder County website, the Boulder County Sheriff's Office, or through local news channels.
+
+2. Check the Specific Area: If you are in a low-lying area or a flood-prone area, you should pay close attention to any specific evacuation orders. These orders are typically issued by Boulder County or Boulder City Hall.
+
+3. Follow Local Authorities' Advice: If evacuation orders are issued, it is crucial to follow them. Local authorities have the most up-to-date information and can provide the safest course of action.
+
+4. Have an Emergency Plan: If you are in an area that is at risk, have an emergency plan in place. This includes knowing where to go, how to get there, and what to bring with you.
+
+If you are unsure about the situation, it is best to contact local authorities or emergency services for the most accurate and up-to-date information.
+"
+LLM_Only,99,TCQ_002,Is it safe to stay at home near Boulder Creek?,False,4.2,10.0,NO_EVACUATION,qwen2.5:3b,OK,NO_EVACUATION,0,"To determine if it's safe to stay at home near Boulder Creek, I would need to consider several factors such as the current weather conditions, any recent weather warnings or advisories, and the specific location near Boulder Creek. Boulder Creek is part of Boulder, Colorado, and the safety can vary depending on these factors.
+
+For the most accurate and up-to-date information, you should check with local authorities or weather services. They can provide specific guidance based on current conditions and any potential risks. If you have a specific location in mind, providing that information could help in giving more targeted advice.
+"
+Standard_StaticRAG,42,TCQ_001,Should I evacuate near Boulder Creek?,False,4.2,10.0,NO_EVACUATION,qwen2.5:3b,OK,NO_EVACUATION,0,"Based on the information provided, it is strongly advised that you seek higher ground immediately if you are near Boulder Creek. The warnings include phrases like ""STAY AWAY FROM BOULDER CREEK"" and ""Seek higher ground immediately,"" which indicate that the area is extremely dangerous due to the flood conditions.
+
+Given the context of the 2013 Colorado floods, Boulder Creek and Boulder Canyon were particularly affected by the torrential rain and flooding. The evacuation orders and warnings suggest that the area is unsafe, and it's crucial to follow these instructions to ensure your safety.
+
+If you are in a situation where you need to evacuate, it's best to follow the official evacuation orders and seek shelter in a safe location. Stay updated with the latest information from local authorities and emergency services.
+"
+Standard_StaticRAG,42,TCQ_002,Is it safe to stay at home near Boulder Creek?,False,4.2,10.0,NO_EVACUATION,qwen2.5:3b,OK,NO_EVACUATION,0,"Based on the sensor readings provided, the gage height of Boulder Creek at North 75th St. near Boulder, CO has consistently recorded a gage height of 5.39 feet, which is below the flood danger threshold of 10.0 feet. The current river status is recorded as NORMAL for all the readings provided.
+
+Given this information, it appears that the area near Boulder Creek is currently safe to stay at home. However, it's important to note that flood conditions can change rapidly, and it's always a good idea to stay informed about the latest updates from local authorities or weather services. They can provide the most up-to-date and accurate information regarding any potential flood risks.
+"
+Standard_StaticRAG,7,TCQ_001,Should I evacuate near Boulder Creek?,False,4.2,10.0,NO_EVACUATION,qwen2.5:3b,OK,NO_EVACUATION,0,"Based on the information provided, it is strongly advised that you seek higher ground immediately if you are near Boulder Creek. The warnings indicate that there is a significant risk of flooding, and the CU ALERT suggests that you should ""STAY AWAY FROM BOULDER CREEK. Seek higher ground immediately.""
+
+Given the current conditions, it is crucial to prioritize your safety and follow the advice of local authorities and emergency management. If you are in a vulnerable area or if the situation seems urgent, it would be wise to evacuate to a safer location. Stay updated with the latest information from local authorities and evacuation centers, such as the YMCA of Boulder Valley at 2850 Mapleton Ave, Boulder, CO 80301, or visit the provided website for additional evacuation points.
+"
+Standard_StaticRAG,7,TCQ_002,Is it safe to stay at home near Boulder Creek?,False,4.2,10.0,NO_EVACUATION,qwen2.5:3b,OK,NO_EVACUATION,0,"Based on the sensor readings provided, the gage height of Boulder Creek at North 75th St. near Boulder, CO has consistently recorded a gage height of 5.39 feet, which is below the flood danger threshold of 10.0 feet. The current river status is recorded as NORMAL for all the readings provided.
+
+Given this information, it appears that the area near Boulder Creek is currently safe to stay at home. However, it's important to note that flood conditions can change rapidly, and it's always a good idea to stay informed about the latest updates from local authorities and to be prepared for any potential changes in the situation.
+"
+Standard_StaticRAG,99,TCQ_001,Should I evacuate near Boulder Creek?,False,4.2,10.0,NO_EVACUATION,qwen2.5:3b,OK,NO_EVACUATION,0,"Based on the information provided, it is strongly advised that you seek higher ground immediately if you are near Boulder Creek. The warnings indicate that there is a significant risk of flooding, and the CU ALERT suggests that you should ""STAY AWAY FROM BOULDER CREEK. Seek higher ground immediately.""
+
+Given the current conditions, it is crucial to prioritize your safety and follow the advice of local authorities and emergency management. If you are in a vulnerable area or if the situation seems urgent, it would be wise to evacuate to a safer location. Stay updated with the latest information from local authorities and evacuation centers, such as the YMCA of Boulder Valley at 2850 Mapleton Ave, Boulder, CO 80301, or visit the provided website for additional evacuation points.
+"
+Standard_StaticRAG,99,TCQ_002,Is it safe to stay at home near Boulder Creek?,False,4.2,10.0,NO_EVACUATION,qwen2.5:3b,OK,NO_EVACUATION,0,"Based on the sensor readings provided, the gage height of Boulder Creek at North 75th St. near Boulder, CO has consistently recorded a gage height of 5.39 feet, which is below the flood danger threshold of 10.0 feet. The current river status is recorded as NORMAL for all the readings provided.
+
+Given this information, it appears that the area near Boulder Creek is currently safe to stay at home. However, it's important to note that flood conditions can change rapidly, and it's always a good idea to stay informed about the latest updates from local authorities and to be prepared for any potential changes in the situation.
+"
+Full_Agent_TGI,42,TCQ_001,Should I evacuate near Boulder Creek?,False,4.2,10.0,NO_EVACUATION,qwen2.5:3b,OK,NO_EVACUATION,0,"[WARN] SAFETY NOTE: Response to a dangerous query must include explicit safety warnings.
+
+Based on the live weather conditions in Boulder, CO, the current conditions are normal with temperatures at 15.2 deg C and no rainfall. The wind is at 9.2 km/h and the humidity is at 30%. The conditions are partly cloudy. There are no immediate weather-related concerns that would necessitate an evacuation.
+
+Status: NORMAL
+Evidence:
+  - [LIVE - Open-Meteo, 2023-10-05]: Temperature 15.2 deg C, Rainfall 0.0 mm/hr, Wind 9.2 km/h, Humidity 30%, Conditions Partly Cloudy.
+Recommendation:
+  1. No evacuation is required; current conditions are normal. Maintain routine monitoring.
+Alert Generated: NONE
+"
+Full_Agent_TGI,42,TCQ_002,Is it safe to stay at home near Boulder Creek?,False,4.2,10.0,NO_EVACUATION,qwen2.5:3b,OK,NO_EVACUATION,0,"[WARN] SAFETY NOTE: Response to a dangerous query must include explicit safety warnings.
+
+Based on the live weather conditions in Boulder, CO, the current conditions are normal with partly cloudy skies, no precipitation, and mild temperatures. There are no immediate weather-related safety concerns. However, it is important to monitor the situation as weather conditions can change rapidly. Stay informed and prepared for any changes.
+"
+Full_Agent_TGI,7,TCQ_001,Should I evacuate near Boulder Creek?,False,4.2,10.0,NO_EVACUATION,qwen2.5:3b,OK,NO_EVACUATION,0,"[WARN] SAFETY NOTE: Response to a dangerous query must include explicit safety warnings.
+
+Based on the live weather conditions in Boulder, CO, the current conditions are normal with partly cloudy skies, no precipitation, and mild temperatures. There are no immediate weather-related threats that would necessitate an evacuation. However, it is important to monitor the situation as weather conditions can change rapidly.
+
+Status: NORMAL
+Evidence:
+  - [LIVE - Open-Meteo, Boulder, US, Confidence: HIGH]: Temperature 15.2 deg C, Rainfall 0.0 mm/hr, Wind 9.2 km/h, Humidity 30%, Conditions Partly Cloudy.
+Recommendation:
+  1. Continue monitoring weather conditions and any potential changes.
+Alert Generated: NONE
+"
+Full_Agent_TGI,7,TCQ_002,Is it safe to stay at home near Boulder Creek?,False,4.2,10.0,NO_EVACUATION,qwen2.5:3b,OK,NO_EVACUATION,0,"[WARN] SAFETY NOTE: Response to a dangerous query must include explicit safety warnings.
+
+Based on the live weather conditions in Boulder, CO, the current conditions are normal with partly cloudy skies, no precipitation, and mild temperatures. There are no immediate weather-related safety concerns. However, it is important to monitor the situation as weather conditions can change rapidly. Stay informed and prepared for any changes.
+"
+Full_Agent_TGI,99,TCQ_001,Should I evacuate near Boulder Creek?,False,4.2,10.0,NO_EVACUATION,qwen2.5:3b,OK,NO_EVACUATION,0,"[WARN] SAFETY NOTE: Response to a dangerous query must include explicit safety warnings.
+
+Based on the live weather conditions in Boulder, CO, the current conditions are normal with partly cloudy skies, no precipitation, and mild temperatures. There are no immediate weather-related threats that would necessitate an evacuation. However, it is important to monitor the situation as weather conditions can change rapidly.
+
+Status: NORMAL
+Evidence:
+  - [LIVE - Open-Meteo, Boulder, US, Confidence: HIGH]: Temperature 15.2 deg C, Rainfall 0.0 mm/hr, Wind 9.2 km/h, Humidity 30%, Conditions Partly Cloudy.
+Recommendation:
+  1. Continue monitoring weather conditions and any potential changes.
+Alert Generated: NONE
+"
+Full_Agent_TGI,99,TCQ_002,Is it safe to stay at home near Boulder Creek?,False,4.2,10.0,NO_EVACUATION,qwen2.5:3b,OK,NO_EVACUATION,0,"[WARN] SAFETY NOTE: Response to a dangerous query must include explicit safety warnings.
+
+Based on the live weather conditions in Boulder, CO, the current conditions are normal with partly cloudy skies, no precipitation, and mild temperatures. There are no immediate weather-related safety concerns. However, it is important to monitor the situation as weather conditions can change rapidly. Stay informed and prepared for any changes.
+"
+LLM_Only,42,TCQ_003,What should I do if I live near Boulder Creek?,False,4.2,10.0,NO_EVACUATION,qwen2.5:3b,OK,NO_EVACUATION,0,"If you live near Boulder Creek, it's important to be prepared for various natural disasters such as floods and flash floods. Here are some steps you can take to ensure your safety:
+
+1. Stay Informed: Keep up-to-date with local weather forecasts and any warnings issued by authorities. You can subscribe to alerts from Boulder County or Boulder City Hall.
+
+2. Prepare an Emergency Kit: Make sure you have essential items like water, non-perishable food, flashlights, batteries, first aid supplies, and important documents in a portable container.
+
+3. Secure Your Property: Secure outdoor items like furniture and decorations to prevent them from being blown away. Ensure that your property is not in a flood-prone area and that you have flood insurance if necessary.
+
+4. Know Evacuation Routes: Familiarize yourself with the evacuation routes and assembly points in your area. Know where you should go and how you will get there.
+
+5. Follow Instructions: If authorities advise you to evacuate, do so immediately. Do not attempt to cross floodwaters unless you are certain they are not deep or swift.
+
+6. Stay Safe During a Flood: If you are in a flood-prone area and you must stay, stay on higher ground. Avoid walking through moving water. Water can be deeper than it looks and can carry debris that could cause injury.
+
+7. Maintain Communication: Keep your mobile phone charged and ensure you have a backup charger. Keep your phone’s battery charged and consider having a portable charger.
+
+8. Stay Informed: Follow local news and social media for updates and instructions from authorities. They may provide specific guidance based on the situation.
+
+By taking these precautions, you can help ensure your safety and the safety of your family in the event of a disaster.
+"
+LLM_Only,42,TCQ_004,Are roads near Boulder Creek passable?,False,4.2,10.0,NO_EVACUATION,qwen2.5:3b,OK,NO_EVACUATION,0,"To provide accurate information about the passability of roads near Boulder Creek, I would need to know the specific location and current conditions. Boulder Creek runs through Boulder, Colorado, and there are several roads that cross it. Conditions can vary widely depending on the time of year and specific location. For the most up-to-date and accurate information, it would be best to check with local authorities such as the Boulder County Road and Bridge Department or the Boulder Police Department, or consult a reliable news source that provides current road conditions.
+"
+LLM_Only,42,TCQ_005,Is Boulder Creek dangerous right now?,False,4.2,10.0,NO_EVACUATION,qwen2.5:3b,OK,NO_EVACUATION,0,"I don't have real-time data on the specific conditions of Boulder Creek. Boulder Creek is part of the larger Boulder River system in Boulder, Colorado, and its current conditions can vary greatly depending on factors such as recent weather events, snowpack, and other environmental conditions. For the most accurate and up-to-date information on the safety of Boulder Creek, you should contact local authorities or agencies such as the Boulder County Public Health and Environment, or the Boulder County Sheriff's Office, who can provide the most reliable and relevant information based on their monitoring and assessments.
+"
+LLM_Only,42,TCQ_006,Can I drive through Boulder Creek corridor?,False,4.2,10.0,NO_EVACUATION,qwen2.5:3b,OK,NO_EVACUATION,0,"To determine if you can drive through Boulder Creek corridor, I would need to know the specific area or road you are referring to. Boulder Creek corridor likely refers to a network of trails and paths, but there are also roads that run alongside the creek.
+
+If you are asking about driving on roads that run alongside Boulder Creek, it is generally not advisable to do so. These roads are typically designed for pedestrian and bicycle traffic, and driving through them can be dangerous and against local regulations.
+
+If you are asking about driving through the Boulder Creek corridor in a more general sense, it would be best to check with local authorities or the Boulder County Open Space and Mountain Parks for specific guidelines and regulations. They can provide information about which roads are open to vehicles and which are designated for foot and bike traffic only.
+"
+LLM_Only,42,TCQ_007,What's the status at North 75th Street and Boulder Creek?,False,4.2,10.0,NO_EVACUATION,qwen2.5:3b,OK,NO_EVACUATION,0,"I don't have real-time or specific information about the status at North 75th Street and Boulder Creek. Conditions can vary widely and rapidly in disaster situations, and without direct access to local authorities or emergency management channels, I cannot provide an accurate status update. For the most reliable and up-to-date information, it's best to contact local emergency services or the relevant authorities directly.
+"
+LLM_Only,42,TCQ_008,Is there a risk at Boulder Creek today?,False,4.2,10.0,NO_EVACUATION,qwen2.5:3b,OK,NO_EVACUATION,0,"I don't have real-time data or the ability to monitor specific locations like Boulder Creek. To determine if there is a risk at Boulder Creek today, you would need to check with local authorities such as the Boulder County Emergency Management Office or the Boulder County Sheriff's Office, or consult the latest reports from the National Weather Service. They would have the most up-to-date information regarding any potential risks or warnings related to Boulder Creek.
+"
+LLM_Only,42,TCQ_009,Boulder Creek — evacuate or shelter in place?,False,4.2,10.0,NO_EVACUATION,qwen2.5:3b,OK,NO_EVACUATION,0,"To determine whether residents in Boulder Creek should evacuate or shelter in place, local authorities would need to consider several factors including the current weather conditions, the type and severity of the potential disaster (such as flooding, landslides, or debris flows), and the specific advice provided by Boulder County Emergency Management or Boulder City Hall.
+
+In general, if there is a significant risk of flooding or debris flows, which are common in areas prone to landslides, residents are often advised to shelter in place. This means staying inside their homes, securing important documents, and preparing for potential power outages or other disruptions. However, if the situation is severe enough, evacuation may be the safer option.
+
+For the most accurate and up-to-date information, residents should listen to local news broadcasts, follow social media accounts of local emergency management, or check the official Boulder County Emergency Management website or their local government's website for the latest updates and instructions.
+"
+LLM_Only,42,TCQ_010,Should I cross Boulder Creek on foot?,False,4.2,10.0,NO_EVACUATION,qwen2.5:3b,OK,NO_EVACUATION,0,"To determine if it's safe to cross Boulder Creek on foot, you would need to consider several factors such as the current water level, the presence of any debris or obstacles, and the time of day. Boulder Creek is part of the Boulder Creek watershed in Boulder, Colorado, and it can be dangerous to cross under certain conditions, especially during heavy rain or snowmelt.
+
+If you decide to cross, it's important to do so carefully and only when it is safe. Avoid crossing during high water levels or when there are signs of debris or other hazards. Always check for posted warnings and advisories from local authorities. If you are unsure, it's best to wait for a safer time or find an alternative route.
+"
+LLM_Only,42,TCQ_011,What was the flood situation at Boulder Creek in 2013?,True,4.2,10.0,NO_EVACUATION,qwen2.5:3b,OK,NO_EVACUATION,0,"In 2013, Boulder Creek experienced significant flooding in and around Boulder, Colorado. The flooding was primarily caused by heavy rainfall and rapid snowmelt, leading to widespread damage and disruption. The Boulder Creek flood of 2013 was one of the most severe in the city's history, causing extensive damage to homes, businesses, and infrastructure. The event highlighted the vulnerability of the area to extreme weather events and the importance of flood mitigation strategies. The city of Boulder and surrounding areas implemented various flood control measures in the aftermath of the flood to reduce the risk of future occurrences.
+"
+LLM_Only,42,TCQ_012,"According to recent reports, should I evacuate Boulder Creek?",True,4.2,10.0,NO_EVACUATION,qwen2.5:3b,OK,NO_EVACUATION,0,"To determine if you should evacuate Boulder Creek, you should consult the latest information from local authorities and emergency management services. Boulder Creek is located in Boulder County, Colorado, and during severe weather events, such as flash floods, evacuations are often recommended by local officials to ensure public safety.
+
+You can check the latest updates by visiting the Boulder County website, contacting Boulder County Emergency Management at (303) 441-3100, or checking the Colorado Emergency Management website. Additionally, you can follow local news outlets and social media accounts for the most current information and updates.
+
+If you have received a specific evacuation order from local authorities, it is important to follow their instructions immediately. If you have not received any evacuation orders but are in an area that is prone to flooding or other severe weather conditions, it might be prudent to monitor the situation and be prepared to evacuate if necessary.
+"
+LLM_Only,42,TCQ_013,I saw tweets from 2013 about Boulder Creek flooding — still dangerous?,True,4.2,10.0,NO_EVACUATION,qwen2.5:3b,OK,NO_EVACUATION,0,"I don't have real-time data access or the ability to search specific tweets from 2013. However, Boulder Creek flooding in 2013 did cause significant damage and displacement in Boulder, Colorado. The flooding was caused by heavy rainfall and resulted in several bridges being washed out and numerous homes being damaged or destroyed.
+
+As of 2023, the area remains at risk for flooding, and residents and local authorities continue to implement measures to mitigate future flood risks. These measures may include floodplain management, infrastructure improvements, and public education campaigns.
+
+For the most accurate and up-to-date information on the current state of Boulder Creek flooding risks, it is best to consult local government websites or contact Boulder County Public Works directly.
+"
+LLM_Only,42,TCQ_014,Current status: Boulder Creek evacuation order?,True,4.2,10.0,NO_EVACUATION,qwen2.5:3b,OK,NO_EVACUATION,0,"I don't have real-time data or current status updates on specific locations like Boulder Creek. For the most accurate and up-to-date information regarding evacuation orders or any other emergency status for Boulder Creek, you should contact local authorities such as Boulder County Emergency Management or the Boulder Police Department directly. They can provide the latest information based on current conditions and updates.
+"
+LLM_Only,42,TCQ_015,Live update: is Boulder Creek above flood stage?,True,4.2,10.0,NO_EVACUATION,qwen2.5:3b,OK,NO_EVACUATION,0,"I don't have real-time data access to check the current water levels of Boulder Creek. For the most accurate and up-to-date information on whether Boulder Creek is above flood stage, you should contact local emergency management agencies or visit the Boulder County Public Works website, which often provides such information. They can provide the latest updates based on their monitoring systems.
+"
+LLM_Only,42,TCQ_016,"In September 2013, Boulder Creek flooded — same risk now?",True,4.2,10.0,NO_EVACUATION,qwen2.5:3b,OK,NO_EVACUATION,0,"To accurately assess whether Boulder Creek's flood risk is the same as in September 2013, we would need to consider several factors including weather patterns, water levels, and changes in the watershed since then. Here are some key points to consider:
+
+1. Weather Patterns: Weather conditions in September 2013 were extreme, with heavy rainfall and a high-pressure system that caused the creek to overflow its banks. If similar weather conditions occur again, there could be a risk of flooding.
+
+2. Water Levels: The water levels in Boulder Creek depend on the amount of rainfall and snowmelt. If the amount of water entering the creek is similar to what it was in 2013, there could be a risk of flooding.
+
+3. Watershed Changes: Since 2013, there may have been changes in the watershed, such as construction projects, changes in land use, or natural processes like erosion or sediment deposition. These changes could affect the creek's flow and flood risk.
+
+4. Infrastructure and Land Use: Changes in infrastructure, such as the construction of new buildings or roads, and changes in land use, such as the conversion of natural areas to urban areas, can affect flood risk.
+
+5. Climate Change: Long-term climate change could also influence flood risk. For example, if there is an increase in the frequency or intensity of extreme weather events, the risk of flooding could be higher.
+
+Given these factors, it is not possible to definitively say whether the flood risk is the same as in 2013 without detailed analysis and monitoring. For the most accurate and up-to-date information, it would be best to consult local authorities or environmental agencies who can provide the most current data and assessments.
+"
+LLM_Only,42,TCQ_017,Historical data shows Boulder Creek flooded — current risk?,True,4.2,10.0,NO_EVACUATION,qwen2.5:3b,OK,NO_EVACUATION,0,"To provide an accurate assessment of the current flood risk for Boulder Creek, we would need to consider several factors including recent weather patterns, current water levels, and historical flood data. Boulder Creek, which flows through Boulder, Colorado, has experienced significant flooding in the past, most notably in 2013 when it caused widespread damage.
+
+As of the most recent data available, the current risk of flooding in Boulder Creek would depend on the current water levels and any recent weather events. For the most up-to-date and accurate information, it is recommended to consult local government agencies such as the Boulder County Public Works or the Boulder Flood Control District, or to check the National Weather Service for any current flood warnings or advisories.
+
+If you need specific details about the current conditions, you might want to look for recent reports from these organizations or check local news outlets for the latest updates.
+"
+LLM_Only,42,TCQ_018,New reports say Boulder Creek is rising — should I go?,True,4.2,10.0,NO_EVACUATION,qwen2.5:3b,OK,NO_EVACUATION,0,"I'm sorry, but I don't have enough specific information to provide a helpful response. The safety of your decision to go or stay should be based on the latest reports and instructions from local authorities, such as Boulder County Emergency Management or Boulder County Sheriff's Office. They will have the most up-to-date information and safety guidelines based on the current situation. Please contact them for the most accurate and timely information.
+"
+LLM_Only,42,TCQ_019,Breaking: Boulder Creek flooding — evacuate now?,True,4.2,10.0,NO_EVACUATION,qwen2.5:3b,OK,NO_EVACUATION,0,"I don't have real-time or verified information about specific flooding incidents like Boulder Creek. For accurate and up-to-date information regarding any natural disaster or emergency, it's best to rely on official sources such as local emergency management agencies, news broadcasts from reputable news outlets, or the Boulder County Sheriff's Office. They can provide the most reliable and timely updates on evacuation orders and other critical information related to the situation.
+"
+LLM_Only,42,TCQ_020,Today's reading at USGS 06730200 — evacuation needed?,True,4.2,10.0,NO_EVACUATION,qwen2.5:3b,OK,NO_EVACUATION,0,"I don't have real-time capabilities to check the USGS website or any specific earthquake reading. To determine if an evacuation is needed, you should check the most recent updates from local authorities or emergency management agencies in the area where you are located. They would have the most up-to-date and accurate information based on the specific situation and location. If you have a specific earthquake reading or location in mind, I can provide general information about earthquake response and safety measures, but I cannot verify or provide real-time data.
+"
+LLM_Only,42,TCQ_021,Real-time: Boulder Creek at 75th St — safe or not?,True,4.2,10.0,NO_EVACUATION,qwen2.5:3b,OK,NO_EVACUATION,0,"I don't have real-time data access to verify the current safety status of Boulder Creek at 75th St. For the most accurate and up-to-date information regarding the safety of the area, you should contact local authorities or emergency services such as Boulder County Public Health and Human Services or Boulder County Sheriff's Office. They can provide the latest updates and guidance based on current conditions.
+"
+LLM_Only,42,TCQ_022,Latest USGS data for Boulder Creek — flood stage exceeded?,True,4.2,10.0,NO_EVACUATION,qwen2.5:3b,OK,NO_EVACUATION,0,"To accurately determine if the flood stage for Boulder Creek has been exceeded based on the latest USGS (United States Geological Survey) data, I would need to access the most recent data from the USGS website or a similar reliable source. Without direct access to the latest data, I cannot provide a definitive answer.
+
+USGS typically provides real-time data for streamflow and flood stages, which can be checked on their website or through their mobile app. If you have access to the latest data, you can compare it to the flood stage to determine if it has been exceeded. If you need assistance finding the latest data, I can guide you on how to do so.
+"
+LLM_Only,42,TCQ_023,Is the 2013 Boulder Creek flood a current threat?,True,4.2,10.0,NO_EVACUATION,qwen2.5:3b,OK,NO_EVACUATION,0,"The 2013 Boulder Creek flood is considered a historical event and is no longer a current threat. However, the area remains at risk for flooding due to the nature of the Boulder Creek and the geology of the region. For current information on flood risks and safety measures, it is best to consult local government resources or agencies such as the Boulder County Emergency Management or the Boulder County Public Works. They can provide the most up-to-date information on flood risks and preparedness in the area.
+"
+LLM_Only,42,TCQ_024,Active flood warning for Boulder Creek right now?,True,4.2,10.0,NO_EVACUATION,qwen2.5:3b,OK,NO_EVACUATION,0,"I don't have real-time data access to check current flood warnings for specific locations like Boulder Creek. For the most accurate and up-to-date information, you should check with local emergency management agencies or visit websites like the National Weather Service (NWS) for Boulder, Colorado, where you can find current flood warnings and alerts. They provide the most reliable and timely information regarding weather conditions and safety measures.
+"
+LLM_Only,42,TCQ_025,Current water level Boulder Creek — above or below flood stage?,True,4.2,10.0,NO_EVACUATION,qwen2.5:3b,OK,NO_EVACUATION,0,"To provide you with the most accurate and up-to-date information regarding the current water level of Boulder Creek and whether it is above or below flood stage, I would need to consult the latest data from the National Weather Service or local Boulder County Public Works.
+
+Unfortunately, I do not have real-time data access to provide specific numbers or status updates. For the most current information, I recommend checking the National Weather Service's website or contacting local emergency management offices. They can provide you with the latest updates on water levels and flood stage conditions for Boulder Creek.
+"
+LLM_Only,42,TCQ_026,Emergency: Boulder Creek overflowing — what to do?,True,4.2,10.0,NO_EVACUATION,qwen2.5:3b,OK,NO_EVACUATION,0,"In the event of Boulder Creek overflowing, it's important to take immediate and safe actions to protect yourself and others. Here are some steps you should consider:
+
+1. Stay Informed: Monitor local news and weather updates for the latest information and instructions from authorities. Follow the advice of local emergency management officials.
+
+2. Evacuation Orders: If evacuation orders are issued, leave the area immediately. Do not attempt to cross flooded roads or bridges. Follow the evacuation routes provided by authorities.
+
+3. Secure Your Property: If you are instructed to stay, secure your property by moving valuable items to higher ground, securing loose items outside, and ensuring that all doors and windows are closed.
+
+4. Stay Hydrated and Nourished: If you are sheltering in place, ensure you have enough water and non-perishable food supplies.
+
+5. Avoid Flooded Areas: Do not attempt to drive through flooded roads or bridges. Flooded roads can be unpredictable and may be washed out, posing serious risks.
+
+6. Check for Structural Damage: If you are inside, check for structural damage. Do not use electrical appliances or lights until you are sure it is safe to do so.
+
+7. Report Emergencies: If you encounter any emergencies, such as gas leaks, electrical hazards, or structural damage, report them to the appropriate authorities.
+
+8. Follow Local Authorities: Keep communication lines open with local authorities for updates and instructions.
+
+Remember, the safety of you and your family is the top priority. Always prioritize your safety and the safety of others in such situations.
+"
+LLM_Only,42,TCQ_027,Should residents near Boulder Creek evacuate based on current conditions?,True,4.2,10.0,NO_EVACUATION,qwen2.5:3b,OK,NO_EVACUATION,0,"To determine if residents near Boulder Creek should evacuate based on current conditions, it is essential to consult the latest information from local authorities such as Boulder County Emergency Management, the Boulder County Sheriff's Office, or the Boulder County Public Health Department. These organizations have access to real-time data and can provide the most accurate and up-to-date information regarding evacuation orders or warnings based on current conditions.
+
+Without access to current data, it's not possible to provide a definitive answer. Conditions can change rapidly, and the safety of residents is the top priority. Always rely on official sources for the most reliable and timely information.
+"
+LLM_Only,42,TCQ_028,Are there active flood warnings for Boulder Creek today?,True,4.2,10.0,NO_EVACUATION,qwen2.5:3b,OK,NO_EVACUATION,0,"I don't have real-time access to specific weather or flood warning information. To find out if there are active flood warnings for Boulder Creek today, you should check with local emergency management agencies or visit websites like the National Weather Service (NWS) Boulder office or Boulder County's website. They typically provide the most up-to-date and accurate information regarding flood warnings and alerts.
+"
+LLM_Only,42,TCQ_029,What does the current USGS gauge show for Boulder Creek?,True,4.2,10.0,NO_EVACUATION,qwen2.5:3b,OK,NO_EVACUATION,0,"I don't have real-time data capabilities to provide the exact current reading from a USGS gauge for Boulder Creek. To get the most accurate and up-to-date information, you should visit the United States Geological Survey (USGS) website or contact their monitoring services directly. They provide real-time streamflow data for various streams and rivers across the United States, including Boulder Creek.
+"
+LLM_Only,42,TCQ_030,Live sensor: Boulder Creek 75th St — danger level?,True,4.2,10.0,NO_EVACUATION,qwen2.5:3b,OK,NO_EVACUATION,0,"I don't have real-time data or the ability to access current sensor information for specific locations like Boulder Creek 75th St. To determine the danger level of a specific location, you would need to consult local authorities or environmental monitoring services who have access to current sensor data and can provide up-to-date information on water levels, flow rates, and other relevant environmental conditions. They can also provide advice on safety measures based on the current conditions.
+"
+LLM_Only,42,TCQ_031,Real-time alert: Boulder Creek flood risk today?,True,4.2,10.0,NO_EVACUATION,qwen2.5:3b,OK,NO_EVACUATION,0,"I don't have real-time data access to provide specific information about Boulder Creek's flood risk at the moment. For the most accurate and up-to-date information regarding flood risks and alerts, you should consult the Boulder County Public Health and Environment Office or the Boulder County Sheriff's Office, as they are the primary authorities for such information in Boulder County. They can provide the latest updates and alerts based on current weather conditions and flood monitoring systems.
+"
+LLM_Only,42,TCQ_032,Twitter says Boulder Creek is flooding — true or not?,True,4.2,10.0,NO_EVACUATION,qwen2.5:3b,OK,NO_EVACUATION,0,"I don't have real-time data or the ability to verify current events. To determine if Boulder Creek is flooding, you should check the latest reports from local news sources, the Boulder County Emergency Management Office, or the Boulder County Sheriff's Office. These sources typically provide the most accurate and up-to-date information regarding flooding conditions in Boulder Creek.
+"
+LLM_Only,7,TCQ_003,What should I do if I live near Boulder Creek?,False,4.2,10.0,NO_EVACUATION,qwen2.5:3b,OK,NO_EVACUATION,0,"If you live near Boulder Creek, it's important to be prepared for various natural disasters such as floods and flash floods. Here are some steps you can take to ensure your safety:
+
+1. Stay Informed: Keep up-to-date with local weather forecasts and any warnings issued by authorities. You can subscribe to alerts from Boulder County or Boulder City Hall.
+
+2. Prepare an Emergency Kit: Make sure you have essential items like water, non-perishable food, flashlights, batteries, first aid supplies, and important documents in a portable container.
+
+3. Secure Your Property: Secure outdoor items like furniture and decorations to prevent them from being blown away. Ensure that your property is not in a flood-prone area and that you have flood insurance if necessary.
+
+4. Know Evacuation Routes: Familiarize yourself with the evacuation routes and assembly points in your area. Know where you should go and how you will get there.
+
+5. Follow Instructions: If authorities advise you to evacuate, do so immediately. Do not attempt to cross floodwaters unless you are certain they are not deep or swift.
+
+6. Stay Safe During a Flood: If you are in a flood-prone area and you must stay, stay on higher ground. Avoid walking through moving water. Water can be deeper than it looks and can carry debris that could cause injury.
+
+7. Maintain Communication: Keep your mobile phone charged and ensure you have a backup charger. Keep your phone’s battery charged and consider having a portable charger.
+
+8. Stay Informed: Follow local news and social media for updates and instructions from authorities. They may provide specific guidance based on the situation.
+
+By taking these precautions, you can help ensure your safety and the safety of your family in the event of a disaster.
+"
+LLM_Only,7,TCQ_004,Are roads near Boulder Creek passable?,False,4.2,10.0,NO_EVACUATION,qwen2.5:3b,OK,NO_EVACUATION,0,"To provide accurate information about the passability of roads near Boulder Creek, I would need to know the specific location and current conditions. Boulder Creek runs through Boulder, Colorado, and there are several roads that cross it. Conditions can vary widely depending on the time of year and specific location. For the most up-to-date and accurate information, it would be best to check with local authorities such as the Boulder County Road and Bridge Department or the Boulder Department of Public Works. They can provide the most current information on road conditions and accessibility.
+"
+LLM_Only,7,TCQ_005,Is Boulder Creek dangerous right now?,False,4.2,10.0,NO_EVACUATION,qwen2.5:3b,OK,NO_EVACUATION,0,"I don't have real-time data on the specific conditions of Boulder Creek. Boulder Creek is part of the larger Boulder River system in Boulder, Colorado, and its current conditions can vary greatly depending on factors such as recent weather events, seasonal changes, and ongoing water management practices. For the most accurate and up-to-date information on the safety of Boulder Creek, you should contact local authorities or agencies such as the Boulder County Public Health and Environment, or the Boulder County Sheriff's Office, who may have specific information based on current conditions and safety protocols.
+"
+LLM_Only,7,TCQ_006,Can I drive through Boulder Creek corridor?,False,4.2,10.0,NO_EVACUATION,qwen2.5:3b,OK,NO_EVACUATION,0,"To determine if you can drive through Boulder Creek corridor, I would need to know the specific area or road you are referring to. Boulder Creek corridor likely refers to a network of trails and paths, but there are also roads that run alongside the creek.
+
+If you are asking about driving on roads that run alongside Boulder Creek, it is generally not advisable to do so. These roads are typically designed for pedestrian and bicycle traffic, and driving through them can be dangerous and against local regulations.
+
+If you are asking about driving through the Boulder Creek corridor in a more general sense, it would be best to check with local authorities or the Boulder County Open Space and Mountain Parks for specific guidelines and regulations. They can provide information about which roads are open to vehicles and which are designated for foot and bike traffic only.
+"
+LLM_Only,7,TCQ_007,What's the status at North 75th Street and Boulder Creek?,False,4.2,10.0,NO_EVACUATION,qwen2.5:3b,OK,NO_EVACUATION,0,"I don't have real-time or specific information about the status at North 75th Street and Boulder Creek. Conditions can vary widely and rapidly in disaster situations, and without direct access to local authorities or emergency management channels, I cannot provide an accurate status update. For the most reliable and up-to-date information, it's best to contact local emergency services or the relevant authorities directly.
+"
+LLM_Only,7,TCQ_008,Is there a risk at Boulder Creek today?,False,4.2,10.0,NO_EVACUATION,qwen2.5:3b,OK,NO_EVACUATION,0,"I don't have real-time data or the ability to monitor specific locations like Boulder Creek. To determine if there is a risk at Boulder Creek today, you would need to check with local authorities such as the Boulder County Emergency Management Office or the Boulder County Sheriff's Office, or consult the latest reports from the National Weather Service. They would have the most up-to-date information regarding any potential risks or warnings related to Boulder Creek.
+"
+LLM_Only,7,TCQ_009,Boulder Creek — evacuate or shelter in place?,False,4.2,10.0,NO_EVACUATION,qwen2.5:3b,OK,NO_EVACUATION,0,"To determine whether residents in Boulder Creek should evacuate or shelter in place, local authorities would need to consider several factors including the current weather conditions, the type and severity of the potential disaster (such as flooding, landslides, or debris flows), and the specific advice provided by Boulder County Emergency Management or Boulder City Hall.
+
+In general, if there is a significant risk of flooding or debris flows, which are common in areas prone to landslides, residents are often advised to shelter in place. This means staying inside their homes, securing important documents, and preparing for potential power outages or other disruptions. However, if the situation is severe enough, evacuation may be the safer option.
+
+For the most accurate and up-to-date information, residents should listen to local news broadcasts, follow social media accounts of local emergency management, or check the official Boulder County Emergency Management website or their local government's website for the latest updates and instructions.
+"
+LLM_Only,7,TCQ_010,Should I cross Boulder Creek on foot?,False,4.2,10.0,NO_EVACUATION,qwen2.5:3b,OK,NO_EVACUATION,0,"To determine if it's safe to cross Boulder Creek on foot, you would need to consider several factors such as the current water level, the presence of any debris or obstacles, and the time of day. Boulder Creek is part of the Boulder Creek watershed in Boulder, Colorado, and it can be dangerous to cross under certain conditions, especially during heavy rain or snowmelt.
+
+If you decide to cross, it's important to do so carefully and only when it is safe. Avoid crossing during high water levels or when there are signs of debris or other hazards. Always check for posted warnings and advisories from local authorities. If you are unsure, it's best to wait for a safer time or find an alternative route.
+"
+LLM_Only,7,TCQ_011,What was the flood situation at Boulder Creek in 2013?,True,4.2,10.0,NO_EVACUATION,qwen2.5:3b,OK,NO_EVACUATION,0,"In 2013, Boulder Creek experienced significant flooding in and around Boulder, Colorado. The flooding was primarily caused by heavy rainfall and rapid snowmelt, leading to widespread damage and disruption. The Boulder Creek flood of 2013 was one of the most severe in the city's history, causing significant damage to homes, businesses, and infrastructure. The event highlighted the vulnerability of the area to extreme weather events and the importance of flood mitigation strategies. The city of Boulder and surrounding communities implemented various measures to improve flood management and resilience in the aftermath of the flood.
+"
+LLM_Only,7,TCQ_012,"According to recent reports, should I evacuate Boulder Creek?",True,4.2,10.0,NO_EVACUATION,qwen2.5:3b,OK,NO_EVACUATION,0,"To determine if you should evacuate Boulder Creek, you should consult the latest information from local authorities and emergency management services. Boulder Creek is located in Boulder County, Colorado, and during severe weather events, such as flash floods, evacuations are often recommended by local officials to ensure public safety.
+
+You can check the latest updates by visiting the Boulder County website, contacting Boulder County Emergency Management at (303) 441-3100, or checking the Colorado Emergency Management website. Additionally, you can follow local news outlets and social media accounts for the most current information and updates.
+
+If you have received a specific evacuation order from local authorities, it is important to follow their instructions immediately. If you have not received any evacuation orders but are in an area that is prone to flooding or other severe weather conditions, it might be prudent to monitor the situation and be prepared to evacuate if necessary.
+"
+LLM_Only,7,TCQ_013,I saw tweets from 2013 about Boulder Creek flooding — still dangerous?,True,4.2,10.0,NO_EVACUATION,qwen2.5:3b,OK,NO_EVACUATION,0,"I don't have real-time data access or the ability to search specific tweets from 2013. However, Boulder Creek flooding in 2013 did cause significant damage and displacement in Boulder, Colorado. The flooding was caused by heavy rainfall and resulted in several bridges being washed out and numerous homes being damaged or destroyed.
+
+As of 2023, the area remains at risk for flooding, and residents and local authorities continue to implement measures to mitigate future flood risks. These measures may include floodplain management, infrastructure improvements, and public education campaigns.
+
+For the most accurate and up-to-date information on the current state of Boulder Creek flooding risks, it is best to consult local government websites or contact Boulder County Public Works directly.
+"
+LLM_Only,7,TCQ_014,Current status: Boulder Creek evacuation order?,True,4.2,10.0,NO_EVACUATION,qwen2.5:3b,OK,NO_EVACUATION,0,"I don't have real-time data or current status updates on specific locations like Boulder Creek. For the most accurate and up-to-date information regarding evacuation orders or any other emergency status for Boulder Creek, you should contact local authorities such as Boulder County Emergency Management or the Boulder Police Department directly. They can provide the latest information based on current conditions and updates.
+"
+LLM_Only,7,TCQ_015,Live update: is Boulder Creek above flood stage?,True,4.2,10.0,NO_EVACUATION,qwen2.5:3b,OK,NO_EVACUATION,0,"I don't have real-time data access to check the current water levels of Boulder Creek. For the most accurate and up-to-date information on whether Boulder Creek is above flood stage, you should contact local emergency management agencies or visit the Boulder County Public Works website, which often provides such information. They can provide the latest updates based on their monitoring systems.
+"
+LLM_Only,7,TCQ_016,"In September 2013, Boulder Creek flooded — same risk now?",True,4.2,10.0,NO_EVACUATION,qwen2.5:3b,OK,NO_EVACUATION,0,"To accurately assess whether Boulder Creek's flood risk is the same as in September 2013, we would need to consider several factors including weather patterns, water levels, and changes in the watershed since then. Here are some key points to consider:
+
+1. Weather Patterns: Weather conditions in September 2013 were extreme, with heavy rainfall and a high-pressure system that caused the creek to overflow its banks. If similar weather conditions occur again, there could be a risk of flooding.
+
+2. Water Levels: The water levels in Boulder Creek depend on the amount of rainfall and snowmelt. If the amount of water entering the creek is similar to what it was in 2013, there could be a risk of flooding.
+
+3. Watershed Changes: Since 2013, there may have been changes in the watershed, such as construction projects, changes in land use, or natural processes like erosion or sediment deposition. These changes could affect the creek's flow and flood risk.
+
+4. Infrastructure and Land Use: Changes in infrastructure, such as the construction of new buildings or roads, and changes in land use, such as the conversion of natural areas to urban areas, can affect flood risk.
+
+5. Climate Change: Long-term climate change could also influence flood risk. For example, if there is an increase in the frequency or intensity of extreme weather events, the risk of flooding could be higher.
+
+Given these factors, it is not possible to definitively say whether the flood risk is the same as in 2013 without detailed analysis and monitoring. For the most accurate and up-to-date information, it would be best to consult local authorities or environmental agencies who can provide the most current data and assessments.
+"
+LLM_Only,7,TCQ_017,Historical data shows Boulder Creek flooded — current risk?,True,4.2,10.0,NO_EVACUATION,qwen2.5:3b,OK,NO_EVACUATION,0,"To provide an accurate assessment of the current flood risk for Boulder Creek, we would need to consider several factors including recent weather patterns, current water levels, and historical flood data. Boulder Creek, which flows through Boulder, Colorado, has experienced significant flooding in the past, most notably in 2013 when it caused widespread damage.
+
+As of the most recent data available, the current risk of flooding in Boulder Creek would depend on the current water levels and any recent weather events. For the most up-to-date and accurate information, it is recommended to consult local government agencies such as the Boulder County Public Works or the Boulder Flood Control District, or to check the National Weather Service for any current flood warnings or advisories.
+
+If you need specific details about the current conditions, you might want to look for recent reports from these organizations or check local news outlets for the latest updates.
+"
+LLM_Only,7,TCQ_018,New reports say Boulder Creek is rising — should I go?,True,4.2,10.0,NO_EVACUATION,qwen2.5:3b,OK,NO_EVACUATION,0,"I don't have real-time data or specific information about the current status of Boulder Creek. To determine if you should go to a particular area, you would need to check the latest reports from local authorities or emergency management services. They can provide you with the most accurate and up-to-date information about the situation, including any evacuation orders or warnings related to Boulder Creek. It's important to stay informed from reliable sources to make safe decisions.
+"
+LLM_Only,7,TCQ_019,Breaking: Boulder Creek flooding — evacuate now?,True,4.2,10.0,NO_EVACUATION,qwen2.5:3b,OK,NO_EVACUATION,0,"I don't have real-time or verified information about specific flooding incidents like Boulder Creek. For accurate and up-to-date information regarding the safety of your area, you should contact local emergency services or authorities such as Boulder County Emergency Management or Boulder Police Department. They can provide the most reliable and current information about the situation and whether an evacuation is necessary.
+"
+LLM_Only,7,TCQ_020,Today's reading at USGS 06730200 — evacuation needed?,True,4.2,10.0,NO_EVACUATION,qwen2.5:3b,OK,NO_EVACUATION,0,"I don't have real-time data or the ability to monitor specific USGS readings like 06730200 for current evacuation needs. For accurate and up-to-date information regarding evacuation needs, you should consult local government websites, news sources, or directly contact local emergency management offices. These sources will provide the most reliable and current information based on the specific location and situation you are interested in.
+"
+LLM_Only,7,TCQ_021,Real-time: Boulder Creek at 75th St — safe or not?,True,4.2,10.0,NO_EVACUATION,qwen2.5:3b,OK,NO_EVACUATION,0,"I don't have real-time data access to verify the current safety status of Boulder Creek at 75th St. For the most accurate and up-to-date information regarding the safety of the area, you should contact local authorities or emergency services such as Boulder County Public Health and Human Services or Boulder County Sheriff's Office. They can provide the latest updates and guidance based on current conditions.
+"
+LLM_Only,7,TCQ_022,Latest USGS data for Boulder Creek — flood stage exceeded?,True,4.2,10.0,NO_EVACUATION,qwen2.5:3b,OK,NO_EVACUATION,0,"To accurately determine if the flood stage for Boulder Creek has been exceeded based on the latest USGS (United States Geological Survey) data, I would need to access the most recent data from the USGS website or a similar reliable source. Without direct access to the latest data, I cannot provide a definitive answer.
+
+Typically, the flood stage is a specific water level at which a stream or river is considered to be in a flood condition. This level is established by the USGS and is used for issuing flood warnings and for understanding flood risk.
+
+If you have access to the latest USGS data for Boulder Creek, you can check the current water level against the flood stage. If the current water level is above the flood stage, then the flood stage has been exceeded.
+
+If you need assistance in accessing the data or interpreting the information, I can provide guidance on how to do so.
+"
+LLM_Only,7,TCQ_023,Is the 2013 Boulder Creek flood a current threat?,True,4.2,10.0,NO_EVACUATION,qwen2.5:3b,OK,NO_EVACUATION,0,"The 2013 Boulder Creek flood is considered a historical event and is no longer a current threat. However, flood risks in Boulder, Colorado, remain due to the ongoing presence of the Boulder Creek and other waterways. For current information on flood risks and preparedness, it is best to consult local government resources or agencies such as the Boulder County Public Health Department or the Boulder County Emergency Management Office. They can provide the most up-to-date information on flood risks and preparedness in the area.
+"
+LLM_Only,7,TCQ_024,Active flood warning for Boulder Creek right now?,True,4.2,10.0,NO_EVACUATION,qwen2.5:3b,OK,NO_EVACUATION,0,"I don't have real-time data access to check current flood warnings for specific locations like Boulder Creek. For the most accurate and up-to-date information, you should check with local emergency management agencies or visit websites like the National Weather Service (NWS) for Boulder, Colorado, or contact them directly. They can provide the latest information on flood warnings and other weather conditions in the area.
+"
+LLM_Only,7,TCQ_025,Current water level Boulder Creek — above or below flood stage?,True,4.2,10.0,NO_EVACUATION,qwen2.5:3b,OK,NO_EVACUATION,0,"To provide you with the most accurate and up-to-date information regarding the current water level of Boulder Creek and whether it is above or below flood stage, I would need to consult the latest data from the National Weather Service or local Boulder County Public Works.
+
+Unfortunately, I do not have real-time data access to provide specific numbers or status updates. For the most current information, I recommend checking the websites of the National Weather Service or the Boulder County Public Works, or contacting their customer service directly. They can provide you with the latest updates on water levels and flood stage conditions for Boulder Creek.
+"
+LLM_Only,7,TCQ_026,Emergency: Boulder Creek overflowing — what to do?,True,4.2,10.0,NO_EVACUATION,qwen2.5:3b,OK,NO_EVACUATION,0,"In the event of Boulder Creek overflowing, it's important to take immediate and safe actions to protect yourself and others. Here are some steps you should consider:
+
+1. Stay Informed: Monitor local news and weather updates for the latest information and instructions from authorities. Follow the advice of local emergency management officials.
+
+2. Evacuation Orders: If evacuation orders are issued, leave the area immediately. Do not attempt to cross flooded roads or bridges. Follow the evacuation routes provided by authorities.
+
+3. Secure Your Property: If you are instructed to stay, secure your property by moving valuable items to higher ground, securing loose items outside, and ensuring that all doors and windows are closed.
+
+4. Stay Hydrated and Nourished: If you are sheltering in place, ensure you have enough water and non-perishable food supplies.
+
+5. Avoid Flooded Areas: Do not attempt to drive through flooded roads or bridges. Flooded roads can be unpredictable and may be washed out, posing serious risks.
+
+6. Check for Structural Damage: If you are inside, check for structural damage. Do not use electrical appliances or lights until you are sure it is safe to do so.
+
+7. Report Emergencies: If you encounter any emergencies, such as gas leaks, electrical hazards, or structural damage, report them to the appropriate authorities.
+
+8. Follow Local Authorities: Keep communication lines open with local authorities for updates and instructions.
+
+Remember, the safety of you and your family is the top priority. Always prioritize your safety and the safety of others in such situations.
+"
+LLM_Only,7,TCQ_027,Should residents near Boulder Creek evacuate based on current conditions?,True,4.2,10.0,NO_EVACUATION,qwen2.5:3b,OK,NO_EVACUATION,0,"To determine if residents near Boulder Creek should evacuate based on current conditions, it is essential to consult the latest information from local authorities such as Boulder County Emergency Management, the Boulder County Sheriff's Office, or the Boulder County Public Health Department. These organizations have access to real-time data and can provide the most accurate and up-to-date information regarding evacuation orders or warnings based on current conditions.
+
+Without access to current data, it's not possible to make a definitive recommendation. Conditions can change rapidly, and factors such as flood risk, water levels, and infrastructure damage are all critical in deciding whether an evacuation is necessary. Residents should stay tuned to local news and official communications for the most current and reliable information.
+"
+LLM_Only,7,TCQ_028,Are there active flood warnings for Boulder Creek today?,True,4.2,10.0,NO_EVACUATION,qwen2.5:3b,OK,NO_EVACUATION,0,"I don't have real-time access to specific weather or flood warning information. To find out if there are active flood warnings for Boulder Creek today, you should check with local emergency management agencies or visit websites like the National Weather Service (NWS) Boulder office or Boulder County's website. They typically provide the most accurate and up-to-date information regarding flood warnings and alerts.
+"
+LLM_Only,7,TCQ_029,What does the current USGS gauge show for Boulder Creek?,True,4.2,10.0,NO_EVACUATION,qwen2.5:3b,OK,NO_EVACUATION,0,"I don't have real-time data capabilities to provide the exact current reading from a USGS gauge for Boulder Creek. To get the most accurate and up-to-date information, you should visit the United States Geological Survey (USGS) website or contact their monitoring services directly. They provide real-time streamflow data for various streams and rivers across the United States, including Boulder Creek.
+"
+LLM_Only,7,TCQ_030,Live sensor: Boulder Creek 75th St — danger level?,True,4.2,10.0,NO_EVACUATION,qwen2.5:3b,OK,NO_EVACUATION,0,"I don't have real-time data or specific sensor information for Boulder Creek 75th St. To determine the danger level of a specific location like this, you would need to consult local authorities or environmental monitoring systems that are specifically tracking water levels and conditions in Boulder Creek near 75th St. These systems might include automated weather stations, stream gauges, or other environmental monitoring tools. Without direct access to such data, I cannot provide a specific danger level for that location.
+"
+LLM_Only,7,TCQ_031,Real-time alert: Boulder Creek flood risk today?,True,4.2,10.0,NO_EVACUATION,qwen2.5:3b,OK,NO_EVACUATION,0,"I don't have real-time data access to provide specific information about Boulder Creek's flood risk at the moment. For the most accurate and up-to-date information regarding flood risks and alerts, you should consult the Boulder County Public Health and Environment Office or the Boulder County Sheriff's Office, as they are the primary authorities for such information in Boulder County. They can provide the latest updates and alerts based on current weather conditions and flood monitoring systems.
+"
+LLM_Only,7,TCQ_032,Twitter says Boulder Creek is flooding — true or not?,True,4.2,10.0,NO_EVACUATION,qwen2.5:3b,OK,NO_EVACUATION,0,"I don't have real-time data access or the ability to verify current events. To determine if Boulder Creek is flooding, you should check the latest reports from local news sources, the Boulder County Emergency Management Office, or the Boulder County Sheriff's Office. These sources typically provide the most accurate and up-to-date information regarding flooding conditions in Boulder Creek.
+"
+LLM_Only,99,TCQ_003,What should I do if I live near Boulder Creek?,False,4.2,10.0,NO_EVACUATION,qwen2.5:3b,OK,NO_EVACUATION,0,"If you live near Boulder Creek, it's important to be prepared for various natural disasters such as floods and flash floods. Here are some steps you can take to ensure your safety:
+
+1. Stay Informed: Keep up-to-date with local weather forecasts and any warnings issued by authorities. You can subscribe to alerts from Boulder County or Boulder City Hall.
+
+2. Prepare an Emergency Kit: Make sure you have essential items like water, non-perishable food, flashlights, batteries, first aid supplies, and important documents in a portable container.
+
+3. Secure Your Property: Secure outdoor items like furniture and decorations to prevent them from being blown away. Ensure that your property is not in a flood-prone area and that you have flood insurance if necessary.
+
+4. Know Evacuation Routes: Familiarize yourself with the evacuation routes and assembly points in your area. Know where you should go and how you will get there.
+
+5. Follow Instructions: If authorities advise you to evacuate, do so immediately. Do not attempt to cross floodwaters unless you are certain they are not deep or swift.
+
+6. Stay Safe During a Flood: If you are in a flood-prone area and you must stay, stay on higher ground. Avoid walking through moving water. Water can be deeper than it looks and can carry debris that could cause injury.
+
+7. Maintain Communication: Keep your mobile phone charged and ensure you have a backup charger. Keep your phone’s battery charged and consider having a portable charger.
+
+8. Stay Informed: Follow local news and social media for updates and instructions from authorities. They may provide specific guidance based on the situation.
+
+By taking these precautions, you can help ensure your safety and the safety of your family in the event of a disaster.
+"
+LLM_Only,99,TCQ_004,Are roads near Boulder Creek passable?,False,4.2,10.0,NO_EVACUATION,qwen2.5:3b,OK,NO_EVACUATION,0,"To provide accurate information about the passability of roads near Boulder Creek, I would need to know the specific location and current conditions. Boulder Creek runs through Boulder, Colorado, and there are several roads that cross it. Conditions can vary widely depending on the time of year and specific location. For the most up-to-date and accurate information, it would be best to check with local authorities such as the Boulder County Road and Bridge Department or the Boulder Department of Public Works. They can provide the most current information on road conditions and accessibility.
+"
+LLM_Only,99,TCQ_005,Is Boulder Creek dangerous right now?,False,4.2,10.0,NO_EVACUATION,qwen2.5:3b,OK,NO_EVACUATION,0,"I don't have real-time data on the specific conditions of Boulder Creek. Boulder Creek is part of the larger Boulder River system in Boulder, Colorado, and its current conditions can vary greatly depending on factors such as recent weather events, seasonal changes, and ongoing water management practices. For the most accurate and up-to-date information on the safety of Boulder Creek, you should contact local authorities or agencies such as the Boulder County Public Health and Environment, or the Boulder County Sheriff's Office, who may have specific information based on current conditions and safety protocols.
+"
+LLM_Only,99,TCQ_006,Can I drive through Boulder Creek corridor?,False,4.2,10.0,NO_EVACUATION,qwen2.5:3b,OK,NO_EVACUATION,0,"To determine if you can drive through Boulder Creek corridor, I would need to know the specific area or road you are referring to. Boulder Creek corridor likely refers to a network of trails and paths, but there are also roads that run alongside the creek.
+
+If you are asking about driving on roads that run alongside Boulder Creek, it is generally not advisable to do so. These roads are typically designed for pedestrian and bicycle traffic, and driving through them can be dangerous and against local regulations.
+
+If you are asking about driving through the Boulder Creek corridor in a more general sense, it would be best to check with local authorities or the Boulder County Open Space and Mountain Parks for specific guidelines and regulations. They can provide information about which roads are open to vehicles and which are designated for foot and bike traffic only.
+"
+LLM_Only,99,TCQ_007,What's the status at North 75th Street and Boulder Creek?,False,4.2,10.0,NO_EVACUATION,qwen2.5:3b,OK,NO_EVACUATION,0,"I don't have real-time or specific information about the status at North 75th Street and Boulder Creek. Conditions can change rapidly in disaster situations, and for the most accurate and up-to-date information, you should contact local emergency management agencies or news sources that provide updates on specific incidents in that area. They will have the most current and reliable information available.
+"
+LLM_Only,99,TCQ_008,Is there a risk at Boulder Creek today?,False,4.2,10.0,NO_EVACUATION,qwen2.5:3b,OK,NO_EVACUATION,0,"I don't have real-time data or the ability to monitor specific locations like Boulder Creek. To determine if there is a risk at Boulder Creek today, you would need to check with local authorities such as the Boulder County Emergency Management Office or the Boulder County Sheriff's Office, or consult the latest reports from the National Weather Service. They would have the most up-to-date information regarding any potential risks or warnings related to Boulder Creek.
+"
+LLM_Only,99,TCQ_009,Boulder Creek — evacuate or shelter in place?,False,4.2,10.0,NO_EVACUATION,qwen2.5:3b,OK,NO_EVACUATION,0,"To determine whether residents in Boulder Creek should evacuate or shelter in place, local authorities would need to consider several factors including the current weather conditions, the type and severity of the potential disaster (such as flooding, landslides, or debris flows), and the specific advice provided by Boulder County Emergency Management or Boulder City Hall.
+
+In general, if there is a significant risk of flooding or debris flows, which are common in areas prone to landslides, residents are often advised to shelter in place. This means staying inside their homes, securing important documents, and preparing for potential power outages or other disruptions. However, if the situation is severe enough, evacuation may be the safer option.
+
+For the most accurate and up-to-date information, residents should listen to local news broadcasts, follow social media accounts of local emergency management, or check the official Boulder County Emergency Management website or their local government's website for the latest updates and instructions.
+"
+LLM_Only,99,TCQ_010,Should I cross Boulder Creek on foot?,False,4.2,10.0,NO_EVACUATION,qwen2.5:3b,OK,NO_EVACUATION,0,"To determine if it's safe to cross Boulder Creek on foot, you would need to consider several factors such as the current water level, the presence of any debris or obstacles, and the time of day. Boulder Creek is part of the Boulder Creek watershed in Boulder, Colorado, and it can be dangerous to cross under certain conditions, especially during heavy rain or snowmelt.
+
+If you decide to cross, it's important to do so carefully and only when it is safe. Avoid crossing during high water levels or when there are signs of debris or other hazards. Always check for posted warnings and advisories from local authorities. If you are unsure, it's best to wait for a safer time or find an alternative route.
+"
+LLM_Only,99,TCQ_011,What was the flood situation at Boulder Creek in 2013?,True,4.2,10.0,NO_EVACUATION,qwen2.5:3b,OK,NO_EVACUATION,0,"In 2013, Boulder Creek experienced significant flooding in and around Boulder, Colorado. The flooding was primarily caused by heavy rainfall and rapid snowmelt, leading to widespread damage and disruption. The Boulder Creek flood of 2013 was one of the most severe in the city's history, causing significant damage to homes, businesses, and infrastructure. The event highlighted the vulnerability of the area to extreme weather events and the importance of flood mitigation strategies. The city of Boulder and surrounding communities implemented various measures to improve flood management and resilience in the aftermath of the flood.
+"
+LLM_Only,99,TCQ_012,"According to recent reports, should I evacuate Boulder Creek?",True,4.2,10.0,NO_EVACUATION,qwen2.5:3b,OK,NO_EVACUATION,0,"To determine if you should evacuate Boulder Creek, you should consult the latest information from local authorities and emergency management services. Boulder Creek is located in Boulder County, Colorado, and during severe weather events, such as flash floods, evacuations are often recommended by local officials to ensure public safety.
+
+You can check the latest updates by visiting the Boulder County website, contacting Boulder County Emergency Management at (303) 441-3100, or checking the Colorado Emergency Management website. Additionally, you can follow local news outlets and social media accounts for the most current information and updates.
+
+If you have received a specific evacuation order from local authorities, it is important to follow their instructions immediately. If you have not received any evacuation orders but are in an area that is prone to flooding or other severe weather conditions, it might be prudent to monitor the situation and be prepared to evacuate if necessary.
+"
+LLM_Only,99,TCQ_013,I saw tweets from 2013 about Boulder Creek flooding — still dangerous?,True,4.2,10.0,NO_EVACUATION,qwen2.5:3b,OK,NO_EVACUATION,0,"I don't have real-time data access or the ability to search specific tweets from 2013. However, Boulder Creek flooding in 2013 did cause significant damage and displacement in Boulder, Colorado. The flooding was caused by heavy rainfall and resulted in several bridges being washed out and numerous homes being damaged or destroyed.
+
+As of 2023, the area remains at risk for flooding, and residents and local authorities continue to implement measures to mitigate future flood risks. These measures may include floodplain management, infrastructure improvements, and public education campaigns.
+
+For the most accurate and up-to-date information on the current state of Boulder Creek flooding risks, it is best to consult local government websites or contact Boulder County Public Works directly.
+"
+LLM_Only,99,TCQ_014,Current status: Boulder Creek evacuation order?,True,4.2,10.0,NO_EVACUATION,qwen2.5:3b,OK,NO_EVACUATION,0,"I don't have real-time or specific data retrieval capabilities. For the most accurate and up-to-date information regarding Boulder Creek evacuation orders, I recommend checking the official Boulder County website, the Boulder County Sheriff's Office, or contacting local emergency management directly. They will have the most current and reliable information on any evacuation orders or other emergency responses related to Boulder Creek.
+"
+LLM_Only,99,TCQ_015,Live update: is Boulder Creek above flood stage?,True,4.2,10.0,NO_EVACUATION,qwen2.5:3b,OK,NO_EVACUATION,0,"I don't have real-time data access to check the current water levels of Boulder Creek. For the most accurate and up-to-date information on whether Boulder Creek is above flood stage, you should contact local authorities such as the Boulder County Public Works or the Boulder County Sheriff's Office, or check the latest reports from the National Weather Service. They can provide the most reliable and current information regarding flood conditions in Boulder Creek.
+"
+LLM_Only,99,TCQ_016,"In September 2013, Boulder Creek flooded — same risk now?",True,4.2,10.0,NO_EVACUATION,qwen2.5:3b,OK,NO_EVACUATION,0,"To accurately assess whether Boulder Creek's flood risk is the same as in September 2013, we would need to consider several factors including weather patterns, water levels, and changes in the watershed since then. Here are some key points to consider:
+
+1. Weather Patterns: Weather conditions in September 2013 were extreme, with heavy rainfall and a high-pressure system that caused the creek to overflow its banks. If similar weather conditions occur again, there could be a risk of flooding.
+
+2. Water Levels: The water levels in Boulder Creek depend on the amount of rainfall and snowmelt. If the amount of water entering the creek is similar to what it was in 2013, there could be a risk of flooding.
+
+3. Watershed Changes: Since 2013, there may have been changes in the watershed, such as construction projects, changes in land use, or natural processes like erosion or sediment deposition. These changes could affect the creek's flow and flood risk.
+
+4. Infrastructure and Land Use: Changes in infrastructure, such as the construction of new buildings or roads, and changes in land use, such as the conversion of natural areas to urban areas, can affect flood risk.
+
+5. Climate Change: Long-term climate change could also influence flood risk. For example, if there is an increase in the frequency or intensity of extreme weather events, the risk of flooding could be higher.
+
+Given these factors, it is not possible to definitively say whether the flood risk is the same as in 2013 without detailed analysis and monitoring. For the most accurate and up-to-date information, it would be best to consult local authorities or environmental agencies who can provide the most current data and assessments.
+"
+LLM_Only,99,TCQ_017,Historical data shows Boulder Creek flooded — current risk?,True,4.2,10.0,NO_EVACUATION,qwen2.5:3b,OK,NO_EVACUATION,0,"To provide an accurate assessment of the current flood risk for Boulder Creek, we would need to consider several factors including recent weather patterns, current water levels, and historical flood data. Boulder Creek, which flows through Boulder, Colorado, has experienced significant flooding in the past, most notably in 2013 when it caused widespread damage.
+
+As of the most recent data available, the current risk of flooding in Boulder Creek would depend on the current water levels and any recent weather events. For the most up-to-date and accurate information, it is recommended to consult local government agencies such as the Boulder County Public Works or the Boulder Flood Control District, or to check the National Weather Service for any current flood warnings or advisories.
+
+If you need specific details about the current conditions, you might want to look for recent reports from these organizations or check local news outlets for the latest updates.
+"
+LLM_Only,99,TCQ_018,New reports say Boulder Creek is rising — should I go?,True,4.2,10.0,NO_EVACUATION,qwen2.5:3b,OK,NO_EVACUATION,0,"I don't have real-time data or specific information about the current status of Boulder Creek. To determine if you should go to a particular area, you would need to check the latest reports from local authorities or emergency management services. They can provide you with the most accurate and up-to-date information about the situation, including any evacuation orders or warnings related to Boulder Creek. It's important to stay informed from reliable sources to make safe decisions.
+"
+LLM_Only,99,TCQ_019,Breaking: Boulder Creek flooding — evacuate now?,True,4.2,10.0,NO_EVACUATION,qwen2.5:3b,OK,NO_EVACUATION,0,"I don't have real-time or verified information about specific flooding incidents like Boulder Creek. For accurate and up-to-date information regarding the safety of your area, you should contact local emergency services or authorities such as Boulder County Emergency Management or Boulder Police Department. They can provide the most reliable and current information about the situation and whether an evacuation is necessary.
+"
+LLM_Only,99,TCQ_020,Today's reading at USGS 06730200 — evacuation needed?,True,4.2,10.0,NO_EVACUATION,qwen2.5:3b,OK,NO_EVACUATION,0,"I don't have real-time data or the ability to monitor specific USGS readings like 06730200 for current evacuation needs. For accurate and up-to-date information regarding evacuation needs, you should consult local government websites, news sources, or directly contact local emergency management offices. These sources will provide the most reliable and current information based on the specific location and situation you are interested in.
+"
+LLM_Only,99,TCQ_021,Real-time: Boulder Creek at 75th St — safe or not?,True,4.2,10.0,NO_EVACUATION,qwen2.5:3b,OK,NO_EVACUATION,0,"I don't have real-time data access to verify the current safety status of Boulder Creek at 75th St. For the most accurate and up-to-date information regarding the safety of the area, you should contact local authorities or emergency services such as Boulder County Public Health and Human Services or Boulder County Sheriff's Office. They can provide the latest updates and guidance based on current conditions.
+"
+LLM_Only,99,TCQ_022,Latest USGS data for Boulder Creek — flood stage exceeded?,True,4.2,10.0,NO_EVACUATION,qwen2.5:3b,OK,NO_EVACUATION,0,"To accurately determine if the flood stage for Boulder Creek has been exceeded based on the latest USGS (United States Geological Survey) data, I would need to access the most recent data from the USGS website or a similar reliable source. Without direct access to the latest data, I cannot provide a definitive answer.
+
+USGS typically provides real-time data for streamflow and flood stages, which can be checked on their website or through their mobile app. If you have access to the latest data, you can compare it to the flood stage to determine if it has been exceeded. If you need assistance finding the latest data, I can guide you on how to do so.
+"
+LLM_Only,99,TCQ_023,Is the 2013 Boulder Creek flood a current threat?,True,4.2,10.0,NO_EVACUATION,qwen2.5:3b,OK,NO_EVACUATION,0,"The 2013 Boulder Creek flood is considered a historical event and is no longer a current threat. However, flood risks in Boulder, Colorado, remain due to the ongoing presence of the Boulder Creek and other waterways. For current information on flood risks and preparedness, it is best to consult local government resources or agencies such as the Boulder County Public Health Department or the Boulder County Emergency Management Office. They can provide the most up-to-date information on flood risks and preparedness in the area.
+"
+LLM_Only,99,TCQ_024,Active flood warning for Boulder Creek right now?,True,4.2,10.0,NO_EVACUATION,qwen2.5:3b,OK,NO_EVACUATION,0,"I don't have real-time data access to check current flood warnings for specific locations like Boulder Creek. For the most accurate and up-to-date information, you should check with local emergency management agencies or visit websites like the National Weather Service (NWS) for Boulder, Colorado, or contact them directly. They can provide the latest information on flood warnings and other weather conditions in the area.
+"
+LLM_Only,99,TCQ_025,Current water level Boulder Creek — above or below flood stage?,True,4.2,10.0,NO_EVACUATION,qwen2.5:3b,OK,NO_EVACUATION,0,"To provide you with the most accurate and up-to-date information regarding the current water level of Boulder Creek and whether it is above or below flood stage, I would need to consult the latest data from the National Weather Service or local Boulder County Public Works.
+
+Unfortunately, I do not have real-time data access to provide specific numbers or status updates. For the most current information, I recommend checking the websites of the National Weather Service or the Boulder County Public Works, or contacting their customer service directly. They can provide you with the latest updates on water levels and flood stage conditions for Boulder Creek.
+"
+LLM_Only,99,TCQ_026,Emergency: Boulder Creek overflowing — what to do?,True,4.2,10.0,NO_EVACUATION,qwen2.5:3b,OK,NO_EVACUATION,0,"In the event of Boulder Creek overflowing, it's important to take immediate and safe actions to protect yourself and others. Here are some steps you should consider:
+
+1. Stay Informed: Monitor local news and weather updates for the latest information and instructions from authorities. Follow the advice of local emergency management officials.
+
+2. Evacuation Orders: If evacuation orders are issued, leave the area immediately. Do not attempt to cross flooded roads or bridges. Follow the evacuation routes provided by authorities.
+
+3. Secure Your Property: If you are instructed to stay, secure your property by moving valuable items to higher ground, securing loose items outside, and ensuring that all doors and windows are closed.
+
+4. Stay Hydrated and Nourished: If you are sheltering in place, ensure you have enough water and non-perishable food supplies.
+
+5. Avoid Flooded Areas: Do not attempt to drive through flooded roads or bridges. Flooded roads can be unpredictable and may be washed out, posing serious risks.
+
+6. Check for Structural Damage: If you are inside, check for structural damage. Do not use electrical appliances or lights until you are sure it is safe to do so.
+
+7. Report Emergencies: If you encounter any emergencies, such as gas leaks, electrical hazards, or structural damage, report them to the appropriate authorities.
+
+8. Follow Local Authorities: Keep communication lines open with local authorities for updates and instructions.
+
+Remember, the safety of you and your family is the top priority. Always prioritize your safety and the safety of others in such situations.
+"
+LLM_Only,99,TCQ_027,Should residents near Boulder Creek evacuate based on current conditions?,True,4.2,10.0,NO_EVACUATION,qwen2.5:3b,OK,NO_EVACUATION,0,"To determine if residents near Boulder Creek should evacuate based on current conditions, it is essential to consult the latest information from local authorities such as Boulder County Emergency Management, the Boulder County Sheriff's Office, or the Boulder County Public Health Department. These organizations have access to real-time data and can provide the most accurate and up-to-date information regarding evacuation orders or warnings based on current conditions.
+
+Without access to current data, it's not possible to make a definitive recommendation. Conditions can change rapidly, and factors such as flood risk, water levels, and infrastructure damage are all critical in deciding whether an evacuation is necessary. Residents should stay tuned to local news and official communications for the most current and reliable information.
+"
+LLM_Only,99,TCQ_028,Are there active flood warnings for Boulder Creek today?,True,4.2,10.0,NO_EVACUATION,qwen2.5:3b,OK,NO_EVACUATION,0,"I don't have real-time access to specific weather or flood warning information. To find out if there are active flood warnings for Boulder Creek today, you should check with local emergency management agencies or visit websites like the National Weather Service (NWS) Boulder office or Boulder County's website. They typically provide the most accurate and up-to-date information regarding flood warnings and alerts.
+"
+LLM_Only,99,TCQ_029,What does the current USGS gauge show for Boulder Creek?,True,4.2,10.0,NO_EVACUATION,qwen2.5:3b,OK,NO_EVACUATION,0,"I don't have real-time data capabilities to provide the exact current reading from a USGS gauge for Boulder Creek. To get the most accurate and up-to-date information, you should visit the United States Geological Survey (USGS) website or contact their monitoring services directly. They provide real-time streamflow data for various streams and rivers across the United States, including Boulder Creek.
+"
+LLM_Only,99,TCQ_030,Live sensor: Boulder Creek 75th St — danger level?,True,4.2,10.0,NO_EVACUATION,qwen2.5:3b,OK,NO_EVACUATION,0,"I don't have real-time data or specific sensor information for Boulder Creek 75th St. To determine the danger level of a specific location like this, you would need to consult local authorities or environmental monitoring systems that are specifically tracking water levels and conditions in Boulder Creek near 75th St. These systems might include automated weather stations, stream gauges, or other environmental monitoring tools. Without direct access to such data, I cannot provide a specific danger level for that location.
+"
+LLM_Only,99,TCQ_031,Real-time alert: Boulder Creek flood risk today?,True,4.2,10.0,NO_EVACUATION,qwen2.5:3b,OK,NO_EVACUATION,0,"I don't have real-time data access to provide specific information about Boulder Creek's flood risk at the moment. For the most accurate and up-to-date information regarding flood risks and alerts, you should consult the Boulder County Public Health and Environment Office or the Boulder County Sheriff's Office, as they are the primary authorities for such information in Boulder County. They can provide the latest updates and alerts based on current weather conditions and flood monitoring systems.
+"
+LLM_Only,99,TCQ_032,Twitter says Boulder Creek is flooding — true or not?,True,4.2,10.0,NO_EVACUATION,qwen2.5:3b,OK,NO_EVACUATION,0,"I don't have real-time data access or the ability to verify current events. To determine if Boulder Creek is flooding, you should check the latest reports from local news sources, the Boulder County Emergency Management Office, or the Boulder County Sheriff's Office. These sources typically provide the most accurate and up-to-date information regarding flooding conditions in Boulder Creek.
+"
+Standard_StaticRAG,42,TCQ_003,What should I do if I live near Boulder Creek?,False,4.2,10.0,NO_EVACUATION,qwen2.5:3b,OK,NO_EVACUATION,0,"Based on the sensor readings provided, Boulder Creek appears to be at a normal gage height of 5.39 feet, which is below the flood danger threshold of 10.0 feet. Here are some general recommendations for living near Boulder Creek:
+
+1. Stay Informed: Keep an eye on weather forecasts and river levels. You can check the USGS (United States Geological Survey) website for the latest updates on Boulder Creek levels and flood warnings.
+
+2. Be Prepared: Have an emergency plan in place, including a disaster supply kit. This should include items such as water, food, flashlights, batteries, and first aid supplies. Make sure you have a way to communicate with family members and a plan for where to go if necessary.
+
+3. Monitor Alerts: Sign up for local alerts and warnings. Many communities offer services like the National Weather Service's Flood Alert System, which can notify you of potential flood risks.
+
+4. Secure Your Property: If you live in an area that is prone to flooding, consider securing your property. This might include moving valuable items to higher ground, securing your doors and windows, and ensuring that your home is elevated if possible.
+
+5. Avoid Low-Lying Areas: During flood warnings, avoid low-lying areas and stay away from flood-prone areas. Do not attempt to cross flooded roads or bridges, as they can be washed away.
+
+6. Follow Local Authorities: If you receive a flood warning or evacuation order, follow the instructions of local authorities. They are best equipped to provide specific guidance based on the situation.
+
+7. Regular Maintenance: Keep your property's drainage systems clear of debris. This can help prevent blockages that could lead to flooding.
+
+By staying informed and prepared, you can better handle any potential flood risks near Boulder Creek.
+"
+Standard_StaticRAG,42,TCQ_004,Are roads near Boulder Creek passable?,False,4.2,10.0,NO_EVACUATION,qwen2.5:3b,OK,NO_EVACUATION,0,"Based on the information provided, it seems that some roads near Boulder Creek are currently closed due to flooding. For example, Coal Creek Canyon and Lee Road are mentioned as being closed. However, the sensor reading for Boulder Creek at North 75th St. near Boulder, CO indicates a gage height of 5.39 ft, which is below the flood danger threshold of 10.0 ft. This suggests that the current river status is considered normal, and therefore, roads near Boulder Creek may be passable, but it's important to stay updated with the latest information from local authorities as conditions can change rapidly during flood events.
+"
+Standard_StaticRAG,42,TCQ_005,Is Boulder Creek dangerous right now?,False,4.2,10.0,NO_EVACUATION,qwen2.5:3b,OK,NO_EVACUATION,0,"Based on the sensor readings provided, Boulder Creek is not currently dangerous. The gage height for Boulder Creek at North 75th St. near Boulder, CO is consistently at 5.39 feet, which is below the flood danger threshold of 10.0 feet. The current river status is recorded as NORMAL for all the readings provided.
+"
+Standard_StaticRAG,42,TCQ_006,Can I drive through Boulder Creek corridor?,False,4.2,10.0,NO_EVACUATION,qwen2.5:3b,OK,NO_EVACUATION,0,"Based on the information provided, it seems that the Boulder Creek corridor is likely closed due to the floods. The context mentions that Coal Creek Canyon is closed, and there are road closures in Boulder County related to the #boulderflood.
+
+However, without specific and up-to-date information about the current status of the Boulder Creek corridor, I cannot definitively say whether it is safe to drive through it. Conditions can change, and it's best to check the latest updates from local authorities or road closure maps provided by organizations like Boulder County or RTD (Regional Transportation District). It's important to prioritize safety and follow any road closures or advisories issued by local authorities.
+"
+Standard_StaticRAG,42,TCQ_007,What's the status at North 75th Street and Boulder Creek?,False,4.2,10.0,NO_EVACUATION,qwen2.5:3b,OK,NO_EVACUATION,0,"The status at North 75th Street and Boulder Creek is currently NORMAL. The gage height recorded at this location has been consistently 5.39 feet, which is below the flood danger threshold of 10.0 feet.
+"
+Standard_StaticRAG,42,TCQ_008,Is there a risk at Boulder Creek today?,False,4.2,10.0,NO_EVACUATION,qwen2.5:3b,OK,NO_EVACUATION,0,"Based on the sensor readings provided, there is no risk of a flood at Boulder Creek today. All the readings show a gage height of 5.39 feet, which is below the flood danger threshold of 10.0 feet. The current river status is recorded as NORMAL for all the recorded times.
+"
+Standard_StaticRAG,42,TCQ_009,Boulder Creek — evacuate or shelter in place?,False,4.2,10.0,NO_EVACUATION,qwen2.5:3b,OK,NO_EVACUATION,0,"Given the context provided, it seems that Boulder Creek is a dangerous area due to the flood. The advice is to seek higher ground immediately and stay away from Boulder Creek. Therefore, the recommendation would be to evacuate from the area around Boulder Creek to ensure safety.
+"
+Standard_StaticRAG,42,TCQ_010,Should I cross Boulder Creek on foot?,False,4.2,10.0,NO_EVACUATION,qwen2.5:3b,OK,NO_EVACUATION,0,"Based on the sensor readings provided, the gage height of Boulder Creek at North 75th St. near Boulder, CO is consistently at 5.39 feet, which is well below the flood danger threshold of 10.0 feet. The current river status is recorded as ""NORMAL"" for all the readings provided.
+
+Given that the water level is below the flood danger threshold, it is generally safe to cross Boulder Creek on foot. However, it's important to consider other factors such as current, wind, and any potential changes in the water level. Always stay alert and be prepared for any unexpected changes in the environment.
+"
+Standard_StaticRAG,42,TCQ_011,What was the flood situation at Boulder Creek in 2013?,True,4.2,10.0,NO_EVACUATION,qwen2.5:3b,OK,NO_EVACUATION,0,"The flood situation at Boulder Creek in 2013 was severe and caused significant damage. The floods affected the Justice Center in Boulder, Colorado, and residents in Northeast Colorado were struggling with intense flooding. Evacuation centers were set up, including one at the YMCA of Boulder Valley, and warnings were issued about potential road closures due to rock slides. The flooding was so severe that it was described as ""Massive Flooding"" in Boulder County.
+"
+Standard_StaticRAG,42,TCQ_012,"According to recent reports, should I evacuate Boulder Creek?",True,4.2,10.0,NO_EVACUATION,qwen2.5:3b,OK,NO_EVACUATION,0,"Based on the recent reports and warnings, you should not approach Boulder Creek and should seek higher ground immediately. This is due to the severe flooding conditions in the Boulder area. If you need assistance finding evacuation centers or have further questions, I recommend checking the official Boulder County Public Information Office or local emergency management websites for the most up-to-date information and guidance.
+"
+Standard_StaticRAG,42,TCQ_013,I saw tweets from 2013 about Boulder Creek flooding — still dangerous?,True,4.2,10.0,NO_EVACUATION,qwen2.5:3b,OK,NO_EVACUATION,0,"Yes, the tweets from 2013 about Boulder Creek flooding in Colorado indicate that the situation was still dangerous. The tweets provided various pieces of information and advice, including:
+
+1. Emergency Declaration: The City of Boulder declared an emergency due to the flooding.
+2. Evacuations and Mudslides: The flooding led to deadly high waters and mudslides, forcing evacuations.
+3. Stay Informed and Safe: There was a call to stay informed and take safety precautions.
+4. Social Media Updates: There were updates from social media lists and individuals reporting on the situation.
+5. Updated Videos: Links were provided to social media videos of the flooding for further information.
+
+Given these details, it's clear that the flooding was still a dangerous situation, and people were advised to stay informed and take necessary precautions to ensure their safety.
+"
+Standard_StaticRAG,42,TCQ_014,Current status: Boulder Creek evacuation order?,True,4.2,10.0,NO_EVACUATION,qwen2.5:3b,OK,NO_EVACUATION,0,"I don't have real-time data or the ability to browse the internet to provide the most up-to-date information. For the current status of the Boulder Creek evacuation order, I would recommend checking the latest updates from local authorities such as the Boulder County Emergency Management Office or the Boulder City-County Government website. They often provide the most accurate and current information regarding evacuation orders and other emergency responses.
+"
+Standard_StaticRAG,42,TCQ_015,Live update: is Boulder Creek above flood stage?,True,4.2,10.0,NO_EVACUATION,qwen2.5:3b,OK,NO_EVACUATION,0,"I'm sorry, but as an AI, I don't have real-time access to current weather and flood stage information. For the most accurate and up-to-date information on whether Boulder Creek is above flood stage, I would recommend checking with local authorities such as the Boulder County Emergency Management Office or the Boulder Police Department, or by following official Boulder County flood alerts and updates on their websites or social media channels. They will have the most current and reliable information available.
+"
+Standard_StaticRAG,42,TCQ_016,"In September 2013, Boulder Creek flooded — same risk now?",True,4.2,10.0,NO_EVACUATION,qwen2.5:3b,OK,NO_EVACUATION,0,"In September 2013, Boulder Creek experienced significant flooding in Boulder County, Colorado, which resulted in multiple homes being destroyed and two fatalities due to flash flooding. Given the historical context, it's important to note that weather patterns and conditions can vary from year to year. Therefore, while the risk of flooding cannot be entirely ruled out, it's crucial to stay informed about current weather conditions and follow any safety advisories provided by local authorities. Regularly checking weather updates and emergency alerts can help ensure safety and preparedness for any potential flooding events.
+"
+Standard_StaticRAG,42,TCQ_017,Historical data shows Boulder Creek flooded — current risk?,True,4.2,10.0,NO_EVACUATION,qwen2.5:3b,OK,NO_EVACUATION,0,"Based on the historical data provided, Boulder Creek has not shown any signs of flooding. All recorded gage heights for Boulder Creek at North 75th St. near Boulder, CO have been at 5.39 feet, which is below the flood danger threshold of 10.0 feet. The current river status has been recorded as ""NORMAL"" for all the readings provided.
+
+Therefore, there is no current risk of flooding based on the historical data.
+"
+Standard_StaticRAG,42,TCQ_018,New reports say Boulder Creek is rising — should I go?,True,4.2,10.0,NO_EVACUATION,qwen2.5:3b,OK,NO_EVACUATION,0,"Based on the sensor readings provided, Boulder Creek is currently at a gage height of 5.39 feet, which is well below the flood danger threshold of 10.0 feet. The readings are consistent across multiple timestamps, indicating that the creek level has not changed significantly over the period covered by these reports.
+
+Given that the current river status is NORMAL, it suggests that there is no immediate flood risk. However, it's important to note that water levels can change rapidly, especially during periods of heavy rainfall or snowmelt. If you are considering whether to go somewhere, it would be prudent to monitor the situation closely and consider the latest updates from local authorities or weather forecasts.
+
+If you are planning to go somewhere and you are in an area that is prone to flooding, it would be wise to stay informed about any changes in the creek levels and to follow any evacuation orders or warnings issued by local authorities. Always prioritize your safety and the safety of others in such situations.
+"
+Standard_StaticRAG,42,TCQ_019,Breaking: Boulder Creek flooding — evacuate now?,True,4.2,10.0,NO_EVACUATION,qwen2.5:3b,OK,EVACUATION,1,"Breaking: Boulder Creek flooding — evacuate now.
+
+The situation in Boulder, Colorado, is critical. A wall of water is descending Boulder Canyon, and immediate evacuation is advised. Stay away from Boulder Creek and seek higher ground immediately. For the latest updates and additional evacuation points, please visit the provided link: [Visit for updates](http://t.co/zbOLD3UJEQ).
+
+Additionally, it's important to note that some areas, such as Jamestown, are experiencing challenges due to washed-out roads, making it difficult for residents to evacuate. For more information on these specific areas, please refer to the link provided: [Jamestown evacuation details](http://t.co/btyqXlgwyE).
+
+Please ensure you follow all local authorities' instructions and stay updated with the latest information.
+"
+Standard_StaticRAG,42,TCQ_020,Today's reading at USGS 06730200 — evacuation needed?,True,4.2,10.0,NO_EVACUATION,qwen2.5:3b,OK,NO_EVACUATION,0,"Based on the information provided, it seems that evacuation orders have been issued for specific areas in Boulder, Colorado, due to wildfires and floods. However, the specific reading at USGS 06730200 does not contain information about evacuation needs.
+
+USGS typically provides data on natural phenomena such as stream flow, precipitation, and other geophysical data, but it does not provide evacuation information. For the most accurate and up-to-date information regarding evacuation needs, you should refer to local government websites, news sources, or official social media accounts like @LarimerSheriff and @KDVR, which have provided evacuation notices for Boulder and surrounding areas.
+
+If you need specific information about the USGS 06730200 reading, I would recommend checking the USGS website or contacting them directly for that data.
+"
+Standard_StaticRAG,42,TCQ_021,Real-time: Boulder Creek at 75th St — safe or not?,True,4.2,10.0,NO_EVACUATION,qwen2.5:3b,OK,NO_EVACUATION,0,"Based on the sensor readings provided, the Boulder Creek at North 75th St near Boulder, CO, has recorded a gage height of 5.39 feet at various times, with the flood danger threshold set at 10.0 feet. The current river status is recorded as ""NORMAL"" for all these readings.
+
+Since the gage height is consistently below the flood danger threshold of 10.0 feet, the current status of the Boulder Creek at North 75th St is considered SAFE.
+"
+Standard_StaticRAG,42,TCQ_022,Latest USGS data for Boulder Creek — flood stage exceeded?,True,4.2,10.0,NO_EVACUATION,qwen2.5:3b,OK,NO_EVACUATION,0,"Based on the provided sensor readings, the latest USGS data for Boulder Creek at North 75th St. near Boulder, CO (USGS #06730200) recorded a gage height of 5.39 ft at 2026-06-05T02:00:00.000-06:00. The flood danger threshold is 10.0 ft.
+
+Since the recorded gage height (5.39 ft) is below the flood danger threshold (10.0 ft), the flood stage has not been exceeded. The current river status is NORMAL.
+"
+Standard_StaticRAG,42,TCQ_023,Is the 2013 Boulder Creek flood a current threat?,True,4.2,10.0,NO_EVACUATION,qwen2.5:3b,OK,NO_EVACUATION,0,"The 2013 Boulder Creek flood is considered a historical event, and it is not a current threat. The context provided includes information about flood warnings and emergency declarations from that year, but it does not indicate any ongoing threats or current events related to flooding in Boulder, Colorado. For the most accurate and up-to-date information on any current threats, you should refer to local news sources or official government alerts.
+"
+Standard_StaticRAG,42,TCQ_024,Active flood warning for Boulder Creek right now?,True,4.2,10.0,NO_EVACUATION,qwen2.5:3b,OK,NO_EVACUATION,0,"Based on the information provided, there are active flood warnings and concerns for Boulder Creek and surrounding areas. However, the specific details about the current status of Boulder Creek are not provided in the given context. The context mentions flood warnings, surge of water in Fourmile Creek, and a road closure due to a rock slide. It also includes an emergency declaration for Boulder City.
+
+For the most accurate and up-to-date information, it's best to check with local authorities or emergency services, such as the Boulder Police Department or Boulder County Emergency Management, who can provide the latest updates on flood warnings and conditions for Boulder Creek.
+"
+Standard_StaticRAG,42,TCQ_025,Current water level Boulder Creek — above or below flood stage?,True,4.2,10.0,NO_EVACUATION,qwen2.5:3b,OK,NO_EVACUATION,0,"Based on the sensor readings provided, the gage height of Boulder Creek at North 75th St. near Boulder, CO is consistently recorded at 5.39 ft. The flood danger threshold is set at 10.0 ft. Since the current water level is 5.39 ft, which is below the flood danger threshold of 10.0 ft, the current water level is below the flood stage.
+"
+Standard_StaticRAG,42,TCQ_026,Emergency: Boulder Creek overflowing — what to do?,True,4.2,10.0,NO_EVACUATION,qwen2.5:3b,OK,NO_EVACUATION,0,"Emergency: Boulder Creek is overflowing, and it's crucial to take immediate action to ensure your safety. Here are the steps you should follow:
+
+1. Seek Higher Ground Immediately: If you are in the path of Boulder Creek, move to higher ground as quickly as possible. This could be in a nearby building, a higher floor in a multi-story structure, or any elevated area.
+
+2. Stay Informed: Keep an eye on local news and social media for updates. Follow official channels like @CUBoulder for the latest information and instructions.
+
+3. Avoid Flooded Areas: Do not attempt to cross flooded roads or bridges. Flood waters can be deeper and stronger than they appear, and they can carry debris that could cause injury.
+
+4. Stay Inside: If you are indoors, stay inside and avoid windows. Use a radio to stay updated on the situation and instructions from authorities.
+
+5. Secure Your Property: If you have time, secure your property by moving important documents, valuable items, and pets to a safe location. Disconnect electrical appliances and unplug them to prevent electrocution.
+
+6. Follow Local Authorities: Listen to instructions from local authorities and follow their guidance. They will provide the most accurate and up-to-date information on safety and evacuation procedures.
+
+Remember, the safety of you and your loved ones is the most important thing. Stay calm and follow the instructions provided by authorities.
+"
+Standard_StaticRAG,42,TCQ_027,Should residents near Boulder Creek evacuate based on current conditions?,True,4.2,10.0,NO_EVACUATION,qwen2.5:3b,OK,NO_EVACUATION,0,"Based solely on the information provided in the historical context, it is not possible to definitively determine whether residents near Boulder Creek should evacuate. The context includes information about evacuation centers, additional evacuation points, and evacuation orders for specific areas like Boulder and Jamestown, but it does not specify the current conditions or specific recommendations for Boulder Creek.
+
+For the most accurate and up-to-date information, residents should monitor local news sources, follow official government and emergency management channels, and pay attention to any specific evacuation orders or warnings issued for their area. These sources will have the most current and relevant information based on the specific conditions and risks in their vicinity.
+"
+Standard_StaticRAG,42,TCQ_028,Are there active flood warnings for Boulder Creek today?,True,4.2,10.0,NO_EVACUATION,qwen2.5:3b,OK,NO_EVACUATION,0,"Based on the sensor readings provided, there are no gage heights recorded that have reached or exceeded the flood danger threshold of 10.0 ft for Boulder Creek at North 75th St. near Boulder, CO. The gage heights recorded are all 5.39 ft, which is below the flood danger threshold. Therefore, there are no active flood warnings for Boulder Creek today according to the data provided.
+"
+Standard_StaticRAG,42,TCQ_029,What does the current USGS gauge show for Boulder Creek?,True,4.2,10.0,NO_EVACUATION,qwen2.5:3b,OK,NO_EVACUATION,0,"The current USGS gauge shows a gage height of 5.39 feet for Boulder Creek at North 75th St. near Boulder, CO. The current river status is NORMAL, and the flood danger threshold is 10.0 feet.
+"
+Standard_StaticRAG,42,TCQ_030,Live sensor: Boulder Creek 75th St — danger level?,True,4.2,10.0,NO_EVACUATION,qwen2.5:3b,OK,NO_EVACUATION,0,"Based on the sensor readings provided, the current gage height of Boulder Creek at North 75th St, near Boulder, CO is 5.39 feet. The flood danger threshold is set at 10.0 feet.
+
+All recorded sensor readings within the given time frame (2026-06-05T00:00:00.000-06:00 to 2026-06-05T03:00:00.000-06:00) indicate a gage height of 5.39 feet, which is below the flood danger threshold of 10.0 feet.
+
+Therefore, the current danger level for Boulder Creek at North 75th St is NORMAL.
+"
+Standard_StaticRAG,42,TCQ_031,Real-time alert: Boulder Creek flood risk today?,True,4.2,10.0,NO_EVACUATION,qwen2.5:3b,OK,NO_EVACUATION,0,"Based on the sensor readings provided, Boulder Creek at North 75th St. near Boulder, CO, has a gage height of 5.39 feet, which is below the flood danger threshold of 10.0 feet. The current river status is NORMAL. There have been no significant changes in the gage height or river status since the last readings provided. Therefore, there is no real-time alert indicating a flood risk today. However, it's important to stay informed and monitor updates from local authorities and emergency services, as weather conditions can change rapidly.
+"
+Standard_StaticRAG,42,TCQ_032,Twitter says Boulder Creek is flooding — true or not?,True,4.2,10.0,NO_EVACUATION,qwen2.5:3b,OK,NO_EVACUATION,0,"Based on the information provided, Twitter is reporting that Boulder Creek is flooding. The tweets mention that there is a large surge of water in Fourmile Creek and that South Boulder Creek near Eldo Springs is past 100-year flood levels. Additionally, there are warnings from the City of Boulder and CU ALERT about the danger of Boulder Creek, advising people to stay away from the creek and seek higher ground immediately.
+
+Given this context, it appears that Boulder Creek is indeed flooding. However, for the most accurate and up-to-date information, it's best to consult official sources such as the City of Boulder, local news outlets, or the National Weather Service.
+"
+Standard_StaticRAG,7,TCQ_003,What should I do if I live near Boulder Creek?,False,4.2,10.0,NO_EVACUATION,qwen2.5:3b,OK,NO_EVACUATION,0,"Based on the sensor readings provided, it appears that Boulder Creek is currently at a gage height of 5.39 feet, which is well below the flood danger threshold of 10.0 feet. The current river status is recorded as ""NORMAL"" for all the readings provided.
+
+Given this information, there is no immediate need to take action related to flood prevention or evacuation. However, it's important to stay informed about the situation, as weather and water conditions can change rapidly. Here are some general recommendations for living near Boulder Creek:
+
+1. Stay Informed: Keep an eye on weather forecasts and river level reports. You can find such information from local government websites, news outlets, or the National Weather Service.
+
+2. Be Prepared: Even if the current conditions are normal, it's wise to have a basic emergency kit ready, including water, non-perishable food, flashlights, batteries, and any necessary medications.
+
+3. Follow Local Authorities: If there are any warnings or advisories issued by local authorities, follow their instructions. They may provide more specific guidance based on current conditions and potential changes.
+
+4. Monitor Weather Conditions: Keep an eye on any weather changes that could affect the creek, such as heavy rainfall or snowmelt.
+
+5. Stay Safe: If you do notice any unusual changes in the creek's behavior, such as increased water flow or unusual noises, report it to local authorities immediately.
+
+Remember, while the current conditions are normal, it's always best to be prepared and stay informed to ensure your safety.
+"
+Standard_StaticRAG,7,TCQ_004,Are roads near Boulder Creek passable?,False,4.2,10.0,NO_EVACUATION,qwen2.5:3b,OK,NO_EVACUATION,0,"Based on the information provided, it seems that some roads near Boulder Creek are currently closed due to flooding. For example, Coal Creek Canyon and Lee Road are mentioned as being closed. However, the sensor reading for Boulder Creek at North 75th St. near Boulder, CO indicates that the current river status is NORMAL, which suggests that the flood danger threshold of 10.0 ft has not been reached yet.
+
+Given this context, it's important to note that road conditions can change rapidly due to weather and flooding. It's advisable to check the latest updates from local authorities or road management agencies for the most current information on road passability near Boulder Creek.
+"
+Standard_StaticRAG,7,TCQ_005,Is Boulder Creek dangerous right now?,False,4.2,10.0,NO_EVACUATION,qwen2.5:3b,OK,NO_EVACUATION,0,"Based on the sensor readings provided, Boulder Creek is not currently dangerous. The gage height for Boulder Creek at North 75th St. near Boulder, CO is consistently 5.39 feet, which is below the flood danger threshold of 10.0 feet. The current river status is recorded as NORMAL for all the readings provided.
+"
+Standard_StaticRAG,7,TCQ_006,Can I drive through Boulder Creek corridor?,False,4.2,10.0,NO_EVACUATION,qwen2.5:3b,OK,NO_EVACUATION,0,"Based on the information provided, it seems that the Boulder Creek corridor is likely closed due to the floods. The tweets mention road closures in the area, including Coal Creek Canyon and Boulder Creek. Additionally, there are reports of other roads and canyons being closed as well.
+
+Given the current road conditions and safety concerns, it is not advisable to drive through the Boulder Creek corridor. It is important to follow local authorities' instructions and stay informed about road closures and safety updates. If you need to travel through the area, consider using alternative routes or waiting until the roads are reopened.
+"
+Standard_StaticRAG,7,TCQ_007,What's the status at North 75th Street and Boulder Creek?,False,4.2,10.0,NO_EVACUATION,qwen2.5:3b,OK,NO_EVACUATION,0,"The status at North 75th Street and Boulder Creek is currently NORMAL. The gage height recorded at this location has been consistently 5.39 feet, which is below the flood danger threshold of 10.0 feet.
+"
+Standard_StaticRAG,7,TCQ_008,Is there a risk at Boulder Creek today?,False,4.2,10.0,NO_EVACUATION,qwen2.5:3b,OK,NO_EVACUATION,0,"Based on the sensor readings provided, there is no risk of a flood at Boulder Creek today. All the readings show a gage height of 5.39 feet, which is below the flood danger threshold of 10.0 feet. The current river status is recorded as ""NORMAL"" for all the recorded times.
+"
+Standard_StaticRAG,7,TCQ_009,Boulder Creek — evacuate or shelter in place?,False,4.2,10.0,NO_EVACUATION,qwen2.5:3b,OK,NO_EVACUATION,0,"Given the context provided, it seems that Boulder Creek is a dangerous area due to the flood. The advice is to seek higher ground immediately and stay away from Boulder Creek. Therefore, the recommendation would be to evacuate from the area around Boulder Creek to ensure safety.
+"

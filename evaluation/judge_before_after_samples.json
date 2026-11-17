@@ -1,0 +1,338 @@
+[
+  {
+    "config": "LLM_Only",
+    "id": "40",
+    "old": [
+      0.0,
+      0.5,
+      0.5
+    ],
+    "new": [
+      0.0,
+      0.0,
+      0.0
+    ]
+  },
+  {
+    "config": "LLM_Only",
+    "id": "123",
+    "old": [
+      0.5,
+      1.0,
+      0.5
+    ],
+    "new": [
+      0.5,
+      1.0,
+      0.5
+    ]
+  },
+  {
+    "config": "LLM_Only",
+    "id": "91",
+    "old": [
+      0.5,
+      0.5,
+      0.5
+    ],
+    "new": [
+      0.5,
+      0.5,
+      0.0
+    ]
+  },
+  {
+    "config": "LLM_Only",
+    "id": "68",
+    "old": [
+      1.0,
+      1.0,
+      1.0
+    ],
+    "new": [
+      1.0,
+      1.0,
+      1.0
+    ]
+  },
+  {
+    "config": "BM25_Baseline",
+    "id": "54",
+    "old": [
+      0.5,
+      0.5,
+      1.0
+    ],
+    "new": [
+      1.0,
+      1.0,
+      1.0
+    ]
+  },
+  {
+    "config": "BM25_Baseline",
+    "id": "72",
+    "old": [
+      0.5,
+      0.5,
+      0.5
+    ],
+    "new": [
+      1.0,
+      0.5,
+      0.5
+    ]
+  },
+  {
+    "config": "BM25_Baseline",
+    "id": "171",
+    "old": [
+      0.5,
+      0.5,
+      0.5
+    ],
+    "new": [
+      1.0,
+      1.0,
+      0.5
+    ]
+  },
+  {
+    "config": "BM25_Baseline",
+    "id": "175",
+    "old": [
+      0.5,
+      0.5,
+      0.5
+    ],
+    "new": [
+      1.0,
+      1.0,
+      1.0
+    ]
+  },
+  {
+    "config": "Standard_StaticRAG",
+    "id": "87",
+    "old": [
+      0.0,
+      0.0,
+      0.5
+    ],
+    "new": [
+      0.0,
+      0.0,
+      0.5
+    ]
+  },
+  {
+    "config": "Standard_StaticRAG",
+    "id": "72",
+    "old": [
+      0.0,
+      0.5,
+      0.5
+    ],
+    "new": [
+      0.5,
+      0.5,
+      0.0
+    ]
+  },
+  {
+    "config": "Standard_StaticRAG",
+    "id": "199",
+    "old": [
+      0.5,
+      0.5,
+      0.5
+    ],
+    "new": [
+      0.0,
+      0.5,
+      1.0
+    ]
+  },
+  {
+    "config": "Standard_StaticRAG",
+    "id": "64",
+    "old": [
+      null,
+      null,
+      null
+    ],
+    "new": [
+      0.0,
+      0.0,
+      0.0
+    ]
+  },
+  {
+    "config": "Full_Agent",
+    "id": "160",
+    "old": [
+      null,
+      null,
+      null
+    ],
+    "new": [
+      0.5,
+      0.5,
+      0.5
+    ]
+  },
+  {
+    "config": "Full_Agent",
+    "id": "160",
+    "old": [
+      null,
+      null,
+      null
+    ],
+    "new": [
+      0.5,
+      0.5,
+      0.5
+    ]
+  },
+  {
+    "config": "Full_Agent",
+    "id": "45",
+    "old": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "new": [
+      0.0,
+      0.0,
+      0.0
+    ]
+  },
+  {
+    "config": "Full_Agent",
+    "id": "79",
+    "old": [
+      0.5,
+      0.5,
+      1.0
+    ],
+    "new": [
+      0.5,
+      0.5,
+      0.0
+    ]
+  },
+  {
+    "config": "Full_Agent_NoTGI",
+    "id": "162",
+    "old": [
+      null,
+      null,
+      null
+    ],
+    "new": [
+      0.5,
+      0.5,
+      0.0
+    ]
+  },
+  {
+    "config": "Full_Agent_NoTGI",
+    "id": "158",
+    "old": [
+      0.5,
+      0.5,
+      0.5
+    ],
+    "new": [
+      0.5,
+      1.0,
+      0.5
+    ]
+  },
+  {
+    "config": "Full_Agent_NoTGI",
+    "id": "42",
+    "old": [
+      null,
+      null,
+      null
+    ],
+    "new": [
+      0.5,
+      0.5,
+      0.0
+    ]
+  },
+  {
+    "config": "Full_Agent_NoTGI",
+    "id": "101",
+    "old": [
+      null,
+      null,
+      null
+    ],
+    "new": [
+      0.5,
+      0.5,
+      0.0
+    ]
+  },
+  {
+    "config": "Full_Agent_NoDSEL",
+    "id": "53",
+    "old": [
+      null,
+      null,
+      null
+    ],
+    "new": [
+      0.5,
+      1.0,
+      0.5
+    ]
+  },
+  {
+    "config": "Full_Agent_NoDSEL",
+    "id": "192",
+    "old": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "new": [
+      1.0,
+      1.0,
+      1.0
+    ]
+  },
+  {
+    "config": "Full_Agent_NoDSEL",
+    "id": "159",
+    "old": [
+      0.5,
+      0.5,
+      0.5
+    ],
+    "new": [
+      0.5,
+      0.5,
+      0.0
+    ]
+  },
+  {
+    "config": "Full_Agent_NoDSEL",
+    "id": "40",
+    "old": [
+      null,
+      null,
+      null
+    ],
+    "new": [
+      0.5,
+      0.5,
+      0.0
+    ]
+  }
+]
