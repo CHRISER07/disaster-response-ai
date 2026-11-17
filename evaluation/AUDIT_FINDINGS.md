@@ -182,6 +182,17 @@ keyword rules. llava:7b installed. Only 27 post-disaster scenes have labels
 (the spec says 60) — the benchmark reports the real count and excludes
 unlabelable scenes rather than guessing.
 
+F27: Before/after judge pilot (24 samples, 4/config). The generator-coupled
+Judge A (old Gemini->qwen fallback) produced NO parseable score on 2/4 Full_Agent,
+2/4 NoDSEL, 3/4 NoTGI rows; simple configs scored reliably. After switching to
+the independent Llama-3.3 fallback, newNone=0 everywhere and agent means rose
+(Full_Agent 0.250->0.375, NoDSEL 0.250->0.625, NoTGI 0.500->0.500 with 4 scorable
+rows). Conclusion: the old judge was defective (silently dropped agent rows),
+not that it suppressed a winning system. LLM_Only (0.500) still >= Full_Agent
+(0.375) on DR-Fact -- the fix repaired measurement, it did not manufacture a win.
+Pilot n=4/config is diagnostic only, not headline results. Artifact:
+judge_before_after_samples.json.
+
 F26: Three agent/tool defects fixed (user-requested review).
 (1) Location hardcoding: query_water_sensor() fell back to Boulder data for any
 unresolvable location, silently answering a different question; same defect in
