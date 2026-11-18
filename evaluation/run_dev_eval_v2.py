@@ -191,24 +191,18 @@ def run_llm_only(query: str, seed: int) -> dict:
 def run_bm25(query: str, seed: int) -> dict:
     """Config 2: BM25 baseline — retrieve then generate."""
     from groq import Groq
-    import sqlite3
     t0 = time.perf_counter()
-    db_path = ROOT / "chroma.sqlite3"
+    # Real query-dependent sparse retrieval. The previous implementation built
+    # an FTS clause from the question but never used it; it fetched the same
+    # first five rows for every query, so the "BM25 baseline" measured a
+    # constant context rather than lexical retrieval.
     chunks = []
-    if db_path.exists():
-        try:
-            conn = sqlite3.connect(str(db_path))
-            # Simple FTS keyword search
-            terms = " OR ".join(query.split()[:6])
-            cur = conn.execute(
-                "SELECT string_value FROM embedding_metadata "
-                "WHERE string_key='document' LIMIT 5"
-            )
-            rows = cur.fetchall()
-            chunks = [trim_text(r[0], 400) for r in rows if r[0]]
-            conn.close()
-        except Exception:
-            chunks = []
+    try:
+        from core.hybrid_store import HybridRetrievalStore
+        chunks = [trim_text(c.content, 400)
+                  for c in HybridRetrievalStore()._search_sparse_fts(query, k=5)]
+    except Exception:
+        chunks = []
     context = "\n---\n".join(chunks) if chunks else "No context retrieved."
     prompt = f"Context:\n{context}\n\nQuestion: {query}\nAnswer:"
     if os.getenv("PROVIDER", "ollama").lower().strip() != "groq":

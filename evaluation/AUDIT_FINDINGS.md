@@ -295,6 +295,18 @@ records, 27 post-disaster scenes, 1,017 labeled buildings across the four
 xView2 subtypes, unique crop names, no duplicate query IDs, no dev/heldout
 overlap.
 
+F35: Continuous output audit found three more defects. (a) format_answer
+advertised a four-section template but only stripped markdown, so five early
+held-out rows lacked "Alert Generated:"; the formatter now fills missing
+sections with explicit unavailable markers, and those rows were re-normalized
+with their KW-F1 recomputed. (b) BM25 was not lexical retrieval: run_bm25 built
+an FTS clause from the question and then ignored it, fetching the same first
+five documents for every query. It now calls HybridRetrievalStore._search_sparse_fts
+with the actual query; all BM25 rows must be regenerated. (c) evaluation/
+audit_outputs.py now checks every stored row for status, empty/asterisk/leaked
+text, template completeness, duplicate keys, mixed generators and out-of-range
+KW-F1, and exits non-zero on any failure.
+
 ## Remaining honest deviations
 
 D1: Spec mandates qwen/qwen-2.5-72b-instruct; Groq models API confirms it does

@@ -76,6 +76,8 @@ def main() -> None:
                     help="run only this config name (e.g. Full_Agent)")
     ap.add_argument("--max-new", type=int, default=None,
                     help="stop after this many NEW rows are written; supports chunked foreground runs")
+    ap.add_argument("--ids", default=None,
+                    help="comma-separated query IDs to target for repair re-runs")
     args = ap.parse_args()
 
     dev = set(json.loads(DEV_IDS.read_text(encoding="utf-8")))
@@ -83,6 +85,10 @@ def main() -> None:
     dataset = json.loads(DATASET.read_text(encoding="utf-8"))
     queries = [q for q in dataset if q["id"] in held and q["id"] not in dev]
     assert len(queries) == 150, f"expected 150 held-out queries, got {len(queries)}"
+    if args.ids:
+        wanted_ids = {int(x) for x in args.ids.split(",") if x.strip()}
+        queries = [q for q in queries if q["id"] in wanted_ids]
+        assert len(queries) == len(wanted_ids), "some requested IDs are not eligible held-out IDs"
     if args.limit:
         queries = queries[: args.limit]
     active_configs = [c for c in CONFIGS if args.config is None or c[0] == args.config]

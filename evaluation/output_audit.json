@@ -1,0 +1,61 @@
+{
+  "path": "C:\\Users\\Acer\\OneDrive\\Desktop\\multiagents\\disaster_response_rag\\evaluation\\results_heldout_fresh.csv",
+  "rows": 375,
+  "models": [
+    "llama3.1:8b"
+  ],
+  "status_counts": {
+    "OK": 374,
+    "OTHER_ERROR": 1
+  },
+  "problem_counts": {
+    "bad_status": 1
+  },
+  "by_config": {
+    "BM25_Baseline": {
+      "rows": 150,
+      "ok": 149,
+      "mean_kw_f1": 0.2929
+    },
+    "Full_Agent": {
+      "rows": 2,
+      "ok": 2,
+      "mean_kw_f1": 0.2159
+    },
+    "Full_Agent_NoDSEL": {
+      "rows": 2,
+      "ok": 2,
+      "mean_kw_f1": 0.2159
+    },
+    "Full_Agent_NoTGI": {
+      "rows": 2,
+      "ok": 2,
+      "mean_kw_f1": 0.2701
+    },
+    "Full_Agent_NoTelem": {
+      "rows": 1,
+      "ok": 1,
+      "mean_kw_f1": 0.1818
+    },
+    "LLM_Only": {
+      "rows": 150,
+      "ok": 150,
+      "mean_kw_f1": 0.2758
+    },
+    "Standard_StaticRAG": {
+      "rows": 68,
+      "ok": 68,
+      "mean_kw_f1": 0.369
+    }
+  },
+  "problems": [
+    {
+      "config": "BM25_Baseline",
+      "id": "75",
+      "run_id": "42",
+      "kind": "bad_status",
+      "detail": "OTHER_ERROR"
+    }
+  ],
+  "passed": false
+}

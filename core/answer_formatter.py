@@ -71,6 +71,19 @@ def format_answer(text: str) -> str:
 
     if not normalized:
         return ""
+
+    # Enforce the invariant promised by this module's contract. The previous
+    # implementation only stripped markdown, so answers that omitted a section
+    # were stored incomplete. Missing sections are filled with explicit
+    # unavailable markers, never with invented facts or a fabricated alert.
+    missing = [s for s in TEMPLATE_SECTIONS if s not in "\n".join(normalized)]
+    if missing:
+        normalized.append("")
+        for section in missing:
+            if section == "Alert Generated:":
+                normalized.append("Alert Generated: NONE")
+            else:
+                normalized.append(f"{section} NOT AVAILABLE")
     return "\n".join(normalized) + "\n"
 
 
