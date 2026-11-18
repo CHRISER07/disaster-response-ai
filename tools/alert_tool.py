@@ -61,6 +61,10 @@ def generate_structured_alert(
                     agent_msg = content
                     break
 
+    # Fail-closed dispatch boundary. An alert must NEVER be emitted when the
+    # policy engine cannot be reached or raises: a missing gate is not an
+    # authorization. This check happens at the side-effect boundary itself,
+    # independently of any later DSEL validation of the final answer.
     try:
         from core.policy_engine import check_policy
         decision = check_policy(
@@ -73,15 +77,20 @@ def generate_structured_alert(
             },
             agent_message=agent_msg,
         )
-        if not decision.allowed:
-            return (
-                f"[ALERT BLOCKED by policy engine]\n"
-                f"  Reason: {decision.reason}\n"
-                f"  Confidence detected: {decision.confidence_found}\n"
-                f"  Action: Gather additional verified data before generating this alert."
-            )
-    except ImportError:
-        pass  # Policy engine not available - fail open (dev mode)
+    except Exception as exc:
+        return (
+            f"[ALERT BLOCKED - policy engine unavailable]\n"
+            f"  Reason: {type(exc).__name__}: {exc}\n"
+            f"  Action: Alert dispatch is disabled until authorization can be verified."
+        )
+
+    if not getattr(decision, "allowed", False):
+        return (
+            f"[ALERT BLOCKED by policy engine]\n"
+            f"  Reason: {decision.reason}\n"
+            f"  Confidence detected: {decision.confidence_found}\n"
+            f"  Action: Gather additional verified data before generating this alert."
+        )
 
     severity = severity.upper()
     if severity not in SEVERITY_LEVELS:

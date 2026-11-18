@@ -316,6 +316,20 @@ reported, and the published vision result remains the completed 100-crop,
 192 px benchmark. The second-VLM comparison was smoke-tested (valid output)
 but not run in full, for the same time/value reason.
 
+F37: Second reviewer pass fixes. Alert dispatch now fails closed when the
+policy engine is unavailable or raises; evaluation/test_alert_authorization.py
+verifies outage and low-confidence cases block with zero side effects, while an
+authorized alert still logs. Paper: removed the invalid BM25 comparison from
+abstract, main table and discussion; fixed "Optimal" chart label, empty
+"Calibrated Rubric" row, ambiguous "0 errors" footnote, missing abstract
+disclosure of 3/36 missed evacuations; Open-Meteo described as weather-model
+current/forecast rather than AWOS; CrisisLex identified as historical;
+conflict resolver no longer suppresses warnings on non-comparable evidence;
+Algorithm 2 REQUIRE now lists Q, Q_surge, M; audit claim softened to an
+auditable execution log; DAB-200 dataset version note added; vision labelled
+exploratory. Removed the manual \textheight override and compressed prose so
+the paper compiles cleanly at 8 pages with official IEEE geometry.
+
 ## Remaining honest deviations
 
 D1: Spec mandates qwen/qwen-2.5-72b-instruct; Groq models API confirms it does
