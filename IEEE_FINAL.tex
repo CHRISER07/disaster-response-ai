@@ -622,7 +622,7 @@ Full Agent w/o DSEL & 0.652 / 0.637 & 0.592 / 0.557 & 0.878 / 0.818 \\
 Full Agent w/o Telemetry & 0.647 / 0.670 & 0.557 / 0.577 & 0.930 / 0.843 \\
 Full Agent & 0.621 / 0.645 & 0.584 / 0.550 & 0.883 / 0.838 \\
 \midrule
-\multicolumn{4}{@{}l}{\scriptsize Corrected-rubric independent re-judging in progress; cells intentionally blank.}\\
+\multicolumn{4}{@{}l}{\scriptsize Corrected-rubric scores are not reported here.}\\
 \bottomrule
 \multicolumn{4}{@{}l}{\scriptsize Scores shown as Judge A / Judge B (Gemini Flash Lite / GPT-OSS-20B)}
 \end{tabular*}
@@ -660,7 +660,7 @@ Total Violations & 27 (21.4\%) & 6 (4.8\%) & 1 (0.8\%) \\
 Median execution latencies on held-out queries are: 2.64~s (BM25), 2.86~s (Standard Static RAG), 3.39~s (LLM-Only), and 5.88~s (Full Agent). The modest latency increment of the Full Agent reflects dynamic multi-step API routing across weather, NWIS, and seismic endpoints.
 
 \subsection{Vision Benchmark and Ongoing Held-Out Re-Run}
-Table~\ref{tab:ongoing} presents active external benchmark evaluations with cells intentionally unpopulated pending run completion: (i) multimodal building damage classification over 1,017 labeled crops from xView2/xBD \cite{xview2}; and (ii) a verified re-evaluation of the restored pipeline across all 150 held-out DAB queries.
+Table~\ref{tab:ongoing} reports a completed exploratory building-damage evaluation on 100 crops sampled from 1,017 labeled xView2/xBD buildings \cite{xview2}, alongside a restored-pipeline re-evaluation across all 150 held-out DAB queries whose cells remain blank until that run completes.
 
 \begin{table}[h]
 \caption{Exploratory Vision Benchmark and Ongoing Held-Out Re-Run}
