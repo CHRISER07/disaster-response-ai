@@ -40,6 +40,7 @@ for _k in ("LANGCHAIN_API_KEY", "LANGSMITH_API_KEY"):
         del os.environ[_k]
 
 from langchain_groq import ChatGroq
+from langchain_core.messages import AIMessage, ToolMessage
 from langgraph.prebuilt import create_react_agent
 from tools import ALL_TOOLS
 
@@ -69,6 +70,10 @@ def _build_system_prompt(no_tgi: bool = False) -> str:
         "## MANDATORY RULE - Call Tools First\n"
         "For ANY question about current conditions, protocols, or field status:\n"
         "1. Call one relevant tool at a time BEFORE formulating your answer.\n"
+        "1a. ROUTING (MANDATORY): if the question mentions flooding, evacuation, river/lake/creek\n"
+        "   water level, 'flood stage', a river gauge, or whether an area is safe to stay in,\n"
+        "   you MUST call query_water_sensor FIRST. Weather data alone is NEVER sufficient\n"
+        "   evidence for a flood or evacuation decision.\n"
         "2. NEVER answer operational safety questions from training memory alone.\n"
         "3. If a tool fails or returns no exact match, use life-safety doctrine directly:\n"
         "   - Downed power lines: ALWAYS assume energized. No proximity is safe.\n"
@@ -114,19 +119,23 @@ def _build_system_prompt(no_tgi: bool = False) -> str:
         "- If live data shows DANGER: act immediately regardless of historical context\n"
         "- CRITICAL RULE: <HIST> evidence must NEVER trigger active evacuation directives when <LIVE> telemetry contradicts it.\n"
         "\n"
-        "## One-Shot Grounding Example (TGI Conflict Resolution):\n"
-        "Scenario: User asks: 'What is the flood status at Boulder Creek bridge? Should we evacuate?'\n"
-        "Retrieved Evidence:\n"
-        "  - <HIST-2013>: 'Water overtopping Boulder Creek bridge! Mandatory evacuation ordered!'\n"
-        "  - <LIVE-USGS, Current>: 'USGS #06730200: Gage height 3.63 ft (Flood stage 10.0 ft), Status NORMAL.'\n"
-        "Correct Agent Response:\n"
-        "Status: NORMAL\n"
-        "Evidence:\n"
-        "  - [LIVE - USGS NWIS #06730200, Current, Confidence: HIGH]: Gage height 3.63 ft, 63.7% below flood stage (10.0 ft).\n"
-        "  - [HISTORICAL - CrisisLex, 2013, Confidence: MEDIUM]: Archival report from 2013 flood noted overtopping, but verified current telemetry confirms no active flooding.\n"
-        "Recommendation:\n"
-        "  1. No evacuation is required; current conditions are normal. Maintain routine monitoring.\n"
-        "Alert Generated: NONE\n"
+        "## Grounding Examples - BOTH BRANCHES (TGI Conflict Resolution)\n"
+        "CASE A - live SAFE, historical DANGER:\n"
+        "  <HIST-2013>: 'Overtopping! Mandatory evacuation!'\n"
+        "  <LIVE-USGS>: 'Gage 3.63 ft (flood stage 10.0 ft), Status NORMAL.'\n"
+        "  Status: NORMAL\n"
+        "  Evidence: [LIVE - USGS NWIS #06730200, Confidence: HIGH] Gage 3.63 ft, below flood stage.\n"
+        "  Recommendation: No evacuation is required. Continue routine monitoring.\n"
+        "  Alert Generated: NONE\n"
+        "CASE B - live DANGER (historical reports irrelevant):\n"
+        "  <LIVE-USGS>: 'Gage 13.50 ft (flood stage 10.0 ft), Status CRITICAL - Mandatory evacuation threshold exceeded.'\n"
+        "  Status: CRITICAL\n"
+        "  Evidence: [LIVE - USGS NWIS #06730200, Confidence: HIGH] Gage 13.50 ft, 35% above flood stage.\n"
+        "  Recommendation: 1. Evacuate immediately to high ground. 2. Do not cross flooded roads.\n"
+        "  Alert Generated: CRITICAL\n"
+        "DECISION RULE: the Status line MUST follow the LIVE gage height - never the historical\n"
+        "report, never the weather, and never a remembered example. Never append a paragraph\n"
+        "that contradicts the Status line after 'Alert Generated'.\n"
         "\n"
         "## Grounding & Scope Constraint (STRICT RULE)\n"
         "1. BASE ALL ANSWERS EXCLUSIVELY on the data retrieved from your tools and knowledge base.\n"
@@ -257,7 +266,7 @@ def get_agent(seed: int = 42, no_tgi: bool = False):
 # ---------------------------------------------------------------------------
 # Public API
 # ---------------------------------------------------------------------------
-def run_agent(query: str, thread_id: str = "default", seed: int = 42, return_structured: bool = False, no_tgi: bool = False) -> dict:
+def run_agent(query: str, thread_id: str = "default", seed: int = 42, return_structured: bool = False, no_tgi: bool = False, prefetched_observation: str | None = None) -> dict:
     """
     Runs the agent with a query and returns the final answer + tool call trace.
 
@@ -295,9 +304,28 @@ def run_agent(query: str, thread_id: str = "default", seed: int = 42, return_str
     output_tokens = 0
     t0 = _time.perf_counter()
 
+    # A prefetched observation is injected as a genuine tool result, not as
+    # user text. This keeps the evidence available to the safety layer's
+    # grounding check, which only inspects tool outputs.
+    messages = [("human", query)]
+    if prefetched_observation:
+        prefetch_id = f"prefetch_{abs(hash(thread_id))}"
+        messages = [
+            AIMessage(content="", tool_calls=[{
+                "name": "query_water_sensor",
+                "args": {"location": "Boulder Creek"},
+                "id": prefetch_id,
+                "type": "tool_call",
+            }]),
+            ToolMessage(content=prefetched_observation,
+                        tool_call_id=prefetch_id,
+                        name="query_water_sensor"),
+            ("human", query),
+        ]
+
     try:
         for chunk in agent.stream(
-            {"messages": [("human", query)]},
+            {"messages": messages},
             config=config,
             stream_mode="values"
         ):

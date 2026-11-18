@@ -240,6 +240,44 @@ IDs 1-175 excluding dev_ids, locks the generator, stores only formatted answers,
 and writes results_heldout_fresh.csv. Smoke test: 13/14 OK, all llama3.1:8b,
 zero asterisks (one row interrupted by timeout, resumes from checkpoint).
 
+F28: Temporal-conflict benchmark v1 was invalid. All 32 items were labelled
+NO_EVACUATION (no positive class), every item used the same 4.2 ft reading
+against a 10.0 ft flood stage, the fixture reading did not match the live tool
+(3.64 ft), and the queries were answerable from the gauge alone, so TGI -- which
+only re-tags retrieved KB chunks -- was never exercised. A constant "do not
+evacuate" responder scored a perfect 0%. Rebuilt as v2: 24 items, 12 safe /
+12 above threshold, each query text issued once with a safe and once with a
+critical pin, label assigned mechanically by reading >= 1.3 x flood stage.
+
+F29: The agent answered flood/evacuation questions from weather alone and never
+called the river gauge (verified: answers cited no gage height). Added a
+mandatory routing rule: any flooding, evacuation, water-level or area-safety
+question MUST call query_water_sensor first; weather alone is not sufficient.
+
+F30: Two evaluation-instrument artifacts were found and fixed. (a) Supplying the
+pinned gauge in the user message made DSEL's Ragas faithfulness check score 0.00
+and block valid alerts; the reading is now injected as a prefetched ToolMessage
+so the safety layer sees genuine tool-grounded context. (b) The TGI prompt had a
+single worked example ending in "Status: NORMAL" at 3.63 ft; the 3B generator
+pattern-matched it and emitted NORMAL even at 14.2 ft. Replaced with paired
+CASE A (live safe) / CASE B (live critical) examples plus an explicit rule that
+Status follows the live gage.
+
+F31: Judge integrity. judge_scores_v2.csv is a valid independent run (Judge A
+Gemini 3.5 Flash Lite, Judge B GPT-OSS-20B; 3,300 paired items). The v3 run is
+NOT usable: after Gemini quota exhaustion Judge A fell back to the Qwen
+generator itself, so those scores are self-judged; the paper leaves v3 cells
+blank and now says so explicitly. Recomputed kappa_w from v2: 0.576 DR-Fact
+(exact 64.5%), 0.519 SAA, 0.324 Temporal. Corrected the paper's judge model
+labels (3.1 -> 3.5; 120B -> 20B) and its unsourced kappa of 0.4949.
+
+F32: The paper's abstract and conclusion claimed TGI "reduces false evacuation
+orders to 0/93 active runs". No file contains 93 runs; the underlying v2 data
+was TGI 1/96 and NoTGI 1/96, i.e. no reduction. Replaced with the corrected v5
+result: 288 runs, all OK, one generator; TGI 0/36 false evacuations (95.8%
+accuracy) vs NoTGI 10/36 (86.1%), with TGI's 3/36 missed evacuations disclosed,
+and both no-telemetry baselines missing all 36 critical cases.
+
 ## Remaining honest deviations
 
 D1: Spec mandates qwen/qwen-2.5-72b-instruct; Groq models API confirms it does

@@ -377,7 +377,7 @@ def _groq_with_fts(query: str, seed: int, t0: float, config_label: str = "") -> 
             "tools_called":"fts_fallback","model_used":GROQ_MODEL,"retries":retries}
 
 
-def run_full_agent(query: str, seed: int, no_tgi: bool = False, no_dsel: bool = False, no_telemetry: bool = False) -> dict:
+def run_full_agent(query: str, seed: int, no_tgi: bool = False, no_dsel: bool = False, no_telemetry: bool = False, prefetched_observation: str | None = None) -> dict:
     """Configs 5-8: Full agent variants."""
     t0 = time.perf_counter()
     thread_id = f"eval_{seed}_{int(t0*1000)}"
@@ -432,7 +432,8 @@ def run_full_agent(query: str, seed: int, no_tgi: bool = False, no_dsel: bool = 
                 pass
 
         t_active_start = time.perf_counter()
-        result = run_agent(query, thread_id=thread_id, seed=seed, no_tgi=no_tgi)
+        result = run_agent(query, thread_id=thread_id, seed=seed, no_tgi=no_tgi,
+                           prefetched_observation=prefetched_observation)
         active_elapsed = time.perf_counter() - t_active_start
         total_elapsed = time.perf_counter() - t0
 

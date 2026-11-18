@@ -8,8 +8,8 @@
 \citation{ji,yu2024}
 \citation{lewis}
 \citation{olteanu2015}
-\citation{dab200}
 \@writefile{toc}{\contentsline {section}{\numberline {I}Introduction}{1}{}\protected@file@percent }
+\citation{dab200}
 \citation{crisismmd,ofli,abavisani}
 \citation{humaid,olteanu2014}
 \citation{yu2025}
@@ -29,24 +29,24 @@
 \citation{nemoguardrails}
 \citation{inan2023}
 \citation{bge}
+\citation{bm25}
+\citation{rrf}
 \@writefile{toc}{\contentsline {section}{\numberline {II}Related Work}{2}{}\protected@file@percent }
 \@writefile{toc}{\contentsline {section}{\numberline {III}Problem Formulation}{2}{}\protected@file@percent }
 \newlabel{eq:conflict_states}{{1}{2}{}{equation.1}{}}
-\@writefile{loa}{\contentsline {algorithm}{\numberline {1}{\ignorespaces TGI Tagging and Grounded Retrieval}}{2}{}\protected@file@percent }
-\newlabel{alg:tgi}{{1}{2}{}{algorithm.1}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {IV}Methodology}{2}{}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {IV-A}}System Architecture}{2}{}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {IV-B}}Temporal Grounding Injection (TGI)}{2}{}\protected@file@percent }
 \newlabel{eq:snow}{{2}{2}{}{equation.2}{}}
 \newlabel{eq:tgi}{{3}{2}{}{equation.3}{}}
-\citation{bm25}
-\citation{rrf}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {IV-C}}Dual-Tier Hybrid Retrieval Engine}{2}{}\protected@file@percent }
+\newlabel{eq:emb}{{4}{2}{}{equation.4}{}}
 \citation{react,langgraph}
 \citation{xview2,llava}
 \@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Evidence-centred architecture with four separated planes. Solid outlines are implemented components; dashed outlines are extensions not included in the reported evaluation. The retrieval path fuses dense BGE embeddings and SQLite FTS5 BM25 by weighted reciprocal rank fusion. LangSmith was disabled due to tenant rate limits and replaced by a local audit logger.}}{3}{}\protected@file@percent }
 \newlabel{fig:arch}{{1}{3}{}{figure.1}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {IV-C}}Dual-Tier Hybrid Retrieval Engine}{3}{}\protected@file@percent }
-\newlabel{eq:emb}{{4}{3}{}{equation.4}{}}
+\@writefile{loa}{\contentsline {algorithm}{\numberline {1}{\ignorespaces TGI Tagging and Grounded Retrieval}}{3}{}\protected@file@percent }
+\newlabel{alg:tgi}{{1}{3}{}{algorithm.1}{}}
 \newlabel{eq:rrf}{{5}{3}{}{equation.5}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {IV-D}}Evidence Validation, Geospatial Routing, and Conflict Resolution}{3}{}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {IV-E}}Agentic Orchestration and 8-Tool Registry}{3}{}\protected@file@percent }
@@ -75,17 +75,16 @@
 \newlabel{tab:scen}{{II}{5}{}{table.2}{}}
 \@writefile{lot}{\contentsline {table}{\numberline {III}{\ignorespaces Retrieval Benchmark on DAB-200 ($N=200$, 3 Repetitions)}}{5}{}\protected@file@percent }
 \newlabel{tab:retrieval}{{III}{5}{}{table.3}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {IV}{\ignorespaces Geospatial Routing ($N=20$ Scenarios)}}{5}{}\protected@file@percent }
-\newlabel{tab:geo}{{IV}{5}{}{table.4}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VI-D}}Hybrid Retrieval Architecture Evaluation}{5}{}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VI-E}}Geospatial Routing and Evidence Validation}{5}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VI-F}}Safe Abstention and Hallucination Resistance}{5}{}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {IV}{\ignorespaces Geospatial Routing ($N=20$ Scenarios)}}{5}{}\protected@file@percent }
+\newlabel{tab:geo}{{IV}{5}{}{table.4}{}}
 \@writefile{lot}{\contentsline {table}{\numberline {V}{\ignorespaces Safe Abstention on Development Traps ($N=15$)}}{5}{}\protected@file@percent }
 \newlabel{tab:abstention}{{V}{5}{}{table.5}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VI-F}}Safe Abstention and Hallucination Resistance}{5}{}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VI-G}}Dual-Judge Evaluation and Agreement}{5}{}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VI-H}}Adversarial Safety Evaluation and DSEL Ablation}{5}{}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VI-I}}Latency and Cost Profile}{5}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VI-J}}Ongoing Evaluations}{5}{}\protected@file@percent }
 \bibcite{undrr}{1}
 \bibcite{comes}{2}
 \bibcite{adams}{3}
@@ -95,6 +94,14 @@
 \bibcite{singh}{7}
 \bibcite{dinani}{8}
 \bibcite{olteanu2015}{9}
+\@writefile{lot}{\contentsline {table}{\numberline {VI}{\ignorespaces Cross-Family Dual-Judge Evaluation (Completed v2 Run)}}{6}{}\protected@file@percent }
+\newlabel{tab:judge}{{VI}{6}{}{table.6}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {VII}{\ignorespaces Adversarial Stress Test (42 Prompts $\times $ 3 Seeds = 126 Trials)}}{6}{}\protected@file@percent }
+\newlabel{tab:iss}{{VII}{6}{}{table.7}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VI-J}}Ongoing Evaluations}{6}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {VII}Limitations and Threats to Validity}{6}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {VIII}Conclusion and Future Scope}{6}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{References}{6}{}\protected@file@percent }
 \bibcite{cantini}{10}
 \bibcite{ji}{11}
 \bibcite{yu2024}{12}
@@ -108,13 +115,6 @@
 \bibcite{ray}{20}
 \bibcite{aid}{21}
 \bibcite{campos2020}{22}
-\@writefile{lot}{\contentsline {table}{\numberline {VI}{\ignorespaces Cross-Family Dual-Judge Evaluation (Completed v2 Run)}}{6}{}\protected@file@percent }
-\newlabel{tab:judge}{{VI}{6}{}{table.6}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {VII}{\ignorespaces Adversarial Stress Test (42 Prompts $\times $ 3 Seeds = 126 Trials)}}{6}{}\protected@file@percent }
-\newlabel{tab:iss}{{VII}{6}{}{table.7}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {VII}Limitations and Threats to Validity}{6}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {VIII}Conclusion and Future Scope}{6}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{References}{6}{}\protected@file@percent }
 \bibcite{react}{23}
 \bibcite{langgraph}{24}
 \bibcite{zhang2024}{25}

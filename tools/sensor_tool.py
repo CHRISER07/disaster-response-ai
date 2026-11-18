@@ -63,6 +63,52 @@ def _match_usgs_site(location: str) -> dict | None:
     return None
 
 
+def format_gage_report(site_id: str, threshold_ft: float, site_name: str,
+                       gage: float, ts_str: str) -> str:
+    """Render a gage reading in the canonical sensor-report format.
+
+    Extracted from ``_fetch_gage`` so that counterfactual evaluation can supply
+    a gage height through the exact same severity logic the live tool uses.
+    """
+    pct = ((gage - threshold_ft) / threshold_ft) * 100
+    direction = "above" if pct > 0 else "below"
+
+    # Severity classification
+    if gage >= threshold_ft * 1.3:
+        status = "CRITICAL - Mandatory evacuation threshold EXCEEDED"
+        alarm = (
+            "\n\n[CRITICAL] IMMEDIATE EVACUATION PROTOCOL REQUIRED. "
+            f"Gage height {gage:.2f} ft is {abs(pct):.1f}% above flood stage. "
+            "Per FEMA protocol, initiate mandatory evacuation of all low-lying zones. "
+            "Do NOT allow personnel to cross flooded areas."
+        )
+    elif gage >= threshold_ft:
+        status = "DANGER - At flood stage"
+        alarm = (
+            "\n\n[DANGER] River has reached flood stage. "
+            "Prepare evacuation resources and issue WARNING alerts for low-lying areas."
+        )
+    elif gage >= threshold_ft * 0.8:
+        status = "WARNING - Approaching flood stage"
+        alarm = (
+            "\n\n[WARNING] River approaching flood stage rapidly. "
+            "Pre-position emergency resources and monitor every 15 minutes."
+        )
+    else:
+        status = "NORMAL"
+        alarm = ""
+
+    return (
+        f"[LIVE USGS SENSOR - {site_name}]\n"
+        f"  Site ID    : USGS #{site_id}\n"
+        f"  Gage Height: {gage:.2f} ft  (Flood stage: {threshold_ft} ft)\n"
+        f"  Status     : {status}\n"
+        f"  Reading    : {abs(pct):.1f}% {direction} flood threshold\n"
+        f"  Timestamp  : {ts_str} UTC"
+        f"{alarm}"
+    )
+
+
 def _fetch_gage(site_id: str, threshold_ft: float, site_name: str) -> str:
     """Fetches real-time gage height from USGS NWIS for a given site ID."""
     try:
@@ -84,43 +130,8 @@ def _fetch_gage(site_id: str, threshold_ft: float, site_name: str) -> str:
         latest  = values[-1]
         gage    = float(latest["value"])
         ts_str  = latest["dateTime"]
-        pct     = ((gage - threshold_ft) / threshold_ft) * 100
-        direction = "above" if pct > 0 else "below"
 
-        # Severity classification
-        if gage >= threshold_ft * 1.3:
-            status = "CRITICAL - Mandatory evacuation threshold EXCEEDED"
-            alarm = (
-                "\n\n[CRITICAL] IMMEDIATE EVACUATION PROTOCOL REQUIRED. "
-                f"Gage height {gage:.2f} ft is {abs(pct):.1f}% above flood stage. "
-                "Per FEMA protocol, initiate mandatory evacuation of all low-lying zones. "
-                "Do NOT allow personnel to cross flooded areas."
-            )
-        elif gage >= threshold_ft:
-            status = "DANGER - At flood stage"
-            alarm = (
-                "\n\n[DANGER] River has reached flood stage. "
-                "Prepare evacuation resources and issue WARNING alerts for low-lying areas."
-            )
-        elif gage >= threshold_ft * 0.8:
-            status = "WARNING - Approaching flood stage"
-            alarm = (
-                "\n\n[WARNING] River approaching flood stage rapidly. "
-                "Pre-position emergency resources and monitor every 15 minutes."
-            )
-        else:
-            status = "NORMAL"
-            alarm = ""
-
-        return (
-            f"[LIVE USGS SENSOR - {site_name}]\n"
-            f"  Site ID    : USGS #{site_id}\n"
-            f"  Gage Height: {gage:.2f} ft  (Flood stage: {threshold_ft} ft)\n"
-            f"  Status     : {status}\n"
-            f"  Reading    : {abs(pct):.1f}% {direction} flood threshold\n"
-            f"  Timestamp  : {ts_str} UTC"
-            f"{alarm}"
-        )
+        return format_gage_report(site_id, threshold_ft, site_name, gage, ts_str)
 
     except requests.RequestException as e:
         return (
