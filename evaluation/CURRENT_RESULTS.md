@@ -25,8 +25,12 @@ column. When this file and an older report disagree, **this file wins**.
 - `results_heldout_fresh.csv`: restored-system re-run, one generator
   (`llama3.1:8b`), still being written. BM25 rows in this file are **stale**
   (constant-context retriever) and will be deleted and re-measured.
-- `judge_scores_v3fixed.csv`: independent corrected-rubric judging, incomplete;
-  partial per-config means are not comparable.
+- `judge_scores_v3fixed.csv`: **abandoned** at 3,453/6,600. Judge A could not be
+  served: all 10 Gemini keys return HTTP 429 (quota exhausted), the OpenRouter
+  key returns HTTP 402 (no credits), and Groq exposes no Llama-family model.
+  Groq Judge B calls succeeded in ~1.3 s, so only Judge B rows were produced.
+  Partial per-config means are not comparable and must not be reported; the
+  paper's corrected-rubric cell stays blank.
 
 ## Superseded artifacts (kept for provenance only)
 

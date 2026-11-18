@@ -345,6 +345,17 @@ TGI as a single-window tagging mechanism remains accurate; (d) untracked
 diagnostic scripts/PNG files from a separate LaTeX debugging session are
 present and were left untouched.
 
+F39: Independent v3 judge abandoned after diagnosis. Judge A had no working
+provider: REST probe of all 10 Gemini keys returned HTTP 429 (quota exhausted);
+OpenRouter returned HTTP 402 (insufficient credits); Groq did not expose any
+Llama-family judge (404 for llama-3.3-70b-versatile and llama-3.1-8b-instant),
+and the only available Groq judge family (GPT-OSS) is already used by Judge B.
+Groq Judge B itself was healthy (~1.3 s/call). With Judge A timing out and
+retried three times, only Judge B rows were written (3,453/6,600), so the run
+was stopped and its partial data marked non-reportable. The published v2 dual
+judge table remains valid and independent; the paper's corrected-rubric cell
+stays blank.
+
 ## Remaining honest deviations
 
 D1: Spec mandates qwen/qwen-2.5-72b-instruct; Groq models API confirms it does
