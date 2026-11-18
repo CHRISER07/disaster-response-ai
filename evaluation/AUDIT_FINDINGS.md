@@ -307,6 +307,15 @@ audit_outputs.py now checks every stored row for status, empty/asterisk/leaked
 text, template completeness, duplicate keys, mixed generators and out-of-range
 KW-F1, and exits non-zero on any failure.
 
+F36: 384 px crop-size sensitivity check was smoke-tested (4 crops, valid)
+and started on the full 100-building sample, then stopped at 43/100. The
+partial pattern matched the 192 px baseline (destroyed recognised, minor and
+major damage largely missed), so continuing ~50 more minutes would not change
+the conclusion. This run is ABORTED, not a result: no numbers from it are
+reported, and the published vision result remains the completed 100-crop,
+192 px benchmark. The second-VLM comparison was smoke-tested (valid output)
+but not run in full, for the same time/value reason.
+
 ## Remaining honest deviations
 
 D1: Spec mandates qwen/qwen-2.5-72b-instruct; Groq models API confirms it does
