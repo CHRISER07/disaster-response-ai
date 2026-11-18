@@ -7,8 +7,8 @@
 \citation{cantini}
 \citation{ji,yu2024}
 \citation{lewis}
-\citation{olteanu2015}
 \@writefile{toc}{\contentsline {section}{\numberline {I}Introduction}{1}{}\protected@file@percent }
+\citation{olteanu2015}
 \citation{dab200}
 \citation{crisismmd,ofli,abavisani}
 \citation{humaid,olteanu2014}
@@ -33,23 +33,22 @@
 \newlabel{eq:conflict_states}{{1}{2}{}{equation.1}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {IV}Methodology}{2}{}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {IV-A}}System Architecture}{2}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {IV-B}}Temporal Grounding Injection (TGI)}{2}{}\protected@file@percent }
-\newlabel{eq:snow}{{2}{2}{}{equation.2}{}}
 \citation{bge}
-\citation{bm25}
-\citation{rrf}
 \@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Four-plane system architecture for operational disaster situational awareness. Solid outlines denote components fully implemented and empirically evaluated; dashed outlines represent planned EOC workflow extensions. The retrieval subsystem fuses BAAI/bge-small-en-v1.5 dense embeddings and SQLite FTS5 BM25 lexical scores via weighted reciprocal rank fusion ($\alpha = 0.70$).}}{3}{}\protected@file@percent }
 \newlabel{fig:arch}{{1}{3}{}{figure.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {IV-B}}Temporal Grounding Injection (TGI)}{3}{}\protected@file@percent }
+\newlabel{eq:snow}{{2}{3}{}{equation.2}{}}
 \newlabel{eq:tgi}{{3}{3}{}{equation.3}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {IV-C}}Dual-Tier Hybrid Retrieval Engine}{3}{}\protected@file@percent }
-\newlabel{eq:emb}{{4}{3}{}{equation.4}{}}
 \@writefile{loa}{\contentsline {algorithm}{\numberline {1}{\ignorespaces TGI Indexing and Grounded Query Conditioning}}{3}{}\protected@file@percent }
 \newlabel{alg:tgi}{{1}{3}{}{algorithm.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {IV-C}}Dual-Tier Hybrid Retrieval Engine}{3}{}\protected@file@percent }
+\citation{bm25}
+\citation{rrf}
 \citation{langgraph}
 \citation{react}
 \citation{olteanu2015}
 \citation{xview2}
-\citation{dab200}
+\newlabel{eq:emb}{{4}{4}{}{equation.4}{}}
 \newlabel{eq:rrf}{{5}{4}{}{equation.5}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {IV-D}}Geospatial Routing and Hydrological Catchment Gating}{4}{}\protected@file@percent }
 \newlabel{eq:geo_gate}{{6}{4}{}{equation.6}{}}
@@ -59,6 +58,7 @@
 \newlabel{eq:auth}{{8}{4}{}{equation.8}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {V}Experimental Setup}{4}{}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {V-A}}Data Sources and Corpora}{4}{}\protected@file@percent }
+\citation{dab200}
 \citation{cohen1968}
 \@writefile{loa}{\contentsline {algorithm}{\numberline {2}{\ignorespaces Deterministic Safety Enforcement Layer (DSEL)}}{5}{}\protected@file@percent }
 \newlabel{alg:dsel}{{2}{5}{}{algorithm.2}{}}
@@ -70,39 +70,37 @@
 \@writefile{toc}{\contentsline {section}{\numberline {VI}Results and In-Depth Discussion}{5}{}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VI-A}}Main Benchmark Grounding Performance}{5}{}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VI-B}}Hazard-Specific Scenario Breakdown}{5}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VI-C}}Dual-Tier Hybrid Retrieval Engine Evaluation}{5}{}\protected@file@percent }
 \@writefile{lot}{\contentsline {table}{\numberline {I}{\ignorespaces Cross-Family Dual-Judge Evaluation ($N=3,300$ Paired Comparisons, Completed v2 Run)}}{6}{}\protected@file@percent }
 \newlabel{tab:judge}{{I}{6}{}{table.1}{}}
 \@writefile{lot}{\contentsline {table}{\numberline {II}{\ignorespaces Benchmark Grounding Performance on DAB-200 (Mean $\pm $ 95\% CI)}}{6}{}\protected@file@percent }
 \newlabel{tab:main}{{II}{6}{}{table.2}{}}
 \@writefile{lot}{\contentsline {table}{\numberline {III}{\ignorespaces Scenario-Specific Grounding on Development Set ($N=150$)}}{6}{}\protected@file@percent }
 \newlabel{tab:scen}{{III}{6}{}{table.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VI-C}}Dual-Tier Hybrid Retrieval Engine Evaluation}{6}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VI-D}}Two-Sided Temporal Stress Testing (TGI Ablation)}{6}{}\protected@file@percent }
 \@writefile{lot}{\contentsline {table}{\numberline {IV}{\ignorespaces Retrieval Engine Benchmark on DAB-200 ($N=200$ Queries)}}{6}{}\protected@file@percent }
 \newlabel{tab:retrieval}{{IV}{6}{}{table.4}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VI-D}}Two-Sided Temporal Stress Testing (TGI Ablation)}{6}{}\protected@file@percent }
 \@writefile{lot}{\contentsline {table}{\numberline {V}{\ignorespaces Two-Sided Temporal Stress Test ($N=72$ Trials per Arm)}}{6}{}\protected@file@percent }
 \newlabel{tab:tgi}{{V}{6}{}{table.5}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Operational decision frontier across evaluated disaster response architectures on the two-sided temporal stress test ($N=72$ trials/arm).}}{6}{}\protected@file@percent }
 \newlabel{fig:tgi_chart}{{2}{6}{}{figure.2}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VI-E}}Geospatial Routing and Hydrological Verification}{6}{}\protected@file@percent }
 \citation{xview2}
 \@writefile{lot}{\contentsline {table}{\numberline {VI}{\ignorespaces Geospatial Routing and Hydrological Gating ($N=20$ Scenarios)}}{7}{}\protected@file@percent }
 \newlabel{tab:geo}{{VI}{7}{}{table.6}{}}
 \@writefile{lot}{\contentsline {table}{\numberline {VII}{\ignorespaces Safe Abstention on Adversarial Traps ($N=15$ Trials)}}{7}{}\protected@file@percent }
 \newlabel{tab:abstention}{{VII}{7}{}{table.7}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VI-E}}Geospatial Routing and Hydrological Verification}{7}{}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VI-F}}Safe Abstention and Hallucination Resistance}{7}{}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VI-G}}Cross-Family Dual-Judge Evaluation}{7}{}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VI-H}}Adversarial Safety Evaluation and DSEL Ablation}{7}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VI-I}}Latency and Telemetry Profiling}{7}{}\protected@file@percent }
 \@writefile{lot}{\contentsline {table}{\numberline {VIII}{\ignorespaces Adversarial Stress Test (42 Prompts $\times $ 3 Seeds = 126 Trials)}}{7}{}\protected@file@percent }
 \newlabel{tab:iss}{{VIII}{7}{}{table.8}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {IX}{\ignorespaces Multimodal Building Damage Benchmark (xView2, $N=1,017$ Crops)}}{7}{}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {IX}{\ignorespaces Multimodal Building Damage Benchmark (32 Balanced Crops from 1,017 Labeled Buildings)}}{7}{}\protected@file@percent }
 \newlabel{tab:vision}{{IX}{7}{}{table.9}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {X}{\ignorespaces Restored-System Held-Out Benchmark Re-Run (DAB Queries 1--175)}}{7}{}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {X}{\ignorespaces Restored-System Held-Out Benchmark Re-Run (All 150 Held-Out Queries)}}{7}{}\protected@file@percent }
 \newlabel{tab:fresh_heldout}{{X}{7}{}{table.10}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VI-J}}Active External Benchmarks (Reported as Ongoing)}{7}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {VII}Limitations and Threats to Validity}{7}{}\protected@file@percent }
-\newlabel{sec:threats}{{VII}{7}{}{section.7}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VI-I}}Latency and Telemetry Profiling}{7}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {VI-J}}Vision Benchmark and Ongoing Held-Out Re-Run}{7}{}\protected@file@percent }
 \bibcite{undrr}{1}
 \bibcite{comes}{2}
 \bibcite{adams}{3}
@@ -144,6 +142,8 @@
 \bibcite{zheng}{39}
 \bibcite{cohen1968}{40}
 \bibcite{landis1977}{41}
+\@writefile{toc}{\contentsline {section}{\numberline {VII}Limitations and Threats to Validity}{8}{}\protected@file@percent }
+\newlabel{sec:threats}{{VII}{8}{}{section.7}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {VIII}Conclusion and Future Work}{8}{}\protected@file@percent }
 \@writefile{toc}{\contentsline {section}{References}{8}{}\protected@file@percent }
 \gdef \@abspage@last{8}

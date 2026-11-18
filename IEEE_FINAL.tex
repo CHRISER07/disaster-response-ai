@@ -39,7 +39,7 @@ Dakshayani G\textsuperscript{5}
 \maketitle
 
 \begin{abstract}
-Operational disaster response demands situational awareness synthesized across asynchronous crisis microblogs, real-time hydrologic and meteorological telemetry, and official response doctrine. Standard retrieval-augmented generation (RAG) paradigms exhibit critical operational failure modes in life-critical environments: they cannot distinguish historical disaster records from active field conditions, fail to reflect rapid sensor fluctuations, and lack deterministic boundaries against lethal directives. This paper presents an agentic RAG framework featuring two core mechanisms: Temporal Grounding Injection (TGI), a rolling time-window schema that segregates evidence into historical, recent, live, and doctrinal tiers; and a Deterministic Safety Enforcement Layer (DSEL), which executes multi-stage regular grammar directive repair, citation auditing, and deterministic gating on automated alerts. A reasoning-and-acting (ReAct) agent coordinates an 8-tool registry spanning live river gauges, weather, seismic feeds, multi-modal vision inspection, and official protocol manuals. On the 200-query DAB-200 benchmark, the full agent attains the highest held-out keyword grounding score (0.0915 KW-F1) among retrieval-based systems, outperforming sparse BM25 (0.0440) and standard static RAG (0.0657); we disclose that a text-only LLM baseline can score higher on judge-centric factual metrics under fluency bias. On a 42-prompt $\times$ 3-seed adversarial suite (126 trials per arm), the corrected violation rates are 21.4\% for raw LLM, 4.8\% for an agent without DSEL, and 0.8\% with DSEL (1/126, Wilson 95\% CI [0.1\%, 4.4\%]), an 83.3\% relative hazard reduction ($p < 10^{-4}$). On a two-sided counterfactual flood suite (24 queries $\times$ 3 seeds = 72 trials per arm), TGI eliminates false evacuation orders on safe live readings (0/36, Wilson 95\% CI [0.0\%, 9.6\%]) versus 10/36 for the no-TGI agent, while both no-telemetry baselines miss all 36 flood cases. Building-level vision classification and a strictly held-out re-run of the restored system are reported as ongoing; those cells are intentionally left blank rather than estimated.
+Operational disaster response demands situational awareness synthesized across asynchronous crisis microblogs, real-time hydrologic and meteorological telemetry, and official response doctrine. Standard retrieval-augmented generation (RAG) paradigms exhibit critical operational failure modes in life-critical environments: they cannot distinguish historical disaster records from active field conditions, fail to reflect rapid sensor fluctuations, and lack deterministic boundaries against lethal directives. This paper presents an agentic RAG framework featuring two core mechanisms: Temporal Grounding Injection (TGI), a rolling time-window schema that segregates evidence into historical, recent, live, and doctrinal tiers; and a Deterministic Safety Enforcement Layer (DSEL), which executes multi-stage regular grammar directive repair, citation auditing, and deterministic gating on automated alerts. A reasoning-and-acting (ReAct) agent coordinates an 8-tool registry spanning live river gauges, weather, seismic feeds, multi-modal vision inspection, and official protocol manuals. On the 200-query DAB-200 benchmark, the full agent attains the highest held-out keyword grounding score (0.0915 KW-F1) among retrieval-based systems, outperforming sparse BM25 (0.0440) and standard static RAG (0.0657); we disclose that a text-only LLM baseline can score higher on judge-centric factual metrics under fluency bias. On a 42-prompt $\times$ 3-seed adversarial suite (126 trials per arm), the corrected violation rates are 21.4\% for raw LLM, 4.8\% for an agent without DSEL, and 0.8\% with DSEL (1/126, Wilson 95\% CI [0.1\%, 4.4\%]), an 83.3\% relative hazard reduction ($p < 10^{-4}$). On a two-sided counterfactual flood suite (24 queries $\times$ 3 seeds = 72 trials per arm), TGI eliminates false evacuation orders on safe live readings (0/36, Wilson 95\% CI [0.0\%, 9.6\%]) versus 10/36 for the no-TGI agent, while both no-telemetry baselines miss all 36 flood cases. Building-level vision classification on a balanced 32-crop sample attains only 0.3125 accuracy (macro-F1 0.268), reported as a negative result for the selected 4B vision model; the strictly held-out re-run of the restored system is still in progress and its cells are intentionally left blank rather than estimated.
 \end{abstract}
 
 \begin{IEEEkeywords}
@@ -591,15 +591,11 @@ Premature All-Clear Directive & 12 / 18 & 6 / 18 & \textbf{1 / 18} \\
 \subsection{Latency and Telemetry Profiling}
 Median execution latencies on held-out queries are: 2.64~s (BM25), 2.86~s (Standard Static RAG), 3.39~s (LLM-Only), and 5.88~s (Full Agent). The modest latency increment of the Full Agent reflects dynamic multi-step API routing across weather, NWIS, and seismic endpoints.
 
-\subsection{Active External Benchmarks (Reported as Ongoing)}
-In accordance with strict empirical reporting standards, Table~\ref{tab:vision} and Table~\ref{tab:fresh_heldout} reserve unpopulated cells for two long-running external benchmark runs currently in progress:
-\begin{enumerate}
-    \item \textit{Multimodal Building Damage Classification:} Local vision-language inference (Qwen3-VL:4B) on 1,017 building polygon crops from the xView2/xBD dataset \cite{xview2}, assessing 4-tier damage classification (No Damage, Minor Damage, Major Damage, Destroyed).
-    \item \textit{Restored-System Held-Out Evaluation:} Complete re-evaluation across DAB queries 1--175 under the fully unified runtime stack.
-\end{enumerate}
+\subsection{Vision Benchmark and Ongoing Held-Out Re-Run}
+Table~\ref{tab:vision} reports the completed building-level vision benchmark. Eight labeled crops per damage tier were sampled from the 1,017 building polygons in the xView2/xBD dataset \cite{xview2} and classified by a locally hosted Qwen3-VL 4B model. The result is weak: overall accuracy is 0.3125 with macro-F1 0.268, and the major-damage tier is never recognized. We report this negative finding rather than tuning the sampling or prompt to manufacture agreement; fine-grained four-tier damage grading is evidently beyond this model at 192-pixel context crops. Table~\ref{tab:fresh_heldout} remains unpopulated because the restored-system re-evaluation across all 150 held-out queries is still in progress.
 
 \begin{table}[!t]
-\caption{Multimodal Building Damage Benchmark (xView2, $N=1,017$ Crops)}
+\caption{Multimodal Building Damage Benchmark (32 Balanced Crops from 1,017 Labeled Buildings)}
 \label{tab:vision}
 \centering
 \footnotesize
@@ -608,20 +604,20 @@ In accordance with strict empirical reporting standards, Table~\ref{tab:vision} 
 \toprule
 Damage Classification Tier & Precision & Recall & F1-Score & Accuracy \\
 \midrule
-No Damage (ND) & -- & -- & -- & -- \\
-Minor Damage (MD) & -- & -- & -- & -- \\
-Major Damage (MaD) & -- & -- & -- & -- \\
-Completely Destroyed (CD) & -- & -- & -- & -- \\
+No Damage (ND) & 0.389 & 0.875 & 0.538 & \\
+Minor Damage (MD) & 0.143 & 0.125 & 0.133 & \\
+Major Damage (MaD) & 0.000 & 0.000 & 0.000 & \\
+Completely Destroyed (CD) & 1.000 & 0.250 & 0.400 & \\
 \midrule
-\textbf{Overall Macro Average} & \textbf{--} & \textbf{--} & \textbf{--} & \textbf{--} \\
+\textbf{Overall Macro Average} & \textbf{--} & \textbf{--} & \textbf{0.268} & \textbf{0.313} \\
 \bottomrule
 \end{tabular*}
 \vspace{1pt}
-\raggedright{\scriptsize Note: External evaluation run actively executing; placeholder cells intentionally unpopulated.}
+\raggedright{\scriptsize Note: eight crops per tier; accuracy counts unclassified and tool-error rows as incorrect.}
 \end{table}
 
 \begin{table}[!t]
-\caption{Restored-System Held-Out Benchmark Re-Run (DAB Queries 1--175)}
+\caption{Restored-System Held-Out Benchmark Re-Run (All 150 Held-Out Queries)}
 \label{tab:fresh_heldout}
 \centering
 \footnotesize

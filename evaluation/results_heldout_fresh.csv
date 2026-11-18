@@ -5069,3 +5069,89 @@ Here's a possible step-by-step process:
 
 By integrating these different sources of information, the AI system can provide a more comprehensive and accurate picture of the situation, enabling the USAR team to respond more effectively and efficiently.
 "
+Standard_StaticRAG,42,118,Earthquake,protocol,OK,0.25,0.4286,0.3158,0,,,,24.676,24.676,0,0,"kb_search,text_search",llama3.1:8b,0,"The text does not explicitly mention ""structural rapid assessment (SRA)"" but it does mention ""Search Marking System"" and ""Special Response Search (SRS)"" which are related to search and rescue operations after an earthquake.
+
+However, based on the context, it appears that the text is describing the process of conducting a rapid assessment after an earthquake, which involves identifying potential emergency needs, assessing damage, and gathering information to inform emergency response efforts.
+
+The Search Marking System is used to mark searched structures and victim locations, while the Special Response Search (SRS) is a search implemented to gather information regarding the need for evacuation or rescue of pre-identified special needs populations.
+
+Therefore, while the text does not explicitly mention SRA, it can be inferred that the process of conducting a rapid assessment after an earthquake, including search and rescue operations, is what is being described.
+"
+Standard_StaticRAG,42,119,Earthquake,infrastructure,OK,0.6667,0.5714,0.6154,0,,,,6.652,6.652,0,0,"kb_search,text_search",llama3.1:8b,0,"Unfortunately, the provided context does not mention the impact of the 2012 Costa Rica earthquake on highway and road infrastructure. The context only provides news headlines and information about the earthquake's magnitude, but does not provide any details about the effects on infrastructure.
+"
+Standard_StaticRAG,42,120,Earthquake,evacuation,OK,0.4444,0.5,0.4706,0,,,,11.094,11.094,0,0,"kb_search,text_search",llama3.1:8b,0,"Unfortunately, the provided text does not specifically mention the evacuation challenges that arose from the 2013 Bohol earthquake's impact on Cebu province. The text only mentions the earthquake's magnitude, the number of people killed in a building collapse in Cebu, and the response efforts of the National Disaster Agency and the International Federation of Red Cross and Red Crescent Societies (IFRC).
+"
+Standard_StaticRAG,42,121,Building_Collapse,protocol,OK,0.1818,0.25,0.2105,0,,,,27.433,27.433,0,0,"kb_search,text_search",llama3.1:8b,0,"Unfortunately, the provided text does not explicitly mention the building code violations that contributed to the Savar Rana Plaza collapse. However, based on historical reports and investigations, some of the building code violations that contributed to the collapse include:
+
+- The building was constructed on a swampy area, which made it prone to structural instability.
+- The building was designed to be a five-story building, but it was constructed as an eight-story building, which exceeded its original design capacity.
+- The building's foundation was inadequate, and it was not designed to support the weight of the additional three stories.
+- The building's structural integrity was compromised due to the use of substandard materials and poor construction practices.
+- The building's owners and managers ignored warnings and safety concerns raised by local authorities and experts.
+
+These building code violations, among others, contributed to the collapse of the Rana Plaza building on April 24, 2013, resulting in the loss of over 1,100 lives.
+"
+Standard_StaticRAG,42,122,Earthquake,sensor_data,OK,0.2857,0.25,0.2667,0,,,,8.016,8.016,0,0,"kb_search,text_search",llama3.1:8b,0,"There is no mention of real-time USGS seismic data in the provided context. The context only mentions drone/satellite observations of a wildfire, not an earthquake. Therefore, it is not possible to answer the question based on the provided information.
+"
+Standard_StaticRAG,42,123,Earthquake,multi_source,OK,0.2059,0.875,0.3333,0,,,,55.026,55.026,0,0,"kb_search,text_search",llama3.1:8b,0,"To assess escalating risk after the second mainshock in the 2012 Italy earthquake sequence, I would combine seismic monitoring data, social media, and building imagery as follows:
+
+Seismic Monitoring Data:
+
+1. Intensity and Magnitude: Analyze the magnitude and intensity of the second mainshock to determine its impact on the affected area.
+2. Seismic Hazard Assessment: Use seismic hazard models to assess the likelihood of future earthquakes in the region and their potential impact on the affected area.
+3. Ground Motion Simulations: Run ground motion simulations to estimate the potential damage to buildings and infrastructure.
+
+Social Media:
+
+1. Sentiment Analysis: Analyze social media posts (e.g., Twitter, Facebook) to gauge the sentiment of affected individuals, including their concerns, fears, and experiences.
+2. Damage Reports: Collect reports of damage from social media, including photos and videos of affected buildings and infrastructure.
+3. Evacuation and Shelter Information: Monitor social media for information on evacuation routes, shelters, and other emergency services.
+
+Building Imagery:
+
+1. Satellite Imagery: Use satellite imagery to assess the damage to buildings and infrastructure, including the extent of collapse, damage, and debris.
+2. Aerial Photography: Use aerial photography to provide a detailed assessment of building damage and identify areas of high risk.
+3. Building Condition Assessment: Use building condition assessment tools to evaluate the structural integrity of buildings and identify those at high risk of collapse.
+
+Combining the Data:
+
+1. Risk Assessment: Combine the seismic monitoring data, social media, and building imagery to assess the escalating risk in the affected area.
+2. Damage Assessment: Use the combined data to assess the extent of damage to buildings and infrastructure.
+3. Emergency Response Planning: Use the combined data to inform emergency response planning, including evacuation routes, shelter locations, and resource allocation.
+
+By combining these data sources, emergency responders and decision-makers can gain a more comprehensive understanding of the escalating risk and make informed decisions to mitigate the impact of the earthquake sequence.
+"
+Standard_StaticRAG,42,124,Building_Collapse,protocol,OK,0.2778,0.625,0.3846,0,,,,52.76,52.76,0,0,"kb_search,text_search",llama3.1:8b,0,"Based on the provided text, the US&R team configurations used for a multi-story residential building collapse would depend on the type of construction and the complexity of the rescue operation.
+
+For a multi-story residential building collapse involving Heavy Wall Construction, high angle rope rescue (including highline systems), confined space rescue (permit required), and mass transportation rescue, the following team configurations would be used:
+
+- Type 1 (Heavy) Operational Level: This team is trained for Heavy Floor Construction, Pre-Cast Concrete Construction, Steel Frame Construction, high angle rope rescue (including highline systems), confined space rescue (permit required), and mass transportation rescue. The team consists of 6 personnel, including a Strike Team Leader, and has a total of 13 personnel.
+- Type 1 (Heavy) Strike Team: This team is also trained for the same tasks as the Type 1 (Heavy) Operational Level team and consists of 6 personnel, including a Strike Team Leader, and has a total of 13 personnel.
+
+The Type 1 (Heavy) team is the minimum capability to conduct safe and effective search and rescue operations at structure collapse incidents involving the collapse or failure of Heavy Wall Construction, high angle rope rescue (including highline systems), confined space rescue (permit required), and mass transportation rescue.
+
+Therefore, the USAR team configurations used for a multi-story residential building collapse would be:
+
+- Type 1 (Heavy) Operational Level
+- Type 1 (Heavy) Strike Team
+"
+Standard_StaticRAG,42,125,Earthquake,infrastructure,OK,0.3333,0.625,0.4348,0,,,,34.641,34.641,0,0,"kb_search,text_search",llama3.1:8b,0,"Unfortunately, the provided text does not specify the types of buildings that collapsed in the 2013 Bohol earthquake. However, it does mention that at least four people were killed in a building collapse in Cebu, Philippines, after a 7.2 magnitude earthquake.
+
+To answer the question, I would need to provide additional information. The 2013 Bohol earthquake, which had a magnitude of 7.2, occurred in the Philippines and caused significant damage to historic buildings and churches. The earthquake's epicenter was near the town of Carmen in Bohol, and it triggered a tsunami that affected several coastal towns.
+
+Historic buildings and churches in the Philippines are often constructed with traditional materials such as wood and stone, which can be vulnerable to earthquake damage. The 2013 Bohol earthquake likely caused significant damage to these types of buildings, leading to their collapse.
+
+Therefore, the types of buildings that collapsed in the 2013 Bohol earthquake were likely historic buildings and churches, which were damaged due to their traditional construction materials and the earthquake's significant magnitude.
+"
+Standard_StaticRAG,42,126,Earthquake,hallucination_test,OK,0.0,0.0,0.0,0,,,,11.871,11.871,0,0,"kb_search,text_search",llama3.1:8b,0,"Unfortunately, the provided text does not mention the exact number of buildings destroyed in the 2012 Costa Rica earthquake. The text only mentions the magnitude of the earthquake (7.9) and provides some general information about the event, but does not provide specific details about the damage or destruction caused by the earthquake.
+"
+Standard_StaticRAG,42,127,Earthquake,weather,OK,0.4444,0.5,0.4706,0,,,,18.133,18.133,0,0,"kb_search,text_search",llama3.1:8b,0,"The answer is not directly provided in the given text, but we can infer that weather can affect search and rescue operations after an earthquake. The text mentions that ""an earthquake in a cold climate will create different needs than one in a cold climate"" and ""an earthquake in the middle of winter may create different needs than one in the middle of summer"". This implies that weather conditions, such as temperature and season, can impact the challenges and requirements for search and rescue operations after an earthquake.
+"
+Standard_StaticRAG,42,128,Building_Collapse,medical,OK,0.3125,0.625,0.4167,0,,,,10.867,10.867,0,0,"kb_search,text_search",llama3.1:8b,0,"The ""golden 72 hours"" principle refers to the critical period of 72 hours after a disaster strikes, during which rescue efforts are most effective and the chances of saving lives are highest. This principle should guide resource allocation in the Savar-type collapse by prioritizing immediate rescue and evacuation efforts, ensuring that emergency responders have the necessary resources and support to reach affected areas quickly and efficiently.
+"
+Standard_StaticRAG,42,129,Earthquake,situational_awareness,OK,0.5,0.75,0.6,0,,,,15.12,15.12,0,0,"kb_search,text_search",llama3.1:8b,0,"Unfortunately, the provided text does not contain any information about how local language barriers affected social media situational awareness during the Guatemala earthquake. The tweets are in Spanish, but there is no mention of language barriers or their impact on situational awareness.
+
+However, it's worth noting that language barriers can be a significant challenge in emergency situations, especially when social media is used as a primary means of communication. In a multilingual environment, language barriers can lead to misunderstandings, delayed responses, and reduced situational awareness.
+"
+Standard_StaticRAG,42,130,Earthquake,protocol,OK,0.5,0.625,0.5556,0,,,,11.692,11.692,0,0,"kb_search,text_search",llama3.1:8b,0,"Unfortunately, the provided text does not mention the activation of any international search and rescue coordination frameworks for the Bohol earthquake. The text only mentions the efforts of local organizations and authorities, such as the MMDA (Metropolitan Manila Development Authority) teams, and the importance of accurate and credible information in coordinating external support.
+"

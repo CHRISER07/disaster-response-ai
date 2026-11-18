@@ -4,89 +4,106 @@
 [![LangGraph](https://img.shields.io/badge/LangGraph-ReAct-green)](https://langchain-ai.github.io/langgraph/)
 [![Streamlit](https://img.shields.io/badge/Dashboard-Streamlit-red)](https://streamlit.io)
 
-
-> **IEEE Research Framework** - A production-grade, hallucination-free Agentic AI for real-time disaster response, fusing satellite imagery, live IoT sensors, social media, weather data, and official emergency protocols into a single grounded situational report.
+> **IEEE Research Framework** — agentic RAG for disaster response, combining live
+> hydrologic/meteorological telemetry, crisis microblogs, official response doctrine,
+> and building-level damage imagery behind a deterministic safety layer. All
+> infrastructure is free-tier or locally hosted; no paid APIs are used.
 
 ---
 
 ## Problem Statement
 
-During active disasters, emergency coordinators must manually correlate data from 5+ siloed sources (Twitter feeds, USGS sensors, drone feeds, weather apps, FEMA handbooks). This introduces critical delays and human error. This system eliminates that bottleneck with an autonomous AI agent.
+During active disasters, emergency coordinators must manually correlate data from
+multiple siloed sources (social media, river gauges, satellite imagery, weather,
+official manuals). This introduces delay and human error. The system produces a
+single grounded situational report with an auditable evidence trail.
 
 ## System Architecture
 
 ```
-Real-World Data  ETL Pipeline  Vector DB  LangGraph Agent  Streamlit Dashboard
-                                                                  
-  6 Sources        5 Loaders     ChromaDB        ReAct Loop      3-Panel UI
-  (all free)      (real data)   (3,195 docs)   (5 tools)       (live + chat)
+Real-World Data   ETL Pipeline   Hybrid Index     ReAct Agent       Dashboard
+  (free)           (real data)   (17,170 docs)    (8 tools)         (live + chat)
 ```
 
-## Data Sources (All Real, All Free)
+Retrieval fuses dense BGE embeddings and SQLite FTS5 BM25 with weighted reciprocal
+rank fusion (`alpha_dense = 0.70`, `k = 60`). A ReAct agent coordinates eight tools;
+every answer passes through a deterministic safety layer (DSEL) before delivery.
+
+## Data Sources (all real, all free)
 
 | Modality | Source | Description |
 |---|---|---|
-| Social Text | CrisisLex T26 | 200 real tweets from 2013 Colorado Floods |
-| Satellite Imagery | xView2 Dataset | Real building damage assessment images  LLaVA descriptions |
-| River Sensors | USGS NWIS Live API | Real-time gage height, Boulder Creek site 06730200 |
-| Weather | Open-Meteo API | Live temperature, precipitation, wind |
-| Earthquakes | USGS Earthquake API | Live M>=3.0 seismic events |
-| Protocols | FEMA/CDC Manuals | 3 official PDF handbooks, 2,881 semantic chunks |
+| Social text | CrisisLex T26 | 27,933 crisis tweets from 26 events |
+| Satellite imagery | xView2 / xBD | 1,017 labeled building-damage polygons |
+| River sensors | USGS NWIS | Live gage height, Boulder Creek site 06730200 |
+| Weather | Open-Meteo | Live temperature, precipitation, wind |
+| Earthquakes | USGS FDSNWS | Live M≥3.0 seismic events |
+| Protocols | FEMA / CDC | Official response manuals, 261 doctrine chunks |
 
 ## Agent Tools
 
 ```python
-tools = [
-    search_knowledge_base,   # FEMA/CDC/CrisisLex RAG retrieval
-    fetch_live_weather,      # Open-Meteo: temp + rain + wind
-    query_water_sensor,      # USGS: real river gage height + status
-    analyze_disaster_image,  # Ollama LLaVA 7B: local vision (no API cost)
-    generate_structured_alert  # Severity-tagged alert log entry
+ALL_TOOLS = [
+    fetch_live_weather,          # Open-Meteo
+    query_water_sensor,          # USGS NWIS / GloFAS
+    query_recent_earthquakes,    # USGS FDSNWS
+    search_official_protocols,   # FEMA / CDC only
+    search_social_reports,       # CrisisLex + sensor + imagery
+    search_knowledge_base,       # full hybrid store
+    analyze_disaster_image,      # local Qwen3-VL 4B, task="classify"
+    generate_structured_alert,   # severity-tagged alert log
 ]
 ```
 
-## Evaluation Results (IEEE Metrics)
+## Evaluation Results
 
-| System | DR-Fact | SAA | Safety Violations  | Avg Latency |
-|---|---|---|---|---|
-| LLM Only | 0.32 | 0.30 | 2 | 1.18s |
-| Text RAG | 0.43 | 0.47 | 0 | 1.07s |
-| **Multimodal RAG (Ours)** | **0.63** | **0.77** | **0** | **1.07s** |
+All figures come from committed artifacts in `evaluation/`. See
+`evaluation/RESULTS_SUMMARY.md` and `IEEE_FINAL.tex` for full tables and intervals.
+
+| Result | Measured value | Source |
+|---|---|---|
+| Held-out KW-F1, full agent | 0.0915 | `results_heldout_v2.csv` |
+| Held-out KW-F1, static RAG | 0.0657 | `results_heldout_v2.csv` |
+| Held-out KW-F1, LLM-only | 0.0821 | `results_heldout_v2.csv` |
+| Adversarial safety violations, raw LLM / no-DSEL / DSEL | 21.4% / 4.8% / 0.8% | `dsel_ablation_raw_local_rescored.csv` |
+| Geospatial routing | 20/20 scenarios | `geospatial_routing_results.json` |
+| Temporal conflict, TGI vs no-TGI false evacuation | 0/36 vs 10/36 | `tgi_results_v5.csv` |
+| Building damage classification | 0.3125 accuracy, 0.268 macro-F1 | `vision_benchmark_results.json` |
+
+`BM25_Baseline` scores from the legacy run are **superseded**: the baseline retrieved
+a constant context instead of querying by the question. It is being re-measured with
+the corrected FTS5 retriever.
+
+## Reproducibility notes
+
+- The originally specified 72B Qwen model is not available on the free endpoint;
+  reported runs use `qwen/qwen3.8-27b`, local `llama3.1:8b`, or local `qwen2.5:3b`
+  depending on the suite. Generator identity is recorded per row.
+- Free Gemini quota was exhausted, so the v3 judge run is not independent and is
+  excluded. Published judge results come from the independent v2 run.
+- LangSmith is disabled; `logs/incident_audit_trail.jsonl` is the audit ledger.
 
 ## Quick Start
 
 ```bash
-# Clone
 git clone https://github.com/CHRISER07/disaster-response-ai.git
 cd disaster-response-ai
-
-# Setup
 python -m venv venv
 venv\Scripts\activate
 pip install -r requirements.txt
 
-# Add your free Groq API key (from console.groq.com)
+# Free Groq key plus local Ollama models
 echo GROQ_API_KEY=your_key_here > .env
+ollama pull qwen3-vl:4b
+ollama pull llama3.1:8b
 
-# Install local vision AI (one time, free)
-# Download Ollama from https://ollama.ai then:
-ollama pull llava
-
-# Populate vector database with real data
 python core/populate_db.py
-
-# Launch the dashboard
 streamlit run app.py
 ```
 
-## Project Structure
-
-See `AGENTS.md` for the complete directory layout and architecture documentation.
-
 ## Citation
 
-If you use this framework in research, please cite:
-```
+```bibtex
 @misc{disaster-response-ai-2026,
   title={Agentic Multimodal RAG for Real-Time Disaster Response},
   author={CHRISER07},
