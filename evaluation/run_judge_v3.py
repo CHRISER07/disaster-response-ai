@@ -339,9 +339,15 @@ def call_judge_unified(judge_name: str, prompt: str) -> tuple:
         if not raw:
             raw, used = execute_openrouter_call("meta-llama/llama-3.3-70b-instruct", prompt)
     else:
-        raw, used = execute_groq_call("openai/gpt-oss-120b", prompt, max_tokens=800)
-        if not raw:
+        # JUDGE_B_MODEL=direct20b skips the 120B attempts when the free Groq
+        # keys are throttled; retrying 120B across six rate-limited keys was
+        # collapsing throughput from ~2.3 to ~0.4 evals/s.
+        if os.getenv("JUDGE_B_MODEL", "").strip() == "direct20b":
             raw, used = execute_groq_call("openai/gpt-oss-20b", prompt, max_tokens=800)
+        else:
+            raw, used = execute_groq_call("openai/gpt-oss-120b", prompt, max_tokens=800)
+            if not raw:
+                raw, used = execute_groq_call("openai/gpt-oss-20b", prompt, max_tokens=800)
     # Defensive: no judge may be the generator family.
     assert used != generator_model, "Judge fell back to the generator model!"
     # The caller unpacks four values: (df_score, df_rationale), (saa_score,
