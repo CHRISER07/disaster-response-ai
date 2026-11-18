@@ -132,14 +132,14 @@ class NonBlockingKeyPool:
 # Initialize pools
 groq_key_list = [
     os.getenv(f"GROQ_API_KEY_{let}", "").strip()
-    for let in ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I']
+    for let in "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 ]
 groq_key_list = [k for k in groq_key_list if k]
 groq_pool = NonBlockingKeyPool("GroqPool", groq_key_list, per_key_cooldown=1.2)
 
 gemini_key_list = [
     os.getenv(f"GEMINI_API_KEY_{let}", "").strip()
-    for let in ['A', 'B', 'C', 'D', 'E', 'F', 'G']
+    for let in "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 ]
 gemini_key_list = [k for k in gemini_key_list if k]
 gemini_pool = NonBlockingKeyPool("GeminiPool", gemini_key_list, per_key_cooldown=2.0)
