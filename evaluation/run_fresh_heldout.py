@@ -50,14 +50,15 @@ from evaluation.run_dev_eval_v2 import (
 from core.answer_formatter import format_answer
 
 SEEDS = [42]
+# The proposed system runs first; comparative baselines follow.
 CONFIGS = [
-    ("LLM_Only", lambda q, s: run_llm_only(q, s)),
-    ("BM25_Baseline", lambda q, s: run_bm25(q, s)),
-    ("Standard_StaticRAG", lambda q, s: run_static_rag(q, s, text_only=False)),
     ("Full_Agent", lambda q, s: run_full_agent(q, s)),
     ("Full_Agent_NoTGI", lambda q, s: run_full_agent(q, s, no_tgi=True)),
     ("Full_Agent_NoDSEL", lambda q, s: run_full_agent(q, s, no_dsel=True)),
     ("Full_Agent_NoTelem", lambda q, s: run_full_agent(q, s, no_telemetry=True)),
+    ("LLM_Only", lambda q, s: run_llm_only(q, s)),
+    ("BM25_Baseline", lambda q, s: run_bm25(q, s)),
+    ("Standard_StaticRAG", lambda q, s: run_static_rag(q, s, text_only=False)),
 ]
 
 

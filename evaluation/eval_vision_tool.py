@@ -113,6 +113,17 @@ def collect_buildings(tar, metadata):
     return out
 
 
+def wilson_ci(k: int, n: int, z: float = 1.96) -> tuple[float, float]:
+    """Wilson 95% interval for a binomial proportion, in percent."""
+    if n == 0:
+        return (0.0, 0.0)
+    p = k / n
+    den = 1 + z * z / n
+    centre = (p + z * z / (2 * n)) / den
+    half = z * math.sqrt(p * (1 - p) / n + z * z / (4 * n * n)) / den
+    return (round((centre - half) * 100, 1), round((centre + half) * 100, 1))
+
+
 def macro_f1(pairs):
     stats = {}
     for c in CLASSES:
@@ -141,6 +152,12 @@ def main():
     by_class = defaultdict(list)
     for name, label, scene in buildings:
         by_class[label].append((name, label, scene))
+    inventory = {c: len(by_class[c]) for c in CLASSES}
+    for c in CLASSES:
+        if inventory[c] < args.per_class:
+            raise SystemExit(
+                f"class {c} has only {inventory[c]} labeled crops; "
+                f"--per-class {args.per_class} is not possible")
     rng = random.Random(args.seed)
     sample = []
     for c in CLASSES:
@@ -190,10 +207,14 @@ def main():
         "sampling": f"balanced cap {args.per_class} per class, seed {args.seed}",
         "indexed_records": len(metadata),
         "labeled_buildings": len(buildings),
+        "class_inventory": inventory,
+        "per_class_cap": args.per_class,
         "sampled": len(sample),
         "assessable": len(assessable),
         "unclassified": len(rows) - len(assessable),
         "accuracy": round(acc, 4), "accuracy_assessable": round(acc_assessable, 4),
+        "accuracy_ci95_pct": list(wilson_ci(sum(1 for g, p in all_pairs if g == p),
+                                             len(all_pairs))),
         "macro_f1": round(macro, 4),
         "mean_latency_s": round(sum(lat) / len(lat), 3) if lat else 0.0,
         "p95_latency_s": round(p95, 3), "per_class": pc, "rows": rows,
@@ -205,6 +226,7 @@ def main():
              f"Assessable: {summary['assessable']} | Unclassified: {summary['unclassified']}", "",
              "| Metric | Value |", "|---|---|",
              f"| Accuracy (errors counted) | {acc:.4f} |",
+             f"| Accuracy 95% CI (Wilson) | {summary['accuracy_ci95_pct'][0]}–{summary['accuracy_ci95_pct'][1]}% |",
              f"| Accuracy (assessable only) | {acc_assessable:.4f} |",
              f"| Macro-F1 (errors counted) | {macro:.4f} |",
              f"| Mean latency (s) | {summary['mean_latency_s']} |",

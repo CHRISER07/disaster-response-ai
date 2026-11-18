@@ -1,302 +1,857 @@
 {
-  "generated": "2026-11-18T11:00:34.741600+00:00",
+  "generated": "2026-11-18T13:51:59.059526+00:00",
   "tool": "analyze_disaster_image(task=classify)",
   "model": "qwen3-vl-gpu:latest",
   "label_source": "xView2 building polygons (per-building subtypes)",
   "granularity": "building crop",
-  "sampling": "balanced cap 8 per class, seed 42",
+  "sampling": "balanced cap 25 per class, seed 42",
   "indexed_records": 50,
   "labeled_buildings": 1017,
-  "sampled": 32,
-  "assessable": 32,
+  "class_inventory": {
+    "no-damage": 544,
+    "minor-damage": 116,
+    "major-damage": 43,
+    "destroyed": 314
+  },
+  "per_class_cap": 25,
+  "sampled": 100,
+  "assessable": 100,
   "unclassified": 0,
-  "accuracy": 0.3125,
-  "accuracy_assessable": 0.3125,
-  "macro_f1": 0.268,
-  "mean_latency_s": 24.668,
-  "p95_latency_s": 37.318,
+  "accuracy": 0.34,
+  "accuracy_assessable": 0.34,
+  "accuracy_ci95_pct": [
+    25.5,
+    43.7
+  ],
+  "macro_f1": 0.2919,
+  "mean_latency_s": 29.274,
+  "p95_latency_s": 42.462,
   "per_class": {
     "no-damage": {
-      "precision": 0.3889,
-      "recall": 0.875,
-      "f1": 0.5385,
-      "support": 8
+      "precision": 0.386,
+      "recall": 0.88,
+      "f1": 0.5366,
+      "support": 25
     },
     "minor-damage": {
       "precision": 0.1429,
-      "recall": 0.125,
-      "f1": 0.1333,
-      "support": 8
+      "recall": 0.08,
+      "f1": 0.1026,
+      "support": 25
     },
     "major-damage": {
-      "precision": 0.0,
-      "recall": 0.0,
-      "f1": 0.0,
-      "support": 8
+      "precision": 0.1667,
+      "recall": 0.12,
+      "f1": 0.1395,
+      "support": 25
     },
     "destroyed": {
-      "precision": 1.0,
-      "recall": 0.25,
-      "f1": 0.4,
-      "support": 8
+      "precision": 0.6364,
+      "recall": 0.28,
+      "f1": 0.3889,
+      "support": 25
     }
   },
   "rows": [
     {
-      "crop": "bench_xview2_drone_29_e4b38780.png",
+      "crop": "bench_xview2_drone_14_a1ab0c8c.png",
+      "scene": "hurricane-michael_00000129_post_disaster.png",
+      "ground_truth": "minor-damage",
+      "predicted": "no-damage",
+      "latency_s": 33.859,
+      "raw_output": "[OLLAMA VISION CLASS (qwen3-vl-gpu:latest) - bench_xview2_drone_14_a1ab0c8c.png]\nDAMAGE_CLASS: no-damage"
+    },
+    {
+      "crop": "bench_xview2_drone_14_e9c4a71e.png",
+      "scene": "hurricane-michael_00000129_post_disaster.png",
+      "ground_truth": "minor-damage",
+      "predicted": "no-damage",
+      "latency_s": 22.143,
+      "raw_output": "[OLLAMA VISION CLASS (qwen3-vl-gpu:latest) - bench_xview2_drone_14_e9c4a71e.png]\nDAMAGE_CLASS: no-damage"
+    },
+    {
+      "crop": "bench_xview2_drone_29_94234c5f.png",
       "scene": "santa-rosa-wildfire_00000089_post_disaster.png",
       "ground_truth": "destroyed",
+      "predicted": "destroyed",
+      "latency_s": 21.847,
+      "raw_output": "[OLLAMA VISION CLASS (qwen3-vl-gpu:latest) - bench_xview2_drone_29_94234c5f.png]\nDAMAGE_CLASS: destroyed"
+    },
+    {
+      "crop": "bench_xview2_drone_14_93ab04af.png",
+      "scene": "hurricane-michael_00000129_post_disaster.png",
+      "ground_truth": "major-damage",
       "predicted": "major-damage",
-      "latency_s": 29.942,
-      "raw_output": "[OLLAMA VISION CLASS (qwen3-vl-gpu:latest) - bench_xview2_drone_29_e4b38780.png]\nDAMAGE_CLASS: major-damage"
-    },
-    {
-      "crop": "bench_xview2_drone_15_3e0cdeb5.png",
-      "scene": "hurricane-michael_00000155_post_disaster.png",
-      "ground_truth": "no-damage",
-      "predicted": "no-damage",
-      "latency_s": 19.649,
-      "raw_output": "[OLLAMA VISION CLASS (qwen3-vl-gpu:latest) - bench_xview2_drone_15_3e0cdeb5.png]\nDAMAGE_CLASS: no-damage"
-    },
-    {
-      "crop": "bench_xview2_drone_18_a3cea5c6.png",
-      "scene": "hurricane-michael_00000437_post_disaster.png",
-      "ground_truth": "minor-damage",
-      "predicted": "no-damage",
-      "latency_s": 23.109,
-      "raw_output": "[OLLAMA VISION CLASS (qwen3-vl-gpu:latest) - bench_xview2_drone_18_a3cea5c6.png]\nDAMAGE_CLASS: no-damage"
-    },
-    {
-      "crop": "bench_xview2_drone_18_5fb57f32.png",
-      "scene": "hurricane-michael_00000437_post_disaster.png",
-      "ground_truth": "minor-damage",
-      "predicted": "no-damage",
-      "latency_s": 22.677,
-      "raw_output": "[OLLAMA VISION CLASS (qwen3-vl-gpu:latest) - bench_xview2_drone_18_5fb57f32.png]\nDAMAGE_CLASS: no-damage"
-    },
-    {
-      "crop": "bench_xview2_drone_29_01972b65.png",
-      "scene": "santa-rosa-wildfire_00000089_post_disaster.png",
-      "ground_truth": "destroyed",
-      "predicted": "major-damage",
-      "latency_s": 22.272,
-      "raw_output": "[OLLAMA VISION CLASS (qwen3-vl-gpu:latest) - bench_xview2_drone_29_01972b65.png]\nDAMAGE_CLASS: major-damage"
-    },
-    {
-      "crop": "bench_xview2_drone_14_a6938d0f.png",
-      "scene": "hurricane-michael_00000129_post_disaster.png",
-      "ground_truth": "destroyed",
-      "predicted": "major-damage",
-      "latency_s": 10.34,
-      "raw_output": "[OLLAMA VISION CLASS (qwen3-vl-gpu:latest) - bench_xview2_drone_14_a6938d0f.png]\nDAMAGE_CLASS: major-damage"
-    },
-    {
-      "crop": "bench_xview2_drone_14_ed617841.png",
-      "scene": "hurricane-michael_00000129_post_disaster.png",
-      "ground_truth": "minor-damage",
-      "predicted": "no-damage",
-      "latency_s": 28.778,
-      "raw_output": "[OLLAMA VISION CLASS (qwen3-vl-gpu:latest) - bench_xview2_drone_14_ed617841.png]\nDAMAGE_CLASS: no-damage"
-    },
-    {
-      "crop": "bench_xview2_drone_14_a80b0a57.png",
-      "scene": "hurricane-michael_00000129_post_disaster.png",
-      "ground_truth": "major-damage",
-      "predicted": "no-damage",
-      "latency_s": 37.822,
-      "raw_output": "[OLLAMA VISION CLASS (qwen3-vl-gpu:latest) - bench_xview2_drone_14_a80b0a57.png]\nDAMAGE_CLASS: no-damage"
-    },
-    {
-      "crop": "bench_xview2_drone_16_69b0e7dd.png",
-      "scene": "hurricane-michael_00000420_post_disaster.png",
-      "ground_truth": "no-damage",
-      "predicted": "no-damage",
-      "latency_s": 24.005,
-      "raw_output": "[OLLAMA VISION CLASS (qwen3-vl-gpu:latest) - bench_xview2_drone_16_69b0e7dd.png]\nDAMAGE_CLASS: no-damage"
-    },
-    {
-      "crop": "bench_xview2_drone_14_503e2631.png",
-      "scene": "hurricane-michael_00000129_post_disaster.png",
-      "ground_truth": "minor-damage",
-      "predicted": "no-damage",
-      "latency_s": 32.875,
-      "raw_output": "[OLLAMA VISION CLASS (qwen3-vl-gpu:latest) - bench_xview2_drone_14_503e2631.png]\nDAMAGE_CLASS: no-damage"
-    },
-    {
-      "crop": "bench_xview2_drone_17_e2bcfec5.png",
-      "scene": "hurricane-michael_00000431_post_disaster.png",
-      "ground_truth": "no-damage",
-      "predicted": "no-damage",
-      "latency_s": 22.486,
-      "raw_output": "[OLLAMA VISION CLASS (qwen3-vl-gpu:latest) - bench_xview2_drone_17_e2bcfec5.png]\nDAMAGE_CLASS: no-damage"
-    },
-    {
-      "crop": "bench_xview2_drone_14_02ce6b9f.png",
-      "scene": "hurricane-michael_00000129_post_disaster.png",
-      "ground_truth": "major-damage",
-      "predicted": "no-damage",
-      "latency_s": 21.315,
-      "raw_output": "[OLLAMA VISION CLASS (qwen3-vl-gpu:latest) - bench_xview2_drone_14_02ce6b9f.png]\nDAMAGE_CLASS: no-damage"
-    },
-    {
-      "crop": "bench_xview2_drone_27_4c80b8c3.png",
-      "scene": "santa-rosa-wildfire_00000074_post_disaster.png",
-      "ground_truth": "no-damage",
-      "predicted": "no-damage",
-      "latency_s": 28.29,
-      "raw_output": "[OLLAMA VISION CLASS (qwen3-vl-gpu:latest) - bench_xview2_drone_27_4c80b8c3.png]\nDAMAGE_CLASS: no-damage"
-    },
-    {
-      "crop": "bench_xview2_drone_27_2163d000.png",
-      "scene": "santa-rosa-wildfire_00000074_post_disaster.png",
-      "ground_truth": "no-damage",
-      "predicted": "minor-damage",
-      "latency_s": 21.356,
-      "raw_output": "[OLLAMA VISION CLASS (qwen3-vl-gpu:latest) - bench_xview2_drone_27_2163d000.png]\nDAMAGE_CLASS: minor-damage"
-    },
-    {
-      "crop": "bench_xview2_drone_16_ab9ce935.png",
-      "scene": "hurricane-michael_00000420_post_disaster.png",
-      "ground_truth": "major-damage",
-      "predicted": "no-damage",
-      "latency_s": 28.245,
-      "raw_output": "[OLLAMA VISION CLASS (qwen3-vl-gpu:latest) - bench_xview2_drone_16_ab9ce935.png]\nDAMAGE_CLASS: no-damage"
-    },
-    {
-      "crop": "bench_xview2_drone_1_8bce4944.png",
-      "scene": "hurricane-florence_00000186_post_disaster.png",
-      "ground_truth": "major-damage",
-      "predicted": "minor-damage",
-      "latency_s": 30.824,
-      "raw_output": "[OLLAMA VISION CLASS (qwen3-vl-gpu:latest) - bench_xview2_drone_1_8bce4944.png]\nDAMAGE_CLASS: minor-damage"
-    },
-    {
-      "crop": "bench_xview2_drone_14_92a79328.png",
-      "scene": "hurricane-michael_00000129_post_disaster.png",
-      "ground_truth": "major-damage",
-      "predicted": "no-damage",
-      "latency_s": 22.437,
-      "raw_output": "[OLLAMA VISION CLASS (qwen3-vl-gpu:latest) - bench_xview2_drone_14_92a79328.png]\nDAMAGE_CLASS: no-damage"
-    },
-    {
-      "crop": "bench_xview2_drone_29_400350e4.png",
-      "scene": "santa-rosa-wildfire_00000089_post_disaster.png",
-      "ground_truth": "destroyed",
-      "predicted": "minor-damage",
-      "latency_s": 24.905,
-      "raw_output": "[OLLAMA VISION CLASS (qwen3-vl-gpu:latest) - bench_xview2_drone_29_400350e4.png]\nDAMAGE_CLASS: minor-damage"
-    },
-    {
-      "crop": "bench_xview2_drone_17_0611d6e2.png",
-      "scene": "hurricane-michael_00000431_post_disaster.png",
-      "ground_truth": "no-damage",
-      "predicted": "no-damage",
-      "latency_s": 19.207,
-      "raw_output": "[OLLAMA VISION CLASS (qwen3-vl-gpu:latest) - bench_xview2_drone_17_0611d6e2.png]\nDAMAGE_CLASS: no-damage"
-    },
-    {
-      "crop": "bench_xview2_drone_29_52849afc.png",
-      "scene": "santa-rosa-wildfire_00000089_post_disaster.png",
-      "ground_truth": "destroyed",
-      "predicted": "minor-damage",
-      "latency_s": 32.52,
-      "raw_output": "[OLLAMA VISION CLASS (qwen3-vl-gpu:latest) - bench_xview2_drone_29_52849afc.png]\nDAMAGE_CLASS: minor-damage"
-    },
-    {
-      "crop": "bench_xview2_drone_18_4bfc9380.png",
-      "scene": "hurricane-michael_00000437_post_disaster.png",
-      "ground_truth": "minor-damage",
-      "predicted": "no-damage",
-      "latency_s": 37.318,
-      "raw_output": "[OLLAMA VISION CLASS (qwen3-vl-gpu:latest) - bench_xview2_drone_18_4bfc9380.png]\nDAMAGE_CLASS: no-damage"
-    },
-    {
-      "crop": "bench_xview2_drone_29_97c9fe1e.png",
-      "scene": "santa-rosa-wildfire_00000089_post_disaster.png",
-      "ground_truth": "destroyed",
-      "predicted": "minor-damage",
-      "latency_s": 20.324,
-      "raw_output": "[OLLAMA VISION CLASS (qwen3-vl-gpu:latest) - bench_xview2_drone_29_97c9fe1e.png]\nDAMAGE_CLASS: minor-damage"
-    },
-    {
-      "crop": "bench_xview2_drone_15_2643c1b1.png",
-      "scene": "hurricane-michael_00000155_post_disaster.png",
-      "ground_truth": "minor-damage",
-      "predicted": "major-damage",
-      "latency_s": 22.8,
-      "raw_output": "[OLLAMA VISION CLASS (qwen3-vl-gpu:latest) - bench_xview2_drone_15_2643c1b1.png]\nDAMAGE_CLASS: major-damage"
+      "latency_s": 25.86,
+      "raw_output": "[OLLAMA VISION CLASS (qwen3-vl-gpu:latest) - bench_xview2_drone_14_93ab04af.png]\nDAMAGE_CLASS: major-damage"
     },
     {
       "crop": "bench_xview2_drone_29_db4d632d.png",
       "scene": "santa-rosa-wildfire_00000089_post_disaster.png",
       "ground_truth": "destroyed",
       "predicted": "destroyed",
-      "latency_s": 19.472,
+      "latency_s": 21.726,
       "raw_output": "[OLLAMA VISION CLASS (qwen3-vl-gpu:latest) - bench_xview2_drone_29_db4d632d.png]\nDAMAGE_CLASS: destroyed"
+    },
+    {
+      "crop": "bench_xview2_drone_3_7e76d3a2.png",
+      "scene": "hurricane-florence_00000468_post_disaster.png",
+      "ground_truth": "major-damage",
+      "predicted": "no-damage",
+      "latency_s": 29.511,
+      "raw_output": "[OLLAMA VISION CLASS (qwen3-vl-gpu:latest) - bench_xview2_drone_3_7e76d3a2.png]\nDAMAGE_CLASS: no-damage"
+    },
+    {
+      "crop": "bench_xview2_drone_29_97c9fe1e.png",
+      "scene": "santa-rosa-wildfire_00000089_post_disaster.png",
+      "ground_truth": "destroyed",
+      "predicted": "minor-damage",
+      "latency_s": 32.183,
+      "raw_output": "[OLLAMA VISION CLASS (qwen3-vl-gpu:latest) - bench_xview2_drone_29_97c9fe1e.png]\nDAMAGE_CLASS: minor-damage"
+    },
+    {
+      "crop": "bench_xview2_drone_14_00775693.png",
+      "scene": "hurricane-michael_00000129_post_disaster.png",
+      "ground_truth": "major-damage",
+      "predicted": "minor-damage",
+      "latency_s": 30.658,
+      "raw_output": "[OLLAMA VISION CLASS (qwen3-vl-gpu:latest) - bench_xview2_drone_14_00775693.png]\nDAMAGE_CLASS: minor-damage"
+    },
+    {
+      "crop": "bench_xview2_drone_29_1666ba21.png",
+      "scene": "santa-rosa-wildfire_00000089_post_disaster.png",
+      "ground_truth": "destroyed",
+      "predicted": "destroyed",
+      "latency_s": 69.79,
+      "raw_output": "[OLLAMA VISION CLASS (qwen3-vl-gpu:latest) - bench_xview2_drone_29_1666ba21.png]\nDAMAGE_CLASS: destroyed"
+    },
+    {
+      "crop": "bench_xview2_drone_14_92a79328.png",
+      "scene": "hurricane-michael_00000129_post_disaster.png",
+      "ground_truth": "major-damage",
+      "predicted": "no-damage",
+      "latency_s": 27.951,
+      "raw_output": "[OLLAMA VISION CLASS (qwen3-vl-gpu:latest) - bench_xview2_drone_14_92a79328.png]\nDAMAGE_CLASS: no-damage"
+    },
+    {
+      "crop": "bench_xview2_drone_15_688cf69e.png",
+      "scene": "hurricane-michael_00000155_post_disaster.png",
+      "ground_truth": "minor-damage",
+      "predicted": "major-damage",
+      "latency_s": 22.186,
+      "raw_output": "[OLLAMA VISION CLASS (qwen3-vl-gpu:latest) - bench_xview2_drone_15_688cf69e.png]\nDAMAGE_CLASS: major-damage"
+    },
+    {
+      "crop": "bench_xview2_drone_25_ae9a48a3.png",
+      "scene": "santa-rosa-wildfire_00000038_post_disaster.png",
+      "ground_truth": "destroyed",
+      "predicted": "minor-damage",
+      "latency_s": 26.256,
+      "raw_output": "[OLLAMA VISION CLASS (qwen3-vl-gpu:latest) - bench_xview2_drone_25_ae9a48a3.png]\nDAMAGE_CLASS: minor-damage"
+    },
+    {
+      "crop": "bench_xview2_drone_18_4bfc9380.png",
+      "scene": "hurricane-michael_00000437_post_disaster.png",
+      "ground_truth": "minor-damage",
+      "predicted": "no-damage",
+      "latency_s": 34.249,
+      "raw_output": "[OLLAMA VISION CLASS (qwen3-vl-gpu:latest) - bench_xview2_drone_18_4bfc9380.png]\nDAMAGE_CLASS: no-damage"
+    },
+    {
+      "crop": "bench_xview2_drone_16_d64eef9a.png",
+      "scene": "hurricane-michael_00000420_post_disaster.png",
+      "ground_truth": "minor-damage",
+      "predicted": "no-damage",
+      "latency_s": 47.036,
+      "raw_output": "[OLLAMA VISION CLASS (qwen3-vl-gpu:latest) - bench_xview2_drone_16_d64eef9a.png]\nDAMAGE_CLASS: no-damage"
+    },
+    {
+      "crop": "bench_xview2_drone_27_0d0dc7c3.png",
+      "scene": "santa-rosa-wildfire_00000074_post_disaster.png",
+      "ground_truth": "no-damage",
+      "predicted": "no-damage",
+      "latency_s": 22.177,
+      "raw_output": "[OLLAMA VISION CLASS (qwen3-vl-gpu:latest) - bench_xview2_drone_27_0d0dc7c3.png]\nDAMAGE_CLASS: no-damage"
     },
     {
       "crop": "bench_xview2_drone_17_4cfc8eae.png",
       "scene": "hurricane-michael_00000431_post_disaster.png",
       "ground_truth": "no-damage",
       "predicted": "no-damage",
-      "latency_s": 23.733,
+      "latency_s": 21.727,
       "raw_output": "[OLLAMA VISION CLASS (qwen3-vl-gpu:latest) - bench_xview2_drone_17_4cfc8eae.png]\nDAMAGE_CLASS: no-damage"
     },
     {
-      "crop": "bench_xview2_drone_14_84699285.png",
-      "scene": "hurricane-michael_00000129_post_disaster.png",
-      "ground_truth": "minor-damage",
-      "predicted": "major-damage",
-      "latency_s": 23.066,
-      "raw_output": "[OLLAMA VISION CLASS (qwen3-vl-gpu:latest) - bench_xview2_drone_14_84699285.png]\nDAMAGE_CLASS: major-damage"
-    },
-    {
-      "crop": "bench_xview2_drone_29_1276f4c2.png",
+      "crop": "bench_xview2_drone_29_fdca0679.png",
       "scene": "santa-rosa-wildfire_00000089_post_disaster.png",
       "ground_truth": "destroyed",
-      "predicted": "destroyed",
-      "latency_s": 19.282,
-      "raw_output": "[OLLAMA VISION CLASS (qwen3-vl-gpu:latest) - bench_xview2_drone_29_1276f4c2.png]\nDAMAGE_CLASS: destroyed"
-    },
-    {
-      "crop": "bench_xview2_drone_17_60e1f993.png",
-      "scene": "hurricane-michael_00000431_post_disaster.png",
-      "ground_truth": "major-damage",
-      "predicted": "minor-damage",
-      "latency_s": 26.771,
-      "raw_output": "[OLLAMA VISION CLASS (qwen3-vl-gpu:latest) - bench_xview2_drone_17_60e1f993.png]\nDAMAGE_CLASS: minor-damage"
+      "predicted": "major-damage",
+      "latency_s": 26.828,
+      "raw_output": "[OLLAMA VISION CLASS (qwen3-vl-gpu:latest) - bench_xview2_drone_29_fdca0679.png]\nDAMAGE_CLASS: major-damage"
     },
     {
       "crop": "bench_xview2_drone_4_c5747c64.png",
       "scene": "hurricane-florence_00000491_post_disaster.png",
       "ground_truth": "minor-damage",
       "predicted": "minor-damage",
-      "latency_s": 24.835,
+      "latency_s": 38.96,
       "raw_output": "[OLLAMA VISION CLASS (qwen3-vl-gpu:latest) - bench_xview2_drone_4_c5747c64.png]\nDAMAGE_CLASS: minor-damage"
     },
     {
-      "crop": "bench_xview2_drone_14_6bb070b7.png",
+      "crop": "bench_xview2_drone_14_fafbd59e.png",
+      "scene": "hurricane-michael_00000129_post_disaster.png",
+      "ground_truth": "major-damage",
+      "predicted": "major-damage",
+      "latency_s": 24.861,
+      "raw_output": "[OLLAMA VISION CLASS (qwen3-vl-gpu:latest) - bench_xview2_drone_14_fafbd59e.png]\nDAMAGE_CLASS: major-damage"
+    },
+    {
+      "crop": "bench_xview2_drone_28_6e8c0865.png",
+      "scene": "santa-rosa-wildfire_00000085_post_disaster.png",
+      "ground_truth": "no-damage",
+      "predicted": "no-damage",
+      "latency_s": 34.478,
+      "raw_output": "[OLLAMA VISION CLASS (qwen3-vl-gpu:latest) - bench_xview2_drone_28_6e8c0865.png]\nDAMAGE_CLASS: no-damage"
+    },
+    {
+      "crop": "bench_xview2_drone_29_52849afc.png",
+      "scene": "santa-rosa-wildfire_00000089_post_disaster.png",
+      "ground_truth": "destroyed",
+      "predicted": "no-damage",
+      "latency_s": 45.043,
+      "raw_output": "[OLLAMA VISION CLASS (qwen3-vl-gpu:latest) - bench_xview2_drone_29_52849afc.png]\nDAMAGE_CLASS: no-damage"
+    },
+    {
+      "crop": "bench_xview2_drone_14_a80b0a57.png",
+      "scene": "hurricane-michael_00000129_post_disaster.png",
+      "ground_truth": "major-damage",
+      "predicted": "minor-damage",
+      "latency_s": 29.862,
+      "raw_output": "[OLLAMA VISION CLASS (qwen3-vl-gpu:latest) - bench_xview2_drone_14_a80b0a57.png]\nDAMAGE_CLASS: minor-damage"
+    },
+    {
+      "crop": "bench_xview2_drone_4_e01d3f0e.png",
+      "scene": "hurricane-florence_00000491_post_disaster.png",
+      "ground_truth": "minor-damage",
+      "predicted": "no-damage",
+      "latency_s": 22.313,
+      "raw_output": "[OLLAMA VISION CLASS (qwen3-vl-gpu:latest) - bench_xview2_drone_4_e01d3f0e.png]\nDAMAGE_CLASS: no-damage"
+    },
+    {
+      "crop": "bench_xview2_drone_14_f485750b.png",
+      "scene": "hurricane-michael_00000129_post_disaster.png",
+      "ground_truth": "minor-damage",
+      "predicted": "no-damage",
+      "latency_s": 23.451,
+      "raw_output": "[OLLAMA VISION CLASS (qwen3-vl-gpu:latest) - bench_xview2_drone_14_f485750b.png]\nDAMAGE_CLASS: no-damage"
+    },
+    {
+      "crop": "bench_xview2_drone_14_503e2631.png",
+      "scene": "hurricane-michael_00000129_post_disaster.png",
+      "ground_truth": "minor-damage",
+      "predicted": "major-damage",
+      "latency_s": 29.478,
+      "raw_output": "[OLLAMA VISION CLASS (qwen3-vl-gpu:latest) - bench_xview2_drone_14_503e2631.png]\nDAMAGE_CLASS: major-damage"
+    },
+    {
+      "crop": "bench_xview2_drone_15_26639e8d.png",
+      "scene": "hurricane-michael_00000155_post_disaster.png",
+      "ground_truth": "major-damage",
+      "predicted": "no-damage",
+      "latency_s": 26.843,
+      "raw_output": "[OLLAMA VISION CLASS (qwen3-vl-gpu:latest) - bench_xview2_drone_15_26639e8d.png]\nDAMAGE_CLASS: no-damage"
+    },
+    {
+      "crop": "bench_xview2_drone_3_0aee9e78.png",
+      "scene": "hurricane-florence_00000468_post_disaster.png",
+      "ground_truth": "minor-damage",
+      "predicted": "no-damage",
+      "latency_s": 21.765,
+      "raw_output": "[OLLAMA VISION CLASS (qwen3-vl-gpu:latest) - bench_xview2_drone_3_0aee9e78.png]\nDAMAGE_CLASS: no-damage"
+    },
+    {
+      "crop": "bench_xview2_drone_29_1276f4c2.png",
+      "scene": "santa-rosa-wildfire_00000089_post_disaster.png",
+      "ground_truth": "destroyed",
+      "predicted": "destroyed",
+      "latency_s": 21.936,
+      "raw_output": "[OLLAMA VISION CLASS (qwen3-vl-gpu:latest) - bench_xview2_drone_29_1276f4c2.png]\nDAMAGE_CLASS: destroyed"
+    },
+    {
+      "crop": "bench_xview2_drone_25_2d264558.png",
+      "scene": "santa-rosa-wildfire_00000038_post_disaster.png",
+      "ground_truth": "destroyed",
+      "predicted": "major-damage",
+      "latency_s": 24.584,
+      "raw_output": "[OLLAMA VISION CLASS (qwen3-vl-gpu:latest) - bench_xview2_drone_25_2d264558.png]\nDAMAGE_CLASS: major-damage"
+    },
+    {
+      "crop": "bench_xview2_drone_16_41ab4157.png",
+      "scene": "hurricane-michael_00000420_post_disaster.png",
+      "ground_truth": "no-damage",
+      "predicted": "no-damage",
+      "latency_s": 30.317,
+      "raw_output": "[OLLAMA VISION CLASS (qwen3-vl-gpu:latest) - bench_xview2_drone_16_41ab4157.png]\nDAMAGE_CLASS: no-damage"
+    },
+    {
+      "crop": "bench_xview2_drone_36_9b040ea3.png",
+      "scene": "socal-fire_00000309_post_disaster.png",
+      "ground_truth": "no-damage",
+      "predicted": "no-damage",
+      "latency_s": 32.035,
+      "raw_output": "[OLLAMA VISION CLASS (qwen3-vl-gpu:latest) - bench_xview2_drone_36_9b040ea3.png]\nDAMAGE_CLASS: no-damage"
+    },
+    {
+      "crop": "bench_xview2_drone_17_60e1f993.png",
+      "scene": "hurricane-michael_00000431_post_disaster.png",
+      "ground_truth": "major-damage",
+      "predicted": "major-damage",
+      "latency_s": 25.997,
+      "raw_output": "[OLLAMA VISION CLASS (qwen3-vl-gpu:latest) - bench_xview2_drone_17_60e1f993.png]\nDAMAGE_CLASS: major-damage"
+    },
+    {
+      "crop": "bench_xview2_drone_14_869c115a.png",
       "scene": "hurricane-michael_00000129_post_disaster.png",
       "ground_truth": "major-damage",
       "predicted": "no-damage",
-      "latency_s": 25.708,
-      "raw_output": "[OLLAMA VISION CLASS (qwen3-vl-gpu:latest) - bench_xview2_drone_14_6bb070b7.png]\nDAMAGE_CLASS: no-damage"
+      "latency_s": 32.112,
+      "raw_output": "[OLLAMA VISION CLASS (qwen3-vl-gpu:latest) - bench_xview2_drone_14_869c115a.png]\nDAMAGE_CLASS: no-damage"
+    },
+    {
+      "crop": "bench_xview2_drone_15_cf889f9d.png",
+      "scene": "hurricane-michael_00000155_post_disaster.png",
+      "ground_truth": "no-damage",
+      "predicted": "no-damage",
+      "latency_s": 31.041,
+      "raw_output": "[OLLAMA VISION CLASS (qwen3-vl-gpu:latest) - bench_xview2_drone_15_cf889f9d.png]\nDAMAGE_CLASS: no-damage"
+    },
+    {
+      "crop": "bench_xview2_drone_29_70d8b92b.png",
+      "scene": "santa-rosa-wildfire_00000089_post_disaster.png",
+      "ground_truth": "destroyed",
+      "predicted": "major-damage",
+      "latency_s": 37.452,
+      "raw_output": "[OLLAMA VISION CLASS (qwen3-vl-gpu:latest) - bench_xview2_drone_29_70d8b92b.png]\nDAMAGE_CLASS: major-damage"
+    },
+    {
+      "crop": "bench_xview2_drone_18_5fb57f32.png",
+      "scene": "hurricane-michael_00000437_post_disaster.png",
+      "ground_truth": "minor-damage",
+      "predicted": "no-damage",
+      "latency_s": 23.353,
+      "raw_output": "[OLLAMA VISION CLASS (qwen3-vl-gpu:latest) - bench_xview2_drone_18_5fb57f32.png]\nDAMAGE_CLASS: no-damage"
+    },
+    {
+      "crop": "bench_xview2_drone_14_02ce6b9f.png",
+      "scene": "hurricane-michael_00000129_post_disaster.png",
+      "ground_truth": "major-damage",
+      "predicted": "minor-damage",
+      "latency_s": 30.154,
+      "raw_output": "[OLLAMA VISION CLASS (qwen3-vl-gpu:latest) - bench_xview2_drone_14_02ce6b9f.png]\nDAMAGE_CLASS: minor-damage"
+    },
+    {
+      "crop": "bench_xview2_drone_14_68d26280.png",
+      "scene": "hurricane-michael_00000129_post_disaster.png",
+      "ground_truth": "major-damage",
+      "predicted": "destroyed",
+      "latency_s": 32.373,
+      "raw_output": "[OLLAMA VISION CLASS (qwen3-vl-gpu:latest) - bench_xview2_drone_14_68d26280.png]\nDAMAGE_CLASS: destroyed"
     },
     {
       "crop": "bench_xview2_drone_27_729e7857.png",
       "scene": "santa-rosa-wildfire_00000074_post_disaster.png",
       "ground_truth": "no-damage",
       "predicted": "no-damage",
-      "latency_s": 23.568,
+      "latency_s": 27.77,
       "raw_output": "[OLLAMA VISION CLASS (qwen3-vl-gpu:latest) - bench_xview2_drone_27_729e7857.png]\nDAMAGE_CLASS: no-damage"
+    },
+    {
+      "crop": "bench_xview2_drone_14_ed617841.png",
+      "scene": "hurricane-michael_00000129_post_disaster.png",
+      "ground_truth": "minor-damage",
+      "predicted": "no-damage",
+      "latency_s": 42.591,
+      "raw_output": "[OLLAMA VISION CLASS (qwen3-vl-gpu:latest) - bench_xview2_drone_14_ed617841.png]\nDAMAGE_CLASS: no-damage"
+    },
+    {
+      "crop": "bench_xview2_drone_29_4c233571.png",
+      "scene": "santa-rosa-wildfire_00000089_post_disaster.png",
+      "ground_truth": "destroyed",
+      "predicted": "destroyed",
+      "latency_s": 22.159,
+      "raw_output": "[OLLAMA VISION CLASS (qwen3-vl-gpu:latest) - bench_xview2_drone_29_4c233571.png]\nDAMAGE_CLASS: destroyed"
+    },
+    {
+      "crop": "bench_xview2_drone_14_cd2b2280.png",
+      "scene": "hurricane-michael_00000129_post_disaster.png",
+      "ground_truth": "major-damage",
+      "predicted": "minor-damage",
+      "latency_s": 28.562,
+      "raw_output": "[OLLAMA VISION CLASS (qwen3-vl-gpu:latest) - bench_xview2_drone_14_cd2b2280.png]\nDAMAGE_CLASS: minor-damage"
+    },
+    {
+      "crop": "bench_xview2_drone_16_ab9ce935.png",
+      "scene": "hurricane-michael_00000420_post_disaster.png",
+      "ground_truth": "major-damage",
+      "predicted": "no-damage",
+      "latency_s": 29.031,
+      "raw_output": "[OLLAMA VISION CLASS (qwen3-vl-gpu:latest) - bench_xview2_drone_16_ab9ce935.png]\nDAMAGE_CLASS: no-damage"
+    },
+    {
+      "crop": "bench_xview2_drone_29_dfefb2e6.png",
+      "scene": "santa-rosa-wildfire_00000089_post_disaster.png",
+      "ground_truth": "no-damage",
+      "predicted": "no-damage",
+      "latency_s": 23.711,
+      "raw_output": "[OLLAMA VISION CLASS (qwen3-vl-gpu:latest) - bench_xview2_drone_29_dfefb2e6.png]\nDAMAGE_CLASS: no-damage"
+    },
+    {
+      "crop": "bench_xview2_drone_16_a69d5b38.png",
+      "scene": "hurricane-michael_00000420_post_disaster.png",
+      "ground_truth": "no-damage",
+      "predicted": "no-damage",
+      "latency_s": 30.926,
+      "raw_output": "[OLLAMA VISION CLASS (qwen3-vl-gpu:latest) - bench_xview2_drone_16_a69d5b38.png]\nDAMAGE_CLASS: no-damage"
+    },
+    {
+      "crop": "bench_xview2_drone_14_7ed408dc.png",
+      "scene": "hurricane-michael_00000129_post_disaster.png",
+      "ground_truth": "minor-damage",
+      "predicted": "no-damage",
+      "latency_s": 27.761,
+      "raw_output": "[OLLAMA VISION CLASS (qwen3-vl-gpu:latest) - bench_xview2_drone_14_7ed408dc.png]\nDAMAGE_CLASS: no-damage"
+    },
+    {
+      "crop": "bench_xview2_drone_22_f3aff267.png",
+      "scene": "midwest-flooding_00000420_post_disaster.png",
+      "ground_truth": "no-damage",
+      "predicted": "no-damage",
+      "latency_s": 24.279,
+      "raw_output": "[OLLAMA VISION CLASS (qwen3-vl-gpu:latest) - bench_xview2_drone_22_f3aff267.png]\nDAMAGE_CLASS: no-damage"
+    },
+    {
+      "crop": "bench_xview2_drone_15_56e0467a.png",
+      "scene": "hurricane-michael_00000155_post_disaster.png",
+      "ground_truth": "minor-damage",
+      "predicted": "no-damage",
+      "latency_s": 22.78,
+      "raw_output": "[OLLAMA VISION CLASS (qwen3-vl-gpu:latest) - bench_xview2_drone_15_56e0467a.png]\nDAMAGE_CLASS: no-damage"
+    },
+    {
+      "crop": "bench_xview2_drone_29_4409cfc6.png",
+      "scene": "santa-rosa-wildfire_00000089_post_disaster.png",
+      "ground_truth": "destroyed",
+      "predicted": "no-damage",
+      "latency_s": 27.238,
+      "raw_output": "[OLLAMA VISION CLASS (qwen3-vl-gpu:latest) - bench_xview2_drone_29_4409cfc6.png]\nDAMAGE_CLASS: no-damage"
+    },
+    {
+      "crop": "bench_xview2_drone_15_3e0cdeb5.png",
+      "scene": "hurricane-michael_00000155_post_disaster.png",
+      "ground_truth": "no-damage",
+      "predicted": "no-damage",
+      "latency_s": 21.479,
+      "raw_output": "[OLLAMA VISION CLASS (qwen3-vl-gpu:latest) - bench_xview2_drone_15_3e0cdeb5.png]\nDAMAGE_CLASS: no-damage"
+    },
+    {
+      "crop": "bench_xview2_drone_27_2163d000.png",
+      "scene": "santa-rosa-wildfire_00000074_post_disaster.png",
+      "ground_truth": "no-damage",
+      "predicted": "no-damage",
+      "latency_s": 36.54,
+      "raw_output": "[OLLAMA VISION CLASS (qwen3-vl-gpu:latest) - bench_xview2_drone_27_2163d000.png]\nDAMAGE_CLASS: no-damage"
+    },
+    {
+      "crop": "bench_xview2_drone_18_a3cea5c6.png",
+      "scene": "hurricane-michael_00000437_post_disaster.png",
+      "ground_truth": "minor-damage",
+      "predicted": "no-damage",
+      "latency_s": 29.172,
+      "raw_output": "[OLLAMA VISION CLASS (qwen3-vl-gpu:latest) - bench_xview2_drone_18_a3cea5c6.png]\nDAMAGE_CLASS: no-damage"
+    },
+    {
+      "crop": "bench_xview2_drone_29_9aec4b67.png",
+      "scene": "santa-rosa-wildfire_00000089_post_disaster.png",
+      "ground_truth": "destroyed",
+      "predicted": "destroyed",
+      "latency_s": 22.501,
+      "raw_output": "[OLLAMA VISION CLASS (qwen3-vl-gpu:latest) - bench_xview2_drone_29_9aec4b67.png]\nDAMAGE_CLASS: destroyed"
+    },
+    {
+      "crop": "bench_xview2_drone_14_d2c48dcd.png",
+      "scene": "hurricane-michael_00000129_post_disaster.png",
+      "ground_truth": "major-damage",
+      "predicted": "minor-damage",
+      "latency_s": 25.299,
+      "raw_output": "[OLLAMA VISION CLASS (qwen3-vl-gpu:latest) - bench_xview2_drone_14_d2c48dcd.png]\nDAMAGE_CLASS: minor-damage"
+    },
+    {
+      "crop": "bench_xview2_drone_27_f3591b53.png",
+      "scene": "santa-rosa-wildfire_00000074_post_disaster.png",
+      "ground_truth": "no-damage",
+      "predicted": "no-damage",
+      "latency_s": 21.792,
+      "raw_output": "[OLLAMA VISION CLASS (qwen3-vl-gpu:latest) - bench_xview2_drone_27_f3591b53.png]\nDAMAGE_CLASS: no-damage"
+    },
+    {
+      "crop": "bench_xview2_drone_16_d233e39d.png",
+      "scene": "hurricane-michael_00000420_post_disaster.png",
+      "ground_truth": "no-damage",
+      "predicted": "no-damage",
+      "latency_s": 42.462,
+      "raw_output": "[OLLAMA VISION CLASS (qwen3-vl-gpu:latest) - bench_xview2_drone_16_d233e39d.png]\nDAMAGE_CLASS: no-damage"
+    },
+    {
+      "crop": "bench_xview2_drone_25_edd85006.png",
+      "scene": "santa-rosa-wildfire_00000038_post_disaster.png",
+      "ground_truth": "destroyed",
+      "predicted": "minor-damage",
+      "latency_s": 26.186,
+      "raw_output": "[OLLAMA VISION CLASS (qwen3-vl-gpu:latest) - bench_xview2_drone_25_edd85006.png]\nDAMAGE_CLASS: minor-damage"
+    },
+    {
+      "crop": "bench_xview2_drone_27_8dc37ea5.png",
+      "scene": "santa-rosa-wildfire_00000074_post_disaster.png",
+      "ground_truth": "no-damage",
+      "predicted": "minor-damage",
+      "latency_s": 24.443,
+      "raw_output": "[OLLAMA VISION CLASS (qwen3-vl-gpu:latest) - bench_xview2_drone_27_8dc37ea5.png]\nDAMAGE_CLASS: minor-damage"
+    },
+    {
+      "crop": "bench_xview2_drone_22_df81856b.png",
+      "scene": "midwest-flooding_00000420_post_disaster.png",
+      "ground_truth": "destroyed",
+      "predicted": "no-damage",
+      "latency_s": 33.426,
+      "raw_output": "[OLLAMA VISION CLASS (qwen3-vl-gpu:latest) - bench_xview2_drone_22_df81856b.png]\nDAMAGE_CLASS: no-damage"
+    },
+    {
+      "crop": "bench_xview2_drone_17_0611d6e2.png",
+      "scene": "hurricane-michael_00000431_post_disaster.png",
+      "ground_truth": "no-damage",
+      "predicted": "no-damage",
+      "latency_s": 23.771,
+      "raw_output": "[OLLAMA VISION CLASS (qwen3-vl-gpu:latest) - bench_xview2_drone_17_0611d6e2.png]\nDAMAGE_CLASS: no-damage"
+    },
+    {
+      "crop": "bench_xview2_drone_14_6f59d4ad.png",
+      "scene": "hurricane-michael_00000129_post_disaster.png",
+      "ground_truth": "minor-damage",
+      "predicted": "no-damage",
+      "latency_s": 34.0,
+      "raw_output": "[OLLAMA VISION CLASS (qwen3-vl-gpu:latest) - bench_xview2_drone_14_6f59d4ad.png]\nDAMAGE_CLASS: no-damage"
+    },
+    {
+      "crop": "bench_xview2_drone_15_2643c1b1.png",
+      "scene": "hurricane-michael_00000155_post_disaster.png",
+      "ground_truth": "minor-damage",
+      "predicted": "major-damage",
+      "latency_s": 26.886,
+      "raw_output": "[OLLAMA VISION CLASS (qwen3-vl-gpu:latest) - bench_xview2_drone_15_2643c1b1.png]\nDAMAGE_CLASS: major-damage"
+    },
+    {
+      "crop": "bench_xview2_drone_14_a6938d0f.png",
+      "scene": "hurricane-michael_00000129_post_disaster.png",
+      "ground_truth": "destroyed",
+      "predicted": "major-damage",
+      "latency_s": 24.455,
+      "raw_output": "[OLLAMA VISION CLASS (qwen3-vl-gpu:latest) - bench_xview2_drone_14_a6938d0f.png]\nDAMAGE_CLASS: major-damage"
+    },
+    {
+      "crop": "bench_xview2_drone_29_01972b65.png",
+      "scene": "santa-rosa-wildfire_00000089_post_disaster.png",
+      "ground_truth": "destroyed",
+      "predicted": "major-damage",
+      "latency_s": 26.148,
+      "raw_output": "[OLLAMA VISION CLASS (qwen3-vl-gpu:latest) - bench_xview2_drone_29_01972b65.png]\nDAMAGE_CLASS: major-damage"
+    },
+    {
+      "crop": "bench_xview2_drone_15_135aaf08.png",
+      "scene": "hurricane-michael_00000155_post_disaster.png",
+      "ground_truth": "minor-damage",
+      "predicted": "major-damage",
+      "latency_s": 25.954,
+      "raw_output": "[OLLAMA VISION CLASS (qwen3-vl-gpu:latest) - bench_xview2_drone_15_135aaf08.png]\nDAMAGE_CLASS: major-damage"
+    },
+    {
+      "crop": "bench_xview2_drone_17_4df19393.png",
+      "scene": "hurricane-michael_00000431_post_disaster.png",
+      "ground_truth": "no-damage",
+      "predicted": "no-damage",
+      "latency_s": 21.822,
+      "raw_output": "[OLLAMA VISION CLASS (qwen3-vl-gpu:latest) - bench_xview2_drone_17_4df19393.png]\nDAMAGE_CLASS: no-damage"
+    },
+    {
+      "crop": "bench_xview2_drone_17_e2bcfec5.png",
+      "scene": "hurricane-michael_00000431_post_disaster.png",
+      "ground_truth": "no-damage",
+      "predicted": "no-damage",
+      "latency_s": 21.761,
+      "raw_output": "[OLLAMA VISION CLASS (qwen3-vl-gpu:latest) - bench_xview2_drone_17_e2bcfec5.png]\nDAMAGE_CLASS: no-damage"
+    },
+    {
+      "crop": "bench_xview2_drone_29_3dbf9f76.png",
+      "scene": "santa-rosa-wildfire_00000089_post_disaster.png",
+      "ground_truth": "destroyed",
+      "predicted": "major-damage",
+      "latency_s": 33.247,
+      "raw_output": "[OLLAMA VISION CLASS (qwen3-vl-gpu:latest) - bench_xview2_drone_29_3dbf9f76.png]\nDAMAGE_CLASS: major-damage"
+    },
+    {
+      "crop": "bench_xview2_drone_14_e7f9017a.png",
+      "scene": "hurricane-michael_00000129_post_disaster.png",
+      "ground_truth": "major-damage",
+      "predicted": "minor-damage",
+      "latency_s": 30.438,
+      "raw_output": "[OLLAMA VISION CLASS (qwen3-vl-gpu:latest) - bench_xview2_drone_14_e7f9017a.png]\nDAMAGE_CLASS: minor-damage"
+    },
+    {
+      "crop": "bench_xview2_drone_16_69b0e7dd.png",
+      "scene": "hurricane-michael_00000420_post_disaster.png",
+      "ground_truth": "no-damage",
+      "predicted": "no-damage",
+      "latency_s": 24.112,
+      "raw_output": "[OLLAMA VISION CLASS (qwen3-vl-gpu:latest) - bench_xview2_drone_16_69b0e7dd.png]\nDAMAGE_CLASS: no-damage"
+    },
+    {
+      "crop": "bench_xview2_drone_18_2bca7435.png",
+      "scene": "hurricane-michael_00000437_post_disaster.png",
+      "ground_truth": "major-damage",
+      "predicted": "no-damage",
+      "latency_s": 36.596,
+      "raw_output": "[OLLAMA VISION CLASS (qwen3-vl-gpu:latest) - bench_xview2_drone_18_2bca7435.png]\nDAMAGE_CLASS: no-damage"
+    },
+    {
+      "crop": "bench_xview2_drone_29_e4b38780.png",
+      "scene": "santa-rosa-wildfire_00000089_post_disaster.png",
+      "ground_truth": "destroyed",
+      "predicted": "no-damage",
+      "latency_s": 23.81,
+      "raw_output": "[OLLAMA VISION CLASS (qwen3-vl-gpu:latest) - bench_xview2_drone_29_e4b38780.png]\nDAMAGE_CLASS: no-damage"
+    },
+    {
+      "crop": "bench_xview2_drone_34_724d3335.png",
+      "scene": "socal-fire_00000075_post_disaster.png",
+      "ground_truth": "no-damage",
+      "predicted": "destroyed",
+      "latency_s": 30.063,
+      "raw_output": "[OLLAMA VISION CLASS (qwen3-vl-gpu:latest) - bench_xview2_drone_34_724d3335.png]\nDAMAGE_CLASS: destroyed"
+    },
+    {
+      "crop": "bench_xview2_drone_29_02828c14.png",
+      "scene": "santa-rosa-wildfire_00000089_post_disaster.png",
+      "ground_truth": "destroyed",
+      "predicted": "major-damage",
+      "latency_s": 24.954,
+      "raw_output": "[OLLAMA VISION CLASS (qwen3-vl-gpu:latest) - bench_xview2_drone_29_02828c14.png]\nDAMAGE_CLASS: major-damage"
+    },
+    {
+      "crop": "bench_xview2_drone_14_84699285.png",
+      "scene": "hurricane-michael_00000129_post_disaster.png",
+      "ground_truth": "minor-damage",
+      "predicted": "destroyed",
+      "latency_s": 40.243,
+      "raw_output": "[OLLAMA VISION CLASS (qwen3-vl-gpu:latest) - bench_xview2_drone_14_84699285.png]\nDAMAGE_CLASS: destroyed"
+    },
+    {
+      "crop": "bench_xview2_drone_16_e93ce885.png",
+      "scene": "hurricane-michael_00000420_post_disaster.png",
+      "ground_truth": "minor-damage",
+      "predicted": "no-damage",
+      "latency_s": 38.298,
+      "raw_output": "[OLLAMA VISION CLASS (qwen3-vl-gpu:latest) - bench_xview2_drone_16_e93ce885.png]\nDAMAGE_CLASS: no-damage"
+    },
+    {
+      "crop": "bench_xview2_drone_29_16a7c948.png",
+      "scene": "santa-rosa-wildfire_00000089_post_disaster.png",
+      "ground_truth": "destroyed",
+      "predicted": "destroyed",
+      "latency_s": 29.939,
+      "raw_output": "[OLLAMA VISION CLASS (qwen3-vl-gpu:latest) - bench_xview2_drone_29_16a7c948.png]\nDAMAGE_CLASS: destroyed"
+    },
+    {
+      "crop": "bench_xview2_drone_1_c5c33e43.png",
+      "scene": "hurricane-florence_00000186_post_disaster.png",
+      "ground_truth": "major-damage",
+      "predicted": "no-damage",
+      "latency_s": 33.849,
+      "raw_output": "[OLLAMA VISION CLASS (qwen3-vl-gpu:latest) - bench_xview2_drone_1_c5c33e43.png]\nDAMAGE_CLASS: no-damage"
+    },
+    {
+      "crop": "bench_xview2_drone_27_4c80b8c3.png",
+      "scene": "santa-rosa-wildfire_00000074_post_disaster.png",
+      "ground_truth": "no-damage",
+      "predicted": "no-damage",
+      "latency_s": 39.286,
+      "raw_output": "[OLLAMA VISION CLASS (qwen3-vl-gpu:latest) - bench_xview2_drone_27_4c80b8c3.png]\nDAMAGE_CLASS: no-damage"
+    },
+    {
+      "crop": "bench_xview2_drone_3_97190dcb.png",
+      "scene": "hurricane-florence_00000468_post_disaster.png",
+      "ground_truth": "major-damage",
+      "predicted": "no-damage",
+      "latency_s": 29.433,
+      "raw_output": "[OLLAMA VISION CLASS (qwen3-vl-gpu:latest) - bench_xview2_drone_3_97190dcb.png]\nDAMAGE_CLASS: no-damage"
     },
     {
       "crop": "bench_xview2_drone_17_e413f8c9.png",
       "scene": "hurricane-michael_00000431_post_disaster.png",
       "ground_truth": "major-damage",
       "predicted": "no-damage",
-      "latency_s": 19.44,
+      "latency_s": 25.104,
       "raw_output": "[OLLAMA VISION CLASS (qwen3-vl-gpu:latest) - bench_xview2_drone_17_e413f8c9.png]\nDAMAGE_CLASS: no-damage"
+    },
+    {
+      "crop": "bench_xview2_drone_14_94d42ced.png",
+      "scene": "hurricane-michael_00000129_post_disaster.png",
+      "ground_truth": "minor-damage",
+      "predicted": "no-damage",
+      "latency_s": 24.928,
+      "raw_output": "[OLLAMA VISION CLASS (qwen3-vl-gpu:latest) - bench_xview2_drone_14_94d42ced.png]\nDAMAGE_CLASS: no-damage"
+    },
+    {
+      "crop": "bench_xview2_drone_1_83dd2d3b.png",
+      "scene": "hurricane-florence_00000186_post_disaster.png",
+      "ground_truth": "major-damage",
+      "predicted": "destroyed",
+      "latency_s": 41.469,
+      "raw_output": "[OLLAMA VISION CLASS (qwen3-vl-gpu:latest) - bench_xview2_drone_1_83dd2d3b.png]\nDAMAGE_CLASS: destroyed"
+    },
+    {
+      "crop": "bench_xview2_drone_29_bb146a01.png",
+      "scene": "santa-rosa-wildfire_00000089_post_disaster.png",
+      "ground_truth": "destroyed",
+      "predicted": "major-damage",
+      "latency_s": 32.715,
+      "raw_output": "[OLLAMA VISION CLASS (qwen3-vl-gpu:latest) - bench_xview2_drone_29_bb146a01.png]\nDAMAGE_CLASS: major-damage"
+    },
+    {
+      "crop": "bench_xview2_drone_25_bc4189b4.png",
+      "scene": "santa-rosa-wildfire_00000038_post_disaster.png",
+      "ground_truth": "destroyed",
+      "predicted": "major-damage",
+      "latency_s": 29.49,
+      "raw_output": "[OLLAMA VISION CLASS (qwen3-vl-gpu:latest) - bench_xview2_drone_25_bc4189b4.png]\nDAMAGE_CLASS: major-damage"
+    },
+    {
+      "crop": "bench_xview2_drone_27_2dec3611.png",
+      "scene": "santa-rosa-wildfire_00000074_post_disaster.png",
+      "ground_truth": "no-damage",
+      "predicted": "no-damage",
+      "latency_s": 26.699,
+      "raw_output": "[OLLAMA VISION CLASS (qwen3-vl-gpu:latest) - bench_xview2_drone_27_2dec3611.png]\nDAMAGE_CLASS: no-damage"
+    },
+    {
+      "crop": "bench_xview2_drone_16_f2cbf893.png",
+      "scene": "hurricane-michael_00000420_post_disaster.png",
+      "ground_truth": "no-damage",
+      "predicted": "major-damage",
+      "latency_s": 22.502,
+      "raw_output": "[OLLAMA VISION CLASS (qwen3-vl-gpu:latest) - bench_xview2_drone_16_f2cbf893.png]\nDAMAGE_CLASS: major-damage"
+    },
+    {
+      "crop": "bench_xview2_drone_29_8b37678c.png",
+      "scene": "santa-rosa-wildfire_00000089_post_disaster.png",
+      "ground_truth": "destroyed",
+      "predicted": "no-damage",
+      "latency_s": 28.481,
+      "raw_output": "[OLLAMA VISION CLASS (qwen3-vl-gpu:latest) - bench_xview2_drone_29_8b37678c.png]\nDAMAGE_CLASS: no-damage"
+    },
+    {
+      "crop": "bench_xview2_drone_15_f265a772.png",
+      "scene": "hurricane-michael_00000155_post_disaster.png",
+      "ground_truth": "minor-damage",
+      "predicted": "no-damage",
+      "latency_s": 23.74,
+      "raw_output": "[OLLAMA VISION CLASS (qwen3-vl-gpu:latest) - bench_xview2_drone_15_f265a772.png]\nDAMAGE_CLASS: no-damage"
+    },
+    {
+      "crop": "bench_xview2_drone_3_644fe3da.png",
+      "scene": "hurricane-florence_00000468_post_disaster.png",
+      "ground_truth": "minor-damage",
+      "predicted": "no-damage",
+      "latency_s": 28.103,
+      "raw_output": "[OLLAMA VISION CLASS (qwen3-vl-gpu:latest) - bench_xview2_drone_3_644fe3da.png]\nDAMAGE_CLASS: no-damage"
+    },
+    {
+      "crop": "bench_xview2_drone_14_6bb070b7.png",
+      "scene": "hurricane-michael_00000129_post_disaster.png",
+      "ground_truth": "major-damage",
+      "predicted": "no-damage",
+      "latency_s": 27.901,
+      "raw_output": "[OLLAMA VISION CLASS (qwen3-vl-gpu:latest) - bench_xview2_drone_14_6bb070b7.png]\nDAMAGE_CLASS: no-damage"
+    },
+    {
+      "crop": "bench_xview2_drone_18_0e1f720e.png",
+      "scene": "hurricane-michael_00000437_post_disaster.png",
+      "ground_truth": "minor-damage",
+      "predicted": "minor-damage",
+      "latency_s": 37.685,
+      "raw_output": "[OLLAMA VISION CLASS (qwen3-vl-gpu:latest) - bench_xview2_drone_18_0e1f720e.png]\nDAMAGE_CLASS: minor-damage"
+    },
+    {
+      "crop": "bench_xview2_drone_18_94369d43.png",
+      "scene": "hurricane-michael_00000437_post_disaster.png",
+      "ground_truth": "major-damage",
+      "predicted": "no-damage",
+      "latency_s": 29.304,
+      "raw_output": "[OLLAMA VISION CLASS (qwen3-vl-gpu:latest) - bench_xview2_drone_18_94369d43.png]\nDAMAGE_CLASS: no-damage"
+    },
+    {
+      "crop": "bench_xview2_drone_27_1587cc97.png",
+      "scene": "santa-rosa-wildfire_00000074_post_disaster.png",
+      "ground_truth": "no-damage",
+      "predicted": "no-damage",
+      "latency_s": 26.745,
+      "raw_output": "[OLLAMA VISION CLASS (qwen3-vl-gpu:latest) - bench_xview2_drone_27_1587cc97.png]\nDAMAGE_CLASS: no-damage"
+    },
+    {
+      "crop": "bench_xview2_drone_1_e6a64832.png",
+      "scene": "hurricane-florence_00000186_post_disaster.png",
+      "ground_truth": "major-damage",
+      "predicted": "no-damage",
+      "latency_s": 38.258,
+      "raw_output": "[OLLAMA VISION CLASS (qwen3-vl-gpu:latest) - bench_xview2_drone_1_e6a64832.png]\nDAMAGE_CLASS: no-damage"
+    },
+    {
+      "crop": "bench_xview2_drone_29_400350e4.png",
+      "scene": "santa-rosa-wildfire_00000089_post_disaster.png",
+      "ground_truth": "destroyed",
+      "predicted": "minor-damage",
+      "latency_s": 28.989,
+      "raw_output": "[OLLAMA VISION CLASS (qwen3-vl-gpu:latest) - bench_xview2_drone_29_400350e4.png]\nDAMAGE_CLASS: minor-damage"
+    },
+    {
+      "crop": "bench_xview2_drone_1_8bce4944.png",
+      "scene": "hurricane-florence_00000186_post_disaster.png",
+      "ground_truth": "major-damage",
+      "predicted": "minor-damage",
+      "latency_s": 29.792,
+      "raw_output": "[OLLAMA VISION CLASS (qwen3-vl-gpu:latest) - bench_xview2_drone_1_8bce4944.png]\nDAMAGE_CLASS: minor-damage"
+    },
+    {
+      "crop": "bench_xview2_drone_14_39cfa803.png",
+      "scene": "hurricane-michael_00000129_post_disaster.png",
+      "ground_truth": "major-damage",
+      "predicted": "no-damage",
+      "latency_s": 31.931,
+      "raw_output": "[OLLAMA VISION CLASS (qwen3-vl-gpu:latest) - bench_xview2_drone_14_39cfa803.png]\nDAMAGE_CLASS: no-damage"
+    },
+    {
+      "crop": "bench_xview2_drone_22_a9b279bc.png",
+      "scene": "midwest-flooding_00000420_post_disaster.png",
+      "ground_truth": "no-damage",
+      "predicted": "no-damage",
+      "latency_s": 21.546,
+      "raw_output": "[OLLAMA VISION CLASS (qwen3-vl-gpu:latest) - bench_xview2_drone_22_a9b279bc.png]\nDAMAGE_CLASS: no-damage"
+    },
+    {
+      "crop": "bench_xview2_drone_3_db42ef5a.png",
+      "scene": "hurricane-florence_00000468_post_disaster.png",
+      "ground_truth": "minor-damage",
+      "predicted": "major-damage",
+      "latency_s": 28.413,
+      "raw_output": "[OLLAMA VISION CLASS (qwen3-vl-gpu:latest) - bench_xview2_drone_3_db42ef5a.png]\nDAMAGE_CLASS: major-damage"
     }
   ]
 }

@@ -75,11 +75,12 @@ FIELDS = [
     "false_evacuation", "missed_evacuation", "correct", "full_answer",
 ]
 
+# The proposed system always runs before the comparative baselines.
 CONFIGS = [
-    ("Full_Agent_NoTGI",
-     lambda q, s, pref=None: run_full_agent(q, s, no_tgi=True, prefetched_observation=pref)),
     ("Full_Agent_TGI",
      lambda q, s, pref=None: run_full_agent(q, s, prefetched_observation=pref)),
+    ("Full_Agent_NoTGI",
+     lambda q, s, pref=None: run_full_agent(q, s, no_tgi=True, prefetched_observation=pref)),
     ("LLM_Only", lambda q, s, pref=None: run_llm_only(q, s)),
     ("Standard_StaticRAG", lambda q, s, pref=None: run_static_rag(q, s, text_only=False)),
 ]
@@ -231,12 +232,23 @@ def summarize(path: Path) -> None:
 
 
 def main():
+    global OUT, SEEDS
     ap = argparse.ArgumentParser()
     ap.add_argument("--limit", type=int, default=None)
     ap.add_argument("--config", default=None, help="comma-separated arm names")
     ap.add_argument("--max-new", type=int, default=None)
     ap.add_argument("--summary", action="store_true")
+    ap.add_argument("--out", default=None, help="output CSV path (for provider-specific runs)")
+    ap.add_argument("--seeds", default=None, help="comma-separated seeds, e.g. 42")
     args = ap.parse_args()
+
+    if args.out:
+        OUT = Path(args.out)
+        if not OUT.is_absolute():
+            OUT = ROOT / OUT
+        OUT.with_suffix(".complete").unlink(missing_ok=True)
+    if args.seeds:
+        SEEDS = [int(s) for s in args.seeds.split(",") if s.strip()]
 
     if args.summary:
         summarize(OUT)

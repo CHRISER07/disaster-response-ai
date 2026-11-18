@@ -1,11 +1,11 @@
 {
   "path": "C:\\Users\\Acer\\OneDrive\\Desktop\\multiagents\\disaster_response_rag\\evaluation\\results_heldout_fresh.csv",
-  "rows": 375,
+  "rows": 392,
   "models": [
     "llama3.1:8b"
   ],
   "status_counts": {
-    "OK": 374,
+    "OK": 391,
     "OTHER_ERROR": 1
   },
   "problem_counts": {
@@ -43,9 +43,9 @@
       "mean_kw_f1": 0.2758
     },
     "Standard_StaticRAG": {
-      "rows": 68,
-      "ok": 68,
-      "mean_kw_f1": 0.369
+      "rows": 85,
+      "ok": 85,
+      "mean_kw_f1": 0.3729
     }
   },
   "problems": [
