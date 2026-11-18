@@ -356,6 +356,18 @@ was stopped and its partial data marked non-reportable. The published v2 dual
 judge table remains valid and independent; the paper's corrected-rubric cell
 stays blank.
 
+F40: Second-review remaining items fixed. core/conflict_resolver.py now
+requires incident/time/region/phenomenon/measurement comparability before
+returning CONTRADICTED; non-comparable reports return UNVERIFIED with abstention
+(test_conflict_resolver.py passes). Paper: removed the exploratory vision table
+(reported as one honest limitations sentence), removed the retrieval Wilcoxon
+claim and disclosed that tuning queries are included, disclosed that reference
+answers were team-authored with no inter-annotator agreement or established
+incident-disjointness, added that only median latency was measured (no P95/P99
+or failure rates), renamed the figure's "Immutable Audit Ledger" to
+"Hash-Linked Audit Ledger", and narrowed novelty to systems integration.
+BM25 re-measurement and the held-out run remain pending.
+
 ## Remaining honest deviations
 
 D1: Spec mandates qwen/qwen-2.5-72b-instruct; Groq models API confirms it does

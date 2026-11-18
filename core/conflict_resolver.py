@@ -11,11 +11,52 @@ Implements the formal 4-State Evidence Framework:
   4. INSUFFICIENT: Essential telemetry or doctrine absent; triggers safe abstention.
 """
 
+import math
 from dataclasses import dataclass, field
 from enum import Enum
 from typing import List, Dict, Optional, Tuple
 from core.evidence_validator import EvidencePacket, SourceType, TemporalTier, FreshnessStatus
 from core.geo_router import SpatialRelevance
+
+
+# A gauge reading can only contradict a field report when both observations
+# describe the same incident, within a compatible time window and geographic
+# area, and measured through a comparable phenomenon. Otherwise the safe state
+# is UNVERIFIED, never CONTRADICTED (a below-flood-stage river gauge does not
+# prove that streets are not flooded by drainage failure or flash runoff).
+MAX_COMPARABLE_TIME_SECONDS = 2 * 3600
+MAX_COMPARABLE_DISTANCE_KM = 10.0
+
+
+def _haversine_km(a_lat: float, a_lon: float, b_lat: float, b_lon: float) -> float:
+    r = 6371.0
+    p1, p2 = math.radians(a_lat), math.radians(b_lat)
+    dp = math.radians(b_lat - a_lat)
+    dl = math.radians(b_lon - a_lon)
+    h = math.sin(dp / 2) ** 2 + math.cos(p1) * math.cos(p2) * math.sin(dl / 2) ** 2
+    return 2 * r * math.asin(math.sqrt(h))
+
+
+def _comparable(tel: EvidencePacket, report: EvidencePacket) -> bool:
+    """True only when incident/time/region/phenomenon/measurement are compatible."""
+    if tel.metric_name not in ("gage_height_ft", "water_level_ft", "river_stage_ft"):
+        return False
+    # Time comparability: use event time when both carry it.
+    if tel.event_time and report.event_time:
+        if abs((tel.event_time - report.event_time).total_seconds()) > MAX_COMPARABLE_TIME_SECONDS:
+            return False
+    else:
+        return False
+    # Geographic comparability: require named location or coordinates on both.
+    if tel.location_name and report.location_name:
+        if tel.location_name.strip().lower() != report.location_name.strip().lower():
+            return False
+    elif tel.lat is not None and tel.lon is not None and report.lat is not None and report.lon is not None:
+        if _haversine_km(tel.lat, tel.lon, report.lat, report.lon) > MAX_COMPARABLE_DISTANCE_KM:
+            return False
+    else:
+        return False
+    return True
 
 
 class EvidenceState(str, Enum):
@@ -125,20 +166,34 @@ class ConflictResolver:
             for s in social_reports
         )
 
+        non_comparable_conflict = False
+
         # Case A: Live is Normal, but Historical claims Flooding
         if telemetry_normal and has_historical_flood_claims:
-            conflicting.extend(historical_reports)
+            for h in historical_reports:
+                if any(_comparable(t, h) for t in live_telemetry):
+                    conflicting.append(h)
+                else:
+                    unverified.append(h)
+                    non_comparable_conflict = True
             discrepancies.append(
-                "Temporal Conflict Detected: Historical disaster records describe severe flooding, "
-                "but live real-time sensors confirm river stage is below flood threshold."
+                "Temporal Conflict Detected: disaster records describe severe flooding while live "
+                "telemetry is below flood threshold; only temporally and spatially compatible "
+                "reports are treated as contradictory."
             )
 
         # Case B: Live is Normal, but Social Media reports water entering homes
         if telemetry_normal and has_social_flood_claims:
-            unverified.extend(social_reports)
+            for s in social_reports:
+                if any(_comparable(t, s) for t in live_telemetry):
+                    conflicting.append(s)
+                else:
+                    unverified.append(s)
+                    non_comparable_conflict = True
             discrepancies.append(
-                "Spatial/Hydrological Discrepancy: Mainstem river gauge reports normal stage, "
-                "while localized social reports claim surface flooding (possible urban drainage ponding)."
+                "Spatial/Hydrological Discrepancy: river gauge reports normal stage while localized "
+                "reports claim surface flooding; without compatible location/time/measurement the "
+                "claim remains unverified rather than contradicted."
             )
 
         # -------------------------------------------------------------------
@@ -164,8 +219,29 @@ class ConflictResolver:
                 detailed_discrepancies=["Lack of official live sensor validation for social media reports."],
             )
 
+        if non_comparable_conflict:
+            # Non-comparable evidence cannot be used to suppress a warning.
+            return ConflictResolutionResult(
+                overall_state=EvidenceState.UNVERIFIED,
+                primary_status="WARNING",
+                resolution_summary=(
+                    "Live telemetry and field reports are not comparable in incident, time, "
+                    "region or measurement; the warning is preserved pending verification."
+                ),
+                can_issue_evacuation=False,
+                should_abstain=True,
+                safe_abstention_message=(
+                    "Evidence is insufficient to rule out a local hazard. Do not assume the area "
+                    "is safe on the basis of a distant or non-contemporaneous gauge reading. "
+                    "Follow official local emergency broadcasts."
+                ),
+                conflicting_evidence=conflicting,
+                unverified_reports=unverified,
+                detailed_discrepancies=discrepancies,
+            )
+
         if discrepancies:
-            # We have an active conflict, but live telemetry resolves it
+            # We have a comparable conflict, and live telemetry resolves it
             if telemetry_normal and not telemetry_danger:
                 return ConflictResolutionResult(
                     overall_state=EvidenceState.CONTRADICTED,

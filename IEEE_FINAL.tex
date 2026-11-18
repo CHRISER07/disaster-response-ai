@@ -231,7 +231,7 @@ Fig.~\ref{fig:arch} presents the four-plane architecture. The \textit{Data Plane
 \node[comp, text width=4.70cm] (trace) at ( 3.20, 0.75)
   {\textbf{Execution Traces \& Telemetry}\\Per-turn Token Usage \textbar\ Multi-Key API Routing\\Latency Logs \textbar\ Model Fallback Audit};
 \node[comp, text width=4.70cm] (alog)  at ( 8.90, 0.75)
-  {\textbf{Immutable Audit Ledger}\\Append-Only \texttt{incident\_audit\_trail.jsonl}\\Cryptographic Hashes \textbar\ DSEL Verdict Records};
+  {\textbf{Hash-Linked Audit Ledger}\\Append-Only \texttt{incident\_audit\_trail.jsonl}\\Cryptographic Hashes \textbar\ DSEL Verdict Records};
 \node[comp, text width=4.70cm] (replay) at (14.60, 0.75)
   {\textbf{Auditable Execution Log}\\SQLite WAL Engine \textbar\ Evidence Trace \textbar\ Post-Incident Audit};
 
@@ -410,7 +410,7 @@ The indexed operational corpus contains 17,170 records:
 \subsection{The DAB-200 Benchmark Suite: Design and Construction}
 Evaluating emergency AI systems poses a fundamental challenge: live EOC operational logs contain sensitive survivor records and classified dispatch telemetry that cannot be publicly released. To address this gap, we constructed the Disaster Awareness Benchmark (DAB-200) \cite{dab200}, comprising 200 high-fidelity disaster situational queries designed to reflect tactical field inquiries.
 
-\textit{1--3) Incident Grounding, Coverage and Gold Answers:} Scenarios are grounded in real historical events (e.g.\ 2013 Colorado floods, Maui wildfires, Bohol earthquake, Lac-M\'{e}gantic derailment) \cite{olteanu2015} and span eight hazard domains: flood (57), fire (29), chemical/HAZMAT (28), typhoon (25), earthquake (23), air quality (15), collapse (10), and epistemic traps (13). Queries range from single-fact lookups to conflicting multi-modal cases. Each item provides a doctrine-checked canonical answer, an atomic-fact checklist and a domain keyword set for lexical scoring.
+\textit{1--3) Incident Grounding, Coverage and Gold Answers:} Scenarios are grounded in real historical events (e.g.\ 2013 Colorado floods, Maui wildfires, Bohol earthquake, Lac-M\'{e}gantic derailment) \cite{olteanu2015} and span eight hazard domains: flood (57), fire (29), chemical/HAZMAT (28), typhoon (25), earthquake (23), air quality (15), collapse (10), and epistemic traps (13). Queries range from single-fact lookups to conflicting multi-modal cases. Each item provides a doctrine-checked canonical answer, an atomic-fact checklist and a domain keyword set for lexical scoring. Reference answers were team-authored; independent inter-annotator agreement and incident-disjointness across splits were not established.
 
 \textit{4) Synthetic Stress Suites:} Controlled semi-synthetic queries pair authentic sensor traces with perturbed premises, filtered by temporal ordering, physical consistency and expert review. Only the temporal and adversarial stress suites are synthetic; DAB-200 uses recorded disaster corpora.
 
@@ -476,7 +476,7 @@ Ablation: No Telemetry & 0.0830 $\pm$ 0.0078 & -- & -- \\
 \end{table}
 
 \subsection{Dual-Tier Hybrid Retrieval Engine Evaluation}
-Table~\ref{tab:retrieval} evaluates retrieval architectures over 200 DAB queries. Pure BM25 exhibits high latency efficiency (5.5~ms warm) but low recall (R@5: 0.355). Dense BGE-small yields strong semantic retrieval (R@5: 0.840, MRR: 0.765). Standard unweighted RRF ($\alpha = 0.50$) degrades performance (MRR: 0.688) due to sparse rank displacement. Weighted RRF ($\alpha = 0.70$) achieves the highest retrieval efficacy across all metrics (Recall@5: 0.845, MRR: 0.769, NDCG@10: 0.783). A paired Wilcoxon signed-rank test over the 200 queries (normal approximation, $W = 0$, $p = 0.0431$) indicates that Weighted RRF outperforms dense retrieval alone on MRR.
+Table~\ref{tab:retrieval} evaluates retrieval architectures over 200 DAB queries. Pure BM25 exhibits high latency efficiency (5.5~ms warm) but low recall (R@5: 0.355). Dense BGE-small yields strong semantic retrieval (R@5: 0.840, MRR: 0.765). Standard unweighted RRF ($\alpha = 0.50$) degrades performance (MRR: 0.688) due to sparse rank displacement. Weighted RRF ($\alpha = 0.70$) achieves the highest retrieval efficacy across all metrics (Recall@5: 0.845, MRR: 0.769, NDCG@10: 0.783). These are descriptive differences on the 200-query corpus; the fusion weight was selected on the 50-query development split, so the reported figures include the tuning queries and no independent held-out retrieval claim is made.
 
 \begin{table}[h]
 \caption{Retrieval Engine Benchmark on DAB-200 ($N=200$ Queries)}
@@ -657,30 +657,19 @@ Total Violations & 27 (21.4\%) & 6 (4.8\%) & 1 (0.8\%) \\
 \end{table}
 
 \subsection{Latency and Telemetry Profiling}
-Median execution latencies on held-out queries are: 2.64~s (BM25), 2.86~s (Standard Static RAG), 3.39~s (LLM-Only), and 5.88~s (Full Agent). The modest latency increment of the Full Agent reflects dynamic multi-step API routing across weather, NWIS, and seismic endpoints.
+Median execution latencies on held-out queries are: 2.64~s (BM25), 2.86~s (Standard Static RAG), 3.39~s (LLM-Only), and 5.88~s (Full Agent). The modest increment reflects multi-step API routing across weather, NWIS and seismic endpoints. Only medians are reported; P95/P99, tool failures and degraded-mode behaviour were not measured, so no operational EOC-readiness claim is made.
 
 \subsection{Vision Benchmark and Ongoing Held-Out Re-Run}
-Table~\ref{tab:ongoing} reports a completed exploratory building-damage evaluation on 100 crops sampled from 1,017 labeled xView2/xBD buildings \cite{xview2}, alongside a restored-pipeline re-evaluation across all 150 held-out DAB queries whose cells remain blank until that run completes.
+An exploratory building-damage evaluation on 100 crops sampled from 1,017 labeled xView2/xBD buildings \cite{xview2} gave 0.340 accuracy and 0.292 macro-F1, only modestly above the 0.25 chance level, with major-damage F1 of 0.140. This tool is therefore reported as integrated but not validated. Table~\ref{tab:ongoing} reserves cells for a restored-pipeline re-evaluation across all 150 held-out DAB queries, still in progress.
 
 \begin{table}[h]
-\caption{Exploratory Vision Benchmark and Ongoing Held-Out Re-Run}
+\caption{Restored-System Held-Out Benchmark Re-Run (150 Queries, DAB-200)}
 \label{tab:ongoing}
 \centering
 \scriptsize\renewcommand{\arraystretch}{0.90}
 \setlength{\tabcolsep}{1pt}
 \begin{tabular*}{\columnwidth}{@{\extracolsep{\fill}}lcccc@{}}
 \toprule
-\multicolumn{5}{@{}l}{\textit{Part A: Building Damage (100 crops from 1,017 buildings)}} \\
-Damage Tier & Precision & Recall & F1 & Accuracy \\
-\midrule
-No Damage & 0.386 & 0.880 & 0.537 & \\
-Minor Damage & 0.143 & 0.080 & 0.103 & \\
-Major Damage & 0.167 & 0.120 & 0.140 & \\
-Destroyed & 0.636 & 0.280 & 0.389 & \\
-\midrule
-Overall ($n=100$) & -- & -- & 0.292 & 0.340 \\
-\midrule
-\multicolumn{5}{@{}l}{\textit{Part B: Held-Out Benchmark Re-Run (150 Queries, DAB-200)}} \\
 Configuration & KW-F1 & Precision & Recall & Macro-F1 \\
 \midrule
 BM25 Baseline & -- & -- & -- & -- \\
@@ -688,7 +677,7 @@ LLM-Only & -- & -- & -- & -- \\
 Standard Static RAG & -- & -- & -- & -- \\
 Full Agent & -- & -- & -- & -- \\
 \bottomrule
-\multicolumn{5}{@{}l}{\scriptsize Part A: 25/tier, 0 unclassified/tool errors; acc 0.340 [25.5,43.7]. Part B pending.}
+\multicolumn{5}{@{}l}{\scriptsize Re-run in progress; cells intentionally blank.}
 \end{tabular*}
 \end{table}
 
@@ -711,7 +700,7 @@ These results indicate grounding and safety advantages; Section~VII examines the
 
 %==========================================================
 \section{Conclusion and Future Work}
-This paper presented an agentic RAG framework for safety-critical disaster situational awareness, addressing three fundamental gaps in prior work. Temporal Grounding Injection (TGI) reduces temporal conflation by tagging evidence chunks with a rolling recency tier derived from 64-bit Snowflake timestamps, at the cost of 3/36 missed evacuations in the counterfactual suite. The four-tier Deterministic Safety Enforcement Layer (DSEL) applies deterministic screening through compiled grammar automata, citation auditing, grounding ratio thresholds, and policy-controlled alert gates, reducing measured adversarial violations from 4.8\% to 0.8\% with one residual case in 126 trials. HUC-10 catchment-based spatial filtering reduces cross-watershed sensor contamination in a 20-scenario suite, achieving 100\% classification accuracy against a 25\% naive-proximity rejection rate on four cross-watershed cases.
+This paper presented an agentic RAG framework for disaster situational awareness. Its contribution is the disaster-specific integration and evaluation of established components---ReAct orchestration, dense/sparse retrieval, temporal metadata, rule-based screening and geospatial filtering---rather than new underlying algorithms. Temporal Grounding Injection (TGI) reduces temporal conflation by tagging evidence chunks with a rolling recency tier derived from 64-bit Snowflake timestamps, at the cost of 3/36 missed evacuations in the counterfactual suite. The four-tier Deterministic Safety Enforcement Layer (DSEL) applies deterministic screening through compiled grammar automata, citation auditing, grounding ratio thresholds, and policy-controlled alert gates, reducing measured adversarial violations from 4.8\% to 0.8\% with one residual case in 126 trials. HUC-10 catchment-based spatial filtering reduces cross-watershed sensor contamination in a 20-scenario suite, achieving 100\% classification accuracy against a 25\% naive-proximity rejection rate on four cross-watershed cases.
 
 The Full Agent attains 0.0915 held-out KW-F1, eliminates false evacuation orders on safe readings (0/36 versus 10/36 without TGI) at the cost of 3/36 missed critical evacuations, and reduces adversarial safety violations from 21.4\% to 0.8\%---an 83.3\% relative hazard reduction (Fisher's exact $p=0.12$ for no-DSEL vs.\ DSEL). We transparently disclose that unconstrained text-only LLM baselines can outscore the Full Agent on judge-centric metrics; the cause is not established by these experiments and requires blinded human evaluation. Future work will integrate real-time SAR flood inundation masks, formally verified neuro-symbolic safety proofs, and prospective EOC deployment trials.
 
