@@ -40,6 +40,10 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
 os.environ.setdefault("PYTHONUTF8", "1")
+# The production tool unloads the VLM after each call. Benchmarks issue many
+# sequential calls, so keep the model resident; otherwise every call pays a
+# multi-gigabyte reload.
+os.environ.setdefault("OLLAMA_VISION_KEEP_ALIVE", "30m")
 
 META = ROOT / "data" / "imagery" / "real_drone_metadata.json"
 TAR = ROOT / "data" / "imagery" / "test_images_labels_targets.tar"
@@ -164,9 +168,15 @@ def main():
                      "raw_output": raw[:400]})
         print(f"[{i}/{len(sample)}] {truth:14s} -> {pred:14s} {latency:.1f}s {name}")
 
-    assessable = [(r["ground_truth"], r["predicted"]) for r in rows if r["predicted"] != "UNCLASSIFIED"]
-    acc = sum(1 for g, p in assessable if g == p) / len(assessable) if assessable else 0.0
-    pc = macro_f1(assessable)
+    all_pairs = [(r["ground_truth"], r["predicted"]) for r in rows]
+    assessable = [p for p in all_pairs if p[1] != "UNCLASSIFIED"]
+    # Primary metrics count UNCLASSIFIED / tool errors as wrong answers.
+    # Dropping them from the denominator would inflate accuracy whenever the
+    # tool fails, which is exactly the failure mode this suite must detect.
+    acc = sum(1 for g, p in all_pairs if g == p) / len(all_pairs) if all_pairs else 0.0
+    acc_assessable = (sum(1 for g, p in assessable if g == p) / len(assessable)
+                      if assessable else 0.0)
+    pc = macro_f1(all_pairs)
     macro = sum(v["f1"] for v in pc.values()) / len(pc) if pc else 0.0
     lat = [r["latency_s"] for r in rows]
     p95 = sorted(lat)[min(len(lat) - 1, int(0.95 * len(lat)))] if lat else 0.0
@@ -183,7 +193,8 @@ def main():
         "sampled": len(sample),
         "assessable": len(assessable),
         "unclassified": len(rows) - len(assessable),
-        "accuracy": round(acc, 4), "macro_f1": round(macro, 4),
+        "accuracy": round(acc, 4), "accuracy_assessable": round(acc_assessable, 4),
+        "macro_f1": round(macro, 4),
         "mean_latency_s": round(sum(lat) / len(lat), 3) if lat else 0.0,
         "p95_latency_s": round(p95, 3), "per_class": pc, "rows": rows,
     }
@@ -193,7 +204,9 @@ def main():
              f"Labeled buildings: {len(buildings)} | Sampled: {len(sample)} | "
              f"Assessable: {summary['assessable']} | Unclassified: {summary['unclassified']}", "",
              "| Metric | Value |", "|---|---|",
-             f"| Accuracy | {acc:.4f} |", f"| Macro-F1 | {macro:.4f} |",
+             f"| Accuracy (errors counted) | {acc:.4f} |",
+             f"| Accuracy (assessable only) | {acc_assessable:.4f} |",
+             f"| Macro-F1 (errors counted) | {macro:.4f} |",
              f"| Mean latency (s) | {summary['mean_latency_s']} |",
              f"| p95 latency (s) | {summary['p95_latency_s']} |", "",
              "| Class | Precision | Recall | F1 | Support |", "|---|---:|---:|---:|---:|"]

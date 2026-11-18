@@ -4,7 +4,7 @@ evaluation/run_fresh_heldout.py
 Fresh head-to-head evaluation of the RESTORED system.
 
 Differences from run_heldout_eval_v2.py:
-  - eligible IDs are 1-175 excluding dev_ids (no meta/paper queries 176-200)
+  - eligible IDs are exactly the 150 held-out IDs from heldout_ids.json minus dev_ids; IDs 176-200 are ordinary domain queries (hazard, triage, live telemetry, damage), not meta queries, and must not be dropped
   - provider is locked at launch and re-asserted before every call
   - every stored answer passes through format_answer (no asterisks)
   - uses the corrected dataset-derived KW-F1 scorer
@@ -41,6 +41,7 @@ OUT = ROOT / "evaluation" / "results_heldout_fresh.csv"
 OUT.with_suffix(".complete").unlink(missing_ok=True)
 DATASET = ROOT / "evaluation" / "golden_dataset_v2.json"
 DEV_IDS = ROOT / "evaluation" / "dev_ids.json"
+HELDOUT_IDS = ROOT / "evaluation" / "heldout_ids.json"
 
 from evaluation.run_dev_eval_v2 import (
     run_llm_only, run_bm25, run_static_rag, run_full_agent,
@@ -78,8 +79,10 @@ def main() -> None:
     args = ap.parse_args()
 
     dev = set(json.loads(DEV_IDS.read_text(encoding="utf-8")))
+    held = set(json.loads(HELDOUT_IDS.read_text(encoding="utf-8")))
     dataset = json.loads(DATASET.read_text(encoding="utf-8"))
-    queries = [q for q in dataset if 1 <= q["id"] <= 175 and q["id"] not in dev]
+    queries = [q for q in dataset if q["id"] in held and q["id"] not in dev]
+    assert len(queries) == 150, f"expected 150 held-out queries, got {len(queries)}"
     if args.limit:
         queries = queries[: args.limit]
     active_configs = [c for c in CONFIGS if args.config is None or c[0] == args.config]
