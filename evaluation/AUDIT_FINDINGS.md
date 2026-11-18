@@ -278,6 +278,23 @@ result: 288 runs, all OK, one generator; TGI 0/36 false evacuations (95.8%
 accuracy) vs NoTGI 10/36 (86.1%), with TGI's 3/36 missed evacuations disclosed,
 and both no-telemetry baselines missing all 36 critical cases.
 
+F33: Fresh held-out eligibility was wrong. run_fresh_heldout.py selected IDs
+1-175 excluding dev, on the claim that 176-200 were meta/paper queries. Inspection
+showed 176-200 are ordinary domain queries (hazard, triage, live telemetry,
+damage, resource); the filter silently dropped 25 of the 150 held-out items and
+biased the category mix to 15 categories. Now selects exactly the 150 IDs in
+heldout_ids.json minus dev_ids, with an assertion on the count.
+
+F34: Vision benchmark metric was inflated by dropping failures. Accuracy and
+macro-F1 were computed only over rows where the tool returned a parseable label,
+so tool errors could raise the reported score. UNCLASSIFIED/error rows are now
+counted as wrong in both accuracy and macro-F1; assessable-only accuracy is
+reported separately. Also set OLLAMA_VISION_KEEP_ALIVE=30m for the benchmark so
+the 3.3 GB VLM is not reloaded on every call. Dataset audit passed: 50 indexed
+records, 27 post-disaster scenes, 1,017 labeled buildings across the four
+xView2 subtypes, unique crop names, no duplicate query IDs, no dev/heldout
+overlap.
+
 ## Remaining honest deviations
 
 D1: Spec mandates qwen/qwen-2.5-72b-instruct; Groq models API confirms it does
