@@ -1,4 +1,8 @@
-# Discrepancies Report
+> **PARTLY SUPERSEDED.** D2 (dense retrieval) and D4 (TGI) were subsequently
+> addressed in code; D5 was updated. See `AUDIT_FINDINGS.md` and
+> `CURRENT_RESULTS.md` for current status.
+
+# Discrepancies Report (historical)
 
 Generated at build time. All items confirmed from code inspection.
 

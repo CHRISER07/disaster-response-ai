@@ -330,6 +330,21 @@ auditable execution log; DAB-200 dataset version note added; vision labelled
 exploratory. Removed the manual \textheight override and compressed prose so
 the paper compiles cleanly at 8 pages with official IEEE geometry.
 
+F38: Full-system checkup. Confirmed clean: golden dataset (200 items, 50/150
+dev/held-out split, no overlap or duplicate query text), temporal set (24
+items, 12/12 balanced, unique IDs), all active result CSVs use a single
+generator per file, no duplicate keys, no asterisks in current answers.
+Found: (a) RESULTS_SUMMARY.md, INTEGRITY.md and DISCREPANCIES.md were stale
+(pre-rescore safety rates, "DSEL not run", broken dense retrieval) and are now
+marked superseded, with CURRENT_RESULTS.md as the authoritative source;
+(b) legacy CSVs with markdown answers/error rows remain for provenance and are
+listed as superseded; (c) core/evidence_validator.py implements source-specific
+TTLs and four timestamps and is wired into the agent, but uses wall-clock now
+as observed_at and is wrapped in a silent except, so the paper's description of
+TGI as a single-window tagging mechanism remains accurate; (d) untracked
+diagnostic scripts/PNG files from a separate LaTeX debugging session are
+present and were left untouched.
+
 ## Remaining honest deviations
 
 D1: Spec mandates qwen/qwen-2.5-72b-instruct; Groq models API confirms it does

@@ -1,4 +1,7 @@
-# Evaluation Integrity Report
+> **SUPERSEDED.** Generated before the restored held-out run. Use
+> `audit_outputs.py` and `CURRENT_RESULTS.md` for current integrity status.
+
+# Evaluation Integrity Report (historical)
 
 Generated: 2026-11-17T11:41:52Z
 

@@ -1,4 +1,8 @@
-# Results Summary
+> **SUPERSEDED.** Generated before the second reviewer fixes. Safety rows below
+> use the pre-rescore scorer (all 0.0%), T6 says the DSEL ablation was not run,
+> and the BM25 value is invalid. Use `CURRENT_RESULTS.md` instead.
+
+# Results Summary (historical)
 
 Generated: 2026-11-17T11:41:52Z
 
