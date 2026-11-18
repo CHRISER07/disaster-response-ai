@@ -11,7 +11,7 @@ Key Innovations:
    - Recovers tri-state scores (0.0, 0.5, 1.0) and rationales across formatting variations.
 3. Strict Cross-Family Dual-Judge Traffic Split:
    - Judge A: Google Gemini 3.1 Flash Lite (7 Google keys, 105 RPM capacity).
-     Seamless failover to Alibaba Qwen 3.8-27B on Groq.
+     Seamless failover to Llama-3.3-70B on OpenRouter (never the generator).
    - Judge B: OpenAI GPT-OSS-120B on Groq (9 Groq keys, paced round-robin).
      Seamless failover to GPT-OSS-20B.
 4. Concurrent High-Throughput Execution:
@@ -45,9 +45,13 @@ from groq import Groq
 # Paths & Schema
 # ---------------------------------------------------------------------------
 DATASET_FILE = ROOT / "evaluation" / "golden_dataset_v2.json"
-DEV_CSV      = ROOT / "evaluation" / "results_per_query_v2.csv"
 # Judge input can be switched to the fresh (restored-system) answers via
 # JUDGE_INPUT_CSV, and the output tag keeps the two score sets separate.
+# JUDGE_DEV_CSV may be set to an empty string to judge only the selected input;
+# otherwise the 1,200 development answers are mixed in automatically.
+_skip_dev = os.getenv("JUDGE_SKIP_DEV", "0").strip() in ("1", "true", "yes")
+_dev_input = os.getenv("JUDGE_DEV_CSV", "results_per_query_v2.csv")
+DEV_CSV = None if _skip_dev else (ROOT / "evaluation" / _dev_input)
 _judge_input = os.getenv("JUDGE_INPUT_CSV", "results_heldout_v2.csv")
 _judge_tag = os.getenv("JUDGE_OUTPUT_TAG", "v3")
 HELDOUT_CSV  = ROOT / "evaluation" / _judge_input
@@ -340,7 +344,12 @@ def call_judge_unified(judge_name: str, prompt: str) -> tuple:
             raw, used = execute_groq_call("openai/gpt-oss-20b", prompt, max_tokens=800)
     # Defensive: no judge may be the generator family.
     assert used != generator_model, "Judge fell back to the generator model!"
-    return parse_unified_response(raw), used
+    # The caller unpacks four values: (df_score, df_rationale), (saa_score,
+    # saa_rationale), (temporal_score, temporal_rationale), model_used.
+    # The old `return parse_unified_response(raw), used` produced only two and
+    # crashed every v3fixed run with "not enough values to unpack".
+    (df, saa, tp) = parse_unified_response(raw)
+    return df, saa, tp, used
 
 # ---------------------------------------------------------------------------
 # Data Loaders & Checkpointing
@@ -400,17 +409,23 @@ def compute_kappa():
     classes = [0.0, 0.5, 1.0]
     n_cls = len(classes)
     idx = {v: i for i, v in enumerate(classes)}
-    W = [[1 - abs(i - j) / (n_cls - 1) for j in range(n_cls)] for i in range(n_cls)]
+    # Quadratic weights, matching Eq. (5) of the paper: w_ij = (i-j)^2/(k-1)^2
+    W = [[(i - j) ** 2 / (n_cls - 1) ** 2 for j in range(n_cls)] for i in range(n_cls)]
 
-    po = sum(W[idx.get(ai, 0)][idx.get(bi, 0)] for ai, bi in zip(a, b)) / n
+    O = [[0.0] * n_cls for _ in range(n_cls)]
+    for ai, bi in zip(a, b):
+        O[idx.get(ai, 0)][idx.get(bi, 0)] += 1
+    O = [[x / n for x in row] for row in O]
     freq_a = [sum(1 for x in a if x == c) / n for c in classes]
     freq_b = [sum(1 for x in b if x == c) / n for c in classes]
-    pe = sum(W[i][j] * freq_a[i] * freq_b[j] for i in range(n_cls) for j in range(n_cls))
-    kappa = (po - pe) / (1 - pe) if (1 - pe) > 0 else 0.0
+    E = [[freq_a[i] * freq_b[j] for j in range(n_cls)] for i in range(n_cls)]
+    num = sum(W[i][j] * O[i][j] for i in range(n_cls) for j in range(n_cls))
+    den = sum(W[i][j] * E[i][j] for i in range(n_cls) for j in range(n_cls))
+    kappa = 1 - num / den if den > 0 else 0.0
     exact = sum(1 for ai, bi in zip(a, b) if ai == bi) / n
 
     result = (
-        f"Cohen's kappa (Weighted, DR-Fact, 0/0.5/1.0 scale)\n"
+        f"Quadratic weighted Cohen's kappa_w (DR-Fact, 0/0.5/1.0 scale)\n"
         f"  Kappa:          {kappa:.4f}\n"
         f"  Exact Agreement:{exact*100:.1f}%\n"
         f"  Pairs compared: {n}\n"
@@ -432,7 +447,7 @@ def main():
     print("=" * 70, flush=True)
 
     q_map = load_dataset_map(DATASET_FILE)
-    dev_rows = load_ok_rows(DEV_CSV)
+    dev_rows = load_ok_rows(DEV_CSV) if DEV_CSV else []
     hld_rows = load_ok_rows(HELDOUT_CSV)
     all_rows = dev_rows + hld_rows
 
@@ -532,7 +547,10 @@ def main():
             (df_s, df_r), (saa_s, saa_r), (tp_s, tp_r), model_used = call_judge_unified(judge_name, prompt)
 
             # Check validity
-            if df_s is None or saa_s is None:
+            # Every dimension must score. The old code ignored a missing
+            # temporal score, which is how the previous v3 run accumulated
+            # rows with fabricated/unassessable temporal values.
+            if df_s is None or saa_s is None or tp_s is None:
                 retries = retry_map.get(check_key, 0)
                 if retries < 3:
                     retry_map[check_key] = retries + 1
