@@ -368,6 +368,17 @@ or failure rates), renamed the figure's "Immutable Audit Ledger" to
 "Hash-Linked Audit Ledger", and narrowed novelty to systems integration.
 BM25 re-measurement and the held-out run remain pending.
 
+F41: Academic-writing pass. Rewrote the three RAG failure modes to avoid
+absolute claims, replaced the contribution list with precise systems-integration
+contributions plus RQ1--RQ3, removed the unsupported sub-millisecond comparison,
+replaced the unclear text-intersection safety invariant with a detector contract,
+removed decorative MDP terminology, aligned the architecture figure's timestamp
+tuple with the four implemented fields while stating that validity windows are
+not enforced, rewrote Related Work paragraphs to state achieved/unresolved/how
+this differs, narrowed the Conclusion to implemented / established / unvalidated,
+and added verifiable official references (USGS NWIS, FDSN, Open-Meteo, FEMA NIMS).
+Title left unchanged at the user's request.
+
 ## Remaining honest deviations
 
 D1: Spec mandates qwen/qwen-2.5-72b-instruct; Groq models API confirms it does
