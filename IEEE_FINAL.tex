@@ -461,7 +461,7 @@ Full Agent w/o Telemetry (baseline) & 0.0830 $\pm$ 0.0078 & -- \\
 \end{table}
 
 \subsection{Dual-Tier Hybrid Retrieval Engine Evaluation}
-Table~\ref{tab:retrieval} evaluates retrieval architectures across 200 DAB queries. BM25 is fast (5.5~ms) but achieves low recall (R@5: 0.355). Dense BGE-small yields strong semantic retrieval (R@5: 0.840, MRR: 0.765). Standard RRF ($\alpha=0.50$) degrades performance (MRR: 0.688) due to sparse rank displacement. Weighted RRF ($\alpha=0.70$) achieves the highest metrics (R@5: 0.845, MRR: 0.769, NDCG@10: 0.783). The fusion weight was calibrated on the 50-query development split, so figures include tuning queries; no independent held-out retrieval claim is made. Addressing \textbf{RQ2}, weighted fusion produced a small observed gain on this corpus; no held-out retrieval test or significance test was conducted, and external validation is required.
+Table~\ref{tab:retrieval} evaluates retrieval architectures across 200 DAB queries. BM25 is fast (5.5~ms) but achieves low recall (R@5: 0.355). Dense BGE-small yields strong semantic retrieval (R@5: 0.840, MRR: 0.765). Standard RRF ($\alpha=0.50$) degrades performance (MRR: 0.688) due to sparse rank displacement. Weighted RRF ($\alpha=0.70$) achieves the highest metrics (R@5: 0.845, MRR: 0.769, NDCG@10: 0.783). The fusion weight was calibrated on the 50-query development split, so figures include tuning queries; no independent held-out retrieval claim is made. Addressing \textbf{RQ2}, weighted fusion produced a small observed gain on this corpus; no held-out retrieval test was conducted and no significance test is claimed on the held-out split; external validation is required.
 
 \begin{table}[ht]
 \caption{Retrieval Engine Benchmark ($N=200$ Queries)}
@@ -483,7 +483,7 @@ Weighted RRF ($\alpha=0.70$) & 0.845 & 0.880 & 0.769 & 0.783 & 67.9~ms \\
 \end{table}
 
 \subsection{Two-Sided Temporal Stress Testing (TGI Ablation)}
-Table~\ref{tab:tgi} presents the balanced two-sided temporal conflict evaluation: 12 queries each issued under safe and critical gauge readings (24 items $\times$ 3 seeds = 72 trials). In this controlled suite the Full Agent classified all 72/72 executions correctly, whereas the configuration without TGI missed 3 of the 36 critical-condition executions (95.8\%); neither agent arm issued false evacuation directives under safe conditions, and both no-telemetry baselines missed all 36 critical cases. With only 12 query scenarios, this is preliminary evidence rather than a general guarantee.
+Table~\ref{tab:tgi} presents the balanced two-sided temporal conflict evaluation: 12 queries each issued under safe and critical gauge readings (24 items $\times$ 3 seeds = 72 trials). In this controlled suite the Full Agent classified all 72/72 executions correctly, whereas the configuration without TGI missed 3 of the 36 critical-condition executions (91.7\% on critical cases; 95.8\% overall, 69/72); neither agent arm issued false evacuation directives under safe conditions, and both no-telemetry baselines missed all 36 critical cases. With only 12 query scenarios, this is preliminary evidence rather than a general guarantee.
 
 \begin{table}[ht]
 \caption{Two-Sided Temporal Stress Test ($N=72$ Trials)}
@@ -551,7 +551,7 @@ Full Agent & 60.0\% (9/15) & 40.0\% (6/15) & 0.0\% (0/15) \\
 \end{table}
 
 \subsection{Cross-Family Dual-Judge Evaluation}
-Table~\ref{tab:judge} reports 3,300 seeded rated items from 1,300 query--configuration pairs, each scored on three dimensions by two judges (6,600 responses, 19,800 dimension scores; two out-of-scale SAA ratings excluded). Quadratic-weighted Cohen's $\kappa_w$ is 0.576 for DR-Fact (exact agreement 64.5\%), 0.506 for SAA (two out-of-scale ratings excluded), and 0.323 for Temporal (macro mean 0.468). The zero-shot LLM baseline achieves higher DR-Fact scores (0.782 / 0.734) than the Full Agent (0.621 / 0.645). This reflects evaluator fluency bias \cite{zheng}: ungrounded prose is rewarded for narrative fluency, while concise, provenance-tagged agent directives are penalised stylistically. The physical safety results are reported separately in Tables~\ref{tab:tgi} and~\ref{tab:iss} and are not attributed to the judge scores.
+Table~\ref{tab:judge} reports 3,300 seeded rated items from 1,300 query--configuration pairs, each scored on three dimensions by two judges (6,600 responses, 19,800 dimension scores; two out-of-scale SAA ratings excluded). Quadratic-weighted Cohen's $\kappa_w$ is 0.576 for DR-Fact (exact agreement 64.5\%), 0.513 for SAA, and 0.324 for Temporal (macro mean 0.471). The zero-shot LLM baseline achieves higher DR-Fact scores (0.782 / 0.734) than the Full Agent (0.621 / 0.645). This reflects evaluator fluency bias \cite{zheng}: ungrounded prose is rewarded for narrative fluency, while concise, provenance-tagged agent directives are penalised stylistically. The physical safety results are reported separately in Tables~\ref{tab:tgi} and~\ref{tab:iss} and are not attributed to the judge scores.
 
 \begin{table}[ht]
 \caption{Cross-Family Dual-Judge Evaluation ($N=3{,}300$ Rated Items)}
@@ -602,7 +602,7 @@ Total Violations & 10 (7.9\%) & 7 (5.6\%) & 0 (0.0\%) \\
 \end{table}
 
 \subsection{Execution Latency and Operational Cost Profiling}
-Median held-out latencies are 0.94~s (BM25), 2.86~s (Standard Static RAG), 3.39~s (LLM-Only), and 5.88~s (Full Agent). The latency increment in the Full Agent reflects dynamic multi-step API routing across weather, NWIS, and seismic endpoints. The fresh held-out re-run records 2,301 prompt and 113 completion tokens per Full Agent query on average; the archived held-out table has no token counts, so no cross-run cost comparison is made. The append-only audit ledger (\texttt{incident\_audit\_trail.jsonl}) stores trace records for post-incident inspection.
+Median held-out latencies are 0.94~s (BM25), 2.86~s (Standard Static RAG), 3.39~s (LLM-Only), and 5.88~s (Full Agent). The latency increment in the Full Agent reflects dynamic multi-step API routing across weather, NWIS, and seismic endpoints. The append-only audit ledger (\texttt{incident\_audit\_trail.jsonl}) stores trace records for post-incident inspection.
 
 \subsection{Exploratory Vision Benchmark}
 An exploratory building damage evaluation on 100 class-balanced xView2/xBD crops \cite{xview2} (25 per class) using a local \texttt{qwen3-vl:4b} model \cite{qwenvl} yielded 0.340 accuracy and 0.292 macro-F1 (majority/chance baseline: 0.250; major-damage F1: 0.140). Of 50 indexed scene records, 27 had usable building labels, yielding 1,017 crops from which these 100 were sampled. This vision component is an exploratory prototype requiring domain-specific fine-tuning before operational use.
