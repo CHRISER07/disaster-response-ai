@@ -406,6 +406,21 @@ of external processes rewriting the paper. It fails on stale claims, duplicate
 grounding tables, controlled-run numbers mixed into published Table III,
 missing verified values, or a changed DSEL artifact. Current paper passes.
 
+F46: Deep system-wide fix pass. Runtime: API/SSE now validates with
+DSEL before streaming any answer and fails closed on validation error; policy
+grounding is evidence-token overlap (no evidence => 0), confidence is explicit
+only (severity no longer implies confidence), the full message is screened,
+operator approval blocks dispatch, alert dispatch reports its real state;
+safety repair deletes unsafe sentences; claim verifier marks unsupported answers
+unsafe; future/unparseable timestamps no longer become LIVE; sensor tool no
+longer fabricates FEMA evacuation directives or seismic all-clears; six silent
+except blocks now log; LLM-Only honors the active provider; formatter no longer
+asserts "Alert Generated: NONE" when an alert fired. Paper: Table III filled with
+corrected BM25 0.0934+/-0.0056 and Text-Only 0.0741+/-0.0039, generator caveat
+added, DSEL p=0.12 stated, SAA kappa 0.513/macro 0.471, 1,300 query-config
+pairs, verified latency/token numbers, 8-page compile. Existing result CSVs were
+generated before these code fixes and were not silently rewritten.
+
 ## Remaining honest deviations
 
 D1: Spec mandates qwen/qwen-2.5-72b-instruct; Groq models API confirms it does

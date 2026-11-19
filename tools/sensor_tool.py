@@ -79,7 +79,8 @@ def format_gage_report(site_id: str, threshold_ft: float, site_name: str,
         alarm = (
             "\n\n[CRITICAL] IMMEDIATE EVACUATION PROTOCOL REQUIRED. "
             f"Gage height {gage:.2f} ft is {abs(pct):.1f}% above flood stage. "
-            "Per FEMA protocol, initiate mandatory evacuation of all low-lying zones. "
+            "Official flood-stage exceedance detected; incident-command verification and "
+            "jurisdiction-specific authorization are required before any evacuation bulletin. "
             "Do NOT allow personnel to cross flooded areas."
         )
     elif gage >= threshold_ft:
@@ -325,7 +326,7 @@ def query_recent_earthquakes(location: str = "Boulder, CO", min_magnitude: float
             res = (
                 f"[USGS EARTHQUAKES - {display}]\n"
                 f"  No M>={min_magnitude} events detected within {search_radius_km} km in the past 7 days.\n"
-                f"  Seismic risk assessment: LOW for this period."
+                f"  Absence of detected events is not an all-clear; official seismic advisories remain authoritative."
             )
             _EARTHQUAKE_CACHE.set(cache_key, res)
             return res

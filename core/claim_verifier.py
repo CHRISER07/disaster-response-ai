@@ -206,7 +206,9 @@ class ClaimVerifier:
 
         total = len(verified_list)
         ratio = round(supported_cnt / total, 3) if total > 0 else 1.0
-        is_safe = contradicted_cnt == 0
+        # A claim-free or entirely unsupported answer is NOT safe. Only explicit
+        # contradiction-free grounding counts as safe.
+        is_safe = total > 0 and contradicted_cnt == 0 and unsupported_cnt == 0
 
         return VerificationReport(
             total_claims=total,

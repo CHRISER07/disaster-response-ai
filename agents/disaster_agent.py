@@ -43,6 +43,12 @@ from langchain_groq import ChatGroq
 from langchain_core.messages import AIMessage, ToolMessage
 from langgraph.prebuilt import create_react_agent
 from tools import ALL_TOOLS
+import logging as _logging
+_SAFETY_LOG = _logging.getLogger('disaster_agent.safety')
+
+
+def _warn(component: str, exc: Exception) -> None:
+    _SAFETY_LOG.warning('%s failed: %s: %s', component, type(exc).__name__, exc)
 
 
 # ---------------------------------------------------------------------------
@@ -471,8 +477,8 @@ def run_agent(query: str, thread_id: str = "default", seed: int = 42, return_str
                 observed_at=now_dt
             )
             evidence_packets.append(pkt)
-    except Exception:
-        pass
+    except Exception as exc:
+        _warn('evidence_normalization', exc)
 
     # Multi-Source Conflict Resolution & Safe Abstention Check
     conflict_res = None
@@ -482,8 +488,8 @@ def run_agent(query: str, thread_id: str = "default", seed: int = 42, return_str
             conflict_res = conflict_resolver.resolve_evidence(evidence_packets, query_context=query)
             if conflict_res.should_abstain and conflict_res.safe_abstention_message:
                 final_answer = f"{final_answer}\n\nNotice on Evidence Uncertainty: {conflict_res.safe_abstention_message}"
-    except Exception:
-        pass
+    except Exception as exc:
+        _warn('conflict_resolution', exc)
 
     # Claim-Level Verification Audit
     claim_report = None
@@ -491,8 +497,8 @@ def run_agent(query: str, thread_id: str = "default", seed: int = 42, return_str
         from core.claim_verifier import claim_verifier
         if evidence_packets:
             claim_report = claim_verifier.verify_response(final_answer, evidence_packets)
-    except Exception:
-        pass
+    except Exception as exc:
+        _warn('claim_verification', exc)
 
     # Clean any leaked tool/function-calling plumbing artifacts from 3B model
     tool_leak_phrases = ("no json output", "json object", "function call", "requires two parameters", "parameter 'message'")
@@ -511,8 +517,8 @@ def run_agent(query: str, thread_id: str = "default", seed: int = 42, return_str
             c_resp = c_llm.invoke(c_prompt)
             if c_resp.content and len(c_resp.content.strip()) > 15:
                 final_answer = c_resp.content
-        except Exception:
-            pass
+        except Exception as exc:
+            _warn('tool_leak_repair', exc)
 
     # Deterministic Safety Enforcement Layer (DSEL Layer 3)
     dsel_violations = []
@@ -534,8 +540,15 @@ def run_agent(query: str, thread_id: str = "default", seed: int = 42, return_str
         validation = validate_and_repair(final_answer, is_dangerous_query=is_danger_q)
         final_answer = validation["answer"]
         dsel_violations = validation.get("violations", [])
-    except Exception:
-        pass
+    except Exception as exc:
+        _warn('dsel_validation', exc)
+
+    # Record the actual dispatch outcome before presentation normalization, so
+    # the template never claims "NONE" when generate_structured_alert fired.
+    alert_dispatched = "generate_structured_alert" in (deduped_tools or [])
+    if "Alert Generated:" not in final_answer:
+        final_answer += ("\n\nAlert Generated: ALERT LOGGED" if alert_dispatched
+                         else "\n\nAlert Generated: NONE")
 
     # Deterministic, asterisk-free presentation. Applied last so every answer path
     # (normal, fallback, repaired, conflict notice) is normalized identically.
@@ -561,8 +574,8 @@ def run_agent(query: str, thread_id: str = "default", seed: int = 42, return_str
                 "faithfulness": claim_report.faithfulness_ratio
             }
         audit_logger.log_incident(rec)
-    except Exception:
-        pass
+    except Exception as exc:
+        _warn('audit_logging', exc)
 
     flush_langfuse()
 

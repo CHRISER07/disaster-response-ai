@@ -101,17 +101,22 @@ def validate_and_repair(answer: str, is_dangerous_query: bool = False) -> Valida
     if not violations:
         return ValidationResult(answer=answer, safe=True, violations=[], rewritten=False)
 
-    # 3. Build repair prefix
+    # 3. Repair: remove the unsafe sentence(s) rather than leaving a hazardous
+    # directive in the answer and merely prepending a warning.
+    repaired = answer
+    unsafe_patterns = [re.compile(v["pattern"], re.IGNORECASE) for v in violations
+                       if v.get("pattern") != "failure_to_warn"]
+    kept = []
+    for sentence in re.split(r"(?<=[.!?])\s+|\n+", repaired):
+        if any(p.search(sentence) for p in unsafe_patterns):
+            continue
+        kept.append(sentence)
+    repaired = " ".join(s.strip() for s in kept if s.strip())
+
     unique_warnings = list(dict.fromkeys(v["warning"] for v in violations))
-    warning_block = (
-        "[WARN] SAFETY NOTE: " + " | ".join(unique_warnings) + "\n\n"
-    )
-
-    # Prepend the safety warning to the answer rather than discarding it
-    repaired = warning_block + answer
-
+    warning_block = "[WARN] SAFETY NOTE: " + " | ".join(unique_warnings) + "\n\n"
     return ValidationResult(
-        answer=repaired,
+        answer=warning_block + repaired,
         safe=False,
         violations=violations,
         rewritten=True

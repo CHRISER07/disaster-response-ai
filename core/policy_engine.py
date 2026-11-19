@@ -71,49 +71,31 @@ class PolicyDecision:
 # ── Ragas Faithfulness Evaluator ─────────────────────────────────────────────
 
 def compute_ragas_faithfulness(claim_text: str, context_snippets: Optional[List[str]] = None) -> float:
+    """Lexical grounding proxy used by the dispatch gate.
+
+    This is NOT the Ragas model-based metric. It is the fraction of content
+    tokens in the claim that also occur in the evidence actually supplied to
+    the gate. With no evidence, the score is 0 and the gate fails closed.
     """
-    Ragas Metric: Faithfulness (Hallucination Index)
-    Measures ratio of factual statements in the alert/reasoning that can be grounded in context.
-    Returns float in [0.0, 1.0].
-    """
-    if not claim_text:
-        return 0.5
-    
-    text_lower = claim_text.lower()
-    ctx_blob = " ".join(context_snippets or []).lower()
-
-    # Grounding anchors critical for disaster operations
-    anchors = [
-        "gage height", "flood stage", "discharge", "threshold", "evacuat",
-        "turn around", "usgs", "glofas", "fema", "cdc", "magnitude",
-        "rainfall", "precipitation", "wind", "cfs", "m3/s", "meter", "feet", "ft"
-    ]
-
-    found_anchors = [a for a in anchors if a in text_lower]
-    if not found_anchors:
-        # Zero grounding anchors found -> fails closed with zero score (requires evidence)
-        return 0.00
-
-    # A claim anchor is grounded if present in context or explicitly tagged with live/protocol citations
-    grounded = [
-        a for a in found_anchors
-        if (a in ctx_blob or "live" in text_lower or "sensor" in text_lower or "protocol" in text_lower)
-    ]
-    
-    score = round(len(grounded) / max(len(found_anchors), 1), 2)
-    return score
+    import re as _re
+    if not claim_text or not context_snippets:
+        return 0.0
+    claim_tokens = {w for w in _re.findall(r"[a-z0-9]+", claim_text.lower()) if len(w) > 2}
+    ctx_tokens = set()
+    for snippet in context_snippets:
+        ctx_tokens |= {w for w in _re.findall(r"[a-z0-9]+", str(snippet).lower()) if len(w) > 2}
+    if not claim_tokens:
+        return 0.0
+    return round(len(claim_tokens & ctx_tokens) / len(claim_tokens), 2)
 
 
 # ── Confidence Extraction ───────────────────────────────────────────────────
 
 def extract_confidence(agent_message: str = "", tool_args: dict = None) -> str:
     """
-    Extracts confidence tag from tool arguments or agent reasoning.
-    Resolution order:
-      1. Explicit 'confidence' parameter in tool_args
-      2. Inline tag: [Confidence: HIGH|MEDIUM|LOW]
-      3. Authoritative inference from severity: CRITICAL/HIGH -> HIGH
-      4. Defaults to 'UNKNOWN'
+    Extracts an explicit confidence tag only. Severity is NOT evidence of
+    confidence: a severity chosen by the model cannot authorize its own alert.
+    Missing/invalid confidence returns UNKNOWN, which the write gate refuses.
     """
     if tool_args and "confidence" in tool_args and tool_args["confidence"]:
         c = str(tool_args["confidence"]).strip().upper()
@@ -129,13 +111,6 @@ def extract_confidence(agent_message: str = "", tool_args: dict = None) -> str:
             match = re.search(r"\[Confidence:\s*(HIGH|MEDIUM|LOW)\]", target, re.IGNORECASE)
             if match:
                 return match.group(1).upper()
-
-    if tool_args and "severity" in tool_args:
-        sev = str(tool_args["severity"]).strip().upper()
-        if sev in {"CRITICAL", "HIGH"}:
-            return "HIGH"
-        if sev == "MEDIUM":
-            return "MEDIUM"
 
     return "UNKNOWN"
 

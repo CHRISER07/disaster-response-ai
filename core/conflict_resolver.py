@@ -152,7 +152,7 @@ class ConflictResolver:
                 else:
                     telemetry_danger = True
                     supporting.append(tel)
-            elif "normal" in tel.raw_text.lower():
+            elif re.search(r"\bstatus\s*:\s*normal\b", tel.raw_text, re.IGNORECASE):
                 telemetry_normal = True
                 supporting.append(tel)
 
@@ -269,15 +269,27 @@ class ConflictResolver:
                     detailed_discrepancies=discrepancies,
                 )
 
-        # Default clean state
-        status = "NORMAL"
-        if telemetry_danger:
-            status = "CRITICAL"
+        # Historical-only or non-telemetry evidence cannot establish current
+        # safety. Never return a NORMAL all-clear without valid live telemetry.
+        if not live_telemetry:
+            return ConflictResolutionResult(
+                overall_state=EvidenceState.INSUFFICIENT,
+                primary_status="INSUFFICIENT_EVIDENCE",
+                resolution_summary="No valid live telemetry is available; current conditions cannot be verified.",
+                can_issue_evacuation=False,
+                should_abstain=True,
+                safe_abstention_message=(
+                    "Live sensor confirmation is unavailable. Do not assume the area is safe; "
+                    "follow official local emergency broadcasts."
+                ),
+                supporting_evidence=supporting + official_doctrine,
+            )
 
+        status = "CRITICAL" if telemetry_danger else "NORMAL"
         return ConflictResolutionResult(
             overall_state=EvidenceState.SUPPORTED,
             primary_status=status,
-            resolution_summary="All available evidence streams are congruent and temporally aligned.",
+            resolution_summary="Live telemetry and available evidence are congruent.",
             can_issue_evacuation=telemetry_danger,
             should_abstain=False,
             supporting_evidence=supporting + official_doctrine,

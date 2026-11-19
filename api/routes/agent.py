@@ -184,20 +184,39 @@ async def stream_query(req: QueryRequest):
                     mtype = getattr(msg, "type", "")
                     clsname = msg.__class__.__name__
                     if (mtype == "ai" or clsname == "AIMessage") and getattr(msg, "content", ""):
+                        # Buffer only. Never stream raw model text to an operator:
+                        # it may contain unsafe directives before DSEL runs.
                         content_str = str(msg.content)
-                        # Only yield if it's new / longer content or different
                         if content_str != final_content:
                             final_content = content_str
-                            yield f"data: {json.dumps({'type': 'chunk', 'content': final_content})}\n\n"
 
-            # Post-validation via DSEL
+            # DSEL validation MUST complete before any answer text is delivered.
+            # Fail closed: if repair itself fails, do not emit the raw answer.
             if final_content:
                 try:
                     from core.safety_validator import validate_and_repair
-                    validated = validate_and_repair(final_content)
+                    danger_words = (
+                        "safe", "cross", "drink", "enter", "touch", "clear",
+                        "okay", "fine", "can i", "can we", "can residents",
+                        "flood", "water", "creek", "power line", "chemical",
+                        "collapse", "evacuate", "all-clear", "wildfire", "hazard"
+                    )
+                    is_danger = any(w in full_query.lower() for w in danger_words)
+                    validated = validate_and_repair(final_content, is_dangerous_query=is_danger)
                     final_content = validated["answer"]
+                    if validated.get("violations"):
+                        yield f"data: {json.dumps({'type': 'safety_notice', 'violations': validated['violations']})}\n\n"
+                except Exception as exc:
+                    final_content = (
+                        "Response withheld: safety validation unavailable. "
+                        f"Reason: {type(exc).__name__}"
+                    )
+                try:
+                    from core.answer_formatter import format_answer
+                    final_content = format_answer(final_content)
                 except Exception:
                     pass
+                yield f"data: {json.dumps({'type': 'chunk', 'content': final_content})}\n\n"
             else:
                 # Fallback: if stream produced no AI content, run blocking agent
                 try:

@@ -120,8 +120,11 @@ def run_llm_only(query: str, seed: int) -> dict:
     )
     t0 = time.perf_counter()
 
-    if os.getenv("PROVIDER", "ollama").lower() == "ollama":
-        from core.llm_config import get_llm, OLLAMA_MODEL
+    # Use the active provider for EVERY provider. The old code special-cased
+    # only "ollama", so PROVIDER=gemini silently fell through to the Groq
+    # client and produced a mixed-generator comparison table.
+    if os.getenv("PROVIDER", "ollama").lower() != "groq":
+        from core.llm_config import get_llm, active_model_name
         try:
             llm = get_llm(seed=seed)
             from langchain_core.messages import SystemMessage, HumanMessage
@@ -135,7 +138,7 @@ def run_llm_only(query: str, seed: int) -> dict:
                 "prompt_tokens": 0,
                 "completion_tokens": 0,
                 "tools_called": "",
-                "model_used": OLLAMA_MODEL,
+                "model_used": active_model_name(),
                 "retries": 0
             }
         except Exception as e:

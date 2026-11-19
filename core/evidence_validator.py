@@ -165,8 +165,9 @@ class EvidenceValidator:
                     return dt
                 except ValueError:
                     continue
-        # Fallback to current UTC time if unparseable
-        return datetime.now(timezone.utc)
+        # Do not launder an invalid timestamp into "now": raise so the caller
+        # can mark the packet invalid instead of treating it as fresh evidence.
+        raise ValueError(f"Unparseable timestamp: {value!r}")
 
     @classmethod
     def validate_and_normalize(
@@ -196,8 +197,9 @@ class EvidenceValidator:
 
         # 1. Timestamp Sanity: observed_at cannot be in the future (with 5 min clock skew tolerance)
         if obs_dt > now + timedelta(minutes=5):
-            errors.append(f"Future timestamp detected: {obs_dt.isoformat()} > now ({now.isoformat()})")
-            obs_dt = now
+            errors.append(f"Future timestamp detected: {obs_dt.isoformat()} > now ({now.isoformat()}); packet invalid")
+            # Do not replace with now: that launders a bad timestamp into LIVE.
+            obs_dt = now + timedelta(days=3650)
 
         # 2. Compute valid_until using source-specific TTL
         ttl_policy = TTL_POLICIES.get(source_type, TTL_POLICIES[SourceType.TELEMETRY])

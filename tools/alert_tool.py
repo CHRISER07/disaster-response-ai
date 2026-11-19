@@ -32,7 +32,7 @@ def generate_structured_alert(
     severity: str,
     message: str,
     zone: str = "General",
-    confidence: str = "HIGH",
+    confidence: str = "UNKNOWN",
     state: Annotated[dict, InjectedState] = None,
 ) -> str:
     """
@@ -45,9 +45,23 @@ def generate_structured_alert(
     NOTE: This tool requires HIGH or MEDIUM confidence. Low-confidence alerts
     are blocked by the policy engine and must not be retried without additional data.
     """
-    # Policy Gate 
+    # Policy Gate: collect the agent's reasoning AND the actual tool evidence
+    # that was returned in this run. Without evidence, grounding must fail.
     agent_msg = message
+    evidence_contexts = []
     if state and "messages" in state:
+        for msg in state["messages"]:
+            mtype = getattr(msg, "type", "")
+            clsname = msg.__class__.__name__
+            if mtype == "tool" or clsname == "ToolMessage":
+                content = getattr(msg, "content", "")
+                if isinstance(content, list):
+                    content = " ".join(
+                        item.get("text", "") if isinstance(item, dict) else str(item)
+                        for item in content
+                    )
+                if content:
+                    evidence_contexts.append(str(content))
         # Search backwards for the most recent AI message (reasoning thought)
         for msg in reversed(state["messages"]):
             if getattr(msg, "type", "") == "ai" or msg.__class__.__name__ == "AIMessage":
@@ -72,10 +86,11 @@ def generate_structured_alert(
             tool_args={
                 "severity": severity,
                 "zone": zone,
-                "message": message[:200],
+                "message": message,
                 "confidence": confidence,
             },
             agent_message=agent_msg,
+            retrieved_contexts=evidence_contexts,
         )
     except Exception as exc:
         return (
@@ -92,13 +107,22 @@ def generate_structured_alert(
             f"  Action: Gather additional verified data before generating this alert."
         )
 
+    # A policy-permitted alert is NOT an operator-authorized alert. Do not
+    # create an external side effect while approval is still pending.
+    if getattr(decision, "requires_operator_approval", False) or getattr(decision, "dispatch_status", "") == "PENDING_OPERATOR_APPROVAL":
+        return (
+            f"[ALERT PENDING OPERATOR APPROVAL]\n"
+            f"  Reason: {decision.reason}\n"
+            f"  Action: No alert was logged or dispatched. Incident Commander approval is required."
+        )
+
     severity = severity.upper()
     if severity not in SEVERITY_LEVELS:
         severity = "MEDIUM"
 
-    confidence_clean = (confidence or "HIGH").strip().upper()
+    confidence_clean = (confidence or "UNKNOWN").strip().upper()
     if confidence_clean not in {"HIGH", "MEDIUM", "LOW"}:
-        confidence_clean = "HIGH"
+        confidence_clean = "UNKNOWN"
 
     alert = {
         "timestamp": datetime.now(timezone.utc).isoformat(),

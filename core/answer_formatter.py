@@ -81,7 +81,9 @@ def format_answer(text: str) -> str:
         normalized.append("")
         for section in missing:
             if section == "Alert Generated:":
-                normalized.append("Alert Generated: NONE")
+                # Never assert "NONE" when the runtime did not report a dispatch
+                # result. "NOT REPORTED" is an honest, non-fabricated marker.
+                normalized.append("Alert Generated: NOT REPORTED")
             else:
                 normalized.append(f"{section} NOT AVAILABLE")
     return "\n".join(normalized) + "\n"
