@@ -546,9 +546,25 @@ def run_agent(query: str, thread_id: str = "default", seed: int = 42, return_str
     # Record the actual dispatch outcome before presentation normalization, so
     # the template never claims "NONE" when generate_structured_alert fired.
     import re as _re
-    alert_dispatched = "generate_structured_alert" in (deduped_tools or [])
-    alert_line = ("Alert Generated: ALERT LOGGED" if alert_dispatched
-                  else "Alert Generated: NONE")
+    # The tool trace is authoritative. Calling generate_structured_alert does
+    # NOT mean an alert was logged: policy may block it or leave it pending
+    # operator approval. Never assert "ALERT LOGGED" without the tool's own
+    # confirmation string.
+    alert_outputs = [
+        str(t.get("tool_output_summary", ""))
+        for t in tool_traces
+        if t.get("tool_name") == "generate_structured_alert"
+    ]
+    if any("[ALERT LOGGED" in o for o in alert_outputs):
+        alert_line = "Alert Generated: ALERT LOGGED"
+    elif any("PENDING OPERATOR APPROVAL" in o for o in alert_outputs):
+        alert_line = "Alert Generated: PENDING OPERATOR APPROVAL"
+    elif any("[ALERT BLOCKED" in o for o in alert_outputs):
+        alert_line = "Alert Generated: BLOCKED BY POLICY"
+    elif alert_outputs:
+        alert_line = "Alert Generated: NOT CONFIRMED"
+    else:
+        alert_line = "Alert Generated: NONE"
     if _re.search(r"^Alert Generated:.*$", final_answer, _re.MULTILINE):
         # Overwrite a model-written status: the tool trace is authoritative.
         final_answer = _re.sub(r"^Alert Generated:.*$", alert_line, final_answer,

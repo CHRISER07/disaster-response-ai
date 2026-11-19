@@ -38,7 +38,7 @@ def active_model_name() -> str:
     """Generator actually in use, resolved from the locked provider."""
     provider = os.getenv("PROVIDER", "ollama").lower().strip()
     if provider == "ollama":
-        return os.getenv("OLLAMA_MODEL", "llama3.1:8b")
+        return os.getenv("OLLAMA_MODEL", "qwen2.5:3b")
     if provider == "gemini":
         return os.getenv("GEMINI_MODEL", "gemini-3.1-flash-lite")
     return GROQ_MODEL
@@ -169,7 +169,7 @@ def run_llm_only(query: str, seed: int) -> dict:
                 "prompt_tokens": resp.usage.prompt_tokens,
                 "completion_tokens": resp.usage.completion_tokens,
                 "tools_called": "",
-                "model_used": GROQ_MODEL,
+                "model_used": active_model_name(),
                 "retries": retries
             }
         except Exception as e:
@@ -184,11 +184,11 @@ def run_llm_only(query: str, seed: int) -> dict:
                     "active_latency_s": round(time.perf_counter()-t0,3),
                     "total_latency_s": round(time.perf_counter()-t0,3),
                     "prompt_tokens": 0, "completion_tokens": 0,
-                    "tools_called": "", "model_used": GROQ_MODEL, "retries": retries}
+                    "tools_called": "", "model_used": active_model_name(), "retries": retries}
     return {"status": "RATE_LIMIT", "full_answer": "Rate limit exceeded after retries",
             "active_latency_s": 0, "total_latency_s": round(time.perf_counter()-t0,3),
             "prompt_tokens": 0, "completion_tokens": 0,
-            "tools_called": "", "model_used": GROQ_MODEL, "retries": retries}
+            "tools_called": "", "model_used": active_model_name(), "retries": retries}
 
 
 def run_bm25(query: str, seed: int) -> dict:
@@ -235,7 +235,7 @@ def run_bm25(query: str, seed: int) -> dict:
                 "prompt_tokens": resp.usage.prompt_tokens,
                 "completion_tokens": resp.usage.completion_tokens,
                 "tools_called": "bm25_retrieve",
-                "model_used": GROQ_MODEL,
+                "model_used": active_model_name(),
                 "retries": retries
             }
         except Exception as e:
@@ -250,11 +250,11 @@ def run_bm25(query: str, seed: int) -> dict:
                     "active_latency_s": round(time.perf_counter()-t0,3),
                     "total_latency_s": round(time.perf_counter()-t0,3),
                     "prompt_tokens": 0, "completion_tokens": 0,
-                    "tools_called": "bm25_retrieve", "model_used": GROQ_MODEL, "retries": retries}
+                    "tools_called": "bm25_retrieve", "model_used": active_model_name(), "retries": retries}
     return {"status": "RATE_LIMIT", "full_answer": "Rate limit exceeded",
             "active_latency_s": 0, "total_latency_s": round(time.perf_counter()-t0,3),
             "prompt_tokens": 0, "completion_tokens": 0,
-            "tools_called": "bm25_retrieve", "model_used": GROQ_MODEL, "retries": retries}
+            "tools_called": "bm25_retrieve", "model_used": active_model_name(), "retries": retries}
 
 
 def run_static_rag(query: str, seed: int, text_only: bool = False) -> dict:
@@ -299,7 +299,7 @@ def run_static_rag(query: str, seed: int, text_only: bool = False) -> dict:
             "prompt_tokens": result.get("prompt_tokens", 0) if isinstance(result, dict) else 0,
             "completion_tokens": result.get("completion_tokens", 0) if isinstance(result, dict) else 0,
             "tools_called": "kb_search,text_search" if not text_only else "text_search",
-            "model_used": GROQ_MODEL,
+            "model_used": active_model_name(),
             "retries": 0
         }
     except Exception as e:
@@ -315,7 +315,7 @@ def run_static_rag(query: str, seed: int, text_only: bool = False) -> dict:
             "prompt_tokens": 0,
             "completion_tokens": 0,
             "tools_called": "",
-            "model_used": GROQ_MODEL,
+            "model_used": active_model_name(),
             "retries": 0,
         }
 
@@ -355,7 +355,7 @@ def _groq_with_fts(query: str, seed: int, t0: float, config_label: str = "") -> 
                 "prompt_tokens": resp.usage.prompt_tokens,
                 "completion_tokens": resp.usage.completion_tokens,
                 "tools_called": f"fts_fallback",
-                "model_used": GROQ_MODEL,
+                "model_used": active_model_name(),
                 "retries": retries
             }
         except Exception as e:
@@ -367,11 +367,11 @@ def _groq_with_fts(query: str, seed: int, t0: float, config_label: str = "") -> 
                     "active_latency_s":round(time.perf_counter()-t0,3),
                     "total_latency_s":round(time.perf_counter()-t0,3),
                     "prompt_tokens":0,"completion_tokens":0,
-                    "tools_called":"fts_fallback","model_used":GROQ_MODEL,"retries":retries}
+                    "tools_called":"fts_fallback","model_used":active_model_name(),"retries":retries}
     return {"status":"RATE_LIMIT","full_answer":"rate limit",
             "active_latency_s":0,"total_latency_s":round(time.perf_counter()-t0,3),
             "prompt_tokens":0,"completion_tokens":0,
-            "tools_called":"fts_fallback","model_used":GROQ_MODEL,"retries":retries}
+            "tools_called":"fts_fallback","model_used":active_model_name(),"retries":retries}
 
 
 def run_full_agent(query: str, seed: int, no_tgi: bool = False, no_dsel: bool = False, no_telemetry: bool = False, prefetched_observation: str | None = None) -> dict:
@@ -442,9 +442,9 @@ def run_full_agent(query: str, seed: int, no_tgi: bool = False, no_dsel: bool = 
         tools_called = ""
         prompt_toks = 0
         comp_toks = 0
-        provider_name = os.getenv("PROVIDER", "ollama")
-        default_model = os.getenv("OLLAMA_MODEL", "qwen3:8b") if provider_name == "ollama" else GROQ_MODEL
-        model_used = default_model
+        # Single source of truth for the generator label, resolved from the
+        # locked provider rather than a second hardcoded default.
+        model_used = active_model_name()
 
         if isinstance(result, dict):
             answer = result.get("output", result.get("answer", str(result)))
@@ -454,7 +454,7 @@ def run_full_agent(query: str, seed: int, no_tgi: bool = False, no_dsel: bool = 
             tools_called = ",".join(_tc_raw) if isinstance(_tc_raw, list) else str(_tc_raw or "")
             prompt_toks = result.get("prompt_tokens", 0)
             comp_toks = result.get("completion_tokens", 0)
-            model_used = result.get("model_used", default_model)
+            model_used = result.get("model_used") or active_model_name()
         elif isinstance(result, str):
             answer = result
             if "Sorry, need more steps" in answer or "Agent stopped" in answer:
@@ -568,7 +568,7 @@ def main():
                     res = {"status":"OTHER_ERROR","full_answer":str(e),
                            "active_latency_s":0,"total_latency_s":0,
                            "prompt_tokens":0,"completion_tokens":0,
-                           "tools_called":"","model_used":GROQ_MODEL,"retries":0}
+                           "tools_called":"","model_used":active_model_name(),"retries":0}
 
                 # Score KW metrics only for OK rows
                 gold_kw = q.get("keywords", [])

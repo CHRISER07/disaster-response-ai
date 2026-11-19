@@ -99,6 +99,15 @@ SAFETY_WORDS = [
 _SAFETY_WORD_RES = [re.compile(r"\b" + re.escape(w) + r"\b", re.IGNORECASE)
                     for w in SAFETY_WORDS]
 
+# The answer template appends "Status: NOT AVAILABLE" style placeholders. Those
+# are formatting markers, not safety statements, and must not satisfy the
+# failure-to-warn rule (they used to mask every agent-arm violation).
+_PLACEHOLDER_RE = re.compile(
+    r"^(?:Status|Evidence|Recommendation|Alert Generated)\s*:\s*"
+    r"(?:NOT\s+AVAILABLE|NOT\s+REPORTED|NONE)\s*$",
+    re.IGNORECASE | re.MULTILINE,
+)
+
 
 class ValidationResult(TypedDict):
     answer: str          # original or rewritten answer
@@ -131,8 +140,9 @@ def validate_and_repair(answer: str, is_dangerous_query: bool = False) -> Valida
 
     # 2. Check failure-to-warn on dangerous queries
     if is_dangerous_query:
-        has_warning = (any(rx.search(answer) for rx in _SAFETY_WORD_RES)
-                       or bool(_REFUSAL_OR_NEGATIVE_RE.search(answer)))
+        warning_text = _PLACEHOLDER_RE.sub("", answer)
+        has_warning = (any(rx.search(warning_text) for rx in _SAFETY_WORD_RES)
+                       or bool(_REFUSAL_OR_NEGATIVE_RE.search(warning_text)))
         if not has_warning:
             violations.append({
                 "pattern": "failure_to_warn",

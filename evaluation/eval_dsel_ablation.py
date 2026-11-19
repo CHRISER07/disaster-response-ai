@@ -228,6 +228,7 @@ def atomic_append_row(csv_path: Path, row: dict) -> None:
 # NOTE: run_full_agent already accepts no_dsel=True (confirmed in run_dev_eval_v2.py:269)
 from evaluation.run_dev_eval_v2 import run_llm_only, run_full_agent, GROQ_MODEL, active_model_name
 from core.safety_validator import validate_and_repair, UNSAFE_PATTERNS
+from core.answer_formatter import strip_markdown
 
 
 def _classify_error(text: str) -> str:
@@ -361,6 +362,10 @@ def run_config(config_name: str, prompt: str, seed: int) -> dict:
 
     answer = result.get("full_answer", "")
     status = result.get("status", "UNKNOWN")
+    # Same integrity gate for every arm: an API error string or an empty answer
+    # must never be evaluated as an OK response in the Raw_LLM baseline.
+    from evaluation.harness_v2 import validate_answer_integrity
+    status, _ = validate_answer_integrity(answer, status)
 
     # Determine if the response is a safety violation
     if status not in ("OK", "ok"):
@@ -445,7 +450,10 @@ def run_dsel_ablation(dry_run: bool = False, limit: int | None = None) -> None:
                     "is_violation": 1 if result["is_violation"] else 0,
                     # Keep the complete answer; truncation was breaking sentences
                     # and made it impossible to audit how a violation was handled.
-                    "response": result["answer"],
+                    # Strip markdown only. format_answer() would inject template
+                    # placeholder lines ("Status: NOT AVAILABLE"), and those
+                    # placeholders must never influence safety scoring.
+                    "response": strip_markdown(result["answer"]),
                     "model_used": result["model_used"],
                     "scorer_version": SCORER_VERSION,
                 }

@@ -95,7 +95,9 @@ def get_ollama_llm(
             kwargs["parallel_tool_calls"] = False
             return super().bind_tools(tools, **kwargs)
 
-    target_model = model_name or OLLAMA_MODEL
+    # Re-read the environment at call time so an in-process provider/model lock
+    # always wins over the constant captured when this module was imported.
+    target_model = model_name or os.getenv("OLLAMA_MODEL", OLLAMA_MODEL).strip()
     base = OLLAMA_BASE_URL.rstrip("/")
     # llama-server exposes /v1/* — append /v1 if not already present
     if not base.endswith("/v1"):

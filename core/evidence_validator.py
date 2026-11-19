@@ -167,7 +167,7 @@ class EvidenceValidator:
                     continue
         # Do not launder an invalid timestamp into "now": raise so the caller
         # can mark the packet invalid instead of treating it as fresh evidence.
-        raise ValueError(f"Unparseable timestamp: {value!r}")
+        raise ValueError(f"Unparseable timestamp: {dt_input!r}")
 
     @classmethod
     def validate_and_normalize(
