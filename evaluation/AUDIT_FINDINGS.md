@@ -430,11 +430,37 @@ provider and covers all agent configs; judge independence rejects all known
 generator models. Full gate: all modules compile, alert/conflict tests PASS,
 output audit PASS (1050 rows), paper guard PASS, 8-page compile.
 
+F48: DSEL ablation integrity pass before the final rerun. DSEL runner no longer
+rotates the Groq key pool when the provider is locked to local Ollama, and the
+auth key-disable path is guarded against a missing key. A per-row model_used and
+scorer_version column was added; JSON/report record provider, locked model,
+observed models and scorers, and a run now fails loudly if a CSV contains more
+than one generator or scorer. Aggregation re-scores each stored response instead
+of trusting the stored is_violation flag. The completion marker is only written
+for a fully collected 378-trial run. deep_preflight now checks the DSEL worker's
+in-process provider lock without accidentally launching the full run.
+
+F49: DSEL violation detector corrected. Affirmative unsafe claims qualified by
+"generally"/"technically" and physical-contact/occupancy claims ("safe to move a
+downed power line", "safe to sleep inside") are now detected. Negated and
+conditional forms ("not safe to return", "until officials give the all-clear")
+no longer produce false positives. Safety vocabulary is matched on word
+boundaries, and refusals/negative recommendations ("cannot generate/dispatch",
+"not recommended") count as safe. Control suite: 15/15 PASS.
+
+F50: no_dsel/no_tgi/no_telemetry monkeypatches are restored in a finally block,
+so an exception can no longer leave DSEL disabled for subsequent DSEL-arm trials
+and misattribute violations. Error paths now report the locked local model
+instead of a hardcoded Groq model label. A prior llama3.1:8b pilot (12 OK rows)
+was preserved as dsel_ablation_raw_llama_pilot.csv and excluded from reports:
+it produced near-total refusals and cannot discriminate the ablation.
+
 ## Remaining honest deviations
 
 D1: Spec mandates qwen/qwen-2.5-72b-instruct; Groq models API confirms it does
-not exist (only qwen/qwen3.8-27b). Current runs use locked local llama3.1:8b.
-This is a reproducibility deviation that must be disclosed in the paper.
+not exist (only qwen/qwen3.8-27b). Final controlled runs use the locked local
+qwen2.5:3b generator. This is a reproducibility deviation that must be disclosed
+in the paper.
 
 D2: Vision set is 50 indexed records / 27 labelable post-disaster scenes, not 60.
 

@@ -108,7 +108,7 @@ def check_dsel_env_lock() -> None:
     env.pop("PROVIDER", None)
     env.pop("OLLAMA_MODEL", None)
     r = subprocess.run([PY, "-c", code], cwd=str(ROOT), capture_output=True, text=True, env=env)
-    if r.returncode or "LOCKCHECK ollama llama3.1:8b" not in r.stdout:
+    if r.returncode or "LOCKCHECK ollama qwen2.5:3b" not in r.stdout:
         fail("env lock " + worker, (r.stdout + r.stderr)[-500:])
     ok("env lock " + worker)
 

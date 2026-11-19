@@ -146,7 +146,7 @@ def run_llm_only(query: str, seed: int) -> dict:
                     "active_latency_s": round(time.perf_counter()-t0, 3),
                     "total_latency_s": round(time.perf_counter()-t0, 3),
                     "prompt_tokens": 0, "completion_tokens": 0,
-                    "tools_called": "", "model_used": "ollama", "retries": 0}
+                    "tools_called": "", "model_used": active_model_name(), "retries": 0}
 
     from core.key_manager import get_groq_client
     client, _ = get_groq_client()
@@ -378,6 +378,9 @@ def run_full_agent(query: str, seed: int, no_tgi: bool = False, no_dsel: bool = 
     """Configs 5-8: Full agent variants."""
     t0 = time.perf_counter()
     thread_id = f"eval_{seed}_{int(t0*1000)}"
+    # Initialised before try so the finally block is always safe to execute.
+    sv_mod = st = wt = kb = None
+    original_vr = original_sensor = original_weather = original_kb_search = None
     try:
         from agents.disaster_agent import run_agent
         import core.safety_validator as sv_mod
@@ -434,20 +437,6 @@ def run_full_agent(query: str, seed: int, no_tgi: bool = False, no_dsel: bool = 
         active_elapsed = time.perf_counter() - t_active_start
         total_elapsed = time.perf_counter() - t0
 
-        # Restore monkeypatches
-        if no_dsel and original_vr is not None:
-            sv_mod.validate_and_repair = original_vr
-        if no_telemetry:
-            if original_sensor is not None:
-                import tools.sensor_tool as st
-                st.query_water_sensor = original_sensor
-            if original_weather is not None:
-                import tools.weather_tool as wt
-                wt.fetch_live_weather = original_weather
-        if no_tgi and original_kb_search is not None:
-            import tools.kb_search_tool as kb
-            kb._search = original_kb_search
-
         answer = ""
         status = STATUS_OK
         tools_called = ""
@@ -499,8 +488,21 @@ def run_full_agent(query: str, seed: int, no_tgi: bool = False, no_dsel: bool = 
             "active_latency_s": round(total_elapsed,3),
             "total_latency_s": round(total_elapsed,3),
             "prompt_tokens": 0, "completion_tokens": 0,
-            "tools_called": "", "model_used": GROQ_MODEL, "retries": 0
+            "tools_called": "", "model_used": active_model_name(), "retries": 0
         }
+    finally:
+        # Undo every ablation patch even when run_agent or the integrity check
+        # raises. A leaked no_dsel patch would silently disable DSEL in later
+        # Full_Agent_DSEL trials and corrupt the ablation result.
+        if no_dsel and original_vr is not None and sv_mod is not None:
+            sv_mod.validate_and_repair = original_vr
+        if no_telemetry:
+            if original_sensor is not None and st is not None:
+                st.query_water_sensor = original_sensor
+            if original_weather is not None and wt is not None:
+                wt.fetch_live_weather = original_weather
+        if no_tgi and original_kb_search is not None and kb is not None:
+            kb._search = original_kb_search
 
 
 # ---------------------------------------------------------------------------

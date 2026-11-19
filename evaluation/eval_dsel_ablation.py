@@ -83,8 +83,12 @@ OUT_REPORT = ROOT / "evaluation" / f"dsel_ablation_report{_TAG}.md"
 # ---------------------------------------------------------------------------
 FIELDNAMES = [
     "config", "seed", "prompt_id", "harm_class",
-    "status", "is_violation", "response", "model_used"
+    "status", "is_violation", "response", "model_used", "scorer_version"
 ]
+
+# Bump whenever UNSAFE_PATTERNS / SAFETY_WORDS / failure_to_warn change. A
+# resumed CSV can then be checked for a single scorer as well as a single model.
+SCORER_VERSION = "v2-negation-aware"
 
 SEEDS = [42, 7, 99]
 
@@ -202,6 +206,7 @@ def normalize_csv_schema(csv_path: Path) -> None:
                 # Older runs did not record the generator; leave it blank rather
                 # than guessing which model produced those answers.
                 "model_used": old.get("model_used", ""),
+                "scorer_version": old.get("scorer_version", ""),
             })
     tmp.replace(csv_path)
 
@@ -442,6 +447,7 @@ def run_dsel_ablation(dry_run: bool = False, limit: int | None = None) -> None:
                     # and made it impossible to audit how a violation was handled.
                     "response": result["answer"],
                     "model_used": result["model_used"],
+                    "scorer_version": SCORER_VERSION,
                 }
                 atomic_append_row(OUT_CSV, row)
                 if result["status"].upper() == "OK":
@@ -511,7 +517,11 @@ def compute_dsel_stats() -> None:
         key = {"Raw_LLM": "raw_llm", "Agent_NoDSEL": "no_dsel", "Full_Agent_DSEL": "full_agent"}[cfg]
         if r.get("status", "").upper() == "OK":
             stats[cat][f"{key}_evaluated"] += 1
-            stats[cat][f"{key}_violations"] += int(r.get("is_violation", 0))
+            # Re-score from the stored answer: the CSV column is an audit trail,
+            # not a second source of truth. A resumed CSV can then be aggregated
+            # correctly even if the validator changed since collection.
+            vr = validate_and_repair(r.get("response", ""), is_dangerous_query=True)
+            stats[cat][f"{key}_violations"] += int(not vr["safe"])
         else:
             stats[cat][f"{key}_errors"] += 1
 
@@ -557,12 +567,20 @@ def compute_dsel_stats() -> None:
     print(f"Latest recorded trial keys: {len(rows)} / {len(CONFIGS) * planned_trials} planned")
     print("=" * 91)
 
-    models_observed = sorted({r.get("model_used", "") for r in rows if r.get("model_used", "")})
+    models_observed = sorted({r["model_used"] for r in rows
+                              if r.get("status", "").upper() == "OK" and r.get("model_used")})
+    scorer_versions_observed = sorted({r["scorer_version"] for r in rows
+                                       if r.get("status", "").upper() == "OK" and r.get("scorer_version")})
+    if len(models_observed) > 1:
+        raise RuntimeError(f"Mixed generators in {OUT_CSV}: {models_observed}")
+    if len(scorer_versions_observed) > 1:
+        raise RuntimeError(f"Mixed scorers in {OUT_CSV}: {scorer_versions_observed}")
     out_data = {
         "schema_version": 2,
         "provider": LOCKED_PROVIDER,
         "locked_model": LOCKED_MODEL or active_model_name(),
         "models_observed": models_observed,
+        "scorer_versions_observed": scorer_versions_observed,
         "total_prompts": total_prompts,
         "seeds": SEEDS,
         "planned_trials_per_system": planned_trials,
@@ -582,6 +600,7 @@ def compute_dsel_stats() -> None:
         f"- Provider: {LOCKED_PROVIDER}",
         f"- Locked model: {LOCKED_MODEL or active_model_name()}",
         f"- Models observed in CSV: {', '.join(models_observed) or 'n/a'}",
+        f"- Scorer versions observed: {', '.join(scorer_versions_observed) or 'n/a'}",
         f"- Prompts: {total_prompts}",
         f"- Seeds: {', '.join(map(str, SEEDS))}",
         f"- Planned trials per system: {planned_trials}",
@@ -601,11 +620,20 @@ def compute_dsel_stats() -> None:
         report.append(f"| {cat} | {s['prompts']} | {s['raw_llm_violations']} / {s['raw_llm_evaluated']} | {s['no_dsel_violations']} / {s['no_dsel_evaluated']} | {s['full_agent_violations']} / {s['full_agent_evaluated']} |")
     OUT_REPORT.write_text("\n".join(report) + "\n", encoding="utf-8")
 
-    # Completion marker prevents downstream reports from reading a partial run.
-    OUT_JSON.with_suffix(".complete").write_text(
-        f"successful_trials={sum(t['evaluated'] for t in totals.values())}\n",
-        encoding="utf-8",
-    )
+    # A completion marker must only exist for a fully collected run. The
+    # --limit smoke path also calls this function; writing a marker there would
+    # make a partial run look finished to downstream reports.
+    marker = OUT_JSON.with_suffix(".complete")
+    planned_total = len(CONFIGS) * len(ADVERSARIAL_SUITE) * len(SEEDS)
+    if len(rows) == planned_total:
+        marker.write_text(
+            f"successful_trials={sum(t['evaluated'] for t in totals.values())}\n",
+            encoding="utf-8",
+        )
+    else:
+        marker.unlink(missing_ok=True)
+        log.warning("[PARTIAL] %d/%d trials recorded; no completion marker written",
+                    len(rows), planned_total)
     log.info("[OK] Results saved to %s and %s", OUT_JSON, OUT_REPORT)
 
 

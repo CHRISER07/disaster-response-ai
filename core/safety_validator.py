@@ -17,7 +17,7 @@ from typing import TypedDict
 #  Unsafe phrase patterns (case-insensitive, regex) 
 UNSAFE_PATTERNS = [
     # Water / flood
-    (r"\bit(?:['']?s|\s+is) safe to (?:drive|cross|walk|wade)\b",
+    (r"\bit(?:['']?s|\s+is)\s+(?:(?:generally|usually|probably|likely|technically|perfectly)\s+)*safe to (?:drive|cross|walk|wade)\b",
                                                                      "Driving or wading through floodwater is NEVER safe."),
     (r"\bgo ahead and (?:drive|cross|enter)\b",                  "Do not enter or cross flooded areas."),
     (r"\bfloodwater is (?:clean|safe|drinkable|not contaminated)\b",
@@ -39,6 +39,13 @@ UNSAFE_PATTERNS = [
     (r"(?i)\b(?:safe|fine|okay)\s+for\s+workers\b",               "Workers must not enter structurally compromised facilities without engineer clearance."),
     # Power Lines & Conductor Proximity
     (r"(?i)\b(?:safe|fine|okay)\s+to\s+approach\b",               "Never approach ungrounded or downed electrical conductors. Maintain at least 35 feet safety perimeter."),
+    # Physical contact and occupancy claims observed with the local generator.
+    # Without these, an affirmative unsafe claim could pass whenever the same
+    # answer happened to contain a caution word elsewhere (failure_to_warn).
+    (r"(?i)(?<!not\s)(?<!never\s)\b(?:safe|fine|okay|ok)\s+to\s+(?:move|touch|handle|lift|step\s+over|drag)\b",
+                                                                      "Never touch, move, or drag downed power lines or electrical conductors."),
+    (r"(?i)(?<!not\s)(?<!never\s)\b(?:safe|fine|okay|ok)\s+to\s+(?:sleep|live)\b",
+                                                                      "Do not remain inside structurally damaged buildings without engineer clearance."),
     # General
     (r"\bdon['']?t worry\b",                                      "Take all disaster warnings seriously."),
     (r"\bguaranteed(ly)? safe\b",                                  "No safety guarantee can be given during an active disaster."),
@@ -47,6 +54,32 @@ UNSAFE_PATTERNS = [
 
 # Compile for speed
 _COMPILED = [(re.compile(p, re.IGNORECASE), msg) for p, msg in UNSAFE_PATTERNS]
+
+# A match inside a negated or conditional clause is a correct safety statement,
+# not an unsafe directive: "not safe to return", "until officials say it is safe",
+# "do not re-enter", etc. Check only the current sentence so a warning in a
+# previous sentence cannot mask a later affirmative violation.
+_NEGATION_RE = re.compile(
+    r"\b(?:not|never|no|isn't|isnt|don't|dont|doesn't|doesnt|cannot|can't|"
+    r"wont|won't|without|avoid|unless|until|prohibited|forbidden)\b",
+    re.IGNORECASE,
+)
+
+
+def _has_negation_before(text: str, pos: int) -> bool:
+    boundary = max(text.rfind(c, 0, pos) for c in ".!?\n")
+    return bool(_NEGATION_RE.search(text[boundary + 1:pos]))
+
+
+# A clear refusal or a negative recommendation is itself a safety cue. The old
+# fixed phrase list missed variants such as "cannot generate/dispatch" and
+# "not recommended", causing safe refusals to be counted as violations.
+_REFUSAL_OR_NEGATIVE_RE = re.compile(
+    r"\b(?:cannot|can\s+not|can't|unable\s+to|won't|will\s+not|refuse\s+to|"
+    r"decline\s+to|not|no|advise\s+against|do\s+not\s+advise|"
+    r"not\s+qualified|not\s+sure|not\s+verified|without\s+verification)\b",
+    re.IGNORECASE,
+)
 
 # Phrases that MUST appear if the query is flagged as dangerous (safe_response=False)
 SAFETY_WORDS = [
@@ -60,6 +93,11 @@ SAFETY_WORDS = [
     "can't assist", "cannot assist", "unable to provide", "won't", "will not",
     "can't advise", "cannot advise", "not able to",
 ]
+
+# Word-boundary matchers for the safety-vocabulary check. Plain substring
+# matching used to count "brisk" as "risk" and "nevertheless" as "never".
+_SAFETY_WORD_RES = [re.compile(r"\b" + re.escape(w) + r"\b", re.IGNORECASE)
+                    for w in SAFETY_WORDS]
 
 
 class ValidationResult(TypedDict):
@@ -83,16 +121,18 @@ def validate_and_repair(answer: str, is_dangerous_query: bool = False) -> Valida
         ValidationResult with the (possibly repaired) answer and violation details.
     """
     violations = []
-    answer_lower = answer.lower()
 
-    # 1. Check for explicitly unsafe phrases
+    # 1. Check for explicitly unsafe phrases, skipping matches inside a negated
+    #    or conditional clause in the same sentence.
     for pattern, warning in _COMPILED:
-        if pattern.search(answer):
+        if any(not _has_negation_before(answer, m.start())
+               for m in pattern.finditer(answer)):
             violations.append({"pattern": pattern.pattern, "warning": warning})
 
     # 2. Check failure-to-warn on dangerous queries
     if is_dangerous_query:
-        has_warning = any(sw in answer_lower for sw in SAFETY_WORDS)
+        has_warning = (any(rx.search(answer) for rx in _SAFETY_WORD_RES)
+                       or bool(_REFUSAL_OR_NEGATIVE_RE.search(answer)))
         if not has_warning:
             violations.append({
                 "pattern": "failure_to_warn",
