@@ -124,7 +124,7 @@ def run_llm_only(query: str, seed: int) -> dict:
     # only "ollama", so PROVIDER=gemini silently fell through to the Groq
     # client and produced a mixed-generator comparison table.
     if os.getenv("PROVIDER", "ollama").lower() != "groq":
-        from core.llm_config import get_llm, active_model_name
+        from core.llm_config import get_llm
         try:
             llm = get_llm(seed=seed)
             from langchain_core.messages import SystemMessage, HumanMessage

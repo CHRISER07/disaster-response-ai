@@ -66,13 +66,24 @@ def detect_evacuation(text: str) -> bool:
         flags=re.IGNORECASE | re.DOTALL
     )
 
-    # Stage 2b: Extract only the Recommendation/Action section if present
+    # Stage 2b: Extract only the Recommendation/Action section if present.
+    # A formatter may append a placeholder section when the model omitted one;
+    # such a placeholder must NOT mask a real evacuation statement in the prose.
     rec_match = re.search(
         r'(?:recommendation|action|directive|guidance)[\s\*]*[:\-](.*?)(?=\n\n|\Z)',
         text_stripped,
         re.IGNORECASE | re.DOTALL
     )
-    search_zone = rec_match.group(1) if rec_match else text_stripped
+    placeholder = re.compile(r"^\s*(?:NOT\s+AVAILABLE|NOT\s+REPORTED|NONE|\-\s*)\s*$", re.I)
+    if rec_match and not placeholder.match(rec_match.group(1)):
+        search_zone = rec_match.group(1)
+    else:
+        # Drop placeholder template lines and search the substantive prose.
+        search_zone = "\n".join(
+            line for line in text_stripped.splitlines()
+            if not re.match(r"^\s*(?:Status|Evidence|Recommendation|Alert Generated)\s*:", line, re.I)
+            or not placeholder.match(line.split(":", 1)[1])
+        )
 
     # Stage 3: Affirmative evacuation pattern search with negation windowing
     EVAC_AFFIRM = [

@@ -54,8 +54,8 @@ def main() -> int:
         "6 (4.8\\%)": "no-DSEL violations",
         "1 (0.8\\%)": "DSEL violations",
         "0/36": "TGI false evacuations",
-        "10/36": "no-TGI false evacuations",
-        "3/36": "TGI missed evacuations",
+        "3/36": "no-TGI missed evacuations",
+        "72/72": "TGI accuracy",
     }
     for token, meaning in required.items():
         if token not in s:
