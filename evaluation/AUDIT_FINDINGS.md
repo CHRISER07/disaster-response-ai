@@ -401,6 +401,11 @@ footnote that the BM25 held-out value is withheld because the legacy retriever
 was invalid and that the corrected value is in Table~\ref{tab:fresh}. Removed a
 duplicated audit-ledger sentence to keep the paper at 8 pages.
 
+F45: Added verify_paper_integrity.py as a guard against the recurring problem
+of external processes rewriting the paper. It fails on stale claims, duplicate
+grounding tables, controlled-run numbers mixed into published Table III,
+missing verified values, or a changed DSEL artifact. Current paper passes.
+
 ## Remaining honest deviations
 
 D1: Spec mandates qwen/qwen-2.5-72b-instruct; Groq models API confirms it does
