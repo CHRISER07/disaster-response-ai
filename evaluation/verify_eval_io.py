@@ -28,6 +28,10 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
 os.environ.setdefault("PYTHONUTF8", "1")
+LOCKED_PROVIDER = os.getenv("PROVIDER", "ollama")
+LOCKED_MODEL = os.getenv("OLLAMA_MODEL", "llama3.1:8b")
+os.environ["PROVIDER"] = LOCKED_PROVIDER
+os.environ["OLLAMA_MODEL"] = LOCKED_MODEL
 
 from evaluation.run_dev_eval_v2 import (
     run_llm_only, run_bm25, run_static_rag, run_full_agent,
@@ -63,6 +67,8 @@ def main() -> None:
         ("Full_Agent", lambda q, s: run_full_agent(q, s)),
         ("Full_Agent_NoTGI", lambda q, s: run_full_agent(q, s, no_tgi=True)),
         ("Full_Agent_NoDSEL", lambda q, s: run_full_agent(q, s, no_dsel=True)),
+        ("Full_Agent_NoTelem", lambda q, s: run_full_agent(q, s, no_telemetry=True)),
+        ("Text_Only_StaticRAG", lambda q, s: run_static_rag(q, s, text_only=True)),
     ]
 
     failures = 0

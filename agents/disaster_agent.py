@@ -545,10 +545,16 @@ def run_agent(query: str, thread_id: str = "default", seed: int = 42, return_str
 
     # Record the actual dispatch outcome before presentation normalization, so
     # the template never claims "NONE" when generate_structured_alert fired.
+    import re as _re
     alert_dispatched = "generate_structured_alert" in (deduped_tools or [])
-    if "Alert Generated:" not in final_answer:
-        final_answer += ("\n\nAlert Generated: ALERT LOGGED" if alert_dispatched
-                         else "\n\nAlert Generated: NONE")
+    alert_line = ("Alert Generated: ALERT LOGGED" if alert_dispatched
+                  else "Alert Generated: NONE")
+    if _re.search(r"^Alert Generated:.*$", final_answer, _re.MULTILINE):
+        # Overwrite a model-written status: the tool trace is authoritative.
+        final_answer = _re.sub(r"^Alert Generated:.*$", alert_line, final_answer,
+                               flags=_re.MULTILINE)
+    else:
+        final_answer += "\n\n" + alert_line
 
     # Deterministic, asterisk-free presentation. Applied last so every answer path
     # (normal, fallback, repaired, conflict notice) is normalized identically.

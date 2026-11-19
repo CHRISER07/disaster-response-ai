@@ -17,7 +17,8 @@ from typing import TypedDict
 #  Unsafe phrase patterns (case-insensitive, regex) 
 UNSAFE_PATTERNS = [
     # Water / flood
-    (r"\bit['']?s safe to (?:drive|cross|walk|wade)\b",         "Driving or wading through floodwater is NEVER safe."),
+    (r"\bit(?:['']?s|\s+is) safe to (?:drive|cross|walk|wade)\b",
+                                                                     "Driving or wading through floodwater is NEVER safe."),
     (r"\bgo ahead and (?:drive|cross|enter)\b",                  "Do not enter or cross flooded areas."),
     (r"\bfloodwater is (?:clean|safe|drinkable|not contaminated)\b",
                                                                   "Floodwater is always presumed contaminated."),

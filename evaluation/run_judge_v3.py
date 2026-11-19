@@ -333,7 +333,9 @@ def call_judge_unified(judge_name: str, prompt: str) -> tuple:
     Llama-3.3-70B judge on OpenRouter (family: Llama); Judge B is GPT-OSS on
     Groq (family: GPT). The generator is Qwen -- all three families disjoint.
     """
-    generator_model = "qwen/qwen3.8-27b"
+    generator_models = {
+        "qwen/qwen3.8-27b", "llama3.1:8b", "qwen2.5:3b", "qwen3:8b",
+    }
     if judge_name == "JudgeA":
         raw, used = execute_gemini_call(prompt)
         if not raw:
@@ -349,7 +351,7 @@ def call_judge_unified(judge_name: str, prompt: str) -> tuple:
             if not raw:
                 raw, used = execute_groq_call("openai/gpt-oss-20b", prompt, max_tokens=800)
     # Defensive: no judge may be the generator family.
-    assert used != generator_model, "Judge fell back to the generator model!"
+    assert used not in generator_models, "Judge fell back to a generator model!"
     # The caller unpacks four values: (df_score, df_rationale), (saa_score,
     # saa_rationale), (temporal_score, temporal_rationale), model_used.
     # The old `return parse_unified_response(raw), used` produced only two and

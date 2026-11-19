@@ -421,6 +421,15 @@ added, DSEL p=0.12 stated, SAA kappa 0.513/macro 0.471, 1,300 query-config
 pairs, verified latency/token numbers, 8-page compile. Existing result CSVs were
 generated before these code fixes and were not silently rewritten.
 
+F47: Final line-by-line pass. Fixed "It is safe to drive..." regex so the
+unsafe sentence is actually deleted; alert status line is rewritten from the
+tool trace even when the model wrote NONE; hybrid-store connection now closes
+in finally and uses a unique fusible key; alert history filters non-alert audit
+records; audit --watch no longer exits on first pass; verify_eval_io locks the
+provider and covers all agent configs; judge independence rejects all known
+generator models. Full gate: all modules compile, alert/conflict tests PASS,
+output audit PASS (1050 rows), paper guard PASS, 8-page compile.
+
 ## Remaining honest deviations
 
 D1: Spec mandates qwen/qwen-2.5-72b-instruct; Groq models API confirms it does

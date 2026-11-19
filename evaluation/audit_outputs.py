@@ -111,7 +111,7 @@ def main() -> int:
               f"problems={result['problem_counts']} report={REPORT.name}")
         for p in result["problems"][:20]:
             print("  ", p)
-        if not watch or result["passed"]:
+        if not watch:
             return 0 if result["passed"] else 1
         time.sleep(60)
 

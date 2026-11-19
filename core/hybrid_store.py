@@ -85,6 +85,7 @@ class HybridRetrievalStore:
         fts_clause = " OR ".join(tokens[:8])
 
         chunks = []
+        conn = None
         try:
             conn = sqlite3.connect(DB_PATH)
             cur = conn.cursor()
@@ -101,8 +102,7 @@ class HybridRetrievalStore:
                     "SELECT key, string_value FROM embedding_metadata WHERE id = ?", (rowid,)
                 ).fetchall()
                 meta = {k_name: v_val for k_name, v_val in meta_rows}
-                
-                # Apply modality filter
+
                 if modality_filter:
                     mod = meta.get("modality", "")
                     target_mods = []
@@ -123,9 +123,11 @@ class HybridRetrievalStore:
                 rank += 1
                 if len(chunks) >= k:
                     break
-            conn.close()
         except Exception:
             pass
+        finally:
+            if conn is not None:
+                conn.close()
         return chunks
 
     def hybrid_search(
