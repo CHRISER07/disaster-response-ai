@@ -468,7 +468,7 @@ No Telemetry & 0.0947 & 0.0561 & 0.3375 \\
 \bottomrule
 \end{tabular*}
 \vspace{2pt}
-\raggedright{\scriptsize 1,050 runs, zero errors; published scorer; ranking not reproduced.}
+\raggedright{\scriptsize 1,050 clean runs; published scorer; ranking not reproduced.}
 \end{table}
 
 Table~\ref{tab:main} reports KW-F1 on development and held-out splits: the published Full Agent score is 0.0915 versus 0.0657 for Static RAG. The legacy BM25 value is excluded; the corrected measurement appears in Table~\ref{tab:fresh}. Gains are modest and configuration-specific.
@@ -494,6 +494,8 @@ Ablation: No TGI & 0.0876 $\pm$ 0.0099 & 0.0862 $\pm$ 0.0077 \\
 Ablation: No Telemetry & 0.0830 $\pm$ 0.0078 & -- \\
 \bottomrule
 \end{tabular*}
+\vspace{2pt}
+\raggedright{\scriptsize BM25 held-out withheld: invalid legacy retriever; corrected value in Table~\ref{tab:fresh}.}
 \end{table}
 
 \subsection{Dual-Tier Hybrid Retrieval Engine Evaluation}
@@ -641,7 +643,7 @@ Total Violations & 27 (21.4\%) & 6 (4.8\%) & 1 (0.8\%) \\
 \end{table}
 
 \subsection{Execution Latency and Operational Cost Profiling}
-Median query execution latencies on held-out evaluations are: 2.64~s (BM25), 2.86~s (Standard Static RAG), 3.39~s (LLM-Only), and 5.88~s (Full Agent). The latency increment in the Full Agent reflects dynamic multi-step API routing across weather, NWIS, and seismic endpoints. Per-turn token audit telemetry via the Observability Plane records a mean of 1,842 prompt tokens and 318 completion tokens per query for the Full Agent. Under prevailing hosted API rates (\$0.80/M input, \$4.00/M output), this corresponds to an estimated inference cost of \$0.00275 per emergency inquiry (\$0.00147 input + \$0.00127 output). Standard Static RAG averaged 1,120 prompt tokens and 210 completion tokens (\$0.00174/query) but lacked dynamic sensor verification. The append-only audit ledger (\texttt{incident\_audit\_trail.jsonl}) logs complete cryptographic trace records and token overheads, verifying operational cost accounting for post-incident replay. The append-only audit ledger (\texttt{incident\_audit\_trail.jsonl}) logs complete cryptographic trace records and token overheads, verifying operational cost accounting for post-incident EOC replay.
+Median query execution latencies on held-out evaluations are: 2.64~s (BM25), 2.86~s (Standard Static RAG), 3.39~s (LLM-Only), and 5.88~s (Full Agent). The latency increment in the Full Agent reflects dynamic multi-step API routing across weather, NWIS, and seismic endpoints. Per-turn token audit telemetry via the Observability Plane records a mean of 1,842 prompt tokens and 318 completion tokens per query for the Full Agent. Under prevailing hosted API rates (\$0.80/M input, \$4.00/M output), this corresponds to an estimated inference cost of \$0.00275 per emergency inquiry (\$0.00147 input + \$0.00127 output). Standard Static RAG averaged 1,120 prompt tokens and 210 completion tokens (\$0.00174/query) but lacked dynamic sensor verification. The append-only audit ledger (\texttt{incident\_audit\_trail.jsonl}) logs cryptographic trace records and token overheads for post-incident replay.
 
 \subsection{Exploratory Vision Benchmark}
 An exploratory building-damage evaluation on 100 crops sampled from 1,017 labeled xView2/xBD post-disaster buildings \cite{xview2} yielded 0.340 accuracy and 0.292 macro-F1, modestly above the 0.25 chance baseline, with major-damage F1 of 0.140. Consistent with research reporting guidelines, this vision tool is documented as an experimental component rather than an operational capability.

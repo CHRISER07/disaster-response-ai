@@ -395,6 +395,12 @@ F43: Paper results table added for the completed controlled re-run
 reproduced. All ablations retained because they are the only evidence for the
 DSEL, TGI and telemetry claims. Compiled to 8 pages.
 
+F44: Table III verified cell-by-cell against results_per_query_v2.csv and
+results_heldout_v2.csv; every mean and CI matches exactly. Added an explicit
+footnote that the BM25 held-out value is withheld because the legacy retriever
+was invalid and that the corrected value is in Table~\ref{tab:fresh}. Removed a
+duplicated audit-ledger sentence to keep the paper at 8 pages.
+
 ## Remaining honest deviations
 
 D1: Spec mandates qwen/qwen-2.5-72b-instruct; Groq models API confirms it does
