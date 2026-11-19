@@ -40,7 +40,7 @@
 \@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {II-C}}Geospatial and Sensor-Aware Disaster Intelligence}{2}{}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {II-D}}Agentic Retrieval and Tool Orchestration}{2}{}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {II-E}}Safety Verification and Guardrail Systems}{2}{}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {I}{\ignorespaces Related Datasets, Frameworks, and Systems}}{2}{}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {I}{\ignorespaces Related Datasets, Frameworks, and Systems (No = capability not reported)}}{2}{}\protected@file@percent }
 \newlabel{tab:lit}{{I}{2}{}{table.1}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {III}Methodology}{2}{}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-A}}System Architecture}{2}{}\protected@file@percent }
@@ -48,7 +48,6 @@
 \@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Four-plane operational architecture for disaster situational awareness.}}{3}{}\protected@file@percent }
 \newlabel{fig:arch}{{1}{3}{}{figure.1}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-B}}Temporal Evidence Tagging (TGI)}{3}{}\protected@file@percent }
-\newlabel{eq:tuple}{{1}{3}{}{equation.1}{}}
 \newlabel{eq:snow}{{2}{3}{}{equation.2}{}}
 \newlabel{eq:tgi}{{3}{3}{}{equation.3}{}}
 \@writefile{loa}{\contentsline {algorithm}{\numberline {1}{\ignorespaces Dynamic Temporal Evidence Tagging and Retrieval}}{3}{}\protected@file@percent }
@@ -64,13 +63,10 @@
 \citation{openmeteo}
 \citation{usgsfdsn}
 \@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-C}}Dual-Tier Hybrid Retrieval Engine}{4}{}\protected@file@percent }
-\newlabel{eq:emb}{{4}{4}{}{equation.4}{}}
-\newlabel{eq:rrf}{{5}{4}{}{equation.5}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-D}}Geospatial Routing and Catchment-Based Filtering}{4}{}\protected@file@percent }
-\newlabel{eq:geo_gate}{{6}{4}{}{equation.6}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-E}}Agentic Orchestration and Tool Registry}{4}{}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-F}}Deterministic Safety Enforcement Layer (DSEL)}{4}{}\protected@file@percent }
-\newlabel{eq:agr}{{7}{4}{}{equation.7}{}}
+\newlabel{eq:gr}{{7}{4}{}{equation.7}{}}
 \citation{dab200}
 \citation{olteanu2015}
 \@writefile{loa}{\contentsline {algorithm}{\numberline {2}{\ignorespaces Deterministic Safety Enforcement Layer (DSEL)}}{5}{}\protected@file@percent }
@@ -82,8 +78,6 @@
 \@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {IV-D}}Evaluation Metrics}{5}{}\protected@file@percent }
 \citation{zheng}
 \citation{cohen1968,landis1977}
-\newlabel{eq:f1}{{8}{6}{}{equation.8}{}}
-\newlabel{eq:kappa}{{9}{6}{}{equation.9}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {V}Results and Discussions}{6}{}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {V-A}}Main Benchmark Grounding Performance}{6}{}\protected@file@percent }
 \@writefile{lot}{\contentsline {table}{\numberline {II}{\ignorespaces Grounding Performance on DAB-200 (Mean $\pm $ 95\% CI)}}{6}{}\protected@file@percent }
@@ -95,12 +89,12 @@
 \@writefile{lot}{\contentsline {table}{\numberline {IV}{\ignorespaces Two-Sided Temporal Stress Test ($N=72$ Trials)}}{6}{}\protected@file@percent }
 \newlabel{tab:tgi}{{IV}{6}{}{table.4}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {V-D}}Geospatial Routing and Hydrological Verification}{6}{}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {V}{\ignorespaces Geospatial Routing and Catchment Gating ($N=20$)}}{6}{}\protected@file@percent }
-\newlabel{tab:geo}{{V}{6}{}{table.5}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {V-E}}Safe Abstention and Hallucination Resistance}{6}{}\protected@file@percent }
 \citation{zheng}
 \citation{xview2}
 \citation{qwenvl}
-\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {V-E}}Safe Abstention and Hallucination Resistance}{7}{}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {V}{\ignorespaces Geospatial Routing and Catchment Gating ($N=20$)}}{7}{}\protected@file@percent }
+\newlabel{tab:geo}{{V}{7}{}{table.5}{}}
 \@writefile{lot}{\contentsline {table}{\numberline {VI}{\ignorespaces Safe Abstention on Adversarial Traps ($N=15$)}}{7}{}\protected@file@percent }
 \newlabel{tab:abstention}{{VI}{7}{}{table.6}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {V-F}}Cross-Family Dual-Judge Evaluation}{7}{}\protected@file@percent }
@@ -112,7 +106,6 @@
 \@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {V-H}}Execution Latency and Operational Cost Profiling}{7}{}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {V-I}}Exploratory Vision Benchmark}{7}{}\protected@file@percent }
 \@writefile{toc}{\contentsline {section}{\numberline {VI}Limitations}{7}{}\protected@file@percent }
-\newlabel{sec:threats}{{VI}{7}{}{section.6}{}}
 \bibcite{undrr}{1}
 \bibcite{endsley}{2}
 \bibcite{aboualola2023}{3}
