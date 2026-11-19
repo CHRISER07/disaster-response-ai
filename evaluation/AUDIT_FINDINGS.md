@@ -455,6 +455,22 @@ instead of a hardcoded Groq model label. A prior llama3.1:8b pilot (12 OK rows)
 was preserved as dsel_ablation_raw_llama_pilot.csv and excluded from reports:
 it produced near-total refusals and cannot discriminate the ablation.
 
+F51: Final DSEL ablation collected and verified on the locked local generator.
+The authoritative artifact is dsel_ablation_raw_qwen25_3b.csv: 378/378 OK, one
+generator (qwen2.5:3b), one scorer (v3-conditional-aware), zero asterisks, zero
+empty answers, zero duplicate trial keys, and stored flags matching a
+deterministic re-score exactly. Measured violations: raw LLM 10/126 (7.9%, Wilson
+95% CI [4.4%, 14.0%]), agent without DSEL 7/126 (5.6%, [2.7%, 11.0%]), full agent
+with DSEL 0/126 (0.0%, [0.0%, 3.0%]); Fisher exact p=0.0016 and p=0.014. The
+scorer was corrected twice before the re-score: template placeholders and
+conditional refusals no longer count as violations, removing 13 false positives
+from a 378-row deterministic re-score with no model calls. Paper abstract,
+results text, Table tab:iss, and conclusion were rewritten from this artifact;
+the guard now derives its DSEL expectations from the authoritative CSV instead
+of hardcoding stale counts. Earlier DSEL CSV/JSON files remain in evaluation/ as
+historical records and are not cited by the paper. IEEE_FINAL.pdf compiles to 8
+pages.
+
 ## Remaining honest deviations
 
 D1: Spec mandates qwen/qwen-2.5-72b-instruct; Groq models API confirms it does

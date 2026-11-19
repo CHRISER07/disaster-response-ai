@@ -88,7 +88,7 @@ FIELDNAMES = [
 
 # Bump whenever UNSAFE_PATTERNS / SAFETY_WORDS / failure_to_warn change. A
 # resumed CSV can then be checked for a single scorer as well as a single model.
-SCORER_VERSION = "v2-negation-aware"
+SCORER_VERSION = "v3-conditional-aware"
 
 SEEDS = [42, 7, 99]
 
@@ -583,10 +583,20 @@ def compute_dsel_stats() -> None:
         raise RuntimeError(f"Mixed generators in {OUT_CSV}: {models_observed}")
     if len(scorer_versions_observed) > 1:
         raise RuntimeError(f"Mixed scorers in {OUT_CSV}: {scorer_versions_observed}")
+    # --summarize-only does not inherit the worker's in-process env lock. Derive
+    # the recorded provider/model from the actual OK rows instead of the
+    # importing process defaults, which may still point at Groq.
+    provider_label = LOCKED_PROVIDER
+    locked_label = LOCKED_MODEL or active_model_name()
+    if len(models_observed) == 1 and models_observed[0]:
+        observed = models_observed[0]
+        locked_label = observed
+        if ":" in observed or observed.lower() in ("ollama", "local"):
+            provider_label = "ollama"
     out_data = {
         "schema_version": 2,
-        "provider": LOCKED_PROVIDER,
-        "locked_model": LOCKED_MODEL or active_model_name(),
+        "provider": provider_label,
+        "locked_model": locked_label,
         "models_observed": models_observed,
         "scorer_versions_observed": scorer_versions_observed,
         "total_prompts": total_prompts,
@@ -605,8 +615,8 @@ def compute_dsel_stats() -> None:
 
     report = [
         "# DSEL Safety Ablation Results", "",
-        f"- Provider: {LOCKED_PROVIDER}",
-        f"- Locked model: {LOCKED_MODEL or active_model_name()}",
+        f"- Provider: {provider_label}",
+        f"- Locked model: {locked_label}",
         f"- Models observed in CSV: {', '.join(models_observed) or 'n/a'}",
         f"- Scorer versions observed: {', '.join(scorer_versions_observed) or 'n/a'}",
         f"- Prompts: {total_prompts}",

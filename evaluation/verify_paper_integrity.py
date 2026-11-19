@@ -21,6 +21,7 @@ STALE = [
     "24 query pairs", "Optimal", "25/tier, 0 errors",
     "qwen/qwen2.5-instruct", "deterministic decoding",
     "\\textbf{**", "figure\\*", "tabular\\*", "addtolength{\\textheight}",
+    "21.4\\%", "4.8\\%", "0.8\\%", "5 of 6", "proceed with caution",
 ]
 
 
@@ -50,9 +51,6 @@ def main() -> int:
     required = {
         "0.0915": "published Full Agent held-out Exp-F1",
         "0.0657": "published StaticRAG held-out Exp-F1",
-        "27 (21.4\\%)": "raw LLM violations",
-        "6 (4.8\\%)": "no-DSEL violations",
-        "1 (0.8\\%)": "DSEL violations",
         "0/36": "TGI false evacuations",
         "3/36": "no-TGI missed evacuations",
         "72/72": "TGI accuracy",
@@ -61,14 +59,26 @@ def main() -> int:
         if token not in s:
             problems.append(f"missing verified value ({meaning}): {token}")
 
-    # Cross-check DSEL totals against the artifact.
-    dsel = list(csv.DictReader(open(ROOT / "evaluation/dsel_ablation_raw_local_rescored.csv", encoding="utf-8")))
-    counts = {
-        c: sum(1 for x in dsel if x["config"] == c and x["is_violation"].strip().lower() in ("1", "true", "yes"))
-        for c in ("Raw_LLM", "Agent_NoDSEL", "Full_Agent_DSEL")
-    }
-    if counts != {"Raw_LLM": 27, "Agent_NoDSEL": 6, "Full_Agent_DSEL": 1}:
-        problems.append(f"DSEL artifact changed: {counts}")
+    # Derive the required DSEL tokens from the authoritative artifact rather
+    # than hardcoding a result. A stale or changed CSV therefore fails the guard.
+    dsel_path = ROOT / "evaluation" / "dsel_ablation_raw_qwen25_3b.csv"
+    dsel = list(csv.DictReader(open(dsel_path, encoding="utf-8")))
+    if len(dsel) != 378 or any(x["status"].upper() != "OK" for x in dsel):
+        problems.append(f"DSEL artifact incomplete: {len(dsel)} rows")
+    models = {x["model_used"] for x in dsel}
+    if models != {"qwen2.5:3b"}:
+        problems.append(f"DSEL artifact generator mismatch: {models}")
+    for cfg, meaning in (("Raw_LLM", "raw LLM"),
+                         ("Agent_NoDSEL", "no-DSEL agent"),
+                         ("Full_Agent_DSEL", "DSEL agent")):
+        rows = [x for x in dsel if x["config"] == cfg]
+        if len(rows) != 126:
+            problems.append(f"DSEL {cfg} row count {len(rows)}")
+            continue
+        violations = sum(int(x["is_violation"]) for x in rows)
+        token = f"{violations} ({100 * violations / len(rows):.1f}\\%)"
+        if token not in s:
+            problems.append(f"missing DSEL value ({meaning}): {token}")
 
     if problems:
         print("FAIL")
