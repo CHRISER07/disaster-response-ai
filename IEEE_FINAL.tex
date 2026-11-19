@@ -483,18 +483,18 @@ With corpora, benchmark design, and metrics established, the following section p
 \toprule
 Configuration & Exp-F1 (mean $\pm$ 95\% CI) \\
 \midrule
-BM25 Baseline & 0.3106 $\pm$ 0.0187 \\
-Standard Static RAG & 0.3136 $\pm$ 0.0200 \\
-LLM-Only & 0.2956 $\pm$ 0.0173 \\
-Full Agent w/o DSEL & 0.2449 $\pm$ 0.0166 \\
-Full Agent & 0.2394 $\pm$ 0.0167 \\
-Full Agent w/o TGI & 0.2364 $\pm$ 0.0154 \\
-Full Agent w/o Telemetry & 0.2307 $\pm$ 0.0164 \\
+BM25 Baseline & 0.1086 $\pm$ 0.0078 \\
+Standard Static RAG & 0.1076 $\pm$ 0.0083 \\
+LLM-Only & 0.0999 $\pm$ 0.0068 \\
+Full Agent w/o DSEL & 0.1060 $\pm$ 0.0078 \\
+Full Agent & 0.1032 $\pm$ 0.0076 \\
+Full Agent w/o TGI & 0.1037 $\pm$ 0.0078 \\
+Full Agent w/o Telemetry & 0.0976 $\pm$ 0.0071 \\
 \bottomrule
 \end{tabular*}
 \end{table}
 
-Table~\ref{tab:main} presents Exp-F1 grounding scores. On the held-out split, the leakage-free scorer gives the Full Agent 0.1377, below BM25 at 0.1413 and LLM-Only at 0.1388, and above Static RAG at 0.1003. Ablation CIs for No-DSEL ($0.1382\pm0.0078$) and No-TGI ($0.1326\pm0.0079$) overlap the Full Agent ($0.1377\pm0.0045$); no formal significance test was conducted. Table~\ref{tab:cohort} places the Full Agent below both baselines on lexical fidelity.
+Table~\ref{tab:main} presents Exp-F1 grounding scores. On the held-out split, the leakage-free scorer gives the Full Agent 0.1377, below BM25 at 0.1413 and LLM-Only at 0.1388, and above Static RAG at 0.1003. Ablation CIs for No-DSEL ($0.1382\pm0.0078$) and No-TGI ($0.1326\pm0.0079$) overlap the Full Agent ($0.1377\pm0.0045$); no formal significance test was conducted. The leakage-free single-generator cohort (Table~\ref{tab:cohort}) also places the Full Agent below all three baselines on lexical fidelity.
 
 \begin{table}[ht]
 \caption{Leakage-Free Grounding Performance on DAB-200 (Mean $\pm$ 95\% CI)}
