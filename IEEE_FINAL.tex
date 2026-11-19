@@ -279,7 +279,7 @@ where $\gg 22$ extracts elapsed milliseconds since the custom Twitter epoch. Unl
 \tilde{x} =
 \begin{cases}
 \langle\mathsf{ANOMALY}\rangle \Vert x, & \delta < 0,\\[2pt]
-\langle\mathsf{KB}\rangle \Vert x, & x \text{ has no timestamp and is an official/KB document},\\[2pt]
+\langle\mathsf{KB}\rangle \Vert x, & x \text{ undated official/KB},\\[2pt]
 \langle\mathsf{LIVE}\rangle \Vert x, & 0 \le \delta \le \Delta_{\mathrm{live}},\\[2pt]
 \langle\mathsf{RECENT}\rangle \Vert x, & \Delta_{\mathrm{live}} < \delta \le \Delta_{\mathrm{recent}},\\[2pt]
 \langle\mathsf{HIST:yr}(t_{\mathrm{source}})\rangle \Vert x, & \delta > \Delta_{\mathrm{recent}},
@@ -325,7 +325,7 @@ To reduce cross-watershed contamination, incoming sensor feeds undergo catchment
 \label{eq:geo_gate}
 g(x, \ell) =
 \begin{cases}
-\mathcal{Z}_{\mathrm{rej}}, & m(x,\ell)=\textsc{Mismatch} \lor d \text{ undefined},\\[2pt]
+\mathcal{Z}_{\mathrm{rej}}, & m(x,\ell)=\textsc{Mismatch} \lor d\ \text{undefined},\\[2pt]
 \mathcal{Z}_{\mathrm{dir}}, & d(x,\ell) \le 5\,\text{km} \land m(x,\ell)\neq\textsc{Mismatch},\\[2pt]
 \mathcal{Z}_{\mathrm{catch}}, & d(x,\ell) \le 25\,\text{km} \land m(x,\ell)\neq\textsc{Mismatch},\\[2pt]
 \mathcal{Z}_{\mathrm{reg}}, & d(x,\ell) \le 60\,\text{km} \land x \in \mathcal{D}_{\mathrm{meteo}},\\[2pt]
