@@ -22,9 +22,12 @@ column. When this file and an older report disagree, **this file wins**.
 
 ## In progress — do not report
 
-- `results_heldout_fresh.csv`: restored-system re-run, one generator
-  (`llama3.1:8b`), still being written. BM25 rows in this file are **stale**
-  (constant-context retriever) and will be deleted and re-measured.
+- `results_heldout_fresh.csv`: **complete** — 1,050 rows, all `llama3.1:8b`,
+  seed 42, zero errors, zero markdown, audit PASS. Corrected-retriever BM25 rows
+  are included. Under the published KW-F1 scorer: Static RAG 0.1110, No-DSEL
+  0.0956, No-Telemetry 0.0947, Full Agent 0.0928, BM25 0.0914, No-TGI 0.0911,
+  LLM-Only 0.0832. The published ranking did **not** reproduce, so KW-F1
+  superiority is configuration-specific; this is reported in the paper.
 - `judge_scores_v3fixed.csv`: **abandoned** at 3,453/6,600. Judge A could not be
   served: all 10 Gemini keys return HTTP 429 (quota exhausted), the OpenRouter
   key returns HTTP 402 (no credits), and Groq exposes no Llama-family model.

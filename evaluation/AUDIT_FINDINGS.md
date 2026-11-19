@@ -379,6 +379,16 @@ this differs, narrowed the Conclusion to implemented / established / unvalidated
 and added verifiable official references (USGS NWIS, FDSN, Open-Meteo, FEMA NIMS).
 Title left unchanged at the user's request.
 
+F42: Fresh held-out run complete: 1,050 rows, one generator (llama3.1:8b),
+zero errors, zero unformatted answers, audit PASS. The corrected BM25 retriever
+was re-measured (151 stale rows removed, 150 regenerated). Under the published
+KW-F1 scorer the controlled re-run does not reproduce the published ranking
+(Static RAG 0.1110 > Full Agent 0.0928), so the paper now reports this as a
+negative/configuration-specific finding and no longer claims general KW-F1
+superiority. The multi-source tool-routing fix (up to 4 calls when multiple
+sources are requested) was smoke-tested; its effect is limited to late NoTelem
+rows because earlier agent rows were generated before the change.
+
 ## Remaining honest deviations
 
 D1: Spec mandates qwen/qwen-2.5-72b-instruct; Groq models API confirms it does

@@ -1,0 +1,17 @@
+\documentclass[conference]{IEEEtran}
+\usepackage{amsmath,amssymb}
+\begin{document}
+\subsection{Geospatial Routing and Hydrological Catchment Gating}
+To prevent cross-watershed contamination, incoming sensor feeds undergo topological spatial routing. Each observation is annotated with coordinates and assigned to a hydrological sub-basin via USGS HUC-10 boundaries. Let (x,\ell) \equiv \mathbf{1}[\mathrm{HUC}_{10}(x) = \mathrm{HUC}_{10}(\ell)]$ denote sub-basin concordance. The routing predicate is:
+\begin{equation}
+\label{eq:geo_gate}
+g(x, \ell) =
+\begin{cases}
+\mathcal{Z}_{\mathrm{dir}}, & d(x,\ell) \le 5\,\text{km} \land m(x,\ell),\\[2pt]
+\mathcal{Z}_{\mathrm{catch}}, & d(x,\ell) \le 25\,\text{km} \land m(x,\ell),\\[2pt]
+\mathcal{Z}_{\mathrm{reg}}, & 25 < d(x,\ell) \le 60\,\text{km} \land x \in \mathcal{D}_{\mathrm{meteo}},\\[2pt]
+\mathcal{Z}_{\mathrm{rej}}, & \text{otherwise,}
+\end{cases}
+\end{equation}
+where (\cdot)$ is the Haversine great-circle distance, $\mathcal{Z}_{\mathrm{dir}}$ is direct local, $\mathcal{Z}_{\mathrm{catch}}$ is catchment corridor, $\mathcal{Z}_{\mathrm{reg}}$ is regional meteorology, and $\mathcal{Z}_{\mathrm{rej}}$ is rejected out-of-bounds.
+\end{document}

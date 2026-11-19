@@ -136,3 +136,7 @@ def load_recent_alerts(n: int = 20) -> list[dict]:
                 except json.JSONDecodeError:
                     pass
     return alerts[-n:]
+
+
+# Architectural alias ensuring exact parity with manuscript specification
+send_disaster_alert = generate_structured_alert

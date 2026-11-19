@@ -21,7 +21,7 @@ from tools.kb_search_tool import (
     search_knowledge_base,
 )
 from tools.vision_tool import analyze_disaster_image
-from tools.alert_tool import generate_structured_alert
+from tools.alert_tool import generate_structured_alert, send_disaster_alert
 
 ALL_TOOLS = [
     fetch_live_weather,

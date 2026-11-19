@@ -65,7 +65,7 @@ def wkt_bbox(wkt: str):
     return min(xs), min(ys), max(xs), max(ys)
 
 
-def collect_buildings(tar, metadata):
+def collect_buildings(tar, metadata, min_crop: int = 192):
     """Return list of (crop_path, true_class, source_scene) for labeled buildings."""
     from PIL import Image
     CROPS.mkdir(parents=True, exist_ok=True)
@@ -98,10 +98,9 @@ def collect_buildings(tar, metadata):
             x0, y0, x1, y1 = bbox
             # The building polygon alone is usually only ~60px across. A vision
             # model cannot judge damage from that alone; include surrounding
-            # context so the crop is at least MIN_CROP px on each side.
-            MIN_CROP = 192
+            # context so the crop is at least min_crop px on each side.
             bw, bh = x1 - x0, y1 - y0
-            pad = max(MIN_CROP / 2 - bw / 2, MIN_CROP / 2 - bh / 2, bw * 0.5)
+            pad = max(min_crop / 2 - bw / 2, min_crop / 2 - bh / 2, bw * 0.5)
             x0 = max(0, int(x0 - pad)); y0 = max(0, int(y0 - pad))
             x1 = min(w, int(x1 + pad)); y1 = min(h, int(y1 + pad))
             if x1 - x0 < 8 or y1 - y0 < 8:
@@ -142,11 +141,20 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--per-class", type=int, default=8)
     ap.add_argument("--seed", type=int, default=42)
+    ap.add_argument("--min-crop", type=int, default=192,
+                    help="minimum crop side in pixels (192 baseline, 384 sensitivity)")
+    ap.add_argument("--model", default=None,
+                    help="vision model override; sets OLLAMA_VISION_MODEL before import")
+    ap.add_argument("--out-tag", default=None,
+                    help="suffix for output files so sensitivity runs never overwrite the baseline")
     args = ap.parse_args()
+
+    if args.model:
+        os.environ["OLLAMA_VISION_MODEL"] = args.model
 
     metadata = json.loads(META.read_text(encoding="utf-8"))
     tar = tarfile.open(TAR)
-    buildings = collect_buildings(tar, metadata)
+    buildings = collect_buildings(tar, metadata, min_crop=args.min_crop)
     print(f"Labeled building crops: {len(buildings)}")
 
     by_class = defaultdict(list)
@@ -166,6 +174,10 @@ def main():
         sample.extend(pool[: args.per_class])
     rng.shuffle(sample)
     print(f"Sampled {len(sample)} crops (cap {args.per_class}/class)")
+
+    suffix = f"_{args.out_tag}" if args.out_tag else ""
+    out_json = OUT_JSON.with_name(OUT_JSON.stem + suffix + OUT_JSON.suffix)
+    out_md = OUT_MD.with_name(OUT_MD.stem + suffix + OUT_MD.suffix)
 
     from tools.vision_tool import analyze_disaster_image
     rows = []
@@ -205,6 +217,8 @@ def main():
         "label_source": "xView2 building polygons (per-building subtypes)",
         "granularity": "building crop",
         "sampling": f"balanced cap {args.per_class} per class, seed {args.seed}",
+        "min_crop_px": args.min_crop,
+        "sample_crop_ids": sorted(x[0] for x in sample),
         "indexed_records": len(metadata),
         "labeled_buildings": len(buildings),
         "class_inventory": inventory,
@@ -219,7 +233,7 @@ def main():
         "mean_latency_s": round(sum(lat) / len(lat), 3) if lat else 0.0,
         "p95_latency_s": round(p95, 3), "per_class": pc, "rows": rows,
     }
-    OUT_JSON.write_text(json.dumps(summary, indent=2), encoding="utf-8")
+    out_json.write_text(json.dumps(summary, indent=2), encoding="utf-8")
     lines = ["# Vision Tool Benchmark (building-level)", "",
              f"Generated: {summary['generated']}", f"Model: {summary['model']}",
              f"Labeled buildings: {len(buildings)} | Sampled: {len(sample)} | "
@@ -234,9 +248,9 @@ def main():
              "| Class | Precision | Recall | F1 | Support |", "|---|---:|---:|---:|---:|"]
     for c, v in pc.items():
         lines.append(f"| {c} | {v['precision']} | {v['recall']} | {v['f1']} | {v['support']} |")
-    OUT_MD.write_text("\n".join(lines) + "\n", encoding="utf-8")
+    out_md.write_text("\n".join(lines) + "\n", encoding="utf-8")
     print(f"\nAccuracy={acc:.4f} MacroF1={macro:.4f} latency={summary['mean_latency_s']}s")
-    print(f"Wrote {OUT_JSON.name} and {OUT_MD.name}")
+    print(f"Wrote {out_json.name} and {out_md.name}")
 
 
 if __name__ == "__main__":

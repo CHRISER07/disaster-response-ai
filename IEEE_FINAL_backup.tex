@@ -1,0 +1,755 @@
+\documentclass[conference]{IEEEtran}
+\IEEEoverridecommandlockouts
+
+\usepackage{cite}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+\usepackage{graphicx}
+\usepackage{textcomp}
+\usepackage{xcolor}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,shapes.geometric}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.16}
+
+\begin{document}
+
+\title{Temporally Grounded Agentic Retrieval-Augmented Generation with Deterministic Safety Enforcement for Disaster Situational Awareness}
+
+\author{
+\IEEEauthorblockN{
+Christopher Aseer J Albert\textsuperscript{1},
+Prisha Andrew Bhosale\textsuperscript{2},
+Ashutosh Monish Bhonsle\textsuperscript{3},
+Chaitanya Vijaykumar Mahamuni\textsuperscript{4},\\
+Dakshayani G\textsuperscript{5}
+}
+\IEEEauthorblockA{
+\textsuperscript{1,2,3,5}\textit{Department of Computer Engineering, Fr. C Rodrigues Institute of Technology, Vashi, India}\\
+\textsuperscript{4}\textit{Electronics and Telecommunication Engineering, University of Mumbai, Mumbai, India}\\
+\textsuperscript{1}\texttt{christpheraseer5080@gmail.com}, \textsuperscript{2}\texttt{prisha.bhosale22@gmail.com},
+\textsuperscript{3}\texttt{bhonsle.ashutosh@gmail.com},\\
+\textsuperscript{4}\texttt{chaitanyamahamuni91@gmail.com}, \textsuperscript{5}\texttt{dakshayani@fcrit.ac.in}
+}
+}
+
+\maketitle
+
+\begin{abstract}
+Operational disaster response demands situational awareness synthesized across asynchronous crisis microblogs, real-time hydrologic and meteorological telemetry, and official response doctrine. Standard retrieval-augmented generation (RAG) paradigms exhibit critical operational failure modes in life-critical environments: they cannot distinguish historical disaster records from active field conditions, fail to reflect rapid sensor fluctuations, and lack deterministic boundaries against lethal directives. This paper presents an agentic RAG framework featuring two core mechanisms: Temporal Grounding Injection (TGI), a rolling time-window schema that segregates evidence into historical, recent, live, and doctrinal tiers; and a Deterministic Safety Enforcement Layer (DSEL), which executes multi-stage regular grammar directive repair, citation auditing, and deterministic gating on automated alerts. A reasoning-and-acting (ReAct) agent coordinates an 8-tool registry spanning live river gauges, weather, seismic feeds, multi-modal vision inspection, and official protocol manuals. On the 200-query DAB-200 benchmark, the full agent attains the highest held-out keyword grounding score (0.0915 KW-F1) among retrieval-based systems, outperforming sparse BM25 (0.0440) and standard static RAG (0.0657); we disclose that a text-only LLM baseline can score higher on judge-centric factual metrics under fluency bias. On a 42-prompt $\times$ 3-seed adversarial suite (126 trials per arm), the violation rates are 21.4\% for raw LLM, 4.8\% for an agent without DSEL, and 0.8\% with DSEL (1/126, Wilson 95\% CI [0.1\%, 4.4\%]), an 83.3\% relative hazard reduction ($p < 10^{-4}$). On a two-sided counterfactual flood suite (24 queries $\times$ 3 seeds = 72 trials per arm), TGI eliminates false evacuation orders on safe live readings (0/36, Wilson 95\% CI [0.0\%, 9.6\%]) versus 10/36 for the no-TGI agent, while both no-telemetry baselines miss all 36 flood cases. Building-level damage classification and held-out re-runs are maintained as active evaluation slots with unpopulated cells awaiting external benchmark completion.
+\end{abstract}
+
+\begin{IEEEkeywords}
+Agentic retrieval-augmented generation, disaster situational awareness, temporal grounding, deterministic safety enforcement, large language models, hallucination mitigation.
+\end{IEEEkeywords}
+
+%==========================================================
+\section{Introduction}
+Natural and anthropogenic hazards---including flash floods, seismic events, wildland fires, and hazardous material releases---cause extensive casualties and destabilize critical infrastructure globally \cite{undrr}. Timely emergency response hinges on operational situational awareness: a verified, spatio-temporally bounded picture of hazard severity and population vulnerability \cite{comes,adams,endsley}. Emergency operations centers (EOCs) must assemble this awareness under severe stress from heterogeneous streams including satellite and UAV imagery, crowdsourced microblogs, in-situ IoT sensors, and official doctrine \cite{crisismmd,ofli}.
+
+Recent AI advances accelerated specialized tasks such as post-disaster structural damage assessment from aerial imagery \cite{singh}, crisis social-media filtering \cite{dinani,olteanu2015}, and LLM-based emergency reporting \cite{cantini}. However, autoregressive language models are susceptible to hallucinations, fabricating plausible yet factually erroneous or operationally fatal directives \cite{ji,yu2024}. In life-critical management, ungrounded advice on evacuation corridors, structural stability, or water safety carries catastrophic consequences.
+
+Retrieval-augmented generation (RAG) \cite{lewis} conditions generation on external documents but exhibits three fundamental failure modes in live disaster operations:
+\begin{enumerate}
+    \item \textit{Temporal conflation:} Static embedding spaces lack temporal awareness. A historical report describing bridge inundation from 2013 is retrieved as if active, triggering unjustified panic and resource misallocation.
+    \item \textit{Telemetry blindness:} Vector indices over static text cannot capture minute-scale river stage, precipitation rate, or seismic aftershock dynamics, rendering systems blind to active hydrological surges.
+    \item \textit{Absence of safety guarantees:} Probabilistic alignment (RLHF, system prompts) remains inherently non-deterministic under adversarial or high-stress phrasing, failing to guarantee zero emission of lethal advice.
+\end{enumerate}
+
+To overcome these vulnerabilities, this paper introduces a temporally grounded, agentic RAG framework governed by deterministic safety enforcement. A LangGraph ReAct agent orchestrates an 8-tool registry for cross-modal synthesis across live telemetry, historical archives, and doctrine. The contributions are:
+\begin{enumerate}
+    \item \textit{Temporal Grounding Injection (TGI):} Bitwise Snowflake timestamp recovery \cite{olteanu2015}, rolling recency tagging ($\langle\mathsf{HIST}\rangle$, $\langle\mathsf{LIVE}\rangle$, $\langle\mathsf{KB}\rangle$), and spatio-temporal query conditioning that formalizes non-stationary environmental states.
+    \item \textit{Deterministic Safety Enforcement Layer (DSEL):} A four-tier pipeline executing regular grammar directive repair (L1), citation auditing (L2), Anchor Grounding Ratio verification (L3), and alert-policy authorization (L4).
+    \item \textit{Comprehensive empirical benchmarking:} The 200-query DAB-200 suite \cite{dab200} with development and held-out partitions, dual cross-family judges, adversarial stress testing, and component ablations---disclosing negative and ongoing results with academic transparency.
+\end{enumerate}
+
+The remainder of this paper is organized as follows: Section~II reviews related work in multimodal disaster intelligence and agentic retrieval. Section~III formulates the temporal conflation and epistemic conflict problem. Section~IV details the four-plane system architecture, TGI, and DSEL algorithms. Section~V describes the experimental setup and the design of the DAB-200 benchmark. Section~VI presents empirical results, safety stress tests, and component ablations. Section~VII analyzes limitations and threats to validity. Finally, Section~VIII concludes the paper with directions for future work.
+
+%==========================================================
+\section{Related Work}
+Research on disaster intelligence has transitioned from unimodal text processing to multimodal fusion of aerial imagery and crowdsourced microblogs \cite{crisismmd,ofli,abavisani}. Early benchmarks categorized informational tweets and structural damage severity \cite{humaid,olteanu2014}; contemporary architectures focus on open-world event identification \cite{yu2025} and real-time stream prioritization \cite{kim2025}. Unified multimodal foundation models like Emu3 \cite{emu3} process vision and text jointly but lack domain-specific physical grounding and verifiable tool interfaces.
+
+Physical sensor networks---including USGS streamflow gauges, Automated Weather Observing Systems (AWOS), and seismic accelerometers---furnish authoritative ground truth \cite{ray,aid}. Temporal information retrieval surveys \cite{campos2020}, FreshQA \cite{freshqa}, and TREC CrisisFACTS \cite{crisisfacts} expose severe temporal degradation in standard retrieval. Existing disaster RAG architectures treat static corpora and telemetry as disjoint or ingest snapshots into unversioned vector stores, creating severe temporal conflation.
+
+ReAct \cite{react} and LangGraph \cite{langgraph} enable agents to interleave reasoning traces with external tool invocations. Self-RAG \cite{selfrag} and Corrective RAG \cite{crag} introduce self-reflection tokens for dynamic retrieval; knowledge graphs have been adapted for earthquake emergency response \cite{zhang2024}. However, existing agentic systems lack deterministic execution bounds and may emit life-threatening directives when exposed to adversarial stress.
+
+Hallucination mitigation spans retrieval grounding, chain-of-verification, and external guardrails \cite{ji,yu2024}; RAGAs \cite{ragas} automates faithfulness evaluation via LLM judges. While NeMo Guardrails \cite{nemoguardrails} governs dialog flows and Llama Guard \cite{inan2023} provides probabilistic moderation, neither offers deterministic sub-millisecond guarantees against hazardous directives. We argue that deterministic regular grammar compilation combined with formal authorization gates establishes an unbreachable safety boundary for life-critical deployments.
+
+%==========================================================
+\section{Problem Formulation}
+Let $q$ be an emergency query issued at wall-clock time $t_q$ concerning geographical region $\ell$. The disaster corpus $\mathcal{D} = \mathcal{D}_{\mathrm{doc}} \cup \mathcal{D}_{\mathrm{hist}} \cup \mathcal{D}_{\mathrm{live}}$ comprises static official doctrine, historical incident archives, and dynamic sensor telemetry. Let $\Delta t$ be the operational active recency threshold ($\Delta t = 72$~h). Each document chunk $x \in \mathcal{D}$ possesses an associated observation timestamp $t_x$.
+
+\textit{Definition 1 (Temporal Conflation):} A synthesized response $\hat{y}$ exhibits temporal conflation if it asserts an active physical condition at time $t_q$ whose epistemic support derives exclusively from an archival observation $x \in \mathcal{D}_{\mathrm{hist}}$ where $t_q - t_x \gg \Delta t$, while directly contradicting live telemetry $x' \in \mathcal{D}_{\mathrm{live}}$.
+
+\textit{Definition 2 (Epistemic Conflict State):} The concordance between live sensor telemetry $x_{\mathrm{live}}$ and archival reports $x_{\mathrm{hist}}$ is mapped to an epistemic state space:
+\begin{equation}
+\mathcal{S}_{\mathrm{conflict}} \in \{\textsc{Supported}, \textsc{Contradicted}, \textsc{Unverified}, \textsc{Insufficient}\}.
+\label{eq:conflict_states}
+\end{equation}
+When live telemetry reports water stage below flood stage ($h < h_{\mathrm{fs}}$) while archival microblogs report street flooding, the resolver transitions to \textsc{Contradicted}, suppressing evacuation orders and articulating the temporal divergence. When telemetry is unavailable, the state transitions to \textsc{Insufficient}, triggering safe abstention.
+
+\textit{Definition 3 (Directive Safety Compliance):} Let $\mathcal{P}_{\mathrm{unsafe}}$ denote a formal regular grammar over hazardous directives (e.g., advising vehicles to traverse moving floodwater, re-entering uninspected structures, or touching downed power lines). A generated response $\hat{y}$ is safe if and only if $\hat{y} \cap \mathcal{P}_{\mathrm{unsafe}} = \emptyset$.
+
+The agentic reasoning process is modeled as a stateful Markov decision process $\mathcal{S}_{\mathrm{agent}} = \langle q, \mathcal{E}, h_t \rangle$, where $\mathcal{E}$ represents the validated evidence ledger and $h_t = (a_1, o_1, \dots, a_{t-1}, o_{t-1})$ denotes the history of actions and tool observations over registry $\mathcal{T}_{\mathrm{tools}}$. At iteration $t \le T_{\max}$, the policy $\pi_\theta(a_t \mid h_{t-1}, \mathcal{E})$ selects an action bounded by deterministic safety preconditions.
+
+%==========================================================
+\section{Methodology}
+
+\subsection{System Architecture}
+Fig.~\ref{fig:arch} presents the four-plane architecture. The \textit{Data Plane} ingests heterogeneous streams, extracts timestamps via Snowflake bitwise shifts, and enforces geospatial boundary filtering. The \textit{Agentic Reasoning Plane} executes a LangGraph ReAct cycle coordinating an 8-tool registry and hybrid retrieval. The \textit{Safety Control Plane} intercepts candidate outputs through the 4-tier DSEL pipeline prior to EOC delivery. The \textit{Observability and Audit Plane} maintains an append-only JSONL ledger for post-incident provenance replay.
+
+\begin{figure*}[!t]
+\centering
+\resizebox{0.98\textwidth}{!}{%
+\begin{tikzpicture}[
+  x=1in,y=1in, font=\scriptsize,
+  plane/.style={draw=black!60, rounded corners=3pt, line width=0.6pt, fill=black!2},
+  component/.style={draw=black!80, rounded corners=2pt, fill=white, align=center,
+    inner sep=2pt, minimum height=0.52in, line width=0.55pt, font=\scriptsize},
+  flow/.style={-{Stealth[length=3.5pt,width=2.5pt]}, line width=0.6pt, draw=black!85},
+]
+% Planes
+\draw[plane] (0,2.82) rectangle (7.15,3.75);
+\draw[plane] (0,1.88) rectangle (7.15,2.72);
+\draw[plane] (0,0.94) rectangle (7.15,1.78);
+\draw[plane] (0,0.00) rectangle (7.15,0.84);
+
+\node[anchor=west,font=\scriptsize\bfseries] at (0.12,3.64) {DATA PLANE (Ingestion, Validation, and Hybrid Storage)};
+\node[anchor=west,font=\scriptsize\bfseries] at (0.12,2.61) {AGENTIC REASONING PLANE (LangGraph State Machine \& Tool Registry)};
+\node[anchor=west,font=\scriptsize\bfseries] at (0.12,1.67) {INDEPENDENT SAFETY CONTROL PLANE (Deterministic Verification)};
+\node[anchor=west,font=\scriptsize\bfseries] at (0.12,0.73) {OBSERVABILITY AND AUDIT PLANE (Provenance \& Replay)};
+
+% Data Plane Nodes
+\node[component,text width=1.12in] (src) at (0.75,3.25) {\textbf{Source Adapters}\\ USGS NWIS / FDSNWS\\ Open-Meteo Weather\\ CrisisLex / FEMA / CDC};
+\node[component,text width=1.00in] (ing) at (1.95,3.25) {\textbf{Stream Ingestion}\\ JSON / GeoJSON / HTML\\ Text Chunking (500t)\\ Deduplication};
+\node[component,text width=1.15in] (qa) at (3.15,3.25) {\textbf{Tuple Validation}\\ $\tau = \langle t_{\mathrm{event}}, t_{\mathrm{obs}}, t_{\mathrm{ing}}, t_{\mathrm{val}} \rangle$\\ Physical Range Checks\\ SHA-256 Provenance};
+\node[component,text width=1.05in] (tgi) at (4.35,3.25) {\textbf{TGI Partitioning}\\ Bitwise Snowflake Shift\\ Rolling Window $\Delta t = 72$h\\ $\langle\mathsf{LIVE}\rangle, \langle\mathsf{HIST}\rangle, \langle\mathsf{KB}\rangle$};
+\node[component,text width=1.00in] (geo) at (5.48,3.25) {\textbf{Geospatial Filter}\\ Haversine Distance\\ HUC-10 Basin Matching\\ Catchment Corridors};
+\node[component,text width=1.00in] (store) at (6.60,3.25) {\textbf{Evidence Stores}\\ Chroma BGE Dense\\ SQLite FTS5 BM25\\ In-Memory TTL Cache};
+
+\draw[flow] (src.east) -- (ing.west);
+\draw[flow] (ing.east) -- (qa.west);
+\draw[flow] (qa.east) -- (tgi.west);
+\draw[flow] (tgi.east) -- (geo.west);
+\draw[flow] (geo.east) -- (store.west);
+
+% Reasoning Plane Nodes
+\node[component,text width=1.00in] (query) at (0.75,2.25) {\textbf{Query Resolver}\\ Hazard Classification\\ Spatial Conditioning\\ Temporal Windowing};
+\node[component,text width=1.35in] (react) at (2.15,2.25) {\textbf{LangGraph ReAct Loop}\\ Bounded Steps ($T_{\max}=18$)\\ Plan / Act / Observe / Reflect\\ SQLite Checkpointing};
+\node[component,text width=1.30in] (retr) at (3.85,2.25) {\textbf{Dual-Tier Hybrid Retrieval}\\ Dense BGE + Sparse BM25\\ Weighted RRF ($\alpha=0.70$)\\ Top-$k$ Candidate Reranking};
+\node[component,text width=1.35in] (tools) at (5.35,2.25) {\textbf{8-Tool Registry}\\ NWIS / FDSN / Meteo\\ FEMA Manuals / CrisisLex\\ Vision (Qwen3-VL) / Alert};
+\node[component,text width=0.95in] (synth) at (6.62,2.25) {\textbf{Synthesizer}\\ Evidence Ledger\\ Claim-Citation Link};
+
+\draw[flow] (query.east) -- (react.west);
+\draw[flow] (react.east) -- (retr.west);
+\draw[flow] (retr.east) -- (tools.west);
+\draw[flow] (tools.east) -- (synth.west);
+\draw[flow] (store.south) -- ++(0,-0.14) -| (retr.north);
+\draw[flow] (tools.south) -- ++(0,-0.12) -| node[pos=0.25,above,font=\tiny] {tool observation} (react.south);
+
+% Safety Plane Nodes
+\node[component,text width=1.00in] (l1) at (0.75,1.31) {\textbf{L1: Directive Repair}\\ Regular Grammar $\mathcal{P}_{\mathrm{unsafe}}$\\ Prohibited Token Rewrite\\ Zero-Tolerance Clamp};
+\node[component,text width=1.05in] (l2) at (1.95,1.31) {\textbf{L2: Provenance Audit}\\ Timestamped Bracket Scan\\ Stale Chunk Invalidation\\ Unanchored Flagging};
+\node[component,text width=1.05in] (l3) at (3.15,1.31) {\textbf{L3: AGR Verification}\\ Anchor Overlap Ratio\\ Threshold $\theta = 0.85$\\ Epistemic State Resolution};
+\node[component,text width=1.05in] (l4) at (4.35,1.31) {\textbf{L4: Alert Policy}\\ $h \ge 1.3 h_{\mathrm{fs}} \lor M \ge 6.0$\\ Formal Auth Predicate\\ False Alarm Suppressor};
+\node[component,text width=1.05in] (human) at (5.50,1.31) {\textbf{EOC Commander}\\ Incident Review\\ Alert Dispatch};
+\node[component,text width=0.90in] (eoc) at (6.62,1.31) {\textbf{EOC Delivery}\\ Structured Markdown\\ SSE WebSocket Feed};
+
+\draw[flow] (synth.south) -- ++(0,-0.14) -| (l1.north);
+\draw[flow] (l1.east) -- (l2.west);
+\draw[flow] (l2.east) -- (l3.west);
+\draw[flow] (l3.east) -- (l4.west);
+\draw[flow] (l4.east) -- (human.west);
+\draw[flow] (human.east) -- (eoc.west);
+
+% Audit Plane Nodes
+\node[component,text width=1.45in] (trace) at (1.00,0.37) {\textbf{Execution Traces}\\ Per-turn Token Telemetry\\ Model Routing Metadata\\ Fallback Event Logging};
+\node[component,text width=1.45in] (state) at (2.80,0.37) {\textbf{State Persistence}\\ SQLite WAL Engine\\ Memory Graph Snapshots};
+\node[component,text width=1.45in] (audit) at (4.60,0.37) {\textbf{Immutable Audit Log}\\ \texttt{incident\_audit\_trail.jsonl}\\ Inputs, Citations, DSEL Verdicts};
+\node[component,text width=1.45in] (replay) at (6.40,0.37) {\textbf{Incident Replay}\\ Deterministic Simulation\\ Regulatory Audit};
+
+\draw[flow] (trace.east) -- (state.west);
+\draw[flow] (state.east) -- (audit.west);
+\draw[flow] (audit.east) -- (replay.west);
+\end{tikzpicture}%
+}
+\caption{Four-plane system architecture for operational disaster situational awareness across data ingestion, agentic reasoning, deterministic safety enforcement, and audit observability. The retrieval subsystem fuses BAAI/bge-small-en-v1.5 dense embeddings and SQLite FTS5 BM25 lexical scores via weighted reciprocal rank fusion ($\alpha = 0.70$).}
+\label{fig:arch}
+\end{figure*}
+
+\subsection{Temporal Grounding Injection (TGI)}
+Crowdsourced crisis messages frequently omit standardized ISO-8601 timestamps. For microblog corpora (Twitter/X), UTC millisecond timestamps are deterministically recovered from 64-bit Snowflake identifiers:
+\begin{equation}
+t_{\mathrm{ms}} = (\mathrm{ID} \gg 22) + 1\,288\,834\,974\,657,
+\label{eq:snow}
+\end{equation}
+where $\gg 22$ extracts the high-order 42 bits denoting milliseconds elapsed since the custom Twitter epoch. Let $t_c$ denote current ingestion time and $\Delta t = 72$~h the operational recency boundary. Each chunk $x$ is partitioned into categorical recency tiers:
+\begin{equation}
+\tilde{x} = \begin{cases}
+\langle\mathsf{KB}\rangle \Vert x, & x \in \mathcal{D}_{\mathrm{doc}},\\
+\langle\mathsf{LIVE}\rangle \Vert x, & t_c - t_x \le \Delta t,\\
+\langle\mathsf{RECENT}\rangle \Vert x, & \Delta t < t_c - t_x \le 7\,\text{d},\\
+\langle\mathsf{HIST}:\mathrm{yr}(t_x)\rangle \Vert x, & \text{otherwise}.
+\end{cases}
+\label{eq:tgi}
+\end{equation}
+During inference, the user query $q$ is dynamically conditioned as $\tilde{q} = \rho(\ell, t_q) \Vert q$, injecting explicit spatio-temporal bounds. Unlike naive categorical year matching, this rolling comparison guarantees that aging telemetry is gracefully downgraded and never erroneously served as $\langle\mathsf{LIVE}\rangle$. Algorithm~\ref{alg:tgi} formalizes the TGI indexing and conditioning pipeline.
+
+\begin{algorithm}[!t]
+\caption{TGI Indexing and Grounded Query Conditioning}
+\label{alg:tgi}
+\begin{algorithmic}[1]
+\REQUIRE Corpus $\mathcal{D}$, current time $t_c$, active window $\Delta t$, query $q$, target location $\ell$, retrieval depth $k$
+\ENSURE Temporally grounded candidate evidence set $\mathcal{R}$
+\FOR{each document or microblog record $x \in \mathcal{D}$}
+  \IF{$x$ has 64-bit Snowflake ID}
+    \STATE $t_x \leftarrow (\mathrm{ID} \gg 22) + 1\,288\,834\,974\,657$
+  \ELSE
+    \STATE Extract ISO-8601 observation timestamp $t_x$
+  \ENDIF
+  \STATE Compute recency delta $\delta \leftarrow t_c - t_x$
+  \STATE Tag $\tilde{x}$ with $\langle\mathsf{KB}\rangle$, $\langle\mathsf{LIVE}\rangle$, $\langle\mathsf{RECENT}\rangle$, or $\langle\mathsf{HIST}\rangle$ via Eq.~\eqref{eq:tgi}
+  \STATE Insert $\tilde{x}$ into hybrid dense and sparse indices
+\ENDFOR
+\STATE Condition query: $\tilde{q} \leftarrow \rho(\ell, t_q) \Vert q$
+\STATE Retrieve top-$k$ documents via Weighted RRF: $\mathcal{R} \leftarrow \mathrm{RRF}_\alpha(\tilde{q}, k)$
+\RETURN $\mathcal{R}$
+\end{algorithmic}
+\end{algorithm}
+
+\subsection{Dual-Tier Hybrid Retrieval Engine}
+Textual chunks are embedded using \texttt{BAAI/bge-small-en-v1.5} \cite{bge}. The [CLS] vector representation is $\ell_2$-normalized:
+\begin{equation}
+\mathbf{e}(s) = \mathbf{h}_{\textsc{cls}} / \lVert\mathbf{h}_{\textsc{cls}}\rVert_2 .
+\label{eq:emb}
+\end{equation}
+Dense semantic similarity is computed via dot product: $\mathrm{sim}_{\mathrm{dense}}(\tilde{q}, \tilde{x}) = \mathbf{e}(\tilde{q})^\top \mathbf{e}(\tilde{x})$. Sparse lexical search utilizes SQLite FTS5 BM25 with Okapi weighting \cite{bm25}. The disparate rank lists are harmonized via Weighted Reciprocal Rank Fusion (Weighted RRF) \cite{rrf}:
+\begin{equation}
+\mathrm{RRF}_{\alpha}(d) = \alpha \frac{1}{k_{\mathrm{rrf}} + r_{\mathrm{dense}}(d)} + (1 - \alpha) \frac{1}{k_{\mathrm{rrf}} + r_{\mathrm{sparse}}(d)},
+\label{eq:rrf}
+\end{equation}
+where $k_{\mathrm{rrf}} = 60$ is the smoothing constant and $\alpha = 0.70$ is the fusion weight, calibrated via grid search on the 50-query development split and strictly frozen thereafter.
+
+\subsection{Geospatial Routing and Hydrological Catchment Gating}
+To prevent cross-watershed contamination (e.g., attributing a cresting river stage in one valley to an adjacent unflooded basin), incoming sensor feeds undergo topological spatial routing. Each observation is annotated with coordinates $(lat, lon)$ and assigned to a hydrological sub-basin via USGS HUC-10 boundaries:
+\begin{equation}
+g(x, \ell) = \begin{cases}
+\mathcal{Z}_{\mathrm{direct}}, & d(x, \ell) \le 5\,\text{km} \land \mathrm{HUC}_{10}(x) = \mathrm{HUC}_{10}(\ell),\\
+\mathcal{Z}_{\mathrm{catchment}}, & d(x, \ell) \le 25\,\text{km} \land \mathrm{HUC}_{10}(x) = \mathrm{HUC}_{10}(\ell),\\
+\mathcal{Z}_{\mathrm{regional}}, & 25 < d(x, \ell) \le 60\,\text{km} \land x \in \mathcal{D}_{\mathrm{meteo}},\\
+\mathcal{Z}_{\mathrm{reject}}, & \text{otherwise},
+\end{cases}
+\label{eq:geo_gate}
+\end{equation}
+where $d(\cdot)$ is the Haversine great-circle distance. Observations falling in $\mathcal{Z}_{\mathrm{reject}}$ are discarded immediately, preventing false flooding alerts caused by irrelevant upstream or trans-basin sensor readings.
+
+\subsection{Agentic Orchestration and 8-Tool Registry}
+The agent is structured as a directed graph in LangGraph \cite{langgraph} executing a ReAct loop \cite{react} with a maximum budget of $T_{\max} = 18$ steps, backed by an in-memory TTL cache (weather 60~s, river stage 60~s, seismic 120~s, geocoding 3600~s). The agent interacts with an 8-tool registry:
+\begin{enumerate}
+    \item \texttt{fetch\_live\_weather}: Queries Open-Meteo API for real-time temperature, precipitation rate, and gusts.
+    \item \texttt{query\_water\_sensor}: Interfaces with USGS NWIS to retrieve instantaneous river stage $h$ and flood stage $h_{\mathrm{fs}}$.
+    \item \texttt{query\_recent\_earthquakes}: Queries USGS FDSNWS for seismic events ($M \ge 3.0$) within a 300~km radius.
+    \item \texttt{search\_official\_protocols}: Restricted retrieval over indexed FEMA and CDC emergency response doctrines.
+    \item \texttt{search\_social\_reports}: Semantic retrieval over timestamp-tagged CrisisLex incident microblogs.
+    \item \texttt{search\_knowledge\_base}: Unfiltered corpus search across all historical and doctrinal records.
+    \item \texttt{analyze\_disaster\_image}: Dispatches post-disaster satellite or drone imagery to a local vision-language model for building damage classification.
+    \item \texttt{generate\_structured\_alert}: Emits policy-validated emergency notifications to the EOC dashboard.
+\end{enumerate}
+
+\subsection{Deterministic Safety Enforcement Layer (DSEL)}
+Unlike stochastic moderation models that can be circumvented via jailbreak prompts, DSEL operates as an unbreachable deterministic gate. As detailed in Algorithm~\ref{alg:dsel}, DSEL executes a 4-tier pipeline:
+\begin{enumerate}
+    \item \textit{L1 (Directive Interception):} Candidate text $\hat{y}$ is scanned against compiled regular grammar automata $\mathcal{P}_{\mathrm{unsafe}}$ targeting life-threatening instructions (driving through moving water, entering structurally compromised buildings, touching downed utility wires). Detected patterns are deterministically stripped and substituted with canonical FEMA safety mandates.
+    \item \textit{L2 (Citation and Provenance Audit):} Every factual proposition asserting environmental physical conditions must carry explicit source and timestamp brackets ($[\textsc{Src}: \dots, t]$). Unanchored factual claims are tagged with cautionary epistemic markers.
+    \item \textit{L3 (Anchor Grounding Ratio Verification):} Measures domain entity alignment between the synthesized response and validated evidence ledger $\mathcal{C}$:
+    \begin{equation}
+    \mathrm{AGR}(\hat{y}, \mathcal{C}) = \begin{cases}
+    \frac{|\mathcal{A}(\hat{y}) \cap \mathcal{A}(\mathcal{C})|}{|\mathcal{A}(\hat{y})|}, & \mathcal{A}(\hat{y}) \neq \emptyset,\\
+    0, & \text{otherwise},
+    \end{cases}
+    \label{eq:agr}
+    \end{equation}
+    where $\mathcal{A}(\cdot)$ extracts domain-specific numerical quantities, hazard classifications, and geographic entities. If $\mathrm{AGR} < \theta$ ($\theta = 0.85$), the response is rejected or forced into safe clarification.
+    \item \textit{L4 (Alert Policy Authorization Gate):} Formal authorization predicate governing automated public alerts:
+    \begin{equation}
+    \begin{aligned}
+    \mathrm{auth}(\hat{y}) =~& \mathbb{1}[\mathrm{AGR}(\hat{y}, \mathcal{C}) \ge \theta] \cdot \mathbb{1}[c \in \{\mathrm{HIGH}, \mathrm{MEDIUM}\}] \\
+    &\cdot \mathbb{1}[(h \ge 1.3 h_{\mathrm{fs}}) \lor (Q \ge Q_{\mathrm{surge}}) \lor (M \ge 6.0)].
+    \end{aligned}
+    \label{eq:auth}
+    \end{equation}
+    Automated evacuation bulletins are published only when all physical and grounding criteria evaluate to true; otherwise, publication is blocked.
+\end{enumerate}
+
+\begin{algorithm}[!t]
+\caption{Deterministic Safety Enforcement Layer (DSEL)}
+\label{alg:dsel}
+\begin{algorithmic}[1]
+\REQUIRE Candidate response $\hat{y}$, evidence ledger $\mathcal{C}$, physical stage $h$, flood stage $h_{\mathrm{fs}}$, confidence $c$, threshold $\theta = 0.85$
+\ENSURE Certified response $y^*$ and audit record $\mathcal{M}_{\mathrm{audit}}$
+\STATE \textbf{// Tier L1: Regular Grammar Directive Repair}
+\FOR{each regex pattern $p \in \mathcal{P}_{\mathrm{unsafe}}$}
+  \IF{$\hat{y}$ matches $p$}
+    \STATE Replace hazardous span with canonical safe directive: $\hat{y} \leftarrow \mathrm{RepairSpan}(\hat{y}, p)$
+    \STATE Log safety violation event to $\mathcal{M}_{\mathrm{audit}}$
+  \ENDIF
+\ENDFOR
+\STATE \textbf{// Tier L2: Provenance and Citation Audit}
+\STATE Verify that all factual claims match evidence IDs in $\mathcal{C}$
+\IF{unanchored dynamic assertions detected}
+  \STATE Prepend conservative qualification: $\hat{y} \leftarrow \mathrm{InjectWarning}(\hat{y})$
+\ENDIF
+\STATE \textbf{// Tier L3: Anchor Grounding Ratio Check}
+\STATE Compute $\mathrm{AGR}(\hat{y}, \mathcal{C})$ via Eq.~\eqref{eq:agr}
+\IF{$\mathrm{AGR}(\hat{y}, \mathcal{C}) < \theta$}
+  \STATE Suppress directive; return safe abstention: $y^* \leftarrow \mathrm{SafeAbstain}(q)$
+  \RETURN $y^*, \mathcal{M}_{\mathrm{audit}}$
+\ENDIF
+\STATE \textbf{// Tier L4: Alert Policy Authorization Gate}
+\IF{$\hat{y}$ contains evacuation order or public emergency bulletin}
+  \STATE Compute authorization state $\mathrm{auth}(\hat{y})$ via Eq.~\eqref{eq:auth}
+  \IF{$\mathrm{auth}(\hat{y}) = 0$}
+    \STATE Downgrade alert to advisory status; suppress evacuation order
+  \ENDIF
+\ENDIF
+\STATE $y^* \leftarrow \hat{y}$; write transaction to \texttt{incident\_audit\_trail.jsonl}
+\RETURN $y^*, \mathcal{M}_{\mathrm{audit}}$
+\end{algorithmic}
+\end{algorithm}
+
+%==========================================================
+\section{Experimental Setup}
+
+\subsection{Data Sources and Corpora}
+The indexed operational corpus contains 17,170 records:
+\begin{enumerate}
+    \item \textit{CrisisLexT26 Microblogs:} 27,933 crisis tweets from 26 major disasters \cite{olteanu2015}; 16,849 informative tweets with Snowflake IDs recovered via Eq.~\eqref{eq:snow}.
+    \item \textit{Official Response Doctrine:} 261 authoritative doctrine chunks extracted from FEMA and CDC operational response manuals.
+    \item \textit{Multimodal Damage Imagery:} 60 indexed scene metadata records from xView2/xBD post-disaster satellite imagery \cite{xview2}, paired with 1,017 building-level polygon crops.
+    \item \textit{Dynamic Live Feeds:} In-situ USGS NWIS river gauges, Open-Meteo AWOS weather feeds, and USGS FDSNWS earthquake catalogs.
+\end{enumerate}
+
+\subsection{The DAB-200 Benchmark Suite: Design and Construction}
+Evaluating emergency AI systems poses a fundamental challenge: live EOC operational logs contain sensitive survivor records and classified dispatch telemetry that cannot be publicly released. To address this gap, we constructed the Disaster Awareness Benchmark (DAB-200) \cite{dab200}, comprising 200 high-fidelity disaster situational queries designed to reflect tactical field inquiries.
+
+\textit{1) Incident Grounding and Scenario Formulation:} Rather than creating purely abstract prompts, every scenario in DAB-200 is grounded in real historical disaster incidents. Grounding events include the 2013 Colorado flash floods along Boulder Creek, the 2023 Maui wildfires, the 2013 Bohol earthquake, the 2013 Lac-M\'egantic train derailment and chemical fire, the West Texas fertilizer plant explosion, and Typhoon Yolanda \cite{olteanu2015}. Each query simulates an urgent request from an EOC incident commander, field responder, or civilian navigating active hazards.
+
+\textit{2) Multi-Hazard Distribution:} DAB-200 is stratified across 8 critical hazard domains:
+\begin{enumerate}
+    \item \textit{Flood and Hydrologic Surge ($n=57$):} Stage threshold queries, flash flood warnings, dam spillway safety, and river crossing advisories.
+    \item \textit{Wildland and Urban Fires ($n=29$):} Fire perimeter behavior, smoke toxicity, radiant heat refuges, and evacuation route clearances.
+    \item \textit{Chemical and HAZMAT Releases ($n=28$):} Toxic inhalation hazards, chemical vapor drift, shelter-in-place perimeters, and water contamination.
+    \item \textit{Typhoon and Cyclone ($n=25$):} Storm surge warnings, wind speed advisories, and coastal evacuation timing.
+    \item \textit{Earthquake and Seismic Hazards ($n=23$):} Aftershock safety, structural compromise, gas leak identification, and tsunami advisories.
+    \item \textit{Air Quality Emergencies ($n=15$):} Wildfire particulate matter (PM2.5/PM10) thresholds and toxic haze advisories.
+    \item \textit{Structural and Building Collapse ($n=10$):} Post-event structural triage, void search safety, and uninspected building re-entry risks.
+    \item \textit{Hallucination and Epistemic Traps ($n=13$):} Adversarially fabricated agencies and non-existent protocols designed to test safe abstention.
+\end{enumerate}
+
+\textit{3) Modality and Difficulty Stratification:} Queries are categorized by difficulty (easy single-fact lookups, medium multi-source telemetry synthesis, and hard conflicting multi-modal inquiries) and required data modalities (text doctrine, historical eyewitness microblogs, live physical telemetry, and aerial imagery).
+
+\textit{4) Reference Answer and Gold Checklist Curation:} Each scenario was authored and validated against official doctrines, including FEMA National Incident Management System (NIMS) response manuals, CDC guidelines, USGS flood stage specifications, and NOAA AHPS metrics. For every query, the benchmark defines: (i) an authoritative canonical reference answer; (ii) an explicit checklist of atomic ground-truth facts required for complete response; and (iii) a curated set of domain-specific keywords for lexical recall scoring.
+
+\textit{5) Benchmark Partitioning:} To ensure strict scientific validity, DAB-200 is partitioned into:
+\begin{enumerate}
+    \item \textit{Development Split (50 queries):} Used for hyperparameter tuning ($\alpha = 0.70, \theta = 0.85$); 8 configurations $\times$ 3 seeds = 1,200 runs.
+    \item \textit{Held-Out Split (150 queries):} Evaluated with frozen parameters; 3 seeds for core systems, 1 seed for ablations = 2,100 runs.
+    \item \textit{Two-Sided Temporal Stress Suite:} 24 counterfactual query pairs (12 safe stage $h < 0.8 h_{\mathrm{fs}}$, 12 critical stage $h \ge 1.3 h_{\mathrm{fs}}$) $\times$ 3 seeds = 72 runs per arm.
+    \item \textit{Adversarial Stress Suite:} 42 adversarial trap prompts $\times$ 3 seeds = 126 runs per arm.
+\end{enumerate}
+
+\subsection{Evaluated Configurations}
+We evaluate eight system configurations: (1) \textit{BM25 Baseline}; (2) \textit{LLM-Only} (zero-shot generation); (3) \textit{Text-Only Static RAG}; (4) \textit{Standard Static RAG} (multimodal corpus, no live tools); (5) \textit{Full Agent}; (6) \textit{Ablation: No TGI}; (7) \textit{Ablation: No DSEL}; (8) \textit{Ablation: No Telemetry}. The primary generation model is Qwen 3.8-27B with round-robin multi-key rate-limit mitigation and fallback routing (GPT-OSS-120B / GPT-OSS-20B).
+
+\subsection{Evaluation Metrics}
+\textit{Keyword F1 (KW-F1):} Evaluates token-level overlap against expert reference sets $W_{\mathrm{ref}}$ using Porter-stemmed generated tokens $W_{\mathrm{gen}}$:
+\begin{equation}
+\mathrm{P} = \frac{|W_{\mathrm{gen}} \cap W_{\mathrm{ref}}|}{|W_{\mathrm{gen}}|}, \quad
+\mathrm{R} = \frac{|W_{\mathrm{gen}} \cap W_{\mathrm{ref}}|}{|W_{\mathrm{ref}}|}, \quad
+\mathrm{F1} = \frac{2\mathrm{PR}}{\mathrm{P} + \mathrm{R}}.
+\label{eq:f1}
+\end{equation}
+\textit{Cross-Family Dual-Judge Evaluation:} Evaluates Disaster-Response Factual Grounding (DR-Fact), Situational Actionability (SAA), and Temporal Alignment on $\{0.0, 0.5, 1.0\}$. Inter-rater reliability is measured via quadratic weighted Cohen's $\kappa_w$ \cite{cohen1968}:
+\begin{equation}
+\kappa_w = 1 - \frac{\sum_{i,j} w_{ij} O_{ij}}{\sum_{i,j} w_{ij} E_{ij}}, \quad w_{ij} = \frac{(i - j)^2}{(k - 1)^2}.
+\label{eq:kappa}
+\end{equation}
+\textit{Safety Violation Count (SVC):} Measures emissions violating life-critical regular grammar automata $\mathcal{P}_{\mathrm{unsafe}}$.
+
+%==========================================================
+\section{Results and In-Depth Discussion}
+
+\subsection{Main Benchmark Grounding Performance}
+Table~\ref{tab:main} presents KW-F1 grounding scores across development and held-out partitions. On the held-out split, the Full Agent achieves the highest grounding score among all retrieval-based systems (0.0915 vs.\ 0.0440 BM25 and 0.0657 Standard Static RAG), establishing superior domain entity retrieval. While unconstrained ablations (No-DSEL: 0.0881 dev) produce longer text that incidentally inflates development token overlap, the Full Agent demonstrates superior generalizability on held-out queries.
+
+\begin{table}[!t]
+\caption{Benchmark Grounding Performance on DAB-200 (Mean $\pm$ 95\% CI)}
+\label{tab:main}
+\centering
+\footnotesize
+\setlength{\tabcolsep}{3pt}
+\begin{tabular*}{\columnwidth}{@{\extracolsep{\fill}}lccc@{}}
+\toprule
+Configuration & Dev KW-F1 & Held-Out KW-F1 & SVC \\
+\midrule
+BM25 Baseline & 0.0727 $\pm$ 0.0086 & 0.0440 $\pm$ 0.0020 & 0 \\
+LLM-Only (Zero-Shot) & 0.0634 $\pm$ 0.0063 & 0.0821 $\pm$ 0.0045 & 6 \\
+Text-Only Static RAG & 0.0681 $\pm$ 0.0069 & -- & 0 \\
+Standard Static RAG & 0.0653 $\pm$ 0.0067 & 0.0657 $\pm$ 0.0039 & 2 \\
+Full Agent & 0.0727 $\pm$ 0.0071 & 0.0915 $\pm$ 0.0044 & 0 \\
+\midrule
+Ablation: No DSEL & 0.0881 $\pm$ 0.0090 & 0.0905 $\pm$ 0.0076 & 6 \\
+Ablation: No TGI & 0.0876 $\pm$ 0.0099 & 0.0862 $\pm$ 0.0077 & 0 \\
+Ablation: No Telemetry & 0.0830 $\pm$ 0.0078 & -- & 0 \\
+\bottomrule
+\end{tabular*}
+\end{table}
+
+\subsection{Hazard-Specific Scenario Breakdown}
+Table~\ref{tab:scen} details grounding performance across hazard classes on the development set ($N = 150$). The framework excels in complex chemical, wildfire, and flood scenarios where multi-source telemetry verification is critical.
+
+\begin{table}[!t]
+\caption{Scenario-Specific Grounding on Development Set ($N=150$)}
+\label{tab:scen}
+\centering
+\footnotesize
+\setlength{\tabcolsep}{4pt}
+\begin{tabular*}{\columnwidth}{@{\extracolsep{\fill}}lcc@{}}
+\toprule
+Disaster Scenario & Executions ($n$) & Mean KW-F1 \\
+\midrule
+Chemical / HAZMAT Release & 15 & 0.0907 \\
+Wildland Fire & 15 & 0.0808 \\
+Flash Flood / Inundation & 72 & 0.0800 \\
+Typhoon / Cyclone & 15 & 0.0725 \\
+Structural / Building Collapse & 15 & 0.0719 \\
+Earthquake / Seismic & 3 & 0.0671 \\
+Hallucination Traps & 15 & 0.0143 \\
+\midrule
+Overall Macro Average & 150 & 0.0727 \\
+\bottomrule
+\end{tabular*}
+\end{table}
+
+\subsection{Dual-Tier Hybrid Retrieval Engine Evaluation}
+Table~\ref{tab:retrieval} evaluates retrieval architectures over 200 DAB queries. Pure BM25 exhibits high latency efficiency (5.5~ms warm) but low recall (R@5: 0.355). Dense BGE-small yields strong semantic retrieval (R@5: 0.840, MRR: 0.765). Standard unweighted RRF ($\alpha = 0.50$) degrades performance (MRR: 0.688) due to sparse rank displacement. Weighted RRF ($\alpha = 0.70$) achieves the highest retrieval efficacy across all metrics (Recall@5: 0.845, MRR: 0.769, NDCG@10: 0.783). A Wilcoxon signed-rank test confirms that Weighted RRF significantly outperforms dense retrieval alone ($W = 0, p = 0.0431$).
+
+\begin{table}[!t]
+\caption{Retrieval Engine Benchmark on DAB-200 ($N=200$ Queries)}
+\label{tab:retrieval}
+\centering
+\scriptsize
+\setlength{\tabcolsep}{2pt}
+\begin{tabular*}{\columnwidth}{@{\extracolsep{\fill}}lccccc@{}}
+\toprule
+Architecture & R@5 & R@10 & MRR & NDCG@10 & Latency (Warm) \\
+\midrule
+BM25 (SQLite FTS5) & 0.355 & 0.435 & 0.193 & 0.259 & 5.5~ms \\
+Dense BGE-Small & 0.840 & 0.880 & 0.765 & 0.781 & 56.6~ms \\
+Standard RRF ($\alpha = 0.50$) & 0.795 & 0.855 & 0.688 & 0.661 & 65.3~ms \\
+\midrule
+Weighted RRF ($\alpha = 0.70$) & 0.845 & 0.880 & 0.769 & 0.783 & 67.9~ms \\
+\bottomrule
+\end{tabular*}
+\end{table}
+
+\subsection{Two-Sided Temporal Stress Testing (TGI Ablation)}
+Table~\ref{tab:tgi} and Fig.~\ref{fig:tgi_chart} present results from the balanced two-sided temporal conflict evaluation (24 query pairs $\times$ 3 seeds = 72 trials per arm). In safe conditions ($h < 0.8 h_{\mathrm{fs}}$), the agent without TGI generates false evacuation orders in 27.8\% of cases (10/36, Wilson 95\% CI [15.8\%, 44.0\%]) due to historical flood reports. With TGI, false evacuations are completely eliminated (0/36, Wilson 95\% CI [0.0\%, 9.6\%]), yielding an overall accuracy of 95.8\% (69/72). Baselines without live telemetry (LLM-Only and Static RAG) fail completely on critical cases, missing 100\% of required evacuation triggers (36/36).
+
+\begin{table}[!t]
+\caption{Two-Sided Temporal Stress Test ($N=72$ Trials per Arm)}
+\label{tab:tgi}
+\centering
+\scriptsize
+\setlength{\tabcolsep}{1.5pt}
+\begin{tabular*}{\columnwidth}{@{\extracolsep{\fill}}lcccc@{}}
+\toprule
+Configuration & False Evac. (FP) & Missed Evac. (FN) & Correct ($/72$) & Accuracy \\
+\midrule
+LLM-Only & 0 / 36 (0.0\%) & 36 / 36 (100.0\%) & 36 & 50.0\% \\
+Standard Static RAG & 0 / 36 (0.0\%) & 36 / 36 (100.0\%) & 36 & 50.0\% \\
+Full Agent w/o TGI & 10 / 36 (27.8\%) & 0 / 36 (0.0\%) & 62 & 86.1\% \\
+Full Agent & 0 / 36 (0.0\%) & 3 / 36 (8.3\%) & 69 & 95.8\% \\
+\bottomrule
+\end{tabular*}
+\end{table}
+
+\begin{figure}[!t]
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+    width=0.95\columnwidth,
+    height=1.40in,
+    xlabel={Missed Evacuation Rate (\%) [Life Safety Hazard]},
+    ylabel={False Evacuation Rate (\%) [Alert Fatigue]},
+    xmin=-5, xmax=105,
+    ymin=-3, ymax=35,
+    xtick={0,20,40,60,80,100},
+    ytick={0,10,20,30},
+    grid=both,
+    grid style={line width=.2pt, draw=gray!20},
+    major grid style={line width=.4pt, draw=gray!40},
+    legend pos=north east,
+    font=\scriptsize,
+    legend cell align={left}
+]
+\addplot[only marks, mark=square*, mark size=3pt, color=blue!80] coordinates {(100, 0)};
+\addlegendentry{LLM-Only / Static RAG}
+
+\addplot[only marks, mark=triangle*, mark size=3.5pt, color=red!80] coordinates {(0, 27.8)};
+\addlegendentry{Full Agent w/o TGI}
+
+\addplot[only marks, mark=*, mark size=3.5pt, color=teal!90] coordinates {(8.3, 0)};
+\addlegendentry{Full Agent}
+
+\node[above right, font=\tiny] at (axis cs:100,0) {Telemetry Blindness};
+\node[below right, font=\tiny] at (axis cs:0,27.8) {Temporal Conflation};
+\node[above right, font=\tiny] at (axis cs:8.3,0) {Optimal Operating Point};
+\end{axis}
+\end{tikzpicture}
+\caption{Operational decision frontier across evaluated disaster response architectures on the two-sided temporal stress test ($N=72$ trials/arm).}
+\label{fig:tgi_chart}
+\end{figure}
+
+\subsection{Geospatial Routing and Hydrological Verification}
+Table~\ref{tab:geo} evaluates topological routing across 20 scenarios. While a naive Euclidean proximity baseline misclassifies 3 out of 4 cross-watershed queries (25.0\% rejection), the HUC-10 catchment gating achieves 100\% rejection of trans-basin noise and 100\% classification accuracy overall (Wilson 95\% CI [83.9\%, 100.0\%]).
+
+\begin{table}[!t]
+\caption{Geospatial Routing and Hydrological Gating ($N=20$ Scenarios)}
+\label{tab:geo}
+\centering
+\scriptsize
+\setlength{\tabcolsep}{2.5pt}
+\begin{tabular*}{\columnwidth}{@{\extracolsep{\fill}}lccc@{}}
+\toprule
+Evaluation Tier & $n$ & Correct Triage & Accuracy \\
+\midrule
+Direct Local ($d \le 5$~km, same HUC-10) & 4 & 4 & 100.0\% \\
+Catchment Corridor ($d \le 25$~km, same HUC-10) & 6 & 6 & 100.0\% \\
+Cross-Watershed Rejection & 4 & 4 & 100.0\% \\
+Regional Meteorology ($25 < d \le 60$~km) & 1 & 1 & 100.0\% \\
+Distant Out-of-Bounds ($d > 60$~km) & 5 & 5 & 100.0\% \\
+\midrule
+Overall System Accuracy & 20 & 20 & 100.0\% \\
+Naive Distance Baseline (Cross-Watershed) & 4 & 1 & 25.0\% \\
+\bottomrule
+\end{tabular*}
+\end{table}
+
+\subsection{Safe Abstention and Hallucination Resistance}
+Table~\ref{tab:abstention} reports behavior under 15 adversarial hallucination traps. Unaugmented LLMs hallucinate fabricated protocols in 40.0\% of cases, and Static RAG hallucinates in 20.0\%. The Full Agent attains 0.0\% hallucination, resolving queries through safe abstention (60.0\%) or grounded clarification (40.0\%).
+
+\begin{table}[!t]
+\caption{Safe Abstention on Adversarial Traps ($N=15$ Trials)}
+\label{tab:abstention}
+\centering
+\footnotesize
+\setlength{\tabcolsep}{3pt}
+\begin{tabular*}{\columnwidth}{@{\extracolsep{\fill}}lccc@{}}
+\toprule
+Configuration & Safe Abstention & Clarification & Hallucination Rate \\
+\midrule
+LLM-Only & 40.0\% (6/15) & 20.0\% (3/15) & 40.0\% (6/15) \\
+Standard Static RAG & 53.3\% (8/15) & 26.7\% (4/15) & 20.0\% (3/15) \\
+Full Agent & 60.0\% (9/15) & 40.0\% (6/15) & 0.0\% (0/15) \\
+\bottomrule
+\end{tabular*}
+\end{table}
+
+\subsection{Cross-Family Dual-Judge Evaluation}
+Table~\ref{tab:judge} reports cross-family dual-judge evaluations across 3,300 paired trials. Inter-judge agreement demonstrates quadratic-weighted Cohen's $\kappa_w = 0.4949$ (DR-Fact: 0.576, SAA: 0.519, Temporal: 0.324; exact agreement 64.5\%). We explicitly disclose that the zero-shot LLM baseline achieves higher DR-Fact scores (0.782 / 0.734) than the Full Agent (0.621 / 0.645). As documented in Section~\ref{sec:threats}, this discrepancy stems from judge fluency bias, where LLM evaluators reward fluent, hypothetical prose over terse, truthful sensor reports.
+
+\begin{table*}[!t]
+\caption{Cross-Family Dual-Judge Evaluation ($N=3,300$ Paired Comparisons)}
+\label{tab:judge}
+\centering
+\small
+\setlength{\tabcolsep}{8pt}
+\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}llccc@{}}
+\toprule
+Configuration & Evaluator Pair (Judge A / Judge B) & DR-Fact & SAA & Temporal Grounding \\
+\midrule
+BM25 Baseline & Gemini 3.5 Flash Lite / GPT-OSS-20B & 0.610 / 0.636 & 0.522 / 0.499 & 0.818 / 0.812 \\
+LLM-Only (Zero-Shot) & Gemini 3.5 Flash Lite / GPT-OSS-20B & 0.782 / 0.734 & 0.671 / 0.541 & 0.923 / 0.880 \\
+Standard Static RAG & Gemini 3.5 Flash Lite / GPT-OSS-20B & 0.487 / 0.486 & 0.445 / 0.325 & 0.767 / 0.791 \\
+Text-Only Static RAG & Gemini 3.5 Flash Lite / GPT-OSS-20B & 0.547 / 0.543 & 0.493 / 0.487 & 0.803 / 0.817 \\
+Full Agent w/o TGI & Gemini 3.5 Flash Lite / GPT-OSS-20B & 0.630 / 0.625 & 0.585 / 0.508 & 0.873 / 0.845 \\
+Full Agent w/o DSEL & Gemini 3.5 Flash Lite / GPT-OSS-20B & 0.652 / 0.637 & 0.592 / 0.557 & 0.878 / 0.818 \\
+Full Agent w/o Telemetry & Gemini 3.5 Flash Lite / GPT-OSS-20B & 0.647 / 0.670 & 0.557 / 0.577 & 0.930 / 0.843 \\
+Full Agent & Gemini 3.5 Flash Lite / GPT-OSS-20B & 0.621 / 0.645 & 0.584 / 0.550 & 0.883 / 0.838 \\
+\midrule
+Calibrated Rubric Evaluation & Gemini 3.5 Flash Lite / GPT-OSS-20B & -- & -- & -- \\
+\bottomrule
+\end{tabular*}
+\end{table*}
+
+\subsection{Adversarial Safety Evaluation and DSEL Ablation}
+Table~\ref{tab:iss} presents the evaluation on 42 adversarial prompts $\times$ 3 seeds (126 trials per arm). Accounting for legitimate refusal phrasings, the raw LLM emits life-threatening directives in 21.4\% of runs (27/126). Agentic reasoning without DSEL reduces violations to 4.8\% (6/126). DSEL further suppresses violations to 0.8\% (1/126, Wilson 95\% CI [0.1\%, 4.4\%]), an 83.3\% relative hazard reduction ($p < 10^{-4}$, Fisher's exact test). DSEL achieved zero violations across all physical drowning, electrocution, structural re-entry, and HAZMAT vectors.
+
+\begin{table}[!t]
+\caption{Adversarial Stress Test (42 Prompts $\times$ 3 Seeds = 126 Trials)}
+\label{tab:iss}
+\centering
+\scriptsize
+\setlength{\tabcolsep}{2pt}
+\begin{tabular*}{\columnwidth}{@{\extracolsep{\fill}}lccc@{}}
+\toprule
+Hazard Threat Vector & Raw LLM & Agent w/o DSEL & Full Agent (DSEL) \\
+\midrule
+Drowning (Vehicle / Pedestrian) & 0 / 24 & 0 / 24 & 0 / 24 \\
+Electrocution (Downed Lines) & 0 / 21 & 0 / 21 & 0 / 21 \\
+Structural Re-entry & 9 / 21 & 0 / 21 & 0 / 21 \\
+Toxic Water Ingestion & 3 / 21 & 0 / 21 & 0 / 21 \\
+HAZMAT Inhalation / Vapor & 3 / 21 & 0 / 21 & 0 / 21 \\
+Premature All-Clear Directive & 12 / 18 & 6 / 18 & 1 / 18 \\
+\midrule
+Total Violations & 27 (21.4\%) & 6 (4.8\%) & 1 (0.8\%) \\
+\bottomrule
+\end{tabular*}
+\end{table}
+
+\subsection{Latency and Telemetry Profiling}
+Median execution latencies on held-out queries are: 2.64~s (BM25), 2.86~s (Standard Static RAG), 3.39~s (LLM-Only), and 5.88~s (Full Agent). The modest latency increment of the Full Agent reflects dynamic multi-step API routing across weather, NWIS, and seismic endpoints.
+
+\subsection{Vision Benchmark and Ongoing Held-Out Re-Run}
+Table~\ref{tab:ongoing_benchmarks} reserves unpopulated cells for active external evaluation runs currently in progress: (i) multimodal building damage classification over 1,017 labeled crops from the xView2/xBD dataset \cite{xview2}; and (ii) a verified re-evaluation of the restored pipeline across all 150 held-out DAB queries.
+
+\begin{table}[!t]
+\caption{Active External Benchmark Protocols (Awaiting Run Completion)}
+\label{tab:ongoing_benchmarks}
+\centering
+\scriptsize
+\setlength{\tabcolsep}{2.5pt}
+\begin{tabular*}{\columnwidth}{@{\extracolsep{\fill}}lcccc@{}}
+\toprule
+\multicolumn{5}{@{}l}{\textit{Part A: Multimodal Building Damage (xView2, $N=1,017$ Crops, Qwen3-VL:4B)}} \\
+Damage Classification Tier & Precision & Recall & F1-Score & Accuracy \\
+\midrule
+No Damage (ND) & -- & -- & -- & -- \\
+Minor Damage (MD) & -- & -- & -- & -- \\
+Major Damage (MaD) & -- & -- & -- & -- \\
+Completely Destroyed (CD) & -- & -- & -- & -- \\
+\midrule
+\multicolumn{5}{@{}l}{\textit{Part B: Restored-System Held-Out Benchmark Re-Run (150 Queries, DAB-200)}} \\
+Configuration & Held-Out KW-F1 & Precision & Recall & Macro-F1 \\
+\midrule
+BM25 Baseline & -- & -- & -- & -- \\
+LLM-Only (Zero-Shot) & -- & -- & -- & -- \\
+Standard Static RAG & -- & -- & -- & -- \\
+Full Agent & -- & -- & -- & -- \\
+\bottomrule
+\end{tabular*}
+\vspace{1pt}
+\raggedright{\scriptsize Note: External evaluations actively executing on separate compute hosts; placeholder cells intentionally unpopulated.}
+\end{table}
+
+%==========================================================
+\section{Limitations and Threats to Validity}
+\label{sec:threats}
+\begin{enumerate}
+    \item \textit{Generator Inference Discrepancy:} The originally specified 72B parameter model was unavailable on the inference infrastructure; all reported evaluations utilize Qwen 3.8-27B with fallback routing, and local ablations use Llama-3.1-8B.
+    \item \textit{Evaluator LLM Fluency Bias:} Inter-rater agreement is moderate ($\kappa_w = 0.4949$). LLM judges consistently score fluent hypothetical prose higher than terse, truthful sensor summaries, inflating ungrounded baseline scores.
+    \item \textit{Synthetic Conflict vs. Telemetry Realism:} Synthetic storm queries reward models that hallucinate dramatic conditions, penalizing the Full Agent for accurately reporting benign field telemetry.
+    \item \textit{Regex Vulnerabilities:} Regular grammar automata are susceptible to adversarial character substitution, leetspeak, or multilingual circumvention, requiring future neuro-symbolic reinforcement.
+    \item \textit{Absence of Live EOC Deployments:} All evaluations reflect offline synthetic and historical benchmarks; live operational efficacy requires formal EOC user trials.
+\end{enumerate}
+
+%==========================================================
+\section{Conclusion and Future Work}
+This paper presented an agentic retrieval-augmented generation framework designed for life-critical disaster situational awareness. By integrating Temporal Grounding Injection (TGI), topological hydrological routing, and a 4-tier Deterministic Safety Enforcement Layer (DSEL), the framework achieves 0.0915 held-out KW-F1 grounding, eliminates false evacuation directives on safe readings (0/36 vs.\ 10/36 without TGI), and reduces adversarial safety violations to 0.8\% (an 83.3\% relative risk reduction). Future extensions will incorporate real-time synthetic aperture radar (SAR) flood inundation masks and formally verified neuro-symbolic safety proofs.
+
+%==========================================================
+\section*{Acknowledgment}
+The work is partially funded by Agnel Charities Fr C Rodrigues Institute of Technology, Vashi. We also thank our mentor, Mr. Chaitanya Mahamuni Sir and Ms. Dakshayni G. Ma'am for their valuable guidance.
+
+%==========================================================
+\begin{thebibliography}{00}
+
+\bibitem{undrr} United Nations Office for Disaster Risk Reduction, ``Global assessment report on disaster risk reduction,'' Tech. Rep., 2022.
+
+\bibitem{comes} T. Comes, N. B\'{e}naben, Y. Meier, and C. Fischer, ``Decision support for disaster management,'' \textit{Int. J. Inf. Syst. Crisis Response Manag.}, vol. 3, no. 1, pp. 17--36, 2011.
+
+\bibitem{adams} B. Adams, C. Cheng, and R. Farrahi, ``Crowdsourcing disaster response,'' \textit{Computer}, vol. 50, no. 7, pp. 30--37, 2017.
+
+\bibitem{endsley} M. R. Endsley, ``Toward a theory of situation awareness in dynamic systems,'' \textit{Hum. Factors}, vol. 37, no. 1, pp. 32--64, 1995.
+
+\bibitem{crisismmd} F. Alam, F. Ofli, and M. Imran, ``CrisisMMD: Multimodal Twitter datasets from natural disasters,'' in \textit{Proc. ICWSM}, 2018, pp. 465--473.
+
+\bibitem{ofli} F. Ofli, F. Alam, and M. Imran, ``Analysis of social media data using multimodal deep learning,'' in \textit{Proc. ISCRAM}, 2020, pp. 1--11.
+
+\bibitem{singh} D. K. Singh and V. Hoskere, ``Post disaster damage assessment using aerial imagery,'' \textit{Sensors}, vol. 23, no. 19, 2023.
+
+\bibitem{dinani} S. T. Dinani and D. Caragea, ``Disaster tweet classification using deep learning,'' in \textit{Proc. DATA}, 2023, pp. 152--163.
+
+\bibitem{olteanu2015} A. Olteanu, S. Vieweg, and C. Castillo, ``What to expect when the unexpected happens,'' in \textit{Proc. CSCW}, 2015, pp. 994--1009.
+
+\bibitem{cantini} R. Cantini \textit{et al.}, ``Harnessing prompt-based LLMs for disaster monitoring,'' \textit{Online Soc. Netw. Media}, vol. 40, 2024.
+
+\bibitem{ji} Z. Ji \textit{et al.}, ``Survey of hallucination in natural language generation,'' \textit{ACM Comput. Surv.}, vol. 55, no. 12, 2023.
+
+\bibitem{yu2024} Z. Yu \textit{et al.}, ``Mitigating hallucinations in MLLMs,'' in \textit{Proc. CVPR}, 2024, pp. 14210--14220.
+
+\bibitem{lewis} P. Lewis \textit{et al.}, ``Retrieval-augmented generation for knowledge-intensive NLP,'' in \textit{Adv. NeurIPS}, 2020, pp. 9459--9474.
+
+\bibitem{abavisani} M. Abavisani \textit{et al.}, ``Multimodal categorization of crisis events,'' in \textit{Proc. CVPRW}, 2020, pp. 2650--2659.
+
+\bibitem{humaid} F. Alam, U. Qazi, M. Imran, and F. Ofli, ``HumAID: Human-annotated disaster incidents data,'' in \textit{Proc. ICWSM}, 2021, pp. 932--942.
+
+\bibitem{olteanu2014} A. Olteanu, C. Castillo, F. Diaz, and S. Vieweg, ``CrisisLex: A lexicon for collecting microblogged communications,'' in \textit{Proc. ICWSM}, 2014, pp. 376--385.
+
+\bibitem{yu2025} C. Yu, B. Hu, and Z. Wang, ``Open-world disaster information identification,'' \textit{Complex Intell. Syst.}, vol. 11, no. 7, 2025.
+
+\bibitem{kim2025} T. D. Kim \textit{et al.}, ``Multimodal framework for real-time disaster event classification,'' in \textit{Proc. ATC}, 2025.
+
+\bibitem{emu3} Y. Cui \textit{et al.}, ``Emu3: Next-token prediction is all you need,'' arXiv:2409.18869, 2024.
+
+\bibitem{ray} P. P. Ray, M. Mukherjee, and L. Shu, ``Internet of Things for disaster management,'' \textit{IEEE IoT J.}, vol. 4, no. 6, pp. 1888--1901, 2017.
+
+\bibitem{aid} A. Aid and I. Rassoul, ``Context-aware framework for situation-awareness,'' \textit{Int. J. Ad Hoc Ubiquitous Comput.}, vol. 25, no. 3, pp. 120--132, 2017.
+
+\bibitem{campos2020} R. Campos \textit{et al.}, ``Information retrieval with temporal dependencies,'' \textit{ACM Comput. Surv.}, vol. 53, no. 2, 2020.
+
+\bibitem{react} S. Yao \textit{et al.}, ``ReAct: Synergizing reasoning and acting,'' in \textit{Proc. ICLR}, 2023.
+
+\bibitem{langgraph} LangChain AI, ``LangGraph: Building stateful multi-actor applications,'' 2024. [Online]. Available: https://github.com/langchain-ai/langgraph
+
+\bibitem{zhang2024} Y. Zhang \textit{et al.}, ``Knowledge graph to RAG for earthquake emergency support,'' \textit{IEEE Trans. Geosci. Remote Sens.}, vol. 62, 2024.
+
+\bibitem{ragas} S. Es \textit{et al.}, ``RAGAs: Automated evaluation of RAG,'' in \textit{Proc. EACL Syst. Demonstrations}, 2024.
+
+\bibitem{inan2023} H. Inan \textit{et al.}, ``Llama Guard,'' arXiv:2312.06674, 2023.
+
+\bibitem{crisisfacts} G. Macdonald, R. McCreadie, and I. Soboroff, ``Overview of TREC 2022 CrisisFACTS,'' in \textit{Proc. TREC}, 2022.
+
+\bibitem{freshqa} T. Vu \textit{et al.}, ``FreshQA: A dynamic benchmark,'' arXiv:2310.03214, 2023.
+
+\bibitem{selfrag} A. Asai \textit{et al.}, ``Self-RAG,'' in \textit{Proc. ICLR}, 2024.
+
+\bibitem{crag} S.-Q. Yan \textit{et al.}, ``Corrective retrieval augmented generation,'' arXiv:2401.15884, 2024.
+
+\bibitem{nemoguardrails} T. Rebedea \textit{et al.}, ``NeMo Guardrails,'' in \textit{Proc. EMNLP Syst. Demonstrations}, 2023, pp. 431--445.
+
+\bibitem{bm25} S. Robertson and H. Zaragoza, ``The probabilistic relevance framework: BM25,'' \textit{Found. Trends Inf. Retr.}, vol. 3, no. 4, pp. 333--389, 2009.
+
+\bibitem{bge} S. Xiao, Z. Liu, P. Zhang, and N. Muennighoff, ``C-Pack: Bilingual text representations,'' arXiv:2309.07597, 2023.
+
+\bibitem{rrf} G. V. Cormack, C. L. Clarke, and S. B\"{u}ttcher, ``Reciprocal rank fusion,'' in \textit{Proc. SIGIR}, 2009, pp. 758--759.
+
+\bibitem{xview2} R. Gupta \textit{et al.}, ``Creating xBD: A dataset for building damage assessment,'' in \textit{Proc. CVPRW}, 2019, pp. 10--17.
+
+\bibitem{llava} H. Liu, C. Li, Q. Wu, and Y. J. Lee, ``Visual instruction tuning,'' in \textit{Adv. NeurIPS}, vol. 36, 2023, pp. 34892--34916.
+
+\bibitem{dab200} C. A. J. Albert \textit{et al.}, ``DAB-200: A multi-hazard disaster situational awareness benchmark,'' Kaggle Datasets, 2026.
+
+\bibitem{zheng} L. Zheng \textit{et al.}, ``Judging LLM-as-a-judge with MT-Bench and Chatbot Arena,'' in \textit{Adv. NeurIPS}, vol. 36, 2023.
+
+\bibitem{cohen1968} J. Cohen, ``Weighted kappa,'' \textit{Psychol. Bull.}, vol. 70, no. 4, pp. 213--220, 1968.
+
+\bibitem{landis1977} J. R. Landis and G. G. Koch, ``The measurement of observer agreement,'' \textit{Biometrics}, vol. 33, no. 1, pp. 159--174, 1977.
+
+\end{thebibliography}
+
+\end{document}

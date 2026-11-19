@@ -68,9 +68,9 @@ def temporal_tag(metadata: dict, now: Optional[datetime] = None) -> str:
         reference = reference.replace(tzinfo=timezone.utc)
     delta = reference - dt
     hours = delta.total_seconds() / 3600.0
-    # Future-dated records are treated as current with an explicit marker.
+    # Future-dated records are flagged as anomalous.
     if hours < 0:
-        return f"[LIVE - FUTURE_DATED, {dt.date().isoformat()}]"
+        return f"[ANOMALOUS - FUTURE_DATED, {dt.date().isoformat()}]"
     if hours <= LIVE_WINDOW_HOURS:
         return f"[LIVE - {hours:.0f}h ago]"
     if hours <= RECENT_WINDOW_DAYS * 24:
