@@ -11,11 +11,8 @@
 \usepackage{xcolor}
 \usepackage{booktabs}
 \usepackage{array}
-\usepackage{tabularx}
 \usepackage{tikz}
 \usetikzlibrary{arrows.meta,positioning,shapes.geometric,fit,backgrounds}
-\usepackage{pgfplots}
-\pgfplotsset{compat=1.16}
 
 % Float placement tuning to prevent float-only pages
 \renewcommand{\floatpagefraction}{0.85}
@@ -75,8 +72,8 @@ To address these challenges, this paper presents an agentic RAG framework integr
 
 This investigation addresses three research questions:
 \begin{enumerate}
-    \item[\textbf{RQ1:}] Does explicit temporal evidence tiering reduce reliance on archival disaster reports when live sensor telemetry is available?
-    \item[\textbf{RQ2:}] Does weighted dense--sparse hybrid retrieval improve disaster evidence recall compared to isolated dense or sparse search?
+    \item[\textbf{RQ1:}] Does query-time recency tagging improve decisions across paired safe and critical telemetry scenarios?
+    \item[\textbf{RQ2:}] How does weighted dense--sparse fusion compare with dense and sparse retrieval on the evaluated disaster corpus?
     \item[\textbf{RQ3:}] To what extent do compiled directive patterns and lexical evidence checks intercept configured unsafe patterns before structured-alert record creation?
 \end{enumerate}
 
@@ -157,9 +154,9 @@ Based on the reviewed literature, this study focuses on integrating dynamic temp
 \node[comp, text width=2.45cm] (qa)    at ( 7.25, 8.12)
   {\textbf{Tuple Validation}\\$\tau=\langle t_{\mathrm{ev}},t_{\mathrm{obs}},t_{\mathrm{ing}},t_{\mathrm{val}}\rangle$\\SHA-256 Provenance};
 \node[comp, text width=2.40cm] (tgi)   at (10.15, 8.12)
-  {\textbf{TGI Partitioner}\\Snowflake $\gg 22$\\Five Tier Tags};
+  {\textbf{Timestamp Index}\\Snowflake $\gg 22$\\Offline Metadata};
 \node[comp, text width=2.40cm] (geo)   at (13.05, 8.12)
-  {\textbf{Geospatial Filter}\\Haversine \& Basin Map\\Standalone Module};
+  {\textbf{Basin Registry}\\Static 4-Station Map\\Standalone Test};
 \node[comp, text width=2.40cm] (store) at (15.95, 8.12)
   {\textbf{Evidence Stores}\\BGE Dense + BM25\\In-Memory TTL Cache};
 
@@ -181,7 +178,7 @@ Based on the reviewed literature, this study focuses on integrating dynamic temp
 \node[comp, text width=2.95cm] (react) at ( 4.85, 5.76)
   {\textbf{LangGraph ReAct}\\Recursion Limit 20\\2--4 Tool Calls};
 \node[comp, text width=3.10cm] (retr)  at ( 8.50, 5.76)
-  {\textbf{Hybrid Retrieval}\\Dense BGE + Sparse BM25\\Weighted RRF ($\alpha{=}0.70$)};
+  {\textbf{Hybrid Retrieval + TGI}\\Dense BGE + BM25, RRF $\alpha{=}0.70$\\Query-Time Recency Tags};
 \node[comp, text width=3.05cm] (tools) at (12.10, 5.76)
   {\textbf{8-Tool Registry}\\NWIS / FDSN / Meteo / FEMA\\CDC / Social / Vision / Alert};
 \node[comp, text width=2.50cm] (synth) at (15.85, 5.76)
@@ -252,7 +249,7 @@ Based on the reviewed literature, this study focuses on integrating dynamic temp
 
 \end{tikzpicture}%
 }%
-\caption{Four-plane operational architecture for disaster situational awareness.}
+\caption{Four-plane architecture. Offline indexing and the standalone basin test are separated from query-time TGI in the runtime retrieval path.}
 \label{fig:arch}
 \end{figure*}
 
@@ -453,7 +450,7 @@ Held-out ablations & 2 & $1\times150$ & 300 \\
 \end{table}
 
 
-\textit{Evacuation Outcome Evaluator:} An affirmative evacuation directive marks an evacuation; a critical case without one marks a miss. The rule-based detector was corrected after a placeholder masked real evacuation prose, then frozen across all arms and seeds; it lacks independent human validation.
+\textit{Evacuation Outcome Evaluator:} The detector searches the answer for affirmative evacuation prose in a Status line or Recommendation section, ignoring negation and historical quotes. It was corrected after a placeholder masked real evacuation prose, frozen before all reported runs, and applied identically to every arm and seed; it lacks independent human validation.
 
 \subsection{Evaluation Metrics}
 \textit{Expected-Keyword F1 (Exp-F1):} Token-set precision and recall against gold emergency terminology $W_{\mathrm{ref}}$; both generated and reference text are lowercased, punctuation-stripped, stopword-filtered and stemmed, giving token sets $W_{\mathrm{pred}}(q)$ and $W_{\mathrm{ref}}(q)$. No dataset-derived vocabulary is used, so held-out references cannot influence scoring; multi-word gold terms are tokenised into individual content stems:
@@ -595,7 +592,7 @@ Full Agent & 60.0\% (9/15) & 40.0\% (6/15) & 0.0\% (0/15) \\
 \end{table}
 
 \subsection{Cross-Family Dual-Judge Evaluation}
-Table~\ref{tab:judge} reports 3,300 seeded rated items from 1,300 query--configuration pairs, each scored on three dimensions by two judges (6,600 responses; 19,798 dimension scores after two out-of-scale SAA ratings were excluded). Quadratic-weighted Cohen's $\kappa_w$ is 0.576 for DR-Fact (exact agreement 64.5\%), 0.513 for SAA, and 0.324 for Temporal (macro mean 0.471). The zero-shot LLM baseline achieves higher DR-Fact scores (0.782 / 0.734) than the Full Agent (0.621 / 0.645). This is consistent with, but does not isolate, evaluator fluency bias \cite{zheng}. The physical safety results are reported separately in Tables~\ref{tab:tgi} and~\ref{tab:iss} and are not attributed to the judge scores.
+Table~\ref{tab:judge} reports 3,300 seeded rated items (one response per query, configuration and seed) from 1,300 query--configuration pairs, each scored on three dimensions by two judges (6,600 responses; 19,798 dimension scores after two out-of-scale SAA ratings were excluded). Quadratic-weighted Cohen's $\kappa_w$ is 0.576 for DR-Fact (exact agreement 64.5\%), 0.513 for SAA, and 0.324 for Temporal (macro mean 0.471). The zero-shot LLM baseline achieves higher DR-Fact scores (0.782 / 0.734) than the Full Agent (0.621 / 0.645). This is consistent with, but does not isolate, evaluator fluency bias \cite{zheng}. The physical safety results are reported separately in Tables~\ref{tab:tgi} and~\ref{tab:iss} and are not attributed to the judge scores.
 
 \begin{table}[ht]
 \caption{Cross-Family Dual-Judge Evaluation ($N=3{,}300$ Rated Items)}
@@ -646,33 +643,32 @@ Total Violations & 10 (7.9\%) & 7 (5.6\%) & 0 (0.0\%) \\
 \end{table}
 
 \subsection{Execution Latency and Operational Cost Profiling}
-Median archived latencies are 0.94~s (BM25), 2.86~s (Standard Static RAG), 3.39~s (LLM-Only), and 5.88~s (Full Agent), measured over the held-out queries with warm tool caches. The append-only audit ledger (\texttt{incident\_audit\_trail.jsonl}) stores trace records for post-incident inspection.
+Over 450 held-out queries per primary configuration, P50/P95 latencies are 0.94/2.46~s (BM25), 2.86/47.78~s (Static RAG), 3.39/5.53~s (LLM-Only) and 5.88/15.12~s (Full Agent), including tool calls and generation. These are descriptive measurements under different generators, not a controlled comparison. The append-only audit ledger (\texttt{incident\_audit\_trail.jsonl}) stores trace records for post-incident inspection.
 
 \subsection{Exploratory Vision Benchmark}
-An exploratory building damage evaluation on 100 class-balanced xView2/xBD crops \cite{xview2} (25 per class) using a local Qwen3-VL 4B model \cite{qwenvl} (artifact tag \texttt{qwen3-vl-gpu:latest}) yielded 0.340 accuracy and 0.292 macro-F1 (majority/chance baseline: 0.250; major-damage F1: 0.140). Of 50 indexed scene records, 27 had usable building labels, yielding 1,017 crops from which these 100 were sampled. This vision component is an exploratory prototype requiring domain-specific fine-tuning before operational use.
+An exploratory building damage evaluation on 100 class-balanced xView2/xBD crops \cite{xview2} (25 per class) using a local Qwen3-VL 4B model \cite{qwenvl} (artifact tag \texttt{qwen3-vl-gpu:latest}) yielded 0.340 accuracy and 0.292 macro-F1 (majority/chance baseline: 0.250; major-damage F1: 0.140). Of 50 indexed scene records, 27 had usable labels, yielding 1,017 crops from which 25 per class were sampled without replacement. Per-class F1 is 0.537 (no damage), 0.103 (minor), 0.140 (major) and 0.389 (destroyed). This vision component is an exploratory prototype requiring domain-specific fine-tuning before operational use.
 
 
 
 %==========================================================
 \section{Limitations}
-Several limitations contextualize these findings. The controlled suites use local models and the archived table cloud generators; edge deployment needs hardware-specific profiling. Second, lexical retrieval baselines remain constrained by exact token vocabulary mismatch, motivating corrected dense-sparse indexing. Judge evaluation showed fluency bias ($\kappa_w=0.576$); blinded expert evaluation is needed.
+The archived comparison uses different generators and unequal seed counts for ablations, so it is descriptive rather than controlled. The benchmark is author-curated; query-level separation does not establish incident-level independence, and inter-annotator agreement was not measured. The five-query abstention and 12-scenario temporal suites cover limited conditions.
 
-Deterministic regular expressions cannot intercept semantic paraphrases or complex negations. Expected-Keyword F1 measures lexical overlap, not entailment; the TGI tagger uses uniform windows and does not use $t_{\mathrm{event}}$; source-specific freshness TTLs exist in the ingestion validator but do not affect tier assignment. Query-disjoint splits do not rule out event overlap between corpus and benchmark, the safety scorer is not independent of DSEL's rule families, and the geospatial filter is evaluated offline. All evaluations used offline historical or semi-synthetic suites without live EOC integration. Despite these constraints, the prototype provides an initial screening and dispatch-control baseline pending field validation; Section~VII summarizes the conclusions.
+TGI uses source-time windows and does not use event time; source-specific TTLs do not affect tiering. The basin-label filter uses a four-station registry, distance-only fallback for unknown basins, and is evaluated offline. DSEL relies on regular expressions and lexical overlap; its adversarial detector shares rule families with the enforcement layer, so independent adjudication is required. The HIGH/MEDIUM tag is model-supplied, not calibrated physical measurement. The alert tool writes internal JSONL records and does not connect to a live EOC.
 
 %==========================================================
 \section{Conclusion and Future Work}
-This paper presented an agentic disaster-response RAG framework that coordinates dynamic physical telemetry with static emergency doctrine while enforcing deterministic safety screening at the alert-dispatch boundary. The core contributions lie in systems integration and empirical evaluation across multi-hazard crisis scenarios.
+This paper presented an agentic RAG prototype coordinating telemetry tools, doctrine retrieval, temporal evidence tagging, and deterministic screening. The contribution is systems integration and empirical evaluation, not a new retrieval or language-model algorithm.
 
-Controlled experiments provide preliminary evidence for the research questions. Temporal tier tagging removed all observed missed critical evacuations in a 12-scenario suite (3/36 to 0/36); neither agent arm issued false evacuation directives on safe telemetry (RQ1). Weighted hybrid retrieval produced a small observed recall gain on the evaluated corpus, without a significance test (RQ2). Layered rule-based screening produced zero observed violations (0/126) under the evaluated rule set and a single local generator (RQ3). The evaluation also documents negative outcomes, including evaluator fluency bias favoring ungrounded language models and low exploratory damage-classification accuracy (0.340).
+Controlled experiments provide preliminary evidence for the research questions. Temporal tier tagging removed all observed missed critical evacuations in a 12-scenario suite (3/36 to 0/36); neither agent arm issued false evacuation directives on safe telemetry (RQ1). Weighted hybrid retrieval produced a small observed recall gain on the evaluated corpus, without a significance test (RQ2). Rule-pattern interception left zero residual matches (0/126) under the evaluated rule families, but prompt-level comparisons were not significant (RQ3). The evaluation also documents negative outcomes, including evaluator fluency bias favoring ungrounded language models and low exploratory damage-classification accuracy (0.340).
 
-These findings are a research baseline, not operational readiness. Future work includes river-network flow modeling, source-specific expiry, offline fallbacks, and blinded field evaluation.
+These findings are a research baseline, not operational readiness. Future work includes event-time-aware validation, source-specific freshness, river-network connectivity, independent human safety evaluation, and field testing.
 
 %==========================================================
 \section*{Acknowledgment}
 This work was supported by the Department of Computer Engineering at Fr. C. Rodrigues Institute of Technology, Vashi. Appreciation is expressed to open-source contributors and public emergency service agencies for providing accessible real-time telemetry APIs.
 
 %==========================================================
-\def\IEEEbibitemsep{-1.2pt plus 0.4pt}
 \begin{thebibliography}{41}
 \bibitem{undrr} United Nations Office for Disaster Risk Reduction, ``Global assessment report on disaster risk reduction,'' Tech. Rep., 2022.
 
