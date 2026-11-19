@@ -98,6 +98,29 @@ def _dataset_vocab() -> set:
     return vocab
 
 
+def kw_scores_leakfree(answer: str, gold_keywords: list) -> tuple:
+    """Leakage-free token-level Expected-Keyword F1.
+
+    Both sides are stemmed identically. No global vocabulary is used, so no
+    held-out reference term can influence the vocabulary used for scoring.
+    Multi-word gold terms are tokenised into individual content stems.
+    """
+    if not answer or not gold_keywords:
+        return 0.0, 0.0, 0.0
+    pred = _tokens(answer)
+    gold = set()
+    for kw in gold_keywords:
+        if kw:
+            gold.update(_tokens(str(kw)))
+    if not pred or not gold:
+        return 0.0, 0.0, 0.0
+    hit = len(pred & gold)
+    p = hit / len(pred)
+    r = hit / len(gold)
+    f1 = 2 * p * r / (p + r) if p + r else 0.0
+    return round(p, 4), round(r, 4), round(f1, 4)
+
+
 def kw_scores(answer: str, gold_keywords: list) -> tuple:
     """
     Keyword F1 against a dataset-derived vocabulary.

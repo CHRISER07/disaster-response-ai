@@ -49,8 +49,8 @@ def main() -> int:
 
     # Numbers that must appear with their verified source values.
     required = {
-        "0.0915": "published Full Agent held-out Exp-F1",
-        "0.0657": "published StaticRAG held-out Exp-F1",
+        "0.1377": "leakage-free Full Agent held-out Exp-F1",
+        "0.1003": "leakage-free StaticRAG held-out Exp-F1",
         "0/36": "TGI false evacuations",
         "3/36": "no-TGI missed evacuations",
         "72/72": "TGI accuracy",

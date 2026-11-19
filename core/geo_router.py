@@ -30,6 +30,8 @@ class SpatialRelevance(str, Enum):
     CATCHMENT_RELEVANT = "CATCHMENT_RELEVANT" # Station is within 25km upstream/downstream in same basin
     REGIONAL_WEATHER = "REGIONAL_WEATHER"     # Valid for regional synoptic weather (<=60km), not for water stage
     OUT_OF_BOUNDS = "OUT_OF_BOUNDS"           # Outside operational area; reject for localized directives
+    DISTANCE_LOCAL = "DISTANCE_LOCAL"         # Unregistered basin, <= 5 km: distance-only, not basin-validated
+    DISTANCE_NEAR = "DISTANCE_NEAR"           # Unregistered basin, <= 25 km: distance-only, not basin-validated
 
 
 @dataclass
@@ -162,21 +164,34 @@ class GeoSpatialRouter:
             zone.center_lat, zone.center_lon, evidence_lat, evidence_lon
         )
 
-        # Watershed consistency check for hydrological telemetry
-        watershed_match = True
-        if station_id in WATERSHED_REGISTRY:
-            st_watershed = WATERSHED_REGISTRY[station_id]["watershed"]
-            if st_watershed != zone.primary_watershed:
-                watershed_match = False
+        # Watershed consistency check. An unregistered station has UNKNOWN
+        # basin membership; it must never be treated as a basin match.
+        registered = station_id in WATERSHED_REGISTRY
+        st_ws = WATERSHED_REGISTRY.get(station_id, {}).get("watershed", "Unknown")
+        watershed_match = registered and st_ws == zone.primary_watershed
+        basin_unknown = not registered
+        # Meteorological records have no basin membership; distance tiers apply.
+        if is_weather_only and basin_unknown:
+            watershed_match = True
 
-        # Cross-watershed check for hydrological telemetry (always reject non-matching basins)
-        if not watershed_match and not is_weather_only:
-            st_ws = WATERSHED_REGISTRY.get(station_id, {}).get("watershed", "Unknown")
+        # Registered, mismatched basin is rejected for hydrological decisions.
+        if registered and not watershed_match and not is_weather_only:
             return (
                 SpatialRelevance.OUT_OF_BOUNDS,
                 dist_km,
                 f"Located {dist_km:.1f}km away on DIFFERENT drainage basin ({st_ws} vs {zone.primary_watershed}); hydrological conflation rejected."
             )
+
+        # Unknown basin: distance-only fallback, explicitly labelled as such.
+        if basin_unknown and not is_weather_only:
+            if dist_km <= cls.DIRECT_KM:
+                return (SpatialRelevance.DISTANCE_LOCAL, dist_km,
+                        f"Unregistered basin; distance-only local proximity ({dist_km:.1f}km).")
+            if dist_km <= cls.CATCHMENT_KM:
+                return (SpatialRelevance.DISTANCE_NEAR, dist_km,
+                        f"Unregistered basin; distance-only near proximity ({dist_km:.1f}km).")
+            return (SpatialRelevance.OUT_OF_BOUNDS, dist_km,
+                    f"Unregistered basin and {dist_km:.1f}km away; rejected.")
 
         if dist_km <= cls.DIRECT_KM and watershed_match:
             return (

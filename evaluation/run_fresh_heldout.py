@@ -104,7 +104,9 @@ def main() -> None:
     done = set()
     if OUT.exists():
         prior = list(csv.DictReader(open(OUT, encoding="utf-8")))
-        prior_models = {r.get("model_used", "") for r in prior}
+        # Exception rows carry no generator label; they are not a second model.
+        prior_models = {r["model_used"] for r in prior
+                        if r.get("model_used", "").strip()}
         prior_scorers = {r.get("kw_scorer_version", "") for r in prior
                          if r.get("kw_scorer_version", "")}
         if len(prior_models) > 1:
