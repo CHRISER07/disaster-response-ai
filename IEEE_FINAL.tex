@@ -474,7 +474,27 @@ With corpora, benchmark design, and metrics established, the following section p
 \section{Results and Discussions}
 
 \subsection{Main Benchmark Grounding Performance}
-Table~\ref{tab:main} presents Exp-F1 grounding scores. On the held-out split, the leakage-free scorer gives the Full Agent 0.1377, below BM25 at 0.1413 and LLM-Only at 0.1388, and above Static RAG at 0.1003. Ablation CIs for No-DSEL ($0.1382\pm0.0078$) and No-TGI ($0.1326\pm0.0079$) overlap the Full Agent ($0.1377\pm0.0045$); no formal significance test was conducted. This ordering is descriptive of a generator-confounded cohort, not a controlled comparison.
+
+\begin{table}[ht]
+\caption{Controlled Single-Generator Cohort (Qwen2.5-3B, 150 Queries)}
+\label{tab:cohort}
+\centering\scriptsize
+\begin{tabular*}{\columnwidth}{@{\extracolsep{\fill}}lc@{}}
+\toprule
+Configuration & Exp-F1 (mean $\pm$ 95\% CI) \\
+\midrule
+BM25 Baseline & 0.3106 $\pm$ 0.0187 \\
+Standard Static RAG & 0.3136 $\pm$ 0.0200 \\
+LLM-Only & 0.2956 $\pm$ 0.0173 \\
+Full Agent w/o DSEL & 0.2449 $\pm$ 0.0166 \\
+Full Agent & 0.2394 $\pm$ 0.0167 \\
+Full Agent w/o TGI & 0.2364 $\pm$ 0.0154 \\
+Full Agent w/o Telemetry & 0.2307 $\pm$ 0.0164 \\
+\bottomrule
+\end{tabular*}
+\end{table}
+
+Table~\ref{tab:main} presents Exp-F1 grounding scores. On the held-out split, the leakage-free scorer gives the Full Agent 0.1377, below BM25 at 0.1413 and LLM-Only at 0.1388, and above Static RAG at 0.1003. Ablation CIs for No-DSEL ($0.1382\pm0.0078$) and No-TGI ($0.1326\pm0.0079$) overlap the Full Agent ($0.1377\pm0.0045$); no formal significance test was conducted. The single-generator cohort (Table~\ref{tab:cohort}) places the Full Agent below both baselines on lexical fidelity; its evidence is deterministic safety behaviour.
 
 \begin{table}[ht]
 \caption{Leakage-Free Grounding Performance on DAB-200 (Mean $\pm$ 95\% CI)}
@@ -652,9 +672,9 @@ An exploratory building damage evaluation on 100 class-balanced xView2/xBD crops
 
 %==========================================================
 \section{Limitations}
-The archived comparison uses different generators and unequal seed counts for ablations, so it is descriptive rather than controlled. The benchmark is author-curated; query-level separation does not establish incident-level independence, and inter-annotator agreement was not measured. The five-query abstention and 12-scenario temporal suites cover limited conditions.
+The archived comparison is generator-confounded and descriptive. The benchmark is author-curated; query-level separation does not establish incident-level independence, and inter-annotator agreement was not measured. The abstention and temporal suites cover limited conditions.
 
-TGI uses source-time windows and does not use event time; source-specific TTLs do not affect tiering. The basin-label filter uses a four-station registry, distance-only fallback for unknown basins, and is evaluated offline. DSEL relies on regular expressions and lexical overlap; its adversarial detector shares rule families with the enforcement layer, so independent adjudication is required. The HIGH/MEDIUM tag is model-supplied, not calibrated physical measurement. The alert tool writes internal JSONL records and does not connect to a live EOC.
+TGI uses source-time windows, not event time; source TTLs do not affect tiering. The four-station basin filter uses distance-only fallback and is offline. DSEL uses regexes and lexical overlap, and its evaluator shares rule families, so independent adjudication is needed. The confidence tag is model-supplied; alerts are internal JSONL records with no EOC connection.
 
 %==========================================================
 \section{Conclusion and Future Work}

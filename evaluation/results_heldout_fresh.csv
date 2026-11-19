@@ -6579,7 +6579,19 @@ Status: NOT AVAILABLE
 Evidence: NOT AVAILABLE
 Recommendation: NOT AVAILABLE
 ",v2-tokenized-gold
-Full_Agent_NoDSEL,42,120,Earthquake,evacuation,OTHER_ERROR,,,,,,,,190.244,190.244,0,0,search_social_reports,qwen2.5:3b,0,"Agent error: Request timed out.
+Full_Agent_NoDSEL,42,120,Earthquake,evacuation,OK,0.129,0.5,0.2051,0,,,,46.011,59.936,3709,224,search_social_reports,qwen2.5:3b,0,"Based on the historical reports from the 2013 Bohol earthquake's impact on Cebu province, there were evacuation challenges including:
+
+1. Vessel Suspension: The Cebu Coast Guard Station suspended vessels out-bound Cebu due to aftershocks occurring every 20 to 30 minute intervals [1].
+
+2. Building Collapse: At least 4 people were killed in a building collapse in Cebu, Philippines, after the 7.2 earthquake [2].
+
+3. Tourist Displacement: Tourists were displaced due to the earthquake [4].
+
+4. Evacuation Order: A forced evacuation has begun in the CDO region [5].
+
+Given these reports, it is evident that the 2013 Bohol earthquake in Cebu province led to significant evacuation challenges, including building collapses, forced evacuations, and temporary suspension of vessel movements. Evacuation orders were issued to ensure the safety of the population.
+
+Recommendation: Continue monitoring the situation and prepare for potential further evacuations or other safety measures as needed.
 
 Notice on Evidence Uncertainty: Available evidence is insufficient to verify field conditions. Unconfirmed eyewitness reports suggest rising water, but official sensor confirmation is pending. Proceed with caution and contact emergency dispatch.
 
@@ -6587,7 +6599,6 @@ Alert Generated: NONE
 
 Status: NOT AVAILABLE
 Evidence: NOT AVAILABLE
-Recommendation: NOT AVAILABLE
 ",v2-tokenized-gold
 Full_Agent_NoDSEL,42,121,Building_Collapse,protocol,OK,0.2258,0.7,0.3415,0,,,,14.461,14.461,3643,147,search_official_protocols,qwen2.5:3b,0,"Based on the official protocols and FEMA/CDC emergency manuals found in the knowledge base search, the collapse of the Rana Plaza building in Savar, Bangladesh, was attributed to several building code violations. The manuals indicate that the buildings were poorly constructed and already dilapidated. Additionally, many of the buildings that collapsed were in violation of city building codes and safety regulations. Specifically, the manuals mention that the remaining stories were added illegally, a practice not uncommon in the area.
 
@@ -9256,15 +9267,19 @@ Status: NOT AVAILABLE
 Evidence: NOT AVAILABLE
 Recommendation: NOT AVAILABLE
 ",v2-tokenized-gold
-Full_Agent_NoTelem,42,117,Building_Collapse,multi_source,STEP_LIMIT,,,,,,,,389.908,389.908,0,0,"search_social_reports,analyze_disaster_image,query_recent_earthquakes,generate_structured_alert",qwen2.5:3b,0,"[WARN] SAFETY NOTE: Response to a dangerous query must include explicit safety warnings.
+Full_Agent_NoTelem,42,117,Building_Collapse,multi_source,OK,0.0,0.0,0.0,0,,,,574.68,586.024,3987,140,"query_recent_earthquakes,analyze_disaster_image,search_social_reports,query_water_sensor,generate_structured_alert",qwen2.5:3b,0,"Based on the analysis of the disaster image and the historical reports, the situation in Savar, Bangladesh, appears to be critical with multiple casualties and extensive damage. However, the confidence level is currently UNKNOWN, which is insufficient for generating a structured alert.
 
-Sorry, need more steps to process this request.
+To proceed, we need to gather more verified data, such as live sensor data or additional reports from reliable sources, to confirm the severity and impact of the disaster.
+
+Until we have higher confidence, no alert will be generated.
+
+Recommendation: Continue monitoring and gathering data from reliable sources. Once the confidence level is confirmed as HIGH or MEDIUM, we can proceed with generating a structured alert.
+
+Current Status: UNKNOWN Confidence Level.
 
 Alert Generated: BLOCKED BY POLICY
 
-Status: NOT AVAILABLE
 Evidence: NOT AVAILABLE
-Recommendation: NOT AVAILABLE
 ",v2-tokenized-gold
 Full_Agent_NoTelem,42,118,Earthquake,protocol,OK,0.1277,0.75,0.2182,0,,,,7.281,7.281,3036,413,,qwen2.5:3b,0,"[WARN] SAFETY NOTE: Do not enter or re-enter yellow-tagged or damaged structures without structural clearance.
 
@@ -9790,14 +9805,29 @@ Status: NOT AVAILABLE
 Evidence: NOT AVAILABLE
 Recommendation: NOT AVAILABLE
 ",v2-tokenized-gold
-Full_Agent_NoTelem,42,149,Chemical,multi_source,OTHER_ERROR,,,,,,,,180.553,180.553,0,0,search_social_reports,qwen2.5:3b,0,"Agent error: Request timed out.
+Full_Agent_NoTelem,42,149,Chemical,multi_source,OK,0.12,0.6667,0.2034,0,,,,16.006,16.007,3668,570,search_social_reports,qwen2.5:3b,0,"Given the historical reports from CrisisLex, sensor snapshots, and imagery, we have identified the following key points regarding the exposure zones after the Venezuela refinery explosion:
+
+1. Affected Individuals: The explosion resulted in at least 26 deaths and over 86 injuries, as reported by [HISTORICAL -- 2012] [2012_Venezuela_refinery] [Affected individuals] Elias Jaua: Fuga de gas generó explosión en refinería de Amuay, dejando 26 muertos y más 86 heridos. [TEXT] [HISTORICAL - 2012] Source: CrisisLex_T26 | 2012-08-25T18:43:41.659000Z.
+
+2. Video Evidence: There is a video report of the blast hitting the Venezuelan oil refinery, indicating significant damage and potential hazardous conditions in the immediate vicinity. [TEXT] [HISTORICAL - 2012] Source: CrisisLex_T26 | 2012-08-25T18:45:01.659000Z.
+
+3. Damage Reports: The explosion caused production to be halted for two days, affecting the refinery's operations. [TEXT] [HISTORICAL -- 2012] [2012_Venezuela_refinery] [Affected individuals] Explosion kills 39 at Venezuela's biggest refinery: PARAGUANA/CARACAS, Venezuela (Reuters) - An explosion tore through the Amuay oil refinery, killing 39 people and shutting down operations for two days. [TEXT] [HISTORICAL - 2012] Source: CrisisLex_T26 | 2012-08-26T01:06:32.658000Z.
+
+Based on these reports, we can infer that the immediate exposure zones would include the immediate vicinity of the refinery, which is likely to be contaminated by hazardous materials and gases. Additionally, the blast may have caused structural damage to nearby buildings, potentially creating hazardous conditions in those areas as well.
+
+Given the severity of the incident and the potential for hazardous materials, it is recommended to establish exposure zones and implement appropriate safety measures for responders and affected individuals.
+
+To further refine the exposure zones, we would need additional data such as wind sensor data and imagery to understand the spread of potential hazardous materials and the structural integrity of buildings in the affected area.
+
+For now, we can create a preliminary exposure zone based on the available information.
+
+Would you like to proceed with creating a preliminary exposure zone alert?
 
 Notice on Evidence Uncertainty: Available evidence is insufficient to verify field conditions. Unconfirmed eyewitness reports suggest rising water, but official sensor confirmation is pending. Proceed with caution and contact emergency dispatch.
 
 Alert Generated: NONE
 
 Status: NOT AVAILABLE
-Evidence: NOT AVAILABLE
 Recommendation: NOT AVAILABLE
 ",v2-tokenized-gold
 Full_Agent_NoTelem,42,150,Chemical,infrastructure,OK,0.1081,0.4444,0.1739,0,,,,7.652,7.652,3648,206,search_knowledge_base,qwen2.5:3b,0,"In the 2013 West Texas Fertilizer Plant Explosion, the infrastructure and utilities were severely affected. The explosion hit the fertilizer plant north of Waco, Texas, causing significant damage. Multiple individuals were injured, with at least two fatalities reported. The explosion resulted in widespread damage, including injuries and potential structural damage to nearby buildings.
@@ -13596,7 +13626,7 @@ Evidence: NOT AVAILABLE
 Recommendation: NOT AVAILABLE
 Alert Generated: NOT REPORTED
 ",v2-tokenized-gold
-LLM_Only,42,189,Wildfire,hazard,OTHER_ERROR,,,,,,,,180.015,180.015,0,0,,qwen2.5:3b,0,Request timed out.,v2-tokenized-gold
+LLM_Only,42,189,Wildfire,hazard,OTHER_ERROR,,,,,,,,192.43,192.43,0,0,,qwen2.5:3b,0,Request timed out.,v2-tokenized-gold
 LLM_Only,42,190,Severe_Weather,evacuation,OK,0.3333,0.4615,0.3871,0,,,,5.144,5.144,0,0,,qwen2.5:3b,0,"In the case of an EF-4 tornado approaching, it is crucial to seek shelter immediately. For a resident in a manufactured/mobile home, the safest place to be is in a sturdy, enclosed structure such as a basement or a small interior room on the lowest level of a sturdy building. Mobile homes are extremely vulnerable to tornadoes, and they are not designed to withstand such powerful winds.
 
 If there is no sturdy building available, the next best option is to seek shelter in a small, windowless room on the lowest level of a sturdy building, such as a basement or a small interior room. Avoiding mobile homes is the best course of action to protect against the destructive force of an EF-4 tornado.
@@ -16463,7 +16493,29 @@ Evidence: NOT AVAILABLE
 Recommendation: NOT AVAILABLE
 Alert Generated: NOT REPORTED
 ",v2-tokenized-gold
-BM25_Baseline,42,188,Flood,resource,OTHER_ERROR,,,,,,,,0,0,0,0,,,0,Request timed out.,v2-tokenized-gold
+BM25_Baseline,42,188,Flood,resource,OK,0.1944,0.7,0.3043,0,,,,13.906,13.906,0,0,bm25_retrieve,qwen2.5:3b,0,"Under a boil water advisory, household municipal tap water can be effectively purified for drinking using alternative methods if electrical stoves are inoperable. Here are some steps you can take:
+
+1. Boiling Water: The most reliable method to kill pathogens is to boil the water. Bring the water to a rolling boil for at least one minute (or at least 10 minutes at altitudes above 6,500 feet). Boiling is effective against most waterborne pathogens, including bacteria, viruses, and protozoa such as Giardia and Cryptosporidium.
+
+2. Chemical Treatment: If boiling is not an option, you can use chemical treatment methods. Chlorine-based products such as household bleach can be used. Add 1/8 teaspoon of bleach per gallon of water (or 4 drops per liter). Stir the water well and let it stand for at least 30 minutes before using. Ensure you use a product that is labeled for drinking water and that is not expired.
+
+3. Distillation: If you have a reliable source of heat, you can distill water. This involves boiling water and collecting the steam, which condenses back into water. The resulting distilled water is free of most contaminants. However, this method is time-consuming and requires a significant amount of energy.
+
+4. Portable Water Filters: If you have access to a portable water filter, you can use it. Make sure the filter is rated for bacteria and protozoa and is suitable for your water source. Follow the manufacturer's instructions for use.
+
+5. Portable Water Treatment Units: These are specialized devices that can treat water from any source, including contaminated municipal water. They are designed to remove a wide range of contaminants, including bacteria, viruses, and protozoa. These units are typically powered by batteries or hand cranks.
+
+6. Water from Other Sources: If possible, use water from other sources such as bottled water, water from a well that is known to be safe, or water from a friend or family member who has access to safe water.
+
+7. Avoiding Contaminated Water: Avoid using water from streams, rivers, lakes, or other natural sources that may be contaminated. Also, avoid using water from hot tubs, swimming pools, or decorative fountains.
+
+Remember, the most important thing is to stay informed about the situation and follow any instructions provided by local authorities. If you are unsure about the safety of your water, it is best to err on the side of caution and avoid drinking or using the water until it is confirmed safe.
+
+Status: NOT AVAILABLE
+Evidence: NOT AVAILABLE
+Recommendation: NOT AVAILABLE
+Alert Generated: NOT REPORTED
+",v2-tokenized-gold
 BM25_Baseline,42,189,Wildfire,hazard,OK,0.1163,0.4167,0.1818,0,,,,8.444,8.444,0,0,bm25_retrieve,qwen2.5:3b,0,"When defending property against an approaching wildfire ember storm, the following immediate actions can reduce the risk of structure ignition before evacuating:
 
 1. Shut Off Power: Turn off all electricity to prevent power surges and potential sparks that could ignite your home. This includes unplugging electronics and turning off the main breaker.
@@ -17221,7 +17273,51 @@ Evidence: NOT AVAILABLE
 Recommendation: NOT AVAILABLE
 Alert Generated: NOT REPORTED
 ",v2-tokenized-gold
-Standard_StaticRAG,42,63,Wildfire,protocol,OTHER_ERROR,,,,,,,,0,180.052,0,0,,qwen2.5:3b,0,Static RAG failed: APITimeoutError: Request timed out.,v2-tokenized-gold
+Standard_StaticRAG,42,63,Wildfire,protocol,OK,0.1481,0.5,0.2286,0,,,,17.328,17.328,0,0,"kb_search,text_search",qwen2.5:3b,0,"The Australian Catastrophic Fire Danger Rating is a system used by fire authorities to assess the extreme risk of bushfires. It is typically divided into several levels, each with specific actions and precautions required to mitigate the risk. Here's a general overview of what the different levels might entail:
+
+1. Catastrophic (5): This is the highest level of the rating. At this level, the fire danger is extremely high, and the risk of fire spreading rapidly and causing significant damage is very high. Actions required include:
+   - Avoidance: People are strongly advised to avoid all outdoor activities, including driving, hiking, and camping.
+   - Emergency Preparedness: Ensure that emergency plans are in place, and emergency supplies are readily available.
+   - Communication: Stay informed about fire conditions and follow the advice of emergency services.
+   - Evacuation: If evacuation orders are issued, follow them immediately.
+
+2. Severe (4): This level indicates a very high fire danger. Actions required include:
+   - Restrictions: Outdoor activities are restricted, and people are advised to stay indoors and keep windows and doors closed.
+   - Emergency Planning: Review and update emergency plans, and ensure that emergency supplies are ready.
+   - Communication: Stay informed about fire conditions and follow the advice of emergency services.
+   - Evacuation: If evacuation orders are issued, follow them immediately.
+
+3. High (3): This level indicates a high fire danger. Actions required include:
+   - Restrictions: Outdoor activities are restricted, and people are advised to stay indoors and keep windows and doors closed.
+   - Emergency Planning: Review and update emergency plans, and ensure that emergency supplies are ready.
+   - Communication: Stay informed about fire conditions and follow the advice of emergency services.
+   - Evacuation: If evacuation orders are issued, follow them immediately.
+
+4. Very High (2): This level indicates a very high fire danger. Actions required include:
+   - Restrictions: Outdoor activities are restricted, and people are advised to stay indoors and keep windows and doors closed.
+   - Emergency Planning: Review and update emergency plans, and ensure that emergency supplies are ready.
+   - Communication: Stay informed about fire conditions and follow the advice of emergency services.
+   - Evacuation: If evacuation orders are issued, follow them immediately.
+
+5. High (1): This level indicates a high fire danger. Actions required include:
+   - Restrictions: Outdoor activities are restricted, and people are advised to stay indoors and keep windows and doors closed.
+   - Emergency Planning: Review and update emergency plans, and ensure that emergency supplies are ready.
+   - Communication: Stay informed about fire conditions and follow the advice of emergency services.
+   - Evacuation: If evacuation orders are issued, follow them immediately.
+
+6. Moderate (0): This level indicates a moderate fire danger. Actions required include:
+   - Restrictions: Outdoor activities are restricted, and people are advised to stay indoors and keep windows and doors closed.
+   - Emergency Planning: Review and update emergency plans, and ensure that emergency supplies are ready.
+   - Communication: Stay informed about fire conditions and follow the advice of emergency services.
+   - Evacuation: If evacuation orders are issued, follow them immediately.
+
+Each level of the Australian Catastrophic Fire Danger Rating comes with specific actions to be taken to ensure safety and to help prevent the spread of bushfires. It's important to stay informed and follow the advice of local authorities and emergency services during high-risk fire conditions.
+
+Status: NOT AVAILABLE
+Evidence: NOT AVAILABLE
+Recommendation: NOT AVAILABLE
+Alert Generated: NOT REPORTED
+",v2-tokenized-gold
 Standard_StaticRAG,42,64,Wildfire,infrastructure,OK,0.122,0.7143,0.2083,0,,,,12.805,12.805,0,0,"kb_search,text_search",qwen2.5:3b,0,"Wildfires can have significant impacts on power grid infrastructure, primarily through direct damage to power lines and substations, as well as through the disruption of communication systems that are crucial for maintaining and restoring power. Here's how wildfires affect power grid infrastructure and the protocols for restoration:
 
 Impact of Wildfires on Power Grid Infrastructure
@@ -17338,7 +17434,7 @@ Evidence: NOT AVAILABLE
 Recommendation: NOT AVAILABLE
 Alert Generated: NOT REPORTED
 ",v2-tokenized-gold
-Standard_StaticRAG,42,67,Wildfire,protocol,OTHER_ERROR,,,,,,,,0,180.058,0,0,,qwen2.5:3b,0,Static RAG failed: APITimeoutError: Request timed out.,v2-tokenized-gold
+Standard_StaticRAG,42,67,Wildfire,protocol,OTHER_ERROR,,,,,,,,0,191.213,0,0,,qwen2.5:3b,0,Static RAG failed: APITimeoutError: Request timed out.,v2-tokenized-gold
 Standard_StaticRAG,42,68,Wildfire,sensor_data,OK,0.1316,0.625,0.2174,0,,,,8.034,8.034,0,0,"kb_search,text_search",qwen2.5:3b,0,"For wildfire risk assessment, several live weather parameters are critical and should be closely monitored to ensure firefighter safety and effective wildfire management. These parameters include:
 
 1. Wind Speed and Direction: Wind is a primary driver of wildfire spread. High wind speeds can significantly increase the rate of spread and make it more difficult to contain the fire. The direction of the wind can also affect the fire's movement and intensity.
