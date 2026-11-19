@@ -1,0 +1,495 @@
+config,run_id,id,scenario,category,status,kw_precision,kw_recall,kw_f1,svc_regex,p_at_k,ndcg_at_7,rr,active_latency_s,total_latency_s,prompt_tokens,completion_tokens,tools_called,model_used,retries,full_answer,kw_scorer_version
+Full_Agent,42,3,Flood,situational_awareness,OK,0.2308,0.4286,0.3,0,,,,31.943,44.647,3197,73,query_water_sensor,qwen2.5:3b,0,"Status: NORMAL
+Evidence:
+  - [LIVE - USGS NWIS #06730200, Confidence: HIGH] Gage height -999999.00 ft, below flood stage.
+
+Recommendation:
+  1. No stranded vehicles or flooded roads are reported. Continue monitoring.
+
+Alert Generated: NONE
+",v2-tokenized-gold
+Full_Agent,42,21,Flood,situational_awareness,OK,0.1591,0.875,0.2692,0,,,,28.948,28.948,3681,584,search_social_reports,qwen2.5:3b,0,"During the Alberta floods in 2013, social media reports indicate that evacuations and road closures were in effect. Here are some key points from the reports:
+
+1. CrisisLex / Sensors / Imagery: [HISTORICAL -- 2013] [2013_Alberta_floods] [Affected individuals] Flooding in Alberta Forces 75,000 to Evacuate. [Source: CrisisLex_T26 | 2013-06-22T05:38:40.664000Z]
+
+2. Infrastructure and utilities: [HISTORICAL -- 2013] [2013_Alberta_floods] [Infrastructure and utilities] RT @cityofcalgary: Due to flooding a closure of the two eastbound lanes on Memorial Dr between 5A St and Centre St NW is planned. #yycflood. [Source: CrisisLex_T26 | 2013-06-20T21:57:19.665000Z]
+
+3. Infrastructure and utilities: [HISTORICAL -- 2013] [2013_Alberta_floods] [Infrastructure and utilities] Calgary is now in a local state of emergency. Lots of evacuations and road closures. Stay safe!! #yycflood #yyc. [Source: CrisisLex_T26 | 2013-06-20T21:29:13.666000Z]
+
+4. Affected individuals: [HISTORICAL -- 2013] [2013_Alberta_floods] [Affected individuals] About 100,000 people evacuated in southern Alberta. #ABflood. [Source: CrisisLex_T26 | 2013-06-21T22:01:36.666000Z]
+
+5. Infrastructure and utilities: [HISTORICAL -- 2013] [2013_Alberta_floods] [Infrastructure and utilities] RT @CalgaryPolice: Power has been shut off in evacuated communities for the safety of citizens and first responders. #yycflood. [Source: CrisisLex_T26 | 2013-06-21T15:24:04.664000Z]
+
+These reports suggest that evacuations were widespread, and road closures were implemented to manage the flooding. Evacuations affected a significant number of people, and power was shut off in evacuated areas for safety reasons.
+
+Notice on Evidence Uncertainty: Available evidence is insufficient to verify field conditions. Unconfirmed eyewitness reports suggest rising water, but official sensor confirmation is pending. Proceed with caution and contact emergency dispatch.
+
+Alert Generated: NONE
+
+Status: NOT AVAILABLE
+Evidence: NOT AVAILABLE
+Recommendation: NOT AVAILABLE
+",v2-tokenized-gold
+Full_Agent,42,22,Flood,weather,OK,0.0571,0.2857,0.0952,0,,,,17.22,17.22,4045,249,"search_social_reports,query_water_sensor",qwen2.5:3b,0,"The live sensor data for the Alberta Beach, CA (coordinates: 53.667, -114.352) shows that the river discharge is currently at 0.00 m³/s, which is within the typical seasonal range and below the peak threshold of 0.00 m³/s. The status is reported as NORMAL, indicating that the river discharge is within normal conditions and there are no immediate concerns related to rainfall intensity contributing to flooding.
+
+Given this information, the current rainfall intensity does not appear to be contributing to significant flooding in the area. However, it is important to continue monitoring the situation as rainfall patterns can change rapidly, and we should remain vigilant for any potential changes in flood conditions.
+
+For ongoing monitoring and decision-making, we should continue to use the `query_water_sensor` tool to check for any changes in river discharge and status. If we detect any unusual changes, we should escalate the alert using the `generate_structured_alert` tool to ensure that appropriate responses are initiated.
+
+Let's proceed with the next step of monitoring the situation. We will use the `query_water_sensor` tool again to check for any changes in the river discharge and status.
+
+Notice on Evidence Uncertainty: Available evidence is insufficient to verify field conditions. Unconfirmed eyewitness reports suggest rising water, but official sensor confirmation is pending. Proceed with caution and contact emergency dispatch.
+
+Alert Generated: NONE
+
+Status: NOT AVAILABLE
+Evidence: NOT AVAILABLE
+Recommendation: NOT AVAILABLE
+",v2-tokenized-gold
+Full_Agent,42,23,Flood,infrastructure,OK,0.12,0.5,0.1935,0,,,,9.621,9.621,3664,294,search_social_reports,qwen2.5:3b,0,"During the 2013 Alberta flood, the following infrastructure damage was reported:
+
+- [HISTORICAL -- 2013] [2013_Alberta_floods] [Affected individuals] Massive Flooding In Alberta Canada Forces 75,000 To Flee. [SOURCE: [TEXT] [HISTORICAL - 2013] Source: CrisisLex_T26 | 2013-06-22T14:36:07.657000Z]
+- [HISTORICAL -- 2013] [2013_Alberta_floods] [Infrastructure and utilities] Calgary June 21 2013 #yycflood #Calgary Deerfoot Trail by Inglewood Golf course [SOURCE: [TEXT] [HISTORICAL - 2013] Source: CrisisLex_T26 | 2013-06-22T04:47:36.657000Z]
+
+Additionally, there were evacuations of approximately 100,000 people in southern Alberta, and flooding forced 75,000 people to evacuate. Schools were closed due to the flooding. No specific details about the extent of damage to buildings or other infrastructure were provided in the reports.
+
+Notice on Evidence Uncertainty: Available evidence is insufficient to verify field conditions. Unconfirmed eyewitness reports suggest rising water, but official sensor confirmation is pending. Proceed with caution and contact emergency dispatch.
+
+Alert Generated: NONE
+
+Status: NOT AVAILABLE
+Evidence: NOT AVAILABLE
+Recommendation: NOT AVAILABLE
+",v2-tokenized-gold
+Full_Agent,42,24,Flood,evacuation,OK,0.125,0.4286,0.1935,0,,,,3.455,3.455,3665,82,search_social_reports,qwen2.5:3b,0,"Based on the reports from the 2013 Alberta floods, approximately 100,000 people were evacuated in southern Alberta. The primary evacuation zones were affected, with the exact zones not specified in the available reports. The reports indicate widespread flooding that forced evacuations in southern Alberta. For more detailed information, it would be beneficial to consult official evacuation maps or reports from local authorities.
+
+Notice on Evidence Uncertainty: Available evidence is insufficient to verify field conditions. Unconfirmed eyewitness reports suggest rising water, but official sensor confirmation is pending. Proceed with caution and contact emergency dispatch.
+
+Alert Generated: NONE
+
+Status: NOT AVAILABLE
+Evidence: NOT AVAILABLE
+Recommendation: NOT AVAILABLE
+",v2-tokenized-gold
+Full_Agent_NoTGI,42,3,Flood,situational_awareness,OK,0.1481,0.5714,0.2353,0,,,,7.27,7.27,2898,184,search_social_reports,qwen2.5:3b,0,"There are reports of stranded vehicles and flooded roads in Boulder. Here are some details from the field reports:
+
+- RT @BoulderCh1News: Lee Road in Boulder is closed due to a rock slide.
+- RT @BoulderOEM: RTD will have regular routes tomorrow except for the Y, YL & N. The DASH is detoured around S. Boulder. #boulderflood
+- Leaving Boulder on Hwy 128, 72 is closed and Coal Creek Canyon is closed. #boulderflood
+- RT @Weishampel: Many North Boulder roads and canyon roads are closed due to the #Boulderflood. Stay home.
+- RT @140elect: Large blocks of cement ripped off roads in #BoulderFlood.
+
+Please ensure all roads are safe before proceeding. Stay informed and follow local authorities for the latest updates.
+
+Notice on Evidence Uncertainty: Available evidence is insufficient to verify field conditions. Unconfirmed eyewitness reports suggest rising water, but official sensor confirmation is pending. Proceed with caution and contact emergency dispatch.
+
+Alert Generated: NONE
+
+Status: NOT AVAILABLE
+Evidence: NOT AVAILABLE
+Recommendation: NOT AVAILABLE
+",v2-tokenized-gold
+Full_Agent_NoTGI,42,21,Flood,situational_awareness,OK,0.2121,0.875,0.3415,0,,,,7.63,7.63,2876,229,search_social_reports,qwen2.5:3b,0,"There are reports of road closures and evacuation orders in Alberta due to flooding. Here are some details from social media reports:
+
+- About 100,000 people have been evacuated in southern Alberta. [CrisisLex_T26, 2013_Alberta_floods]
+- Flooding in Alberta has forced 75,000 people to evacuate. [CrisisLex_T26, 2013_Alberta_floods]
+- Mandatory evacuations have been ordered in Calgary due to flooding, with up to 100,000 people potentially affected. [CrisisLex_T26, 2013_Alberta_floods]
+- The flooding has led to the evacuation of the downtown area in Calgary. [CrisisLex_T26, 2013_Alberta_floods]
+
+Given the severity of the situation, it is recommended to monitor these reports closely and consider the evacuation orders and road closures in the area. Ensure all personnel are aware of the evacuation routes and any potential hazards.
+
+Notice on Evidence Uncertainty: Available evidence is insufficient to verify field conditions. Unconfirmed eyewitness reports suggest rising water, but official sensor confirmation is pending. Proceed with caution and contact emergency dispatch.
+
+Alert Generated: NONE
+
+Status: NOT AVAILABLE
+Evidence: NOT AVAILABLE
+Recommendation: NOT AVAILABLE
+",v2-tokenized-gold
+Full_Agent_NoTGI,42,22,Flood,weather,OK,0.0645,0.2857,0.1053,0,,,,5.906,5.906,2853,190,search_social_reports,qwen2.5:3b,0,"Based on the reports from the 2013 Alberta Floods event, rainfall intensity contributed significantly to the disaster. Approximately 100,000 people were evacuated in southern Alberta. The flooding forced 75,000 people to evacuate, and widespread flooding occurred across southern Alberta. The rainfall was so intense that it caused massive flooding, leading to evacuations and widespread disruption. No school was in operation due to the flooding.
+
+Given the severity of the situation, it is crucial to continue monitoring the situation and ensuring that all necessary precautions are taken to protect the population and infrastructure.
+
+Recommendation:
+1. Continue monitoring the situation and coordinating with local authorities for evacuation and relief efforts.
+
+Alert Generated: NONE
+
+Notice on Evidence Uncertainty: Available evidence is insufficient to verify field conditions. Unconfirmed eyewitness reports suggest rising water, but official sensor confirmation is pending. Proceed with caution and contact emergency dispatch.
+
+Status: NOT AVAILABLE
+Evidence: NOT AVAILABLE
+",v2-tokenized-gold
+Full_Agent_NoTGI,42,23,Flood,infrastructure,OK,0.1071,0.5,0.1765,0,,,,7.145,7.145,2858,253,search_social_reports,qwen2.5:3b,0,"During the 2013 Alberta flood, the following infrastructure damage was reported based on the social reports and sensor data:
+
+- [HISTORICAL -- 2013 Alberta floods] Massive flooding in Alberta forced 75,000 people to flee. [SOURCE: [2013 Alberta floods] [DOCUMENT] [2013_Alberta_floods] [Affected individuals] Flooding in Alberta Forces 75,000 to Evacuate http://t.co/PfcOWgAKgM]
+- [HISTORICAL -- 2013 Alberta floods] Calgary's Deerfoot Trail by Inglewood Golf course was affected by flooding. [SOURCE: [2013 Alberta floods] [DOCUMENT] [2013_Alberta_floods] [Infrastructure and utilities] Calgary June 21 2013 #yycflood #Calgary Deerfoot Trail by Inglewood Golf course http://t.co/GH8kxRan2g]
+
+No specific damage to buildings or infrastructure was detailed in the reports. For more detailed information, please consult official reports or further analyze the damage using tools like analyze_disaster_image.
+
+Notice on Evidence Uncertainty: Available evidence is insufficient to verify field conditions. Unconfirmed eyewitness reports suggest rising water, but official sensor confirmation is pending. Proceed with caution and contact emergency dispatch.
+
+Alert Generated: NONE
+
+Status: NOT AVAILABLE
+Evidence: NOT AVAILABLE
+Recommendation: NOT AVAILABLE
+",v2-tokenized-gold
+Full_Agent_NoTGI,42,24,Flood,evacuation,OK,0.1111,0.4286,0.1765,0,,,,10.103,10.103,2858,346,search_social_reports,qwen2.5:3b,0,"Based on the reports from the CrisisLex dataset, approximately 100,000 people were evacuated during the 2013 Alberta floods. The primary evacuation zones were in southern Alberta. However, the exact zones are not specified in the provided reports. For precise information, additional data or a more detailed report would be needed.
+
+Status: [NORMAL]
+Evidence:
+  - [CrisisLex_T26, 2013_Alberta_floods, [TEXT], Confidence: MEDIUM]: About 100,000 people evacuated in southern Alberta. #ABflood
+  - [CrisisLex_T26, 2013_Alberta_floods, [TEXT], Confidence: MEDIUM]: Flooding in Alberta Forces 75,000 to Evacuate http://t.co/B8jtTrx9qE
+  - [CrisisLex_T26, 2013_Alberta_floods, [TEXT], Confidence: MEDIUM]: Massive Flooding In Alberta Canada Forces 75,000 To Flee. http://t.co/PfcOWgAKgM
+  - [CrisisLex_T26, 2013_Alberta_floods, [TEXT], Confidence: MEDIUM]: Thousands evacuated in Canada floods – in pictures: Widespread flooding in southern Alberta, caused by torrent... http://t.co/JFzvUki9Y9
+Recommendation:
+  1. Monitor the situation and prepare for potential further evacuations in southern Alberta.
+Alert Generated: NONE
+
+Notice on Evidence Uncertainty: Available evidence is insufficient to verify field conditions. Unconfirmed eyewitness reports suggest rising water, but official sensor confirmation is pending. Proceed with caution and contact emergency dispatch.
+",v2-tokenized-gold
+Full_Agent_NoDSEL,42,3,Flood,situational_awareness,OK,0.2308,0.4286,0.3,0,,,,17.344,17.344,3197,73,query_water_sensor,qwen2.5:3b,0,"Status: NORMAL
+Evidence:
+  - [LIVE - USGS NWIS #06730200, Confidence: HIGH] Gage height -999999.00 ft, below flood stage.
+
+Recommendation:
+  1. No stranded vehicles or flooded roads are reported. Continue monitoring.
+
+Alert Generated: NONE
+",v2-tokenized-gold
+Full_Agent_NoDSEL,42,21,Flood,situational_awareness,OK,0.1591,0.875,0.2692,0,,,,15.234,15.234,3681,584,search_social_reports,qwen2.5:3b,0,"During the Alberta floods in 2013, social media reports indicate that evacuations and road closures were in effect. Here are some key points from the reports:
+
+1. CrisisLex / Sensors / Imagery: [HISTORICAL -- 2013] [2013_Alberta_floods] [Affected individuals] Flooding in Alberta Forces 75,000 to Evacuate. [Source: CrisisLex_T26 | 2013-06-22T05:38:40.664000Z]
+
+2. Infrastructure and utilities: [HISTORICAL -- 2013] [2013_Alberta_floods] [Infrastructure and utilities] RT @cityofcalgary: Due to flooding a closure of the two eastbound lanes on Memorial Dr between 5A St and Centre St NW is planned. #yycflood. [Source: CrisisLex_T26 | 2013-06-20T21:57:19.665000Z]
+
+3. Infrastructure and utilities: [HISTORICAL -- 2013] [2013_Alberta_floods] [Infrastructure and utilities] Calgary is now in a local state of emergency. Lots of evacuations and road closures. Stay safe!! #yycflood #yyc. [Source: CrisisLex_T26 | 2013-06-20T21:29:13.666000Z]
+
+4. Affected individuals: [HISTORICAL -- 2013] [2013_Alberta_floods] [Affected individuals] About 100,000 people evacuated in southern Alberta. #ABflood. [Source: CrisisLex_T26 | 2013-06-21T22:01:36.666000Z]
+
+5. Infrastructure and utilities: [HISTORICAL -- 2013] [2013_Alberta_floods] [Infrastructure and utilities] RT @CalgaryPolice: Power has been shut off in evacuated communities for the safety of citizens and first responders. #yycflood. [Source: CrisisLex_T26 | 2013-06-21T15:24:04.664000Z]
+
+These reports suggest that evacuations were widespread, and road closures were implemented to manage the flooding. Evacuations affected a significant number of people, and power was shut off in evacuated areas for safety reasons.
+
+Notice on Evidence Uncertainty: Available evidence is insufficient to verify field conditions. Unconfirmed eyewitness reports suggest rising water, but official sensor confirmation is pending. Proceed with caution and contact emergency dispatch.
+
+Alert Generated: NONE
+
+Status: NOT AVAILABLE
+Evidence: NOT AVAILABLE
+Recommendation: NOT AVAILABLE
+",v2-tokenized-gold
+Full_Agent_NoDSEL,42,22,Flood,weather,OK,0.0571,0.2857,0.0952,0,,,,18.705,18.705,4045,249,"search_social_reports,query_water_sensor",qwen2.5:3b,0,"The live sensor data for the Alberta Beach, CA (coordinates: 53.667, -114.352) shows that the river discharge is currently at 0.00 m³/s, which is within the typical seasonal range and below the peak threshold of 0.00 m³/s. The status is reported as NORMAL, indicating that the river discharge is within normal conditions and there are no immediate concerns related to rainfall intensity contributing to flooding.
+
+Given this information, the current rainfall intensity does not appear to be contributing to significant flooding in the area. However, it is important to continue monitoring the situation as rainfall patterns can change rapidly, and we should remain vigilant for any potential changes in flood conditions.
+
+For ongoing monitoring and decision-making, we should continue to use the `query_water_sensor` tool to check for any changes in river discharge and status. If we detect any unusual changes, we should escalate the alert using the `generate_structured_alert` tool to ensure that appropriate responses are initiated.
+
+Let's proceed with the next step of monitoring the situation. We will use the `query_water_sensor` tool again to check for any changes in the river discharge and status.
+
+Notice on Evidence Uncertainty: Available evidence is insufficient to verify field conditions. Unconfirmed eyewitness reports suggest rising water, but official sensor confirmation is pending. Proceed with caution and contact emergency dispatch.
+
+Alert Generated: NONE
+
+Status: NOT AVAILABLE
+Evidence: NOT AVAILABLE
+Recommendation: NOT AVAILABLE
+",v2-tokenized-gold
+Full_Agent_NoDSEL,42,23,Flood,infrastructure,OK,0.12,0.5,0.1935,0,,,,10.752,10.752,3664,294,search_social_reports,qwen2.5:3b,0,"During the 2013 Alberta flood, the following infrastructure damage was reported:
+
+- [HISTORICAL -- 2013] [2013_Alberta_floods] [Affected individuals] Massive Flooding In Alberta Canada Forces 75,000 To Flee. [SOURCE: [TEXT] [HISTORICAL - 2013] Source: CrisisLex_T26 | 2013-06-22T14:36:07.657000Z]
+- [HISTORICAL -- 2013] [2013_Alberta_floods] [Infrastructure and utilities] Calgary June 21 2013 #yycflood #Calgary Deerfoot Trail by Inglewood Golf course [SOURCE: [TEXT] [HISTORICAL - 2013] Source: CrisisLex_T26 | 2013-06-22T04:47:36.657000Z]
+
+Additionally, there were evacuations of approximately 100,000 people in southern Alberta, and flooding forced 75,000 people to evacuate. Schools were closed due to the flooding. No specific details about the extent of damage to buildings or other infrastructure were provided in the reports.
+
+Notice on Evidence Uncertainty: Available evidence is insufficient to verify field conditions. Unconfirmed eyewitness reports suggest rising water, but official sensor confirmation is pending. Proceed with caution and contact emergency dispatch.
+
+Alert Generated: NONE
+
+Status: NOT AVAILABLE
+Evidence: NOT AVAILABLE
+Recommendation: NOT AVAILABLE
+",v2-tokenized-gold
+Full_Agent_NoDSEL,42,24,Flood,evacuation,OK,0.125,0.4286,0.1935,0,,,,3.525,3.525,3665,82,search_social_reports,qwen2.5:3b,0,"Based on the reports from the 2013 Alberta floods, approximately 100,000 people were evacuated in southern Alberta. The primary evacuation zones were affected, with the exact zones not specified in the available reports. The reports indicate widespread flooding that forced evacuations in southern Alberta. For more detailed information, it would be beneficial to consult official evacuation maps or reports from local authorities.
+
+Notice on Evidence Uncertainty: Available evidence is insufficient to verify field conditions. Unconfirmed eyewitness reports suggest rising water, but official sensor confirmation is pending. Proceed with caution and contact emergency dispatch.
+
+Alert Generated: NONE
+
+Status: NOT AVAILABLE
+Evidence: NOT AVAILABLE
+Recommendation: NOT AVAILABLE
+",v2-tokenized-gold
+Full_Agent_NoTelem,42,3,Flood,situational_awareness,OK,0.0909,0.4286,0.15,0,,,,2.893,2.893,3082,79,query_water_sensor,qwen2.5:3b,0,"Since live sensor data is unavailable, I cannot directly assess the current status of stranded vehicles or flooded roads in Boulder. For such critical information, we would typically rely on real-time water level data from USGS gauges. However, given the current limitations, I cannot generate a structured alert based on the available data. We should consider other sources or wait for live sensor data to be available.
+
+Notice on Evidence Uncertainty: Available evidence is insufficient to verify field conditions. Unconfirmed eyewitness reports suggest rising water, but official sensor confirmation is pending. Proceed with caution and contact emergency dispatch.
+
+Alert Generated: NONE
+
+Status: NOT AVAILABLE
+Evidence: NOT AVAILABLE
+Recommendation: NOT AVAILABLE
+",v2-tokenized-gold
+Full_Agent_NoTelem,42,21,Flood,situational_awareness,OK,0.1591,0.875,0.2692,0,,,,16.421,16.421,3681,584,search_social_reports,qwen2.5:3b,0,"During the Alberta floods in 2013, social media reports indicate that evacuations and road closures were in effect. Here are some key points from the reports:
+
+1. CrisisLex / Sensors / Imagery: [HISTORICAL -- 2013] [2013_Alberta_floods] [Affected individuals] Flooding in Alberta Forces 75,000 to Evacuate. [Source: CrisisLex_T26 | 2013-06-22T05:38:40.664000Z]
+
+2. Infrastructure and utilities: [HISTORICAL -- 2013] [2013_Alberta_floods] [Infrastructure and utilities] RT @cityofcalgary: Due to flooding a closure of the two eastbound lanes on Memorial Dr between 5A St and Centre St NW is planned. #yycflood. [Source: CrisisLex_T26 | 2013-06-20T21:57:19.665000Z]
+
+3. Infrastructure and utilities: [HISTORICAL -- 2013] [2013_Alberta_floods] [Infrastructure and utilities] Calgary is now in a local state of emergency. Lots of evacuations and road closures. Stay safe!! #yycflood #yyc. [Source: CrisisLex_T26 | 2013-06-20T21:29:13.666000Z]
+
+4. Affected individuals: [HISTORICAL -- 2013] [2013_Alberta_floods] [Affected individuals] About 100,000 people evacuated in southern Alberta. #ABflood. [Source: CrisisLex_T26 | 2013-06-21T22:01:36.666000Z]
+
+5. Infrastructure and utilities: [HISTORICAL -- 2013] [2013_Alberta_floods] [Infrastructure and utilities] RT @CalgaryPolice: Power has been shut off in evacuated communities for the safety of citizens and first responders. #yycflood. [Source: CrisisLex_T26 | 2013-06-21T15:24:04.664000Z]
+
+These reports suggest that evacuations were widespread, and road closures were implemented to manage the flooding. Evacuations affected a significant number of people, and power was shut off in evacuated areas for safety reasons.
+
+Notice on Evidence Uncertainty: Available evidence is insufficient to verify field conditions. Unconfirmed eyewitness reports suggest rising water, but official sensor confirmation is pending. Proceed with caution and contact emergency dispatch.
+
+Alert Generated: NONE
+
+Status: NOT AVAILABLE
+Evidence: NOT AVAILABLE
+Recommendation: NOT AVAILABLE
+",v2-tokenized-gold
+Full_Agent_NoTelem,42,22,Flood,weather,OK,0.0556,0.2857,0.093,0,,,,19.459,19.459,4042,220,"search_social_reports,query_water_sensor",qwen2.5:3b,0,"Given that live sensor data is currently unavailable, we cannot directly assess the current rainfall intensity and flood status. However, based on historical reports from the 2013 Alberta Floods event, we can infer that the rainfall intensity was extremely high, leading to severe flooding and evacuations.
+
+To provide a more accurate assessment, we would need to use the `query_water_sensor` tool to gather real-time data. Let's proceed with that.
+
+Since live sensor data is unavailable, we will not be able to generate a structured alert based on current conditions. However, we can still use the historical data to inform our response. For example, we can search for more recent reports or use other available tools to gather more information.
+
+Let's proceed with searching for more recent reports using the `search_social_reports` tool to see if there are any updates or additional insights available.
+
+Notice on Evidence Uncertainty: Available evidence is insufficient to verify field conditions. Unconfirmed eyewitness reports suggest rising water, but official sensor confirmation is pending. Proceed with caution and contact emergency dispatch.
+
+Alert Generated: NONE
+
+Status: NOT AVAILABLE
+Evidence: NOT AVAILABLE
+Recommendation: NOT AVAILABLE
+",v2-tokenized-gold
+Full_Agent_NoTelem,42,23,Flood,infrastructure,OK,0.12,0.5,0.1935,0,,,,11.522,11.522,3664,294,search_social_reports,qwen2.5:3b,0,"During the 2013 Alberta flood, the following infrastructure damage was reported:
+
+- [HISTORICAL -- 2013] [2013_Alberta_floods] [Affected individuals] Massive Flooding In Alberta Canada Forces 75,000 To Flee. [SOURCE: [TEXT] [HISTORICAL - 2013] Source: CrisisLex_T26 | 2013-06-22T14:36:07.657000Z]
+- [HISTORICAL -- 2013] [2013_Alberta_floods] [Infrastructure and utilities] Calgary June 21 2013 #yycflood #Calgary Deerfoot Trail by Inglewood Golf course [SOURCE: [TEXT] [HISTORICAL - 2013] Source: CrisisLex_T26 | 2013-06-22T04:47:36.657000Z]
+
+Additionally, there were evacuations of approximately 100,000 people in southern Alberta, and flooding forced 75,000 people to evacuate. Schools were closed due to the flooding. No specific details about the extent of damage to buildings or other infrastructure were provided in the reports.
+
+Notice on Evidence Uncertainty: Available evidence is insufficient to verify field conditions. Unconfirmed eyewitness reports suggest rising water, but official sensor confirmation is pending. Proceed with caution and contact emergency dispatch.
+
+Alert Generated: NONE
+
+Status: NOT AVAILABLE
+Evidence: NOT AVAILABLE
+Recommendation: NOT AVAILABLE
+",v2-tokenized-gold
+Full_Agent_NoTelem,42,24,Flood,evacuation,OK,0.125,0.4286,0.1935,0,,,,4.267,4.267,3665,82,search_social_reports,qwen2.5:3b,0,"Based on the reports from the 2013 Alberta floods, approximately 100,000 people were evacuated in southern Alberta. The primary evacuation zones were affected, with the exact zones not specified in the available reports. The reports indicate widespread flooding that forced evacuations in southern Alberta. For more detailed information, it would be beneficial to consult official evacuation maps or reports from local authorities.
+
+Notice on Evidence Uncertainty: Available evidence is insufficient to verify field conditions. Unconfirmed eyewitness reports suggest rising water, but official sensor confirmation is pending. Proceed with caution and contact emergency dispatch.
+
+Alert Generated: NONE
+
+Status: NOT AVAILABLE
+Evidence: NOT AVAILABLE
+Recommendation: NOT AVAILABLE
+",v2-tokenized-gold
+LLM_Only,42,3,Flood,situational_awareness,OK,0.2222,0.5714,0.32,0,,,,2.25,2.25,0,0,,qwen2.5:3b,0,"I don't have real-time data access or the ability to browse the internet for current reports. For the most accurate and up-to-date information regarding stranded vehicles or flooded roads in Boulder, I would recommend checking local news sources, the Boulder Police Department, or the Boulder County Sheriff's Office websites. These sources typically provide the latest updates and alerts related to road conditions and vehicle incidents.
+
+Status: NOT AVAILABLE
+Evidence: NOT AVAILABLE
+Recommendation: NOT AVAILABLE
+Alert Generated: NOT REPORTED
+",v2-tokenized-gold
+LLM_Only,42,21,Flood,situational_awareness,OK,0.2609,0.75,0.3871,0,,,,4.366,4.366,0,0,,qwen2.5:3b,0,"I don't have real-time data access to provide the most current social media reports about road closures and evacuation during Alberta floods. However, I can provide some general information based on previous events:
+
+During Alberta floods, social media platforms often see reports of road closures and evacuation orders. These reports are typically shared by local authorities, emergency management agencies, and community members. They usually include details such as the affected roads, the reason for the closures, and any evacuation orders issued for specific areas.
+
+For the most accurate and up-to-date information, it's best to refer to official sources such as the Government of Alberta's Emergency Management Office, local news outlets, and social media accounts of local authorities and emergency response teams. These sources provide verified and timely updates on road conditions and evacuation orders.
+
+Status: NOT AVAILABLE
+Evidence: NOT AVAILABLE
+Recommendation: NOT AVAILABLE
+Alert Generated: NOT REPORTED
+",v2-tokenized-gold
+LLM_Only,42,22,Flood,weather,OK,0.1071,0.4286,0.1714,0,,,,10.412,10.412,0,0,,qwen2.5:3b,0,"The 2013 Alberta flood disaster in Canada was influenced by a combination of factors, including heavy rainfall intensity. Here's how rainfall intensity contributed to the disaster:
+
+1. Duration and Intensity: The 2013 Alberta floods were characterized by prolonged periods of heavy rainfall. The rainfall intensity was particularly high, with some areas receiving over 200 mm (8 inches) of rain in a single day. This intense rainfall led to rapid water accumulation in rivers and streams, causing them to overflow their banks.
+
+2. Rapid Runoff: The heavy rainfall caused rapid runoff, which means water flowed over the land surface rather than infiltrating into the soil. This rapid runoff exacerbated the flooding by increasing the volume of water that needed to be managed by drainage systems and natural waterways.
+
+3. Soil Erosion: The intense rainfall also led to significant soil erosion. The saturated soil could not absorb the additional water, leading to erosion of the soil surface. This erosion further increased the volume of water flowing downstream, contributing to the severity of the flooding.
+
+4. River Overflow: The combination of heavy rainfall and rapid runoff resulted in rivers and streams overflowing their banks, leading to widespread flooding in many areas. The intensity of the rainfall was a key factor in the extent of river overflow and the resulting flooding.
+
+5. Urban Drainage Issues: In urban areas, the intense rainfall overwhelmed the drainage systems designed to handle typical rainfall volumes. This led to flooding in streets, parks, and other low-lying areas, affecting residential and commercial properties.
+
+While other factors such as the timing of the rainfall, the topography of the region, and the effectiveness of flood management systems also played significant roles, the intensity of the rainfall was a critical contributor to the 2013 Alberta flood disaster.
+
+Status: NOT AVAILABLE
+Evidence: NOT AVAILABLE
+Recommendation: NOT AVAILABLE
+Alert Generated: NOT REPORTED
+",v2-tokenized-gold
+LLM_Only,42,23,Flood,infrastructure,OK,0.0968,0.5,0.1622,0,,,,6.219,6.219,0,0,,qwen2.5:3b,0,"I don't have access to real-time or specific data beyond what is publicly available. However, during the 2013 Alberta floods, significant infrastructure damage was reported. The floods affected several communities in Alberta, particularly in the Red Deer River valley. Infrastructure damage included:
+
+1. Roads and Bridges: Many roads and bridges were washed out or severely damaged. Some bridges were deemed unsafe and had to be closed or replaced.
+
+2. Railways: Several railway lines were affected, leading to disruptions in freight and passenger services.
+
+3. Water Infrastructure: Water treatment plants and water distribution systems were damaged, leading to water supply issues for some communities.
+
+4. Utilities: Power lines were damaged, leading to widespread power outages. In some areas, it took months to restore power.
+
+5. Housing: Many homes were damaged or destroyed, particularly in low-lying areas. Some communities had to rely on temporary housing solutions.
+
+6. Public Facilities: Schools, community centers, and other public buildings were damaged or had to be closed due to flooding.
+
+For the most accurate and up-to-date information, it would be best to consult official reports from the Government of Alberta or local news sources from that time.
+
+Status: NOT AVAILABLE
+Evidence: NOT AVAILABLE
+Recommendation: NOT AVAILABLE
+Alert Generated: NOT REPORTED
+",v2-tokenized-gold
+LLM_Only,42,24,Flood,evacuation,OK,0.25,0.4286,0.3158,0,,,,1.627,1.627,0,0,,qwen2.5:3b,0,"I don't have specific, verified data on the exact number of people evacuated during the 2013 Alberta floods. The 2013 Alberta floods were a series of severe flooding events that affected multiple communities in Alberta, Canada. The primary evacuation zones were in the region around Fort McMurray, including Fort McMurray, Fort Chippen 嘣
+
+Status: NOT AVAILABLE
+Evidence: NOT AVAILABLE
+Recommendation: NOT AVAILABLE
+Alert Generated: NOT REPORTED
+",v2-tokenized-gold
+BM25_Baseline,42,3,Flood,situational_awareness,OK,0.375,0.4286,0.4,0,,,,1.707,1.707,0,0,bm25_retrieve,qwen2.5:3b,0,"Based on the information provided, there are reports of roads being closed due to a rock slide on Lee Road. However, there are no specific reports of stranded vehicles or flooded roads. The context mentions that some students are evacuating dorms due to potential flood conditions, but it does not indicate that they are stranded.
+
+Status: NOT AVAILABLE
+Evidence: NOT AVAILABLE
+Recommendation: NOT AVAILABLE
+Alert Generated: NOT REPORTED
+",v2-tokenized-gold
+BM25_Baseline,42,21,Flood,situational_awareness,OK,0.2692,0.875,0.4118,0,,,,5.334,5.335,0,0,bm25_retrieve,qwen2.5:3b,0,"The social media reports describe several aspects of the road closures and evacuation efforts during the Alberta floods:
+
+1. Road Closure: A road near Lee Road in Boulder, Colorado, has been closed due to a rock slide. This information was reported by @BoulderCh1News.
+
+2. Evacuation Preparation: There are indications that some students are preparing for evacuation from dorms in Boulder. This is mentioned by @ShanaCordon, who also expresses hope for some rest and emphasizes the importance of safety and well-being.
+
+3. Rivers and Mud Sliding: There are reports of rivers forming and some students engaging in mud sliding activities. This is noted by a user who is sharing this information with the hashtag #boulderflood.
+
+4. Swift-Water Rescue Teams: Emergency response teams from Westminster and Thornton are on their way to Boulder in case they are needed. This is reported by @TimesCall, indicating that there might be swift-water rescue operations in the works.
+
+These reports suggest that the situation is complex, with both immediate safety concerns (road closures and evacuation preparations) and ongoing activities (rivers forming and mud sliding) taking place in the affected area.
+
+Status: NOT AVAILABLE
+Evidence: NOT AVAILABLE
+Recommendation: NOT AVAILABLE
+Alert Generated: NOT REPORTED
+",v2-tokenized-gold
+BM25_Baseline,42,22,Flood,weather,OK,0.1111,0.4286,0.1765,0,,,,8.89,8.89,0,0,bm25_retrieve,qwen2.5:3b,0,"I'm sorry, but the context provided does not specifically mention the 2013 Alberta flood disaster. The context appears to be related to the 2013 Boulder flood disaster in Colorado. The 2013 Alberta flood disaster occurred in Alberta, Canada, and was caused by intense rainfall, which led to severe flooding in several communities.
+
+To answer how rainfall intensity contributed to the 2013 Alberta flood disaster, we need to consider the following factors:
+
+1. Heavy Rainfall: The 2013 Alberta flood was primarily caused by a series of intense rainfall events. The heaviest rainfall occurred in the province of Alberta, particularly in the Edmonton area. The total rainfall in some regions exceeded 200 mm (8 inches) in a single day, which is extremely rare and unprecedented in many areas.
+
+2. Duration of Rainfall: The rainfall events were not just heavy but also lasted for several days. This extended duration allowed for significant water accumulation in rivers and streams, leading to rapid flooding.
+
+3. Topography: Alberta's landscape, with its numerous rivers and valleys, played a crucial role in the flooding. The terrain facilitated the rapid spread of floodwaters, causing them to overflow into surrounding areas.
+
+4. Infrastructure: In some areas, the infrastructure was not designed to handle such intense rainfall events. This included drainage systems, bridges, and other flood control measures, which often failed during the flood.
+
+5. Climate Change: While not directly mentioned in the context, climate change can contribute to more intense rainfall events. Increased atmospheric moisture and warmer temperatures can lead to heavier rainfall events, which can exacerbate flooding.
+
+In summary, the 2013 Alberta flood disaster was primarily caused by intense rainfall events that exceeded historical records, leading to significant water accumulation and rapid flooding across the region. The combination of heavy rainfall, extended duration, and vulnerable infrastructure contributed to the severity of the disaster.
+
+Status: NOT AVAILABLE
+Evidence: NOT AVAILABLE
+Recommendation: NOT AVAILABLE
+Alert Generated: NOT REPORTED
+",v2-tokenized-gold
+BM25_Baseline,42,23,Flood,infrastructure,OK,0.2308,0.5,0.3158,0,,,,4.203,4.203,0,0,bm25_retrieve,qwen2.5:3b,0,"I'm sorry, but the information you provided does not include details about the 2013 Alberta flood. The context you shared is related to the 2013 Boulder flood in Colorado. The 2013 Alberta flood occurred in Alberta, Canada, and I don't have specific information about infrastructure damage from that event. If you have any details about the 2013 Alberta flood, I'd be happy to try to provide information based on that. For the 2013 Boulder flood, infrastructure damage typically includes damaged roads, bridges, and buildings, as well as power outages and other disruptions. However, without specific data, I can't provide details about the 2013 Alberta flood's infrastructure damage.
+
+Status: NOT AVAILABLE
+Evidence: NOT AVAILABLE
+Recommendation: NOT AVAILABLE
+Alert Generated: NOT REPORTED
+",v2-tokenized-gold
+BM25_Baseline,42,24,Flood,evacuation,OK,0.2308,0.4286,0.3,0,,,,2.275,2.275,0,0,bm25_retrieve,qwen2.5:3b,0,"I'm sorry, but the information you're asking for is not available in the context provided. The context discusses the 2013 Boulder flood in Colorado, not the 2013 Alberta floods in Canada. The context does not specify the number of people evacuated or the primary evacuation zones for the 2013 Alberta floods.
+
+For the 2013 Alberta floods, the number of people evacuated and the primary evacuation zones would need to be researched from specific reports or news articles about that event.
+
+Status: NOT AVAILABLE
+Evidence: NOT AVAILABLE
+Recommendation: NOT AVAILABLE
+Alert Generated: NOT REPORTED
+",v2-tokenized-gold
+Standard_StaticRAG,42,3,Flood,situational_awareness,OK,0.3333,0.4286,0.375,0,,,,2.347,2.347,0,0,"kb_search,text_search",qwen2.5:3b,0,"Based on the information provided, there are reports of road closures and evacuations due to flooding and rock slides in Boulder. However, there are no specific reports of stranded vehicles or flooded roads. The reports focus on road closures and evacuations for certain areas, such as Lee Road and Jamestown. It's important to note that road conditions can change, and for the most up-to-date and accurate information, it's best to check with local authorities or news sources.
+
+Status: NOT AVAILABLE
+Evidence: NOT AVAILABLE
+Recommendation: NOT AVAILABLE
+Alert Generated: NOT REPORTED
+",v2-tokenized-gold
+Standard_StaticRAG,42,21,Flood,situational_awareness,OK,0.2593,0.875,0.4,0,,,,7.836,7.836,0,0,"kb_search,text_search",qwen2.5:3b,0,"During the Alberta floods in 2013, social media reports described various road closures and evacuation efforts. Here's a summary of the information provided:
+
+1. Power Closures: The @CalgaryPolice mentioned that power had been shut off in evacuated communities to ensure the safety of citizens and first responders. This indicates that power outages were being implemented as part of safety measures.
+
+2. List of Current Road Closures: The @CalgaryPolice also provided a list of current road closures, which was shared via a link. This suggests that the authorities were actively updating the public on which roads were closed due to the floods.
+
+3. Evacuation Zone: @CBCMeg reported that their @CBCCalgary building was in an evacuation zone, and staff were leaving the area. This indicates that some individuals were being evacuated from their current locations due to the flood threat.
+
+4. Twitter Mining for Information: @globaltvnews was using Twitter to gather information from various sources, including news, blogs, and wikis, to assist in the response to the Alberta floods. This shows the importance of social media in disseminating and gathering information during emergencies.
+
+5. City 8pm Update: @tvchick13 provided an update at 8pm, stating that roads in the downtown core were being closed, and Memorial Drive was closed. This indicates specific road closures in certain areas of Calgary.
+
+Overall, these reports highlight the need for communication and coordination among various stakeholders, including local authorities, media, and the public, to manage and inform people about road closures and evacuation efforts during the Alberta floods of 2013.
+
+Status: NOT AVAILABLE
+Evidence: NOT AVAILABLE
+Recommendation: NOT AVAILABLE
+Alert Generated: NOT REPORTED
+",v2-tokenized-gold
+Standard_StaticRAG,42,22,Flood,weather,OK,0.087,0.2857,0.1333,0,,,,6.562,6.562,0,0,"kb_search,text_search",qwen2.5:3b,0,"The rainfall intensity contributed significantly to the 2013 Alberta flood disaster in several ways:
+
+1. Heavy Rainfall: The 2013 Alberta floods were characterized by extremely heavy rainfall, which led to rapid water accumulation in the region's water systems. This heavy rainfall overwhelmed the drainage systems, causing rivers and streams to overflow their banks.
+
+2. Duration of Rainfall: The rainfall was not just heavy but also prolonged. This extended period of intense rainfall created a significant amount of water that needed to be managed, leading to a buildup of water in various waterways.
+
+3. Flash Flooding: The combination of heavy and prolonged rainfall led to flash flooding in many areas. Flash flooding occurs when heavy rainfall happens very quickly, often within a few hours, and causes rapid rises in water levels. This type of flooding can be particularly dangerous and destructive.
+
+4. Snowmelt: In the early part of the flood event, there was also significant snowmelt. When snow melts, it adds to the volume of water in rivers and streams, further exacerbating the flood conditions.
+
+5. Combined Effects: The combination of heavy rainfall, prolonged duration, and snowmelt created a perfect storm of conditions that led to widespread flooding across southern Alberta.
+
+These factors combined to create a situation where the drainage systems were overwhelmed, leading to extensive flooding that affected thousands of people and caused significant damage.
+
+Status: NOT AVAILABLE
+Evidence: NOT AVAILABLE
+Recommendation: NOT AVAILABLE
+Alert Generated: NOT REPORTED
+",v2-tokenized-gold
+Standard_StaticRAG,42,23,Flood,infrastructure,OK,0.3846,0.8333,0.5263,0,,,,3.849,3.849,0,0,"kb_search,text_search",qwen2.5:3b,0,"During the 2013 Alberta floods, various infrastructure damage reports were noted. Some of the reported damage included:
+
+1. Bridges being closed, particularly around the city core and along Deerfoot Trail. For example, the Langevin Bridge was closed at 10:30 PM.
+
+2. The city of Calgary reported that bridges along Deerfoot Trail were being assessed.
+
+3. About 100,000 people were evacuated in southern Alberta due to the flooding.
+
+While the specific damage to Deerfoot Trail and other infrastructure is not detailed in the provided context, it can be inferred that the flooding had significant impacts on the city's transportation infrastructure, including bridges and roads. The context mentions that bridges were closed and being assessed, indicating that there were structural issues that needed to be addressed.
+
+Status: NOT AVAILABLE
+Evidence: NOT AVAILABLE
+Recommendation: NOT AVAILABLE
+Alert Generated: NOT REPORTED
+",v2-tokenized-gold
+Standard_StaticRAG,42,24,Flood,evacuation,OK,0.3571,0.7143,0.4762,0,,,,3.837,3.837,0,0,"kb_search,text_search",qwen2.5:3b,0,"During the 2013 Alberta floods, the number of people evacuated varied across different reports. The primary evacuation zones were in southern Alberta, with the following key points:
+
+- Initially, 100,000 people were evacuated in southern Alberta due to flooding.
+- Later, the number was revised to 75,000 people evacuated in Calgary due to flooding.
+- Additionally, mandatory evacuations were ordered in 20 communities in Alberta due to flooding.
+
+It's important to note that the exact number of people evacuated could have fluctuated as the situation evolved, and not all evacuations were necessarily in the southern Alberta region. The primary evacuation zones were in southern Alberta, particularly in and around Calgary, where the 100,000 figure was initially reported.
+
+Status: NOT AVAILABLE
+Evidence: NOT AVAILABLE
+Recommendation: NOT AVAILABLE
+Alert Generated: NOT REPORTED
+",v2-tokenized-gold

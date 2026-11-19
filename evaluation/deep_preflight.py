@@ -118,7 +118,7 @@ def main() -> None:
     check_units()
     check_env_lock("scratch/tgi_v6_worker.py", "LOCKCHECK ollama qwen2.5:3b")
     check_dsel_env_lock()
-    check_env_lock("scratch/fresh_worker.py", "LOCKCHECK ollama llama3.1:8b")
+    check_env_lock("scratch/fresh_worker.py", "LOCKCHECK ollama qwen2.5:3b")
     print("DEEP PREFLIGHT PASS")
 
 

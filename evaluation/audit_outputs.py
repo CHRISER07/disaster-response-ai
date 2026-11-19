@@ -16,6 +16,7 @@ from __future__ import annotations
 
 import csv
 import json
+import os
 import sys
 import time
 from collections import Counter, defaultdict
@@ -25,6 +26,7 @@ ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
 
 from core.answer_formatter import TEMPLATE_SECTIONS
+from evaluation.run_dev_eval_v2 import KW_SCORER_VERSION
 
 DEFAULT_CSV = ROOT / "evaluation" / "results_heldout_fresh.csv"
 REPORT = ROOT / "evaluation" / "output_audit.json"
@@ -81,6 +83,57 @@ def audit(path: Path) -> dict:
     models = sorted({r.get("model_used", "") for r in rows})
     if len(models) > 1:
         problems.append({"kind": "mixed_generators", "detail": str(models)})
+
+    # Coverage and provenance: PASS must mean a complete, single-generator,
+    # single-scorer artifact, not merely "no problem in the rows that exist".
+    expected_configs = {
+        "Full_Agent", "Full_Agent_NoTGI", "Full_Agent_NoDSEL",
+        "Full_Agent_NoTelem", "LLM_Only", "BM25_Baseline", "Standard_StaticRAG",
+    }
+    expected_rows = len(expected_configs) * 150
+    if len(rows) != expected_rows:
+        problems.append({"kind": "wrong_row_count",
+                         "detail": f"{len(rows)} != {expected_rows}"})
+    cfg_counts = Counter(r.get("config", "") for r in rows)
+    for cfg in expected_configs:
+        if cfg_counts.get(cfg, 0) != 150:
+            problems.append({"kind": "wrong_config_count",
+                             "detail": f"{cfg}={cfg_counts.get(cfg, 0)} != 150"})
+    unexpected = set(cfg_counts) - expected_configs
+    if unexpected:
+        problems.append({"kind": "unexpected_config", "detail": str(sorted(unexpected))})
+
+    held = set(json.loads((ROOT / "evaluation" / "heldout_ids.json").read_text(encoding="utf-8")))
+    dev = set(json.loads((ROOT / "evaluation" / "dev_ids.json").read_text(encoding="utf-8")))
+    expected_ids = held - dev
+    for cfg in expected_configs:
+        got_ids = {r.get("id") for r in rows if r.get("config") == cfg}
+        if got_ids != expected_ids:
+            problems.append({"kind": "wrong_id_coverage", "detail": cfg})
+
+    marker = path.with_suffix(".complete")
+    locked = os.getenv("OLLAMA_MODEL", "")
+    if marker.exists():
+        for line in marker.read_text(encoding="utf-8").splitlines():
+            if line.startswith("generator="):
+                locked = line.split("=", 1)[1]
+    if locked and models != [locked]:
+        problems.append({"kind": "unexpected_generator",
+                         "detail": f"{models} != {locked}"})
+    scorers = sorted({r.get("kw_scorer_version", "") for r in rows
+                      if r.get("kw_scorer_version", "")})
+    if scorers != [KW_SCORER_VERSION]:
+        problems.append({"kind": "scorer_mismatch", "detail": str(scorers)})
+
+    for row in rows:
+        if row.get("status") == "OK":
+            svc = row.get("svc_regex", "")
+            if svc not in ("0", "1"):
+                problems.append({"kind": "bad_svc_regex", "detail": svc})
+        elif any(row.get(k, "") not in ("", None) for k in
+                 ("kw_precision", "kw_recall", "kw_f1", "svc_regex")):
+            problems.append({"kind": "scored_error_row",
+                             "detail": str(row.get("id"))})
 
     for cfg in sorted({r.get("config", "") for r in rows}):
         s = [r for r in rows if r.get("config") == cfg]

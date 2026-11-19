@@ -27,8 +27,12 @@ FIELDNAMES = [
     "p_at_k","ndcg_at_7","rr",
     "active_latency_s","total_latency_s",
     "prompt_tokens","completion_tokens",
-    "tools_called","model_used","retries","full_answer"
+    "tools_called","model_used","retries","full_answer","kw_scorer_version"
 ]
+
+# Bump when the keyword scorer's tokenisation or formula changes. A CSV must
+# never mix scorer versions silently.
+KW_SCORER_VERSION = "v2-tokenized-gold"
 
 GROQ_MODEL = os.getenv("GROQ_MODEL", "qwen/qwen3.8-27b")
 SEEDS = [42, 7, 99]  # 3 runs per config
@@ -68,15 +72,29 @@ def _tokens(text: str) -> set:
     words = re.findall(r"[a-z]+", text.lower())
     return {_stem(w) for w in words if w not in _STOPWORDS and len(w) > 2}
 
+
+def _keyword_tokens(keywords) -> set:
+    """Tokenise gold keywords the same way as answer text.
+
+    The old code stemmed a whole keyword string, so multi-word keywords such as
+    "flood stage" could never match the single-word stems extracted from an
+    answer and recall was structurally capped at zero for those items.
+    """
+    out: set[str] = set()
+    for kw in keywords or []:
+        if kw:
+            out.update(_tokens(str(kw)))
+    return out
+
+
 @functools.lru_cache(maxsize=1)
 def _dataset_vocab() -> set:
     """Domain vocabulary derived from the golden dataset, never hardcoded."""
     data = json.loads(DATASET_FILE.read_text(encoding="utf-8"))
-    vocab = set()
+    vocab: set[str] = set()
     for item in data:
-        for kw in item.get("expected_keywords", item.get("keywords", [])):
-            if kw:
-                vocab.add(_stem(str(kw).lower()))
+        vocab.update(_keyword_tokens(
+            item.get("expected_keywords", item.get("keywords", []))))
     return vocab
 
 
@@ -91,7 +109,7 @@ def kw_scores(answer: str, gold_keywords: list) -> tuple:
     if not answer or not gold_keywords:
         return 0.0, 0.0, 0.0
     ans_toks = _tokens(answer)
-    gold_toks = {_stem(k.lower()) for k in gold_keywords if k}
+    gold_toks = _keyword_tokens(gold_keywords)
     if not gold_toks:
         return 0.0, 0.0, 0.0
     predicted = ans_toks & _dataset_vocab()
@@ -193,7 +211,9 @@ def run_llm_only(query: str, seed: int) -> dict:
 
 def run_bm25(query: str, seed: int) -> dict:
     """Config 2: BM25 baseline — retrieve then generate."""
-    from groq import Groq
+    # The Groq client is only needed in the Groq branch below. Importing it
+    # unconditionally turned every local BM25 row into OTHER_ERROR when the
+    # optional dependency was absent.
     t0 = time.perf_counter()
     # Real query-dependent sparse retrieval. The previous implementation built
     # an FTS clause from the question but never used it; it fetched the same
@@ -381,6 +401,7 @@ def run_full_agent(query: str, seed: int, no_tgi: bool = False, no_dsel: bool = 
     # Initialised before try so the finally block is always safe to execute.
     sv_mod = st = wt = kb = None
     original_vr = original_sensor = original_weather = original_kb_search = None
+    original_tool_funcs: list = []
     try:
         from agents.disaster_agent import run_agent
         import core.safety_validator as sv_mod
@@ -407,6 +428,20 @@ def run_full_agent(query: str, seed: int, no_tgi: bool = False, no_dsel: bool = 
                 import tools.weather_tool as wt
                 original_weather = wt.fetch_live_weather
                 wt.fetch_live_weather = lambda *a, **kw: "Telemetry disabled: live weather data unavailable for evaluation."
+            except Exception:
+                pass
+            # The agent binds the @tool-decorated objects at import time, so
+            # rebinding module attributes alone leaves live telemetry enabled.
+            # Patch the bound StructuredTool functions as well.
+            try:
+                from tools import ALL_TOOLS
+                disabled = {"query_water_sensor", "fetch_live_weather"}
+                for tool in ALL_TOOLS:
+                    if tool.name in disabled and hasattr(tool, "func"):
+                        original_tool_funcs.append((tool, tool.func))
+                        tool.func = lambda *a, **kw: (
+                            "Telemetry disabled: live sensor data unavailable for evaluation."
+                        )
             except Exception:
                 pass
 
@@ -501,6 +536,8 @@ def run_full_agent(query: str, seed: int, no_tgi: bool = False, no_dsel: bool = 
                 st.query_water_sensor = original_sensor
             if original_weather is not None and wt is not None:
                 wt.fetch_live_weather = original_weather
+        for tool, func in original_tool_funcs:
+            tool.func = func
         if no_tgi and original_kb_search is not None and kb is not None:
             kb._search = original_kb_search
 

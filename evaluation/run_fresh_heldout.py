@@ -35,7 +35,7 @@ load_dotenv(ROOT / ".env", override=False)
 LOCKED_PROVIDER = os.getenv("PROVIDER", "ollama")
 LOCKED_MODEL = (os.getenv("OLLAMA_MODEL") if LOCKED_PROVIDER == "ollama"
                 else os.getenv("GROQ_MODEL"))
-OUT = ROOT / "evaluation" / "results_heldout_fresh.csv"
+OUT = ROOT / "evaluation" / os.getenv("FRESH_OUT_NAME", "results_heldout_fresh.csv")
 # A stale marker from an interrupted smoke test must never let a partial run
 # look complete. Remove it at startup; it is rewritten only at the real end.
 OUT.with_suffix(".complete").unlink(missing_ok=True)
@@ -45,7 +45,7 @@ HELDOUT_IDS = ROOT / "evaluation" / "heldout_ids.json"
 
 from evaluation.run_dev_eval_v2 import (
     run_llm_only, run_bm25, run_static_rag, run_full_agent,
-    kw_scores, svc_regex_check, FIELDNAMES, STATUS_OK,
+    kw_scores, svc_regex_check, FIELDNAMES, STATUS_OK, KW_SCORER_VERSION,
 )
 from core.answer_formatter import format_answer
 
@@ -95,11 +95,28 @@ def main() -> None:
     active_configs = [c for c in CONFIGS if args.config is None or c[0] == args.config]
     if not active_configs:
         raise SystemExit(f"Unknown --config '{args.config}'. Valid: {[c[0] for c in CONFIGS]}")
+    if LOCKED_PROVIDER != "ollama" or not LOCKED_MODEL:
+        raise SystemExit(
+            "fresh held-out must run with a locked local generator via scratch/fresh_worker.py"
+        )
     print(f"Fresh heldout: {len(queries)} queries | provider={LOCKED_PROVIDER} | model={LOCKED_MODEL}")
 
     done = set()
     if OUT.exists():
-        for r in csv.DictReader(open(OUT, encoding="utf-8")):
+        prior = list(csv.DictReader(open(OUT, encoding="utf-8")))
+        prior_models = {r.get("model_used", "") for r in prior}
+        prior_scorers = {r.get("kw_scorer_version", "") for r in prior
+                         if r.get("kw_scorer_version", "")}
+        if len(prior_models) > 1:
+            raise SystemExit(f"mixed generators in {OUT}: {prior_models}")
+        if prior_models and LOCKED_MODEL not in prior_models:
+            raise SystemExit(f"generator mismatch in {OUT}: {prior_models}")
+        if len(prior_scorers) > 1:
+            raise SystemExit(f"mixed scorers in {OUT}: {prior_scorers}")
+        prior_keys = [(r["config"], str(r["run_id"]), str(r["id"])) for r in prior]
+        if len(prior_keys) != len(set(prior_keys)):
+            raise SystemExit(f"duplicate trial keys in {OUT}; repair manually before resuming")
+        for r in prior:
             if r["status"] == "OK":
                 done.add((r["config"], str(r["run_id"]), str(r["id"])))
 
@@ -130,13 +147,18 @@ def main() -> None:
                         res = {"status": "OTHER_ERROR", "full_answer": str(exc),
                                "active_latency_s": 0, "total_latency_s": 0,
                                "prompt_tokens": 0, "completion_tokens": 0,
-                               "tools_called": "", "model_used": LOCKED_MODEL, "retries": 0}
-                    answer = format_answer(res.get("full_answer", ""))
+                               "tools_called": "", "model_used": "", "retries": 0}
+                    raw_answer = res.get("full_answer", "")
                     if res["status"] == STATUS_OK:
-                        p, r, f1 = kw_scores(answer, q.get("keywords", []))
-                        svc = svc_regex_check(answer, q.get("expected_service", ""))
+                        # Score the raw answer. format_answer() injects template
+                        # tokens ("status", "alert", "report") that are in the
+                        # dataset vocabulary and would create phantom matches.
+                        p, r, f1 = kw_scores(raw_answer, q.get("keywords", []))
+                        svc = svc_regex_check(raw_answer, q.get("expected_service", ""))
+                        answer = format_answer(raw_answer)
                     else:
                         p = r = f1 = svc = ""
+                        answer = raw_answer
                     writer.writerow({
                         "config": name, "run_id": seed, "id": q["id"],
                         "scenario": q.get("scenario", ""), "category": q.get("category", ""),
@@ -147,18 +169,38 @@ def main() -> None:
                         "prompt_tokens": res.get("prompt_tokens", 0),
                         "completion_tokens": res.get("completion_tokens", 0),
                         "tools_called": res.get("tools_called", ""),
-                        "model_used": res.get("model_used", LOCKED_MODEL),
+                        "model_used": res.get("model_used", ""),
                         "retries": res.get("retries", 0),
                         "full_answer": answer,
+                        "kw_scorer_version": KW_SCORER_VERSION,
                     })
                     f.flush()
                     print(f"[{n}/{total}] {name} id={q['id']} -> {res['status']}", flush=True)
                     time.sleep(0.3)
-    # Completion marker
-    OUT.with_suffix(".complete").write_text(
-        f"rows={sum(1 for _ in csv.DictReader(open(OUT, encoding='utf-8')))}\n",
-        encoding="utf-8",
-    )
+    # A completion marker is only valid for a full, unambiguous collection.
+    subset = (args.limit is not None or args.config is not None
+              or args.ids is not None or args.max_new is not None)
+    marker = OUT.with_suffix(".complete")
+    if subset:
+        marker.unlink(missing_ok=True)
+        print("Subset run: no completion marker written", flush=True)
+    else:
+        rows = list(csv.DictReader(open(OUT, encoding="utf-8")))
+        expected = {(name, str(seed), str(q["id"]))
+                    for name, _ in active_configs for seed in SEEDS for q in queries}
+        actual = [(r["config"], str(r["run_id"]), str(r["id"])) for r in rows]
+        complete = (len(rows) == len(expected)
+                    and len(actual) == len(set(actual))
+                    and set(actual) == expected
+                    and all(r["status"] == STATUS_OK for r in rows))
+        if complete:
+            marker.write_text(
+                f"rows={len(rows)}\ngenerator={LOCKED_MODEL}\nscorer={KW_SCORER_VERSION}\n",
+                encoding="utf-8",
+            )
+        else:
+            marker.unlink(missing_ok=True)
+            print("Incomplete run: no completion marker written", flush=True)
     print("Done. Output:", OUT)
 
 

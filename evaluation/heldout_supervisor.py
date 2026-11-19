@@ -79,9 +79,16 @@ def main() -> None:
 
     while True:
         if MARKER.exists():
-            with open(LOG, "a", encoding="utf-8") as f:
-                f.write(f"{utc()} | COMPLETE rows={row_count()}\n")
-            return
+            count = row_count()
+            if count != TARGET:
+                # A stale or partial marker must not stop the supervisor.
+                with open(LOG, "a", encoding="utf-8") as f:
+                    f.write(f"{utc()} | MARKER INVALID rows={count} expected={TARGET}\n")
+                MARKER.unlink(missing_ok=True)
+            else:
+                with open(LOG, "a", encoding="utf-8") as f:
+                    f.write(f"{utc()} | COMPLETE rows={count}\n")
+                return
 
         rows = row_count()
         if rows < 0:

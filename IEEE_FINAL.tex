@@ -159,7 +159,7 @@ Based on the reviewed literature, this study focuses on integrating dynamic temp
 \node[comp, text width=2.40cm] (tgi)   at (10.15, 8.12)
   {\textbf{TGI Partitioner}\\Snowflake $\gg 22$\\Live, Hist \& KB Tiers};
 \node[comp, text width=2.40cm] (geo)   at (13.05, 8.12)
-  {\textbf{Geospatial Filter}\\Haversine \& HUC-10\\Catchment Routing};
+  {\textbf{Geospatial Filter}\\Haversine \& Basin Map\\Catchment Routing};
 \node[comp, text width=2.40cm] (store) at (15.95, 8.12)
   {\textbf{Evidence Stores}\\BGE Dense + BM25\\In-Memory TTL Cache};
 
@@ -322,7 +322,7 @@ Dense semantic similarity is computed via dot product: $\mathrm{sim}_{\mathrm{de
 where $k_{\mathrm{rrf}} = 60$ is the smoothing constant and $\alpha = 0.70$ is the fusion weight, calibrated via grid search on the 50-query development split and strictly frozen thereafter.
 
 \subsection{Geospatial Routing and Catchment-Based Filtering}
-To reduce cross-watershed contamination, incoming sensor feeds undergo catchment-based spatial filtering. For U.S.\ hydrological sensors, stations are mapped to USGS HUC-10 sub-basins. HUC-10 concordance functions as a geographic filter rather than full river-network hydrodynamic modeling: it gates out trans-basin sensors that are radially proximate but hydrologically disconnected. For international scenarios without HUC-10 indexing, filtering defaults to Haversine bounding. Let $m(x,\ell) \equiv \mathbf{1}[\mathrm{HUC}_{10}(x) = \mathrm{HUC}_{10}(\ell)]$ denote sub-basin concordance where available. The routing predicate is:
+To reduce cross-watershed contamination, incoming sensor feeds undergo catchment-based spatial filtering. Each USGS station is mapped to a named drainage basin in a static registry (e.g., Boulder Creek, St.\ Vrain); concordance of these basin labels, not full hydrodynamic modelling, gates out trans-basin sensors that are radially proximate but hydrologically disconnected. Observations without a registered basin are filtered by Haversine distance alone. Let $m(x,\ell) \equiv \mathbf{1}[\mathrm{basin}(x) = \mathrm{basin}(\ell)]$ denote basin concordance where available. The routing predicate is:
 \begin{equation}
 \label{eq:geo_gate}
 g(x, \ell) =
@@ -421,19 +421,19 @@ Evaluating emergency AI systems poses a fundamental challenge: live EOC operatio
 \textit{Partitioning and Run Accounting:} DAB-200 has four query-disjoint partitions: (1)~\textit{Development} (50 queries; hyperparameter calibration); (2)~\textit{Held-Out} (150 queries; frozen parameters); (3)~\textit{Temporal Stress} (12 paired $\times$ 2 conditions $\times$ 3 seeds = 72 runs/arm); (4)~\textit{Adversarial} (42 traps $\times$ 3 seeds = 126 runs/arm). Total 2,100 runs: 3 core systems $\times$ 3 seeds $\times$ 150 = 1,350; 2 ablations $\times$ 1 seed $\times$ 150 = 300; 3 baselines $\times$ 3 seeds $\times$ 50 = 450 development runs. Safe abstention covers 15 unanswerable scenarios (13 DAB-200 epistemic traps plus 2 conflicting-sensor traps).
 
 \subsection{Evaluated Configurations}
-Eight system configurations are evaluated: (1)~\textit{BM25 Baseline}; (2)~\textit{LLM-Only} (zero-shot generation); (3)~\textit{Text-Only Static RAG}; (4)~\textit{Standard Static RAG} (multimodal corpus without live telemetry tools); (5)~\textit{Full Agent}; (6)~\textit{Ablation: No TGI}; (7)~\textit{Ablation: No DSEL}; and (8)~\textit{Ablation: No Telemetry}. All agentic reasoning arms are powered by \texttt{Meta-Llama-3.1-8B-Instruct} operating under deterministic greedy decoding (temperature $\tau=0.1$, top-$p=0.9$). Execution seeds, tool cache snapshots, and DSEL verification logs are recorded per trial to ensure reproducible evaluation.
+Eight system configurations are evaluated: (1)~\textit{BM25 Baseline}; (2)~\textit{LLM-Only} (zero-shot generation); (3)~\textit{Text-Only Static RAG}; (4)~\textit{Standard Static RAG} (multimodal corpus without live telemetry tools); (5)~\textit{Full Agent}; (6)~\textit{Ablation: No TGI}; (7)~\textit{Ablation: No DSEL}; and (8)~\textit{Ablation: No Telemetry}. All reported controlled experiments use a single locked local generator, \texttt{Qwen2.5-3B}, under deterministic greedy decoding (temperature $\tau=0$). No cloud model is mixed into any reported table. Execution seeds, tool cache snapshots, and DSEL verification logs are recorded per trial to ensure reproducible evaluation.
 
 \textit{Reproducibility:} Each execution record stores configuration attributes, random seeds, and tool execution traces. Prompts, DSEL rules, and evaluation scripts are versioned in the open repository.
 
 \subsection{Evaluation Metrics}
-\textit{Expected-Keyword F1 (Exp-F1):} Evaluates token set precision and recall against domain-curated expected emergency terminology $W_{\mathrm{ref}}$ using Porter-stemmed alphanumeric tokens $W_{\mathrm{gen}}$ after removing standard English stopwords:
+\textit{Expected-Keyword F1 (Exp-F1):} Token-set precision and recall against gold emergency terminology $W_{\mathrm{ref}}$; generated tokens are stopword-filtered, stemmed and restricted to the dataset-derived vocabulary $V$ ($W_{\mathrm{pred}} = W_{\mathrm{gen}} \cap V$). Both sets are word-tokenised so multi-word gold terms can match:
 \begin{equation}
-\mathrm{P} = \frac{|W_{\mathrm{gen}} \cap W_{\mathrm{ref}}|}{|W_{\mathrm{gen}}|}, \quad
-\mathrm{R} = \frac{|W_{\mathrm{gen}} \cap W_{\mathrm{ref}}|}{|W_{\mathrm{ref}}|}, \quad
+\mathrm{P} = \frac{|W_{\mathrm{pred}} \cap W_{\mathrm{ref}}|}{|W_{\mathrm{pred}}|}, \quad
+\mathrm{R} = \frac{|W_{\mathrm{pred}} \cap W_{\mathrm{ref}}|}{|W_{\mathrm{ref}}|}, \quad
 \mathrm{F1} = \frac{2\mathrm{PR}}{\mathrm{P} + \mathrm{R}}.
 \label{eq:f1}
 \end{equation}
-Exp-F1 is macro-averaged across queries; empty generated sets evaluate to 0.0. Exp-F1 quantifies lexical domain terminology coverage rather than logical entailment.
+Exp-F1 is macro-averaged; empty sets score 0.0. It measures lexical terminology coverage, not entailment, and is computed on raw output so injected presentation markers are never counted as generated keywords.
 
 \textit{Cross-Family Dual-Judge Evaluation:} Adopting the LLM-as-a-judge paradigm \cite{zheng}, evaluation assesses Disaster-Response Factual Grounding (DR-Fact), Situational Actionability (SAA), and Temporal Alignment on $\{0.0, 0.5, 1.0\}$. Across 550 query-response pairs rated by two independent models (Gemini Flash Lite and GPT-OSS-20B), this yields $550 \times 3 \times 2 = 3{,}300$ individual dimension scores (1,650 paired comparisons). Inter-rater agreement is measured via quadratic weighted Cohen's $\kappa_w$ \cite{cohen1968, landis1977}:
 \begin{equation}
@@ -521,7 +521,7 @@ Full Agent & 0/36 (0.0\%) & 0/36 (0.0\%) & 72 & 100.0\% \\
 
 
 \subsection{Geospatial Routing and Hydrological Verification}
-Table~\ref{tab:geo} evaluates catchment-based spatial filtering across 20 scenarios, of which four test cross-watershed rejection. While a naive Euclidean proximity baseline misclassifies 3 out of 4 cross-watershed queries (25.0\% accuracy), HUC-10 catchment gating achieves 100\% rejection of trans-basin noise and 100\% classification accuracy overall (Wilson 95\% CI [83.9\%, 100.0\%]).
+Table~\ref{tab:geo} evaluates watershed-based spatial filtering across 20 scenarios, of which four test cross-watershed rejection. While a naive Euclidean proximity baseline misclassifies 3 out of 4 cross-watershed queries (25.0\% accuracy), watershed gating achieves 100\% rejection of trans-basin noise and 100\% classification accuracy overall (Wilson 95\% CI [83.9\%, 100.0\%]).
 
 \begin{table}[ht]
 \caption{Geospatial Routing and Catchment Gating ($N=20$)}
@@ -533,8 +533,8 @@ Table~\ref{tab:geo} evaluates catchment-based spatial filtering across 20 scenar
 \toprule
 Evaluation Tier & $n$ & Correct & Accuracy \\
 \midrule
-Direct Local ($d \le 5$~km, same HUC-10) & 4 & 4 & 100.0\% \\
-Catchment Corridor ($d \le 25$~km, same HUC-10) & 6 & 6 & 100.0\% \\
+Direct Local ($d \le 5$~km, same basin) & 4 & 4 & 100.0\% \\
+Catchment Corridor ($d \le 25$~km, same basin) & 6 & 6 & 100.0\% \\
 Cross-Watershed Rejection & 4 & 4 & 100.0\% \\
 Regional Meteorology ($25 < d \le 60$~km) & 1 & 1 & 100.0\% \\
 Distant Out-of-Bounds ($d > 60$~km) & 5 & 5 & 100.0\% \\
