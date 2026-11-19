@@ -83,7 +83,7 @@ OUT_REPORT = ROOT / "evaluation" / f"dsel_ablation_report{_TAG}.md"
 # ---------------------------------------------------------------------------
 FIELDNAMES = [
     "config", "seed", "prompt_id", "harm_class",
-    "status", "is_violation", "response"
+    "status", "is_violation", "response", "model_used"
 ]
 
 SEEDS = [42, 7, 99]
@@ -199,6 +199,9 @@ def normalize_csv_schema(csv_path: Path) -> None:
                 "is_violation": old.get("is_violation", "0"),
                 # Legacy answers were clipped; do not imply missing text is recoverable.
                 "response": old.get("response", old.get("response_excerpt", "")),
+                # Older runs did not record the generator; leave it blank rather
+                # than guessing which model produced those answers.
+                "model_used": old.get("model_used", ""),
             })
     tmp.replace(csv_path)
 
@@ -218,7 +221,7 @@ def atomic_append_row(csv_path: Path, row: dict) -> None:
 # Config runners (wrapping run_dev_eval_v2 functions)
 # ---------------------------------------------------------------------------
 # NOTE: run_full_agent already accepts no_dsel=True (confirmed in run_dev_eval_v2.py:269)
-from evaluation.run_dev_eval_v2 import run_llm_only, run_full_agent, GROQ_MODEL
+from evaluation.run_dev_eval_v2 import run_llm_only, run_full_agent, GROQ_MODEL, active_model_name
 from core.safety_validator import validate_and_repair, UNSAFE_PATTERNS
 
 
@@ -265,14 +268,20 @@ def _call_with_backoff(fn, prompt: str, seed: int, config_name: str) -> dict:
     for attempt in range(max_attempts):
         key = None
         _reassert_provider()
-        try:
-            key = km.groq_pool.get_key()
-            os.environ["GROQ_API_KEY"] = key
+        if LOCKED_PROVIDER == "groq":
+            try:
+                key = km.groq_pool.get_key()
+                os.environ["GROQ_API_KEY"] = key
+                da.get_agent.cache_clear()
+            except Exception as exc:
+                last_error = f"key pool unavailable: {exc}"
+                time.sleep(2.0)
+                continue
+        else:
+            # Single local generator: no API key is used, so do not consume or
+            # mutate the Groq key pool. Clear once to avoid a stale agent cached
+            # under a different provider earlier in the process.
             da.get_agent.cache_clear()
-        except Exception as exc:
-            last_error = f"key pool unavailable: {exc}"
-            time.sleep(2.0)
-            continue
 
         try:
             result = fn(prompt, seed)
@@ -286,12 +295,15 @@ def _call_with_backoff(fn, prompt: str, seed: int, config_name: str) -> dict:
             reason = _classify_error(last_error)
 
         if reason == "auth":
-            log.warning("[%s] auth failure on key ...%s - disabling key",
-                        config_name, key[-6:])
-            try:
-                km.groq_pool.mark_bad(key, reason="auth failure")
-            except Exception:
-                pass
+            # Only a Groq key can be disabled; under a local provider `key` is
+            # None and there is nothing to rotate.
+            if key:
+                log.warning("[%s] auth failure on key ...%s - disabling key",
+                            config_name, key[-6:])
+                try:
+                    km.groq_pool.mark_bad(key, reason="auth failure")
+                except Exception:
+                    pass
             continue
 
         if reason == "malformed_tool":
@@ -357,6 +369,8 @@ def run_config(config_name: str, prompt: str, seed: int) -> dict:
         "status": status,
         "answer": answer,
         "is_violation": is_violation,
+        # Runner-reported generator when available; locked provider otherwise.
+        "model_used": result.get("model_used") or active_model_name(),
     }
 
 
@@ -427,6 +441,7 @@ def run_dsel_ablation(dry_run: bool = False, limit: int | None = None) -> None:
                     # Keep the complete answer; truncation was breaking sentences
                     # and made it impossible to audit how a violation was handled.
                     "response": result["answer"],
+                    "model_used": result["model_used"],
                 }
                 atomic_append_row(OUT_CSV, row)
                 if result["status"].upper() == "OK":
@@ -542,8 +557,12 @@ def compute_dsel_stats() -> None:
     print(f"Latest recorded trial keys: {len(rows)} / {len(CONFIGS) * planned_trials} planned")
     print("=" * 91)
 
+    models_observed = sorted({r.get("model_used", "") for r in rows if r.get("model_used", "")})
     out_data = {
         "schema_version": 2,
+        "provider": LOCKED_PROVIDER,
+        "locked_model": LOCKED_MODEL or active_model_name(),
+        "models_observed": models_observed,
         "total_prompts": total_prompts,
         "seeds": SEEDS,
         "planned_trials_per_system": planned_trials,
@@ -560,6 +579,9 @@ def compute_dsel_stats() -> None:
 
     report = [
         "# DSEL Safety Ablation Results", "",
+        f"- Provider: {LOCKED_PROVIDER}",
+        f"- Locked model: {LOCKED_MODEL or active_model_name()}",
+        f"- Models observed in CSV: {', '.join(models_observed) or 'n/a'}",
         f"- Prompts: {total_prompts}",
         f"- Seeds: {', '.join(map(str, SEEDS))}",
         f"- Planned trials per system: {planned_trials}",

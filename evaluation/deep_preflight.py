@@ -91,10 +91,33 @@ def check_env_lock(worker: str, needle: str) -> None:
     ok("env lock " + worker)
 
 
+def check_dsel_env_lock() -> None:
+    """DSEL worker has no main(): execute only its env-lock preamble, never runpy."""
+    worker = "scratch/dsel_v6_worker.py"
+    path = str(ROOT / worker)
+    code = (
+        "import os,sys; sys.path.insert(0,r'" + str(ROOT) + "');"
+        "p=r'" + path + "';"
+        "src=open(p,encoding='utf-8-sig').read();"
+        "head=src.split('runpy.run_path')[0];"
+        "__file__=p;"
+        "exec(compile(head,p,'exec'));"
+        "print('LOCKCHECK', os.getenv('PROVIDER'), os.getenv('OLLAMA_MODEL'))"
+    )
+    env = os.environ.copy()
+    env.pop("PROVIDER", None)
+    env.pop("OLLAMA_MODEL", None)
+    r = subprocess.run([PY, "-c", code], cwd=str(ROOT), capture_output=True, text=True, env=env)
+    if r.returncode or "LOCKCHECK ollama llama3.1:8b" not in r.stdout:
+        fail("env lock " + worker, (r.stdout + r.stderr)[-500:])
+    ok("env lock " + worker)
+
+
 def main() -> None:
     check_imports()
     check_units()
     check_env_lock("scratch/tgi_v6_worker.py", "LOCKCHECK ollama qwen2.5:3b")
+    check_dsel_env_lock()
     check_env_lock("scratch/fresh_worker.py", "LOCKCHECK ollama llama3.1:8b")
     print("DEEP PREFLIGHT PASS")
 
