@@ -1,0 +1,8 @@
+config,split,run_id,id,scenario,category,status,kw_precision,kw_recall,kw_f1,svc_regex,active_latency_s,total_latency_s,prompt_tokens,completion_tokens,tools_called,model_used,retries,full_answer,kw_scorer_version
+LLM_Only,dev,42,1,Flood,evacuation,OK,0.05,0.2857,0.0851,0,9.632,9.632,0,0,,qwen2.5:3b,0,"I'm unable to provide specific information about evacuation requirements near river zone A without more context or data. Evacuation decisions are typically made by local emergency management agencies based on factors such as water levels, flood predictions, and the specific regulations in place for that area. For accurate and up-to-date information, you should contact local authorities or emergency management offices in the area of interest.
+
+Status: NOT AVAILABLE
+Evidence: NOT AVAILABLE
+Recommendation: NOT AVAILABLE
+Alert Generated: NOT REPORTED
+",leakfree-token-v1

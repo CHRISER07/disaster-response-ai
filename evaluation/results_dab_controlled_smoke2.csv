@@ -1,0 +1,21 @@
+config,split,run_id,id,scenario,category,status,kw_precision,kw_recall,kw_f1,svc_regex,active_latency_s,total_latency_s,prompt_tokens,completion_tokens,tools_called,model_used,retries,full_answer,kw_scorer_version
+Text_Only_StaticRAG,dev,42,1,Flood,evacuation,OK,0.025,0.1429,0.0426,0,20.716,20.716,0,0,text_search,qwen2.5:3b,0,"Based on the information provided, it seems that evacuation is required near the river zone A, as water is rising fast. However, for precise and up-to-date information, it's best to refer to local authorities or official sources such as news outlets or emergency management agencies. They can provide the most accurate and current details about evacuation requirements and other safety measures.
+
+Status: NOT AVAILABLE
+Evidence: NOT AVAILABLE
+Recommendation: NOT AVAILABLE
+Alert Generated: NOT REPORTED
+",leakfree-token-v1
+Text_Only_StaticRAG,dev,42,2,Flood,protocol,OK,0.0471,0.5714,0.087,0,3.586,3.586,0,0,text_search,qwen2.5:3b,0,"Based on the information provided in the context, there are no specific official protocols for water purification during a flood that are clearly outlined. The context primarily focuses on decontamination procedures for personnel and equipment, as well as hygiene practices for personnel after exposure to flood waters.
+
+For water purification, the context mentions that drinking water quality is not a concern at this time in the mentioned flood scenarios (2013 Colorado and Alberta floods), and that water supply remains unchanged. However, this does not provide detailed protocols for water purification.
+
+In general, during a flood, it is important to ensure that water is safe to drink. This often involves boiling water or using water purification tablets or filters. It's important to follow local health authorities' guidelines for water safety during such emergencies. If you have access to a water treatment system, it should be used to ensure the water is safe to drink. If not, boiling water for at least one minute (or longer at higher altitudes) is a common and effective method to make water safe to drink.
+
+For more specific and up-to-date information, it is recommended to consult local health authorities or emergency management services.
+
+Status: NOT AVAILABLE
+Evidence: NOT AVAILABLE
+Recommendation: NOT AVAILABLE
+Alert Generated: NOT REPORTED
+",leakfree-token-v1

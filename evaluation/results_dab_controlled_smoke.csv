@@ -1,0 +1,46 @@
+config,split,run_id,id,scenario,category,status,kw_precision,kw_recall,kw_f1,svc_regex,active_latency_s,total_latency_s,prompt_tokens,completion_tokens,tools_called,model_used,retries,full_answer,kw_scorer_version
+Full_Agent,dev,42,1,Flood,evacuation,OK,0.0189,0.1429,0.0333,0,15.748,20.775,3232,159,"fetch_live_weather,query_water_sensor",qwen2.5:3b,0,"Based on the live weather conditions in river zone A, the temperature is 12.3 deg C (feels like 8.1 deg C), with no rainfall and overcast conditions. However, the water level sensor data is unavailable for this location.
+
+Given the lack of sensor data, we cannot determine the current water level or gauge height. Therefore, no evacuation order can be issued based on the current information.
+
+Recommendation: Continue monitoring the situation and verify with local emergency management before issuing any directive.
+
+Status: WARNING
+Evidence: [LIVE WEATHER - Boulder, CO, Confidence: HIGH] Temperature 12.3 deg C, no rainfall, overcast conditions.
+Recommendation: Continue monitoring and verify with local emergency management.
+Alert Generated: NONE
+",leakfree-token-v1
+Full_Agent,dev,42,2,Flood,protocol,OK,0.0652,0.8571,0.1212,0,12.477,12.477,3626,185,search_official_protocols,qwen2.5:3b,0,"The official protocols for water purification during a flood, as found in the FEMA/CDC disaster preparedness training manual, include:
+
+1. Storing Water: Water should be stored in a way that allows it to be released at a manageable rate. This involves the use of levees and dams, which must be carefully engineered to withstand failure and damage from earthquakes.
+
+2. Decontamination of Equipment and Personnel: Resources assigned to flood search and rescue operations should undergo decontamination procedures to ensure they are not contaminated by flood waters.
+
+Given these protocols, the primary focus is on managing and protecting water resources and ensuring that personnel and equipment are not contaminated during flood operations. No specific protocols for water purification are mentioned in the provided documents. For water purification, it is recommended to use standard water treatment methods such as boiling, chlorination, or filtration, which are not detailed in the protocols found in the knowledge base.
+
+Notice on Evidence Uncertainty: Live sensor confirmation is unavailable. Do not assume the area is safe; follow official local emergency broadcasts.
+
+Alert Generated: NONE
+
+Status: NOT AVAILABLE
+Evidence: NOT AVAILABLE
+Recommendation: NOT AVAILABLE
+",leakfree-token-v1
+Full_Agent,dev,42,4,Flood,infrastructure,OK,0.0577,0.5,0.1034,0,41.85,41.85,3116,52,analyze_disaster_image,qwen2.5:3b,0,"The latest drone imagery analysis indicates no structural damage to infrastructure in the affected area. No damage was classified for the image ""bench_xview2_drone_49_adf6c9cd.png"". Please provide another image or location for further assessment.
+
+Notice on Evidence Uncertainty: Available evidence is insufficient to verify field conditions. Unconfirmed eyewitness reports suggest rising water, but official sensor confirmation is pending. Proceed with caution and contact emergency dispatch.
+
+Alert Generated: NONE
+
+Status: NOT AVAILABLE
+Evidence: NOT AVAILABLE
+Recommendation: NOT AVAILABLE
+",leakfree-token-v1
+Full_Agent,dev,42,5,Flood,sensor_data,OK,0.1818,0.8571,0.3,0,10.169,10.169,3202,138,query_water_sensor,qwen2.5:3b,0,"The current gage height on Boulder Creek at N 75th St, Boulder, CO is 10000090.0% below the flood stage threshold of 10.0 ft. This indicates that the creek is not at or above flood stage. The status is currently NORMAL. No evacuation is required at this time.
+
+Status: NORMAL
+Evidence: [LIVE - USGS NWIS #06730200, Confidence: HIGH] Gage height 10000090.0% below flood stage.
+Recommendation: No evacuation is required. Continue routine monitoring.
+
+Alert Generated: NONE
+",leakfree-token-v1

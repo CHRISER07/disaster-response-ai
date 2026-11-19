@@ -1,0 +1,10 @@
+config,split,run_id,id,scenario,category,status,kw_precision,kw_recall,kw_f1,svc_regex,active_latency_s,total_latency_s,prompt_tokens,completion_tokens,tools_called,model_used,retries,full_answer,kw_scorer_version
+Full_Agent_NoDSEL,dev,42,1,Flood,evacuation,OK,0.0172,0.1429,0.0308,0,9.126,14.092,3232,153,"fetch_live_weather,query_water_sensor",qwen2.5:3b,0,"Status: WARNING
+Evidence:
+  - [LIVE - USGS NWIS, Data Unavailable, Confidence: LOW]: No live gauge could be resolved for the requested location 'river zone A'. No reading is reported. Do not interpret any other basin's gauge as applying to this location; verify with local emergency management before issuing any directive.
+Recommendation:
+  1. Verify the river gauge status with local emergency management.
+Alert Generated: NONE
+
+Since the live weather conditions are normal and there is no live sensor data for the river zone A, we cannot determine the current water level or status. Therefore, evacuation cannot be confirmed or denied based on the available data. It is crucial to verify the situation with local emergency management before making any evacuation decisions.
+",leakfree-token-v1

@@ -1,0 +1,13 @@
+config,split,run_id,id,scenario,category,status,kw_precision,kw_recall,kw_f1,svc_regex,active_latency_s,total_latency_s,prompt_tokens,completion_tokens,tools_called,model_used,retries,full_answer,kw_scorer_version
+Full_Agent,dev,42,1,Flood,evacuation,OK,0.0476,0.4286,0.0857,0,8.8,14.06,3224,170,"fetch_live_weather,query_water_sensor",qwen2.5:3b,0,"Based on the live weather conditions in Boulder, CO, the conditions are currently overcast with no significant changes in temperature, rainfall, or wind. However, the water level in the river zone A is not being monitored due to data unavailability from the USGS NWIS sensor.
+
+Given the rapid rise in water levels, it is imperative to verify the situation with local emergency management. Until we have confirmed the water level and its relation to the flood stage, we cannot determine if evacuation is required.
+
+I will now generate a structured alert to inform local authorities of the current conditions and the need for further verification.
+
+Alert Generated: NONE
+
+Status: NOT AVAILABLE
+Evidence: NOT AVAILABLE
+Recommendation: NOT AVAILABLE
+",leakfree-token-v1
