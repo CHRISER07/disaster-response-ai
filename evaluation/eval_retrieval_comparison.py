@@ -251,6 +251,11 @@ def run_evaluation():
         }
         for cfg in configs
     }
+    split_metrics = {
+        split: {cfg: {"r5": [], "r10": [], "mrr": [], "ndcg10": []}
+                for cfg in configs}
+        for split in ("dev", "heldout")
+    }
 
     all_ids = dev_ids + heldout_ids
 
@@ -309,9 +314,34 @@ def run_evaluation():
             print(f"  ... processed {idx}/{len(all_ids)} queries")
 
     # ------------------------------------------------------------------
+    # Per-split assignment (alpha frozen from dev; held-out untouched)
+    # ------------------------------------------------------------------
+    for qid, item_pos in [(q, i) for i, q in enumerate(all_ids)]:
+        split = "dev" if qid in dev_ids else "heldout"
+        for cfg in configs:
+            for key, src in (("r5", "r5"), ("r10", "r10"),
+                             ("mrr", "mrr"), ("ndcg10", "ndcg10")):
+                split_metrics[split][cfg][key].append(metrics[cfg][src][item_pos])
+
+    # ------------------------------------------------------------------
     # Aggregate + print table
     # ------------------------------------------------------------------
     flat_results = {}
+    split_results = {}
+    for split in ("dev", "heldout"):
+        split_results[split] = {}
+        for cfg in configs:
+            m = split_metrics[split][cfg]
+            n = len(m["r5"])
+            if not n:
+                continue
+            split_results[split][cfg] = {
+                "n": n,
+                "recall_at_5": round(sum(m["r5"]) / n, 4),
+                "recall_at_10": round(sum(m["r10"]) / n, 4),
+                "mrr": round(sum(m["mrr"]) / n, 4),
+                "ndcg_at_10": round(sum(m["ndcg10"]) / n, 4),
+            }
 
     print(f"\n{'Configuration':<25} | {'Recall@5':<9} | {'Recall@10':<10} | {'MRR':<8} | "
           f"{'NDCG@10':<9} | {'Cold Lat':<10} | {'Warm Lat':<10}")
@@ -376,6 +406,8 @@ def run_evaluation():
         "dev_alpha_sweep":  {str(k): v for k, v in alpha_results.items()},
         "selected_alpha":   best_alpha,
         "results_all_200":  flat_results,
+        "results_dev":      split_results["dev"],
+        "results_heldout":  split_results["heldout"],
         "significance": {
             "wilcoxon_dense_vs_weighted_mrr": {
                 "W": W,
