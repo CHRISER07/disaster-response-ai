@@ -389,6 +389,12 @@ superiority. The multi-source tool-routing fix (up to 4 calls when multiple
 sources are requested) was smoke-tested; its effect is limited to late NoTelem
 rows because earlier agent rows were generated before the change.
 
+F43: Paper results table added for the completed controlled re-run
+(Table~\ref{tab:fresh}): all seven configurations, published KW-F1 scorer,
+1,050 clean runs, with the explicit note that the published ranking was not
+reproduced. All ablations retained because they are the only evidence for the
+DSEL, TGI and telemetry claims. Compiled to 8 pages.
+
 ## Remaining honest deviations
 
 D1: Spec mandates qwen/qwen-2.5-72b-instruct; Groq models API confirms it does

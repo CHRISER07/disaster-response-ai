@@ -448,9 +448,30 @@ With corpora, benchmark design, and metrics established, the following section p
 \section{Results and Discussions}
 
 \subsection{Main Benchmark Grounding Performance}
-A controlled re-run of all seven configurations on 150 held-out queries with one generator (\texttt{llama3.1:8b}, seed 42) produced 1,050 clean runs. Under the published KW-F1 scorer, Static RAG led at 0.1110, followed by No-DSEL 0.0956, No-Telemetry 0.0947, Full Agent 0.0928, corrected BM25 0.0914, No-TGI 0.0911 and LLM-Only 0.0832. The published ranking did not reproduce, so the advantage is configuration-specific.
+\begin{table}[ht]
+\caption{Controlled Restored-System Re-Run (150 held-out queries, \texttt{llama3.1:8b})}
+\label{tab:fresh}
+\centering
+\scriptsize\renewcommand{\arraystretch}{0.9}
+\setlength{\tabcolsep}{3pt}
+\begin{tabular*}{\columnwidth}{@{\extracolsep{\fill}}lccc@{}}
+\toprule
+Configuration & KW-F1 & Precision & Recall \\
+\midrule
+BM25 Baseline & 0.0914 & 0.0529 & 0.4469 \\
+LLM-Only & 0.0832 & 0.0463 & 0.5318 \\
+Standard Static RAG & 0.1110 & 0.0653 & 0.4656 \\
+Full Agent & 0.0928 & 0.0549 & 0.3314 \\
+No TGI & 0.0911 & 0.0526 & 0.3689 \\
+No DSEL & 0.0956 & 0.0568 & 0.3342 \\
+No Telemetry & 0.0947 & 0.0561 & 0.3375 \\
+\bottomrule
+\end{tabular*}
+\vspace{2pt}
+\raggedright{\scriptsize 1,050 runs, zero errors; published scorer; ranking not reproduced.}
+\end{table}
 
-Table~\ref{tab:main} presents KW-F1 grounding scores across development and held-out partitions. On the held-out split, the Full Agent attains 0.0915 KW-F1 versus 0.0657 for Standard Static RAG. The legacy BM25 value is excluded; a corrected re-measurement is reported below. The small gap to no-DSEL (0.0905) is not statistically established; these results support grounding gains, not universal superiority.
+Table~\ref{tab:main} reports KW-F1 on development and held-out splits: the published Full Agent score is 0.0915 versus 0.0657 for Static RAG. The legacy BM25 value is excluded; the corrected measurement appears in Table~\ref{tab:fresh}. Gains are modest and configuration-specific.
 
 \begin{table}[ht]
 \caption{Grounding Performance on DAB-200 (Mean $\pm$ 95\% CI)}
