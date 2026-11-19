@@ -159,7 +159,7 @@ Based on the reviewed literature, this study focuses on integrating dynamic temp
 \node[comp, text width=2.40cm] (tgi)   at (10.15, 8.12)
   {\textbf{TGI Partitioner}\\Snowflake $\gg 22$\\Live, Hist \& KB Tiers};
 \node[comp, text width=2.40cm] (geo)   at (13.05, 8.12)
-  {\textbf{Geospatial Filter}\\Haversine \& Basin Map\\Catchment Routing};
+  {\textbf{Geospatial Filter}\\Haversine \& Basin Map\\Standalone Module};
 \node[comp, text width=2.40cm] (store) at (15.95, 8.12)
   {\textbf{Evidence Stores}\\BGE Dense + BM25\\In-Memory TTL Cache};
 
@@ -179,7 +179,7 @@ Based on the reviewed literature, this study focuses on integrating dynamic temp
 \node[comp, text width=2.45cm] (qr)    at ( 1.70, 5.76)
   {\textbf{Query Resolver}\\Hazard Taxonomy\\Spatio-Temporal Scope};
 \node[comp, text width=2.95cm] (react) at ( 4.85, 5.76)
-  {\textbf{LangGraph ReAct}\\$T_{\max}{=}18$ Bounded Steps\\Stateful ReAct Loop};
+  {\textbf{LangGraph ReAct}\\8 Tool Iterations\\Recursion Limit 20};
 \node[comp, text width=3.10cm] (retr)  at ( 8.50, 5.76)
   {\textbf{Hybrid Retrieval}\\Dense BGE + Sparse BM25\\Weighted RRF ($\alpha{=}0.70$)};
 \node[comp, text width=3.05cm] (tools) at (12.10, 5.76)
@@ -237,11 +237,11 @@ Based on the reviewed literature, this study focuses on integrating dynamic temp
   {\,OBSERVABILITY \& AUDIT PLANE: Provenance Ledger\,};
 
 \node[comp, text width=4.70cm] (trace) at ( 3.20, 0.75)
-  {\textbf{Execution Traces \& Telemetry}\\Per-turn Token Usage \textbar\ Multi-Key API Routing\\Latency Logs \textbar\ Model Fallback Audit};
+  {\textbf{Execution Traces \& Telemetry}\\Per-turn Token Usage \textbar\ API Key Routing\\Latency Logs \textbar\ Tool Trace Records};
 \node[comp, text width=4.70cm] (alog)  at ( 8.90, 0.75)
-  {\textbf{Hash-Linked Audit Ledger}\\Append-Only \texttt{incident\_audit\_trail.jsonl}\\Cryptographic Hashes \textbar\ DSEL Verdict Records};
+  {\textbf{Append-Only Audit Ledger}\\JSONL \texttt{incident\_audit\_trail.jsonl}\\Incident Records \textbar\ DSEL Verdicts};
 \node[comp, text width=4.70cm] (replay) at (14.60, 0.75)
-  {\textbf{Auditable Execution Log}\\SQLite WAL Engine \textbar\ Evidence Trace \textbar\ Post-Incident Audit};
+  {\textbf{Auditable Execution Log}\\SQLite FTS5 Index \textbar\ Evidence Trace \textbar\ Post-Incident Audit};
 
 \draw[arr] (trace.east)  -- (alog.west);
 \draw[arr] (alog.east)   -- (replay.west);
@@ -307,7 +307,7 @@ The anomaly branch is evaluated first, so future-dated observations are never LI
 \end{algorithm}
 
 \subsection{Dual-Tier Hybrid Retrieval Engine}
-Passage embeddings use \texttt{bge-small-en-v1.5} \cite{bge} with the recommended query instruction prefix for disaster evidence retrieval. For chunk $s$, the normalized [CLS] vector is:
+Passage embeddings use \texttt{bge-small-en-v1.5} \cite{bge}; queries are embedded directly without a task-specific prefix. For chunk $s$, the normalized [CLS] vector is:
 \begin{equation}
 \mathbf{e}(s) = \mathbf{h}_{\textsc{cls}} / \lVert\mathbf{h}_{\textsc{cls}}\rVert_2.
 \label{eq:emb}
@@ -320,7 +320,7 @@ Dense semantic similarity is computed via dot product: $\mathrm{sim}_{\mathrm{de
 where $k_{\mathrm{rrf}} = 60$ is the smoothing constant and $\alpha = 0.70$ is the fusion weight, calibrated via grid search on the 50-query development split and strictly frozen thereafter.
 
 \subsection{Geospatial Routing and Catchment-Based Filtering}
-To reduce cross-watershed contamination, incoming sensor feeds undergo catchment-based spatial filtering. Each USGS station is mapped to a named drainage basin in a static registry of four stations (e.g., Boulder Creek, St.\ Vrain); the registry is not resolved against an external hydrological authority at runtime. Concordance of these basin labels, not full hydrodynamic modelling, gates out trans-basin sensors that are radially proximate but hydrologically disconnected. Observations without a registered basin are filtered by Haversine distance alone. Basin concordance $m(x,\ell)$ has three states: \textsc{Match} for equal registered labels, \textsc{Mismatch} for differing registered labels, and \textsc{Unknown} when a label is unavailable. Registry coordinates are substituted when observation coordinates are omitted; evidence with neither is rejected. The \textsc{Unknown} case uses a distance-only fallback and is not claimed as watershed validation. The routing predicate is:
+To reduce cross-watershed contamination, incoming sensor feeds undergo catchment-based spatial filtering. Each USGS station is mapped to a named drainage basin in a static registry of four stations (e.g., Boulder Creek, St.\ Vrain); the registry is not resolved against an external hydrological authority at runtime. Concordance of these basin labels, not full hydrodynamic modelling, gates out trans-basin sensors that are radially proximate but hydrologically disconnected. Observations without a registered basin are filtered by Haversine distance alone. Basin concordance $m(x,\ell)$ has three states: \textsc{Match} for equal registered labels, \textsc{Mismatch} for differing registered labels, and \textsc{Unknown} when a label is unavailable. Registry coordinates are substituted when observation coordinates are omitted; evidence with neither is rejected. The \textsc{Unknown} case uses a distance-only fallback and is not claimed as watershed validation. The router is evaluated standalone (Table~\ref{tab:geo}), not inside the live agent tool path. The routing predicate is:
 \begin{equation}
 \label{eq:geo_gate}
 g(x, \ell) =
@@ -335,7 +335,7 @@ g(x, \ell) =
 where $d(\cdot)$ is Haversine distance and $\mathcal{D}_{\mathrm{meteo}}$ denotes meteorological records; $\mathcal{Z}_{\mathrm{dir}}$ is direct local, $\mathcal{Z}_{\mathrm{catch}}$ is catchment corridor, $\mathcal{Z}_{\mathrm{reg}}$ is regional meteorology, and $\mathcal{Z}_{\mathrm{rej}}$ is rejected out-of-bounds. Observations in $\mathcal{Z}_{\mathrm{rej}}$ are discarded, reducing false alerts from irrelevant trans-basin readings.
 
 \subsection{Agentic Orchestration and Tool Registry}
-The agent is structured as a directed graph in LangGraph \cite{langgraph} executing a ReAct loop \cite{react} with a maximum budget of $T_{\max} = 18$ steps, backed by an in-memory TTL cache (weather 60~s, river stage 60~s, seismic 120~s, geocoding 3600~s). The registry comprises eight specialized tools: (1)~\textit{Live Weather Telemetry} (\texttt{fetch\_live\_weather}) querying Open-Meteo for current meteorological observations; (2)~\textit{River Gauging} (\texttt{query\_water\_sensor}) querying USGS NWIS for river stage $h$ and flood stage $h_{\mathrm{fs}}$; (3)~\textit{Seismic Network} (\texttt{query\_recent\_earthquakes}) querying USGS FDSNWS for seismic events ($M \ge 3.0$ within 300~km); (4)~\textit{Doctrine Search} (\texttt{search\_official\_protocols}) across indexed FEMA and CDC manuals; (5)~\textit{Microblog Retrieval} (\texttt{search\_social\_reports}) over timestamped CrisisLex records; (6)~\textit{Global Corpus Search} (\texttt{search\_knowledge\_base}) over archival records; (7)~\textit{Damage Vision} (\texttt{analyze\_disaster\_image}) invoking a local vision model (\texttt{qwen3-vl:4b}); and (8)~\textit{Alert Dispatch} (\texttt{generate\_structured\_alert}) recording policy-gated bulletins.
+The agent is structured as a directed graph in LangGraph \cite{langgraph} executing a ReAct loop \cite{react} bounded to eight tool iterations with a recursion limit of 20, backed by an in-memory TTL cache (weather 60~s, river stage 60~s, seismic 120~s, geocoding 3600~s). The registry comprises eight specialized tools: (1)~\textit{Live Weather Telemetry} (\texttt{fetch\_live\_weather}) querying Open-Meteo for current meteorological observations; (2)~\textit{River Gauging} (\texttt{query\_water\_sensor}) querying USGS NWIS for river stage $h$ and flood stage $h_{\mathrm{fs}}$; (3)~\textit{Seismic Network} (\texttt{query\_recent\_earthquakes}) querying USGS FDSNWS for seismic events ($M \ge 3.0$ within 300~km); (4)~\textit{Doctrine Search} (\texttt{search\_official\_protocols}) across indexed FEMA and CDC manuals; (5)~\textit{Microblog Retrieval} (\texttt{search\_social\_reports}) over timestamped CrisisLex records; (6)~\textit{Global Corpus Search} (\texttt{search\_knowledge\_base}) over archival records; (7)~\textit{Damage Vision} (\texttt{analyze\_disaster\_image}) invoking a local vision model (\texttt{qwen3-vl:4b}); and (8)~\textit{Alert Dispatch} (\texttt{generate\_structured\_alert}) recording policy-gated bulletins.
 
 \subsection{Deterministic Safety Enforcement Layer (DSEL)}
 Unlike stochastic moderation models, DSEL applies deterministic screening whose coverage is bounded by its explicit rule set and is therefore measured empirically rather than assumed complete. As detailed in Algorithm~\ref{alg:dsel}, DSEL executes a 4-tier pipeline to intercept, audit, score, and gate every candidate response before alert recording:
@@ -602,7 +602,7 @@ Total Violations & 10 (7.9\%) & 7 (5.6\%) & 0 (0.0\%) \\
 \end{table}
 
 \subsection{Execution Latency and Operational Cost Profiling}
-Median held-out latencies are 0.94~s (BM25), 2.86~s (Standard Static RAG), 3.39~s (LLM-Only), and 5.88~s (Full Agent). The latency increment in the Full Agent reflects dynamic multi-step API routing across weather, NWIS, and seismic endpoints. The fresh held-out re-run records 2,301 prompt and 113 completion tokens per Full Agent query on average; the archived held-out table has no token counts, so no cross-run cost comparison is made. The hash-linked audit ledger (\texttt{incident\_audit\_trail.jsonl}) stores trace records for post-incident inspection.
+Median held-out latencies are 0.94~s (BM25), 2.86~s (Standard Static RAG), 3.39~s (LLM-Only), and 5.88~s (Full Agent). The latency increment in the Full Agent reflects dynamic multi-step API routing across weather, NWIS, and seismic endpoints. The fresh held-out re-run records 2,301 prompt and 113 completion tokens per Full Agent query on average; the archived held-out table has no token counts, so no cross-run cost comparison is made. The append-only audit ledger (\texttt{incident\_audit\_trail.jsonl}) stores trace records for post-incident inspection.
 
 \subsection{Exploratory Vision Benchmark}
 An exploratory building damage evaluation on 100 class-balanced xView2/xBD crops \cite{xview2} (25 per class) using a local \texttt{qwen3-vl:4b} model \cite{qwenvl} yielded 0.340 accuracy and 0.292 macro-F1 (majority/chance baseline: 0.250; major-damage F1: 0.140). Of 50 indexed scene records, 27 had usable building labels, yielding 1,017 crops from which these 100 were sampled. This vision component is an exploratory prototype requiring domain-specific fine-tuning before operational use.
@@ -614,7 +614,7 @@ An exploratory building damage evaluation on 100 class-balanced xView2/xBD crops
 \label{sec:threats}
 Several methodological and architectural limitations contextualize these empirical findings. First, the controlled suites use local open-weight models, while the archived main table uses cloud generators; deployment across heterogeneous edge devices introduces quantization and latency trade-offs requiring hardware-specific profiling. Second, lexical retrieval baselines remain constrained by exact token vocabulary mismatch, motivating corrected dense-sparse indexing. Third, judge evaluation showed fluency bias ($\kappa_w=0.576$ on DR-Fact), with ungrounded prose scored above constrained responses; blinded expert evaluation is needed.
 
-From an operational perspective, deterministic regular grammar automata cannot intercept semantic paraphrases, multilingual circumventions, or complex negations. Expected-Keyword F1 measures lexical overlap, not entailment; the TGI tagger uses uniform windows and does not use $t_{\mathrm{event}}$, while a separate validator defines source-specific TTLs that do not affect tier assignment. Query-disjoint splits do not rule out event overlap between corpus and benchmark, and the safety scorer is not independent of DSEL's rule families. Finally, all evaluations were conducted on offline historical and semi-synthetic benchmark suites without live emergency operations center integration. Despite these constraints, the prototype provides an initial screening and dispatch-control baseline pending field validation; Section~VII summarizes the conclusions.
+From an operational perspective, deterministic regular grammar automata cannot intercept semantic paraphrases, multilingual circumventions, or complex negations. Expected-Keyword F1 measures lexical overlap, not entailment; the TGI tagger uses uniform windows and does not use $t_{\mathrm{event}}$, while a separate validator defines source-specific TTLs that do not affect tier assignment. Query-disjoint splits do not rule out event overlap between corpus and benchmark, the safety scorer is not independent of DSEL's rule families, and the geospatial filter is evaluated offline. Finally, all evaluations were conducted on offline historical and semi-synthetic benchmark suites without live emergency operations center integration. Despite these constraints, the prototype provides an initial screening and dispatch-control baseline pending field validation; Section~VII summarizes the conclusions.
 
 %==========================================================
 \section{Conclusion and Future Work}
