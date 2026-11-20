@@ -136,8 +136,14 @@ def main():
     ap.add_argument("--summary", action="store_true")
     ap.add_argument("--out", default=None)
     ap.add_argument("--seeds", default=None)
+    ap.add_argument("--scenarios", default=None)
     args = ap.parse_args()
 
+    global SCENARIOS
+    if args.scenarios:
+        SCENARIOS = Path(args.scenarios)
+        if not SCENARIOS.is_absolute():
+            SCENARIOS = ROOT / SCENARIOS
     if args.out:
         OUT = Path(args.out)
         if not OUT.is_absolute():
