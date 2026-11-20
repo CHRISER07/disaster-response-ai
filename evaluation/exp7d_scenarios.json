@@ -1,0 +1,2082 @@
+[
+  {
+    "query_id": "E7D-primary-80h-fresh_danger_stale_safe-boulder-R01",
+    "group": "primary",
+    "age_code": "80h",
+    "condition": "fresh_danger_stale_safe",
+    "reference_now": "2026-11-21T12:00:00Z",
+    "site_key": "boulder",
+    "site_name": "Boulder Creek",
+    "site_id": "06730200",
+    "threshold_ft": 10.0,
+    "parameter": "river_stage",
+    "unit": "ft",
+    "fresh": {
+      "id": "E001",
+      "value": 15.0,
+      "observed_at": "2026-11-21T10:00:00Z"
+    },
+    "stale": {
+      "id": "E002",
+      "value": 5.0,
+      "observed_at": "2026-11-18T04:00:00Z"
+    },
+    "evidence_order": "fresh_first",
+    "expected_label": "CURRENT_HAZARD",
+    "note": ""
+  },
+  {
+    "query_id": "E7D-primary-80h-fresh_danger_stale_safe-boulder-R02",
+    "group": "primary",
+    "age_code": "80h",
+    "condition": "fresh_danger_stale_safe",
+    "reference_now": "2026-11-21T12:00:00Z",
+    "site_key": "boulder",
+    "site_name": "Boulder Creek",
+    "site_id": "06730200",
+    "threshold_ft": 10.0,
+    "parameter": "river_stage",
+    "unit": "ft",
+    "fresh": {
+      "id": "E001",
+      "value": 15.5,
+      "observed_at": "2026-11-21T10:00:00Z"
+    },
+    "stale": {
+      "id": "E002",
+      "value": 5.0,
+      "observed_at": "2026-11-18T04:00:00Z"
+    },
+    "evidence_order": "stale_first",
+    "expected_label": "CURRENT_HAZARD",
+    "note": ""
+  },
+  {
+    "query_id": "E7D-primary-80h-fresh_danger_stale_safe-boulder-R03",
+    "group": "primary",
+    "age_code": "80h",
+    "condition": "fresh_danger_stale_safe",
+    "reference_now": "2026-11-21T12:00:00Z",
+    "site_key": "boulder",
+    "site_name": "Boulder Creek",
+    "site_id": "06730200",
+    "threshold_ft": 10.0,
+    "parameter": "river_stage",
+    "unit": "ft",
+    "fresh": {
+      "id": "E001",
+      "value": 16.0,
+      "observed_at": "2026-11-21T10:00:00Z"
+    },
+    "stale": {
+      "id": "E002",
+      "value": 5.0,
+      "observed_at": "2026-11-18T04:00:00Z"
+    },
+    "evidence_order": "fresh_first",
+    "expected_label": "CURRENT_HAZARD",
+    "note": ""
+  },
+  {
+    "query_id": "E7D-primary-80h-fresh_danger_stale_safe-houston-R01",
+    "group": "primary",
+    "age_code": "80h",
+    "condition": "fresh_danger_stale_safe",
+    "reference_now": "2026-11-21T12:00:00Z",
+    "site_key": "houston",
+    "site_name": "Buffalo Bayou",
+    "site_id": "08074000",
+    "threshold_ft": 20.0,
+    "parameter": "river_stage",
+    "unit": "ft",
+    "fresh": {
+      "id": "E001",
+      "value": 30.0,
+      "observed_at": "2026-11-21T10:00:00Z"
+    },
+    "stale": {
+      "id": "E002",
+      "value": 10.0,
+      "observed_at": "2026-11-18T04:00:00Z"
+    },
+    "evidence_order": "stale_first",
+    "expected_label": "CURRENT_HAZARD",
+    "note": ""
+  },
+  {
+    "query_id": "E7D-primary-80h-fresh_danger_stale_safe-houston-R02",
+    "group": "primary",
+    "age_code": "80h",
+    "condition": "fresh_danger_stale_safe",
+    "reference_now": "2026-11-21T12:00:00Z",
+    "site_key": "houston",
+    "site_name": "Buffalo Bayou",
+    "site_id": "08074000",
+    "threshold_ft": 20.0,
+    "parameter": "river_stage",
+    "unit": "ft",
+    "fresh": {
+      "id": "E001",
+      "value": 31.0,
+      "observed_at": "2026-11-21T10:00:00Z"
+    },
+    "stale": {
+      "id": "E002",
+      "value": 10.0,
+      "observed_at": "2026-11-18T04:00:00Z"
+    },
+    "evidence_order": "fresh_first",
+    "expected_label": "CURRENT_HAZARD",
+    "note": ""
+  },
+  {
+    "query_id": "E7D-primary-80h-fresh_danger_stale_safe-houston-R03",
+    "group": "primary",
+    "age_code": "80h",
+    "condition": "fresh_danger_stale_safe",
+    "reference_now": "2026-11-21T12:00:00Z",
+    "site_key": "houston",
+    "site_name": "Buffalo Bayou",
+    "site_id": "08074000",
+    "threshold_ft": 20.0,
+    "parameter": "river_stage",
+    "unit": "ft",
+    "fresh": {
+      "id": "E001",
+      "value": 32.0,
+      "observed_at": "2026-11-21T10:00:00Z"
+    },
+    "stale": {
+      "id": "E002",
+      "value": 10.0,
+      "observed_at": "2026-11-18T04:00:00Z"
+    },
+    "evidence_order": "stale_first",
+    "expected_label": "CURRENT_HAZARD",
+    "note": ""
+  },
+  {
+    "query_id": "E7D-primary-80h-fresh_danger_stale_safe-neworleans-R01",
+    "group": "primary",
+    "age_code": "80h",
+    "condition": "fresh_danger_stale_safe",
+    "reference_now": "2026-11-21T12:00:00Z",
+    "site_key": "neworleans",
+    "site_name": "Mississippi River",
+    "site_id": "07374000",
+    "threshold_ft": 17.0,
+    "parameter": "river_stage",
+    "unit": "ft",
+    "fresh": {
+      "id": "E001",
+      "value": 25.5,
+      "observed_at": "2026-11-21T10:00:00Z"
+    },
+    "stale": {
+      "id": "E002",
+      "value": 8.5,
+      "observed_at": "2026-11-18T04:00:00Z"
+    },
+    "evidence_order": "fresh_first",
+    "expected_label": "CURRENT_HAZARD",
+    "note": ""
+  },
+  {
+    "query_id": "E7D-primary-80h-fresh_danger_stale_safe-neworleans-R02",
+    "group": "primary",
+    "age_code": "80h",
+    "condition": "fresh_danger_stale_safe",
+    "reference_now": "2026-11-21T12:00:00Z",
+    "site_key": "neworleans",
+    "site_name": "Mississippi River",
+    "site_id": "07374000",
+    "threshold_ft": 17.0,
+    "parameter": "river_stage",
+    "unit": "ft",
+    "fresh": {
+      "id": "E001",
+      "value": 26.35,
+      "observed_at": "2026-11-21T10:00:00Z"
+    },
+    "stale": {
+      "id": "E002",
+      "value": 8.5,
+      "observed_at": "2026-11-18T04:00:00Z"
+    },
+    "evidence_order": "stale_first",
+    "expected_label": "CURRENT_HAZARD",
+    "note": ""
+  },
+  {
+    "query_id": "E7D-primary-80h-fresh_danger_stale_safe-neworleans-R03",
+    "group": "primary",
+    "age_code": "80h",
+    "condition": "fresh_danger_stale_safe",
+    "reference_now": "2026-11-21T12:00:00Z",
+    "site_key": "neworleans",
+    "site_name": "Mississippi River",
+    "site_id": "07374000",
+    "threshold_ft": 17.0,
+    "parameter": "river_stage",
+    "unit": "ft",
+    "fresh": {
+      "id": "E001",
+      "value": 27.2,
+      "observed_at": "2026-11-21T10:00:00Z"
+    },
+    "stale": {
+      "id": "E002",
+      "value": 8.5,
+      "observed_at": "2026-11-18T04:00:00Z"
+    },
+    "evidence_order": "fresh_first",
+    "expected_label": "CURRENT_HAZARD",
+    "note": ""
+  },
+  {
+    "query_id": "E7D-primary-80h-fresh_danger_stale_safe-miami-R01",
+    "group": "primary",
+    "age_code": "80h",
+    "condition": "fresh_danger_stale_safe",
+    "reference_now": "2026-11-21T12:00:00Z",
+    "site_key": "miami",
+    "site_name": "Miami Canal",
+    "site_id": "02288990",
+    "threshold_ft": 5.0,
+    "parameter": "river_stage",
+    "unit": "ft",
+    "fresh": {
+      "id": "E001",
+      "value": 7.5,
+      "observed_at": "2026-11-21T10:00:00Z"
+    },
+    "stale": {
+      "id": "E002",
+      "value": 2.5,
+      "observed_at": "2026-11-18T04:00:00Z"
+    },
+    "evidence_order": "stale_first",
+    "expected_label": "CURRENT_HAZARD",
+    "note": ""
+  },
+  {
+    "query_id": "E7D-primary-80h-fresh_danger_stale_safe-miami-R02",
+    "group": "primary",
+    "age_code": "80h",
+    "condition": "fresh_danger_stale_safe",
+    "reference_now": "2026-11-21T12:00:00Z",
+    "site_key": "miami",
+    "site_name": "Miami Canal",
+    "site_id": "02288990",
+    "threshold_ft": 5.0,
+    "parameter": "river_stage",
+    "unit": "ft",
+    "fresh": {
+      "id": "E001",
+      "value": 7.75,
+      "observed_at": "2026-11-21T10:00:00Z"
+    },
+    "stale": {
+      "id": "E002",
+      "value": 2.5,
+      "observed_at": "2026-11-18T04:00:00Z"
+    },
+    "evidence_order": "fresh_first",
+    "expected_label": "CURRENT_HAZARD",
+    "note": ""
+  },
+  {
+    "query_id": "E7D-primary-80h-fresh_danger_stale_safe-miami-R03",
+    "group": "primary",
+    "age_code": "80h",
+    "condition": "fresh_danger_stale_safe",
+    "reference_now": "2026-11-21T12:00:00Z",
+    "site_key": "miami",
+    "site_name": "Miami Canal",
+    "site_id": "02288990",
+    "threshold_ft": 5.0,
+    "parameter": "river_stage",
+    "unit": "ft",
+    "fresh": {
+      "id": "E001",
+      "value": 8.0,
+      "observed_at": "2026-11-21T10:00:00Z"
+    },
+    "stale": {
+      "id": "E002",
+      "value": 2.5,
+      "observed_at": "2026-11-18T04:00:00Z"
+    },
+    "evidence_order": "stale_first",
+    "expected_label": "CURRENT_HAZARD",
+    "note": ""
+  },
+  {
+    "query_id": "E7D-primary-80h-fresh_danger_stale_safe-sacramento-R01",
+    "group": "primary",
+    "age_code": "80h",
+    "condition": "fresh_danger_stale_safe",
+    "reference_now": "2026-11-21T12:00:00Z",
+    "site_key": "sacramento",
+    "site_name": "Sacramento River",
+    "site_id": "11447650",
+    "threshold_ft": 25.0,
+    "parameter": "river_stage",
+    "unit": "ft",
+    "fresh": {
+      "id": "E001",
+      "value": 37.5,
+      "observed_at": "2026-11-21T10:00:00Z"
+    },
+    "stale": {
+      "id": "E002",
+      "value": 12.5,
+      "observed_at": "2026-11-18T04:00:00Z"
+    },
+    "evidence_order": "fresh_first",
+    "expected_label": "CURRENT_HAZARD",
+    "note": ""
+  },
+  {
+    "query_id": "E7D-primary-80h-fresh_danger_stale_safe-sacramento-R02",
+    "group": "primary",
+    "age_code": "80h",
+    "condition": "fresh_danger_stale_safe",
+    "reference_now": "2026-11-21T12:00:00Z",
+    "site_key": "sacramento",
+    "site_name": "Sacramento River",
+    "site_id": "11447650",
+    "threshold_ft": 25.0,
+    "parameter": "river_stage",
+    "unit": "ft",
+    "fresh": {
+      "id": "E001",
+      "value": 38.75,
+      "observed_at": "2026-11-21T10:00:00Z"
+    },
+    "stale": {
+      "id": "E002",
+      "value": 12.5,
+      "observed_at": "2026-11-18T04:00:00Z"
+    },
+    "evidence_order": "stale_first",
+    "expected_label": "CURRENT_HAZARD",
+    "note": ""
+  },
+  {
+    "query_id": "E7D-primary-80h-fresh_danger_stale_safe-sacramento-R03",
+    "group": "primary",
+    "age_code": "80h",
+    "condition": "fresh_danger_stale_safe",
+    "reference_now": "2026-11-21T12:00:00Z",
+    "site_key": "sacramento",
+    "site_name": "Sacramento River",
+    "site_id": "11447650",
+    "threshold_ft": 25.0,
+    "parameter": "river_stage",
+    "unit": "ft",
+    "fresh": {
+      "id": "E001",
+      "value": 40.0,
+      "observed_at": "2026-11-21T10:00:00Z"
+    },
+    "stale": {
+      "id": "E002",
+      "value": 12.5,
+      "observed_at": "2026-11-18T04:00:00Z"
+    },
+    "evidence_order": "fresh_first",
+    "expected_label": "CURRENT_HAZARD",
+    "note": ""
+  },
+  {
+    "query_id": "E7D-primary-80h-fresh_safe_stale_danger-boulder-R01",
+    "group": "primary",
+    "age_code": "80h",
+    "condition": "fresh_safe_stale_danger",
+    "reference_now": "2026-11-21T12:00:00Z",
+    "site_key": "boulder",
+    "site_name": "Boulder Creek",
+    "site_id": "06730200",
+    "threshold_ft": 10.0,
+    "parameter": "river_stage",
+    "unit": "ft",
+    "fresh": {
+      "id": "E001",
+      "value": 4.0,
+      "observed_at": "2026-11-21T10:00:00Z"
+    },
+    "stale": {
+      "id": "E002",
+      "value": 16.0,
+      "observed_at": "2026-11-18T04:00:00Z"
+    },
+    "evidence_order": "stale_first",
+    "expected_label": "NO_CURRENT_HAZARD",
+    "note": ""
+  },
+  {
+    "query_id": "E7D-primary-80h-fresh_safe_stale_danger-boulder-R02",
+    "group": "primary",
+    "age_code": "80h",
+    "condition": "fresh_safe_stale_danger",
+    "reference_now": "2026-11-21T12:00:00Z",
+    "site_key": "boulder",
+    "site_name": "Boulder Creek",
+    "site_id": "06730200",
+    "threshold_ft": 10.0,
+    "parameter": "river_stage",
+    "unit": "ft",
+    "fresh": {
+      "id": "E001",
+      "value": 4.3,
+      "observed_at": "2026-11-21T10:00:00Z"
+    },
+    "stale": {
+      "id": "E002",
+      "value": 16.0,
+      "observed_at": "2026-11-18T04:00:00Z"
+    },
+    "evidence_order": "fresh_first",
+    "expected_label": "NO_CURRENT_HAZARD",
+    "note": ""
+  },
+  {
+    "query_id": "E7D-primary-80h-fresh_safe_stale_danger-boulder-R03",
+    "group": "primary",
+    "age_code": "80h",
+    "condition": "fresh_safe_stale_danger",
+    "reference_now": "2026-11-21T12:00:00Z",
+    "site_key": "boulder",
+    "site_name": "Boulder Creek",
+    "site_id": "06730200",
+    "threshold_ft": 10.0,
+    "parameter": "river_stage",
+    "unit": "ft",
+    "fresh": {
+      "id": "E001",
+      "value": 4.6,
+      "observed_at": "2026-11-21T10:00:00Z"
+    },
+    "stale": {
+      "id": "E002",
+      "value": 16.0,
+      "observed_at": "2026-11-18T04:00:00Z"
+    },
+    "evidence_order": "stale_first",
+    "expected_label": "NO_CURRENT_HAZARD",
+    "note": ""
+  },
+  {
+    "query_id": "E7D-primary-80h-fresh_safe_stale_danger-houston-R01",
+    "group": "primary",
+    "age_code": "80h",
+    "condition": "fresh_safe_stale_danger",
+    "reference_now": "2026-11-21T12:00:00Z",
+    "site_key": "houston",
+    "site_name": "Buffalo Bayou",
+    "site_id": "08074000",
+    "threshold_ft": 20.0,
+    "parameter": "river_stage",
+    "unit": "ft",
+    "fresh": {
+      "id": "E001",
+      "value": 8.0,
+      "observed_at": "2026-11-21T10:00:00Z"
+    },
+    "stale": {
+      "id": "E002",
+      "value": 32.0,
+      "observed_at": "2026-11-18T04:00:00Z"
+    },
+    "evidence_order": "fresh_first",
+    "expected_label": "NO_CURRENT_HAZARD",
+    "note": ""
+  },
+  {
+    "query_id": "E7D-primary-80h-fresh_safe_stale_danger-houston-R02",
+    "group": "primary",
+    "age_code": "80h",
+    "condition": "fresh_safe_stale_danger",
+    "reference_now": "2026-11-21T12:00:00Z",
+    "site_key": "houston",
+    "site_name": "Buffalo Bayou",
+    "site_id": "08074000",
+    "threshold_ft": 20.0,
+    "parameter": "river_stage",
+    "unit": "ft",
+    "fresh": {
+      "id": "E001",
+      "value": 8.6,
+      "observed_at": "2026-11-21T10:00:00Z"
+    },
+    "stale": {
+      "id": "E002",
+      "value": 32.0,
+      "observed_at": "2026-11-18T04:00:00Z"
+    },
+    "evidence_order": "stale_first",
+    "expected_label": "NO_CURRENT_HAZARD",
+    "note": ""
+  },
+  {
+    "query_id": "E7D-primary-80h-fresh_safe_stale_danger-houston-R03",
+    "group": "primary",
+    "age_code": "80h",
+    "condition": "fresh_safe_stale_danger",
+    "reference_now": "2026-11-21T12:00:00Z",
+    "site_key": "houston",
+    "site_name": "Buffalo Bayou",
+    "site_id": "08074000",
+    "threshold_ft": 20.0,
+    "parameter": "river_stage",
+    "unit": "ft",
+    "fresh": {
+      "id": "E001",
+      "value": 9.2,
+      "observed_at": "2026-11-21T10:00:00Z"
+    },
+    "stale": {
+      "id": "E002",
+      "value": 32.0,
+      "observed_at": "2026-11-18T04:00:00Z"
+    },
+    "evidence_order": "fresh_first",
+    "expected_label": "NO_CURRENT_HAZARD",
+    "note": ""
+  },
+  {
+    "query_id": "E7D-primary-80h-fresh_safe_stale_danger-neworleans-R01",
+    "group": "primary",
+    "age_code": "80h",
+    "condition": "fresh_safe_stale_danger",
+    "reference_now": "2026-11-21T12:00:00Z",
+    "site_key": "neworleans",
+    "site_name": "Mississippi River",
+    "site_id": "07374000",
+    "threshold_ft": 17.0,
+    "parameter": "river_stage",
+    "unit": "ft",
+    "fresh": {
+      "id": "E001",
+      "value": 6.8,
+      "observed_at": "2026-11-21T10:00:00Z"
+    },
+    "stale": {
+      "id": "E002",
+      "value": 27.2,
+      "observed_at": "2026-11-18T04:00:00Z"
+    },
+    "evidence_order": "stale_first",
+    "expected_label": "NO_CURRENT_HAZARD",
+    "note": ""
+  },
+  {
+    "query_id": "E7D-primary-80h-fresh_safe_stale_danger-neworleans-R02",
+    "group": "primary",
+    "age_code": "80h",
+    "condition": "fresh_safe_stale_danger",
+    "reference_now": "2026-11-21T12:00:00Z",
+    "site_key": "neworleans",
+    "site_name": "Mississippi River",
+    "site_id": "07374000",
+    "threshold_ft": 17.0,
+    "parameter": "river_stage",
+    "unit": "ft",
+    "fresh": {
+      "id": "E001",
+      "value": 7.31,
+      "observed_at": "2026-11-21T10:00:00Z"
+    },
+    "stale": {
+      "id": "E002",
+      "value": 27.2,
+      "observed_at": "2026-11-18T04:00:00Z"
+    },
+    "evidence_order": "fresh_first",
+    "expected_label": "NO_CURRENT_HAZARD",
+    "note": ""
+  },
+  {
+    "query_id": "E7D-primary-80h-fresh_safe_stale_danger-neworleans-R03",
+    "group": "primary",
+    "age_code": "80h",
+    "condition": "fresh_safe_stale_danger",
+    "reference_now": "2026-11-21T12:00:00Z",
+    "site_key": "neworleans",
+    "site_name": "Mississippi River",
+    "site_id": "07374000",
+    "threshold_ft": 17.0,
+    "parameter": "river_stage",
+    "unit": "ft",
+    "fresh": {
+      "id": "E001",
+      "value": 7.82,
+      "observed_at": "2026-11-21T10:00:00Z"
+    },
+    "stale": {
+      "id": "E002",
+      "value": 27.2,
+      "observed_at": "2026-11-18T04:00:00Z"
+    },
+    "evidence_order": "stale_first",
+    "expected_label": "NO_CURRENT_HAZARD",
+    "note": ""
+  },
+  {
+    "query_id": "E7D-primary-80h-fresh_safe_stale_danger-miami-R01",
+    "group": "primary",
+    "age_code": "80h",
+    "condition": "fresh_safe_stale_danger",
+    "reference_now": "2026-11-21T12:00:00Z",
+    "site_key": "miami",
+    "site_name": "Miami Canal",
+    "site_id": "02288990",
+    "threshold_ft": 5.0,
+    "parameter": "river_stage",
+    "unit": "ft",
+    "fresh": {
+      "id": "E001",
+      "value": 2.0,
+      "observed_at": "2026-11-21T10:00:00Z"
+    },
+    "stale": {
+      "id": "E002",
+      "value": 8.0,
+      "observed_at": "2026-11-18T04:00:00Z"
+    },
+    "evidence_order": "fresh_first",
+    "expected_label": "NO_CURRENT_HAZARD",
+    "note": ""
+  },
+  {
+    "query_id": "E7D-primary-80h-fresh_safe_stale_danger-miami-R02",
+    "group": "primary",
+    "age_code": "80h",
+    "condition": "fresh_safe_stale_danger",
+    "reference_now": "2026-11-21T12:00:00Z",
+    "site_key": "miami",
+    "site_name": "Miami Canal",
+    "site_id": "02288990",
+    "threshold_ft": 5.0,
+    "parameter": "river_stage",
+    "unit": "ft",
+    "fresh": {
+      "id": "E001",
+      "value": 2.15,
+      "observed_at": "2026-11-21T10:00:00Z"
+    },
+    "stale": {
+      "id": "E002",
+      "value": 8.0,
+      "observed_at": "2026-11-18T04:00:00Z"
+    },
+    "evidence_order": "stale_first",
+    "expected_label": "NO_CURRENT_HAZARD",
+    "note": ""
+  },
+  {
+    "query_id": "E7D-primary-80h-fresh_safe_stale_danger-miami-R03",
+    "group": "primary",
+    "age_code": "80h",
+    "condition": "fresh_safe_stale_danger",
+    "reference_now": "2026-11-21T12:00:00Z",
+    "site_key": "miami",
+    "site_name": "Miami Canal",
+    "site_id": "02288990",
+    "threshold_ft": 5.0,
+    "parameter": "river_stage",
+    "unit": "ft",
+    "fresh": {
+      "id": "E001",
+      "value": 2.3,
+      "observed_at": "2026-11-21T10:00:00Z"
+    },
+    "stale": {
+      "id": "E002",
+      "value": 8.0,
+      "observed_at": "2026-11-18T04:00:00Z"
+    },
+    "evidence_order": "fresh_first",
+    "expected_label": "NO_CURRENT_HAZARD",
+    "note": ""
+  },
+  {
+    "query_id": "E7D-primary-80h-fresh_safe_stale_danger-sacramento-R01",
+    "group": "primary",
+    "age_code": "80h",
+    "condition": "fresh_safe_stale_danger",
+    "reference_now": "2026-11-21T12:00:00Z",
+    "site_key": "sacramento",
+    "site_name": "Sacramento River",
+    "site_id": "11447650",
+    "threshold_ft": 25.0,
+    "parameter": "river_stage",
+    "unit": "ft",
+    "fresh": {
+      "id": "E001",
+      "value": 10.0,
+      "observed_at": "2026-11-21T10:00:00Z"
+    },
+    "stale": {
+      "id": "E002",
+      "value": 40.0,
+      "observed_at": "2026-11-18T04:00:00Z"
+    },
+    "evidence_order": "stale_first",
+    "expected_label": "NO_CURRENT_HAZARD",
+    "note": ""
+  },
+  {
+    "query_id": "E7D-primary-80h-fresh_safe_stale_danger-sacramento-R02",
+    "group": "primary",
+    "age_code": "80h",
+    "condition": "fresh_safe_stale_danger",
+    "reference_now": "2026-11-21T12:00:00Z",
+    "site_key": "sacramento",
+    "site_name": "Sacramento River",
+    "site_id": "11447650",
+    "threshold_ft": 25.0,
+    "parameter": "river_stage",
+    "unit": "ft",
+    "fresh": {
+      "id": "E001",
+      "value": 10.75,
+      "observed_at": "2026-11-21T10:00:00Z"
+    },
+    "stale": {
+      "id": "E002",
+      "value": 40.0,
+      "observed_at": "2026-11-18T04:00:00Z"
+    },
+    "evidence_order": "fresh_first",
+    "expected_label": "NO_CURRENT_HAZARD",
+    "note": ""
+  },
+  {
+    "query_id": "E7D-primary-80h-fresh_safe_stale_danger-sacramento-R03",
+    "group": "primary",
+    "age_code": "80h",
+    "condition": "fresh_safe_stale_danger",
+    "reference_now": "2026-11-21T12:00:00Z",
+    "site_key": "sacramento",
+    "site_name": "Sacramento River",
+    "site_id": "11447650",
+    "threshold_ft": 25.0,
+    "parameter": "river_stage",
+    "unit": "ft",
+    "fresh": {
+      "id": "E001",
+      "value": 11.5,
+      "observed_at": "2026-11-21T10:00:00Z"
+    },
+    "stale": {
+      "id": "E002",
+      "value": 40.0,
+      "observed_at": "2026-11-18T04:00:00Z"
+    },
+    "evidence_order": "stale_first",
+    "expected_label": "NO_CURRENT_HAZARD",
+    "note": ""
+  },
+  {
+    "query_id": "E7D-primary-8d-fresh_danger_stale_safe-boulder-R04",
+    "group": "primary",
+    "age_code": "8d",
+    "condition": "fresh_danger_stale_safe",
+    "reference_now": "2026-11-21T12:00:00Z",
+    "site_key": "boulder",
+    "site_name": "Boulder Creek",
+    "site_id": "06730200",
+    "threshold_ft": 10.0,
+    "parameter": "river_stage",
+    "unit": "ft",
+    "fresh": {
+      "id": "E001",
+      "value": 15.0,
+      "observed_at": "2026-11-21T10:00:00Z"
+    },
+    "stale": {
+      "id": "E002",
+      "value": 5.0,
+      "observed_at": "2026-11-13T12:00:00Z"
+    },
+    "evidence_order": "fresh_first",
+    "expected_label": "CURRENT_HAZARD",
+    "note": ""
+  },
+  {
+    "query_id": "E7D-primary-8d-fresh_danger_stale_safe-boulder-R05",
+    "group": "primary",
+    "age_code": "8d",
+    "condition": "fresh_danger_stale_safe",
+    "reference_now": "2026-11-21T12:00:00Z",
+    "site_key": "boulder",
+    "site_name": "Boulder Creek",
+    "site_id": "06730200",
+    "threshold_ft": 10.0,
+    "parameter": "river_stage",
+    "unit": "ft",
+    "fresh": {
+      "id": "E001",
+      "value": 15.5,
+      "observed_at": "2026-11-21T10:00:00Z"
+    },
+    "stale": {
+      "id": "E002",
+      "value": 5.0,
+      "observed_at": "2026-11-13T12:00:00Z"
+    },
+    "evidence_order": "stale_first",
+    "expected_label": "CURRENT_HAZARD",
+    "note": ""
+  },
+  {
+    "query_id": "E7D-primary-8d-fresh_danger_stale_safe-boulder-R06",
+    "group": "primary",
+    "age_code": "8d",
+    "condition": "fresh_danger_stale_safe",
+    "reference_now": "2026-11-21T12:00:00Z",
+    "site_key": "boulder",
+    "site_name": "Boulder Creek",
+    "site_id": "06730200",
+    "threshold_ft": 10.0,
+    "parameter": "river_stage",
+    "unit": "ft",
+    "fresh": {
+      "id": "E001",
+      "value": 16.0,
+      "observed_at": "2026-11-21T10:00:00Z"
+    },
+    "stale": {
+      "id": "E002",
+      "value": 5.0,
+      "observed_at": "2026-11-13T12:00:00Z"
+    },
+    "evidence_order": "fresh_first",
+    "expected_label": "CURRENT_HAZARD",
+    "note": ""
+  },
+  {
+    "query_id": "E7D-primary-8d-fresh_danger_stale_safe-houston-R04",
+    "group": "primary",
+    "age_code": "8d",
+    "condition": "fresh_danger_stale_safe",
+    "reference_now": "2026-11-21T12:00:00Z",
+    "site_key": "houston",
+    "site_name": "Buffalo Bayou",
+    "site_id": "08074000",
+    "threshold_ft": 20.0,
+    "parameter": "river_stage",
+    "unit": "ft",
+    "fresh": {
+      "id": "E001",
+      "value": 30.0,
+      "observed_at": "2026-11-21T10:00:00Z"
+    },
+    "stale": {
+      "id": "E002",
+      "value": 10.0,
+      "observed_at": "2026-11-13T12:00:00Z"
+    },
+    "evidence_order": "stale_first",
+    "expected_label": "CURRENT_HAZARD",
+    "note": ""
+  },
+  {
+    "query_id": "E7D-primary-8d-fresh_danger_stale_safe-houston-R05",
+    "group": "primary",
+    "age_code": "8d",
+    "condition": "fresh_danger_stale_safe",
+    "reference_now": "2026-11-21T12:00:00Z",
+    "site_key": "houston",
+    "site_name": "Buffalo Bayou",
+    "site_id": "08074000",
+    "threshold_ft": 20.0,
+    "parameter": "river_stage",
+    "unit": "ft",
+    "fresh": {
+      "id": "E001",
+      "value": 31.0,
+      "observed_at": "2026-11-21T10:00:00Z"
+    },
+    "stale": {
+      "id": "E002",
+      "value": 10.0,
+      "observed_at": "2026-11-13T12:00:00Z"
+    },
+    "evidence_order": "fresh_first",
+    "expected_label": "CURRENT_HAZARD",
+    "note": ""
+  },
+  {
+    "query_id": "E7D-primary-8d-fresh_danger_stale_safe-houston-R06",
+    "group": "primary",
+    "age_code": "8d",
+    "condition": "fresh_danger_stale_safe",
+    "reference_now": "2026-11-21T12:00:00Z",
+    "site_key": "houston",
+    "site_name": "Buffalo Bayou",
+    "site_id": "08074000",
+    "threshold_ft": 20.0,
+    "parameter": "river_stage",
+    "unit": "ft",
+    "fresh": {
+      "id": "E001",
+      "value": 32.0,
+      "observed_at": "2026-11-21T10:00:00Z"
+    },
+    "stale": {
+      "id": "E002",
+      "value": 10.0,
+      "observed_at": "2026-11-13T12:00:00Z"
+    },
+    "evidence_order": "stale_first",
+    "expected_label": "CURRENT_HAZARD",
+    "note": ""
+  },
+  {
+    "query_id": "E7D-primary-8d-fresh_danger_stale_safe-neworleans-R04",
+    "group": "primary",
+    "age_code": "8d",
+    "condition": "fresh_danger_stale_safe",
+    "reference_now": "2026-11-21T12:00:00Z",
+    "site_key": "neworleans",
+    "site_name": "Mississippi River",
+    "site_id": "07374000",
+    "threshold_ft": 17.0,
+    "parameter": "river_stage",
+    "unit": "ft",
+    "fresh": {
+      "id": "E001",
+      "value": 25.5,
+      "observed_at": "2026-11-21T10:00:00Z"
+    },
+    "stale": {
+      "id": "E002",
+      "value": 8.5,
+      "observed_at": "2026-11-13T12:00:00Z"
+    },
+    "evidence_order": "fresh_first",
+    "expected_label": "CURRENT_HAZARD",
+    "note": ""
+  },
+  {
+    "query_id": "E7D-primary-8d-fresh_danger_stale_safe-neworleans-R05",
+    "group": "primary",
+    "age_code": "8d",
+    "condition": "fresh_danger_stale_safe",
+    "reference_now": "2026-11-21T12:00:00Z",
+    "site_key": "neworleans",
+    "site_name": "Mississippi River",
+    "site_id": "07374000",
+    "threshold_ft": 17.0,
+    "parameter": "river_stage",
+    "unit": "ft",
+    "fresh": {
+      "id": "E001",
+      "value": 26.35,
+      "observed_at": "2026-11-21T10:00:00Z"
+    },
+    "stale": {
+      "id": "E002",
+      "value": 8.5,
+      "observed_at": "2026-11-13T12:00:00Z"
+    },
+    "evidence_order": "stale_first",
+    "expected_label": "CURRENT_HAZARD",
+    "note": ""
+  },
+  {
+    "query_id": "E7D-primary-8d-fresh_danger_stale_safe-neworleans-R06",
+    "group": "primary",
+    "age_code": "8d",
+    "condition": "fresh_danger_stale_safe",
+    "reference_now": "2026-11-21T12:00:00Z",
+    "site_key": "neworleans",
+    "site_name": "Mississippi River",
+    "site_id": "07374000",
+    "threshold_ft": 17.0,
+    "parameter": "river_stage",
+    "unit": "ft",
+    "fresh": {
+      "id": "E001",
+      "value": 27.2,
+      "observed_at": "2026-11-21T10:00:00Z"
+    },
+    "stale": {
+      "id": "E002",
+      "value": 8.5,
+      "observed_at": "2026-11-13T12:00:00Z"
+    },
+    "evidence_order": "fresh_first",
+    "expected_label": "CURRENT_HAZARD",
+    "note": ""
+  },
+  {
+    "query_id": "E7D-primary-8d-fresh_danger_stale_safe-miami-R04",
+    "group": "primary",
+    "age_code": "8d",
+    "condition": "fresh_danger_stale_safe",
+    "reference_now": "2026-11-21T12:00:00Z",
+    "site_key": "miami",
+    "site_name": "Miami Canal",
+    "site_id": "02288990",
+    "threshold_ft": 5.0,
+    "parameter": "river_stage",
+    "unit": "ft",
+    "fresh": {
+      "id": "E001",
+      "value": 7.5,
+      "observed_at": "2026-11-21T10:00:00Z"
+    },
+    "stale": {
+      "id": "E002",
+      "value": 2.5,
+      "observed_at": "2026-11-13T12:00:00Z"
+    },
+    "evidence_order": "stale_first",
+    "expected_label": "CURRENT_HAZARD",
+    "note": ""
+  },
+  {
+    "query_id": "E7D-primary-8d-fresh_danger_stale_safe-miami-R05",
+    "group": "primary",
+    "age_code": "8d",
+    "condition": "fresh_danger_stale_safe",
+    "reference_now": "2026-11-21T12:00:00Z",
+    "site_key": "miami",
+    "site_name": "Miami Canal",
+    "site_id": "02288990",
+    "threshold_ft": 5.0,
+    "parameter": "river_stage",
+    "unit": "ft",
+    "fresh": {
+      "id": "E001",
+      "value": 7.75,
+      "observed_at": "2026-11-21T10:00:00Z"
+    },
+    "stale": {
+      "id": "E002",
+      "value": 2.5,
+      "observed_at": "2026-11-13T12:00:00Z"
+    },
+    "evidence_order": "fresh_first",
+    "expected_label": "CURRENT_HAZARD",
+    "note": ""
+  },
+  {
+    "query_id": "E7D-primary-8d-fresh_danger_stale_safe-miami-R06",
+    "group": "primary",
+    "age_code": "8d",
+    "condition": "fresh_danger_stale_safe",
+    "reference_now": "2026-11-21T12:00:00Z",
+    "site_key": "miami",
+    "site_name": "Miami Canal",
+    "site_id": "02288990",
+    "threshold_ft": 5.0,
+    "parameter": "river_stage",
+    "unit": "ft",
+    "fresh": {
+      "id": "E001",
+      "value": 8.0,
+      "observed_at": "2026-11-21T10:00:00Z"
+    },
+    "stale": {
+      "id": "E002",
+      "value": 2.5,
+      "observed_at": "2026-11-13T12:00:00Z"
+    },
+    "evidence_order": "stale_first",
+    "expected_label": "CURRENT_HAZARD",
+    "note": ""
+  },
+  {
+    "query_id": "E7D-primary-8d-fresh_danger_stale_safe-sacramento-R04",
+    "group": "primary",
+    "age_code": "8d",
+    "condition": "fresh_danger_stale_safe",
+    "reference_now": "2026-11-21T12:00:00Z",
+    "site_key": "sacramento",
+    "site_name": "Sacramento River",
+    "site_id": "11447650",
+    "threshold_ft": 25.0,
+    "parameter": "river_stage",
+    "unit": "ft",
+    "fresh": {
+      "id": "E001",
+      "value": 37.5,
+      "observed_at": "2026-11-21T10:00:00Z"
+    },
+    "stale": {
+      "id": "E002",
+      "value": 12.5,
+      "observed_at": "2026-11-13T12:00:00Z"
+    },
+    "evidence_order": "fresh_first",
+    "expected_label": "CURRENT_HAZARD",
+    "note": ""
+  },
+  {
+    "query_id": "E7D-primary-8d-fresh_danger_stale_safe-sacramento-R05",
+    "group": "primary",
+    "age_code": "8d",
+    "condition": "fresh_danger_stale_safe",
+    "reference_now": "2026-11-21T12:00:00Z",
+    "site_key": "sacramento",
+    "site_name": "Sacramento River",
+    "site_id": "11447650",
+    "threshold_ft": 25.0,
+    "parameter": "river_stage",
+    "unit": "ft",
+    "fresh": {
+      "id": "E001",
+      "value": 38.75,
+      "observed_at": "2026-11-21T10:00:00Z"
+    },
+    "stale": {
+      "id": "E002",
+      "value": 12.5,
+      "observed_at": "2026-11-13T12:00:00Z"
+    },
+    "evidence_order": "stale_first",
+    "expected_label": "CURRENT_HAZARD",
+    "note": ""
+  },
+  {
+    "query_id": "E7D-primary-8d-fresh_danger_stale_safe-sacramento-R06",
+    "group": "primary",
+    "age_code": "8d",
+    "condition": "fresh_danger_stale_safe",
+    "reference_now": "2026-11-21T12:00:00Z",
+    "site_key": "sacramento",
+    "site_name": "Sacramento River",
+    "site_id": "11447650",
+    "threshold_ft": 25.0,
+    "parameter": "river_stage",
+    "unit": "ft",
+    "fresh": {
+      "id": "E001",
+      "value": 40.0,
+      "observed_at": "2026-11-21T10:00:00Z"
+    },
+    "stale": {
+      "id": "E002",
+      "value": 12.5,
+      "observed_at": "2026-11-13T12:00:00Z"
+    },
+    "evidence_order": "fresh_first",
+    "expected_label": "CURRENT_HAZARD",
+    "note": ""
+  },
+  {
+    "query_id": "E7D-primary-8d-fresh_safe_stale_danger-boulder-R04",
+    "group": "primary",
+    "age_code": "8d",
+    "condition": "fresh_safe_stale_danger",
+    "reference_now": "2026-11-21T12:00:00Z",
+    "site_key": "boulder",
+    "site_name": "Boulder Creek",
+    "site_id": "06730200",
+    "threshold_ft": 10.0,
+    "parameter": "river_stage",
+    "unit": "ft",
+    "fresh": {
+      "id": "E001",
+      "value": 4.0,
+      "observed_at": "2026-11-21T10:00:00Z"
+    },
+    "stale": {
+      "id": "E002",
+      "value": 16.0,
+      "observed_at": "2026-11-13T12:00:00Z"
+    },
+    "evidence_order": "stale_first",
+    "expected_label": "NO_CURRENT_HAZARD",
+    "note": ""
+  },
+  {
+    "query_id": "E7D-primary-8d-fresh_safe_stale_danger-boulder-R05",
+    "group": "primary",
+    "age_code": "8d",
+    "condition": "fresh_safe_stale_danger",
+    "reference_now": "2026-11-21T12:00:00Z",
+    "site_key": "boulder",
+    "site_name": "Boulder Creek",
+    "site_id": "06730200",
+    "threshold_ft": 10.0,
+    "parameter": "river_stage",
+    "unit": "ft",
+    "fresh": {
+      "id": "E001",
+      "value": 4.3,
+      "observed_at": "2026-11-21T10:00:00Z"
+    },
+    "stale": {
+      "id": "E002",
+      "value": 16.0,
+      "observed_at": "2026-11-13T12:00:00Z"
+    },
+    "evidence_order": "fresh_first",
+    "expected_label": "NO_CURRENT_HAZARD",
+    "note": ""
+  },
+  {
+    "query_id": "E7D-primary-8d-fresh_safe_stale_danger-boulder-R06",
+    "group": "primary",
+    "age_code": "8d",
+    "condition": "fresh_safe_stale_danger",
+    "reference_now": "2026-11-21T12:00:00Z",
+    "site_key": "boulder",
+    "site_name": "Boulder Creek",
+    "site_id": "06730200",
+    "threshold_ft": 10.0,
+    "parameter": "river_stage",
+    "unit": "ft",
+    "fresh": {
+      "id": "E001",
+      "value": 4.6,
+      "observed_at": "2026-11-21T10:00:00Z"
+    },
+    "stale": {
+      "id": "E002",
+      "value": 16.0,
+      "observed_at": "2026-11-13T12:00:00Z"
+    },
+    "evidence_order": "stale_first",
+    "expected_label": "NO_CURRENT_HAZARD",
+    "note": ""
+  },
+  {
+    "query_id": "E7D-primary-8d-fresh_safe_stale_danger-houston-R04",
+    "group": "primary",
+    "age_code": "8d",
+    "condition": "fresh_safe_stale_danger",
+    "reference_now": "2026-11-21T12:00:00Z",
+    "site_key": "houston",
+    "site_name": "Buffalo Bayou",
+    "site_id": "08074000",
+    "threshold_ft": 20.0,
+    "parameter": "river_stage",
+    "unit": "ft",
+    "fresh": {
+      "id": "E001",
+      "value": 8.0,
+      "observed_at": "2026-11-21T10:00:00Z"
+    },
+    "stale": {
+      "id": "E002",
+      "value": 32.0,
+      "observed_at": "2026-11-13T12:00:00Z"
+    },
+    "evidence_order": "fresh_first",
+    "expected_label": "NO_CURRENT_HAZARD",
+    "note": ""
+  },
+  {
+    "query_id": "E7D-primary-8d-fresh_safe_stale_danger-houston-R05",
+    "group": "primary",
+    "age_code": "8d",
+    "condition": "fresh_safe_stale_danger",
+    "reference_now": "2026-11-21T12:00:00Z",
+    "site_key": "houston",
+    "site_name": "Buffalo Bayou",
+    "site_id": "08074000",
+    "threshold_ft": 20.0,
+    "parameter": "river_stage",
+    "unit": "ft",
+    "fresh": {
+      "id": "E001",
+      "value": 8.6,
+      "observed_at": "2026-11-21T10:00:00Z"
+    },
+    "stale": {
+      "id": "E002",
+      "value": 32.0,
+      "observed_at": "2026-11-13T12:00:00Z"
+    },
+    "evidence_order": "stale_first",
+    "expected_label": "NO_CURRENT_HAZARD",
+    "note": ""
+  },
+  {
+    "query_id": "E7D-primary-8d-fresh_safe_stale_danger-houston-R06",
+    "group": "primary",
+    "age_code": "8d",
+    "condition": "fresh_safe_stale_danger",
+    "reference_now": "2026-11-21T12:00:00Z",
+    "site_key": "houston",
+    "site_name": "Buffalo Bayou",
+    "site_id": "08074000",
+    "threshold_ft": 20.0,
+    "parameter": "river_stage",
+    "unit": "ft",
+    "fresh": {
+      "id": "E001",
+      "value": 9.2,
+      "observed_at": "2026-11-21T10:00:00Z"
+    },
+    "stale": {
+      "id": "E002",
+      "value": 32.0,
+      "observed_at": "2026-11-13T12:00:00Z"
+    },
+    "evidence_order": "fresh_first",
+    "expected_label": "NO_CURRENT_HAZARD",
+    "note": ""
+  },
+  {
+    "query_id": "E7D-primary-8d-fresh_safe_stale_danger-neworleans-R04",
+    "group": "primary",
+    "age_code": "8d",
+    "condition": "fresh_safe_stale_danger",
+    "reference_now": "2026-11-21T12:00:00Z",
+    "site_key": "neworleans",
+    "site_name": "Mississippi River",
+    "site_id": "07374000",
+    "threshold_ft": 17.0,
+    "parameter": "river_stage",
+    "unit": "ft",
+    "fresh": {
+      "id": "E001",
+      "value": 6.8,
+      "observed_at": "2026-11-21T10:00:00Z"
+    },
+    "stale": {
+      "id": "E002",
+      "value": 27.2,
+      "observed_at": "2026-11-13T12:00:00Z"
+    },
+    "evidence_order": "stale_first",
+    "expected_label": "NO_CURRENT_HAZARD",
+    "note": ""
+  },
+  {
+    "query_id": "E7D-primary-8d-fresh_safe_stale_danger-neworleans-R05",
+    "group": "primary",
+    "age_code": "8d",
+    "condition": "fresh_safe_stale_danger",
+    "reference_now": "2026-11-21T12:00:00Z",
+    "site_key": "neworleans",
+    "site_name": "Mississippi River",
+    "site_id": "07374000",
+    "threshold_ft": 17.0,
+    "parameter": "river_stage",
+    "unit": "ft",
+    "fresh": {
+      "id": "E001",
+      "value": 7.31,
+      "observed_at": "2026-11-21T10:00:00Z"
+    },
+    "stale": {
+      "id": "E002",
+      "value": 27.2,
+      "observed_at": "2026-11-13T12:00:00Z"
+    },
+    "evidence_order": "fresh_first",
+    "expected_label": "NO_CURRENT_HAZARD",
+    "note": ""
+  },
+  {
+    "query_id": "E7D-primary-8d-fresh_safe_stale_danger-neworleans-R06",
+    "group": "primary",
+    "age_code": "8d",
+    "condition": "fresh_safe_stale_danger",
+    "reference_now": "2026-11-21T12:00:00Z",
+    "site_key": "neworleans",
+    "site_name": "Mississippi River",
+    "site_id": "07374000",
+    "threshold_ft": 17.0,
+    "parameter": "river_stage",
+    "unit": "ft",
+    "fresh": {
+      "id": "E001",
+      "value": 7.82,
+      "observed_at": "2026-11-21T10:00:00Z"
+    },
+    "stale": {
+      "id": "E002",
+      "value": 27.2,
+      "observed_at": "2026-11-13T12:00:00Z"
+    },
+    "evidence_order": "stale_first",
+    "expected_label": "NO_CURRENT_HAZARD",
+    "note": ""
+  },
+  {
+    "query_id": "E7D-primary-8d-fresh_safe_stale_danger-miami-R04",
+    "group": "primary",
+    "age_code": "8d",
+    "condition": "fresh_safe_stale_danger",
+    "reference_now": "2026-11-21T12:00:00Z",
+    "site_key": "miami",
+    "site_name": "Miami Canal",
+    "site_id": "02288990",
+    "threshold_ft": 5.0,
+    "parameter": "river_stage",
+    "unit": "ft",
+    "fresh": {
+      "id": "E001",
+      "value": 2.0,
+      "observed_at": "2026-11-21T10:00:00Z"
+    },
+    "stale": {
+      "id": "E002",
+      "value": 8.0,
+      "observed_at": "2026-11-13T12:00:00Z"
+    },
+    "evidence_order": "fresh_first",
+    "expected_label": "NO_CURRENT_HAZARD",
+    "note": ""
+  },
+  {
+    "query_id": "E7D-primary-8d-fresh_safe_stale_danger-miami-R05",
+    "group": "primary",
+    "age_code": "8d",
+    "condition": "fresh_safe_stale_danger",
+    "reference_now": "2026-11-21T12:00:00Z",
+    "site_key": "miami",
+    "site_name": "Miami Canal",
+    "site_id": "02288990",
+    "threshold_ft": 5.0,
+    "parameter": "river_stage",
+    "unit": "ft",
+    "fresh": {
+      "id": "E001",
+      "value": 2.15,
+      "observed_at": "2026-11-21T10:00:00Z"
+    },
+    "stale": {
+      "id": "E002",
+      "value": 8.0,
+      "observed_at": "2026-11-13T12:00:00Z"
+    },
+    "evidence_order": "stale_first",
+    "expected_label": "NO_CURRENT_HAZARD",
+    "note": ""
+  },
+  {
+    "query_id": "E7D-primary-8d-fresh_safe_stale_danger-miami-R06",
+    "group": "primary",
+    "age_code": "8d",
+    "condition": "fresh_safe_stale_danger",
+    "reference_now": "2026-11-21T12:00:00Z",
+    "site_key": "miami",
+    "site_name": "Miami Canal",
+    "site_id": "02288990",
+    "threshold_ft": 5.0,
+    "parameter": "river_stage",
+    "unit": "ft",
+    "fresh": {
+      "id": "E001",
+      "value": 2.3,
+      "observed_at": "2026-11-21T10:00:00Z"
+    },
+    "stale": {
+      "id": "E002",
+      "value": 8.0,
+      "observed_at": "2026-11-13T12:00:00Z"
+    },
+    "evidence_order": "fresh_first",
+    "expected_label": "NO_CURRENT_HAZARD",
+    "note": ""
+  },
+  {
+    "query_id": "E7D-primary-8d-fresh_safe_stale_danger-sacramento-R04",
+    "group": "primary",
+    "age_code": "8d",
+    "condition": "fresh_safe_stale_danger",
+    "reference_now": "2026-11-21T12:00:00Z",
+    "site_key": "sacramento",
+    "site_name": "Sacramento River",
+    "site_id": "11447650",
+    "threshold_ft": 25.0,
+    "parameter": "river_stage",
+    "unit": "ft",
+    "fresh": {
+      "id": "E001",
+      "value": 10.0,
+      "observed_at": "2026-11-21T10:00:00Z"
+    },
+    "stale": {
+      "id": "E002",
+      "value": 40.0,
+      "observed_at": "2026-11-13T12:00:00Z"
+    },
+    "evidence_order": "stale_first",
+    "expected_label": "NO_CURRENT_HAZARD",
+    "note": ""
+  },
+  {
+    "query_id": "E7D-primary-8d-fresh_safe_stale_danger-sacramento-R05",
+    "group": "primary",
+    "age_code": "8d",
+    "condition": "fresh_safe_stale_danger",
+    "reference_now": "2026-11-21T12:00:00Z",
+    "site_key": "sacramento",
+    "site_name": "Sacramento River",
+    "site_id": "11447650",
+    "threshold_ft": 25.0,
+    "parameter": "river_stage",
+    "unit": "ft",
+    "fresh": {
+      "id": "E001",
+      "value": 10.75,
+      "observed_at": "2026-11-21T10:00:00Z"
+    },
+    "stale": {
+      "id": "E002",
+      "value": 40.0,
+      "observed_at": "2026-11-13T12:00:00Z"
+    },
+    "evidence_order": "fresh_first",
+    "expected_label": "NO_CURRENT_HAZARD",
+    "note": ""
+  },
+  {
+    "query_id": "E7D-primary-8d-fresh_safe_stale_danger-sacramento-R06",
+    "group": "primary",
+    "age_code": "8d",
+    "condition": "fresh_safe_stale_danger",
+    "reference_now": "2026-11-21T12:00:00Z",
+    "site_key": "sacramento",
+    "site_name": "Sacramento River",
+    "site_id": "11447650",
+    "threshold_ft": 25.0,
+    "parameter": "river_stage",
+    "unit": "ft",
+    "fresh": {
+      "id": "E001",
+      "value": 11.5,
+      "observed_at": "2026-11-21T10:00:00Z"
+    },
+    "stale": {
+      "id": "E002",
+      "value": 40.0,
+      "observed_at": "2026-11-13T12:00:00Z"
+    },
+    "evidence_order": "stale_first",
+    "expected_label": "NO_CURRENT_HAZARD",
+    "note": ""
+  },
+  {
+    "query_id": "E7D-diagnostic-8d-delayed_publication-boulder-R01",
+    "group": "diagnostic",
+    "age_code": "8d",
+    "condition": "delayed_publication",
+    "reference_now": "2026-11-21T12:00:00Z",
+    "site_key": "boulder",
+    "site_name": "Boulder Creek",
+    "site_id": "06730200",
+    "threshold_ft": 10.0,
+    "parameter": "river_stage",
+    "unit": "ft",
+    "fresh": {
+      "id": "E001",
+      "value": 5.0,
+      "observed_at": "2026-11-21T10:00:00Z"
+    },
+    "stale": {
+      "id": "E002",
+      "value": 16.0,
+      "observed_at": "2013-09-12T06:00:00Z"
+    },
+    "evidence_order": "fresh_first",
+    "expected_label": "NO_CURRENT_HAZARD",
+    "note": "published recently but describes a 2013 event"
+  },
+  {
+    "query_id": "E7D-diagnostic-8d-delayed_publication-boulder-R02",
+    "group": "diagnostic",
+    "age_code": "8d",
+    "condition": "delayed_publication",
+    "reference_now": "2026-11-21T12:00:00Z",
+    "site_key": "boulder",
+    "site_name": "Boulder Creek",
+    "site_id": "06730200",
+    "threshold_ft": 10.0,
+    "parameter": "river_stage",
+    "unit": "ft",
+    "fresh": {
+      "id": "E001",
+      "value": 5.0,
+      "observed_at": "2026-11-21T10:00:00Z"
+    },
+    "stale": {
+      "id": "E002",
+      "value": 16.0,
+      "observed_at": "2013-09-12T06:00:00Z"
+    },
+    "evidence_order": "stale_first",
+    "expected_label": "NO_CURRENT_HAZARD",
+    "note": "published recently but describes a 2013 event"
+  },
+  {
+    "query_id": "E7D-diagnostic-8d-delayed_publication-houston-R01",
+    "group": "diagnostic",
+    "age_code": "8d",
+    "condition": "delayed_publication",
+    "reference_now": "2026-11-21T12:00:00Z",
+    "site_key": "houston",
+    "site_name": "Buffalo Bayou",
+    "site_id": "08074000",
+    "threshold_ft": 20.0,
+    "parameter": "river_stage",
+    "unit": "ft",
+    "fresh": {
+      "id": "E001",
+      "value": 10.0,
+      "observed_at": "2026-11-21T10:00:00Z"
+    },
+    "stale": {
+      "id": "E002",
+      "value": 32.0,
+      "observed_at": "2013-09-12T06:00:00Z"
+    },
+    "evidence_order": "fresh_first",
+    "expected_label": "NO_CURRENT_HAZARD",
+    "note": "published recently but describes a 2013 event"
+  },
+  {
+    "query_id": "E7D-diagnostic-8d-delayed_publication-houston-R02",
+    "group": "diagnostic",
+    "age_code": "8d",
+    "condition": "delayed_publication",
+    "reference_now": "2026-11-21T12:00:00Z",
+    "site_key": "houston",
+    "site_name": "Buffalo Bayou",
+    "site_id": "08074000",
+    "threshold_ft": 20.0,
+    "parameter": "river_stage",
+    "unit": "ft",
+    "fresh": {
+      "id": "E001",
+      "value": 10.0,
+      "observed_at": "2026-11-21T10:00:00Z"
+    },
+    "stale": {
+      "id": "E002",
+      "value": 32.0,
+      "observed_at": "2013-09-12T06:00:00Z"
+    },
+    "evidence_order": "stale_first",
+    "expected_label": "NO_CURRENT_HAZARD",
+    "note": "published recently but describes a 2013 event"
+  },
+  {
+    "query_id": "E7D-diagnostic-8d-delayed_publication-neworleans-R01",
+    "group": "diagnostic",
+    "age_code": "8d",
+    "condition": "delayed_publication",
+    "reference_now": "2026-11-21T12:00:00Z",
+    "site_key": "neworleans",
+    "site_name": "Mississippi River",
+    "site_id": "07374000",
+    "threshold_ft": 17.0,
+    "parameter": "river_stage",
+    "unit": "ft",
+    "fresh": {
+      "id": "E001",
+      "value": 8.5,
+      "observed_at": "2026-11-21T10:00:00Z"
+    },
+    "stale": {
+      "id": "E002",
+      "value": 27.2,
+      "observed_at": "2013-09-12T06:00:00Z"
+    },
+    "evidence_order": "fresh_first",
+    "expected_label": "NO_CURRENT_HAZARD",
+    "note": "published recently but describes a 2013 event"
+  },
+  {
+    "query_id": "E7D-diagnostic-8d-delayed_publication-neworleans-R02",
+    "group": "diagnostic",
+    "age_code": "8d",
+    "condition": "delayed_publication",
+    "reference_now": "2026-11-21T12:00:00Z",
+    "site_key": "neworleans",
+    "site_name": "Mississippi River",
+    "site_id": "07374000",
+    "threshold_ft": 17.0,
+    "parameter": "river_stage",
+    "unit": "ft",
+    "fresh": {
+      "id": "E001",
+      "value": 8.5,
+      "observed_at": "2026-11-21T10:00:00Z"
+    },
+    "stale": {
+      "id": "E002",
+      "value": 27.2,
+      "observed_at": "2013-09-12T06:00:00Z"
+    },
+    "evidence_order": "stale_first",
+    "expected_label": "NO_CURRENT_HAZARD",
+    "note": "published recently but describes a 2013 event"
+  },
+  {
+    "query_id": "E7D-diagnostic-8d-delayed_publication-miami-R01",
+    "group": "diagnostic",
+    "age_code": "8d",
+    "condition": "delayed_publication",
+    "reference_now": "2026-11-21T12:00:00Z",
+    "site_key": "miami",
+    "site_name": "Miami Canal",
+    "site_id": "02288990",
+    "threshold_ft": 5.0,
+    "parameter": "river_stage",
+    "unit": "ft",
+    "fresh": {
+      "id": "E001",
+      "value": 2.5,
+      "observed_at": "2026-11-21T10:00:00Z"
+    },
+    "stale": {
+      "id": "E002",
+      "value": 8.0,
+      "observed_at": "2013-09-12T06:00:00Z"
+    },
+    "evidence_order": "fresh_first",
+    "expected_label": "NO_CURRENT_HAZARD",
+    "note": "published recently but describes a 2013 event"
+  },
+  {
+    "query_id": "E7D-diagnostic-8d-delayed_publication-miami-R02",
+    "group": "diagnostic",
+    "age_code": "8d",
+    "condition": "delayed_publication",
+    "reference_now": "2026-11-21T12:00:00Z",
+    "site_key": "miami",
+    "site_name": "Miami Canal",
+    "site_id": "02288990",
+    "threshold_ft": 5.0,
+    "parameter": "river_stage",
+    "unit": "ft",
+    "fresh": {
+      "id": "E001",
+      "value": 2.5,
+      "observed_at": "2026-11-21T10:00:00Z"
+    },
+    "stale": {
+      "id": "E002",
+      "value": 8.0,
+      "observed_at": "2013-09-12T06:00:00Z"
+    },
+    "evidence_order": "stale_first",
+    "expected_label": "NO_CURRENT_HAZARD",
+    "note": "published recently but describes a 2013 event"
+  },
+  {
+    "query_id": "E7D-diagnostic-8d-delayed_publication-sacramento-R01",
+    "group": "diagnostic",
+    "age_code": "8d",
+    "condition": "delayed_publication",
+    "reference_now": "2026-11-21T12:00:00Z",
+    "site_key": "sacramento",
+    "site_name": "Sacramento River",
+    "site_id": "11447650",
+    "threshold_ft": 25.0,
+    "parameter": "river_stage",
+    "unit": "ft",
+    "fresh": {
+      "id": "E001",
+      "value": 12.5,
+      "observed_at": "2026-11-21T10:00:00Z"
+    },
+    "stale": {
+      "id": "E002",
+      "value": 40.0,
+      "observed_at": "2013-09-12T06:00:00Z"
+    },
+    "evidence_order": "fresh_first",
+    "expected_label": "NO_CURRENT_HAZARD",
+    "note": "published recently but describes a 2013 event"
+  },
+  {
+    "query_id": "E7D-diagnostic-8d-delayed_publication-sacramento-R02",
+    "group": "diagnostic",
+    "age_code": "8d",
+    "condition": "delayed_publication",
+    "reference_now": "2026-11-21T12:00:00Z",
+    "site_key": "sacramento",
+    "site_name": "Sacramento River",
+    "site_id": "11447650",
+    "threshold_ft": 25.0,
+    "parameter": "river_stage",
+    "unit": "ft",
+    "fresh": {
+      "id": "E001",
+      "value": 12.5,
+      "observed_at": "2026-11-21T10:00:00Z"
+    },
+    "stale": {
+      "id": "E002",
+      "value": 40.0,
+      "observed_at": "2013-09-12T06:00:00Z"
+    },
+    "evidence_order": "stale_first",
+    "expected_label": "NO_CURRENT_HAZARD",
+    "note": "published recently but describes a 2013 event"
+  },
+  {
+    "query_id": "E7D-diagnostic-8d-expired_warning-boulder-R01",
+    "group": "diagnostic",
+    "age_code": "8d",
+    "condition": "expired_warning",
+    "reference_now": "2026-11-21T12:00:00Z",
+    "site_key": "boulder",
+    "site_name": "Boulder Creek",
+    "site_id": "06730200",
+    "threshold_ft": 10.0,
+    "parameter": "river_stage",
+    "unit": "ft",
+    "fresh": {
+      "id": "E001",
+      "value": 5.0,
+      "observed_at": "2026-11-21T10:00:00Z"
+    },
+    "stale": {
+      "id": "E002",
+      "value": 16.0,
+      "observed_at": "2013-09-12T06:00:00Z"
+    },
+    "evidence_order": "fresh_first",
+    "expected_label": "NO_CURRENT_HAZARD",
+    "note": "advisory validity period has expired"
+  },
+  {
+    "query_id": "E7D-diagnostic-8d-expired_warning-boulder-R02",
+    "group": "diagnostic",
+    "age_code": "8d",
+    "condition": "expired_warning",
+    "reference_now": "2026-11-21T12:00:00Z",
+    "site_key": "boulder",
+    "site_name": "Boulder Creek",
+    "site_id": "06730200",
+    "threshold_ft": 10.0,
+    "parameter": "river_stage",
+    "unit": "ft",
+    "fresh": {
+      "id": "E001",
+      "value": 5.0,
+      "observed_at": "2026-11-21T10:00:00Z"
+    },
+    "stale": {
+      "id": "E002",
+      "value": 16.0,
+      "observed_at": "2013-09-12T06:00:00Z"
+    },
+    "evidence_order": "stale_first",
+    "expected_label": "NO_CURRENT_HAZARD",
+    "note": "advisory validity period has expired"
+  },
+  {
+    "query_id": "E7D-diagnostic-8d-expired_warning-houston-R01",
+    "group": "diagnostic",
+    "age_code": "8d",
+    "condition": "expired_warning",
+    "reference_now": "2026-11-21T12:00:00Z",
+    "site_key": "houston",
+    "site_name": "Buffalo Bayou",
+    "site_id": "08074000",
+    "threshold_ft": 20.0,
+    "parameter": "river_stage",
+    "unit": "ft",
+    "fresh": {
+      "id": "E001",
+      "value": 10.0,
+      "observed_at": "2026-11-21T10:00:00Z"
+    },
+    "stale": {
+      "id": "E002",
+      "value": 32.0,
+      "observed_at": "2013-09-12T06:00:00Z"
+    },
+    "evidence_order": "fresh_first",
+    "expected_label": "NO_CURRENT_HAZARD",
+    "note": "advisory validity period has expired"
+  },
+  {
+    "query_id": "E7D-diagnostic-8d-expired_warning-houston-R02",
+    "group": "diagnostic",
+    "age_code": "8d",
+    "condition": "expired_warning",
+    "reference_now": "2026-11-21T12:00:00Z",
+    "site_key": "houston",
+    "site_name": "Buffalo Bayou",
+    "site_id": "08074000",
+    "threshold_ft": 20.0,
+    "parameter": "river_stage",
+    "unit": "ft",
+    "fresh": {
+      "id": "E001",
+      "value": 10.0,
+      "observed_at": "2026-11-21T10:00:00Z"
+    },
+    "stale": {
+      "id": "E002",
+      "value": 32.0,
+      "observed_at": "2013-09-12T06:00:00Z"
+    },
+    "evidence_order": "stale_first",
+    "expected_label": "NO_CURRENT_HAZARD",
+    "note": "advisory validity period has expired"
+  },
+  {
+    "query_id": "E7D-diagnostic-8d-expired_warning-neworleans-R01",
+    "group": "diagnostic",
+    "age_code": "8d",
+    "condition": "expired_warning",
+    "reference_now": "2026-11-21T12:00:00Z",
+    "site_key": "neworleans",
+    "site_name": "Mississippi River",
+    "site_id": "07374000",
+    "threshold_ft": 17.0,
+    "parameter": "river_stage",
+    "unit": "ft",
+    "fresh": {
+      "id": "E001",
+      "value": 8.5,
+      "observed_at": "2026-11-21T10:00:00Z"
+    },
+    "stale": {
+      "id": "E002",
+      "value": 27.2,
+      "observed_at": "2013-09-12T06:00:00Z"
+    },
+    "evidence_order": "fresh_first",
+    "expected_label": "NO_CURRENT_HAZARD",
+    "note": "advisory validity period has expired"
+  },
+  {
+    "query_id": "E7D-diagnostic-8d-expired_warning-neworleans-R02",
+    "group": "diagnostic",
+    "age_code": "8d",
+    "condition": "expired_warning",
+    "reference_now": "2026-11-21T12:00:00Z",
+    "site_key": "neworleans",
+    "site_name": "Mississippi River",
+    "site_id": "07374000",
+    "threshold_ft": 17.0,
+    "parameter": "river_stage",
+    "unit": "ft",
+    "fresh": {
+      "id": "E001",
+      "value": 8.5,
+      "observed_at": "2026-11-21T10:00:00Z"
+    },
+    "stale": {
+      "id": "E002",
+      "value": 27.2,
+      "observed_at": "2013-09-12T06:00:00Z"
+    },
+    "evidence_order": "stale_first",
+    "expected_label": "NO_CURRENT_HAZARD",
+    "note": "advisory validity period has expired"
+  },
+  {
+    "query_id": "E7D-diagnostic-8d-expired_warning-miami-R01",
+    "group": "diagnostic",
+    "age_code": "8d",
+    "condition": "expired_warning",
+    "reference_now": "2026-11-21T12:00:00Z",
+    "site_key": "miami",
+    "site_name": "Miami Canal",
+    "site_id": "02288990",
+    "threshold_ft": 5.0,
+    "parameter": "river_stage",
+    "unit": "ft",
+    "fresh": {
+      "id": "E001",
+      "value": 2.5,
+      "observed_at": "2026-11-21T10:00:00Z"
+    },
+    "stale": {
+      "id": "E002",
+      "value": 8.0,
+      "observed_at": "2013-09-12T06:00:00Z"
+    },
+    "evidence_order": "fresh_first",
+    "expected_label": "NO_CURRENT_HAZARD",
+    "note": "advisory validity period has expired"
+  },
+  {
+    "query_id": "E7D-diagnostic-8d-expired_warning-miami-R02",
+    "group": "diagnostic",
+    "age_code": "8d",
+    "condition": "expired_warning",
+    "reference_now": "2026-11-21T12:00:00Z",
+    "site_key": "miami",
+    "site_name": "Miami Canal",
+    "site_id": "02288990",
+    "threshold_ft": 5.0,
+    "parameter": "river_stage",
+    "unit": "ft",
+    "fresh": {
+      "id": "E001",
+      "value": 2.5,
+      "observed_at": "2026-11-21T10:00:00Z"
+    },
+    "stale": {
+      "id": "E002",
+      "value": 8.0,
+      "observed_at": "2013-09-12T06:00:00Z"
+    },
+    "evidence_order": "stale_first",
+    "expected_label": "NO_CURRENT_HAZARD",
+    "note": "advisory validity period has expired"
+  },
+  {
+    "query_id": "E7D-diagnostic-8d-expired_warning-sacramento-R01",
+    "group": "diagnostic",
+    "age_code": "8d",
+    "condition": "expired_warning",
+    "reference_now": "2026-11-21T12:00:00Z",
+    "site_key": "sacramento",
+    "site_name": "Sacramento River",
+    "site_id": "11447650",
+    "threshold_ft": 25.0,
+    "parameter": "river_stage",
+    "unit": "ft",
+    "fresh": {
+      "id": "E001",
+      "value": 12.5,
+      "observed_at": "2026-11-21T10:00:00Z"
+    },
+    "stale": {
+      "id": "E002",
+      "value": 40.0,
+      "observed_at": "2013-09-12T06:00:00Z"
+    },
+    "evidence_order": "fresh_first",
+    "expected_label": "NO_CURRENT_HAZARD",
+    "note": "advisory validity period has expired"
+  },
+  {
+    "query_id": "E7D-diagnostic-8d-expired_warning-sacramento-R02",
+    "group": "diagnostic",
+    "age_code": "8d",
+    "condition": "expired_warning",
+    "reference_now": "2026-11-21T12:00:00Z",
+    "site_key": "sacramento",
+    "site_name": "Sacramento River",
+    "site_id": "11447650",
+    "threshold_ft": 25.0,
+    "parameter": "river_stage",
+    "unit": "ft",
+    "fresh": {
+      "id": "E001",
+      "value": 12.5,
+      "observed_at": "2026-11-21T10:00:00Z"
+    },
+    "stale": {
+      "id": "E002",
+      "value": 40.0,
+      "observed_at": "2013-09-12T06:00:00Z"
+    },
+    "evidence_order": "stale_first",
+    "expected_label": "NO_CURRENT_HAZARD",
+    "note": "advisory validity period has expired"
+  }
+]
