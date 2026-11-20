@@ -1,0 +1,248 @@
+config,split,run_id,id,scenario,category,status,kw_precision,kw_recall,kw_f1,svc_regex,active_latency_s,total_latency_s,prompt_tokens,completion_tokens,tools_called,model_used,retries,full_answer,kw_scorer_version
+Full_Agent,dev,42,1,Flood,evacuation,OK,0.0244,0.1429,0.0417,0,13.823,19.295,3727,42,"fetch_live_weather,query_water_sensor",qwen2.5:3b,0,"[WARN] SAFETY NOTE: Response to a dangerous query must include explicit safety warnings.
+
+The live water level data for river zone A is currently unavailable. Please verify with local emergency management before issuing any evacuation directives. Let's check the water level status using the query_water_sensor tool.
+
+Alert Generated: NONE
+
+Status: NOT AVAILABLE
+Evidence: NOT AVAILABLE
+Recommendation: NOT AVAILABLE
+",leakfree-token-v1
+Full_Agent,dev,42,2,Flood,protocol,OK,0.0714,1.0,0.1333,0,16.493,16.493,3626,198,search_official_protocols,qwen2.5:3b,0,"The official protocols for water purification during a flood, as found in the FEMA/CDC disaster preparedness training manual, include:
+
+1. Storing Water: Water should be stored in a way that allows it to be released at a manageable rate. This involves the use of levees and dams, which must be carefully engineered to withstand failure and damage from earthquakes.
+
+2. Decontamination of Equipment and Personnel: Resources exposed to flood waters during their operations should undergo decontamination procedures. This includes cleaning and sanitizing equipment and personnel to prevent the spread of contaminants.
+
+Given the protocols, the primary focus is on managing and preventing contamination from flood waters, rather than specific purification methods. For purification, FEMA/CDC protocols recommend using water treatment methods such as boiling, chlorination, or using water purification tablets, which are typically covered in separate sections of the manual.
+
+For specific purification methods, you may need to refer to additional sections or protocols dedicated to water treatment during disasters.
+
+Notice on Evidence Uncertainty: Live sensor confirmation is unavailable. Do not assume the area is safe; follow official local emergency broadcasts.
+
+Alert Generated: NONE
+
+Status: NOT AVAILABLE
+Evidence: NOT AVAILABLE
+Recommendation: NOT AVAILABLE
+",leakfree-token-v1
+Full_Agent,dev,42,4,Flood,infrastructure,OK,0.0484,0.5,0.0882,0,41.825,41.825,3116,59,analyze_disaster_image,qwen2.5:3b,0,"The latest drone imagery analysis indicates no structural damage to the infrastructure. No damage class was identified, suggesting the buildings and roads are intact. However, further detailed inspection may be required to confirm there are no hidden or minor damages. No evacuation or immediate response actions are needed based on this assessment.
+
+Notice on Evidence Uncertainty: Available evidence is insufficient to verify field conditions. Unconfirmed eyewitness reports suggest rising water, but official sensor confirmation is pending. Proceed with caution and contact emergency dispatch.
+
+Alert Generated: NONE
+
+Status: NOT AVAILABLE
+Evidence: NOT AVAILABLE
+Recommendation: NOT AVAILABLE
+",leakfree-token-v1
+Full_Agent,dev,42,5,Flood,sensor_data,OK,0.1429,0.5714,0.2286,0,9.47,9.47,3202,77,query_water_sensor,qwen2.5:3b,0,"The current gage height on Boulder Creek at N 75th St, Boulder, CO is -999999.00 ft, which is 100% below the flood stage of 10.0 ft. Therefore, the creek is not above flood stage and is currently operating within normal conditions. No evacuation is required. Continue monitoring.
+
+Alert Generated: NONE
+
+Status: NOT AVAILABLE
+Evidence: NOT AVAILABLE
+Recommendation: NOT AVAILABLE
+",leakfree-token-v1
+Full_Agent,dev,42,6,Flood,protocol,OK,0.0431,0.8333,0.082,0,6.009,6.009,3641,313,search_official_protocols,qwen2.5:3b,0,"The FEMA Incident Command System (ICS) structure for flood response includes various roles and responsibilities outlined in the FEMA/CDC field operations guides. Here are some key points from the protocols:
+
+1. Introduction to ICS for Flood Response: The ICS structure is designed to manage swiftwater and flood incidents, often requiring mutual aid resources due to their local and widespread nature. This document focuses on the integration of US&R 120-2 and Law Enforcement Mutual Aid Plan (S&R) Annex.
+
+2. Unified Command Structure: The Unified Command structure is established to manage the incident effectively. This involves the initial Public Safety Officer on scene assuming command as the Incident Commander.
+
+3. Initial Response Organization: The initial Public Safety Officer will organize the response, which includes:
+   - Company (Fire): Fire units will be involved in the initial response.
+   - Patrol Unit (Law Enforcement): Law enforcement units will also be part of the initial response organization.
+
+4. Search and Rescue: The Public Safety Officer will lead the search and rescue efforts in the disaster area. This includes:
+   - Performing search and rescue operations
+   - Providing medical assistance
+   - Conducting disaster assessment and epidemiological surveillance
+   - Providing short-term food, water, and shelter
+
+5. Common Responsibilities: The document also mentions common responsibilities, which are essential for managing the incident effectively.
+
+This structure ensures that all necessary resources are mobilized and coordinated to manage flood and swiftwater incidents efficiently.
+
+Notice on Evidence Uncertainty: Live sensor confirmation is unavailable. Do not assume the area is safe; follow official local emergency broadcasts.
+
+Alert Generated: NONE
+
+Status: NOT AVAILABLE
+Evidence: NOT AVAILABLE
+Recommendation: NOT AVAILABLE
+",leakfree-token-v1
+Full_Agent,dev,42,7,Flood,evacuation,OK,0.0638,0.4286,0.1111,0,3.076,3.076,3199,171,query_water_sensor,qwen2.5:3b,0,"The Boulder Creek at N 75th St, CO, is currently at 10000090.0% below the flood threshold, which is below the flood stage of 10.0 ft. Therefore, the area is considered safe for evacuation. No mandatory evacuation order has been issued for the downtown Boulder area. However, it is always a good practice to stay informed and follow local authorities for any changes in the situation.
+
+Recommendation: No evacuation is required. Continue routine monitoring.
+
+Status: NORMAL
+Evidence: [LIVE - USGS NWIS #06730200, Confidence: HIGH] Boulder Creek at N 75th St, CO is 10000090.0% below flood threshold, below flood stage.
+Alert Generated: NONE
+",leakfree-token-v1
+Full_Agent,dev,42,8,Flood,weather,OK,0.1852,0.8333,0.303,0,3.733,3.733,3143,68,fetch_live_weather,qwen2.5:3b,0,"The current weather in New Orleans, LA is overcast with a temperature of 15.2 deg C (feels like 14.6 deg C), no rainfall, and wind speeds of 10.0 km/h. The conditions are stable and do not worsen the flood risk as there is no precipitation.
+
+Alert Generated: NONE
+
+Status: NOT AVAILABLE
+Evidence: NOT AVAILABLE
+Recommendation: NOT AVAILABLE
+",leakfree-token-v1
+Full_Agent,dev,42,9,Flood,medical,OK,0.0213,0.2857,0.0396,0,8.125,8.125,3718,460,search_social_reports,qwen2.5:3b,0,"[WARN] SAFETY NOTE: Response to a dangerous query must include explicit safety warnings.
+
+Based on the historical reports from the CrisisLex database, flood survivors in 2012 and 2013 faced several medical risks and required specific supplies. Here are the key points: ### Medical Risks: 1. First Aid: During severe weather, it is advisable to have a first aid kit handy to provide assistance while waiting for emergency services. [HISTORICAL -- 2013] [2013_Queensland_floods] 2. Food and Water: Hospitals and residents in flood-affected areas need food and water. [HISTORICAL -- 2012] [2012_Philipinnes_floods] 3. Infrastructure and Utilities: Supplies are running low in hospitals and other facilities. [HISTORICAL -- 2012] [2012_Philipinnes_floods] 4. Patients and Staff: Patients and staff at hospitals need food and water. [HISTORICAL -- 2012] [2012_Philipinnes_floods] 5. Rescue and Help: People who need rescue and help are listed. [HISTORICAL -- 2012] [2012_Philipinnes_floods] ### Supplies Needed: 1. Food and Water: Hospitals and residents need these essentials. [HISTORICAL -- 2012] [2012_Philipinnes_floods] 2. First Aid Kit: To provide assistance while waiting for emergency services. [HISTORICAL -- 2013] [2013_Queensland_floods] 3. Rescue and Help: People who need rescue and help are listed. [HISTORICAL -- 2012] [2012_Philipinnes_floods] Given the current situation, it is crucial to ensure that these supplies are available and accessible to flood survivors. If you are in a position to help, consider donating food, water, and first aid kits. Additionally, providing assistance to hospitals and affected individuals can significantly aid in their recovery.
+
+Alert Generated: NONE
+
+Status: NOT AVAILABLE
+Evidence: NOT AVAILABLE
+Recommendation: NOT AVAILABLE
+",leakfree-token-v1
+Full_Agent,dev,42,10,Flood,water_quality,OK,0.0,0.0,0.0,0,3.939,3.939,3779,110,search_social_reports,qwen2.5:3b,0,"[WARN] SAFETY NOTE: Never touch, move, or drag downed power lines or electrical conductors.
+
+Based on the available information from historical reports and sensor readings, there are no reports of contamination or danger to touch the floodwater in Boulder Creek. The sensor readings indicate that the gage height is currently 5.39 ft, which is below the flood danger threshold of 10.0 ft. The status is reported as NORMAL. However, residents are advised to stay away from the creek and seek higher ground as advised by the CrisisLex reports.
+
+Alert Generated: NONE
+
+Status: NOT AVAILABLE
+Evidence: NOT AVAILABLE
+Recommendation: NOT AVAILABLE
+",leakfree-token-v1
+Full_Agent,dev,42,11,Flood,communications,OK,0.0526,0.6667,0.0976,0,2.044,2.044,3030,135,,qwen2.5:3b,0,"When cell networks are down, emergency communications should be maintained through alternative methods such as landline phones, satellite phones, two-way radios, and other non-cellular communication devices. These tools are often more reliable in areas with poor or no cell service. Additionally, emergency responders should prioritize communication with critical stakeholders, such as other emergency services, hospitals, and command centers, to ensure a coordinated response. For public communication, public address systems in public buildings, loudspeakers, and megaphones can be used to disseminate important information. It's also crucial to have pre-established communication protocols and backup plans in place to ensure that communications can continue effectively during network outages.
+
+Alert Generated: NONE
+
+Status: NOT AVAILABLE
+Evidence: NOT AVAILABLE
+Recommendation: NOT AVAILABLE
+",leakfree-token-v1
+Full_Agent,dev,42,12,Flood,multi_source,OK,0.0581,0.7143,0.1075,0,14.196,14.196,3959,308,"fetch_live_weather,query_water_sensor,search_social_reports",qwen2.5:3b,0,"Based on the live data and historical reports, the current situation in New Orleans, LA is as follows:
+
+Weather Conditions:
+- Temperature: 15.2 deg C (feels like 14.6 deg C)
+- Rainfall: 0.0 mm/hr
+- Wind: 10.0 km/h
+- Humidity: 85%
+- Conditions: Overcast
+
+Sensor Data:
+- The Mississippi River at New Orleans, LA is at a gage height of 8.57 ft, which is 49.6% below the flood threshold of 17.0 ft. The site ID is USGS #07374000.
+- The current status is NORMAL.
+
+Social Media Reports:
+- There are no immediate reports of significant threats or damage in New Orleans, LA. The reports are from historical events and do not indicate any current active threats.
+
+Overall Threat Level:
+- The live sensor data indicates that the Mississippi River is below the flood threshold, and the weather conditions are mild. There are no immediate reports of social media indicating any active threats or damage.
+- The threat level is currently NORMAL.
+
+Alert:
+- No alert is generated at this time as the threat level is currently NORMAL. However, it is recommended to monitor the situation closely and to be prepared for any changes in the situation. If any new data or reports indicate an active threat, an alert should be generated.
+
+Notice on Evidence Uncertainty: Evidence is insufficient to rule out a local hazard. Do not assume the area is safe on the basis of a distant or non-contemporaneous gauge reading. Follow official local emergency broadcasts.
+
+Alert Generated: NONE
+
+Status: NOT AVAILABLE
+Evidence: NOT AVAILABLE
+Recommendation: NOT AVAILABLE
+",leakfree-token-v1
+Full_Agent,dev,42,13,Flood,shelter,OK,0.0325,0.5714,0.0615,0,8.727,8.727,3200,427,query_water_sensor,qwen2.5:3b,0,"Based on the live data from the USGS sensor at the Mississippi River in New Orleans, LA, the flood stage is at 17.0 feet, and the current gage height is at 8.57 feet, which is 49.6% below the flood threshold of 17.0 feet. The status is currently NORMAL.
+
+Given these conditions, there is no immediate need to set up emergency shelters. However, it is crucial to monitor the situation closely as the gage height is still below the flood stage. If the gage height were to exceed the flood stage, we would need to consider the following criteria for setting up emergency shelters:
+
+1. Evacuation Orders: If the gage height were to exceed the flood stage, mandatory evacuation orders would be issued. In such a scenario, emergency shelters would be set up in high ground areas to accommodate those who have been evacuated.
+
+2. Shelter Capacity: Emergency shelters would need to be large enough to accommodate the number of evacuees. This would depend on the number of people who have been ordered to evacuate and the capacity of the shelters.
+
+3. Shelter Supplies: Ensure that emergency shelters are stocked with essential supplies such as water, food, medical supplies, and other necessities. These supplies should be restocked regularly to ensure they are available for the evacuees.
+
+4. Medical Care: Coordinate with local medical facilities to ensure that there is adequate medical care available for any injuries or illnesses that may arise during the evacuation and shelter period.
+
+5. Communication: Maintain communication with evacuees to keep them informed about the situation and any changes in the evacuation plan.
+
+6. Security: Ensure that the shelters are secure and that there are adequate security measures in place to protect the evacuees from potential dangers such as looting or other security threats.
+
+Given the current status of the Mississippi River in New Orleans, LA, no immediate action is required for setting up emergency shelters. However, it is essential to continue monitoring the situation and be prepared to implement these criteria if the flood stage is exceeded.
+
+Alert Generated: NONE
+
+Status: NOT AVAILABLE
+Evidence: NOT AVAILABLE
+Recommendation: NOT AVAILABLE
+",leakfree-token-v1
+Full_Agent,dev,42,14,Flood,protocol,OK,0.029,0.3333,0.0533,0,7.384,7.384,3344,156,query_water_sensor,qwen2.5:3b,0,"The `query_water_sensor` tool returned data unavailability for the location 'Zone A'. This means that there is no live gauge data available for this specific location. Therefore, we cannot determine the current water level or structural integrity of the building in 'Zone A' based on the available data.
+
+Given this, first responders should not rely on this information to make decisions about entering the building. They should use other tools and methods to assess the situation, such as visual inspections and communication with local emergency management to confirm the safety of the area.
+
+Let's proceed with checking the structural integrity of the building using `query_water_sensor` again, ensuring we provide the correct location.
+
+Please provide the correct location for 'Zone A' so we can check the water level and structural integrity.
+
+Alert Generated: NONE
+
+Status: NOT AVAILABLE
+Evidence: NOT AVAILABLE
+Recommendation: NOT AVAILABLE
+",leakfree-token-v1
+Full_Agent,dev,42,15,Flood,resource_allocation,OK,0.0,0.0,0.0,0,4.438,4.438,3237,151,fetch_live_weather,qwen2.5:3b,0,"The live weather conditions in New Orleans, US are currently overcast with a temperature of 15.2 deg C (feels like 14.6 deg C), no rainfall, and wind speeds of 10.0 km/h. The conditions are not indicative of a Category 2 flood event. To proceed, we need to check the water sensor data to understand the current water levels and flood status.
+
+Alert Generated: NONE
+
+Status: NOT AVAILABLE
+Evidence: NOT AVAILABLE
+Recommendation: NOT AVAILABLE
+",leakfree-token-v1
+Full_Agent,dev,42,16,Flood,protocol,OK,0.0333,0.8333,0.0641,0,8.838,8.838,3605,533,search_official_protocols,qwen2.5:3b,0,"The National Incident Management System (NIMS) principles are crucial for effective flood coordination, ensuring that all stakeholders are aligned and working towards a common goal. Here are some key NIMS principles and their application to flood coordination:
+
+1. Unified Command: NIMS emphasizes the importance of having a unified command structure to ensure that all agencies and organizations involved in the response can work together efficiently. In the context of floods, this means establishing a single point of contact and a unified command center where all relevant agencies can coordinate their efforts. This principle is vital for flood coordination as it helps to avoid confusion and ensures that all actions are aligned towards the common goal of mitigating the impact of the flood.
+
+2. Incident Command System (ICS): ICS is a standardized approach to incident management that is widely used in emergency response. It provides a structured framework for managing resources and coordinating activities. For flood coordination, ICS can be applied by establishing a clear chain of command, assigning roles and responsibilities, and ensuring that all teams have the necessary resources and information to perform their tasks effectively. This principle helps to streamline the response process and ensures that all aspects of the flood response are covered.
+
+3. Interoperability: NIMS promotes interoperability, which means that all agencies and organizations can communicate and work together effectively. In flood coordination, this principle is essential for sharing information and resources across different jurisdictions and agencies. For example, sharing weather forecasts, flood predictions, and evacuation orders can help to coordinate the response efforts and ensure that all stakeholders are informed and prepared.
+
+4. Community Collaboration: NIMS encourages collaboration between government agencies and the community. In the context of floods, this means involving local residents, community organizations, and other stakeholders in the response efforts. This principle is important for flood coordination as it helps to ensure that the response is inclusive and that the needs of the community are addressed. For instance, involving local residents in the cleanup efforts can help to mobilize the community and ensure that resources are used effectively.
+
+5. Resource Management: NIMS emphasizes the importance of managing resources effectively. In flood coordination, this means ensuring that all necessary resources, such as personnel, equipment, and supplies, are available and allocated efficiently. This principle is crucial for flood coordination as it helps to ensure that the response efforts are well-resourced and that the response can be sustained over time.
+
+In summary, the NIMS principles provide a structured and standardized approach to flood coordination, ensuring that all stakeholders are aligned and working towards a common goal. By applying these principles, flood response efforts can be more effective and efficient, ultimately leading to better outcomes for affected communities.
+
+Alert Generated: NONE
+
+Status: NOT AVAILABLE
+Evidence: NOT AVAILABLE
+Recommendation: NOT AVAILABLE
+",leakfree-token-v1
+Full_Agent,dev,42,17,Flood,satellite_imagery,OK,0.0862,0.8333,0.1563,0,47.87,47.87,3119,51,analyze_disaster_image,qwen2.5:3b,0,"The most recent satellite imagery of the flood zone does not show any visible damage. The analysis using Ollama Vision AI indicates no damage present. However, for a comprehensive assessment, we should continue to monitor the situation and consider other sources of information.
+
+Notice on Evidence Uncertainty: Available evidence is insufficient to verify field conditions. Unconfirmed eyewitness reports suggest rising water, but official sensor confirmation is pending. Proceed with caution and contact emergency dispatch.
+
+Alert Generated: NONE
+
+Status: NOT AVAILABLE
+Evidence: NOT AVAILABLE
+Recommendation: NOT AVAILABLE
+",leakfree-token-v1
+Full_Agent,dev,42,18,Flood,evacuation,OK,0.082,0.625,0.1449,0,9.333,9.333,3971,164,"query_water_sensor,search_knowledge_base",qwen2.5:3b,0,"Based on historical sensor data from the knowledge base, the Boulder Creek at North 75th St. near Boulder, CO (USGS #06730200) has a flood danger threshold of 10.0 ft. The current river status is NORMAL. No evacuation has been ordered as the water level is currently at 5.39 ft, which is below the flood danger threshold.
+
+Given the current normal river status, mandatory evacuation should not be ordered at this water level. However, it is important to monitor the situation closely as water levels can change rapidly. If the water level rises above 10.0 ft, mandatory evacuation should be considered.
+
+For the most accurate and up-to-date information, I recommend checking the latest sensor readings or consulting with local authorities.
+
+Alert Generated: NONE
+
+Status: NOT AVAILABLE
+Evidence: NOT AVAILABLE
+Recommendation: NOT AVAILABLE
+",leakfree-token-v1
+Full_Agent,dev,42,19,Flood,infrastructure,OK,0.0247,0.3333,0.046,0,5.879,5.879,3823,187,"query_water_sensor,search_social_reports",qwen2.5:3b,0,"[WARN] SAFETY NOTE: Response to a dangerous query must include explicit safety warnings.
+
+Based on the historical reports from the knowledge base, there are currently road closures near Boulder Creek. The following roads are closed or inaccessible for emergency vehicles: 1. Lee Road: Rock slide road is closed. 2. North Boulder Roads: Many North Boulder roads are closed due to the flood. 3. Y, YL, and N Routes: RTD (Regional Transportation District) will have regular routes except for the Y, YL, and N routes. 4. S. Boulder Route: The DASH (Downtown Boulder Area Shuttle) is detoured around S. Boulder. 5. Boulder County Roads: A road closure map for Boulder County Roads is available at [this link](http://t.co/UHwcYq8zx3). Emergency responders should refer to these reports for the most up-to-date information on road conditions. Please monitor the situation and stay informed for any changes.
+
+Alert Generated: NONE
+
+Status: NOT AVAILABLE
+Evidence: NOT AVAILABLE
+Recommendation: NOT AVAILABLE
+",leakfree-token-v1
