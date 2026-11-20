@@ -84,10 +84,10 @@ Section~II surveys related work, Section~III the system, Section~IV the setup, S
 %==========================================================
 \section{Related Work}
 \subsection{Crisis Informatics and Multimodal Disaster Intelligence}
-Crisis informatics provides incident-detection benchmarks. CrisisMMD \cite{crisismmd} provides paired tweet-image records across disasters; Rezk et al.\ \cite{rezk2023} apply channel-attention classifiers for multi-modal severity grading; CrisisLex \cite{olteanu2014} supplies a 26-disaster microblog corpus; and HumAID \cite{humaid} annotates 19 events for humanitarian tasks. Recent frameworks target open-world disaster event identification \cite{yu2025} and multimodal real-time stream classification \cite{kim2025}. While these systems extract disaster signals from social media, such methods remain primarily oriented toward post-hoc classification rather than verifying active field states against live in-situ sensors or enforcing alert authorization gates.
+Crisis informatics provides incident-detection benchmarks. CrisisMMD \cite{crisismmd} provides paired tweet-image records; Rezk et al.\ \cite{rezk2023} apply channel-attention severity grading; CrisisLex \cite{olteanu2014} and HumAID \cite{humaid} supply multi-event microblog corpora. Recent systems target open-world event identification \cite{yu2025}, multimodal stream classification \cite{kim2025}, and LLM-based report generation with trustworthiness evaluation \cite{drrgs2026}. A review of 70 LLM-for-disaster studies \cite{xu2025} identifies continuous real-time integration, transparency and large-scale validation as open gaps. These works focus on post-hoc classification or document generation rather than verifying active field states against live sensors or gating alert records.
 
 \subsection{Temporal Information Retrieval and Evidence Freshness}
-Temporal question answering surveys \cite{piryani2023} document severe performance degradation when event time, observation time, and retrieval time are conflated. CrisisFACTS \cite{crisisfacts} benchmarks temporal summarization across evolving disaster timelines, while FreshQA \cite{freshqa} evaluates QA accuracy under dynamic real-world knowledge updates. Reviewed studies do not validate telemetry against archives.
+Temporal question answering surveys \cite{piryani2023} document severe performance degradation when event time, observation time, and retrieval time are conflated. MRAG \cite{mrag2025} introduces TempRAGEval with temporal perturbations and gold evidence labels, showing that retrievers exploit exact date matching rather than temporal reasoning; our work instead evaluates rolling recency tiers against live sensor telemetry. CrisisFACTS \cite{crisisfacts} benchmarks temporal summarization across evolving disaster timelines, while FreshQA \cite{freshqa} evaluates QA under dynamic knowledge updates. Reviewed studies do not validate telemetry against archives.
 
 \subsection{Geospatial and Sensor-Aware Disaster Intelligence}
 Sensor networks provide observational evidence. In search-and-rescue contexts, Manuel et al.\ \cite{manuel2024} evaluate LoRa-based telemetry for robotic communication under damaged infrastructure. In hydrological monitoring, USGS NWIS \cite{usgsnwis} provides instantaneous stage measurements. However, spatial proximity queries based solely on Euclidean distance cause severe cross-watershed contamination: sensors situated on an adjacent river branch can falsely trigger flood warnings in neighboring valleys. Drainage-basin partitioning supplies topographic boundaries, but a named basin label approximates rather than models river-network connectivity, and its use for live RAG filtering remains limited.
@@ -113,6 +113,8 @@ CrisisMMD \cite{crisismmd} & Multimodal & No & No & No & No \\
 FreshQA \cite{freshqa} & Open QA & Rolling & No & No & No \\
 Manuel et al. \cite{manuel2024} & Robotic SAR & No & LoRa & Metric & No \\
 Yao et al. \cite{yao2025} & Disaster RAG & Static KG & No & Regional & No \\
+MRAG \cite{mrag2025} & Temporal QA & Perturbation & No & No & No \\
+DRRGS \cite{drrgs2026} & Report gen. & No & Web/CV & No & Trust score \\
 NeMo \cite{nemoguardrails} & Guardrails & No & No & No & Dialog \\
 \midrule
 \textbf{Proposed Agent} & Agentic RAG & Fixed 72 h/7 d & NWIS/Meteo & Basin Map (offline) & Fail-Closed \\
@@ -417,7 +419,7 @@ Four evidence streams are indexed: (1)~\textit{Social Microblogs:} 16,849 inform
 \subsection{The DAB-200 Benchmark Suite}
 Live EOC logs contain sensitive records that cannot be released. DAB-200 \cite{dab200} is an author-curated suite of 200 queries.
 
-\textit{Incident Grounding, Coverage, and Reference Answers:} Scenarios are grounded in historical disaster events (e.g., 2013 Colorado floods, Maui wildfires, Bohol earthquake, Lac-M\'{e}gantic derailment) \cite{olteanu2015} across eight hazard domains: flood (57), fire (29), chemical/HAZMAT (28), typhoon (25), earthquake (23), air quality (15), collapse (10), and other/hallucination traps (13). Reference answers and atomic domain keyword checklists were domain-curated from official emergency reports; formal inter-annotator agreement and incident-level disjointness across splits were not established in this preliminary benchmark.
+\textit{Incident Grounding, Coverage, and Reference Answers:} Scenarios are grounded in historical disaster events (e.g., 2013 Colorado floods, Maui wildfires, Bohol earthquake, Lac-M\'{e}gantic derailment) \cite{olteanu2015} across eight hazard domains: flood (57), fire (29), chemical/HAZMAT (28), typhoon (25), earthquake (23), air quality (15), collapse (10), and other/hallucination traps (13). Reference answers and atomic domain keyword checklists were domain-curated from official emergency reports; formal inter-annotator agreement was not established. An audit of the frozen splits found that all 50 development queries and 55 of 150 held-out queries draw on event sources shared across splits, so incident-level disjointness does not hold: the split is query-disjoint but not event-disjoint.
 
 \textit{Controlled Stress Suites:} Controlled queries pair sensor traces with perturbed premises. The stress suites are synthetic; DAB-200 uses recorded corpora.
 
@@ -752,7 +754,7 @@ This work was supported by the Department of Computer Engineering at Fr. C. Rodr
 
 %==========================================================
 \begin{thebibliography}{41}
-\setlength{\itemsep}{-4pt}
+\setlength{\itemsep}{-6pt}
 \setlength{\parskip}{0pt}
 \scriptsize
 \bibitem{undrr} United Nations Office for Disaster Risk Reduction, ``Global assessment report on disaster risk reduction,'' Tech. Rep., 2022.
@@ -793,6 +795,9 @@ This work was supported by the Department of Computer Engineering at Fr. C. Rodr
 \bibitem{openmeteo} Open-Meteo, ``Weather API,'' \url{https://open-meteo.com/en/docs}
 \bibitem{usgsfdsn} U.S. Geological Survey, ``FDSN Event Web Service,'' \url{https://earthquake.usgs.gov/fdsnws/event/1/}
 \bibitem{femanims} FEMA, ``National Incident Management System,'' \url{https://www.fema.gov/emergency-managers/nims}
+\bibitem{mrag2025} S. Zhang \textit{et al.}, ``MRAG: A modular retrieval framework for time-sensitive question answering,'' in \textit{Findings of EMNLP}, 2025, pp. 3080--3118.
+\bibitem{xu2025} F. Xu, J. Ma, N. Li, and J. C. P. Cheng, ``Large language model applications in disaster management: An interdisciplinary review,'' \textit{Int. J. Disaster Risk Reduction}, 2025.
+\bibitem{drrgs2026} ``DRRGS: An LLM-based disaster response report generation system with trustworthiness evaluation,'' \textit{Int. J. Disaster Risk Reduction}, vol. 145, 2026, art. 106411.
 \bibitem{zheng} L. Zheng \textit{et al.}, ``Judging LLM-as-a-judge,'' in \textit{Adv. NeurIPS}, 2023.
 \bibitem{cohen1968} J. Cohen, ``Weighted kappa,'' \textit{Psychol. Bull.}, 1968.
 \bibitem{landis1977} J. R. Landis and G. G. Koch, ``Observer agreement,'' \textit{Biometrics}, 1977.
