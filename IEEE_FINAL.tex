@@ -52,7 +52,7 @@ Dakshayani G\textsuperscript{5}
 \maketitle
 
 \begin{abstract}
-Disaster awareness integrates microblogs, telemetry and doctrine. Standard RAG can conflate archives with current conditions, lacks live telemetry access, and has no deterministic boundary against hazardous directives. This paper presents an agentic RAG framework designed for disaster response, integrating two core mechanisms: Temporal Grounding Injection (TGI), which assigns query-time evidence recency tiers using fixed 72-hour and 7-day thresholds, and a Deterministic Safety Enforcement Layer (DSEL), which performs pattern-based directive screening, post-hoc citation auditing recorded in the ledger, a lexical overlap check at the dispatch gate, and fail-closed alert gating. An eight-tool agent coordinates telemetry and doctrine. In a controlled single-generator evaluation on 150 held-out queries, the Full Agent achieved 0.1032 Expected-Keyword F1 versus 0.1086 for BM25, 0.1076 for Standard Static RAG and 0.0999 for LLM-Only; archived cross-generator results are additionally reported as descriptive comparisons. On a two-sided temporal stress test, both agent arms avoided false evacuation directives; TGI additionally eliminated the 3/36 critical evacuations missed without it, while the LLM-Only and Standard Static RAG baselines in Table~\ref{tab:tgi}, both without live telemetry, missed all 36. In an adversarial pattern-interception test with one locked local generator, residual rule matches fell from 10/126 for the raw model to 7/126 without DSEL and 0/126 with DSEL. Prompt-level comparisons were not significant ($p=0.125$, $p=0.25$), and the evaluator shares DSEL's rule families; independent safety adjudication remains necessary.
+Disaster awareness integrates microblogs, telemetry and doctrine. Standard RAG can conflate archives with current conditions, lacks live telemetry access, and has no deterministic boundary against hazardous directives. This paper presents an agentic RAG framework designed for disaster response, integrating two core mechanisms: Temporal Grounding Injection (TGI), which assigns query-time evidence recency tiers using fixed 72-hour and 7-day thresholds, and a Deterministic Safety Enforcement Layer (DSEL), which performs pattern-based directive screening, post-hoc citation auditing recorded in the ledger, a lexical overlap check at the dispatch gate, and fail-closed alert gating. An eight-tool agent coordinates telemetry and doctrine. In a controlled single-generator evaluation on 150 held-out queries, the Full Agent achieved 0.1032 Expected-Keyword F1 versus 0.1086 for BM25, 0.1076 for Standard Static RAG and 0.0999 for LLM-Only; archived cross-generator results are additionally reported as descriptive comparisons. On a two-sided temporal stress test, TGI eliminated the 3/36 critical evacuations missed without it, while the LLM-Only and Standard Static RAG baselines, both without live telemetry, missed all 36; two expanded 50-scenario suites found the reduction directionally consistent but not statistically significant under cluster-aware tests. In an adversarial pattern-interception test with one locked local generator, residual rule matches fell from 10/126 for the raw model to 7/126 without DSEL and 0/126 with DSEL. Prompt-level comparisons were not significant ($p=0.125$, $p=0.25$), and the evaluator shares DSEL's rule families; independent safety adjudication remains necessary.
 \end{abstract}
 
 \begin{IEEEkeywords}
@@ -126,7 +126,7 @@ Based on the reviewed literature, this study focuses on integrating dynamic temp
 %==========================================================
 \begin{figure*}[ht]
 \centering
-\resizebox{0.98\textwidth}{!}{%
+\resizebox{0.82\textwidth}{!}{%
 \begin{tikzpicture}[
   x=1cm, y=1cm, font=\scriptsize,
   plane/.style={draw=black!75, fill=gray!3, line width=0.7pt, rounded corners=3.5pt},
@@ -322,7 +322,7 @@ Dense semantic similarity is computed via dot product: $\mathrm{sim}_{\mathrm{de
 where $k_{\mathrm{rrf}} = 60$ is the smoothing constant and $\alpha = 0.70$ is the fusion weight, calibrated via grid search on the 50-query development split and strictly frozen thereafter.
 
 \subsection{Standalone Basin-Label Routing Evaluation}
-To reduce cross-watershed contamination, incoming sensor feeds undergo catchment-based spatial filtering. Each USGS station is mapped to a named drainage basin in a static registry of four stations (e.g., Boulder Creek, St.\ Vrain); the registry is not resolved against an external hydrological authority at runtime. Concordance of these basin labels, not full hydrodynamic modelling, gates out trans-basin sensors that are radially proximate but hydrologically disconnected. Observations without a registered basin are filtered by Haversine distance alone. Basin concordance $m(x,\ell)$ has three states: \textsc{Match} for equal registered labels, \textsc{Mismatch} for differing registered labels, and \textsc{Unknown} when a label is unavailable. Registry coordinates are substituted when observation coordinates are omitted; evidence with neither is rejected. The \textsc{Unknown} case uses a distance-only fallback and is not claimed as watershed validation. The router is evaluated standalone (Table~\ref{tab:geo}), not inside the live agent tool path. The routing predicate is:
+To reduce cross-watershed contamination, incoming sensor feeds undergo catchment-based spatial filtering. Each USGS station is mapped to a named drainage basin in a static registry of four stations (e.g., Boulder Creek, St.\ Vrain); the registry is not resolved against an external hydrological authority at runtime. Concordance of these basin labels, not full hydrodynamic modelling, gates out trans-basin sensors that are radially proximate but hydrologically disconnected. Observations without a registered basin are filtered by Haversine distance alone. Basin concordance $m(x,\ell)$ has three states: \textsc{Match} for equal registered labels, \textsc{Mismatch} for differing registered labels, and \textsc{Unknown} when a label is unavailable. Registry coordinates are substituted when observation coordinates are omitted; evidence with neither is rejected. The \textsc{Unknown} case uses a distance-only fallback and is not claimed as watershed validation. The router is evaluated standalone (Table~\ref{tab:geoexp}), not inside the live agent tool path. The routing predicate is:
 \begin{equation}
 g(x, \ell) =
 \begin{cases}
@@ -589,7 +589,7 @@ Weighted RRF ($\alpha=0.70$) & 0.845 & 0.880 & 0.769 & 0.783 & 67.9~ms \\
 \end{table}
 
 \subsection{Two-Sided Temporal Stress Testing (TGI Ablation)}
-Table~\ref{tab:tgi} presents the balanced two-sided temporal conflict evaluation: 12 queries each issued under safe and critical gauge readings (24 items $\times$ 3 seeds = 72 trials). In this controlled suite the Full Agent classified all 72/72 executions correctly, whereas the configuration without TGI missed 3 of the 36 critical-condition executions (91.7\% on critical cases; 95.8\% overall, 69/72); neither agent arm issued false evacuation directives under safe conditions, and both no-telemetry baselines missed all 36 critical cases. With only 12 query scenarios, this is preliminary evidence rather than a general guarantee.
+Table~\ref{tab:tgi} presents the balanced two-sided temporal conflict evaluation: 12 queries each issued under safe and critical gauge readings (24 items $\times$ 3 seeds = 72 trials). In this controlled suite the Full Agent classified all 72/72 executions correctly, whereas the configuration without TGI missed 3 of the 36 critical-condition executions (91.7\% on critical cases; 95.8\% overall, 69/72); neither agent arm issued false evacuation directives under safe conditions, and both no-telemetry baselines missed all 36 critical cases. With only 12 query scenarios this is preliminary, not a general guarantee. Two expanded 50-scenario suites (\texttt{qwen2.5:3b}, same gauge-injection logic) reproduced the direction: TGI missed 3/150 versus 11/150 without it, and 3/150 versus 9/150 with unambiguous safe readings. Treating seeds as repeated measures on the same query text, cluster-aware Wilcoxon tests were not significant ($p=0.26$ and $p=0.32$), so TGI's decision benefit is consistent in direction but not yet statistically established.
 
 \begin{table}[ht]
 \caption{Two-Sided Temporal Stress Test ($N=72$ Trials)}
@@ -612,26 +612,19 @@ Full Agent & 0/36 (0.0\%) & 0/36 (0.0\%) & 72 & 100.0\% \\
 
 
 \subsection{Geospatial Routing and Hydrological Verification}
-Table~\ref{tab:geo} evaluates watershed-based spatial filtering across 20 scenarios, of which four test cross-watershed rejection. While a naive Euclidean proximity baseline misclassifies 3 out of 4 cross-watershed queries (25.0\% accuracy), watershed gating achieved 4/4 rejection of trans-basin noise (Wilson 95\% CI [51.0\%, 100.0\%]) and 100\% classification accuracy overall (CI [83.9\%, 100.0\%]).
+An initial 20-scenario test (4 cross-watershed) gave 4/4 rejection (Wilson 95\% CI [51.0\%, 100.0\%]) versus 1/4 for a Euclidean baseline, and 100\% overall (CI [83.9\%, 100.0\%]). To tighten this bound, Table~\ref{tab:geoexp} reports an expanded standalone evaluation using 39,361 cached real USGS Colorado NWIS stations, with HUC codes as basin keys and an eight-digit fallback. The router was correct on 93/93 cases (CI [96.0\%, 100.0\%]) with no false accepts, versus 34/93 (CI [27.5\%, 46.7\%]) for a Haversine-only baseline; on 59 cross-watershed cases it was 59/59 (CI [93.9\%, 100.0\%]) versus 0/59 (Fisher exact $p=8.2\times10^{-35}$). The registry was injected at runtime and production code was unchanged; HUC equality is a routing policy, not full river-network connectivity.
 
 \begin{table}[ht]
-\caption{Standalone Basin-Label Routing Test ($N=20$)}
-\label{tab:geo}
-\centering
-\scriptsize
-\setlength{\tabcolsep}{2.5pt}
+\caption{Expanded Basin-Label Routing Test on Real USGS Stations ($N=93$)}
+\label{tab:geoexp}
+\centering\scriptsize
+\setlength{\tabcolsep}{3pt}
 \begin{tabular*}{\columnwidth}{@{\extracolsep{\fill}}lccc@{}}
 \toprule
-Evaluation Tier & $n$ & Correct & Accuracy \\
+Method & Correct, all & Correct, cross-watershed \\
 \midrule
-Direct Local ($d \le 5$~km, same basin) & 4 & 4 & 100.0\% \\
-Catchment Corridor ($d \le 25$~km, same basin) & 6 & 6 & 100.0\% \\
-Cross-Watershed Rejection & 4 & 4 & 100.0\% \\
-Regional Meteorology ($d \le 60$~km, weather) & 1 & 1 & 100.0\% \\
-Distant Out-of-Bounds ($d > 60$~km) & 5 & 5 & 100.0\% \\
-\midrule
-Overall System & 20 & 20 & 100.0\% \\
-Naive Euclidean Baseline (Cross-Watershed only) & 4 & 1 & 25.0\% \\
+Basin router & 93/93 [96.0, 100] & 59/59 [93.9, 100] \\
+Haversine baseline & 34/93 [27.5, 46.7] & 0/59 [0, 6.1] \\
 \bottomrule
 \end{tabular*}
 \end{table}
@@ -731,10 +724,10 @@ Total Violations & 10 (7.9\%) & 7 (5.6\%) & 0 (0.0\%) \\
 \end{table}
 
 \subsection{Execution Latency Profiling}
-Over 450 held-out queries per primary configuration, P50/P95 latencies are 0.94/2.46~s (BM25), 2.86/47.78~s (Static RAG), 3.39/5.53~s (LLM-Only) and 5.88/15.12~s (Full Agent). The Static RAG tail reflects long generations; values are descriptive. These are descriptive measurements under different generators, not a controlled comparison. The append-only audit ledger (\texttt{incident\_audit\_trail.jsonl}) stores trace records for post-incident inspection.
+Over 450 held-out queries, P50/P95 latencies are 0.94/2.46~s (BM25), 2.86/47.78~s (Static RAG), 3.39/5.53~s (LLM-Only) and 5.88/15.12~s (Full Agent); these are descriptive and generator-confounded. The append-only audit ledger (\texttt{incident\_audit\_trail.jsonl}) stores trace records for post-incident inspection.
 
 \subsection{Exploratory Vision Benchmark}
-A 100-crop xView2/xBD test \cite{xview2} (25 per class) with Qwen3-VL 4B \cite{qwenvl} gave 0.340 accuracy and 0.292 macro-F1 (chance 0.250). Of 50 indexed scene records, 27 had usable labels, yielding 1,017 crops from which 25 per class were sampled without replacement. Table~\ref{tab:visioncm} gives the confusion matrix; per-class F1 is 0.537, 0.103, 0.140 and 0.389.
+A 100-crop xView2/xBD test \cite{xview2} with Qwen3-VL 4B \cite{qwenvl} gave 0.340 accuracy and 0.292 macro-F1 (chance 0.250); per-class F1 is 0.537, 0.103, 0.140 and 0.389 (Table~\ref{tab:visioncm}). DAB-200 runs had no live user image, so \texttt{analyze\_disaster\_image} returned a cached real indexed VLM description; production is unchanged and this benchmark still invokes Qwen3-VL 4B on live crops.
 
 \begin{table}[ht]
 \caption{Exploratory Vision Confusion Matrix ($N=100$)}
@@ -765,7 +758,7 @@ TGI uses source-time windows, not event time; source TTLs do not affect tiering.
 \section{Conclusion and Future Work}
 This paper presented an agentic RAG prototype. The contribution is systems integration and evaluation.
 
-Controlled experiments provide preliminary evidence for the research questions. Temporal tier tagging removed all observed missed critical evacuations in a 12-scenario suite (3/36 to 0/36); neither agent arm issued false evacuation directives on safe telemetry (RQ1). Weighted fusion gave a negligible held-out gain over dense retrieval, so RQ2 remains exploratory. Rule-pattern interception left zero residual matches (0/126) under the evaluated rule families, but prompt-level comparisons were not significant (RQ3). The evaluation also found higher DR-Fact scores for the zero-shot baseline, consistent with possible evaluator sensitivity to fluency but not establishing it, and low exploratory damage-classification accuracy (0.340).
+Controlled experiments provide preliminary evidence for the research questions. Temporal tier tagging removed the observed missed critical evacuations in a 12-scenario suite (3/36 to 0/36); expanded suites reproduced the direction but cluster-aware tests were not significant, so RQ1 remains preliminary. Weighted fusion gave a negligible held-out gain over dense retrieval, so RQ2 remains exploratory. Rule-pattern interception left zero residual matches (0/126) under the evaluated rule families, but prompt-level comparisons were not significant (RQ3). The evaluation also found higher DR-Fact scores for the zero-shot baseline, consistent with possible evaluator sensitivity to fluency but not establishing it, and low exploratory damage-classification accuracy (0.340).
 
 These findings are a research baseline, not operational readiness. Future work includes event-time-aware validation, source-specific freshness, river-network connectivity, independent human safety evaluation, and field testing.
 
@@ -775,86 +768,49 @@ This work was supported by the Department of Computer Engineering at Fr. C. Rodr
 
 %==========================================================
 \begin{thebibliography}{41}
+\setlength{\itemsep}{-1pt}
+\setlength{\parskip}{0pt}
+\scriptsize
 \bibitem{undrr} United Nations Office for Disaster Risk Reduction, ``Global assessment report on disaster risk reduction,'' Tech. Rep., 2022.
-
 \bibitem{endsley} M. R. Endsley, ``Toward a theory of situation awareness in dynamic systems,'' \textit{Hum. Factors}, vol. 37, no. 1, pp. 32--64, 1995.
-
 \bibitem{aboualola2023} M. Aboualola, K. Abualsaud, T. Khattab, N. Zorba, and H. S. Hassanein, ``Edge technologies for disaster management: A survey of social media and artificial intelligence integration,'' \textit{IEEE Access}, vol. 11, pp. 73782--73802, 2023.
-
 \bibitem{crisismmd} F. Alam, F. Ofli, and M. Imran, ``CrisisMMD: Multimodal Twitter datasets from natural disasters,'' in \textit{Proc. ICWSM}, 2018, pp. 465--473.
-
 \bibitem{singh} D. K. Singh and V. Hoskere, ``Disaster damage assessment,'' \textit{Sensors}, vol. 23, 2023.
-
 \bibitem{olteanu2015} A. Olteanu, S. Vieweg, and C. Castillo, ``What to expect when the unexpected happens,'' in \textit{Proc. CSCW}, 2015, pp. 994--1009.
-
 \bibitem{dinani} S. T. Dinani and D. Caragea, ``A comparison study for disaster tweet classification using deep learning models,'' in \textit{Proc. 12th Int. Conf. Data Sci. Technol. Appl. (DATA)}, 2023, pp. 152--163.
-
 \bibitem{cantini} R. Cantini, F. Marozzo, and D. Talia, ``Harnessing prompt-based large language models for disaster monitoring and automated reporting from social media feedback,'' \textit{Online Soc. Netw. Media}, vol. 45, art. 100295, Jan. 2025.
-
 \bibitem{ji} Z. Ji \textit{et al.}, ``Survey of hallucination in natural language generation,'' \textit{ACM Comput. Surv.}, vol. 55, no. 12, 2023.
-
 \bibitem{yu2024} Z. Yu \textit{et al.}, ``Mitigating hallucinations in MLLMs,'' in \textit{Proc. CVPR}, 2024, pp. 14210--14220.
-
 \bibitem{lewis} P. Lewis \textit{et al.}, ``Retrieval-augmented generation for knowledge-intensive NLP,'' in \textit{Adv. NeurIPS}, 2020, pp. 9459--9474.
-
 \bibitem{dab200} C. A. J. Albert, ``DAB-200 Benchmark,'' Kaggle, 2026, \url{https://www.kaggle.com/datasets/christopheralbert65/dab-200-disaster-situational-awareness-benchmark}
-
 \bibitem{rezk2023} M. Rezk \textit{et al.}, ``Categorizing crises from social media feeds,'' \textit{IEEE Access}, vol. 11, 2023.
-
 \bibitem{olteanu2014} A. Olteanu, C. Castillo, F. Diaz, and S. Vieweg, ``CrisisLex: A lexicon for collecting microblogged communications,'' in \textit{Proc. ICWSM}, 2014, pp. 376--385.
-
 \bibitem{humaid} F. Alam \textit{et al.}, ``HumAID,'' in \textit{Proc. ICWSM}, 2021.
-
 \bibitem{yu2025} C. Yu \textit{et al.}, ``Open-world disaster information identification,'' \textit{Complex Intell. Syst.}, vol. 11, 2025.
-
 \bibitem{kim2025} T. D. Kim and O. T. T. Tran, ``Real-time disaster event classification,'' in \textit{Proc. ATC}, 2025, doi: 10.1109/ATC67618.2025.11268684.
-
 \bibitem{piryani2023} B. Piryani \textit{et al.}, ``A survey of temporal question answering,'' in \textit{Proc. ACL}, 2023.
-
 \bibitem{crisisfacts} R. McCreadie and C. Buntain, ``CrisisFACTS,'' in \textit{Proc. ISCRAM}, 2023.
-
 \bibitem{freshqa} T. Vu \textit{et al.}, ``FreshQA: A dynamic benchmark,'' arXiv:2310.03214, 2023.
-
 \bibitem{manuel2024} M. P. Manuel, M. Faied, and M. Krishnan, ``A LoRa-based disaster management system for search and rescue mission,'' \textit{IEEE Internet Things J.}, vol. 11, no. 20, pp. 34024--34034, 2024.
-
 \bibitem{usgsnwis} U.S. Geological Survey, ``NWIS Values,'' \url{https://waterservices.usgs.gov/nwis/iv/}
-
 \bibitem{react} S. Yao \textit{et al.}, ``ReAct: Synergizing reasoning and acting,'' in \textit{Proc. ICLR}, 2023.
-
 \bibitem{langgraph} LangChain AI, ``LangGraph,'' \url{https://github.com/langchain-ai/langgraph}
-
 \bibitem{selfrag} A. Asai \textit{et al.}, ``Self-RAG,'' in \textit{Proc. ICLR}, 2024.
-
 \bibitem{crag} S.-Q. Yan \textit{et al.}, ``Corrective retrieval augmented generation,'' arXiv:2401.15884, 2024.
-
 \bibitem{yao2025} L. Yao, F. Ren, K. Du, and Q. Du, ``From knowledge graph construction to retrieval-augmented generation,'' \textit{Geo-spatial Inf. Sci.}, vol. 29, no. 1, pp. 509--529, 2026.
-
 \bibitem{ragas} S. Es \textit{et al.}, ``RAGAs,'' in \textit{Proc. EACL Syst. Demonstrations}, 2024.
-
 \bibitem{nemoguardrails} T. Rebedea \textit{et al.}, ``NeMo Guardrails,'' in \textit{Proc. EMNLP Syst. Demonstrations}, 2023.
-
 \bibitem{inan2023} H. Inan \textit{et al.}, ``Llama Guard,'' arXiv:2312.06674, 2023.
-
 \bibitem{bge} S. Xiao \textit{et al.}, ``C-Pack,'' in \textit{Proc. SIGIR}, 2024, pp. 641--649.
-
 \bibitem{bm25} S. Robertson and H. Zaragoza, ``BM25,'' \textit{Found. Trends IR}, vol. 3, 2009.
-
 \bibitem{rrf} G. V. Cormack, C. L. Clarke, and S. B\"{u}ttcher, ``Reciprocal rank fusion,'' in \textit{Proc. SIGIR}, 2009, pp. 758--759.
-
 \bibitem{qwenvl} Qwen Team, ``Qwen3-VL Technical Report,'' arXiv:2511.21631, 2025.
-
 \bibitem{xview2} R. Gupta \textit{et al.}, ``xBD building damage dataset,'' in \textit{Proc. CVPRW}, 2019.
-
 \bibitem{openmeteo} Open-Meteo, ``Weather API,'' \url{https://open-meteo.com/en/docs}
-
 \bibitem{usgsfdsn} U.S. Geological Survey, ``FDSN Event Web Service,'' \url{https://earthquake.usgs.gov/fdsnws/event/1/}
-
 \bibitem{femanims} FEMA, ``National Incident Management System,'' \url{https://www.fema.gov/emergency-managers/nims}
-
 \bibitem{zheng} L. Zheng \textit{et al.}, ``Judging LLM-as-a-judge,'' in \textit{Adv. NeurIPS}, 2023.
-
 \bibitem{cohen1968} J. Cohen, ``Weighted kappa,'' \textit{Psychol. Bull.}, 1968.
-
 \bibitem{landis1977} J. R. Landis and G. G. Koch, ``Observer agreement,'' \textit{Biometrics}, 1977.
 \end{thebibliography}
 
