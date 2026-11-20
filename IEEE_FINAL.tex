@@ -52,7 +52,7 @@ Dakshayani G\textsuperscript{5}
 \maketitle
 
 \begin{abstract}
-Disaster awareness integrates microblogs, telemetry and doctrine. Standard RAG can conflate archives with current conditions, lacks live telemetry access, and has no deterministic boundary against hazardous directives. This paper presents an agentic RAG framework designed for disaster response, integrating two core mechanisms: Temporal Grounding Injection (TGI), which assigns query-time evidence recency tiers using fixed 72-hour and 7-day thresholds, and a Deterministic Safety Enforcement Layer (DSEL), which performs pattern-based directive screening, post-hoc citation auditing recorded in the ledger, a lexical overlap check at the dispatch gate, and fail-closed alert gating. An eight-tool agent coordinates telemetry and doctrine. In a controlled single-generator evaluation on 150 held-out queries, the Full Agent achieved 0.1032 Expected-Keyword F1 versus 0.1086 for BM25, 0.1076 for Standard Static RAG and 0.0999 for LLM-Only; archived cross-generator results are additionally reported as descriptive comparisons. On a two-sided temporal stress test, TGI eliminated the 3/36 critical evacuations missed without it, while the LLM-Only and Standard Static RAG baselines, both without live telemetry, missed all 36; two expanded 50-scenario suites found the reduction directionally consistent but not statistically significant under cluster-aware tests. In an adversarial pattern-interception test with one locked local generator, residual rule matches fell from 10/126 for the raw model to 7/126 without DSEL and 0/126 with DSEL. Prompt-level comparisons were not significant ($p=0.125$, $p=0.25$), and the evaluator shares DSEL's rule families; independent safety adjudication remains necessary.
+Disaster awareness integrates microblogs, telemetry and doctrine. Standard RAG can conflate archives with current conditions, lacks live telemetry access, and has no deterministic boundary against hazardous directives. This paper presents an agentic RAG framework designed for disaster response, integrating two core mechanisms: Temporal Grounding Injection (TGI), which assigns query-time evidence recency tiers using fixed 72-hour and 7-day thresholds, and a Deterministic Safety Enforcement Layer (DSEL), which performs pattern-based directive screening, post-hoc citation auditing recorded in the ledger, a lexical overlap check at the dispatch gate, and fail-closed alert gating. An eight-tool agent coordinates telemetry and doctrine. In a controlled single-generator evaluation on 150 held-out queries, the Full Agent achieved 0.1032 Expected-Keyword F1 versus 0.1086 for BM25, 0.1076 for Standard Static RAG and 0.0999 for LLM-Only; archived cross-generator results are additionally reported as descriptive comparisons. On a two-sided temporal stress test, TGI eliminated the 3/36 critical evacuations missed without it, while the LLM-Only and Standard Static RAG baselines, both without live telemetry, missed all 36; two expanded 50-scenario suites found the reduction directionally consistent but not statistically significant under cluster-aware tests; a controlled conflict benchmark found no significant TGI advantage (53.3\% vs.\ 50.0\%, $p=0.47$ adjusted) and exposed safety-prompt dominance over fresh evidence in stale-danger conflicts. In an adversarial pattern-interception test with one locked local generator, residual rule matches fell from 10/126 for the raw model to 7/126 without DSEL and 0/126 with DSEL. Prompt-level comparisons were not significant ($p=0.125$, $p=0.25$), and the evaluator shares DSEL's rule families; independent safety adjudication remains necessary.
 \end{abstract}
 
 \begin{IEEEkeywords}
@@ -609,7 +609,8 @@ Full Agent & 0/36 (0.0\%) & 0/36 (0.0\%) & 72 & 100.0\% \\
 \end{tabular*}
 \end{table}
 
-
+\subsection{Failure Analysis: Safety-Prompt Dominance}
+A controlled benchmark injected two conflicting raw sensor records for one station in matched order, with severity text removed and a structured \texttt{CURRENT\_HAZARD}/\texttt{NO\_CURRENT\_HAZARD}/\texttt{ABSTAIN} decision required. Evidence-consumption assertions passed on all 720 executions (60 primary scenarios $\times$ 3 arms $\times$ 3 seeds, plus 20 diagnostic scenarios). On the primary suite TGI reached 53.3\% (96/180; scenario-level 95\% CI [40.0, 66.7]\%) versus 50.0\% for timestamp-only and No-TGI; the paired difference was not significant (Wilcoxon $p=0.16$, Holm-adjusted $p=0.47$). All arms scored 100\% when fresh evidence was dangerous and stale evidence safe, but 0--6.7\% in reverse. The model often selected the correct fresh record and explained that no hazard existed, yet emitted \texttt{CURRENT\_HAZARD}: precautionary instructions override verified temporal evidence, and structured decisions can contradict their own rationale. The marginal gain is not established superiority; separating precautionary guidance from hazard classification is future work.
 
 \subsection{Geospatial Routing and Hydrological Verification}
 An initial 20-scenario test (4 cross-watershed) gave 4/4 rejection (Wilson 95\% CI [51.0\%, 100.0\%]) versus 1/4 for a Euclidean baseline, and 100\% overall (CI [83.9\%, 100.0\%]). To tighten this bound, Table~\ref{tab:geoexp} reports an expanded standalone evaluation using 39,361 cached real USGS Colorado NWIS stations, with HUC codes as basin keys and an eight-digit fallback. The router was correct on 93/93 cases (CI [96.0\%, 100.0\%]) with no false accepts, versus 34/93 (CI [27.5\%, 46.7\%]) for a Haversine-only baseline; on 59 cross-watershed cases it was 59/59 (CI [93.9\%, 100.0\%]) versus 0/59. Because both methods are evaluated on the same station pairs, the paired test is appropriate: exact McNemar gives $p=3.47\times10^{-18}$ (59 discordant pairs, none favouring the baseline); the unpaired Fisher test gives $p=8.2\times10^{-35}$. The registry was injected at runtime and production code was unchanged; HUC equality is a routing policy, not full river-network connectivity.
@@ -727,24 +728,7 @@ Total Violations & 10 (7.9\%) & 7 (5.6\%) & 0 (0.0\%) \\
 Over 450 held-out queries, P50/P95 latencies are 0.94/2.46~s (BM25), 2.86/47.78~s (Static RAG), 3.39/5.53~s (LLM-Only) and 5.88/15.12~s (Full Agent); these are descriptive and generator-confounded. The append-only audit ledger (\texttt{incident\_audit\_trail.jsonl}) stores trace records for post-incident inspection.
 
 \subsection{Exploratory Vision Benchmark}
-A 100-crop xView2/xBD test \cite{xview2} with Qwen3-VL 4B \cite{qwenvl} gave 0.340 accuracy and 0.292 macro-F1 (chance 0.250); per-class F1 is 0.537, 0.103, 0.140 and 0.389 (Table~\ref{tab:visioncm}). DAB-200 runs had no live user image, so \texttt{analyze\_disaster\_image} returned a cached real indexed VLM description; production is unchanged and this benchmark still invokes Qwen3-VL 4B on live crops.
-
-\begin{table}[ht]
-\caption{Exploratory Vision Confusion Matrix ($N=100$)}
-\label{tab:visioncm}
-\centering\scriptsize
-\begin{tabular*}{\columnwidth}{@{\extracolsep{\fill}}lrrrr@{}}
-\toprule
-True $\backslash$ Pred & No & Minor & Major & Destroyed \\
-\midrule
-No damage & 22 & 1 & 0 & 2 \\
-Minor & 17 & 2 & 1 & 5 \\
-Major & 15 & 0 & 3 & 7 \\
-Destroyed & 12 & 0 & 0 & 13 \\
-\bottomrule
-\end{tabular*}
-\end{table}
- This vision component is an exploratory prototype requiring domain-specific fine-tuning before operational use.
+A 100-crop xView2/xBD test \cite{xview2} with Qwen3-VL 4B \cite{qwenvl} gave 0.340 accuracy and 0.292 macro-F1 (chance 0.250), an exploratory result insufficient for a central claim. DAB-200 runs had no live user image, so \texttt{analyze\_disaster\_image} returned a cached real indexed VLM description; production is unchanged.
 
 
 
@@ -752,13 +736,13 @@ Destroyed & 12 & 0 & 0 & 13 \\
 \section{Limitations}
 The archived comparison is generator-confounded and descriptive. The author-curated benchmark lacks incident-level disjointness and inter-annotator agreement. The abstention and temporal suites are small.
 
-TGI uses source-time windows, not event time; source TTLs do not affect tiering. The four-station basin filter uses distance-only fallback and is offline. DSEL uses regexes and lexical overlap, and its evaluator shares rule families, so independent adjudication is needed. The confidence tag is model-supplied; alerts are internal JSONL records with no EOC connection.
+TGI uses source-time windows, not event time; the standalone basin filter is offline. DSEL uses regexes and lexical overlap, and its evaluator shares rule families, so independent adjudication is needed. The confidence tag is model-supplied; alerts are internal JSONL records with no EOC connection.
 
 %==========================================================
 \section{Conclusion and Future Work}
 This paper presented an agentic RAG prototype. The contribution is systems integration and evaluation.
 
-Controlled experiments provide preliminary evidence for the research questions. Temporal tier tagging removed the observed missed critical evacuations in a 12-scenario suite (3/36 to 0/36); expanded suites reproduced the direction but cluster-aware tests were not significant, so RQ1 remains preliminary. Weighted fusion gave a negligible held-out gain over dense retrieval, so RQ2 remains exploratory. Rule-pattern interception left zero residual matches (0/126) under the evaluated rule families, but prompt-level comparisons were not significant (RQ3). The evaluation also found higher DR-Fact scores for the zero-shot baseline, consistent with possible evaluator sensitivity to fluency but not establishing it, and low exploratory damage-classification accuracy (0.340).
+Controlled experiments provide preliminary evidence for the research questions. Temporal tier tagging removed the observed missed critical evacuations in a 12-scenario suite (3/36 to 0/36); expanded suites reproduced the direction but cluster-aware tests were not significant, and a controlled conflict benchmark found no significant TGI advantage, exposing safety-prompt dominance over fresh evidence; RQ1 remains unresolved. Weighted fusion gave a negligible held-out gain over dense retrieval, so RQ2 remains exploratory. Rule-pattern interception left zero residual matches (0/126) under the evaluated rule families, but prompt-level comparisons were not significant (RQ3). The evaluation also found higher DR-Fact scores for the zero-shot baseline, consistent with possible evaluator sensitivity to fluency but not establishing it, and low exploratory damage-classification accuracy (0.340).
 
 These findings are a research baseline, not operational readiness. Future work includes event-time-aware validation, source-specific freshness, river-network connectivity, independent human safety evaluation, and field testing.
 
@@ -768,7 +752,7 @@ This work was supported by the Department of Computer Engineering at Fr. C. Rodr
 
 %==========================================================
 \begin{thebibliography}{41}
-\setlength{\itemsep}{-1pt}
+\setlength{\itemsep}{-3pt}
 \setlength{\parskip}{0pt}
 \scriptsize
 \bibitem{undrr} United Nations Office for Disaster Risk Reduction, ``Global assessment report on disaster risk reduction,'' Tech. Rep., 2022.
