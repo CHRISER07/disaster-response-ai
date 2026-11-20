@@ -1,0 +1,119 @@
+{
+  "metadata": {
+    "model": "qwen2.5:3b",
+    "provider": "ollama",
+    "seed": 42,
+    "query_ids": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+    ],
+    "metric": "caller wall-clock seconds, includes queueing",
+    "generated_utc": "2026-11-20T15:58:13.796028+00:00"
+  },
+  "levels": {
+    "1": {
+      "BM25": {
+        "n": 10,
+        "mean_s": 3.959,
+        "p50_s": 2.213,
+        "p90_s": 7.667,
+        "p95_s": 8.741,
+        "p99_s": 9.6,
+        "min_s": 1.03,
+        "max_s": 9.815,
+        "batch_wall_s": 39.596,
+        "throughput_rps": 0.253,
+        "status_counts": {
+          "OK": 10
+        }
+      },
+      "Full_Agent": {
+        "n": 10,
+        "mean_s": 11.264,
+        "p50_s": 7.088,
+        "p90_s": 23.485,
+        "p95_s": 34.979,
+        "p99_s": 44.174,
+        "min_s": 1.652,
+        "max_s": 46.473,
+        "batch_wall_s": 112.642,
+        "throughput_rps": 0.089,
+        "status_counts": {
+          "OK": 10
+        }
+      }
+    },
+    "5": {
+      "BM25": {
+        "n": 10,
+        "mean_s": 11.005,
+        "p50_s": 10.891,
+        "p90_s": 17.334,
+        "p95_s": 17.55,
+        "p99_s": 17.723,
+        "min_s": 4.961,
+        "max_s": 17.766,
+        "batch_wall_s": 28.29,
+        "throughput_rps": 0.353,
+        "status_counts": {
+          "OK": 10
+        }
+      },
+      "Full_Agent": {
+        "n": 10,
+        "mean_s": 23.211,
+        "p50_s": 16.803,
+        "p90_s": 43.876,
+        "p95_s": 62.283,
+        "p99_s": 77.009,
+        "min_s": 4.949,
+        "max_s": 80.69,
+        "batch_wall_s": 80.696,
+        "throughput_rps": 0.124,
+        "status_counts": {
+          "OK": 10
+        }
+      }
+    },
+    "10": {
+      "BM25": {
+        "n": 10,
+        "mean_s": 19.408,
+        "p50_s": 21.453,
+        "p90_s": 28.247,
+        "p95_s": 28.985,
+        "p99_s": 29.575,
+        "min_s": 6.211,
+        "max_s": 29.723,
+        "batch_wall_s": 29.725,
+        "throughput_rps": 0.336,
+        "status_counts": {
+          "OK": 10
+        }
+      },
+      "Full_Agent": {
+        "n": 10,
+        "mean_s": 34.147,
+        "p50_s": 30.993,
+        "p90_s": 61.544,
+        "p95_s": 69.121,
+        "p99_s": 75.183,
+        "min_s": 10.038,
+        "max_s": 76.699,
+        "batch_wall_s": 76.706,
+        "throughput_rps": 0.13,
+        "status_counts": {
+          "OK": 10
+        }
+      }
+    }
+  }
+}
