@@ -303,6 +303,12 @@ The anomaly branch is evaluated first, so future-dated observations are never LI
 \end{algorithmic}
 \end{algorithm}
 
+
+\noindent Tagged chunks are serialized into the evidence context as
+\texttt{[SOURCE: ...] [TEMPORAL STATE: ...] [OBSERVATION TIME: ...]};
+the system prompt instructs the model to distinguish current telemetry from
+archival reports and to abstain when current evidence is unavailable.
+
 \subsection{Dual-Tier Hybrid Retrieval Engine}
 Passage embeddings use \texttt{bge-small-en-v1.5} \cite{bge}; queries are embedded directly without a task-specific prefix. For chunk $s$, the L2-normalized CLS hidden state is:
 \begin{equation}
@@ -379,26 +385,45 @@ Unlike stochastic moderation models, DSEL applies deterministic screening whose 
 \end{algorithm}
 
 
+\begin{table}[ht]
+\caption{Implemented Failure Behaviours}
+\label{tab:failure}
+\centering\scriptsize
+\begin{tabular*}{\columnwidth}{@{\extracolsep{\fill}}lc@{}}
+\toprule
+Condition & Behaviour \\
+\midrule
+API timeout & Evidence unavailable; no safety inferred \\
+Missing timestamp & UNDATED tier \\
+Future timestamp & ANOMALY tier \\
+Unknown basin & Distance-only fallback, labelled \\
+Missing coordinates & Rejected \\
+Missing confidence tag & Alert blocked \\
+GR below threshold & Alert blocked \\
+L1 regex match & Span repaired; rule logged \\
+\bottomrule
+\end{tabular*}
+\end{table}
 
-The following section describes the experimental corpus, benchmark construction, and evaluation protocol used to validate the mechanisms above.
+Implemented failure behaviours are summarized in Table~\ref{tab:failure}. The next section describes the evaluation protocol.
 
 %==========================================================
 \section{Experimental Setup}
 
 \subsection{Data Sources and Corpora}
-The evaluation environment integrates four evidence streams: (1)~\textit{Social Microblogs:} 16,849 informative crisis tweets filtered from 27,933 event-annotated records across 26 disasters \cite{olteanu2015}, with deterministically recovered Snowflake UTC timestamps; (2)~\textit{Official Doctrine:} three FEMA/CDC PDF manuals \cite{femanims} (1,000-character chunks with 200-character overlap, 8,668 indexed chunks); (3)~\textit{Multimodal Damage Imagery:} 50 indexed post-disaster scene metadata records (27 labelable) paired with 1,017 building polygon crops from xView2 \cite{xview2}; and (4)~\textit{Dynamic Telemetry Feeds:} External real-time REST APIs providing USGS NWIS river stage observations \cite{usgsnwis}, Open-Meteo model-derived current-condition estimates \cite{openmeteo}, and USGS seismic events \cite{usgsfdsn}. In total, the indexed corpus comprises 17,170 chunks (8,668 doctrine, 8,200 tweets, 150 imagery descriptions, 152 telemetry), while dynamic sensor feeds are queried on demand at runtime.
+Four evidence streams are indexed: (1)~\textit{Social Microblogs:} 16,849 informative tweets from 27,933 records \cite{olteanu2015}, with deterministically recovered Snowflake UTC timestamps; (2)~FEMA/CDC manuals \cite{femanims} (8,668 chunks); (3)~50 image records (1,017 xView2 crops \cite{xview2}); and (4)~Live APIs: USGS NWIS \cite{usgsnwis}, Open-Meteo \cite{openmeteo}, USGS FDSN \cite{usgsfdsn}. The index holds 17,170 chunks; live feeds are queried at runtime.
 
 \subsection{The DAB-200 Benchmark Suite}
-Evaluating emergency AI systems poses a fundamental challenge: live EOC operational logs contain sensitive survivor records and classified dispatch telemetry that cannot be publicly released. To address this gap, the Disaster Awareness Benchmark (DAB-200) \cite{dab200} was developed as an author-curated preliminary evaluation suite of 200 high-fidelity disaster situational queries reflecting tactical field inquiries.
+Live EOC logs contain sensitive records that cannot be released. DAB-200 \cite{dab200} is an author-curated suite of 200 queries.
 
 \textit{Incident Grounding, Coverage, and Reference Answers:} Scenarios are grounded in historical disaster events (e.g., 2013 Colorado floods, Maui wildfires, Bohol earthquake, Lac-M\'{e}gantic derailment) \cite{olteanu2015} across eight hazard domains: flood (57), fire (29), chemical/HAZMAT (28), typhoon (25), earthquake (23), air quality (15), collapse (10), and other/hallucination traps (13). Reference answers and atomic domain keyword checklists were domain-curated from official emergency reports; formal inter-annotator agreement and incident-level disjointness across splits were not established in this preliminary benchmark.
 
-\textit{Controlled Stress Suites:} Controlled semi-synthetic queries pair authentic sensor traces with perturbed premises, filtered by temporal ordering, physical consistency, and expert review. Only the temporal and adversarial stress suites are synthetic; DAB-200 uses recorded disaster corpora.
+\textit{Controlled Stress Suites:} Controlled queries pair sensor traces with perturbed premises. The stress suites are synthetic; DAB-200 uses recorded corpora.
 
 \textit{Partitioning and Run Accounting:} DAB-200 has two query-disjoint splits: (1)~\textit{Development} (50 queries; hyperparameter calibration) and (2)~\textit{Held-Out} (150 queries; frozen parameters). Two further controlled stress suites are separate collections: \textit{Temporal Stress} (12 paired $\times$ 2 conditions $\times$ 3 seeds = 72 runs/arm) and \textit{Adversarial} (42 traps $\times$ 3 seeds = 126 runs/arm). The archived DAB-200 artifacts contain 3,750 runs: 2,550 held-out (5 configurations $\times$ 3 seeds $\times$ 150 = 2,250 plus 2 ablations $\times$ 1 seed $\times$ 150 = 300) and 1,200 development (8 configurations $\times$ 3 seeds $\times$ 50). Safe abstention used five DAB-200 hallucination-trap queries (IDs 36, 37, 38, 50, 51) with three seeds each.
 
 \subsection{Evaluated Configurations}
-Eight system configurations are evaluated: (1)~\textit{BM25 Baseline}; (2)~\textit{LLM-Only} (zero-shot generation); (3)~\textit{Text-Only Static RAG}; (4)~\textit{Standard Static RAG} (multimodal corpus without live telemetry tools); (5)~\textit{Full Agent}; (6)~\textit{Ablation: No TGI}; (7)~\textit{Ablation: No DSEL}; and (8)~\textit{Full Agent without telemetry (baseline condition)}. The DSEL and temporal-stress suites use a single locked local generator, \texttt{qwen2.5:3b}, under greedy decoding (temperature $T=0$). Table~\ref{tab:main} is generator-confounded (Table~\ref{tab:genmap}) and descriptive, not a controlled comparison; corpus and run inventories are given in Tables~\ref{tab:corpus} and~\ref{tab:runs}. Execution seeds and DSEL verification logs are recorded per trial to ensure reproducible evaluation.
+Eight system configurations are evaluated: (1)~\textit{BM25 Baseline}; (2)~\textit{LLM-Only} (zero-shot generation); (3)~\textit{Text-Only Static RAG}; (4)~\textit{Standard Static RAG} (multimodal corpus without live telemetry tools); (5)~\textit{Full Agent}; (6)~\textit{Ablation: No TGI}; (7)~\textit{Ablation: No DSEL}; and (8)~\textit{Full Agent without telemetry (baseline condition)}. The DSEL and temporal-stress suites use a single locked local generator, \texttt{qwen2.5:3b}, under greedy decoding (temperature $T=0$). Table~\ref{tab:main} is generator-confounded (Table~\ref{tab:genmap}) and descriptive; see Tables~\ref{tab:corpus} and~\ref{tab:runs}. Execution seeds and DSEL verification logs are recorded per trial to ensure reproducible evaluation.
 
 \textit{Reproducibility:} Each execution record stores configuration attributes, random seeds, and tool execution traces. Prompts, DSEL rules, and evaluation scripts are versioned in the open repository.
 
@@ -496,7 +521,7 @@ Full Agent w/o Telemetry & 0.0976 $\pm$ 0.0071 \\
 \end{tabular*}
 \end{table}
 
-Table~\ref{tab:main} presents Exp-F1 grounding scores. On the held-out split, the leakage-free scorer gives the Full Agent 0.1377, below BM25 at 0.1413 and LLM-Only at 0.1388, and above Static RAG at 0.1003. Ablation CIs for No-DSEL ($0.1382\pm0.0078$) and No-TGI ($0.1326\pm0.0079$) overlap the Full Agent ($0.1377\pm0.0045$); no formal significance test was conducted. The controlled single-generator cohort (Table~\ref{tab:cohort}) gives the Full Agent 0.1032, below BM25 (0.1086) and Standard Static RAG (0.1076) but above LLM-Only (0.0999); it is also slightly below its No-DSEL and No-TGI ablations. These differences indicate that the temporal and safety components do not improve lexical keyword coverage. No paired significance test was conducted.
+Table~\ref{tab:main} presents Exp-F1 grounding scores. The leakage-free held-out scorer gives the Full Agent 0.1377 versus BM25 0.1413 and Static RAG 0.1003. Ablation CIs for No-DSEL ($0.1382\pm0.0078$) and No-TGI ($0.1326\pm0.0079$) overlap the Full Agent ($0.1377\pm0.0045$); no formal significance test was conducted. Table~\ref{tab:cohort} gives the Full Agent 0.1032, below BM25 (0.1086) and Static RAG (0.1076) but above LLM-Only (0.0999), and below its No-DSEL and No-TGI ablations. No paired test was conducted.
 
 \begin{table}[ht]
 \caption{Leakage-Free Grounding Performance on DAB-200 (Mean $\pm$ 95\% CI)}
@@ -631,7 +656,30 @@ Full Agent & 60.0\% (9/15) & 40.0\% (6/15) & 0.0\% (0/15) \\
 \end{table}
 
 \subsection{Cross-Family Dual-Judge Evaluation}
-Table~\ref{tab:judge} reports 3,300 seeded rated items (one response per query, configuration and seed) from 1,300 query--configuration pairs, each scored on three dimensions by two judges (6,600 responses; 19,798 dimension scores after two out-of-scale SAA ratings were excluded). Quadratic-weighted Cohen's $\kappa_w$ is 0.576 for DR-Fact (exact agreement 64.5\%), 0.513 for SAA, and 0.324 for Temporal (macro mean 0.471). The zero-shot LLM baseline achieves higher DR-Fact scores (0.782 / 0.734) than the Full Agent (0.621 / 0.645). This is consistent with, but does not isolate, evaluator fluency bias \cite{zheng}. The physical safety results are reported separately in Tables~\ref{tab:tgi} and~\ref{tab:iss} and are not attributed to the judge scores.
+
+\begin{table}[ht]
+\caption{Dual-Judge Sample Counts by Configuration}
+\label{tab:judgecounts}
+\centering\scriptsize
+\begin{tabular*}{\columnwidth}{@{\extracolsep{\fill}}lcccc@{}}
+\toprule
+Configuration & Queries & Rated items & Judge responses & Valid pairs \\
+\midrule
+BM25 & 200 & 600 & 1,200 & 600 \\
+LLM-Only & 200 & 600 & 1,200 & 600 \\
+Standard Static RAG & 200 & 600 & 1,200 & 600 \\
+Text-Only Static RAG & 50 & 150 & 300 & 150 \\
+No TGI & 200 & 300 & 600 & 300 \\
+No DSEL & 200 & 300 & 600 & 300 \\
+No Telemetry & 50 & 150 & 300 & 150 \\
+Full Agent & 200 & 600 & 1,200 & 600 \\
+\midrule
+Total & 1,300 & 3,300 & 6,600 & 3,300 \\
+\bottomrule
+\end{tabular*}
+\end{table}
+
+Table~\ref{tab:judgecounts} gives per-configuration counts; Table~\ref{tab:judge} reports 3,300 seeded rated items (one response per query, configuration and seed) from 1,300 query--configuration pairs, each scored on three dimensions by two judges (6,600 responses; 19,798 dimension scores after two out-of-scale SAA ratings were excluded). Quadratic-weighted Cohen's $\kappa_w$ is 0.576 for DR-Fact (exact agreement 64.5\%), 0.513 for SAA, and 0.324 for Temporal (macro mean 0.471). The zero-shot LLM baseline achieves higher DR-Fact scores (0.782 / 0.734) than the Full Agent (0.621 / 0.645). This is consistent with, but does not isolate, evaluator fluency bias \cite{zheng}. The physical safety results are reported separately in Tables~\ref{tab:tgi} and~\ref{tab:iss} and are not attributed to the judge scores.
 
 \begin{table}[ht]
 \caption{Cross-Family Dual-Judge Evaluation ($N=3{,}300$ Rated Items)}
@@ -685,7 +733,24 @@ Total Violations & 10 (7.9\%) & 7 (5.6\%) & 0 (0.0\%) \\
 Over 450 held-out queries per primary configuration, P50/P95 latencies are 0.94/2.46~s (BM25), 2.86/47.78~s (Static RAG), 3.39/5.53~s (LLM-Only) and 5.88/15.12~s (Full Agent), including tool calls and generation. These are descriptive measurements under different generators, not a controlled comparison. The append-only audit ledger (\texttt{incident\_audit\_trail.jsonl}) stores trace records for post-incident inspection.
 
 \subsection{Exploratory Vision Benchmark}
-A 100-crop xView2/xBD test \cite{xview2} (25 per class) with Qwen3-VL 4B \cite{qwenvl} gave 0.340 accuracy and 0.292 macro-F1 (chance 0.250). Of 50 indexed scene records, 27 had usable labels, yielding 1,017 crops from which 25 per class were sampled without replacement. Per-class F1 is 0.537 (no damage), 0.103 (minor), 0.140 (major) and 0.389 (destroyed). This vision component is an exploratory prototype requiring domain-specific fine-tuning before operational use.
+A 100-crop xView2/xBD test \cite{xview2} (25 per class) with Qwen3-VL 4B \cite{qwenvl} gave 0.340 accuracy and 0.292 macro-F1 (chance 0.250). Of 50 indexed scene records, 27 had usable labels, yielding 1,017 crops from which 25 per class were sampled without replacement. Table~\ref{tab:visioncm} gives the confusion matrix; per-class F1 is 0.537, 0.103, 0.140 and 0.389.
+
+\begin{table}[ht]
+\caption{Exploratory Vision Confusion Matrix ($N=100$)}
+\label{tab:visioncm}
+\centering\scriptsize
+\begin{tabular*}{\columnwidth}{@{\extracolsep{\fill}}lrrrr@{}}
+\toprule
+True $\backslash$ Pred & No & Minor & Major & Destroyed \\
+\midrule
+No damage & 22 & 1 & 0 & 2 \\
+Minor & 17 & 2 & 1 & 5 \\
+Major & 15 & 0 & 3 & 7 \\
+Destroyed & 12 & 0 & 0 & 13 \\
+\bottomrule
+\end{tabular*}
+\end{table}
+ This vision component is an exploratory prototype requiring domain-specific fine-tuning before operational use.
 
 
 
@@ -697,7 +762,7 @@ TGI uses source-time windows, not event time; source TTLs do not affect tiering.
 
 %==========================================================
 \section{Conclusion and Future Work}
-This paper presented an agentic RAG prototype with telemetry tools, temporal tagging and deterministic screening. The contribution is systems integration and empirical evaluation, not a new retrieval or language-model algorithm.
+This paper presented an agentic RAG prototype. The contribution is systems integration and evaluation.
 
 Controlled experiments provide preliminary evidence for the research questions. Temporal tier tagging removed all observed missed critical evacuations in a 12-scenario suite (3/36 to 0/36); neither agent arm issued false evacuation directives on safe telemetry (RQ1). Weighted fusion gave a negligible held-out gain over dense retrieval, so RQ2 remains exploratory. Rule-pattern interception left zero residual matches (0/126) under the evaluated rule families, but prompt-level comparisons were not significant (RQ3). The evaluation also found higher DR-Fact scores for the zero-shot baseline, consistent with possible evaluator sensitivity to fluency but not establishing it, and low exploratory damage-classification accuracy (0.340).
 
@@ -769,9 +834,9 @@ This work was supported by the Department of Computer Engineering at Fr. C. Rodr
 
 \bibitem{inan2023} H. Inan \textit{et al.}, ``Llama Guard,'' arXiv:2312.06674, 2023.
 
-\bibitem{bge} S. Xiao, Z. Liu, P. Zhang, N. Muennighoff, D. Lian, and J.-Y. Nie, ``C-Pack: Packaged Resources For General Chinese Embeddings,'' in \textit{Proc. 47th Int. ACM SIGIR Conf. Res. Dev. Inf. Retr.}, 2024, pp. 641--649, doi: 10.1145/3626772.3657878.
+\bibitem{bge} S. Xiao \textit{et al.}, ``C-Pack,'' in \textit{Proc. SIGIR}, 2024, pp. 641--649.
 
-\bibitem{bm25} S. Robertson and H. Zaragoza, ``The probabilistic relevance framework: BM25,'' \textit{Found. Trends Inf. Retr.}, vol. 3, no. 4, pp. 333--389, 2009.
+\bibitem{bm25} S. Robertson and H. Zaragoza, ``BM25,'' \textit{Found. Trends IR}, vol. 3, 2009.
 
 \bibitem{rrf} G. V. Cormack, C. L. Clarke, and S. B\"{u}ttcher, ``Reciprocal rank fusion,'' in \textit{Proc. SIGIR}, 2009, pp. 758--759.
 
@@ -785,11 +850,11 @@ This work was supported by the Department of Computer Engineering at Fr. C. Rodr
 
 \bibitem{femanims} FEMA, ``National Incident Management System,'' \url{https://www.fema.gov/emergency-managers/nims}
 
-\bibitem{zheng} L. Zheng \textit{et al.}, ``Judging LLM-as-a-judge with MT-Bench and Chatbot Arena,'' in \textit{Adv. NeurIPS}, vol. 36, 2023.
+\bibitem{zheng} L. Zheng \textit{et al.}, ``Judging LLM-as-a-judge,'' in \textit{Adv. NeurIPS}, 2023.
 
 \bibitem{cohen1968} J. Cohen, ``Weighted kappa,'' \textit{Psychol. Bull.}, vol. 70, no. 4, pp. 213--220, 1968.
 
-\bibitem{landis1977} J. R. Landis and G. G. Koch, ``The measurement of observer agreement,'' \textit{Biometrics}, vol. 33, no. 1, pp. 159--174, 1977.
+\bibitem{landis1977} J. R. Landis and G. G. Koch, ``Observer agreement,'' \textit{Biometrics}, 1977.
 \end{thebibliography}
 
 \end{document}
