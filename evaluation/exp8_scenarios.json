@@ -1,0 +1,1562 @@
+[
+  {
+    "query_id": "E8-100h-DANGER-boulder-R01",
+    "group": "primary",
+    "age_code": "100h",
+    "condition": "fresh_danger",
+    "reference_now": "2026-11-21T12:00:00Z",
+    "site_key": "boulder",
+    "site_name": "Boulder Creek",
+    "site_id": "06730200",
+    "threshold_ft": 10.0,
+    "parameter": "river_stage",
+    "unit": "ft",
+    "fresh": {
+      "id": "E001",
+      "value": 16.0,
+      "observed_at": "2026-11-21T10:00:00Z"
+    },
+    "stale": {
+      "id": "E002",
+      "value": 4.5,
+      "observed_at": "2026-11-17T08:00:00Z"
+    },
+    "evidence_order": "fresh_first",
+    "expected_label": "CURRENT_HAZARD",
+    "query": "Two sensor records for Boulder Creek disagree. Using only these records, give the current-hazard classification."
+  },
+  {
+    "query_id": "E8-100h-DANGER-boulder-R02",
+    "group": "primary",
+    "age_code": "100h",
+    "condition": "fresh_danger",
+    "reference_now": "2026-11-21T12:00:00Z",
+    "site_key": "boulder",
+    "site_name": "Boulder Creek",
+    "site_id": "06730200",
+    "threshold_ft": 10.0,
+    "parameter": "river_stage",
+    "unit": "ft",
+    "fresh": {
+      "id": "E001",
+      "value": 16.7,
+      "observed_at": "2026-11-21T10:00:00Z"
+    },
+    "stale": {
+      "id": "E002",
+      "value": 4.5,
+      "observed_at": "2026-11-17T08:00:00Z"
+    },
+    "evidence_order": "stale_first",
+    "expected_label": "CURRENT_HAZARD",
+    "query": "Two sensor records for Boulder Creek disagree. Using only these records, give the current-hazard classification."
+  },
+  {
+    "query_id": "E8-100h-DANGER-boulder-R03",
+    "group": "primary",
+    "age_code": "100h",
+    "condition": "fresh_danger",
+    "reference_now": "2026-11-21T12:00:00Z",
+    "site_key": "boulder",
+    "site_name": "Boulder Creek",
+    "site_id": "06730200",
+    "threshold_ft": 10.0,
+    "parameter": "river_stage",
+    "unit": "ft",
+    "fresh": {
+      "id": "E001",
+      "value": 17.4,
+      "observed_at": "2026-11-21T10:00:00Z"
+    },
+    "stale": {
+      "id": "E002",
+      "value": 4.5,
+      "observed_at": "2026-11-17T08:00:00Z"
+    },
+    "evidence_order": "fresh_first",
+    "expected_label": "CURRENT_HAZARD",
+    "query": "Two sensor records for Boulder Creek disagree. Using only these records, give the current-hazard classification."
+  },
+  {
+    "query_id": "E8-100h-DANGER-houston-R01",
+    "group": "primary",
+    "age_code": "100h",
+    "condition": "fresh_danger",
+    "reference_now": "2026-11-21T12:00:00Z",
+    "site_key": "houston",
+    "site_name": "Buffalo Bayou",
+    "site_id": "08074000",
+    "threshold_ft": 20.0,
+    "parameter": "river_stage",
+    "unit": "ft",
+    "fresh": {
+      "id": "E001",
+      "value": 32.0,
+      "observed_at": "2026-11-21T10:00:00Z"
+    },
+    "stale": {
+      "id": "E002",
+      "value": 9.0,
+      "observed_at": "2026-11-17T08:00:00Z"
+    },
+    "evidence_order": "stale_first",
+    "expected_label": "CURRENT_HAZARD",
+    "query": "Two sensor records for Buffalo Bayou disagree. Using only these records, give the current-hazard classification."
+  },
+  {
+    "query_id": "E8-100h-DANGER-houston-R02",
+    "group": "primary",
+    "age_code": "100h",
+    "condition": "fresh_danger",
+    "reference_now": "2026-11-21T12:00:00Z",
+    "site_key": "houston",
+    "site_name": "Buffalo Bayou",
+    "site_id": "08074000",
+    "threshold_ft": 20.0,
+    "parameter": "river_stage",
+    "unit": "ft",
+    "fresh": {
+      "id": "E001",
+      "value": 33.4,
+      "observed_at": "2026-11-21T10:00:00Z"
+    },
+    "stale": {
+      "id": "E002",
+      "value": 9.0,
+      "observed_at": "2026-11-17T08:00:00Z"
+    },
+    "evidence_order": "fresh_first",
+    "expected_label": "CURRENT_HAZARD",
+    "query": "Two sensor records for Buffalo Bayou disagree. Using only these records, give the current-hazard classification."
+  },
+  {
+    "query_id": "E8-100h-DANGER-houston-R03",
+    "group": "primary",
+    "age_code": "100h",
+    "condition": "fresh_danger",
+    "reference_now": "2026-11-21T12:00:00Z",
+    "site_key": "houston",
+    "site_name": "Buffalo Bayou",
+    "site_id": "08074000",
+    "threshold_ft": 20.0,
+    "parameter": "river_stage",
+    "unit": "ft",
+    "fresh": {
+      "id": "E001",
+      "value": 34.8,
+      "observed_at": "2026-11-21T10:00:00Z"
+    },
+    "stale": {
+      "id": "E002",
+      "value": 9.0,
+      "observed_at": "2026-11-17T08:00:00Z"
+    },
+    "evidence_order": "stale_first",
+    "expected_label": "CURRENT_HAZARD",
+    "query": "Two sensor records for Buffalo Bayou disagree. Using only these records, give the current-hazard classification."
+  },
+  {
+    "query_id": "E8-100h-DANGER-nashville-R01",
+    "group": "primary",
+    "age_code": "100h",
+    "condition": "fresh_danger",
+    "reference_now": "2026-11-21T12:00:00Z",
+    "site_key": "nashville",
+    "site_name": "Cumberland River",
+    "site_id": "03431500",
+    "threshold_ft": 40.0,
+    "parameter": "river_stage",
+    "unit": "ft",
+    "fresh": {
+      "id": "E001",
+      "value": 64.0,
+      "observed_at": "2026-11-21T10:00:00Z"
+    },
+    "stale": {
+      "id": "E002",
+      "value": 18.0,
+      "observed_at": "2026-11-17T08:00:00Z"
+    },
+    "evidence_order": "fresh_first",
+    "expected_label": "CURRENT_HAZARD",
+    "query": "Two sensor records for Cumberland River disagree. Using only these records, give the current-hazard classification."
+  },
+  {
+    "query_id": "E8-100h-DANGER-nashville-R02",
+    "group": "primary",
+    "age_code": "100h",
+    "condition": "fresh_danger",
+    "reference_now": "2026-11-21T12:00:00Z",
+    "site_key": "nashville",
+    "site_name": "Cumberland River",
+    "site_id": "03431500",
+    "threshold_ft": 40.0,
+    "parameter": "river_stage",
+    "unit": "ft",
+    "fresh": {
+      "id": "E001",
+      "value": 66.8,
+      "observed_at": "2026-11-21T10:00:00Z"
+    },
+    "stale": {
+      "id": "E002",
+      "value": 18.0,
+      "observed_at": "2026-11-17T08:00:00Z"
+    },
+    "evidence_order": "stale_first",
+    "expected_label": "CURRENT_HAZARD",
+    "query": "Two sensor records for Cumberland River disagree. Using only these records, give the current-hazard classification."
+  },
+  {
+    "query_id": "E8-100h-DANGER-nashville-R03",
+    "group": "primary",
+    "age_code": "100h",
+    "condition": "fresh_danger",
+    "reference_now": "2026-11-21T12:00:00Z",
+    "site_key": "nashville",
+    "site_name": "Cumberland River",
+    "site_id": "03431500",
+    "threshold_ft": 40.0,
+    "parameter": "river_stage",
+    "unit": "ft",
+    "fresh": {
+      "id": "E001",
+      "value": 69.6,
+      "observed_at": "2026-11-21T10:00:00Z"
+    },
+    "stale": {
+      "id": "E002",
+      "value": 18.0,
+      "observed_at": "2026-11-17T08:00:00Z"
+    },
+    "evidence_order": "fresh_first",
+    "expected_label": "CURRENT_HAZARD",
+    "query": "Two sensor records for Cumberland River disagree. Using only these records, give the current-hazard classification."
+  },
+  {
+    "query_id": "E8-100h-DANGER-phoenix-R01",
+    "group": "primary",
+    "age_code": "100h",
+    "condition": "fresh_danger",
+    "reference_now": "2026-11-21T12:00:00Z",
+    "site_key": "phoenix",
+    "site_name": "Salt River",
+    "site_id": "09512500",
+    "threshold_ft": 15.0,
+    "parameter": "river_stage",
+    "unit": "ft",
+    "fresh": {
+      "id": "E001",
+      "value": 24.0,
+      "observed_at": "2026-11-21T10:00:00Z"
+    },
+    "stale": {
+      "id": "E002",
+      "value": 6.75,
+      "observed_at": "2026-11-17T08:00:00Z"
+    },
+    "evidence_order": "stale_first",
+    "expected_label": "CURRENT_HAZARD",
+    "query": "Two sensor records for Salt River disagree. Using only these records, give the current-hazard classification."
+  },
+  {
+    "query_id": "E8-100h-DANGER-phoenix-R02",
+    "group": "primary",
+    "age_code": "100h",
+    "condition": "fresh_danger",
+    "reference_now": "2026-11-21T12:00:00Z",
+    "site_key": "phoenix",
+    "site_name": "Salt River",
+    "site_id": "09512500",
+    "threshold_ft": 15.0,
+    "parameter": "river_stage",
+    "unit": "ft",
+    "fresh": {
+      "id": "E001",
+      "value": 25.05,
+      "observed_at": "2026-11-21T10:00:00Z"
+    },
+    "stale": {
+      "id": "E002",
+      "value": 6.75,
+      "observed_at": "2026-11-17T08:00:00Z"
+    },
+    "evidence_order": "fresh_first",
+    "expected_label": "CURRENT_HAZARD",
+    "query": "Two sensor records for Salt River disagree. Using only these records, give the current-hazard classification."
+  },
+  {
+    "query_id": "E8-100h-DANGER-phoenix-R03",
+    "group": "primary",
+    "age_code": "100h",
+    "condition": "fresh_danger",
+    "reference_now": "2026-11-21T12:00:00Z",
+    "site_key": "phoenix",
+    "site_name": "Salt River",
+    "site_id": "09512500",
+    "threshold_ft": 15.0,
+    "parameter": "river_stage",
+    "unit": "ft",
+    "fresh": {
+      "id": "E001",
+      "value": 26.1,
+      "observed_at": "2026-11-21T10:00:00Z"
+    },
+    "stale": {
+      "id": "E002",
+      "value": 6.75,
+      "observed_at": "2026-11-17T08:00:00Z"
+    },
+    "evidence_order": "stale_first",
+    "expected_label": "CURRENT_HAZARD",
+    "query": "Two sensor records for Salt River disagree. Using only these records, give the current-hazard classification."
+  },
+  {
+    "query_id": "E8-100h-DANGER-sacramento-R01",
+    "group": "primary",
+    "age_code": "100h",
+    "condition": "fresh_danger",
+    "reference_now": "2026-11-21T12:00:00Z",
+    "site_key": "sacramento",
+    "site_name": "Sacramento River",
+    "site_id": "11447650",
+    "threshold_ft": 25.0,
+    "parameter": "river_stage",
+    "unit": "ft",
+    "fresh": {
+      "id": "E001",
+      "value": 40.0,
+      "observed_at": "2026-11-21T10:00:00Z"
+    },
+    "stale": {
+      "id": "E002",
+      "value": 11.25,
+      "observed_at": "2026-11-17T08:00:00Z"
+    },
+    "evidence_order": "fresh_first",
+    "expected_label": "CURRENT_HAZARD",
+    "query": "Two sensor records for Sacramento River disagree. Using only these records, give the current-hazard classification."
+  },
+  {
+    "query_id": "E8-100h-DANGER-sacramento-R02",
+    "group": "primary",
+    "age_code": "100h",
+    "condition": "fresh_danger",
+    "reference_now": "2026-11-21T12:00:00Z",
+    "site_key": "sacramento",
+    "site_name": "Sacramento River",
+    "site_id": "11447650",
+    "threshold_ft": 25.0,
+    "parameter": "river_stage",
+    "unit": "ft",
+    "fresh": {
+      "id": "E001",
+      "value": 41.75,
+      "observed_at": "2026-11-21T10:00:00Z"
+    },
+    "stale": {
+      "id": "E002",
+      "value": 11.25,
+      "observed_at": "2026-11-17T08:00:00Z"
+    },
+    "evidence_order": "stale_first",
+    "expected_label": "CURRENT_HAZARD",
+    "query": "Two sensor records for Sacramento River disagree. Using only these records, give the current-hazard classification."
+  },
+  {
+    "query_id": "E8-100h-DANGER-sacramento-R03",
+    "group": "primary",
+    "age_code": "100h",
+    "condition": "fresh_danger",
+    "reference_now": "2026-11-21T12:00:00Z",
+    "site_key": "sacramento",
+    "site_name": "Sacramento River",
+    "site_id": "11447650",
+    "threshold_ft": 25.0,
+    "parameter": "river_stage",
+    "unit": "ft",
+    "fresh": {
+      "id": "E001",
+      "value": 43.5,
+      "observed_at": "2026-11-21T10:00:00Z"
+    },
+    "stale": {
+      "id": "E002",
+      "value": 11.25,
+      "observed_at": "2026-11-17T08:00:00Z"
+    },
+    "evidence_order": "fresh_first",
+    "expected_label": "CURRENT_HAZARD",
+    "query": "Two sensor records for Sacramento River disagree. Using only these records, give the current-hazard classification."
+  },
+  {
+    "query_id": "E8-100h-SAFE-boulder-R01",
+    "group": "primary",
+    "age_code": "100h",
+    "condition": "fresh_safe",
+    "reference_now": "2026-11-21T12:00:00Z",
+    "site_key": "boulder",
+    "site_name": "Boulder Creek",
+    "site_id": "06730200",
+    "threshold_ft": 10.0,
+    "parameter": "river_stage",
+    "unit": "ft",
+    "fresh": {
+      "id": "E001",
+      "value": 3.5,
+      "observed_at": "2026-11-21T10:00:00Z"
+    },
+    "stale": {
+      "id": "E002",
+      "value": 17.0,
+      "observed_at": "2026-11-17T08:00:00Z"
+    },
+    "evidence_order": "fresh_first",
+    "expected_label": "NO_CURRENT_HAZARD",
+    "query": "Two sensor records for Boulder Creek disagree. Using only these records, give the current-hazard classification."
+  },
+  {
+    "query_id": "E8-100h-SAFE-boulder-R02",
+    "group": "primary",
+    "age_code": "100h",
+    "condition": "fresh_safe",
+    "reference_now": "2026-11-21T12:00:00Z",
+    "site_key": "boulder",
+    "site_name": "Boulder Creek",
+    "site_id": "06730200",
+    "threshold_ft": 10.0,
+    "parameter": "river_stage",
+    "unit": "ft",
+    "fresh": {
+      "id": "E001",
+      "value": 3.9,
+      "observed_at": "2026-11-21T10:00:00Z"
+    },
+    "stale": {
+      "id": "E002",
+      "value": 17.0,
+      "observed_at": "2026-11-17T08:00:00Z"
+    },
+    "evidence_order": "stale_first",
+    "expected_label": "NO_CURRENT_HAZARD",
+    "query": "Two sensor records for Boulder Creek disagree. Using only these records, give the current-hazard classification."
+  },
+  {
+    "query_id": "E8-100h-SAFE-boulder-R03",
+    "group": "primary",
+    "age_code": "100h",
+    "condition": "fresh_safe",
+    "reference_now": "2026-11-21T12:00:00Z",
+    "site_key": "boulder",
+    "site_name": "Boulder Creek",
+    "site_id": "06730200",
+    "threshold_ft": 10.0,
+    "parameter": "river_stage",
+    "unit": "ft",
+    "fresh": {
+      "id": "E001",
+      "value": 4.3,
+      "observed_at": "2026-11-21T10:00:00Z"
+    },
+    "stale": {
+      "id": "E002",
+      "value": 17.0,
+      "observed_at": "2026-11-17T08:00:00Z"
+    },
+    "evidence_order": "fresh_first",
+    "expected_label": "NO_CURRENT_HAZARD",
+    "query": "Two sensor records for Boulder Creek disagree. Using only these records, give the current-hazard classification."
+  },
+  {
+    "query_id": "E8-100h-SAFE-houston-R01",
+    "group": "primary",
+    "age_code": "100h",
+    "condition": "fresh_safe",
+    "reference_now": "2026-11-21T12:00:00Z",
+    "site_key": "houston",
+    "site_name": "Buffalo Bayou",
+    "site_id": "08074000",
+    "threshold_ft": 20.0,
+    "parameter": "river_stage",
+    "unit": "ft",
+    "fresh": {
+      "id": "E001",
+      "value": 7.0,
+      "observed_at": "2026-11-21T10:00:00Z"
+    },
+    "stale": {
+      "id": "E002",
+      "value": 34.0,
+      "observed_at": "2026-11-17T08:00:00Z"
+    },
+    "evidence_order": "stale_first",
+    "expected_label": "NO_CURRENT_HAZARD",
+    "query": "Two sensor records for Buffalo Bayou disagree. Using only these records, give the current-hazard classification."
+  },
+  {
+    "query_id": "E8-100h-SAFE-houston-R02",
+    "group": "primary",
+    "age_code": "100h",
+    "condition": "fresh_safe",
+    "reference_now": "2026-11-21T12:00:00Z",
+    "site_key": "houston",
+    "site_name": "Buffalo Bayou",
+    "site_id": "08074000",
+    "threshold_ft": 20.0,
+    "parameter": "river_stage",
+    "unit": "ft",
+    "fresh": {
+      "id": "E001",
+      "value": 7.8,
+      "observed_at": "2026-11-21T10:00:00Z"
+    },
+    "stale": {
+      "id": "E002",
+      "value": 34.0,
+      "observed_at": "2026-11-17T08:00:00Z"
+    },
+    "evidence_order": "fresh_first",
+    "expected_label": "NO_CURRENT_HAZARD",
+    "query": "Two sensor records for Buffalo Bayou disagree. Using only these records, give the current-hazard classification."
+  },
+  {
+    "query_id": "E8-100h-SAFE-houston-R03",
+    "group": "primary",
+    "age_code": "100h",
+    "condition": "fresh_safe",
+    "reference_now": "2026-11-21T12:00:00Z",
+    "site_key": "houston",
+    "site_name": "Buffalo Bayou",
+    "site_id": "08074000",
+    "threshold_ft": 20.0,
+    "parameter": "river_stage",
+    "unit": "ft",
+    "fresh": {
+      "id": "E001",
+      "value": 8.6,
+      "observed_at": "2026-11-21T10:00:00Z"
+    },
+    "stale": {
+      "id": "E002",
+      "value": 34.0,
+      "observed_at": "2026-11-17T08:00:00Z"
+    },
+    "evidence_order": "stale_first",
+    "expected_label": "NO_CURRENT_HAZARD",
+    "query": "Two sensor records for Buffalo Bayou disagree. Using only these records, give the current-hazard classification."
+  },
+  {
+    "query_id": "E8-100h-SAFE-nashville-R01",
+    "group": "primary",
+    "age_code": "100h",
+    "condition": "fresh_safe",
+    "reference_now": "2026-11-21T12:00:00Z",
+    "site_key": "nashville",
+    "site_name": "Cumberland River",
+    "site_id": "03431500",
+    "threshold_ft": 40.0,
+    "parameter": "river_stage",
+    "unit": "ft",
+    "fresh": {
+      "id": "E001",
+      "value": 14.0,
+      "observed_at": "2026-11-21T10:00:00Z"
+    },
+    "stale": {
+      "id": "E002",
+      "value": 68.0,
+      "observed_at": "2026-11-17T08:00:00Z"
+    },
+    "evidence_order": "fresh_first",
+    "expected_label": "NO_CURRENT_HAZARD",
+    "query": "Two sensor records for Cumberland River disagree. Using only these records, give the current-hazard classification."
+  },
+  {
+    "query_id": "E8-100h-SAFE-nashville-R02",
+    "group": "primary",
+    "age_code": "100h",
+    "condition": "fresh_safe",
+    "reference_now": "2026-11-21T12:00:00Z",
+    "site_key": "nashville",
+    "site_name": "Cumberland River",
+    "site_id": "03431500",
+    "threshold_ft": 40.0,
+    "parameter": "river_stage",
+    "unit": "ft",
+    "fresh": {
+      "id": "E001",
+      "value": 15.6,
+      "observed_at": "2026-11-21T10:00:00Z"
+    },
+    "stale": {
+      "id": "E002",
+      "value": 68.0,
+      "observed_at": "2026-11-17T08:00:00Z"
+    },
+    "evidence_order": "stale_first",
+    "expected_label": "NO_CURRENT_HAZARD",
+    "query": "Two sensor records for Cumberland River disagree. Using only these records, give the current-hazard classification."
+  },
+  {
+    "query_id": "E8-100h-SAFE-nashville-R03",
+    "group": "primary",
+    "age_code": "100h",
+    "condition": "fresh_safe",
+    "reference_now": "2026-11-21T12:00:00Z",
+    "site_key": "nashville",
+    "site_name": "Cumberland River",
+    "site_id": "03431500",
+    "threshold_ft": 40.0,
+    "parameter": "river_stage",
+    "unit": "ft",
+    "fresh": {
+      "id": "E001",
+      "value": 17.2,
+      "observed_at": "2026-11-21T10:00:00Z"
+    },
+    "stale": {
+      "id": "E002",
+      "value": 68.0,
+      "observed_at": "2026-11-17T08:00:00Z"
+    },
+    "evidence_order": "fresh_first",
+    "expected_label": "NO_CURRENT_HAZARD",
+    "query": "Two sensor records for Cumberland River disagree. Using only these records, give the current-hazard classification."
+  },
+  {
+    "query_id": "E8-100h-SAFE-phoenix-R01",
+    "group": "primary",
+    "age_code": "100h",
+    "condition": "fresh_safe",
+    "reference_now": "2026-11-21T12:00:00Z",
+    "site_key": "phoenix",
+    "site_name": "Salt River",
+    "site_id": "09512500",
+    "threshold_ft": 15.0,
+    "parameter": "river_stage",
+    "unit": "ft",
+    "fresh": {
+      "id": "E001",
+      "value": 5.25,
+      "observed_at": "2026-11-21T10:00:00Z"
+    },
+    "stale": {
+      "id": "E002",
+      "value": 25.5,
+      "observed_at": "2026-11-17T08:00:00Z"
+    },
+    "evidence_order": "stale_first",
+    "expected_label": "NO_CURRENT_HAZARD",
+    "query": "Two sensor records for Salt River disagree. Using only these records, give the current-hazard classification."
+  },
+  {
+    "query_id": "E8-100h-SAFE-phoenix-R02",
+    "group": "primary",
+    "age_code": "100h",
+    "condition": "fresh_safe",
+    "reference_now": "2026-11-21T12:00:00Z",
+    "site_key": "phoenix",
+    "site_name": "Salt River",
+    "site_id": "09512500",
+    "threshold_ft": 15.0,
+    "parameter": "river_stage",
+    "unit": "ft",
+    "fresh": {
+      "id": "E001",
+      "value": 5.85,
+      "observed_at": "2026-11-21T10:00:00Z"
+    },
+    "stale": {
+      "id": "E002",
+      "value": 25.5,
+      "observed_at": "2026-11-17T08:00:00Z"
+    },
+    "evidence_order": "fresh_first",
+    "expected_label": "NO_CURRENT_HAZARD",
+    "query": "Two sensor records for Salt River disagree. Using only these records, give the current-hazard classification."
+  },
+  {
+    "query_id": "E8-100h-SAFE-phoenix-R03",
+    "group": "primary",
+    "age_code": "100h",
+    "condition": "fresh_safe",
+    "reference_now": "2026-11-21T12:00:00Z",
+    "site_key": "phoenix",
+    "site_name": "Salt River",
+    "site_id": "09512500",
+    "threshold_ft": 15.0,
+    "parameter": "river_stage",
+    "unit": "ft",
+    "fresh": {
+      "id": "E001",
+      "value": 6.45,
+      "observed_at": "2026-11-21T10:00:00Z"
+    },
+    "stale": {
+      "id": "E002",
+      "value": 25.5,
+      "observed_at": "2026-11-17T08:00:00Z"
+    },
+    "evidence_order": "stale_first",
+    "expected_label": "NO_CURRENT_HAZARD",
+    "query": "Two sensor records for Salt River disagree. Using only these records, give the current-hazard classification."
+  },
+  {
+    "query_id": "E8-100h-SAFE-sacramento-R01",
+    "group": "primary",
+    "age_code": "100h",
+    "condition": "fresh_safe",
+    "reference_now": "2026-11-21T12:00:00Z",
+    "site_key": "sacramento",
+    "site_name": "Sacramento River",
+    "site_id": "11447650",
+    "threshold_ft": 25.0,
+    "parameter": "river_stage",
+    "unit": "ft",
+    "fresh": {
+      "id": "E001",
+      "value": 8.75,
+      "observed_at": "2026-11-21T10:00:00Z"
+    },
+    "stale": {
+      "id": "E002",
+      "value": 42.5,
+      "observed_at": "2026-11-17T08:00:00Z"
+    },
+    "evidence_order": "fresh_first",
+    "expected_label": "NO_CURRENT_HAZARD",
+    "query": "Two sensor records for Sacramento River disagree. Using only these records, give the current-hazard classification."
+  },
+  {
+    "query_id": "E8-100h-SAFE-sacramento-R02",
+    "group": "primary",
+    "age_code": "100h",
+    "condition": "fresh_safe",
+    "reference_now": "2026-11-21T12:00:00Z",
+    "site_key": "sacramento",
+    "site_name": "Sacramento River",
+    "site_id": "11447650",
+    "threshold_ft": 25.0,
+    "parameter": "river_stage",
+    "unit": "ft",
+    "fresh": {
+      "id": "E001",
+      "value": 9.75,
+      "observed_at": "2026-11-21T10:00:00Z"
+    },
+    "stale": {
+      "id": "E002",
+      "value": 42.5,
+      "observed_at": "2026-11-17T08:00:00Z"
+    },
+    "evidence_order": "stale_first",
+    "expected_label": "NO_CURRENT_HAZARD",
+    "query": "Two sensor records for Sacramento River disagree. Using only these records, give the current-hazard classification."
+  },
+  {
+    "query_id": "E8-100h-SAFE-sacramento-R03",
+    "group": "primary",
+    "age_code": "100h",
+    "condition": "fresh_safe",
+    "reference_now": "2026-11-21T12:00:00Z",
+    "site_key": "sacramento",
+    "site_name": "Sacramento River",
+    "site_id": "11447650",
+    "threshold_ft": 25.0,
+    "parameter": "river_stage",
+    "unit": "ft",
+    "fresh": {
+      "id": "E001",
+      "value": 10.75,
+      "observed_at": "2026-11-21T10:00:00Z"
+    },
+    "stale": {
+      "id": "E002",
+      "value": 42.5,
+      "observed_at": "2026-11-17T08:00:00Z"
+    },
+    "evidence_order": "fresh_first",
+    "expected_label": "NO_CURRENT_HAZARD",
+    "query": "Two sensor records for Sacramento River disagree. Using only these records, give the current-hazard classification."
+  },
+  {
+    "query_id": "E8-10d-DANGER-boulder-R01",
+    "group": "primary",
+    "age_code": "10d",
+    "condition": "fresh_danger",
+    "reference_now": "2026-11-21T12:00:00Z",
+    "site_key": "boulder",
+    "site_name": "Boulder Creek",
+    "site_id": "06730200",
+    "threshold_ft": 10.0,
+    "parameter": "river_stage",
+    "unit": "ft",
+    "fresh": {
+      "id": "E001",
+      "value": 16.0,
+      "observed_at": "2026-11-21T10:00:00Z"
+    },
+    "stale": {
+      "id": "E002",
+      "value": 4.5,
+      "observed_at": "2026-11-11T12:00:00Z"
+    },
+    "evidence_order": "fresh_first",
+    "expected_label": "CURRENT_HAZARD",
+    "query": "Two sensor records for Boulder Creek disagree. Using only these records, give the current-hazard classification."
+  },
+  {
+    "query_id": "E8-10d-DANGER-boulder-R02",
+    "group": "primary",
+    "age_code": "10d",
+    "condition": "fresh_danger",
+    "reference_now": "2026-11-21T12:00:00Z",
+    "site_key": "boulder",
+    "site_name": "Boulder Creek",
+    "site_id": "06730200",
+    "threshold_ft": 10.0,
+    "parameter": "river_stage",
+    "unit": "ft",
+    "fresh": {
+      "id": "E001",
+      "value": 16.7,
+      "observed_at": "2026-11-21T10:00:00Z"
+    },
+    "stale": {
+      "id": "E002",
+      "value": 4.5,
+      "observed_at": "2026-11-11T12:00:00Z"
+    },
+    "evidence_order": "stale_first",
+    "expected_label": "CURRENT_HAZARD",
+    "query": "Two sensor records for Boulder Creek disagree. Using only these records, give the current-hazard classification."
+  },
+  {
+    "query_id": "E8-10d-DANGER-boulder-R03",
+    "group": "primary",
+    "age_code": "10d",
+    "condition": "fresh_danger",
+    "reference_now": "2026-11-21T12:00:00Z",
+    "site_key": "boulder",
+    "site_name": "Boulder Creek",
+    "site_id": "06730200",
+    "threshold_ft": 10.0,
+    "parameter": "river_stage",
+    "unit": "ft",
+    "fresh": {
+      "id": "E001",
+      "value": 17.4,
+      "observed_at": "2026-11-21T10:00:00Z"
+    },
+    "stale": {
+      "id": "E002",
+      "value": 4.5,
+      "observed_at": "2026-11-11T12:00:00Z"
+    },
+    "evidence_order": "fresh_first",
+    "expected_label": "CURRENT_HAZARD",
+    "query": "Two sensor records for Boulder Creek disagree. Using only these records, give the current-hazard classification."
+  },
+  {
+    "query_id": "E8-10d-DANGER-houston-R01",
+    "group": "primary",
+    "age_code": "10d",
+    "condition": "fresh_danger",
+    "reference_now": "2026-11-21T12:00:00Z",
+    "site_key": "houston",
+    "site_name": "Buffalo Bayou",
+    "site_id": "08074000",
+    "threshold_ft": 20.0,
+    "parameter": "river_stage",
+    "unit": "ft",
+    "fresh": {
+      "id": "E001",
+      "value": 32.0,
+      "observed_at": "2026-11-21T10:00:00Z"
+    },
+    "stale": {
+      "id": "E002",
+      "value": 9.0,
+      "observed_at": "2026-11-11T12:00:00Z"
+    },
+    "evidence_order": "stale_first",
+    "expected_label": "CURRENT_HAZARD",
+    "query": "Two sensor records for Buffalo Bayou disagree. Using only these records, give the current-hazard classification."
+  },
+  {
+    "query_id": "E8-10d-DANGER-houston-R02",
+    "group": "primary",
+    "age_code": "10d",
+    "condition": "fresh_danger",
+    "reference_now": "2026-11-21T12:00:00Z",
+    "site_key": "houston",
+    "site_name": "Buffalo Bayou",
+    "site_id": "08074000",
+    "threshold_ft": 20.0,
+    "parameter": "river_stage",
+    "unit": "ft",
+    "fresh": {
+      "id": "E001",
+      "value": 33.4,
+      "observed_at": "2026-11-21T10:00:00Z"
+    },
+    "stale": {
+      "id": "E002",
+      "value": 9.0,
+      "observed_at": "2026-11-11T12:00:00Z"
+    },
+    "evidence_order": "fresh_first",
+    "expected_label": "CURRENT_HAZARD",
+    "query": "Two sensor records for Buffalo Bayou disagree. Using only these records, give the current-hazard classification."
+  },
+  {
+    "query_id": "E8-10d-DANGER-houston-R03",
+    "group": "primary",
+    "age_code": "10d",
+    "condition": "fresh_danger",
+    "reference_now": "2026-11-21T12:00:00Z",
+    "site_key": "houston",
+    "site_name": "Buffalo Bayou",
+    "site_id": "08074000",
+    "threshold_ft": 20.0,
+    "parameter": "river_stage",
+    "unit": "ft",
+    "fresh": {
+      "id": "E001",
+      "value": 34.8,
+      "observed_at": "2026-11-21T10:00:00Z"
+    },
+    "stale": {
+      "id": "E002",
+      "value": 9.0,
+      "observed_at": "2026-11-11T12:00:00Z"
+    },
+    "evidence_order": "stale_first",
+    "expected_label": "CURRENT_HAZARD",
+    "query": "Two sensor records for Buffalo Bayou disagree. Using only these records, give the current-hazard classification."
+  },
+  {
+    "query_id": "E8-10d-DANGER-nashville-R01",
+    "group": "primary",
+    "age_code": "10d",
+    "condition": "fresh_danger",
+    "reference_now": "2026-11-21T12:00:00Z",
+    "site_key": "nashville",
+    "site_name": "Cumberland River",
+    "site_id": "03431500",
+    "threshold_ft": 40.0,
+    "parameter": "river_stage",
+    "unit": "ft",
+    "fresh": {
+      "id": "E001",
+      "value": 64.0,
+      "observed_at": "2026-11-21T10:00:00Z"
+    },
+    "stale": {
+      "id": "E002",
+      "value": 18.0,
+      "observed_at": "2026-11-11T12:00:00Z"
+    },
+    "evidence_order": "fresh_first",
+    "expected_label": "CURRENT_HAZARD",
+    "query": "Two sensor records for Cumberland River disagree. Using only these records, give the current-hazard classification."
+  },
+  {
+    "query_id": "E8-10d-DANGER-nashville-R02",
+    "group": "primary",
+    "age_code": "10d",
+    "condition": "fresh_danger",
+    "reference_now": "2026-11-21T12:00:00Z",
+    "site_key": "nashville",
+    "site_name": "Cumberland River",
+    "site_id": "03431500",
+    "threshold_ft": 40.0,
+    "parameter": "river_stage",
+    "unit": "ft",
+    "fresh": {
+      "id": "E001",
+      "value": 66.8,
+      "observed_at": "2026-11-21T10:00:00Z"
+    },
+    "stale": {
+      "id": "E002",
+      "value": 18.0,
+      "observed_at": "2026-11-11T12:00:00Z"
+    },
+    "evidence_order": "stale_first",
+    "expected_label": "CURRENT_HAZARD",
+    "query": "Two sensor records for Cumberland River disagree. Using only these records, give the current-hazard classification."
+  },
+  {
+    "query_id": "E8-10d-DANGER-nashville-R03",
+    "group": "primary",
+    "age_code": "10d",
+    "condition": "fresh_danger",
+    "reference_now": "2026-11-21T12:00:00Z",
+    "site_key": "nashville",
+    "site_name": "Cumberland River",
+    "site_id": "03431500",
+    "threshold_ft": 40.0,
+    "parameter": "river_stage",
+    "unit": "ft",
+    "fresh": {
+      "id": "E001",
+      "value": 69.6,
+      "observed_at": "2026-11-21T10:00:00Z"
+    },
+    "stale": {
+      "id": "E002",
+      "value": 18.0,
+      "observed_at": "2026-11-11T12:00:00Z"
+    },
+    "evidence_order": "fresh_first",
+    "expected_label": "CURRENT_HAZARD",
+    "query": "Two sensor records for Cumberland River disagree. Using only these records, give the current-hazard classification."
+  },
+  {
+    "query_id": "E8-10d-DANGER-phoenix-R01",
+    "group": "primary",
+    "age_code": "10d",
+    "condition": "fresh_danger",
+    "reference_now": "2026-11-21T12:00:00Z",
+    "site_key": "phoenix",
+    "site_name": "Salt River",
+    "site_id": "09512500",
+    "threshold_ft": 15.0,
+    "parameter": "river_stage",
+    "unit": "ft",
+    "fresh": {
+      "id": "E001",
+      "value": 24.0,
+      "observed_at": "2026-11-21T10:00:00Z"
+    },
+    "stale": {
+      "id": "E002",
+      "value": 6.75,
+      "observed_at": "2026-11-11T12:00:00Z"
+    },
+    "evidence_order": "stale_first",
+    "expected_label": "CURRENT_HAZARD",
+    "query": "Two sensor records for Salt River disagree. Using only these records, give the current-hazard classification."
+  },
+  {
+    "query_id": "E8-10d-DANGER-phoenix-R02",
+    "group": "primary",
+    "age_code": "10d",
+    "condition": "fresh_danger",
+    "reference_now": "2026-11-21T12:00:00Z",
+    "site_key": "phoenix",
+    "site_name": "Salt River",
+    "site_id": "09512500",
+    "threshold_ft": 15.0,
+    "parameter": "river_stage",
+    "unit": "ft",
+    "fresh": {
+      "id": "E001",
+      "value": 25.05,
+      "observed_at": "2026-11-21T10:00:00Z"
+    },
+    "stale": {
+      "id": "E002",
+      "value": 6.75,
+      "observed_at": "2026-11-11T12:00:00Z"
+    },
+    "evidence_order": "fresh_first",
+    "expected_label": "CURRENT_HAZARD",
+    "query": "Two sensor records for Salt River disagree. Using only these records, give the current-hazard classification."
+  },
+  {
+    "query_id": "E8-10d-DANGER-phoenix-R03",
+    "group": "primary",
+    "age_code": "10d",
+    "condition": "fresh_danger",
+    "reference_now": "2026-11-21T12:00:00Z",
+    "site_key": "phoenix",
+    "site_name": "Salt River",
+    "site_id": "09512500",
+    "threshold_ft": 15.0,
+    "parameter": "river_stage",
+    "unit": "ft",
+    "fresh": {
+      "id": "E001",
+      "value": 26.1,
+      "observed_at": "2026-11-21T10:00:00Z"
+    },
+    "stale": {
+      "id": "E002",
+      "value": 6.75,
+      "observed_at": "2026-11-11T12:00:00Z"
+    },
+    "evidence_order": "stale_first",
+    "expected_label": "CURRENT_HAZARD",
+    "query": "Two sensor records for Salt River disagree. Using only these records, give the current-hazard classification."
+  },
+  {
+    "query_id": "E8-10d-DANGER-sacramento-R01",
+    "group": "primary",
+    "age_code": "10d",
+    "condition": "fresh_danger",
+    "reference_now": "2026-11-21T12:00:00Z",
+    "site_key": "sacramento",
+    "site_name": "Sacramento River",
+    "site_id": "11447650",
+    "threshold_ft": 25.0,
+    "parameter": "river_stage",
+    "unit": "ft",
+    "fresh": {
+      "id": "E001",
+      "value": 40.0,
+      "observed_at": "2026-11-21T10:00:00Z"
+    },
+    "stale": {
+      "id": "E002",
+      "value": 11.25,
+      "observed_at": "2026-11-11T12:00:00Z"
+    },
+    "evidence_order": "fresh_first",
+    "expected_label": "CURRENT_HAZARD",
+    "query": "Two sensor records for Sacramento River disagree. Using only these records, give the current-hazard classification."
+  },
+  {
+    "query_id": "E8-10d-DANGER-sacramento-R02",
+    "group": "primary",
+    "age_code": "10d",
+    "condition": "fresh_danger",
+    "reference_now": "2026-11-21T12:00:00Z",
+    "site_key": "sacramento",
+    "site_name": "Sacramento River",
+    "site_id": "11447650",
+    "threshold_ft": 25.0,
+    "parameter": "river_stage",
+    "unit": "ft",
+    "fresh": {
+      "id": "E001",
+      "value": 41.75,
+      "observed_at": "2026-11-21T10:00:00Z"
+    },
+    "stale": {
+      "id": "E002",
+      "value": 11.25,
+      "observed_at": "2026-11-11T12:00:00Z"
+    },
+    "evidence_order": "stale_first",
+    "expected_label": "CURRENT_HAZARD",
+    "query": "Two sensor records for Sacramento River disagree. Using only these records, give the current-hazard classification."
+  },
+  {
+    "query_id": "E8-10d-DANGER-sacramento-R03",
+    "group": "primary",
+    "age_code": "10d",
+    "condition": "fresh_danger",
+    "reference_now": "2026-11-21T12:00:00Z",
+    "site_key": "sacramento",
+    "site_name": "Sacramento River",
+    "site_id": "11447650",
+    "threshold_ft": 25.0,
+    "parameter": "river_stage",
+    "unit": "ft",
+    "fresh": {
+      "id": "E001",
+      "value": 43.5,
+      "observed_at": "2026-11-21T10:00:00Z"
+    },
+    "stale": {
+      "id": "E002",
+      "value": 11.25,
+      "observed_at": "2026-11-11T12:00:00Z"
+    },
+    "evidence_order": "fresh_first",
+    "expected_label": "CURRENT_HAZARD",
+    "query": "Two sensor records for Sacramento River disagree. Using only these records, give the current-hazard classification."
+  },
+  {
+    "query_id": "E8-10d-SAFE-boulder-R01",
+    "group": "primary",
+    "age_code": "10d",
+    "condition": "fresh_safe",
+    "reference_now": "2026-11-21T12:00:00Z",
+    "site_key": "boulder",
+    "site_name": "Boulder Creek",
+    "site_id": "06730200",
+    "threshold_ft": 10.0,
+    "parameter": "river_stage",
+    "unit": "ft",
+    "fresh": {
+      "id": "E001",
+      "value": 3.5,
+      "observed_at": "2026-11-21T10:00:00Z"
+    },
+    "stale": {
+      "id": "E002",
+      "value": 17.0,
+      "observed_at": "2026-11-11T12:00:00Z"
+    },
+    "evidence_order": "fresh_first",
+    "expected_label": "NO_CURRENT_HAZARD",
+    "query": "Two sensor records for Boulder Creek disagree. Using only these records, give the current-hazard classification."
+  },
+  {
+    "query_id": "E8-10d-SAFE-boulder-R02",
+    "group": "primary",
+    "age_code": "10d",
+    "condition": "fresh_safe",
+    "reference_now": "2026-11-21T12:00:00Z",
+    "site_key": "boulder",
+    "site_name": "Boulder Creek",
+    "site_id": "06730200",
+    "threshold_ft": 10.0,
+    "parameter": "river_stage",
+    "unit": "ft",
+    "fresh": {
+      "id": "E001",
+      "value": 3.9,
+      "observed_at": "2026-11-21T10:00:00Z"
+    },
+    "stale": {
+      "id": "E002",
+      "value": 17.0,
+      "observed_at": "2026-11-11T12:00:00Z"
+    },
+    "evidence_order": "stale_first",
+    "expected_label": "NO_CURRENT_HAZARD",
+    "query": "Two sensor records for Boulder Creek disagree. Using only these records, give the current-hazard classification."
+  },
+  {
+    "query_id": "E8-10d-SAFE-boulder-R03",
+    "group": "primary",
+    "age_code": "10d",
+    "condition": "fresh_safe",
+    "reference_now": "2026-11-21T12:00:00Z",
+    "site_key": "boulder",
+    "site_name": "Boulder Creek",
+    "site_id": "06730200",
+    "threshold_ft": 10.0,
+    "parameter": "river_stage",
+    "unit": "ft",
+    "fresh": {
+      "id": "E001",
+      "value": 4.3,
+      "observed_at": "2026-11-21T10:00:00Z"
+    },
+    "stale": {
+      "id": "E002",
+      "value": 17.0,
+      "observed_at": "2026-11-11T12:00:00Z"
+    },
+    "evidence_order": "fresh_first",
+    "expected_label": "NO_CURRENT_HAZARD",
+    "query": "Two sensor records for Boulder Creek disagree. Using only these records, give the current-hazard classification."
+  },
+  {
+    "query_id": "E8-10d-SAFE-houston-R01",
+    "group": "primary",
+    "age_code": "10d",
+    "condition": "fresh_safe",
+    "reference_now": "2026-11-21T12:00:00Z",
+    "site_key": "houston",
+    "site_name": "Buffalo Bayou",
+    "site_id": "08074000",
+    "threshold_ft": 20.0,
+    "parameter": "river_stage",
+    "unit": "ft",
+    "fresh": {
+      "id": "E001",
+      "value": 7.0,
+      "observed_at": "2026-11-21T10:00:00Z"
+    },
+    "stale": {
+      "id": "E002",
+      "value": 34.0,
+      "observed_at": "2026-11-11T12:00:00Z"
+    },
+    "evidence_order": "stale_first",
+    "expected_label": "NO_CURRENT_HAZARD",
+    "query": "Two sensor records for Buffalo Bayou disagree. Using only these records, give the current-hazard classification."
+  },
+  {
+    "query_id": "E8-10d-SAFE-houston-R02",
+    "group": "primary",
+    "age_code": "10d",
+    "condition": "fresh_safe",
+    "reference_now": "2026-11-21T12:00:00Z",
+    "site_key": "houston",
+    "site_name": "Buffalo Bayou",
+    "site_id": "08074000",
+    "threshold_ft": 20.0,
+    "parameter": "river_stage",
+    "unit": "ft",
+    "fresh": {
+      "id": "E001",
+      "value": 7.8,
+      "observed_at": "2026-11-21T10:00:00Z"
+    },
+    "stale": {
+      "id": "E002",
+      "value": 34.0,
+      "observed_at": "2026-11-11T12:00:00Z"
+    },
+    "evidence_order": "fresh_first",
+    "expected_label": "NO_CURRENT_HAZARD",
+    "query": "Two sensor records for Buffalo Bayou disagree. Using only these records, give the current-hazard classification."
+  },
+  {
+    "query_id": "E8-10d-SAFE-houston-R03",
+    "group": "primary",
+    "age_code": "10d",
+    "condition": "fresh_safe",
+    "reference_now": "2026-11-21T12:00:00Z",
+    "site_key": "houston",
+    "site_name": "Buffalo Bayou",
+    "site_id": "08074000",
+    "threshold_ft": 20.0,
+    "parameter": "river_stage",
+    "unit": "ft",
+    "fresh": {
+      "id": "E001",
+      "value": 8.6,
+      "observed_at": "2026-11-21T10:00:00Z"
+    },
+    "stale": {
+      "id": "E002",
+      "value": 34.0,
+      "observed_at": "2026-11-11T12:00:00Z"
+    },
+    "evidence_order": "stale_first",
+    "expected_label": "NO_CURRENT_HAZARD",
+    "query": "Two sensor records for Buffalo Bayou disagree. Using only these records, give the current-hazard classification."
+  },
+  {
+    "query_id": "E8-10d-SAFE-nashville-R01",
+    "group": "primary",
+    "age_code": "10d",
+    "condition": "fresh_safe",
+    "reference_now": "2026-11-21T12:00:00Z",
+    "site_key": "nashville",
+    "site_name": "Cumberland River",
+    "site_id": "03431500",
+    "threshold_ft": 40.0,
+    "parameter": "river_stage",
+    "unit": "ft",
+    "fresh": {
+      "id": "E001",
+      "value": 14.0,
+      "observed_at": "2026-11-21T10:00:00Z"
+    },
+    "stale": {
+      "id": "E002",
+      "value": 68.0,
+      "observed_at": "2026-11-11T12:00:00Z"
+    },
+    "evidence_order": "fresh_first",
+    "expected_label": "NO_CURRENT_HAZARD",
+    "query": "Two sensor records for Cumberland River disagree. Using only these records, give the current-hazard classification."
+  },
+  {
+    "query_id": "E8-10d-SAFE-nashville-R02",
+    "group": "primary",
+    "age_code": "10d",
+    "condition": "fresh_safe",
+    "reference_now": "2026-11-21T12:00:00Z",
+    "site_key": "nashville",
+    "site_name": "Cumberland River",
+    "site_id": "03431500",
+    "threshold_ft": 40.0,
+    "parameter": "river_stage",
+    "unit": "ft",
+    "fresh": {
+      "id": "E001",
+      "value": 15.6,
+      "observed_at": "2026-11-21T10:00:00Z"
+    },
+    "stale": {
+      "id": "E002",
+      "value": 68.0,
+      "observed_at": "2026-11-11T12:00:00Z"
+    },
+    "evidence_order": "stale_first",
+    "expected_label": "NO_CURRENT_HAZARD",
+    "query": "Two sensor records for Cumberland River disagree. Using only these records, give the current-hazard classification."
+  },
+  {
+    "query_id": "E8-10d-SAFE-nashville-R03",
+    "group": "primary",
+    "age_code": "10d",
+    "condition": "fresh_safe",
+    "reference_now": "2026-11-21T12:00:00Z",
+    "site_key": "nashville",
+    "site_name": "Cumberland River",
+    "site_id": "03431500",
+    "threshold_ft": 40.0,
+    "parameter": "river_stage",
+    "unit": "ft",
+    "fresh": {
+      "id": "E001",
+      "value": 17.2,
+      "observed_at": "2026-11-21T10:00:00Z"
+    },
+    "stale": {
+      "id": "E002",
+      "value": 68.0,
+      "observed_at": "2026-11-11T12:00:00Z"
+    },
+    "evidence_order": "fresh_first",
+    "expected_label": "NO_CURRENT_HAZARD",
+    "query": "Two sensor records for Cumberland River disagree. Using only these records, give the current-hazard classification."
+  },
+  {
+    "query_id": "E8-10d-SAFE-phoenix-R01",
+    "group": "primary",
+    "age_code": "10d",
+    "condition": "fresh_safe",
+    "reference_now": "2026-11-21T12:00:00Z",
+    "site_key": "phoenix",
+    "site_name": "Salt River",
+    "site_id": "09512500",
+    "threshold_ft": 15.0,
+    "parameter": "river_stage",
+    "unit": "ft",
+    "fresh": {
+      "id": "E001",
+      "value": 5.25,
+      "observed_at": "2026-11-21T10:00:00Z"
+    },
+    "stale": {
+      "id": "E002",
+      "value": 25.5,
+      "observed_at": "2026-11-11T12:00:00Z"
+    },
+    "evidence_order": "stale_first",
+    "expected_label": "NO_CURRENT_HAZARD",
+    "query": "Two sensor records for Salt River disagree. Using only these records, give the current-hazard classification."
+  },
+  {
+    "query_id": "E8-10d-SAFE-phoenix-R02",
+    "group": "primary",
+    "age_code": "10d",
+    "condition": "fresh_safe",
+    "reference_now": "2026-11-21T12:00:00Z",
+    "site_key": "phoenix",
+    "site_name": "Salt River",
+    "site_id": "09512500",
+    "threshold_ft": 15.0,
+    "parameter": "river_stage",
+    "unit": "ft",
+    "fresh": {
+      "id": "E001",
+      "value": 5.85,
+      "observed_at": "2026-11-21T10:00:00Z"
+    },
+    "stale": {
+      "id": "E002",
+      "value": 25.5,
+      "observed_at": "2026-11-11T12:00:00Z"
+    },
+    "evidence_order": "fresh_first",
+    "expected_label": "NO_CURRENT_HAZARD",
+    "query": "Two sensor records for Salt River disagree. Using only these records, give the current-hazard classification."
+  },
+  {
+    "query_id": "E8-10d-SAFE-phoenix-R03",
+    "group": "primary",
+    "age_code": "10d",
+    "condition": "fresh_safe",
+    "reference_now": "2026-11-21T12:00:00Z",
+    "site_key": "phoenix",
+    "site_name": "Salt River",
+    "site_id": "09512500",
+    "threshold_ft": 15.0,
+    "parameter": "river_stage",
+    "unit": "ft",
+    "fresh": {
+      "id": "E001",
+      "value": 6.45,
+      "observed_at": "2026-11-21T10:00:00Z"
+    },
+    "stale": {
+      "id": "E002",
+      "value": 25.5,
+      "observed_at": "2026-11-11T12:00:00Z"
+    },
+    "evidence_order": "stale_first",
+    "expected_label": "NO_CURRENT_HAZARD",
+    "query": "Two sensor records for Salt River disagree. Using only these records, give the current-hazard classification."
+  },
+  {
+    "query_id": "E8-10d-SAFE-sacramento-R01",
+    "group": "primary",
+    "age_code": "10d",
+    "condition": "fresh_safe",
+    "reference_now": "2026-11-21T12:00:00Z",
+    "site_key": "sacramento",
+    "site_name": "Sacramento River",
+    "site_id": "11447650",
+    "threshold_ft": 25.0,
+    "parameter": "river_stage",
+    "unit": "ft",
+    "fresh": {
+      "id": "E001",
+      "value": 8.75,
+      "observed_at": "2026-11-21T10:00:00Z"
+    },
+    "stale": {
+      "id": "E002",
+      "value": 42.5,
+      "observed_at": "2026-11-11T12:00:00Z"
+    },
+    "evidence_order": "fresh_first",
+    "expected_label": "NO_CURRENT_HAZARD",
+    "query": "Two sensor records for Sacramento River disagree. Using only these records, give the current-hazard classification."
+  },
+  {
+    "query_id": "E8-10d-SAFE-sacramento-R02",
+    "group": "primary",
+    "age_code": "10d",
+    "condition": "fresh_safe",
+    "reference_now": "2026-11-21T12:00:00Z",
+    "site_key": "sacramento",
+    "site_name": "Sacramento River",
+    "site_id": "11447650",
+    "threshold_ft": 25.0,
+    "parameter": "river_stage",
+    "unit": "ft",
+    "fresh": {
+      "id": "E001",
+      "value": 9.75,
+      "observed_at": "2026-11-21T10:00:00Z"
+    },
+    "stale": {
+      "id": "E002",
+      "value": 42.5,
+      "observed_at": "2026-11-11T12:00:00Z"
+    },
+    "evidence_order": "stale_first",
+    "expected_label": "NO_CURRENT_HAZARD",
+    "query": "Two sensor records for Sacramento River disagree. Using only these records, give the current-hazard classification."
+  },
+  {
+    "query_id": "E8-10d-SAFE-sacramento-R03",
+    "group": "primary",
+    "age_code": "10d",
+    "condition": "fresh_safe",
+    "reference_now": "2026-11-21T12:00:00Z",
+    "site_key": "sacramento",
+    "site_name": "Sacramento River",
+    "site_id": "11447650",
+    "threshold_ft": 25.0,
+    "parameter": "river_stage",
+    "unit": "ft",
+    "fresh": {
+      "id": "E001",
+      "value": 10.75,
+      "observed_at": "2026-11-21T10:00:00Z"
+    },
+    "stale": {
+      "id": "E002",
+      "value": 42.5,
+      "observed_at": "2026-11-11T12:00:00Z"
+    },
+    "evidence_order": "fresh_first",
+    "expected_label": "NO_CURRENT_HAZARD",
+    "query": "Two sensor records for Sacramento River disagree. Using only these records, give the current-hazard classification."
+  }
+]
