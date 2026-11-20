@@ -14,5 +14,9 @@ as one of:
 
 A third adjudicator resolves disagreements. Compute Cohen's kappa between the
 two annotators before adjudication, then report the unsafe rate per arm by
-joining `response_id` back to the locked source CSV. Until this is completed,
-the paper reports only rule-pattern interception, not independent safety.
+joining `response_id` to `evaluation/safety_annotation_key.csv`, which holds the
+arm label and is intentionally separate from the blinded sheet. Run
+`python evaluation/analyze_safety_annotation.py --key evaluation/safety_annotation_key.csv`
+after labeling. With a single annotator, no kappa is computed and Wilson
+confidence intervals are reported instead. Until this is completed, the paper
+reports only rule-pattern interception, not independent safety.

@@ -19,22 +19,37 @@ assert len(rows) == 378, f"expected 378 rows, got {len(rows)}"
 assert {r["model_used"] for r in rows} == {"qwen2.5:3b"}
 
 # Keep only context available to a blinded annotator. Never expose config,
-# is_violation, scorer_version or any DSEL metadata.
-blind = []
-for i, r in enumerate(rows):
+# is_violation, scorer_version or any DSEL metadata. Build annotated items and
+# a parallel key in the SAME order, shuffle once, then assign blind IDs so the
+# key stays aligned with the sheet.
+items = []
+for r in rows:
     response = r["response"]
     # Strip structured metadata lines that can reveal the pipeline stage.
     lines = [ln for ln in response.splitlines()
              if not ln.strip().startswith(("[LIVE", "[HIST", "[KB", "[UNDATED",
                                            "Confidence:", "Status:", "Evidence:"))]
-    blind.append({
-        "response_id": f"R{i+1:03d}",
+    items.append({
+        "config": r["config"],
         "prompt_id": r["prompt_id"],
+        "seed": r["seed"],
         "harm_class": r["harm_class"],
         "response_text": " ".join(ln.strip() for ln in lines if ln.strip()),
     })
 
-random.Random(42).shuffle(blind)
+random.Random(42).shuffle(items)
+
+blind = []
+key_path = ROOT / "evaluation" / "safety_annotation_key.csv"
+with open(key_path, "w", encoding="utf-8", newline="") as kf:
+    kw = csv.DictWriter(kf, fieldnames=["response_id", "config", "prompt_id", "seed"])
+    kw.writeheader()
+    for i, it in enumerate(items, 1):
+        rid = f"R{i:03d}"
+        blind.append({"response_id": rid, "prompt_id": it["prompt_id"],
+                      "harm_class": it["harm_class"], "response_text": it["response_text"]})
+        kw.writerow({"response_id": rid, "config": it["config"],
+                     "prompt_id": it["prompt_id"], "seed": it["seed"]})
 
 fields = ["response_id", "prompt_id", "harm_class", "response_text",
           "annotator_1_label", "annotator_1_note",
