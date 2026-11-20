@@ -270,11 +270,12 @@ where $t_{\mathrm{event}}$ is physical incident occurrence, $t_{\mathrm{source}}
 t_{\mathrm{source}} = (\mathrm{ID} \gg 22) + 1{,}288{,}834{,}974{,}657,
 \label{eq:snow}
 \end{equation}
-where $\gg 22$ extracts elapsed milliseconds since the custom Twitter epoch. Snowflake timestamps are converted to UTC datetimes before $\delta$ is computed, so query and source timestamps share the same unit ($72\,\mathrm{h}=259{,}200{,}000\,\mathrm{ms}$). Unlike static tags that do not age, recency is evaluated dynamically at query time $t_q$. Let $\delta = t_q - t_{\mathrm{source}}$. To prevent stale telemetry from posing as active conditions and eliminate future-timestamp leakage, chunks are partitioned into categorical validity tiers:
+where $\gg 22$ extracts elapsed milliseconds since the custom Twitter epoch. Snowflake timestamps are converted to UTC datetimes before $\delta$ is computed, so query and source timestamps share the same unit ($72\,\mathrm{h}=259{,}200{,}000\,\mathrm{ms}$). Unlike static tags that do not age, recency is evaluated dynamically at query time $t_q$. Let $\delta = t_q - t_{\mathrm{source}}$. To prevent stale telemetry from posing as active conditions and eliminate future-timestamp leakage, chunks receive a source category (sensor, social, doctrine, archive) and one of the following temporal states:
 \begin{equation}
 \tilde{x} =
 \begin{cases}
 \langle\mathsf{ANOMALY}\rangle \Vert x, & \delta < 0,\\[2pt]
+\langle\mathsf{UNDATED}\rangle \Vert x, & t_{\mathrm{source}} \text{ unavailable},\\[2pt]
 \langle\mathsf{KB}\rangle \Vert x, & x \text{ undated official/KB},\\[2pt]
 \langle\mathsf{LIVE}\rangle \Vert x, & 0 \le \delta \le \Delta_{\mathrm{live}},\\[2pt]
 \langle\mathsf{RECENT}\rangle \Vert x, & \Delta_{\mathrm{live}} < \delta \le \Delta_{\mathrm{recent}},\\[2pt]
@@ -282,7 +283,7 @@ where $\gg 22$ extracts elapsed milliseconds since the custom Twitter epoch. Sno
 \end{cases}
 \label{eq:tgi}
 \end{equation}
-The anomaly branch is evaluated first, so future-dated observations are never LIVE. The recorded $t_{\mathrm{event}}$ is unused by tiering, so a recent report of an older incident may be tagged LIVE. \textsc{Supp} and \textsc{Contra} denote congruent and opposing observations sharing location, time window and hazard attribute; \textsc{Unver} marks a claim without live corroboration; \textsc{Insuff} marks missing or expired evidence. These four states are an analytical taxonomy and are not computed by Algorithm~\ref{alg:tgi}; cross-source contradiction resolution is implemented in a separate module and invoked after evidence normalization.
+Anomaly and undated branches are evaluated first; KB marks source type, not temporal state. The recorded $t_{\mathrm{event}}$ is unused by tiering, so a recent report of an older incident may be tagged LIVE. \textsc{Supp} and \textsc{Contra} denote congruent and opposing observations sharing location, time window and hazard attribute; \textsc{Unver} marks a claim without live corroboration; \textsc{Insuff} marks missing or expired evidence. These four states are an analytical taxonomy, not a computed system output; Algorithm~\ref{alg:tgi} assigns only temporal tags.
 
 \begin{algorithm}[ht]\footnotesize
 \caption{Dynamic Temporal Evidence Tagging and Retrieval}
@@ -411,7 +412,7 @@ Implemented failure behaviours are summarized in Table~\ref{tab:failure}. The ne
 \section{Experimental Setup}
 
 \subsection{Data Sources and Corpora}
-Four evidence streams are indexed: (1)~\textit{Social Microblogs:} 16,849 informative tweets from 27,933 records \cite{olteanu2015}, with deterministically recovered Snowflake UTC timestamps; (2)~FEMA/CDC manuals \cite{femanims} (8,668 chunks); (3)~50 image records (1,017 xView2 crops \cite{xview2}); and (4)~Live APIs: USGS NWIS \cite{usgsnwis}, Open-Meteo \cite{openmeteo}, USGS FDSN \cite{usgsfdsn}. The index holds 17,170 chunks; live feeds are queried at runtime.
+Four evidence streams are indexed: (1)~\textit{Social Microblogs:} 16,849 informative tweets from 27,933 records \cite{olteanu2015}, with deterministically recovered Snowflake UTC timestamps; (2)~FEMA/CDC manuals \cite{femanims} (8,668 chunks); (3)~50 image records (1,017 xView2 crops \cite{xview2}); and (4)~Live APIs: USGS NWIS \cite{usgsnwis}, Open-Meteo \cite{openmeteo}, USGS FDSN \cite{usgsfdsn}. The 17,170-chunk index holds 8,200 tweets (from 16,849 candidates, filtered by metadata completeness and hazard coverage), 8,668 manual chunks, 150 image descriptions and 152 telemetry snapshots.
 
 \subsection{The DAB-200 Benchmark Suite}
 Live EOC logs contain sensitive records that cannot be released. DAB-200 \cite{dab200} is an author-curated suite of 200 queries.
@@ -423,7 +424,7 @@ Live EOC logs contain sensitive records that cannot be released. DAB-200 \cite{d
 \textit{Partitioning and Run Accounting:} DAB-200 has two query-disjoint splits: (1)~\textit{Development} (50 queries; hyperparameter calibration) and (2)~\textit{Held-Out} (150 queries; frozen parameters). Two further controlled stress suites are separate collections: \textit{Temporal Stress} (12 paired $\times$ 2 conditions $\times$ 3 seeds = 72 runs/arm) and \textit{Adversarial} (42 traps $\times$ 3 seeds = 126 runs/arm). The archived DAB-200 artifacts contain 3,750 runs: 2,550 held-out (5 configurations $\times$ 3 seeds $\times$ 150 = 2,250 plus 2 ablations $\times$ 1 seed $\times$ 150 = 300) and 1,200 development (8 configurations $\times$ 3 seeds $\times$ 50). Safe abstention used five DAB-200 hallucination-trap queries (IDs 36, 37, 38, 50, 51) with three seeds each.
 
 \subsection{Evaluated Configurations}
-Eight system configurations are evaluated: (1)~\textit{BM25 Baseline}; (2)~\textit{LLM-Only} (zero-shot generation); (3)~\textit{Text-Only Static RAG}; (4)~\textit{Standard Static RAG} (multimodal corpus without live telemetry tools); (5)~\textit{Full Agent}; (6)~\textit{Ablation: No TGI}; (7)~\textit{Ablation: No DSEL}; and (8)~\textit{Full Agent without telemetry (baseline condition)}. The DSEL and temporal-stress suites use a single locked local generator, \texttt{qwen2.5:3b}, under greedy decoding (temperature $T=0$). Table~\ref{tab:main} is generator-confounded (Table~\ref{tab:genmap}) and descriptive; see Tables~\ref{tab:corpus} and~\ref{tab:runs}. Execution seeds and DSEL verification logs are recorded per trial to ensure reproducible evaluation.
+Eight configurations: (1)~\textit{BM25 Baseline}; (2)~\textit{LLM-Only} (zero-shot generation); (3)~\textit{Text-Only Static RAG}; (4)~\textit{Standard Static RAG} (multimodal corpus without live telemetry tools); (5)~\textit{Full Agent}; (6)~\textit{Ablation: No TGI}; (7)~\textit{Ablation: No DSEL}; and (8)~\textit{Full Agent without telemetry (baseline condition)}. Controlled suites use \texttt{qwen2.5:3b}, $T=0$. Table~\ref{tab:main} is generator-confounded (Table~\ref{tab:genmap}) and descriptive; see Tables~\ref{tab:corpus} and~\ref{tab:runs}. Seeds and DSEL logs are recorded per trial.
 
 \textit{Reproducibility:} Each execution record stores configuration attributes, random seeds, and tool execution traces. Prompts, DSEL rules, and evaluation scripts are versioned in the open repository.
 
@@ -503,7 +504,7 @@ The following section reports empirical results.
 \subsection{Main Benchmark Grounding Performance}
 
 \begin{table}[ht]
-\caption{Controlled Single-Generator Evaluation on Held-Out DAB-200 (150 Queries, Seed 42)}
+\caption{Controlled Single-Generator Evaluation on Held-Out DAB-200 (Qwen2.5-3B Instruct, Greedy, Seed 42)}
 \label{tab:cohort}
 \centering\scriptsize
 \begin{tabular*}{\columnwidth}{@{\extracolsep{\fill}}lc@{}}
@@ -679,7 +680,7 @@ Total & 1,300 & 3,300 & 6,600 & 3,300 \\
 \end{tabular*}
 \end{table}
 
-Table~\ref{tab:judgecounts} gives per-configuration counts; Table~\ref{tab:judge} reports 3,300 seeded rated items (one response per query, configuration and seed) from 1,300 query--configuration pairs, each scored on three dimensions by two judges (6,600 responses; 19,798 dimension scores after two out-of-scale SAA ratings were excluded). Quadratic-weighted Cohen's $\kappa_w$ is 0.576 for DR-Fact (exact agreement 64.5\%), 0.513 for SAA, and 0.324 for Temporal (macro mean 0.471). The zero-shot LLM baseline achieves higher DR-Fact scores (0.782 / 0.734) than the Full Agent (0.621 / 0.645). This is consistent with, but does not isolate, evaluator fluency bias \cite{zheng}. The physical safety results are reported separately in Tables~\ref{tab:tgi} and~\ref{tab:iss} and are not attributed to the judge scores.
+Table~\ref{tab:judgecounts} gives per-configuration counts; Table~\ref{tab:judge} reports 3,300 seeded rated items (one response per query, configuration and seed) from 1,300 query--configuration pairs, each scored on three dimensions by two judges (6,600 responses; 19,798 dimension scores after two out-of-scale SAA ratings were excluded). Quadratic-weighted Cohen's $\kappa_w$ is 0.576 for DR-Fact (exact agreement 64.5\%), 0.513 for SAA, and 0.324 for Temporal (macro mean 0.471). Zero-shot scores higher on DR-Fact (0.782/0.734 vs 0.621/0.645). This is consistent with, but does not isolate, fluency bias \cite{zheng}. Safety results are in Tables~\ref{tab:tgi} and~\ref{tab:iss}.
 
 \begin{table}[ht]
 \caption{Cross-Family Dual-Judge Evaluation ($N=3{,}300$ Rated Items)}
@@ -730,7 +731,7 @@ Total Violations & 10 (7.9\%) & 7 (5.6\%) & 0 (0.0\%) \\
 \end{table}
 
 \subsection{Execution Latency Profiling}
-Over 450 held-out queries per primary configuration, P50/P95 latencies are 0.94/2.46~s (BM25), 2.86/47.78~s (Static RAG), 3.39/5.53~s (LLM-Only) and 5.88/15.12~s (Full Agent), including tool calls and generation. These are descriptive measurements under different generators, not a controlled comparison. The append-only audit ledger (\texttt{incident\_audit\_trail.jsonl}) stores trace records for post-incident inspection.
+Over 450 held-out queries per primary configuration, P50/P95 latencies are 0.94/2.46~s (BM25), 2.86/47.78~s (Static RAG), 3.39/5.53~s (LLM-Only) and 5.88/15.12~s (Full Agent). The Static RAG tail reflects long generations; values are descriptive. These are descriptive measurements under different generators, not a controlled comparison. The append-only audit ledger (\texttt{incident\_audit\_trail.jsonl}) stores trace records for post-incident inspection.
 
 \subsection{Exploratory Vision Benchmark}
 A 100-crop xView2/xBD test \cite{xview2} (25 per class) with Qwen3-VL 4B \cite{qwenvl} gave 0.340 accuracy and 0.292 macro-F1 (chance 0.250). Of 50 indexed scene records, 27 had usable labels, yielding 1,017 crops from which 25 per class were sampled without replacement. Table~\ref{tab:visioncm} gives the confusion matrix; per-class F1 is 0.537, 0.103, 0.140 and 0.389.
@@ -782,7 +783,7 @@ This work was supported by the Department of Computer Engineering at Fr. C. Rodr
 
 \bibitem{crisismmd} F. Alam, F. Ofli, and M. Imran, ``CrisisMMD: Multimodal Twitter datasets from natural disasters,'' in \textit{Proc. ICWSM}, 2018, pp. 465--473.
 
-\bibitem{singh} D. K. Singh and V. Hoskere, ``Post disaster damage assessment using ultra-high-resolution aerial imagery with semi-supervised transformers,'' \textit{Sensors}, vol. 23, no. 19, art. 8235, 2023, doi: 10.3390/s23198235.
+\bibitem{singh} D. K. Singh and V. Hoskere, ``Disaster damage assessment,'' \textit{Sensors}, vol. 23, 2023.
 
 \bibitem{olteanu2015} A. Olteanu, S. Vieweg, and C. Castillo, ``What to expect when the unexpected happens,'' in \textit{Proc. CSCW}, 2015, pp. 994--1009.
 
@@ -842,7 +843,7 @@ This work was supported by the Department of Computer Engineering at Fr. C. Rodr
 
 \bibitem{qwenvl} Qwen Team, ``Qwen3-VL Technical Report,'' arXiv:2511.21631, 2025.
 
-\bibitem{xview2} R. Gupta \textit{et al.}, ``Creating xBD: A dataset for building damage assessment,'' in \textit{Proc. CVPRW}, 2019, pp. 10--17.
+\bibitem{xview2} R. Gupta \textit{et al.}, ``xBD building damage dataset,'' in \textit{Proc. CVPRW}, 2019.
 
 \bibitem{openmeteo} Open-Meteo, ``Weather API,'' \url{https://open-meteo.com/en/docs}
 
@@ -852,7 +853,7 @@ This work was supported by the Department of Computer Engineering at Fr. C. Rodr
 
 \bibitem{zheng} L. Zheng \textit{et al.}, ``Judging LLM-as-a-judge,'' in \textit{Adv. NeurIPS}, 2023.
 
-\bibitem{cohen1968} J. Cohen, ``Weighted kappa,'' \textit{Psychol. Bull.}, vol. 70, no. 4, pp. 213--220, 1968.
+\bibitem{cohen1968} J. Cohen, ``Weighted kappa,'' \textit{Psychol. Bull.}, 1968.
 
 \bibitem{landis1977} J. R. Landis and G. G. Koch, ``Observer agreement,'' \textit{Biometrics}, 1977.
 \end{thebibliography}
