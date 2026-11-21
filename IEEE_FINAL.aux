@@ -13,12 +13,15 @@
 \citation{humaid}
 \citation{yu2025}
 \citation{kim2025}
-\citation{piryani2023}
-\citation{crisisfacts}
-\citation{freshqa}
+\citation{xu2025}
+\citation{drrgs2026}
 \@writefile{toc}{\contentsline {section}{\numberline {I}Introduction}{1}{}\protected@file@percent }
 \@writefile{toc}{\contentsline {section}{\numberline {II}Related Work}{1}{}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {II-A}}Crisis Informatics and Multimodal Disaster Intelligence}{1}{}\protected@file@percent }
+\citation{piryani2023}
+\citation{mrag2025}
+\citation{crisisfacts}
+\citation{freshqa}
 \citation{manuel2024}
 \citation{usgsnwis}
 \citation{react}
@@ -33,8 +36,10 @@
 \citation{inan2023}
 \citation{crisismmd}
 \citation{freshqa}
+\citation{mrag2025}
 \citation{manuel2024}
 \citation{yao2025}
+\citation{drrgs2026}
 \citation{nemoguardrails}
 \citation{bge}
 \citation{bm25}
@@ -47,14 +52,11 @@
 \@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {II-E}}Safety Verification and Guardrails}{2}{}\protected@file@percent }
 \@writefile{toc}{\contentsline {section}{\numberline {III}Methodology}{2}{}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-A}}Problem Formulation}{2}{}\protected@file@percent }
-\@writefile{loa}{\contentsline {algorithm}{\numberline {1}{\ignorespaces Query-time temporal evidence tagging}}{2}{}\protected@file@percent }
-\newlabel{alg:tgi}{{1}{2}{}{algorithm.1}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-B}}System Architecture}{2}{}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-C}}Temporal Evidence Tagging}{2}{}\protected@file@percent }
 \newlabel{eq:snow}{{1}{2}{}{equation.1}{}}
 \newlabel{eq:tgi}{{2}{2}{}{equation.2}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-D}}Hybrid Retrieval}{2}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-E}}Standalone Basin-Label Routing}{2}{}\protected@file@percent }
 \citation{langgraph,react}
 \citation{openmeteo}
 \citation{usgsnwis}
@@ -65,45 +67,56 @@
 \citation{dab200}
 \@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Four-layer architecture. Offline indexing and the standalone basin test remain outside the runtime retrieval path.}}{3}{}\protected@file@percent }
 \newlabel{fig:arch}{{1}{3}{}{figure.1}{}}
+\@writefile{loa}{\contentsline {algorithm}{\numberline {1}{\ignorespaces Query-time temporal evidence tagging}}{3}{}\protected@file@percent }
+\newlabel{alg:tgi}{{1}{3}{}{algorithm.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-E}}Standalone Basin-Label Routing}{3}{}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-F}}Agentic Orchestration}{3}{}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-G}}Deterministic Safety Enforcement}{3}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {IV}Experimental Setup}{3}{}\protected@file@percent }
 \@writefile{loa}{\contentsline {algorithm}{\numberline {2}{\ignorespaces Deterministic safety enforcement}}{3}{}\protected@file@percent }
 \newlabel{alg:dsel}{{2}{3}{}{algorithm.2}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {IV-A}}Evaluated Configurations}{3}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {IV}Experimental Setup}{3}{}\protected@file@percent }
 \citation{cohen1968,landis1977}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {IV-A}}Evaluated Configurations}{4}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {IV-B}}Evaluation Metrics}{4}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {IV-C}}Statistical Analysis}{4}{}\protected@file@percent }
 \@writefile{lot}{\contentsline {table}{\numberline {II}{\ignorespaces Controlled grounding, held-out $N=150$}}{4}{}\protected@file@percent }
 \newlabel{tab:cohort}{{II}{4}{}{table.2}{}}
 \@writefile{lot}{\contentsline {table}{\numberline {III}{\ignorespaces Leakage-free held-out grounding}}{4}{}\protected@file@percent }
 \newlabel{tab:main}{{III}{4}{}{table.3}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {IV-B}}Evaluation Metrics}{4}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {IV-D}}Reproducibility}{4}{}\protected@file@percent }
 \@writefile{toc}{\contentsline {section}{\numberline {V}Results}{4}{}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {V-A}}Main Grounding Performance}{4}{}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {V-B}}Retrieval}{4}{}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {IV}{\ignorespaces Retrieval Engine Benchmark ($N=200$ Queries)}}{4}{}\protected@file@percent }
-\newlabel{tab:retrieval}{{IV}{4}{}{table.4}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {V}{\ignorespaces Held-out retrieval ($N=150$)}}{4}{}\protected@file@percent }
-\newlabel{tab:retrheld}{{V}{4}{}{table.5}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {VI}{\ignorespaces Two-sided temporal conflict test ($N=72$)}}{4}{}\protected@file@percent }
-\newlabel{tab:tgi}{{VI}{4}{}{table.6}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {V-C}}Temporal Decision Making}{4}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {V-D}}Failure Analysis: Safety-Prompt Dominance}{4}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {V-E}}Geospatial Routing}{4}{}\protected@file@percent }
-\citation{qwenvl}
-\bibcite{undrr}{1}
-\@writefile{lot}{\contentsline {table}{\numberline {VII}{\ignorespaces Basin routing on real USGS stations}}{5}{}\protected@file@percent }
-\newlabel{tab:geoexp}{{VII}{5}{}{table.7}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {VIII}{\ignorespaces Adversarial safety evaluation ($N=378$)}}{5}{}\protected@file@percent }
-\newlabel{tab:iss}{{VIII}{5}{}{table.8}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {IV}{\ignorespaces Retrieval on all DAB-200 ($N=200$) and held-out ($N=150$)}}{5}{}\protected@file@percent }
+\newlabel{tab:retrieval}{{IV}{5}{}{table.4}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {V}{\ignorespaces Held-out retrieval ($N=150$)}}{5}{}\protected@file@percent }
+\newlabel{tab:retrheld}{{V}{5}{}{table.5}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {VI}{\ignorespaces Two-sided temporal conflict test ($N=72$)}}{5}{}\protected@file@percent }
+\newlabel{tab:tgi}{{VI}{5}{}{table.6}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {V-C}}Temporal Decision Making}{5}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {V-D}}Failure Analysis: Safety-Prompt Dominance}{5}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {V-E}}Geospatial Routing}{5}{}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {VII}{\ignorespaces Prompt revision on independent conflicts (accuracy \%)}}{5}{}\protected@file@percent }
+\newlabel{tab:pareto}{{VII}{5}{}{table.7}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {VIII}{\ignorespaces Basin routing on real USGS stations}}{5}{}\protected@file@percent }
+\newlabel{tab:geoexp}{{VIII}{5}{}{table.8}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {IX}{\ignorespaces Adversarial safety evaluation ($N=378$)}}{5}{}\protected@file@percent }
+\newlabel{tab:iss}{{IX}{5}{}{table.9}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {V-F}}Safety Enforcement}{5}{}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {V-G}}Safe Abstention}{5}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {V-H}}Supporting Evaluations}{5}{}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {IX}{\ignorespaces Dual-judge scores (Judge A / Judge B)}}{5}{}\protected@file@percent }
-\newlabel{tab:judge}{{IX}{5}{}{table.9}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Operational outcomes across three controlled suites (each from a separate experiment).}}{5}{}\protected@file@percent }
-\newlabel{fig:comparison}{{2}{5}{}{figure.2}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {VI}Limitations}{5}{}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {VII}Conclusion}{5}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {V-H}}Concurrent-Load Latency}{5}{}\protected@file@percent }
+\citation{qwenvl}
+\@writefile{lot}{\contentsline {table}{\numberline {X}{\ignorespaces Latency under concurrency (P50/P95 in seconds)}}{6}{}\protected@file@percent }
+\newlabel{tab:load}{{X}{6}{}{table.10}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {XI}{\ignorespaces Dual-judge scores (Judge A / Judge B)}}{6}{}\protected@file@percent }
+\newlabel{tab:judge}{{XI}{6}{}{table.11}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Operational outcomes across three controlled suites (each from a separate experiment).}}{6}{}\protected@file@percent }
+\newlabel{fig:comparison}{{2}{6}{}{figure.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {V-I}}Supporting Evaluations}{6}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {V-J}}Operational Implications}{6}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {VI}Limitations}{6}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {VII}Conclusion}{6}{}\protected@file@percent }
+\bibcite{undrr}{1}
 \bibcite{endsley}{2}
 \bibcite{aboualola2023}{3}
 \bibcite{crisismmd}{4}
@@ -144,5 +157,8 @@
 \bibcite{cohen1968}{39}
 \bibcite{landis1977}{40}
 \bibcite{qwenvl}{41}
-\@writefile{toc}{\contentsline {section}{References}{6}{}\protected@file@percent }
-\gdef \@abspage@last{6}
+\bibcite{mrag2025}{42}
+\bibcite{xu2025}{43}
+\bibcite{drrgs2026}{44}
+\@writefile{toc}{\contentsline {section}{References}{7}{}\protected@file@percent }
+\gdef \@abspage@last{7}

@@ -79,8 +79,8 @@ check("abstention LLM 40%", a["LLM_Only"]["hallucination_rate"] == 0.4 and "40.0
 check("title unchanged", "Temporally Grounded Agentic Retrieval-Augmented Generation" in PAPER)
 check("no actionable utility metric", "0.0915" not in PAPER)
 check("comparison figure present with honest caption", "fig:comparison" in PAPER and "each from a separate experiment" in PAPER)
-check("retrieval label N=200 combined", "Retrieval Engine Benchmark ($N=200$ Queries)" in PAPER)
-check("no misleading Dev N=200 column", "Dev ($N=200$)" not in PAPER)
+check("retrieval label all DAB-200", "Retrieval on all DAB-200 ($N=200$)" in PAPER)
+check("no misleading Dev N=200 column", "Dev ($N=200$)" not in PAPER and "Dev R@5" not in PAPER)
 
 fails = [c for c in checks if not c[1]]
 print(f"checks={len(checks)} passed={len(checks)-len(fails)} failed={len(fails)}")
