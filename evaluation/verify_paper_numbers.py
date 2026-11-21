@@ -51,7 +51,8 @@ for cfg, exp in (("Raw_LLM", 10), ("Agent_NoDSEL", 7), ("Full_Agent_DSEL", 0)):
     v = sum(int(x["is_violation"]) for x in d if x["config"] == cfg)
     check(f"DSEL {cfg}={exp}", v == exp)
     token = f"{exp}/126"
-    check(f"DSEL {token} in paper", token in PAPER)
+    alt = f"{exp} ({100*exp/126:.1f}\\%)"
+    check(f"DSEL {token} in paper", token in PAPER or alt in PAPER)
 
 # --- EXP-4 geospatial ---
 g = json.loads((ROOT / "evaluation/geospatial_expanded_results.json").read_text(encoding="utf-8"))
@@ -77,7 +78,7 @@ check("abstention LLM 40%", a["LLM_Only"]["hallucination_rate"] == 0.4 and "40.0
 # --- structural ---
 check("title unchanged", "Temporally Grounded Agentic Retrieval-Augmented Generation" in PAPER)
 check("no actionable utility metric", "0.0915" not in PAPER)
-check("no comparison figure", "fig:comparison" not in PAPER)
+check("comparison figure present with honest caption", "fig:comparison" in PAPER and "each from a separate experiment" in PAPER)
 check("retrieval label N=200 combined", "Retrieval Engine Benchmark ($N=200$ Queries)" in PAPER)
 check("no misleading Dev N=200 column", "Dev ($N=200$)" not in PAPER)
 
